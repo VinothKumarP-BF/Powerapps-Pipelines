@@ -1,0 +1,60 @@
+<powerpagecomponent powerpagecomponentid="45a080a2-8808-efa7-c7f4-cf875d23dda4">
+  <content>{
+  "filecontent": null,
+  "displayorder": 3,
+  "pagetemplateid": "835852c9-4793-49e2-acd6-74c9467f4e31",
+  "parentpageid": "d1d4ad37-367c-46d7-8406-9d3b943d7d08",
+  "partialurl": "Provider-Map",
+  "isroot": false,
+  "rootwebpageid": "081faf1f-4c74-9ecc-889b-8843621e22d3",
+  "title": "Provider Map",
+  "summary": "&lt;p&gt;This is a sample landing page designed to be a starting point for your website&lt;/p&gt;",
+  "copy": "&lt;div class=\"row sectionBlockLayout sectionPrimaryColor text-start\"\n  style=\"display: flex; flex-wrap: wrap; height: 15px; padding: 8px; margin: 0px;\"&gt;\n  &lt;div class=\"container\" style=\"display: flex; flex-wrap: wrap;\"&gt;&lt;/div&gt;\n&lt;/div&gt;\n&lt;div class=\"row sectionBlockLayout\"\n  style=\"display: flex; flex-wrap: wrap; margin: 0px; text-align: center; min-height: auto; padding: 8px;\"&gt;\n  &lt;div class=\"container\" style=\"display: flex; flex-wrap: wrap;\"&gt;\n    &lt;div class=\"col-lg-4 columnBlockLayout left-pane\"\n      style=\"flex-grow: 1; min-width: 250px; display: flex; flex-direction: column; margin-left: 0px; margin-right: 0px;\"&gt;\n      &lt;h3 class=\"pane-title\"&gt;Provider List&lt;/h3&gt;        \n        &lt;ul id=\"provider-list\"&gt;&lt;/ul&gt;\n    &lt;/div&gt;\n    &lt;div class=\"col-lg-8 columnBlockLayout\"\n      style=\"flex-grow: 1; min-width: 250px; display: flex; flex-direction: column; margin-left: 0px; margin-right: 0px;\"&gt;\n      &lt;h3&gt;Provider Map&amp;nbsp;&lt;/h3&gt;\n      &lt;div class=\"map-container\"&gt;\n        &lt;div id=\"medical-map\"&gt;&lt;/div&gt;\n      &lt;/div&gt;\n    &lt;/div&gt;\n  &lt;/div&gt;\n&lt;/div&gt;\n\n\n&lt;script src=\"/js/maps.js\"&gt;&lt;/script&gt;\n&lt;script async defer\n  src=\"https://maps.googleapis.com/maps/api/js?key=API_KEY&amp;callback=initMap\"&gt;\n&lt;/script&gt;",
+  "publishingstateid": "9a28e01e-6995-4f47-91ee-d3be440d65cd",
+  "enablerating": false,
+  "enabletracking": false,
+  "excludefromsearch": false,
+  "hiddenfromsitemap": true,
+  "sharedpageconfiguration": false,
+  "feedbackpolicy": 756150000,
+  "customjavascript": "(function() {\r\n    const script = document.createElement(\"script\");\r\n    script.src = \"https://maps.googleapis.com/maps/api/js?key=AIzaSyBwkFUa6pGauZUeV2lqfZ4d7w-MJYZ9-Dk&amp;libraries=places&amp;callback=initPowerPagesMap\";\r\n    script.async = true;\r\n    script.defer = true;\r\n    document.head.appendChild(script);\r\n\r\n    const providers = [\r\n        { id: 1, name: \"Alice Johnson\", address: \"100 E Pratt St, Baltimore, MD 21202\", lat: 39.2875, lng: -76.6122 },\r\n        { id: 2, name: \"Robert Smith\", address: \"7316 Wisconsin Ave, Bethesda, MD 20814\", lat: 38.9831, lng: -77.0945 },\r\n        { id: 3, name: \"Maria Garcia\", address: \"8515 Georgia Ave, Silver Spring, MD 20910\", lat: 38.9969, lng: -77.0269 },\r\n        { id: 4, name: \"James Wilson\", address: \"121 Cathedral St, Annapolis, MD 21401\", lat: 38.9781, lng: -76.4952 }\r\n    ];\r\n\r\n    let map, placesService, distanceService, infoWindow;\r\n    let markersArray = [];\r\n\r\n    window.initPowerPagesMap = function() {\r\n        map = new google.maps.Map(document.getElementById(\"medical-map\"), {\r\n            center: { lat: 39.0458, lng: -76.6413 }, \r\n            zoom: 9,\r\n            mapTypeControl: false,\r\n        });\r\n\r\n        placesService = new google.maps.places.PlacesService(map);\r\n        distanceService = new google.maps.DistanceMatrixService();\r\n        infoWindow = new google.maps.InfoWindow();\r\n\r\n        renderProviderList();\r\n    };\r\n\r\n    // 4. Render the Left Pane List\r\n    function renderProviderList() {\r\n        const listEl = document.getElementById(\"provider-list\");\r\n        providers.forEach(provider =&gt; {\r\n            const li = document.createElement(\"li\");\r\n            li.className = \"provider-item\";\r\n            li.innerHTML = `\r\n                &lt;div class=\"provider-name\"&gt;${provider.name}&lt;/div&gt;\r\n                &lt;div class=\"provider-address\"&gt;${provider.address}&lt;/div&gt;\r\n            `;\r\n            li.addEventListener(\"click\", () =&gt; handleProviderClick(provider));\r\n            listEl.appendChild(li);\r\n        });\r\n    }\r\n\r\n    function handleProviderClick(provider) {\r\n        clearMarkers();\r\n        const originLocation = new google.maps.LatLng(provider.lat, provider.lng);\r\n        \r\n        map.setCenter(originLocation);\r\n        map.setZoom(11);\r\n\r\n        const originMarker = new google.maps.Marker({\r\n            position: originLocation,\r\n            map: map,\r\n            title: provider.name,\r\n            icon: \"http://maps.google.com/mapfiles/ms/icons/blue-dot.png\" \r\n        });\r\n        markersArray.push(originMarker);\r\n\r\n        placesService.nearbySearch({\r\n            location: originLocation,\r\n            radius: 20000, \r\n            type: \"hospital\" \r\n        }, (results, status) =&gt; {\r\n            if (status === google.maps.places.PlacesServiceStatus.OK &amp;&amp; results) {                \r\n                filterByDriveTime(originLocation, results);\r\n            }\r\n        });\r\n    }\r\n\r\n   \r\n    function filterByDriveTime(originLocation, placesResults) {\r\n        const destinations = placesResults.map(place =&gt; place.geometry.location);\r\n\r\n        distanceService.getDistanceMatrix({\r\n            origins: [originLocation],\r\n            destinations: destinations,\r\n            travelMode: google.maps.TravelMode.DRIVING\r\n        }, (response, status) =&gt; {\r\n            if (status === google.maps.DistanceMatrixStatus.OK) {\r\n                const resultsRow = response.rows[0].elements;\r\n                \r\n                for (let i = 0; i &lt; resultsRow.length; i++) {\r\n                    const element = resultsRow[i];                    \r\n                    if (element.status === \"OK\" &amp;&amp; element.duration.value &lt;= 1800) {\r\n                        createFacilityMarker(placesResults[i], element.duration.text);\r\n                    }\r\n                }\r\n            }\r\n        });\r\n    }\r\n\r\n    function createFacilityMarker(place, driveTimeText) {\r\n        if (!place.geometry || !place.geometry.location) return;\r\n\r\n        const marker = new google.maps.Marker({\r\n            map: map,\r\n            position: place.geometry.location,\r\n            title: place.name,\r\n            icon: \"http://maps.google.com/mapfiles/ms/icons/red-dot.png\"\r\n        });\r\n        markersArray.push(marker);\r\n\r\n        google.maps.event.addListener(marker, \"click\", () =&gt; {\r\n            infoWindow.setContent(`\r\n                &lt;div style=\"color: #333; font-family: sans-serif; padding: 5px;\"&gt;\r\n                    &lt;strong style=\"font-size: 14px;\"&gt;${place.name}&lt;/strong&gt;&lt;br&gt;\r\n                    &lt;span style=\"font-size: 12px; color: #666;\"&gt;${place.vicinity}&lt;/span&gt;&lt;br&gt;\r\n                    &lt;div style=\"margin-top: 8px; font-size: 13px; color: #0078d4;\"&gt;\r\n                        &lt;strong&gt;Drive Time:&lt;/strong&gt; ${driveTimeText}\r\n                    &lt;/div&gt;\r\n                &lt;/div&gt;\r\n            `);\r\n            infoWindow.open(map, marker);\r\n        });\r\n    }\r\n\r\n    function clearMarkers() {\r\n        markersArray.forEach(m =&gt; m.setMap(null));\r\n        markersArray = [];\r\n    }\r\n})();\r\n\r\n//REACT_APP_GOOGLE_MAPS_API_KEY = \"AIzaSyBwkFUa6pGauZUeV2lqfZ4d7w-MJYZ9-Dk\"\r\n//REACT_APP_GOOGLE_SITE_KEY = 6Le5RqkhAAAAAJ2zZjLYyUBkJHoAaD9Or7O7ATpK"
+}</content>
+  <iscustomizable>1</iscustomizable>
+  <name>Provider Map</name>
+  <powerpagecomponenttype>2</powerpagecomponenttype>
+  <powerpagesiteid>
+    <powerpagesiteid>a9b0a41b-5591-42f8-bdbc-5a64b2597cfa</powerpagesiteid>
+  </powerpagesiteid>
+  <powerpagesitelanguageid>
+    <powerpagesitelanguageid>5c7c0683-e4d6-4baa-ae97-71b9e6e5a1ab</powerpagesitelanguageid>
+  </powerpagesitelanguageid>
+  <searchcontent>Provider Map&lt;div class="row sectionBlockLayout sectionPrimaryColor text-start"
+  style="display: flex; flex-wrap: wrap; height: 15px; padding: 8px; margin: 0px;"&gt;
+  &lt;div class="container" style="display: flex; flex-wrap: wrap;"&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="row sectionBlockLayout"
+  style="display: flex; flex-wrap: wrap; margin: 0px; text-align: center; min-height: auto; padding: 8px;"&gt;
+  &lt;div class="container" style="display: flex; flex-wrap: wrap;"&gt;
+    &lt;div class="col-lg-4 columnBlockLayout left-pane"
+      style="flex-grow: 1; min-width: 250px; display: flex; flex-direction: column; margin-left: 0px; margin-right: 0px;"&gt;
+      &lt;h3 class="pane-title"&gt;Provider List&lt;/h3&gt;        
+        &lt;ul id="provider-list"&gt;&lt;/ul&gt;
+    &lt;/div&gt;
+    &lt;div class="col-lg-8 columnBlockLayout"
+      style="flex-grow: 1; min-width: 250px; display: flex; flex-direction: column; margin-left: 0px; margin-right: 0px;"&gt;
+      &lt;h3&gt;Provider Map&amp;nbsp;&lt;/h3&gt;
+      &lt;div class="map-container"&gt;
+        &lt;div id="medical-map"&gt;&lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+
+&lt;script src="/js/maps.js"&gt;&lt;/script&gt;
+&lt;script async defer
+  src="https://maps.googleapis.com/maps/api/js?key=API_KEY&amp;callback=initMap"&gt;
+&lt;/script&gt;Provider Map</searchcontent>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</powerpagecomponent>
