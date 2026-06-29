@@ -21,13 +21,13 @@ jobs:
       uses: microsoft/powerplatform-actions/actions-install@v1
 
     # WhoAmI (validates authentication)
-    - name: Validate DEV connection
-      uses: microsoft/powerplatform-actions/who-am-i@v1
-      with:
-        environment-url: ${{ secrets.DEV_ENV_URL }}
-        tenant-id: ${{ secrets.TENANT_ID }}
-        app-id: ${{ secrets.CLIENT_ID }}
-        client-secret: ${{ secrets.CLIENT_SECRET }}
+    # - name: Validate DEV connection
+    #   uses: microsoft/powerplatform-actions/who-am-i@v1
+    #   with:
+    #     environment-url: ${{ secrets.DEV_ENV_URL }}
+    #     tenant-id: ${{ secrets.TENANT_ID }}
+    #     app-id: ${{ secrets.CLIENT_ID }}
+    #     client-secret: ${{ secrets.CLIENT_SECRET }}
 
     # Export solution from DEV
     - name: Export solution
