@@ -27,8 +27,7 @@ jobs:
 
     # Install Power Platform CLI
     - name: Install Power Platform CLI
-      run: |
-        dotnet tool install --global Microsoft.PowerApps.CLI.Tool
+      uses: microsoft/powerplatform-actions/actions-install@v1
         echo "$HOME/.dotnet/tools" >> $GITHUB_PATH
 
     # Authenticate DEV
