@@ -1,0 +1,109 @@
+name: Power Platform CI/CD
+
+on:
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    env:
+      SOLUTION_NAME: Pipeline_Test
+      SOLUTION_FILE: Pipeline_Test.zip
+
+    steps:
+
+    # Checkout
+    - name: Checkout
+      uses: actions/checkout@v4
+
+    # Install .NET (required for pac)
+    - name: Install .NET
+      run: |
+        wget https://dot.net/v1/dotnet-install.sh
+        chmod +x dotnet-install.sh
+        ./dotnet-install.sh --channel STS
+        echo "$HOME/.dotnet" >> $GITHUB_PATH
+
+    # Install Power Platform CLI
+    - name: Install Power Platform CLI
+      run: |
+        dotnet tool install --global Microsoft.PowerApps.CLI.Tool
+        echo "$HOME/.dotnet/tools" >> $GITHUB_PATH
+
+    # Authenticate DEV
+    - name: Authenticate DEV
+      run: |
+        pac auth create \
+          --url ${{ secrets.DEV_ENV_URL }} \
+          --applicationId ${{ secrets.CLIENT_ID }} \
+          --clientSecret ${{ secrets.CLIENT_SECRET }} \
+          --tenant ${{ secrets.TENANT_ID }}
+
+        pac org who
+
+    # EXPORT (equivalent)
+    - name: Export Solution
+      run: |
+        pac solution export \
+          --name $SOLUTION_NAME \
+          --path $SOLUTION_FILE \
+          --managed false
+
+    # UNPACK (equivalent)
+    - name: Unpack Solution
+      run: |
+        mkdir -p solutions/$SOLUTION_NAME
+
+        pac solution unpack \
+          --zipfile $SOLUTION_FILE \
+          --folder solutions/$SOLUTION_NAME \
+          --packagetype Unmanaged
+
+    # COMMIT TO BRANCH
+    - name: Commit solution to repo
+      run: |
+        git config user.name "github-actions"
+        git config user.email "actions@github.com"
+
+        git fetch origin
+
+        git checkout PowerApps_Versions || git checkout -b PowerApps_Versions
+
+        git reset --hard origin/PowerApps_Versions || echo "First run"
+
+        git add solutions/
+        git commit -m "Update solution $SOLUTION_NAME" || echo "No changes"
+
+        git push origin PowerApps_Versions
+
+    # Upload artifact
+    - name: Upload artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: solution_drop
+        path: ${{ env.SOLUTION_FILE }}
+
+    # Download artifact
+    - name: Download artifact
+      uses: actions/download-artifact@v4
+      with:
+        name: solution_drop
+
+    # Authenticate TEST
+    - name: Authenticate TEST
+      run: |
+        pac auth create \
+          --url ${{ secrets.TEST_ENV_URL }} \
+          --applicationId ${{ secrets.CLIENT_ID }} \
+          --clientSecret ${{ secrets.CLIENT_SECRET }} \
+          --tenant ${{ secrets.TENANT_ID }}
+
+    # IMPORT
+    - name: Import Solution to TEST
+      run: |
+        pac solution import \
+          --path $SOLUTION_FILE \
+          --async \
+          --publish-changes \
+          --overwrite-unmanaged-customizations
