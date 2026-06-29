@@ -40,7 +40,7 @@ jobs:
         solution-name: ${{ env.SOLUTION_NAME }}
         solution-output-file: ${{ env.SOLUTION_NAME }}.zip
         managed: false
-        use-node-auth: true
+        # use-node-auth: true
 
     # Unpack solution
     - name: Unpack solution
