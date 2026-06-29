@@ -35,7 +35,7 @@ jobs:
       with:
         environment-url: ${{ secrets.DEV_ENV_URL }}
         tenant-id: ${{ secrets.TENANT_ID }}
-        application-id: ${{ secrets.CLIENT_ID }}
+        app-id: ${{ secrets.CLIENT_ID }}
         client-secret: ${{ secrets.CLIENT_SECRET }}
         solution-name: ${{ env.SOLUTION_NAME }}
         solution-output-file: ${{ env.SOLUTION_NAME }}.zip
@@ -78,7 +78,7 @@ jobs:
       with:
         environment-url: ${{ secrets.TEST_ENV_URL }}
         tenant-id: ${{ secrets.TENANT_ID }}
-        application-id: ${{ secrets.CLIENT_ID }}
+        app-id: ${{ secrets.CLIENT_ID }}
         client-secret: ${{ secrets.CLIENT_SECRET }}
         solution-file: ${{ env.SOLUTION_NAME }}.zip
         publish-changes: true
