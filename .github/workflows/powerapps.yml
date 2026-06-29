@@ -40,6 +40,7 @@ jobs:
         solution-name: ${{ env.SOLUTION_NAME }}
         solution-output-file: ${{ env.SOLUTION_NAME }}.zip
         managed: false
+        use-node-auth: true
 
     # Unpack solution
     - name: Unpack solution
@@ -82,3 +83,4 @@ jobs:
         client-secret: ${{ secrets.CLIENT_SECRET }}
         solution-file: ${{ env.SOLUTION_NAME }}.zip
         publish-changes: true
+        use-node-auth: true
