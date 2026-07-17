@@ -1,0 +1,10 @@
+{
+  "ConnectionReferences": [
+    {
+      "LogicalName": "pes_cr_Office365Outlook",
+      "ConnectionId": "https://make.powerapps.com/environments/2e3f3b81-c99c-e300-bb8a-e6ed00dea51d/connections/shared_office365/3a67d75603cc4bf4a5266bb88d85ddf5/details",
+      "ConnectorId": "/providers/Microsoft.PowerApps/apis/shared_office365"
+    }
+  ],
+  "EnvironmentVariables": []
+}
