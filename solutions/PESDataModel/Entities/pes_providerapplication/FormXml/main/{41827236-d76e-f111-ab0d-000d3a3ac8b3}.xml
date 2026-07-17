@@ -1,0 +1,140 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<forms xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <systemform>
+    <formid>{41827236-d76e-f111-ab0d-000d3a3ac8b3}</formid>
+    <IntroducedVersion>1.0.0.0</IntroducedVersion>
+    <FormPresentation>1</FormPresentation>
+    <FormActivationState>1</FormActivationState>
+    <form headerdensity="HighWithControls" shownavigationbar="false">
+      <tabs>
+        <tab verticallayout="true" id="{bb574d14-b16d-4865-9732-da075ba81ca7}" IsUserDefined="1" labelid="{30f7d35e-f698-46c9-a3e8-1125097a90c0}">
+          <labels>
+            <label description="General" languagecode="1033" />
+          </labels>
+          <columns>
+            <column width="100%">
+              <sections>
+                <section showlabel="true" showbar="false" IsUserDefined="0" id="{2ff8e7af-40eb-4ed8-9749-09b1fd79bb78}" columns="11" labelid="{ceb1a6ef-8cc9-4cc2-9f5f-76838a0a9210}" name="pes_frm_providerinformation">
+                  <labels>
+                    <label description="Provider Information" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{27d34aa1-4dcb-44b5-91b6-dcf113ddd799}" locklevel="0" colspan="1" rowspan="1" labelid="{5ab59dbd-00c5-49ac-a9ae-a3a866f15595}">
+                        <labels>
+                          <label description="Provider Name" languagecode="1033" />
+                        </labels>
+                        <control id="pes_providername" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="pes_providername" disabled="false" />
+                      </cell>
+                      <cell id="{5c13c0e9-9605-449d-8ac7-1ad2d0e36426}" locklevel="0" colspan="1" rowspan="1" labelid="{2931658c-dc2e-4070-abd9-a71569495db2}">
+                        <labels>
+                          <label description="Provider Email" languagecode="1033" />
+                        </labels>
+                        <control id="pes_provideremail" classid="{ADA2203E-B4CD-49BE-9DDF-234642B43B52}" datafieldname="pes_provideremail" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{b999c9e0-b16e-45f4-b606-4da6aca7d063}" locklevel="0" colspan="1" rowspan="1" labelid="{6b3dcb34-3e55-416b-a2b7-a50560f15d32}">
+                        <labels>
+                          <label description="Provider Type" languagecode="1033" />
+                        </labels>
+                        <control id="pes_providertype" classid="{3EF39988-22BB-4F0B-BBBE-64B5A3748AEE}" datafieldname="pes_providertype" disabled="false" />
+                      </cell>
+                      <cell id="{24bb83ca-4869-4906-8eb6-c1ea4a7bddde}" locklevel="0" colspan="1" rowspan="1" labelid="{46e17b27-a3ec-4212-8808-82517ff487a4}">
+                        <labels>
+                          <label description="Provider NPI" languagecode="1033" />
+                        </labels>
+                        <control id="pes_providernpi" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="pes_providernpi" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{72f99a48-9199-4054-9700-40663c23260d}" locklevel="0" colspan="1" rowspan="1" labelid="{087019af-d7da-49c0-bc8d-204187433350}">
+                        <labels>
+                          <label description="Provider Phone" languagecode="1033" />
+                        </labels>
+                        <control id="pes_providerphone" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="pes_providerphone" disabled="false" />
+                      </cell>
+                      <cell id="{05703094-99ee-4aaa-898c-4c615c8f81f7}" locklevel="0" colspan="1" rowspan="1" labelid="{b0b5137c-7d6a-466c-a777-1205f0f7bac7}">
+                        <labels>
+                          <label description="Enrollment Status" languagecode="1033" />
+                        </labels>
+                        <control id="pes_enrollmentstatus" classid="{3EF39988-22BB-4F0B-BBBE-64B5A3748AEE}" datafieldname="pes_enrollmentstatus" disabled="true" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{2fd107a6-c8c4-476e-ae17-48690c112e2b}" visible="false" labelid="{967281a3-82bd-4029-ba29-0937a601a112}">
+                        <labels>
+                          <label description="Owner" languagecode="1033" />
+                        </labels>
+                        <control id="ownerid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="ownerid" />
+                      </cell>
+                      <cell id="{d451ac91-8900-401c-a702-757293614461}" locklevel="0" colspan="1" rowspan="1" labelid="{3af84d23-3410-42c2-85b3-369ea2e78ac2}" visible="false">
+                        <labels>
+                          <label description="Submitted On" languagecode="1033" />
+                        </labels>
+                        <control id="pes_submittedon" classid="{5B773807-9FB2-42DB-97C3-7A91EFF8ADFF}" datafieldname="pes_submittedon" disabled="true" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+          </columns>
+        </tab>
+      </tabs>
+      <header id="{102ccfe3-38a6-43e1-ac47-c97e0ff6960a}" celllabelposition="Top" columns="111" labelwidth="115" celllabelalignment="Left">
+        <rows>
+          <row>
+            <cell id="{deebc8cf-4d4c-4ab1-a30b-a97f790ad1bb}" showlabel="false" labelid="{02b866af-6011-4fdd-84af-cc3c3c208543}">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{9dc20d0f-ad97-4657-8964-04bd64d31284}" showlabel="false" labelid="{391284ef-745f-4c79-8b8c-aff6b386cd1f}">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{99e29490-6e61-4f99-b947-6a3943d70632}" showlabel="false" labelid="{b69f6792-5081-4bd3-8082-eaa756175705}">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+          </row>
+        </rows>
+      </header>
+      <footer id="{b44d3a19-3946-4dcd-a7e3-b5abc7f9ddbb}" celllabelposition="Top" columns="111" labelwidth="115" celllabelalignment="Left">
+        <rows>
+          <row>
+            <cell id="{c08db517-d512-48e5-8bb8-abd4b393cada}" showlabel="false" labelid="{87f0c8fd-db54-452c-bb62-79580ae09bd7}">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{9e1a727c-5fc0-4fcf-95d7-14dd21eb903e}" showlabel="false" labelid="{24a34c92-07e1-483d-bcc4-207a3af7510c}">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{be3f84f9-e675-4bbc-a526-db179040ce04}" showlabel="false" labelid="{8f0b0f85-dd4e-4df3-8b0f-b3717d7ea541}">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+          </row>
+        </rows>
+      </footer>
+      <DisplayConditions Order="2" FallbackForm="true">
+        <Role Id="{A75A6D67-1730-4298-8FC7-AF7E93064FA1}" />
+      </DisplayConditions>
+    </form>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <LocalizedNames>
+      <LocalizedName description="Provider Application - Portal Intake Form" languagecode="1033" />
+    </LocalizedNames>
+    <Descriptions>
+      <Description description="A form for this entity." languagecode="1033" />
+    </Descriptions>
+  </systemform>
+</forms>

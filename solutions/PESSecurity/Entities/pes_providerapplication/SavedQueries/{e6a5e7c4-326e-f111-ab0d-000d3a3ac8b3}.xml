@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>0</isdefault>
+    <savedqueryid>{e6a5e7c4-326e-f111-ab0d-000d3a3ac8b3}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="pes_name" select="1" icon="1" preview="1">
+        <row name="result" id="pes_providerapplicationid">
+          <cell name="pes_providername" width="200" />
+          <cell name="pes_providertype" width="200" />
+          <cell name="pes_providernpi" width="200" />
+          <cell name="pes_submittedon" width="200" />
+          <cell name="pes_reviewercomments" width="200" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>0</querytype>
+    <fetchxml>
+      <fetch version="1.0" output-format="xml-platform" mapping="logical">
+        <entity name="pes_providerapplication">&lt;attribute name="pes_providername" /&gt;&lt;attribute name="pes_providertype" /&gt;&lt;attribute name="pes_providernpi" /&gt;&lt;attribute name="pes_submittedon" /&gt;&lt;attribute name="pes_reviewercomments" /&gt;<attribute name="pes_providername" /><attribute name="pes_providertype" /><attribute name="pes_providernpi" /><attribute name="pes_submittedon" /><attribute name="pes_reviewercomments" /><attribute name="pes_providerapplicationid" /></entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.0.0.0</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Submitted Provider Applications" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>

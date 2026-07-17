@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>0</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>0</isdefault>
+    <savedqueryid>{f909d5af-b4fa-4734-a4a5-5fb97ee557d5}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="cre09_documentocrrequest1" select="1" icon="1" preview="1">
+        <row name="result" id="cre09_documentocrrequestid">
+          <cell name="cre09_documentocrrequest1" width="300" />
+          <cell name="createdon" width="125" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>0</querytype>
+    <fetchxml>
+      <fetch version="1.0" mapping="logical">
+        <entity name="cre09_documentocrrequest">
+          <attribute name="cre09_documentocrrequestid" />
+          <attribute name="cre09_documentocrrequest1" />
+          <attribute name="createdon" />
+          <order attribute="cre09_documentocrrequest1" descending="false" />
+          <filter type="and">
+            <condition attribute="statecode" operator="eq" value="1" />
+          </filter>
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.0</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Inactive DocumentOCRRequests" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>

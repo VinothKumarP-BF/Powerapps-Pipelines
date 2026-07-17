@@ -1,0 +1,157 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<forms xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <systemform>
+    <formid>{fe4616fd-927b-f111-ab0e-0022480a5db5}</formid>
+    <IntroducedVersion>1.0.0.0</IntroducedVersion>
+    <FormPresentation>1</FormPresentation>
+    <FormActivationState>1</FormActivationState>
+    <form headerdensity="HighWithControls">
+      <tabs>
+        <tab verticallayout="true" id="{DCC3610B-87A3-4A83-8327-49B3F8DE19CB}" IsUserDefined="1" labelid="{9ca9fc70-a98e-421d-9f33-0009fa696678}">
+          <labels>
+            <label description="General" languagecode="1033" />
+          </labels>
+          <columns>
+            <column width="100%">
+              <sections>
+                <section showlabel="false" showbar="false" IsUserDefined="0" id="{5D56C0E6-412D-4592-83AA-B9E0D3E51613}" name="general" labelid="{9e0080b2-5c35-4001-a1d0-fead5c0ac473}">
+                  <labels>
+                    <label description="General" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{FEB09278-0207-401C-B719-6185FB069B92}" labelid="{e150b98a-4564-4336-8075-949739c4cc64}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                        <control id="pes_displayname" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="pes_DisplayName" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{08CAAA23-59E8-4D2B-99F1-E56775452CAB}" visible="false" labelid="{1d0fd8db-3075-43cf-961e-f38e3f7c5afb}">
+                        <labels>
+                          <label description="Owner" languagecode="1033" />
+                        </labels>
+                        <control id="ownerid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="ownerid" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{2236430d-d5b7-480b-8854-b30bb8a5ce85}" locklevel="0" colspan="1" rowspan="1" labelid="{6175f633-9221-4b57-bf4f-4f767a63381d}">
+                        <labels>
+                          <label description="Uploaded File" languagecode="1033" />
+                        </labels>
+                        <control id="pes_uploadedfile" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="pes_uploadedfile" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{7f48c5e4-dae8-4634-a348-8f6c2fd2edb1}" locklevel="0" colspan="1" rowspan="1" labelid="{0a959443-d834-4429-b7b5-493fa05b9703}">
+                        <labels>
+                          <label description="Extracted Vendor Name" languagecode="1033" />
+                        </labels>
+                        <control id="pes_extractedvendorname" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="pes_extractedvendorname" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{aeab7296-bdd0-4cbf-8eb0-1f01c4922b11}" locklevel="0" colspan="1" rowspan="1" labelid="{270eb714-dae6-48e7-a796-ab0c20704ff3}">
+                        <labels>
+                          <label description="Extracted Total Amount" languagecode="1033" />
+                        </labels>
+                        <control id="pes_extractedtotalamount" classid="{533B9E00-756B-4312-95A0-DC888637AC78}" datafieldname="pes_extractedtotalamount" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{1fe5eace-c27d-4f31-9ad7-a6112fc2ad75}" locklevel="0" colspan="1" rowspan="1" labelid="{f3bbb9d1-853c-4047-a6b1-43ad4288350b}">
+                        <labels>
+                          <label description="Extracted Invoice Date" languagecode="1033" />
+                        </labels>
+                        <control id="pes_extractedinvoicedate" classid="{5B773807-9FB2-42DB-97C3-7A91EFF8ADFF}" datafieldname="pes_extractedinvoicedate" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{0f9fb564-62b8-4f09-8675-954ba5292c42}" locklevel="0" colspan="1" rowspan="1" labelid="{be16a025-ae15-4db8-887b-460a91f7906d}">
+                        <labels>
+                          <label description="Extracted Invoice Number" languagecode="1033" />
+                        </labels>
+                        <control id="pes_extractedinvoicenumber" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="pes_extractedinvoicenumber" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{53d7aa3b-87c6-4a77-88b2-dd1ac2207f1a}" locklevel="0" colspan="1" rowspan="1" labelid="{17e70ca6-0e23-4c64-8407-34eb6a2da144}">
+                        <labels>
+                          <label description="Extracted Total Amount (Base)" languagecode="1033" />
+                        </labels>
+                        <control id="pes_extractedtotalamount_base" classid="{533B9E00-756B-4312-95A0-DC888637AC78}" datafieldname="pes_extractedtotalamount_base" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{7c357cdf-7fc9-4400-8d56-4a8ce53588c3}" locklevel="0" colspan="1" rowspan="1" labelid="{b23daa5c-75cb-483b-b49e-1f3b76e97fa0}">
+                        <labels>
+                          <label description="Processing Status" languagecode="1033" />
+                        </labels>
+                        <control id="pes_processingstatus" classid="{3EF39988-22BB-4F0B-BBBE-64B5A3748AEE}" datafieldname="pes_processingstatus" disabled="false" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+          </columns>
+        </tab>
+      </tabs>
+      <header id="{75e26fef-2b9d-4dd0-9307-cf7fa963015a}" celllabelposition="Top" columns="111" labelwidth="115" celllabelalignment="Left">
+        <rows>
+          <row>
+            <cell id="{a274e26a-90c6-4add-9663-7fee60b5f313}" showlabel="false" labelid="{1f6d69d9-15ad-42c0-8cba-eaad6f83a4e6}">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{c7b8c926-02c7-4f88-af37-143a49c457d3}" showlabel="false" labelid="{bc65761c-f3bc-4f9b-9557-365346d084ad}">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{cde2a603-5d24-4688-a6e3-89059f7b2e07}" showlabel="false" labelid="{17dafb74-c4dd-4e93-941d-9a512411155f}">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+          </row>
+        </rows>
+      </header>
+      <footer id="{199990d5-0e27-48ea-ad81-0a3ab7b38e3f}" celllabelposition="Top" columns="111" labelwidth="115" celllabelalignment="Left">
+        <rows>
+          <row>
+            <cell id="{63fed3ff-7fa8-47d7-9b11-af13700c8d06}" showlabel="false" labelid="{5ec2834a-3c17-4cd2-bc99-6acbd01b57d0}">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{9e464a5b-b54e-44bb-b587-4e2e1e6e2744}" showlabel="false" labelid="{70b35979-0ad4-4256-9ec0-647b9d963958}">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{fab5eb62-7fe0-4b48-a38e-f45eeff78718}" showlabel="false" labelid="{0b701004-8884-4f6f-9864-2d805d4a6f3c}">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+          </row>
+        </rows>
+      </footer>
+      <DisplayConditions Order="2" FallbackForm="true">
+        <Role Id="{627090ff-40a3-4053-8790-584edc5be201}" />
+        <Role Id="{119f245c-3cc8-4b62-b31c-d1a046ced15d}" />
+      </DisplayConditions>
+    </form>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <LocalizedNames>
+      <LocalizedName description="edit_record_form" languagecode="1033" />
+    </LocalizedNames>
+    <Descriptions>
+      <Description description="A form for this entity." languagecode="1033" />
+    </Descriptions>
+  </systemform>
+</forms>

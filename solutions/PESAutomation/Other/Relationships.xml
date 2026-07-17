@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<EntityRelationships xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <EntityRelationship Name="business_unit_pes_externaltransaction" />
+  <EntityRelationship Name="business_unit_pes_providerapplication" />
+  <EntityRelationship Name="business_unit_pes_providerdocument" />
+  <EntityRelationship Name="business_unit_pes_providerstatushistory" />
+  <EntityRelationship Name="lk_pes_externaltransaction_createdby" />
+  <EntityRelationship Name="lk_pes_externaltransaction_modifiedby" />
+  <EntityRelationship Name="lk_pes_providerapplication_createdby" />
+  <EntityRelationship Name="lk_pes_providerapplication_modifiedby" />
+  <EntityRelationship Name="lk_pes_providerdocument_createdby" />
+  <EntityRelationship Name="lk_pes_providerdocument_modifiedby" />
+  <EntityRelationship Name="lk_pes_providerstatushistory_createdby" />
+  <EntityRelationship Name="lk_pes_providerstatushistory_modifiedby" />
+  <EntityRelationship Name="owner_pes_externaltransaction" />
+  <EntityRelationship Name="owner_pes_providerapplication" />
+  <EntityRelationship Name="owner_pes_providerdocument" />
+  <EntityRelationship Name="owner_pes_providerstatushistory" />
+  <EntityRelationship Name="pes_externaltransaction_providerapplicationid_pes_providerapplication" />
+  <EntityRelationship Name="pes_providerapplication_pes_providerapplication_pes_externaltransaction" />
+  <EntityRelationship Name="pes_providerapplication_pes_providerapplication_pes_providerdocument" />
+  <EntityRelationship Name="pes_providerapplication_pes_providerapplication_pes_ProviderStatusHistory" />
+  <EntityRelationship Name="pes_providerdocument_providerapplicationid_pes_providerapplication" />
+  <EntityRelationship Name="pes_providerstatushistory_providerapplicationid_pes_providerapplication" />
+  <EntityRelationship Name="team_pes_externaltransaction" />
+  <EntityRelationship Name="team_pes_providerapplication" />
+  <EntityRelationship Name="team_pes_providerdocument" />
+  <EntityRelationship Name="team_pes_providerstatushistory" />
+  <EntityRelationship Name="user_pes_externaltransaction" />
+  <EntityRelationship Name="user_pes_providerapplication" />
+  <EntityRelationship Name="user_pes_providerdocument" />
+  <EntityRelationship Name="user_pes_providerstatushistory" />
+</EntityRelationships>

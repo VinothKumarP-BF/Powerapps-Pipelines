@@ -1,0 +1,11 @@
+<dvtablesearch dvtablesearchid="e1ff11e8-c26e-f111-ab0c-000d3a3b4936">
+  <appmoduleuniquename>pes_PESProviderEnrollmentOperations</appmoduleuniquename>
+  <iscustomizable>1</iscustomizable>
+  <m365appmoduleid>
+    <uniquename>pes_PESProviderEnrollmentOperations</uniquename>
+  </m365appmoduleid>
+  <name>M365_Primary_model_pes_PESProviderEnrollmentOperations</name>
+  <searchtype>0</searchtype>
+  <statecode>1</statecode>
+  <statuscode>2</statuscode>
+</dvtablesearch>

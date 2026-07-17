@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<forms xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <systemform>
+    <formid>{6807fc25-5bf6-4e64-8f56-7d1295bd1f1a}</formid>
+    <IntroducedVersion>1.0</IntroducedVersion>
+    <FormPresentation>1</FormPresentation>
+    <FormActivationState>1</FormActivationState>
+    <form>
+      <tabs>
+        <tab verticallayout="true" id="{B8F36137-EE21-4EB6-AAF9-588AA6CDFC51}" IsUserDefined="1">
+          <labels>
+            <label description="General" languagecode="1033" />
+          </labels>
+          <columns>
+            <column width="100%">
+              <sections>
+                <section showlabel="false" showbar="false" IsUserDefined="0" id="{2125AA83-C8D0-4241-B9B9-1F9FF899F346}">
+                  <labels>
+                    <label description="General" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{9634DE99-BD53-48E7-9CA4-347669D57A90}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                        <control id="cre09_documentocrrequest1" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="cre09_DocumentOCRRequest1" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{F4D9AC5C-2C19-45C7-95B9-D95797296B8C}">
+                        <labels>
+                          <label description="Owner" languagecode="1033" />
+                        </labels>
+                        <control id="ownerid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="ownerid" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{ac286f42-edf4-45a6-89b2-2e1899df7b19}">
+                        <labels>
+                          <label description="OCR Raw Text" languagecode="1033" />
+                        </labels>
+                        <control id="cre09_ocrrawtext" classid="{e0dece4b-6fc8-4a8f-a065-082708572369}" datafieldname="cre09_ocrrawtext" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{58c897d5-b31d-454c-aa2b-dd6714ef525e}">
+                        <labels>
+                          <label description="Extracted Name" languagecode="1033" />
+                        </labels>
+                        <control id="cre09_extractedname" classid="{4273edbd-ac1d-40d3-9fb2-095c621b552d}" datafieldname="cre09_extractedname" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{f7479808-4559-4f7c-ba7f-79cde313487a}">
+                        <labels>
+                          <label description="Extracted Email" languagecode="1033" />
+                        </labels>
+                        <control id="cre09_extractedemail" classid="{4273edbd-ac1d-40d3-9fb2-095c621b552d}" datafieldname="cre09_extractedemail" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{4c9a66f6-8a5a-499d-8d73-0c96713b09c3}">
+                        <labels>
+                          <label description="Extracted Phone" languagecode="1033" />
+                        </labels>
+                        <control id="cre09_extractedphone" classid="{4273edbd-ac1d-40d3-9fb2-095c621b552d}" datafieldname="cre09_extractedphone" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{76f19e2f-62bd-4f57-8ac3-2e256f634aeb}">
+                        <labels>
+                          <label description="Extracted Address" languagecode="1033" />
+                        </labels>
+                        <control id="cre09_extractedaddress" classid="{e0dece4b-6fc8-4a8f-a065-082708572369}" datafieldname="cre09_extractedaddress" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{6e94f6c3-253f-4213-b470-b4daff721898}">
+                        <labels>
+                          <label description="Processing Status" languagecode="1033" />
+                        </labels>
+                        <control id="cre09_processingstatus" classid="{3ef39988-22bb-4f0b-bbbe-64b5a3748aee}" datafieldname="cre09_processingstatus" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{44900d79-d752-4bf6-bbe5-b3b26872222b}">
+                        <labels>
+                          <label description="Error Message" languagecode="1033" />
+                        </labels>
+                        <control id="cre09_errormessage" classid="{e0dece4b-6fc8-4a8f-a065-082708572369}" datafieldname="cre09_errormessage" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+          </columns>
+        </tab>
+      </tabs>
+    </form>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <LocalizedNames>
+      <LocalizedName description="Information" languagecode="1033" />
+    </LocalizedNames>
+    <Descriptions>
+      <Description description="A form for this entity." languagecode="1033" />
+    </Descriptions>
+  </systemform>
+</forms>

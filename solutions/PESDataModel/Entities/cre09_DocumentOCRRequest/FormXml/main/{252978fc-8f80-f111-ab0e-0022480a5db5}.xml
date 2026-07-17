@@ -1,0 +1,179 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<forms xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <systemform>
+    <formid>{252978fc-8f80-f111-ab0e-0022480a5db5}</formid>
+    <IntroducedVersion>1.0.0.0</IntroducedVersion>
+    <FormPresentation>1</FormPresentation>
+    <FormActivationState>1</FormActivationState>
+    <form headerdensity="HighWithControls">
+      <tabs>
+        <tab verticallayout="true" id="{B8F36137-EE21-4EB6-AAF9-588AA6CDFC51}" IsUserDefined="1" name="general" labelid="{4228581d-7743-410d-aa88-e0370a5872b0}">
+          <labels>
+            <label description="General" languagecode="1033" />
+          </labels>
+          <columns>
+            <column width="100%">
+              <sections>
+                <section showlabel="false" showbar="false" IsUserDefined="0" id="{2125AA83-C8D0-4241-B9B9-1F9FF899F346}" columns="1" labelid="{ece75130-78f0-49e0-8c06-7200562353ba}">
+                  <labels>
+                    <label description="General" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{9634DE99-BD53-48E7-9CA4-347669D57A90}" labelid="{6234ae0e-7883-46c9-abe8-99203cff32a9}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                        <control id="cre09_documentocrrequest1" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="cre09_DocumentOCRRequest1" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell locklevel="0" id="{0dd30888-51b5-439e-a5bd-8771d4ba4e12}" labelid="{6bebe092-3910-4e0a-ae2e-41db241a6667}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                    </row>
+                    <row>
+                      <cell locklevel="0" id="{5878546b-500a-4505-be82-3b33b09da964}" labelid="{63eb4bb1-1f42-4eee-8704-8d7be2fbfc01}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{6e94f6c3-253f-4213-b470-b4daff721898}" colspan="1" rowspan="1" labelid="{adefe077-3576-4c30-b1ee-b35cf0da885f}" visible="false">
+                        <labels>
+                          <label description="Processing Status" languagecode="1033" />
+                        </labels>
+                        <control id="cre09_processingstatus" classid="{3ef39988-22bb-4f0b-bbbe-64b5a3748aee}" datafieldname="cre09_processingstatus" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{F4D9AC5C-2C19-45C7-95B9-D95797296B8C}" colspan="1" rowspan="1" visible="false" labelid="{829f2db2-0e53-4bce-8210-e54c5ee712a2}">
+                        <labels>
+                          <label description="Owner" languagecode="1033" />
+                        </labels>
+                        <control id="ownerid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="ownerid" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{771a0039-0fe4-47a1-b258-d395af476584}" locklevel="0" colspan="1" rowspan="1" labelid="{b919a361-b319-458a-95ac-9664be47b61c}">
+                        <labels>
+                          <label description="Uploaded Document" languagecode="1033" />
+                        </labels>
+                        <control id="cre09_uploadeddocument" classid="{0A7FF475-B016-4687-9CE5-042BFDBD6519}" datafieldname="cre09_uploadeddocument" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{41ff22d0-00e1-4dae-b905-ae64a6d2217f}" locklevel="0" colspan="1" rowspan="1" labelid="{af3b6bbe-ab87-4276-ba35-ec13b2483a58}">
+                        <labels>
+                          <label description="OCR Raw Text" languagecode="1033" />
+                        </labels>
+                        <control id="cre09_ocrrawtext" classid="{E0DECE4B-6FC8-4A8F-A065-082708572369}" datafieldname="cre09_ocrrawtext" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{577af804-d0e5-4649-8252-7849668a4e0a}" locklevel="0" colspan="1" rowspan="1" labelid="{cea704d5-1f5f-41cc-8d6c-5b8f37091960}">
+                        <labels>
+                          <label description="Extracted Phone" languagecode="1033" />
+                        </labels>
+                        <control id="cre09_extractedphone" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="cre09_extractedphone" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{72d90b47-0451-4ad7-a176-088384f8a244}" locklevel="0" colspan="1" rowspan="1" labelid="{0d748b9a-8103-4553-b73c-1e60e1886dc0}">
+                        <labels>
+                          <label description="Extracted Name" languagecode="1033" />
+                        </labels>
+                        <control id="cre09_extractedname" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="cre09_extractedname" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{c33b1c2a-1d9a-445a-9da3-84bf56210c3e}" locklevel="0" colspan="1" rowspan="1" labelid="{2edfc068-4440-4975-bb34-f06106819b3d}">
+                        <labels>
+                          <label description="Name" languagecode="1033" />
+                        </labels>
+                        <control id="cre09_name" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="cre09_name" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{f0a0f0e5-5ca8-48e3-a1be-baab9fa37a68}" locklevel="0" colspan="1" rowspan="1" labelid="{80ccbec2-ca2b-40e0-bce3-0f5f1c83c7b4}">
+                        <labels>
+                          <label description="Extracted Address" languagecode="1033" />
+                        </labels>
+                        <control id="cre09_extractedaddress" classid="{E0DECE4B-6FC8-4A8F-A065-082708572369}" datafieldname="cre09_extractedaddress" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{54315d95-bc53-45dc-b9c2-4301f867809c}" locklevel="0" colspan="1" rowspan="1" labelid="{c4249c36-77ad-47d0-9f83-ab3562d848b0}">
+                        <labels>
+                          <label description="Extracted Email" languagecode="1033" />
+                        </labels>
+                        <control id="cre09_extractedemail" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="cre09_extractedemail" disabled="false" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+          </columns>
+        </tab>
+      </tabs>
+      <header id="{89b41cda-7d54-4d1b-a6c3-8ef3cce9c3a1}" celllabelposition="Top" columns="111" labelwidth="115" celllabelalignment="Left">
+        <rows>
+          <row>
+            <cell id="{c2f4e9a4-bd3e-48f5-a73d-a897f8fef3a4}" showlabel="false" labelid="{2b06ffcf-1d8b-4c43-99b2-7fdf776aef42}">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{dfaf9c5c-4d92-4157-9f52-7bdab963a113}" showlabel="false" labelid="{0226d840-5241-47b9-a5cd-293c7882c646}">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{a4d65a55-9a50-470d-a067-181f12833a24}" showlabel="false" labelid="{37d35c10-8cec-4536-a596-61694d45dc81}">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+          </row>
+        </rows>
+      </header>
+      <footer id="{83db2581-db07-44e3-b633-b534025833ea}" celllabelposition="Top" columns="111" labelwidth="115" celllabelalignment="Left">
+        <rows>
+          <row>
+            <cell id="{fa882813-84f4-430d-a1eb-ff3bec09b3a7}" showlabel="false" labelid="{d2b2d244-4a4f-437b-8608-19218b376192}">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{e5000091-d59b-4794-93e2-936da9d9b199}" showlabel="false" labelid="{eff1cce6-74db-462e-947a-65e9cb0c9535}">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{067ceee7-a790-4bc1-b478-9be9fd1e5809}" showlabel="false" labelid="{8a9f9158-d74c-4259-ac91-af83f3305d8e}">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+          </row>
+        </rows>
+      </footer>
+      <DisplayConditions Order="2" FallbackForm="true">
+        <Role Id="{627090ff-40a3-4053-8790-584edc5be201}" />
+        <Role Id="{119f245c-3cc8-4b62-b31c-d1a046ced15d}" />
+      </DisplayConditions>
+    </form>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <LocalizedNames>
+      <LocalizedName description="uploadDocumentEditForm" languagecode="1033" />
+    </LocalizedNames>
+    <Descriptions>
+      <Description description="A form for this entity." languagecode="1033" />
+    </Descriptions>
+  </systemform>
+</forms>

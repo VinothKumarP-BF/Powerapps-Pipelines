@@ -1,0 +1,37 @@
+<powerpagecomponent powerpagecomponentid="409f25d7-90dd-4ed7-8ff8-95892f382631">
+  <content>{
+  "filecontent": null,
+  "copy": "&lt;div class=\"row sectionBlockLayout text-start\" style=\"display: flex; flex-wrap: wrap; margin: 0px; min-height: auto; padding: 8px;\"&gt;\n  &lt;div class=\"container\" style=\"padding: 0px; display: flex; flex-wrap: wrap;\"&gt;&lt;div class=\"col-lg-12 columnBlockLayout\" style=\"flex-grow: 1; display: flex; flex-direction: column; min-width: 250px;\"&gt;{% entityform name: 'Provider Application - Portal Intake Form' %}&lt;/div&gt;&lt;/div&gt;\n&lt;/div&gt;\n",
+  "displayorder": 1,
+  "enablerating": false,
+  "enabletracking": false,
+  "excludefromsearch": false,
+  "feedbackpolicy": 756150005,
+  "hiddenfromsitemap": false,
+  "isroot": false,
+  "pagetemplateid": "835852c9-4793-49e2-acd6-74c9467f4e31",
+  "partialurl": "/",
+  "publishingstateid": "9a28e01e-6995-4f47-91ee-d3be440d65cd",
+  "rootwebpageid": "d1d4ad37-367c-46d7-8406-9d3b943d7d08",
+  "sharedpageconfiguration": false,
+  "summary": "&lt;p&gt;This is a sample landing page for you to start creating your website.&lt;/p&gt;",
+  "title": "Home",
+  "parentpageid": null,
+  "customcss": "@import url('https://content.powerapps.com/resource/powerappsportal/fonts/open-sans/v34/400.css');\n@import url('https://content.powerapps.com/resource/powerappsportal/fonts/open-sans/v34/400-italic.css');\n\n\n/* ===============================\n   GLOBAL STYLES\n================================ */\nbody {\n    background-color: #f5f7fb;\n    font-family: 'Segoe UI', Arial, sans-serif;\n    color: #1f2937;\n}\n\n/* ===============================\n   HEADER (NAVBAR)\n================================ */\n.navbar {\n    background-color: #ffffff !important;\n    border-bottom: 1px solid #e5e7eb;\n    padding: 12px 24px;\n    box-shadow: 0 2px 6px rgba(0,0,0,0.04);\n}\n\n.navbar-brand {\n    font-size: 18px;\n    font-weight: 600;\n}\n\n/* ===============================\n   MAIN FORM CONTAINER (ONLY BOX ✅)\n================================ */\n.entity-form {\n    padding: 32px;\n}\n\n/* ===============================\n   REMOVE INNER BOXES ❌\n================================ */\n.entity-form fieldset {\n    border: none !important;\n    padding: 0 !important;\n    margin: 0 !important;\n    background: transparent !important;\n    box-shadow: none !important;\n}\n\n/* remove any section wrapping */\n.entity-form .section {\n    border: none !important;\n    padding: 0 !important;\n    margin: 0 !important;\n    background: none !important;\n}\n\n/* ===============================\n   SECTION TITLES\n================================ */\n.entity-form h2,\n.entity-form h3 {\n    font-size: 20px;\n    font-weight: 600;\n    margin-top: 25px;\n    margin-bottom: 15px;\n    color: #111827;\n}\n\n/* ===============================\n   FORM GROUP SPACING\n================================ */\n.form-group {\n    margin-bottom: 20px;\n}\n\n/* ===============================\n   LABELS\n================================ */\n.control-label {\n    font-size: 13px;\n    font-weight: 500;\n    color: #374151;\n    margin-bottom: 6px;\n}\n\n.control-label span.required {\n    color: #dc2626;\n}\n\n/* ===============================\n   INPUT FIELDS\n================================ */\ninput,\nselect,\ntextarea {\n    width: 100%;\n    height: 42px;\n    border-radius: 8px !important;\n    border: 1px solid #d1d5db !important;\n    padding: 8px 12px;\n    font-size: 14px;\n    background-color: #ffffff;\n    transition: all 0.2s ease;\n}\n\n/* textarea fix */\ntextarea {\n    height: auto;\n}\n\n/* hover */\ninput:hover,\nselect:hover {\n    border-color: #9ca3af;\n}\n\n/* focus */\ninput:focus,\nselect:focus,\ntextarea:focus {\n    border-color: #2563eb !important;\n    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);\n    outline: none;\n}\n\n/* ===============================\n   AI ASSIST BOX (BANNER STYLE ✅)\n================================ */\n.alert-info {\n    background: #eef2ff;\n    border: none !important;\n    border-left: 4px solid #4f46e5;\n    border-radius: 8px;\n    padding: 14px 16px;\n    margin-bottom: 20px;\n    font-size: 14px;\n    color: #1e1b4b;\n}\n\n/* ===============================\n   GRID / COLUMN SPACING\n================================ */\n.row {\n    margin-left: -10px;\n    margin-right: -10px;\n}\n\n.col-md-6 {\n    padding: 10px;\n}\n\n/* ===============================\n   BUTTON (PRIMARY CTA ✅)\n================================ */\n.btn-primary,\nbutton[type=\"submit\"] {\n    background-color: #2563eb !important;\n    border: none !important;\n    padding: 12px 24px;\n    border-radius: 8px;\n    font-weight: 600;\n    font-size: 14px;\n    transition: all 0.3s ease;\n}\n\n/* hover */\n.btn-primary:hover,\nbutton[type=\"submit\"]:hover {\n    background-color: #1d4ed8 !important;\n}\n\n/* button alignment */\n.actions {\n    margin-bottom: 24px !important;\n    margin-left: 63px !important;\n    margin-top: 0px !important;\n    border-top: none !important;\n    padding-top:0px !important\n}\n\n/* ===============================\n   TEXT (STATUS ETC.)\n================================ */\n.entity-form p,\n.entity-form span {\n    font-size: 14px;\n    color: #4b5563;\n}\n\n/* ===============================\n   MOBILE RESPONSIVE\n================================ */\n@media (max-width: 768px) {\n    .entity-form {\n        padding: 20px;\n        margin: 20px;\n    }\n\n    .col-md-6 {\n        width: 100%;\n        padding: 5px;\n    }\n\n    .btn-primary {\n        width: 100%;\n    }\n}\n\n/* ===============================\n   FINAL CLEANUP\n================================ */\n\n/* remove all default borders */\nfieldset {\n    border: none !important;\n}\n\n/* smooth UI */\n* {\n    transition: all 0.15s ease-in-out;\n}\ncrmEntityFormView, .entitylist, .modal-content, .popover-content {\n    background-color: #FFFFFF;\n    color: #000000;\n    border: 1px solid #f2f2f2;\n    border-radius: 12px !important;\n}"
+}</content>
+  <iscustomizable>1</iscustomizable>
+  <name>Home</name>
+  <powerpagecomponenttype>2</powerpagecomponenttype>
+  <powerpagesiteid>
+    <powerpagesiteid>a9b0a41b-5591-42f8-bdbc-5a64b2597cfa</powerpagesiteid>
+  </powerpagesiteid>
+  <powerpagesitelanguageid>
+    <powerpagesitelanguageid>5c7c0683-e4d6-4baa-ae97-71b9e6e5a1ab</powerpagesitelanguageid>
+  </powerpagesitelanguageid>
+  <searchcontent>Home&lt;div class="row sectionBlockLayout text-start" style="display: flex; flex-wrap: wrap; margin: 0px; min-height: auto; padding: 8px;"&gt;
+  &lt;div class="container" style="padding: 0px; display: flex; flex-wrap: wrap;"&gt;&lt;div class="col-lg-12 columnBlockLayout" style="flex-grow: 1; display: flex; flex-direction: column; min-width: 250px;"&gt;{% entityform name: 'Provider Application - Portal Intake Form' %}&lt;/div&gt;&lt;/div&gt;
+&lt;/div&gt;
+Home</searchcontent>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</powerpagecomponent>

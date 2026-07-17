@@ -1,0 +1,188 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<forms xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <systemform>
+    <formid>{6dc7a5ef-917b-f111-ab0e-0022480a5db5}</formid>
+    <IntroducedVersion>1.0.0.0</IntroducedVersion>
+    <FormPresentation>1</FormPresentation>
+    <FormActivationState>1</FormActivationState>
+    <form headerdensity="HighWithControls">
+      <tabs>
+        <tab verticallayout="true" id="{DCC3610B-87A3-4A83-8327-49B3F8DE19CB}" IsUserDefined="1" labelid="{a797afc7-e064-4cf8-a124-78c70d415e5a}">
+          <labels>
+            <label description="General" languagecode="1033" />
+          </labels>
+          <columns>
+            <column width="100%">
+              <sections>
+                <section showlabel="false" showbar="false" IsUserDefined="0" id="{5D56C0E6-412D-4592-83AA-B9E0D3E51613}" name="general" labelid="{103eaf66-47a8-4ebd-ae06-b6790200bed8}" columns="11">
+                  <labels>
+                    <label description="General" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{FEB09278-0207-401C-B719-6185FB069B92}" labelid="{6644f658-e4a3-4c96-9758-423fd73f5699}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                        <control id="pes_displayname" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="pes_DisplayName" />
+                      </cell>
+                      <cell id="{c0a7762a-4b65-4491-92b5-ae1e5c54b2f5}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Extracted Invoice Date" languagecode="1033" />
+                        </labels>
+                        <control id="pes_extractedinvoicedate" classid="{5B773807-9FB2-42DB-97C3-7A91EFF8ADFF}" datafieldname="pes_extractedinvoicedate" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{08CAAA23-59E8-4D2B-99F1-E56775452CAB}" visible="false" labelid="{21f8804c-12d0-4213-b922-20ce9f7f2624}">
+                        <labels>
+                          <label description="Owner" languagecode="1033" />
+                        </labels>
+                        <control id="ownerid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="ownerid" />
+                      </cell>
+                      <cell id="{77074874-eb01-45e2-9fcc-c30e4ddb76f0}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Extracted Invoice Number" languagecode="1033" />
+                        </labels>
+                        <control id="pes_extractedinvoicenumber" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="pes_extractedinvoicenumber" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell locklevel="0" id="{74a3e079-7a2f-4523-8f26-4f78bdb5fd5d}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                      <cell id="{90c7ce34-a69f-4c48-8a96-6f17fab4471c}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Raw JSON" languagecode="1033" />
+                        </labels>
+                        <control id="pes_rawjson" classid="{E0DECE4B-6FC8-4A8F-A065-082708572369}" datafieldname="pes_rawjson" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{a187a8eb-4d39-423c-ab59-28dc1b6aac96}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Display Name" languagecode="1033" />
+                        </labels>
+                        <control id="pes_displayname" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="pes_displayname" disabled="false" />
+                      </cell>
+                      <cell id="{44024f48-0f84-4833-b7c6-4881962e16ae}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Extracted Vendor Name" languagecode="1033" />
+                        </labels>
+                        <control id="pes_extractedvendorname" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="pes_extractedvendorname" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{81836f3b-ed5a-4f04-b345-806e0c6980b2}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Extracted Total Amount (Base)" languagecode="1033" />
+                        </labels>
+                        <control id="pes_extractedtotalamount_base" classid="{533B9E00-756B-4312-95A0-DC888637AC78}" datafieldname="pes_extractedtotalamount_base" disabled="false" />
+                      </cell>
+                      <cell id="{5cc14184-15a9-4435-b13c-103298ff2772}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Confidence Score" languagecode="1033" />
+                        </labels>
+                        <control id="pes_confidencescore" classid="{C3EFE0C3-0EC6-42BE-8349-CBD9079DFD8E}" datafieldname="pes_confidencescore" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{c08e989f-41b4-45f9-9254-748fbcb29042}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Uploaded File" languagecode="1033" />
+                        </labels>
+                        <control id="pes_uploadedfile" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="pes_uploadedfile" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{15999d86-9ae2-44b9-b840-a8d0a8da885e}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Extracted Total Amount" languagecode="1033" />
+                        </labels>
+                        <control id="pes_extractedtotalamount" classid="{533B9E00-756B-4312-95A0-DC888637AC78}" datafieldname="pes_extractedtotalamount" disabled="false" />
+                      </cell>
+                      <cell locklevel="0" id="{f41e4bbe-be94-4f89-ba79-90eb9ee2fe98}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{473ce4e6-2500-48de-9073-da6e8083dd00}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Error Message" languagecode="1033" />
+                        </labels>
+                        <control id="pes_errormessage" classid="{E0DECE4B-6FC8-4A8F-A065-082708572369}" datafieldname="pes_errormessage" disabled="false" />
+                      </cell>
+                      <cell locklevel="0" id="{ce1e61bb-1e4d-4a96-b22f-791a8b854c0d}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+          </columns>
+        </tab>
+      </tabs>
+      <header id="{75e26fef-2b9d-4dd0-9307-cf7fa963015a}" celllabelposition="Top" columns="111" labelwidth="115" celllabelalignment="Left">
+        <rows>
+          <row>
+            <cell id="{a274e26a-90c6-4add-9663-7fee60b5f313}" showlabel="false" labelid="{d1e7d4b6-b9cc-46d2-a995-c36df45ac94b}">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{c7b8c926-02c7-4f88-af37-143a49c457d3}" showlabel="false" labelid="{e079d8a6-c3d0-47a7-8f72-acc2621b52ba}">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{cde2a603-5d24-4688-a6e3-89059f7b2e07}" showlabel="false" labelid="{7521bd23-d17b-40f2-9b2c-1e5b56d243dd}">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+          </row>
+        </rows>
+      </header>
+      <footer id="{199990d5-0e27-48ea-ad81-0a3ab7b38e3f}" celllabelposition="Top" columns="111" labelwidth="115" celllabelalignment="Left">
+        <rows>
+          <row>
+            <cell id="{63fed3ff-7fa8-47d7-9b11-af13700c8d06}" showlabel="false" labelid="{7fca64b7-5acb-4f30-a2da-60c08abed5df}">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{9e464a5b-b54e-44bb-b587-4e2e1e6e2744}" showlabel="false" labelid="{d3a072d1-ffa2-4c20-9dfe-bac7ad3baf7f}">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{fab5eb62-7fe0-4b48-a38e-f45eeff78718}" showlabel="false" labelid="{bfb1230a-6d6a-4e0c-890d-17d07456368d}">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+          </row>
+        </rows>
+      </footer>
+      <DisplayConditions Order="1" FallbackForm="true">
+        <Role Id="{627090ff-40a3-4053-8790-584edc5be201}" />
+        <Role Id="{119f245c-3cc8-4b62-b31c-d1a046ced15d}" />
+      </DisplayConditions>
+    </form>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <LocalizedNames>
+      <LocalizedName description="form_basic_1" languagecode="1033" />
+    </LocalizedNames>
+    <Descriptions>
+      <Description description="A form for this entity." languagecode="1033" />
+    </Descriptions>
+  </systemform>
+</forms>

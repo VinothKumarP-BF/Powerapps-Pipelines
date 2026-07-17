@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>0</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>0</isdefault>
+    <savedqueryid>{acaa8e82-784b-43ba-a3ec-a46c40a06bc9}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="pes_name" select="1" icon="1" preview="1">
+        <row name="result" id="pes_providerdocumentid">
+          <cell name="createdon" width="125" />
+          <cell name="pes_documentname" width="136" />
+          <cell name="pes_documentstatus" width="137" />
+          <cell name="pes_documenttype" width="130" />
+          <cell name="modifiedon" width="113" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>0</querytype>
+    <fetchxml>
+      <fetch version="1.0" mapping="logical" distinct="true">
+        <entity name="pes_providerdocument">
+          <attribute name="pes_providerdocumentid" />
+          <attribute name="createdon" />
+          <attribute name="pes_documentname" />
+          <attribute name="pes_documentstatus" />
+          <attribute name="pes_documenttype" />
+          <attribute name="modifiedon" />
+          <filter type="and">
+            <condition attribute="pes_documentstatus" operator="eq" value="Inactive" />
+          </filter>
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.0</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Inactive Provider Documents" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>

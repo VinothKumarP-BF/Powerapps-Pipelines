@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>0</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>1</isdefault>
+    <savedqueryid>{9c319972-8fa2-48eb-9f23-181ceaa95725}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="cre09_documentocrrequest1" select="1" icon="1" preview="1">
+        <row name="result" id="cre09_documentocrrequestid">
+          <cell name="cre09_documentocrrequest1" width="300" />
+          <cell name="cre09_ocrrawtext" width="150" />
+          <cell name="cre09_extractedname" width="150" />
+          <cell name="cre09_extractedemail" width="150" />
+          <cell name="cre09_extractedphone" width="150" />
+          <cell name="cre09_extractedaddress" width="150" />
+          <cell name="cre09_processingstatus" width="150" />
+          <cell name="cre09_errormessage" width="150" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>0</querytype>
+    <fetchxml>
+      <fetch version="1.0" mapping="logical">
+        <entity name="cre09_documentocrrequest">
+          <attribute name="cre09_documentocrrequestid" />
+          <attribute name="cre09_documentocrrequest1" />
+          <attribute name="createdon" />
+          <order attribute="cre09_documentocrrequest1" descending="false" />
+          <filter type="and">
+            <condition attribute="statecode" operator="eq" value="0" />
+          </filter>
+          <attribute name="cre09_ocrrawtext" />
+          <attribute name="cre09_extractedname" />
+          <attribute name="cre09_extractedemail" />
+          <attribute name="cre09_extractedphone" />
+          <attribute name="cre09_extractedaddress" />
+          <attribute name="cre09_processingstatus" />
+          <attribute name="cre09_errormessage" />
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.0</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Active DocumentOCRRequests" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>
