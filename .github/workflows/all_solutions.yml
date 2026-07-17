@@ -5,8 +5,7 @@ on:
 
 jobs:
   deploy:
-    runs-on: ubuntu-latest
-    #runs-on: [self-hosted, Linux, X64]
+    runs-on: [self-hosted, Linux, X64]
 
     env:
       SOLUTIONS: "PESCore PESSecurity PESDataModel PESAppExperience PESReporting PESAutomation"
@@ -16,65 +15,81 @@ jobs:
     # Checkout repository
     - name: Checkout code
       uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
 
     # Install Power Platform CLI
     - name: Install Power Platform CLI
       uses: microsoft/powerplatform-actions/actions-install@v1
 
-    #####################################################
-    # EXPORT ALL SOLUTIONS
-    #####################################################
+    # Authenticate to DEV
+    - name: Authenticate DEV
+      run: |
+        $POWERPLATFORMTOOLS_PACPATH auth create \
+          --url "${{ secrets.DEV_ENV_URL }}" \
+          --applicationId "${{ secrets.CLIENT_ID }}" \
+          --clientSecret "${{ secrets.CLIENT_SECRET }}" \
+          --tenant "${{ secrets.TENANT_ID }}"
+
+        $POWERPLATFORMTOOLS_PACPATH auth list
+
+    #################################################
+    # EXPORT SOLUTIONS
+    #################################################
 
     - name: Export Solutions
       run: |
         for SOLUTION in $SOLUTIONS
         do
-          echo "Exporting $SOLUTION"
+          echo "==================================="
+          echo "Exporting: $SOLUTION"
+          echo "==================================="
 
-          pac solution export \
-            --name $SOLUTION \
-            --path ${SOLUTION}.zip \
+          $POWERPLATFORMTOOLS_PACPATH solution export \
+            --name "$SOLUTION" \
+            --path "${SOLUTION}.zip" \
             --managed false
         done
 
-      env:
-        PAC_AUTH_CREATE_URL: ${{ secrets.DEV_ENV_URL }}
-        PAC_AUTH_CREATE_APPLICATIONID: ${{ secrets.CLIENT_ID }}
-        PAC_AUTH_CREATE_CLIENTSECRET: ${{ secrets.CLIENT_SECRET }}
-        PAC_AUTH_CREATE_TENANT: ${{ secrets.TENANT_ID }}
-
-    #####################################################
-    # UNPACK ALL SOLUTIONS
-    #####################################################
+    #################################################
+    # UNPACK SOLUTIONS
+    #################################################
 
     - name: Unpack Solutions
       run: |
         for SOLUTION in $SOLUTIONS
         do
-          echo "Unpacking $SOLUTION"
+          echo "==================================="
+          echo "Unpacking: $SOLUTION"
+          echo "==================================="
 
           mkdir -p solutions/$SOLUTION
 
-          pac solution unpack \
-            --zipfile ${SOLUTION}.zip \
-            --folder solutions/$SOLUTION \
+          $POWERPLATFORMTOOLS_PACPATH solution unpack \
+            --zipfile "${SOLUTION}.zip" \
+            --folder "solutions/$SOLUTION" \
             --packagetype Unmanaged
         done
 
-    #####################################################
-    # COMMIT TO PowerApps_Versions BRANCH
-    #####################################################
+    #################################################
+    # COMMIT TO PowerApps_Versions
+    #################################################
 
     - name: Commit Solutions
       run: |
-        git config user.name "Rahul Ram"
-        git config user.email "rahul.ram@conduent.com"
+        git config user.name "github-actions"
+        git config user.email "actions@github.com"
 
         git fetch origin
 
         git checkout PowerApps_Versions || git checkout -b PowerApps_Versions
 
-        git pull origin PowerApps_Versions --rebase || echo "First run"
+        if git show-ref --verify --quiet refs/remotes/origin/PowerApps_Versions
+        then
+          git reset --hard origin/PowerApps_Versions
+        else
+          echo "First run"
+        fi
 
         git add solutions/
 
@@ -82,76 +97,27 @@ jobs:
 
         git push origin PowerApps_Versions
 
-    #####################################################
-    # UPLOAD ARTIFACTS
-    #####################################################
+    #################################################
+    # IMPORT TO TEST
+    #################################################
 
-    - name: Upload Solution Artifacts
-      uses: actions/upload-artifact@v4
-      with:
-        name: solution_drop
-        path: "*.zip"
+    - name: Authenticate TEST
+      run: |
+        $POWERPLATFORMTOOLS_PACPATH auth create \
+          --url "${{ secrets.TEST_ENV_URL }}" \
+          --applicationId "${{ secrets.CLIENT_ID }}" \
+          --clientSecret "${{ secrets.CLIENT_SECRET }}" \
+          --tenant "${{ secrets.TENANT_ID }}"
 
-    #####################################################
-    # IMPORT TO TEST (ORDER MATTERS)
-    #####################################################
+    - name: Import Solutions
+      run: |
+        for SOLUTION in $SOLUTIONS
+        do
+          echo "==================================="
+          echo "Importing: $SOLUTION"
+          echo "==================================="
 
-    - name: Import PESCore
-      uses: microsoft/powerplatform-actions/import-solution@v1
-      with:
-        environment-url: ${{ secrets.TEST_ENV_URL }}
-        tenant-id: ${{ secrets.TENANT_ID }}
-        app-id: ${{ secrets.CLIENT_ID }}
-        client-secret: ${{ secrets.CLIENT_SECRET }}
-        solution-file: PESCore.zip
-        publish-changes: true
-
-    - name: Import PESSecurity
-      uses: microsoft/powerplatform-actions/import-solution@v1
-      with:
-        environment-url: ${{ secrets.TEST_ENV_URL }}
-        tenant-id: ${{ secrets.TENANT_ID }}
-        app-id: ${{ secrets.CLIENT_ID }}
-        client-secret: ${{ secrets.CLIENT_SECRET }}
-        solution-file: PESSecurity.zip
-        publish-changes: true
-
-    - name: Import PESDataModel
-      uses: microsoft/powerplatform-actions/import-solution@v1
-      with:
-        environment-url: ${{ secrets.TEST_ENV_URL }}
-        tenant-id: ${{ secrets.TENANT_ID }}
-        app-id: ${{ secrets.CLIENT_ID }}
-        client-secret: ${{ secrets.CLIENT_SECRET }}
-        solution-file: PESDataModel.zip
-        publish-changes: true
-
-    - name: Import PESAppExperience
-      uses: microsoft/powerplatform-actions/import-solution@v1
-      with:
-        environment-url: ${{ secrets.TEST_ENV_URL }}
-        tenant-id: ${{ secrets.TENANT_ID }}
-        app-id: ${{ secrets.CLIENT_ID }}
-        client-secret: ${{ secrets.CLIENT_SECRET }}
-        solution-file: PESAppExperience.zip
-        publish-changes: true
-
-    - name: Import PESReporting
-      uses: microsoft/powerplatform-actions/import-solution@v1
-      with:
-        environment-url: ${{ secrets.TEST_ENV_URL }}
-        tenant-id: ${{ secrets.TENANT_ID }}
-        app-id: ${{ secrets.CLIENT_ID }}
-        client-secret: ${{ secrets.CLIENT_SECRET }}
-        solution-file: PESReporting.zip
-        publish-changes: true
-
-    - name: Import PESAutomation
-      uses: microsoft/powerplatform-actions/import-solution@v1
-      with:
-        environment-url: ${{ secrets.TEST_ENV_URL }}
-        tenant-id: ${{ secrets.TENANT_ID }}
-        app-id: ${{ secrets.CLIENT_ID }}
-        client-secret: ${{ secrets.CLIENT_SECRET }}
-        solution-file: PESAutomation.zip
-        publish-changes: true
+          $POWERPLATFORMTOOLS_PACPATH solution import \
+            --path "${SOLUTION}.zip" \
+            --publish-changes
+        done
