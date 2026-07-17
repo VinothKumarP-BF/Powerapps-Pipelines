@@ -1,0 +1,22 @@
+<powerpagecomponent powerpagecomponentid="f27dd760-e3ae-7da9-ff3d-23dd518aff07">
+  <content>{
+  "filecontent": null,
+  "displayorder": 7,
+  "weblinksetid": "ceccf529-cbd1-437e-9c12-033d66aa886e",
+  "pageid": "7abb0ecb-171c-05ce-bd80-43fd08e65799",
+  "publishingstateid": "9a28e01e-6995-4f47-91ee-d3be440d65cd",
+  "displaypagevalidation": false,
+  "displayimageonly": false,
+  "displaypagechildlinks": false,
+  "openinnewwindow": false,
+  "robotsfollowlink": true
+}</content>
+  <iscustomizable>1</iscustomizable>
+  <name>Enroll-deleted</name>
+  <powerpagecomponenttype>5</powerpagecomponenttype>
+  <powerpagesiteid>
+    <powerpagesiteid>a9b0a41b-5591-42f8-bdbc-5a64b2597cfa</powerpagesiteid>
+  </powerpagesiteid>
+  <statecode>1</statecode>
+  <statuscode>2</statuscode>
+</powerpagecomponent>

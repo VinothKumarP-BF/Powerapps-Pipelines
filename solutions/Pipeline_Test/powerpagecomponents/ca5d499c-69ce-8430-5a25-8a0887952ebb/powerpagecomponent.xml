@@ -1,0 +1,22 @@
+<powerpagecomponent powerpagecomponentid="ca5d499c-69ce-8430-5a25-8a0887952ebb">
+  <content>{
+  "filecontent": null,
+  "displayorder": 11,
+  "weblinksetid": "ceccf529-cbd1-437e-9c12-033d66aa886e",
+  "pageid": "089aa2be-ba4a-ab93-d8b5-8b2573ad73a6",
+  "publishingstateid": "9a28e01e-6995-4f47-91ee-d3be440d65cd",
+  "displaypagevalidation": false,
+  "displayimageonly": false,
+  "displaypagechildlinks": false,
+  "openinnewwindow": false,
+  "robotsfollowlink": true
+}</content>
+  <iscustomizable>1</iscustomizable>
+  <name>Document view-deleted</name>
+  <powerpagecomponenttype>5</powerpagecomponenttype>
+  <powerpagesiteid>
+    <powerpagesiteid>a9b0a41b-5591-42f8-bdbc-5a64b2597cfa</powerpagesiteid>
+  </powerpagesiteid>
+  <statecode>1</statecode>
+  <statuscode>2</statuscode>
+</powerpagecomponent>

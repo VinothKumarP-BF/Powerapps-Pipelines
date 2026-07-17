@@ -1,0 +1,22 @@
+<powerpagecomponent powerpagecomponentid="f7585fc5-f0e5-0ab3-68d8-adb9ec8efa9b">
+  <content>{
+  "filecontent": null,
+  "displayorder": 12,
+  "weblinksetid": "ceccf529-cbd1-437e-9c12-033d66aa886e",
+  "pageid": "07f55589-23f0-3ae1-59ba-f0045b8b21b8",
+  "publishingstateid": "9a28e01e-6995-4f47-91ee-d3be440d65cd",
+  "displaypagevalidation": false,
+  "displayimageonly": false,
+  "displaypagechildlinks": false,
+  "openinnewwindow": false,
+  "robotsfollowlink": true
+}</content>
+  <iscustomizable>1</iscustomizable>
+  <name>Details Form-deleted</name>
+  <powerpagecomponenttype>5</powerpagecomponenttype>
+  <powerpagesiteid>
+    <powerpagesiteid>a9b0a41b-5591-42f8-bdbc-5a64b2597cfa</powerpagesiteid>
+  </powerpagesiteid>
+  <statecode>1</statecode>
+  <statuscode>2</statuscode>
+</powerpagecomponent>
