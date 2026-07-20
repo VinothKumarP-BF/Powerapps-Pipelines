@@ -1,4 +1,4 @@
-name: DEV to TEST Man Deployment
+name: Power Platform connection
 
 on:
   workflow_dispatch:
@@ -8,19 +8,29 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      SOLUTION_NAME: POC_ALM
+      SOLUTION_NAME: Pipeline_Test
       DEPLOYMENT_SETTINGS_FILE: settings/test-settings.json
 
     steps:
 
-    - name: Checkout repository
+    #################################################
+    # CHECKOUT
+    #################################################
+
+    - name: Checkout Repository
       uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+
+    #################################################
+    # INSTALL POWER PLATFORM CLI
+    #################################################
 
     - name: Install Power Platform CLI
       uses: microsoft/powerplatform-actions/actions-install@v1
 
     #################################################
-    # EXPORT SOLUTION
+    # EXPORT MANAGED SOLUTION FROM TEST
     #################################################
 
     - name: Export Managed Solution
@@ -35,33 +45,87 @@ jobs:
         managed: false
 
     #################################################
-    # VERIFY SETTINGS FILE
+    # VERIFY DEPLOYMENT SETTINGS
     #################################################
 
-    - name: Verify Deployment Settings
+    - name: Verify Deployment Settings File
       run: |
-        FILE=${{ env.DEPLOYMENT_SETTINGS_FILE }}
+        echo "Checking deployment settings file..."
 
-        echo "Checking file: $FILE"
-
-        if [ -f "$FILE" ]; then
+        if [ -f "${{ env.DEPLOYMENT_SETTINGS_FILE }}" ]; then
+          echo "Deployment settings found."
           echo ""
-          echo "Deployment settings found"
-          echo ""
-          cat "$FILE"
+          cat "${{ env.DEPLOYMENT_SETTINGS_FILE }}"
         else
-          echo "Deployment settings file not found"
+          echo "Deployment settings file not found."
           exit 1
         fi
 
     #################################################
-    # IMPORT SOLUTION
+    # UNPACK SOLUTION
     #################################################
 
-    - name: Import Solution to TEST
+    - name: Unpack Solution
+      uses: microsoft/powerplatform-actions/unpack-solution@v1
+      with:
+        solution-file: unmanaged.zip
+        solution-folder: solutions/${{ env.SOLUTION_NAME }}
+        solution-type: Unmanaged
+
+    #################################################
+    # CREATE BRANCH
+    # cnt-solutions-YYYYMMDD-1
+    #################################################
+
+    - name: Create Deployment Branch
+      run: |
+        git fetch --all
+
+        TODAY=$(date +%Y%m%d)
+
+        LAST_NUM=$(git branch -r \
+          | grep "origin/cnt-solutions-${TODAY}-" \
+          | sed "s|origin/cnt-solutions-${TODAY}-||" \
+          | sort -n \
+          | tail -1)
+
+        if [ -z "$LAST_NUM" ]; then
+          NEXT_NUM=1
+        else
+          NEXT_NUM=$((LAST_NUM + 1))
+        fi
+
+        BRANCH_NAME="cnt-solutions-${TODAY}-${NEXT_NUM}"
+
+        echo "BRANCH_NAME=$BRANCH_NAME" >> $GITHUB_ENV
+
+        git checkout -b "$BRANCH_NAME"
+
+        echo "Created Branch: $BRANCH_NAME"
+
+    #################################################
+    # COMMIT SOLUTION FILES
+    #################################################
+
+    - name: Commit Solution Files
+      run: |
+        git config user.name "github-actions"
+        git config user.email "actions@github.com"
+
+        git add solutions/
+
+        git commit -m "Store solution ${{ env.SOLUTION_NAME }}" || echo "No changes"
+
+        git push --set-upstream origin $BRANCH_NAME
+
+    #################################################
+    # IMPORT INTO PROD
+    #################################################
+
+    - name: Import Solution to PROD
       uses: microsoft/powerplatform-actions/import-solution@v1
       with:
-        environment-url: ${{ secrets.TEST_ENV_URL }}
+        environment-url: ${{ secrets.PROD_ENV_URL }}
         tenant-id: ${{ secrets.TENANT_ID }}
         app-id: ${{ secrets.CLIENT_ID }}
         client-secret: ${{ secrets.CLIENT_SECRET }}
@@ -71,14 +135,28 @@ jobs:
         use-node-auth: true
 
     #################################################
-    # DEPLOYMENT COMPLETE
+    # ATTEMPT TO PUBLISH / ACTIVATE
+    #################################################
+
+    - name: Publish Customizations
+      uses: microsoft/powerplatform-actions/publish-solution@v1
+      with:
+        environment-url: ${{ secrets.TEST_ENV_URL }}
+        tenant-id: ${{ secrets.TENANT_ID }}
+        app-id: ${{ secrets.CLIENT_ID }}
+        client-secret: ${{ secrets.CLIENT_SECRET }}
+
+    #################################################
+    # COMPLETION MESSAGE
     #################################################
 
     - name: Deployment Complete
       run: |
         echo ""
-        echo "======================================="
-        echo "Solution deployed successfully"
-        echo "Target Environment : PROD"
-        echo "Settings File : ${{ env.DEPLOYMENT_SETTINGS_FILE }}"
-        echo "======================================="
+        echo "=============================================="
+        echo "Deployment completed"
+        echo "Solution : ${{ env.SOLUTION_NAME }}"
+        echo "Target   : PROD"
+        echo "Settings : ${{ env.DEPLOYMENT_SETTINGS_FILE }}"
+        echo "Branch   : $BRANCH_NAME"
+        echo "=============================================="
