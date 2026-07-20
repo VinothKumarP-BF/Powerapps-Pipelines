@@ -8,23 +8,28 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      SOLUTION_NAME: POC_ALM
+      SOLUTION_NAME: Pipeline_Test
 
     steps:
 
-    - name: Checkout repo
+    # Checkout repository
+    - name: Checkout code
       uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
 
+    # Install Power Platform CLI
     - name: Install Power Platform CLI
       uses: microsoft/powerplatform-actions/actions-install@v1
 
-    #
-    # Export MANAGED solution from TEST
-    #
+    #########################################################
+    # EXPORT MANAGED SOLUTION FROM TEST
+    #########################################################
+
     - name: Export managed solution from TEST
       uses: microsoft/powerplatform-actions/export-solution@v1
       with:
-        environment-url: ${{ secrets.DEV_ENV_URL }}
+        environment-url: ${{ secrets.TEST_ENV_URL }}
         tenant-id: ${{ secrets.TENANT_ID }}
         app-id: ${{ secrets.CLIENT_ID }}
         client-secret: ${{ secrets.CLIENT_SECRET }}
@@ -32,31 +37,82 @@ jobs:
         solution-output-file: managed.zip
         managed: true
 
-    #
-    # Generate deployment settings file
-    #
-    - name: Create deployment settings
+    #########################################################
+    # UNPACK SOLUTION
+    #########################################################
+
+    - name: Unpack solution
+      uses: microsoft/powerplatform-actions/unpack-solution@v1
+      with:
+        solution-file: managed.zip
+        solution-folder: solutions/${{ env.SOLUTION_NAME }}
+        solution-type: Managed
+
+    #########################################################
+    # CREATE NEXT BRANCH
+    # Format:
+    # cnt-solutions-20260720-1
+    # cnt-solutions-20260720-2
+    #########################################################
+
+    - name: Create deployment branch
+      id: create_branch
       run: |
-        pac auth create \
-          --environment ${{ secrets.PROD_ENV_URL }} \
-          --tenant ${{ secrets.TENANT_ID }} \
-          --applicationId ${{ secrets.CLIENT_ID }} \
-          --clientSecret ${{ secrets.CLIENT_SECRET }}
 
-        pac solution create-settings \
-          --solution-zip managed.zip \
-          --settings-file test-settings.json
+        git fetch --all
 
-    #
-    # Optional - view settings file
-    #
-    - name: Display settings
-      run: cat test-settings.json
+        TODAY=$(date +%Y%m%d)
 
-    #
-    # Import managed solution into PROD
-    # using connection reference mappings
-    #
+        LAST_NUM=$(git branch -r \
+          | grep "origin/cnt-solutions-${TODAY}-" \
+          | sed "s|origin/cnt-solutions-${TODAY}-||" \
+          | sort -n \
+          | tail -1)
+
+        if [ -z "$LAST_NUM" ]; then
+          NEXT_NUM=1
+        else
+          NEXT_NUM=$((LAST_NUM + 1))
+        fi
+
+        BRANCH_NAME="cnt-solutions-${TODAY}-${NEXT_NUM}"
+
+        echo "BRANCH_NAME=$BRANCH_NAME" >> $GITHUB_ENV
+
+        git checkout -b "$BRANCH_NAME"
+
+        echo "Created branch $BRANCH_NAME"
+
+    #########################################################
+    # COMMIT UNPACKED SOLUTION TO NEW BRANCH
+    #########################################################
+
+    - name: Commit solution files
+      run: |
+
+        git config user.name "github-actions"
+        git config user.email "actions@github.com"
+
+        git add solutions/
+
+        git commit -m "Solution export - ${{ env.SOLUTION_NAME }}" || echo "No changes detected"
+
+        git push --set-upstream origin $BRANCH_NAME
+
+    #########################################################
+    # UPLOAD MANAGED ZIP AS ARTIFACT
+    #########################################################
+
+    - name: Upload managed solution
+      uses: actions/upload-artifact@v4
+      with:
+        name: managed-solution
+        path: managed.zip
+
+    #########################################################
+    # IMPORT TO PROD USING SETTINGS FILE
+    #########################################################
+
     - name: Import solution to PROD
       uses: microsoft/powerplatform-actions/import-solution@v1
       with:
@@ -65,6 +121,6 @@ jobs:
         app-id: ${{ secrets.CLIENT_ID }}
         client-secret: ${{ secrets.CLIENT_SECRET }}
         solution-file: managed.zip
-        settings-file: test-settings.json
+        settings-file: settings/test-settings.json
         publish-changes: true
         use-node-auth: true
