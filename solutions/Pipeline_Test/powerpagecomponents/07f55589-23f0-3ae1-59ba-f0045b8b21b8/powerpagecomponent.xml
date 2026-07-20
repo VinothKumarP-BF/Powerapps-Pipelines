@@ -1,0 +1,30 @@
+<powerpagecomponent powerpagecomponentid="07f55589-23f0-3ae1-59ba-f0045b8b21b8">
+  <content>{
+  "filecontent": null,
+  "displayorder": 12,
+  "customcss": "",
+  "customjavascript": "",
+  "pagetemplateid": "835852c9-4793-49e2-acd6-74c9467f4e31",
+  "parentpageid": "d1d4ad37-367c-46d7-8406-9d3b943d7d08",
+  "partialurl": "Details-Form-deleted",
+  "isroot": true,
+  "title": "Details Form",
+  "summary": "&lt;p&gt;This is a sample landing page designed to be a starting point for your website&lt;/p&gt;",
+  "copy": "",
+  "publishingstateid": "9a28e01e-6995-4f47-91ee-d3be440d65cd",
+  "enablerating": false,
+  "enabletracking": false,
+  "excludefromsearch": false,
+  "hiddenfromsitemap": true,
+  "sharedpageconfiguration": false
+}</content>
+  <iscustomizable>1</iscustomizable>
+  <name>Details Form-deleted</name>
+  <powerpagecomponenttype>2</powerpagecomponenttype>
+  <powerpagesiteid>
+    <powerpagesiteid>a9b0a41b-5591-42f8-bdbc-5a64b2597cfa</powerpagesiteid>
+  </powerpagesiteid>
+  <searchcontent>Details FormDetails Form-deleted</searchcontent>
+  <statecode>1</statecode>
+  <statuscode>2</statuscode>
+</powerpagecomponent>

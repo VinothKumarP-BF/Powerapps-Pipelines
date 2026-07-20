@@ -1,0 +1,52 @@
+<powerpagecomponent powerpagecomponentid="5fc611d9-c20d-041d-f8de-41a39fb8a0b8">
+  <content>{
+  "displayorder": 2,
+  "customcss": "",
+  "customjavascript": "",
+  "pagetemplateid": "835852c9-4793-49e2-acd6-74c9467f4e31",
+  "parentpageid": "d1d4ad37-367c-46d7-8406-9d3b943d7d08",
+  "partialurl": "Provider-Map-deleted",
+  "isroot": false,
+  "rootwebpageid": "9cb9ccdb-4a32-d725-bacc-4467a3a75409",
+  "title": "Provider Map",
+  "summary": "&lt;p&gt;This is a sample landing page designed to be a starting point for your website&lt;/p&gt;",
+  "copy": "&lt;div data-component-theme=\"portalThemeColor3\" class=\"row sectionBlockLayout\" style=\"padding: 8px; margin: 0px; display: flex; flex-wrap: wrap; min-height: 500px;\"&gt;\n  &lt;div class=\"container\" style=\"height: 100%;\"&gt;\n    &lt;div class=\"col-lg-12 columnBlockLayout\" style=\"min-width: 250px; flex-grow: 1; display: flex; flex-direction: column; margin: 20px 0px; padding: 20px; overflow-y: auto; border-right: 1px solid rgb(221, 221, 221);\"&gt;\n      &lt;h3&gt;Available Providers&lt;/h3&gt;\n      &lt;ul style=\"list-style-type: none; padding-left: 0; font-size: 1rem;\"&gt;\n        &lt;li style=\"margin-bottom: 15px;\"&gt;&lt;strong&gt;Provider One&lt;/strong&gt;&lt;br /&gt;&lt;small&gt;123 Main Street&lt;/small&gt;&lt;/li&gt;\n        &lt;li style=\"margin-bottom: 15px;\"&gt;&lt;strong&gt;Provider Two&lt;/strong&gt;&lt;br /&gt;&lt;small&gt;456 Elm Avenue&lt;/small&gt;&lt;/li&gt;\n        &lt;li style=\"margin-bottom: 15px;\"&gt;&lt;strong&gt;Provider Three&lt;/strong&gt;&lt;br /&gt;&lt;small&gt;789 Oak Boulevard&lt;/small&gt;&lt;/li&gt;\n        &lt;li style=\"margin-bottom: 15px;\"&gt;&lt;strong&gt;Provider Four&lt;/strong&gt;&lt;br /&gt;&lt;small&gt;321 Pine Lane&lt;/small&gt;&lt;/li&gt;\n        &lt;li style=\"margin-bottom: 15px;\"&gt;&lt;strong&gt;Provider Five&lt;/strong&gt;&lt;br /&gt;&lt;small&gt;654 Maple Drive&lt;/small&gt;&lt;/li&gt;\n      &lt;/ul&gt;\n    &lt;/div&gt;\n  &lt;/div&gt;\n&lt;/div&gt;\n&lt;div data-component-theme=\"portalThemeColor\" class=\"row sectionBlockLayout\" style=\"padding: 8px; margin: 0px; display: flex; flex-wrap: wrap; min-height: 150px; background-color: rgb(248, 249, 250);\"&gt;\n  &lt;div class=\"container\"&gt;\n    &lt;div class=\"col-md-12 columnBlockLayout\" style=\"min-width: 250px; flex-grow: 1; display: flex; flex-direction: column; margin: 10px 0px; padding: 16px;\"&gt;&lt;p style=\"text-align: center; font-size: 0.9rem; color: #666;\"&gt;Use the list on the left to select a provider and view their exact location on the map. This interactive map helps you find the best provider near you quickly and easily.&lt;/p&gt;&lt;/div&gt;\n  &lt;/div&gt;\n&lt;/div&gt;\n",
+  "publishingstateid": "9a28e01e-6995-4f47-91ee-d3be440d65cd",
+  "enablerating": false,
+  "enabletracking": false,
+  "excludefromsearch": false,
+  "hiddenfromsitemap": true,
+  "sharedpageconfiguration": false
+}</content>
+  <iscustomizable>1</iscustomizable>
+  <name>Provider Map-deleted</name>
+  <powerpagecomponenttype>2</powerpagecomponenttype>
+  <powerpagesiteid>
+    <powerpagesiteid>a9b0a41b-5591-42f8-bdbc-5a64b2597cfa</powerpagesiteid>
+  </powerpagesiteid>
+  <powerpagesitelanguageid>
+    <powerpagesitelanguageid>5c7c0683-e4d6-4baa-ae97-71b9e6e5a1ab</powerpagesitelanguageid>
+  </powerpagesitelanguageid>
+  <searchcontent>Provider Map&lt;div data-component-theme="portalThemeColor3" class="row sectionBlockLayout" style="padding: 8px; margin: 0px; display: flex; flex-wrap: wrap; min-height: 500px;"&gt;
+  &lt;div class="container" style="height: 100%;"&gt;
+    &lt;div class="col-lg-12 columnBlockLayout" style="min-width: 250px; flex-grow: 1; display: flex; flex-direction: column; margin: 20px 0px; padding: 20px; overflow-y: auto; border-right: 1px solid rgb(221, 221, 221);"&gt;
+      &lt;h3&gt;Available Providers&lt;/h3&gt;
+      &lt;ul style="list-style-type: none; padding-left: 0; font-size: 1rem;"&gt;
+        &lt;li style="margin-bottom: 15px;"&gt;&lt;strong&gt;Provider One&lt;/strong&gt;&lt;br /&gt;&lt;small&gt;123 Main Street&lt;/small&gt;&lt;/li&gt;
+        &lt;li style="margin-bottom: 15px;"&gt;&lt;strong&gt;Provider Two&lt;/strong&gt;&lt;br /&gt;&lt;small&gt;456 Elm Avenue&lt;/small&gt;&lt;/li&gt;
+        &lt;li style="margin-bottom: 15px;"&gt;&lt;strong&gt;Provider Three&lt;/strong&gt;&lt;br /&gt;&lt;small&gt;789 Oak Boulevard&lt;/small&gt;&lt;/li&gt;
+        &lt;li style="margin-bottom: 15px;"&gt;&lt;strong&gt;Provider Four&lt;/strong&gt;&lt;br /&gt;&lt;small&gt;321 Pine Lane&lt;/small&gt;&lt;/li&gt;
+        &lt;li style="margin-bottom: 15px;"&gt;&lt;strong&gt;Provider Five&lt;/strong&gt;&lt;br /&gt;&lt;small&gt;654 Maple Drive&lt;/small&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;div data-component-theme="portalThemeColor" class="row sectionBlockLayout" style="padding: 8px; margin: 0px; display: flex; flex-wrap: wrap; min-height: 150px; background-color: rgb(248, 249, 250);"&gt;
+  &lt;div class="container"&gt;
+    &lt;div class="col-md-12 columnBlockLayout" style="min-width: 250px; flex-grow: 1; display: flex; flex-direction: column; margin: 10px 0px; padding: 16px;"&gt;&lt;p style="text-align: center; font-size: 0.9rem; color: #666;"&gt;Use the list on the left to select a provider and view their exact location on the map. This interactive map helps you find the best provider near you quickly and easily.&lt;/p&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+Provider Map-deleted</searchcontent>
+  <statecode>1</statecode>
+  <statuscode>2</statuscode>
+</powerpagecomponent>

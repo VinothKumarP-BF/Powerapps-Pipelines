@@ -1,0 +1,127 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<forms xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <systemform>
+    <formid>{4b460671-d9b6-47c1-ab46-02a615211fdb}</formid>
+    <IntroducedVersion>1.0</IntroducedVersion>
+    <FormPresentation>1</FormPresentation>
+    <FormActivationState>1</FormActivationState>
+    <form>
+      <tabs>
+        <tab verticallayout="true" id="{13EAA9A8-3DEE-4E89-AC8D-D243E8149D3D}" IsUserDefined="1">
+          <labels>
+            <label description="General" languagecode="1033" />
+          </labels>
+          <columns>
+            <column width="100%">
+              <sections>
+                <section showlabel="false" showbar="false" IsUserDefined="0" id="{059AB379-3C1A-44A9-9EB4-EC6A0FFF9393}">
+                  <labels>
+                    <label description="General" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{97381E09-8F83-44CE-9017-E0E0D8B353B2}">
+                        <labels>
+                          <label description="Employee Name" languagecode="1033" />
+                        </labels>
+                        <control id="vp_employeename" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="vp_employeename" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{359CCAAC-E118-472E-B024-2C037B0A671D}">
+                        <labels>
+                          <label description="Owner" languagecode="1033" />
+                        </labels>
+                        <control id="ownerid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="ownerid" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{83e88afe-6abf-4073-9db7-e1f5bea6c26e}">
+                        <labels>
+                          <label description="Employee ID" languagecode="1033" />
+                        </labels>
+                        <control id="vp_employeeid1" classid="{4273edbd-ac1d-40d3-9fb2-095c621b552d}" datafieldname="vp_employeeid1" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{5454b7b1-692b-4509-9fca-10a50f3932c3}">
+                        <labels>
+                          <label description="Email" languagecode="1033" />
+                        </labels>
+                        <control id="vp_emailaddress" classid="{4273edbd-ac1d-40d3-9fb2-095c621b552d}" datafieldname="vp_emailaddress" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{151f5763-2a4b-4e55-b3ed-d72e71854661}">
+                        <labels>
+                          <label description="Phone" languagecode="1033" />
+                        </labels>
+                        <control id="vp_phonenumber" classid="{4273edbd-ac1d-40d3-9fb2-095c621b552d}" datafieldname="vp_phonenumber" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{90fd4118-73c2-4362-906d-d443fd1bcb4a}">
+                        <labels>
+                          <label description="Department" languagecode="1033" />
+                        </labels>
+                        <control id="vp_department" classid="{3ef39988-22bb-4f0b-bbbe-64b5a3748aee}" datafieldname="vp_department" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{933af0b9-39f3-4f9e-af78-0a80f315e456}">
+                        <labels>
+                          <label description="Manager" languagecode="1033" />
+                        </labels>
+                        <control id="vp_managername" classid="{4273edbd-ac1d-40d3-9fb2-095c621b552d}" datafieldname="vp_managername" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{6a5fad10-efc3-4eae-aab0-f14ff095ea81}">
+                        <labels>
+                          <label description="Joining Date" languagecode="1033" />
+                        </labels>
+                        <control id="vp_joiningdate" classid="{5b773807-9fb2-42db-97c3-7a91eff8adff}" datafieldname="vp_joiningdate" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{025b805e-230a-4444-9aa1-867d29972762}">
+                        <labels>
+                          <label description="Salary" languagecode="1033" />
+                        </labels>
+                        <control id="vp_salary" classid="{533b9e00-756b-4312-95a0-dc888637ac78}" datafieldname="vp_salary" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{c50069ea-40f5-4d3a-a3d4-6f31a4ed40f2}">
+                        <labels>
+                          <label description="Status" languagecode="1033" />
+                        </labels>
+                        <control id="vp_employmentstatus" classid="{3ef39988-22bb-4f0b-bbbe-64b5a3748aee}" datafieldname="vp_employmentstatus" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{2a0fa166-0e0c-48f1-9244-ce2d2f4d1e54}">
+                        <labels>
+                          <label description="Location" languagecode="1033" />
+                        </labels>
+                        <control id="vp_worklocation" classid="{4273edbd-ac1d-40d3-9fb2-095c621b552d}" datafieldname="vp_worklocation" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+          </columns>
+        </tab>
+      </tabs>
+    </form>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <LocalizedNames>
+      <LocalizedName description="Information" languagecode="1033" />
+    </LocalizedNames>
+    <Descriptions>
+      <Description description="A form for this entity." languagecode="1033" />
+    </Descriptions>
+  </systemform>
+</forms>

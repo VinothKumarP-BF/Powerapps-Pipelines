@@ -1,0 +1,85 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_office365-1": {
+        "runtimeSource": "invoker",
+        "connection": {
+          "connectionReferenceLogicalName": "cnt_CR_Outlook"
+        },
+        "api": {
+          "name": "shared_office365"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "undefined",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "manual": {
+          "metadata": {
+            "operationMetadataId": "444d3d9c-7ead-4f7e-9d61-fae344c574a4"
+          },
+          "type": "Request",
+          "kind": "Button",
+          "inputs": {
+            "schema": {
+              "type": "object",
+              "properties": {},
+              "required": []
+            }
+          }
+        }
+      },
+      "actions": {
+        "Compose": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "39250607-bff8-40d5-8376-7922658c5636"
+          },
+          "type": "Compose",
+          "inputs": "Hello from DEV"
+        },
+        "Send_an_email_(V2)": {
+          "runAfter": {
+            "Compose": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "e8e5e995-779e-44c4-9d81-1cebcbda9e98"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_office365-1",
+              "operationId": "SendEmailV2",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_office365"
+            },
+            "parameters": {
+              "emailMessage/To": "Aman.Kumar4@infinite.com",
+              "emailMessage/Subject": "TEST Email - From DEV",
+              "emailMessage/Body": "<p class=\"editor-paragraph\">@{outputs('Compose')}</p>",
+              "emailMessage/Importance": "Normal"
+            },
+            "authentication": {
+              "type": "Raw",
+              "value": "@json(decodeBase64(triggerOutputs().headers['X-MS-APIM-Tokens']))['$ConnectionKey']"
+            }
+          }
+        }
+      }
+    },
+    "templateName": ""
+  },
+  "schemaVersion": "1.0.0.0"
+}

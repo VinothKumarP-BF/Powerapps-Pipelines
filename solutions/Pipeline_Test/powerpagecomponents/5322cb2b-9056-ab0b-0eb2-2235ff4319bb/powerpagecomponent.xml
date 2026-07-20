@@ -1,0 +1,60 @@
+<powerpagecomponent powerpagecomponentid="5322cb2b-9056-ab0b-0eb2-2235ff4319bb">
+  <content>{
+  "filecontent": null,
+  "displayorder": 10,
+  "customcss": "",
+  "customjavascript": "",
+  "pagetemplateid": "835852c9-4793-49e2-acd6-74c9467f4e31",
+  "parentpageid": "d1d4ad37-367c-46d7-8406-9d3b943d7d08",
+  "partialurl": "Document-Request-deleted",
+  "isroot": false,
+  "rootwebpageid": "86b20394-04a2-9768-a1b7-5ff37dac7088",
+  "title": "Document Request",
+  "summary": "&lt;p&gt;This is a sample landing page designed to be a starting point for your website&lt;/p&gt;",
+  "copy": "&lt;div data-component-theme=\"portalThemeColor8\" class=\"row sectionBlockLayout\" style='padding: 8px; margin: 0px; display: flex; flex-wrap: wrap; min-height: 60%; background-image: url(\"/Request-3.jpg\"); background-position: center center; background-repeat: no-repeat; background-size: cover;'&gt;\n  &lt;div class=\"container\"&gt;\n    &lt;div class=\"col-md-12 columnBlockLayout\" style=\"min-width: 250px; flex-grow: 1; display: flex; flex-direction: column; margin: 180px 0px;\"&gt;\n      &lt;h1 style=\"text-align: center; color: white;\"&gt;Document Request&lt;/h1&gt;\n      &lt;h4 style=\"text-align: center; color: white;\"&gt;Submit your document requests quickly and securely&lt;/h4&gt;\n    &lt;/div&gt;\n  &lt;/div&gt;\n&lt;/div&gt;\n&lt;div class=\"row sectionBlockLayout\" style=\"padding: 8px; margin: 0px; display: flex; flex-wrap: wrap; min-height: auto;\"&gt;\n  &lt;div class=\"container\"&gt;\n    &lt;div class=\"col-md-6 columnBlockLayout\" style=\"min-width: 250px; flex-grow: 1; display: flex; flex-direction: column; margin: 40px 0px; padding: 30px;\"&gt;\n      &lt;h2&gt;Request Form&lt;/h2&gt;\n      &lt;p&gt;Please enter the name of the document you wish to request. Our team will process your request promptly. The processing status is managed internally and will be updated accordingly.&lt;/p&gt;\n      &lt;button class=\"button1\"&gt;Submit Request&lt;/button&gt;\n    &lt;/div&gt;\n    &lt;div class=\"col-md-6 columnBlockLayout\" style=\"min-width: 250px; flex-grow: 1; display: flex; flex-direction: column; margin: 40px 0px; padding: 30px;\"&gt;&lt;img alt=\"Person submitting document request on laptop\" src=\"/Request-2.jpg\" style=\"max-width: 100%; width: 100%; height: auto; border-radius: 6px;\" /&gt;&lt;/div&gt;\n  &lt;/div&gt;\n&lt;/div&gt;\n&lt;div class=\"row sectionBlockLayout\" style=\"padding: 8px; margin: 0px; display: flex; flex-wrap: wrap; min-height: auto;\"&gt;\n  &lt;div class=\"container\"&gt;\n    &lt;div class=\"col-md-12 columnBlockLayout\" style=\"min-width: 250px; flex-grow: 1; display: flex; flex-direction: column; margin: 20px 0px; padding: 30px;\"&gt;\n      &lt;h3&gt;How It Works&lt;/h3&gt;\n      &lt;p&gt;Fill in the request name field with the document title you need. Once submitted, your request is securely saved in our system. The processing status is tracked internally and is not visible to users to ensure smooth handling.&lt;/p&gt;\n    &lt;/div&gt;\n  &lt;/div&gt;\n&lt;/div&gt;\n",
+  "publishingstateid": "9a28e01e-6995-4f47-91ee-d3be440d65cd",
+  "enablerating": false,
+  "enabletracking": false,
+  "excludefromsearch": false,
+  "hiddenfromsitemap": true,
+  "sharedpageconfiguration": false
+}</content>
+  <iscustomizable>1</iscustomizable>
+  <name>Document Request-deleted</name>
+  <powerpagecomponenttype>2</powerpagecomponenttype>
+  <powerpagesiteid>
+    <powerpagesiteid>a9b0a41b-5591-42f8-bdbc-5a64b2597cfa</powerpagesiteid>
+  </powerpagesiteid>
+  <powerpagesitelanguageid>
+    <powerpagesitelanguageid>5c7c0683-e4d6-4baa-ae97-71b9e6e5a1ab</powerpagesitelanguageid>
+  </powerpagesitelanguageid>
+  <searchcontent>Document Request&lt;div data-component-theme="portalThemeColor8" class="row sectionBlockLayout" style='padding: 8px; margin: 0px; display: flex; flex-wrap: wrap; min-height: 60%; background-image: url("/Request-3.jpg"); background-position: center center; background-repeat: no-repeat; background-size: cover;'&gt;
+  &lt;div class="container"&gt;
+    &lt;div class="col-md-12 columnBlockLayout" style="min-width: 250px; flex-grow: 1; display: flex; flex-direction: column; margin: 180px 0px;"&gt;
+      &lt;h1 style="text-align: center; color: white;"&gt;Document Request&lt;/h1&gt;
+      &lt;h4 style="text-align: center; color: white;"&gt;Submit your document requests quickly and securely&lt;/h4&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="row sectionBlockLayout" style="padding: 8px; margin: 0px; display: flex; flex-wrap: wrap; min-height: auto;"&gt;
+  &lt;div class="container"&gt;
+    &lt;div class="col-md-6 columnBlockLayout" style="min-width: 250px; flex-grow: 1; display: flex; flex-direction: column; margin: 40px 0px; padding: 30px;"&gt;
+      &lt;h2&gt;Request Form&lt;/h2&gt;
+      &lt;p&gt;Please enter the name of the document you wish to request. Our team will process your request promptly. The processing status is managed internally and will be updated accordingly.&lt;/p&gt;
+      &lt;button class="button1"&gt;Submit Request&lt;/button&gt;
+    &lt;/div&gt;
+    &lt;div class="col-md-6 columnBlockLayout" style="min-width: 250px; flex-grow: 1; display: flex; flex-direction: column; margin: 40px 0px; padding: 30px;"&gt;&lt;img alt="Person submitting document request on laptop" src="/Request-2.jpg" style="max-width: 100%; width: 100%; height: auto; border-radius: 6px;" /&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="row sectionBlockLayout" style="padding: 8px; margin: 0px; display: flex; flex-wrap: wrap; min-height: auto;"&gt;
+  &lt;div class="container"&gt;
+    &lt;div class="col-md-12 columnBlockLayout" style="min-width: 250px; flex-grow: 1; display: flex; flex-direction: column; margin: 20px 0px; padding: 30px;"&gt;
+      &lt;h3&gt;How It Works&lt;/h3&gt;
+      &lt;p&gt;Fill in the request name field with the document title you need. Once submitted, your request is securely saved in our system. The processing status is tracked internally and is not visible to users to ensure smooth handling.&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+Document Request-deleted</searchcontent>
+  <statecode>1</statecode>
+  <statuscode>2</statuscode>
+</powerpagecomponent>

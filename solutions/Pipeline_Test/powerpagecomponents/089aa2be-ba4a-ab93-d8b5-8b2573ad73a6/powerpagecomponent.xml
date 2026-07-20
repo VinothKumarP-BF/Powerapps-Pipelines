@@ -1,0 +1,30 @@
+<powerpagecomponent powerpagecomponentid="089aa2be-ba4a-ab93-d8b5-8b2573ad73a6">
+  <content>{
+  "filecontent": null,
+  "displayorder": 11,
+  "customcss": "",
+  "customjavascript": "",
+  "pagetemplateid": "835852c9-4793-49e2-acd6-74c9467f4e31",
+  "parentpageid": "d1d4ad37-367c-46d7-8406-9d3b943d7d08",
+  "partialurl": "Document-view-deleted",
+  "isroot": true,
+  "title": "Document view",
+  "summary": "&lt;p&gt;This is a sample landing page designed to be a starting point for your website&lt;/p&gt;",
+  "copy": "",
+  "publishingstateid": "9a28e01e-6995-4f47-91ee-d3be440d65cd",
+  "enablerating": false,
+  "enabletracking": false,
+  "excludefromsearch": false,
+  "hiddenfromsitemap": true,
+  "sharedpageconfiguration": false
+}</content>
+  <iscustomizable>1</iscustomizable>
+  <name>Document view-deleted</name>
+  <powerpagecomponenttype>2</powerpagecomponenttype>
+  <powerpagesiteid>
+    <powerpagesiteid>a9b0a41b-5591-42f8-bdbc-5a64b2597cfa</powerpagesiteid>
+  </powerpagesiteid>
+  <searchcontent>Document viewDocument view-deleted</searchcontent>
+  <statecode>1</statecode>
+  <statuscode>2</statuscode>
+</powerpagecomponent>

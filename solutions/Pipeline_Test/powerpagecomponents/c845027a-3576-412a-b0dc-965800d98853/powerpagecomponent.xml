@@ -1,0 +1,33 @@
+<powerpagecomponent powerpagecomponentid="c845027a-3576-412a-b0dc-965800d98853">
+  <content>{
+  "filecontent": null,
+  "entityname": "DocumentOCRRequest",
+  "entitylogicalname": "cre09_documentocrrequest",
+  "scope": 756150000,
+  "append": true,
+  "appendto": true,
+  "delete": true,
+  "read": true,
+  "create": true,
+  "write": true,
+  "parentrelationship": null,
+  "parententitypermission": null,
+  "contactrelationship": null,
+  "accountrelationship": null,
+  "childTablePermissions": [],
+  "adx_entitypermission_webrole": [
+    "ee082469-e954-4c48-a173-411ad6501343",
+    "cfdded67-35c3-46bb-8c7f-fedea8f906bc",
+    "f9f02598-514a-4ee1-9d10-659d5ab7377e"
+  ],
+  "permissionfetchxml": null
+}</content>
+  <iscustomizable>1</iscustomizable>
+  <name>DocumentOCRRequest</name>
+  <powerpagecomponenttype>18</powerpagecomponenttype>
+  <powerpagesiteid>
+    <powerpagesiteid>a9b0a41b-5591-42f8-bdbc-5a64b2597cfa</powerpagesiteid>
+  </powerpagesiteid>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</powerpagecomponent>

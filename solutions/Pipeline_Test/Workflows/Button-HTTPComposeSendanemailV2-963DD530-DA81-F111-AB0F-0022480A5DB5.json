@@ -1,0 +1,89 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_office365": {
+        "runtimeSource": "invoker",
+        "connection": {
+          "connectionReferenceLogicalName": "cnt_CR_OUTLOOK_PREMIUM"
+        },
+        "api": {
+          "name": "shared_office365"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "undefined",
+      "parameters": {
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        },
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        }
+      },
+      "triggers": {
+        "manual": {
+          "type": "Request",
+          "kind": "Button",
+          "inputs": {
+            "schema": {
+              "type": "object",
+              "properties": {},
+              "required": []
+            }
+          }
+        }
+      },
+      "actions": {
+        "HTTP": {
+          "runAfter": {},
+          "type": "Http",
+          "inputs": {
+            "uri": "https://jsonplaceholder.typicode.com/posts/1",
+            "method": "GET"
+          },
+          "runtimeConfiguration": {
+            "contentTransfer": {
+              "transferMode": "Chunked"
+            }
+          }
+        },
+        "Compose": {
+          "runAfter": {
+            "HTTP": [
+              "Succeeded"
+            ]
+          },
+          "type": "Compose",
+          "inputs": "@body('HTTP')"
+        },
+        "Send_an_email_(V2)": {
+          "runAfter": {
+            "Compose": [
+              "Succeeded"
+            ]
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "parameters": {
+              "emailMessage/To": "Vinothkumar.Prabakaran@barrelfuel.com",
+              "emailMessage/Subject": "TEST ",
+              "emailMessage/Body": "<p class=\"editor-paragraph\">@{outputs('Compose')}</p>",
+              "emailMessage/Importance": "Normal"
+            },
+            "host": {
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_office365",
+              "operationId": "SendEmailV2",
+              "connectionName": "shared_office365"
+            }
+          }
+        }
+      }
+    },
+    "templateName": null
+  },
+  "schemaVersion": "1.0.0.0"
+}

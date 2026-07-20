@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>0</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>1</isdefault>
+    <savedqueryid>{1b2d0290-abc1-4a33-8f9a-d1a76c6b5aa2}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="vp_employeename" select="1" icon="1" preview="1">
+        <row name="result" id="vp_employeeid">
+          <cell name="vp_employeename" width="300" />
+          <cell name="vp_employeeid1" width="150" />
+          <cell name="vp_emailaddress" width="150" />
+          <cell name="vp_phonenumber" width="150" />
+          <cell name="vp_department" width="150" />
+          <cell name="vp_managername" width="150" />
+          <cell name="vp_joiningdate" width="150" />
+          <cell name="vp_salary" width="150" />
+          <cell name="vp_employmentstatus" width="150" />
+          <cell name="vp_worklocation" width="150" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>0</querytype>
+    <fetchxml>
+      <fetch version="1.0" mapping="logical">
+        <entity name="vp_employee">
+          <attribute name="vp_employeeid" />
+          <attribute name="vp_employeename" />
+          <attribute name="createdon" />
+          <order attribute="vp_employeename" descending="false" />
+          <filter type="and">
+            <condition attribute="statecode" operator="eq" value="0" />
+          </filter>
+          <attribute name="vp_employeeid1" />
+          <attribute name="vp_emailaddress" />
+          <attribute name="vp_phonenumber" />
+          <attribute name="vp_department" />
+          <attribute name="vp_managername" />
+          <attribute name="vp_joiningdate" />
+          <attribute name="vp_salary" />
+          <attribute name="vp_employmentstatus" />
+          <attribute name="vp_worklocation" />
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.0</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Active Employee" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>

@@ -1,0 +1,30 @@
+<powerpagecomponent powerpagecomponentid="ebd384dd-4d7e-4a49-bd47-f1fbc85ab71a">
+  <content>{
+  "targetentitylogicalname": "pes_providerapplication",
+  "webform": "78b1cfa4-afb6-46d5-8d96-56ba749fea5e",
+  "formname": "Provider Application - Portal Intake Form",
+  "successmessage": "",
+  "movepreviouspermitted": false,
+  "mode": 100000000,
+  "maximumnooffiles": 5,
+  "containername": "",
+  "storageaccountname": "",
+  "attachfilelabel": "",
+  "attachfilestoragelocation": 756150000,
+  "attachfilemaxsize": null,
+  "type": 100000001,
+  "validationsummarylinksenabled": true,
+  "referencequerystringisprimarykey": true,
+  "hideformonsuccess": true,
+  "entitypermissionsenabled": true,
+  "nextstep": "c75f917c-503e-4e99-a9f5-0c06b68a510f"
+}</content>
+  <iscustomizable>1</iscustomizable>
+  <name>Enroll1</name>
+  <powerpagecomponenttype>20</powerpagecomponenttype>
+  <powerpagesiteid>
+    <powerpagesiteid>a9b0a41b-5591-42f8-bdbc-5a64b2597cfa</powerpagesiteid>
+  </powerpagesiteid>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</powerpagecomponent>
