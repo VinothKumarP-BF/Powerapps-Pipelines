@@ -2,7 +2,7 @@
   "ConnectionReferences": [
     {
       "LogicalName": "cnt_CR_Outlook",
-      "ConnectionId": "be35e00af23b42ff9ade7a29320ff7ed",
+      "ConnectionId": "786e0dad476d457ca31584cbe4e418cd",
       "ConnectorId": "/providers/Microsoft.PowerApps/apis/shared_office365"
     },
   ],
