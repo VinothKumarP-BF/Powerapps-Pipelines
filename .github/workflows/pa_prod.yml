@@ -29,7 +29,7 @@ jobs:
     - name: Export managed solution from DEV
       uses: microsoft/powerplatform-actions/export-solution@v1
       with:
-        environment-url: ${{ secrets.DEV_ENV_URL }}
+        environment-url: ${{ secrets.TEST_ENV_URL }}
         tenant-id: ${{ secrets.TENANT_ID }}
         app-id: ${{ secrets.CLIENT_ID }}
         client-secret: ${{ secrets.CLIENT_SECRET }}
