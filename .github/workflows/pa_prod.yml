@@ -1,0 +1,70 @@
+name: Power Platform Test to Prod
+
+on:
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    env:
+      SOLUTION_NAME: POC_ALM
+
+    steps:
+
+    - name: Checkout repo
+      uses: actions/checkout@v4
+
+    - name: Install Power Platform CLI
+      uses: microsoft/powerplatform-actions/actions-install@v1
+
+    #
+    # Export MANAGED solution from TEST
+    #
+    - name: Export managed solution from TEST
+      uses: microsoft/powerplatform-actions/export-solution@v1
+      with:
+        environment-url: ${{ secrets.DEV_ENV_URL }}
+        tenant-id: ${{ secrets.TENANT_ID }}
+        app-id: ${{ secrets.CLIENT_ID }}
+        client-secret: ${{ secrets.CLIENT_SECRET }}
+        solution-name: ${{ env.SOLUTION_NAME }}
+        solution-output-file: managed.zip
+        managed: true
+
+    #
+    # Generate deployment settings file
+    #
+    - name: Create deployment settings
+      run: |
+        pac auth create \
+          --environment ${{ secrets.PROD_ENV_URL }} \
+          --tenant ${{ secrets.TENANT_ID }} \
+          --applicationId ${{ secrets.CLIENT_ID }} \
+          --clientSecret ${{ secrets.CLIENT_SECRET }}
+
+        pac solution create-settings \
+          --solution-zip managed.zip \
+          --settings-file test-settings.json
+
+    #
+    # Optional - view settings file
+    #
+    - name: Display settings
+      run: cat test-settings.json
+
+    #
+    # Import managed solution into PROD
+    # using connection reference mappings
+    #
+    - name: Import solution to PROD
+      uses: microsoft/powerplatform-actions/import-solution@v1
+      with:
+        environment-url: ${{ secrets.PROD_ENV_URL }}
+        tenant-id: ${{ secrets.TENANT_ID }}
+        app-id: ${{ secrets.CLIENT_ID }}
+        client-secret: ${{ secrets.CLIENT_SECRET }}
+        solution-file: managed.zip
+        settings-file: test-settings.json
+        publish-changes: true
+        use-node-auth: true
