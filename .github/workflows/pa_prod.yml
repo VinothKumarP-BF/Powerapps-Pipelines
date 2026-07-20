@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      SOLUTION_NAME: Pipeline_Test
+      SOLUTION_NAME: POC_ALM
       DEPLOYMENT_SETTINGS_FILE: settings/test-settings.json
 
     steps:
@@ -125,7 +125,7 @@ jobs:
     - name: Import Solution to PROD
       uses: microsoft/powerplatform-actions/import-solution@v1
       with:
-        environment-url: ${{ secrets.PROD_ENV_URL }}
+        environment-url: ${{ secrets.TEST_ENV_URL }}
         tenant-id: ${{ secrets.TENANT_ID }}
         app-id: ${{ secrets.CLIENT_ID }}
         client-secret: ${{ secrets.CLIENT_SECRET }}
