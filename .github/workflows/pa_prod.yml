@@ -31,8 +31,8 @@ jobs:
         app-id: ${{ secrets.CLIENT_ID }}
         client-secret: ${{ secrets.CLIENT_SECRET }}
         solution-name: ${{ env.SOLUTION_NAME }}
-        solution-output-file: managed.zip
-        managed: true
+        solution-output-file: unmanaged.zip
+        managed: false
 
     #################################################
     # VERIFY SETTINGS FILE
@@ -65,7 +65,7 @@ jobs:
         tenant-id: ${{ secrets.TENANT_ID }}
         app-id: ${{ secrets.CLIENT_ID }}
         client-secret: ${{ secrets.CLIENT_SECRET }}
-        solution-file: managed.zip
+        solution-file: unmanaged.zip
         settings-file: ${{ env.DEPLOYMENT_SETTINGS_FILE }}
         publish-changes: true
         use-node-auth: true
