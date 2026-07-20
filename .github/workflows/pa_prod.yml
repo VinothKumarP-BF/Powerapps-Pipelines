@@ -1,4 +1,4 @@
-name: Test to Prod Deployment
+name: DEV to TEST Man Deployment
 
 on:
   workflow_dispatch:
@@ -26,7 +26,7 @@ jobs:
     - name: Export Managed Solution
       uses: microsoft/powerplatform-actions/export-solution@v1
       with:
-        environment-url: ${{ secrets.TEST_ENV_URL }}
+        environment-url: ${{ secrets.DEV_ENV_URL }}
         tenant-id: ${{ secrets.TENANT_ID }}
         app-id: ${{ secrets.CLIENT_ID }}
         client-secret: ${{ secrets.CLIENT_SECRET }}
@@ -58,10 +58,10 @@ jobs:
     # IMPORT SOLUTION
     #################################################
 
-    - name: Import Solution to PROD
+    - name: Import Solution to TEST
       uses: microsoft/powerplatform-actions/import-solution@v1
       with:
-        environment-url: ${{ secrets.PROD_ENV_URL }}
+        environment-url: ${{ secrets.TEST_ENV_URL }}
         tenant-id: ${{ secrets.TENANT_ID }}
         app-id: ${{ secrets.CLIENT_ID }}
         client-secret: ${{ secrets.CLIENT_SECRET }}
