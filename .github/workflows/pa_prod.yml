@@ -41,8 +41,8 @@ jobs:
         app-id: ${{ secrets.CLIENT_ID }}
         client-secret: ${{ secrets.CLIENT_SECRET }}
         solution-name: ${{ env.SOLUTION_NAME }}
-        solution-output-file: unmanaged.zip
-        managed: false
+        solution-output-file: managed.zip
+        managed: true
 
     #################################################
     # VERIFY DEPLOYMENT SETTINGS
@@ -68,9 +68,9 @@ jobs:
     - name: Unpack Solution
       uses: microsoft/powerplatform-actions/unpack-solution@v1
       with:
-        solution-file: unmanaged.zip
+        solution-file: managed.zip
         solution-folder: solutions/${{ env.SOLUTION_NAME }}
-        solution-type: Unmanaged
+        solution-type: Managed
 
     #################################################
     # CREATE BRANCH
@@ -129,7 +129,7 @@ jobs:
         tenant-id: ${{ secrets.TENANT_ID }}
         app-id: ${{ secrets.CLIENT_ID }}
         client-secret: ${{ secrets.CLIENT_SECRET }}
-        solution-file: unmanaged.zip
+        solution-file: managed.zip
         settings-file: ${{ env.DEPLOYMENT_SETTINGS_FILE }}
         publish-changes: true
         use-node-auth: true
