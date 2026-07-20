@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      SOLUTION_NAME: Pipeline_Test
+      SOLUTION_NAME: POC_ALM
 
     steps:
 
@@ -23,13 +23,13 @@ jobs:
       uses: microsoft/powerplatform-actions/actions-install@v1
 
     #########################################################
-    # EXPORT MANAGED SOLUTION FROM TEST
+    # EXPORT MANAGED SOLUTION FROM DEV
     #########################################################
 
-    - name: Export managed solution from TEST
+    - name: Export managed solution from DEV
       uses: microsoft/powerplatform-actions/export-solution@v1
       with:
-        environment-url: ${{ secrets.TEST_ENV_URL }}
+        environment-url: ${{ secrets.DEV_ENV_URL }}
         tenant-id: ${{ secrets.TENANT_ID }}
         app-id: ${{ secrets.CLIENT_ID }}
         client-secret: ${{ secrets.CLIENT_SECRET }}
