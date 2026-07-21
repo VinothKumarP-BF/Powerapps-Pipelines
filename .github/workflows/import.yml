@@ -23,7 +23,7 @@ jobs:
       with:
         solution-folder: solutions/Pipeline_Test
         solution-file: Pipeline_Test.zip
-        solution-type: Unmanaged
+        solution-type: Managed
 
     - name: Import Solution
       uses: microsoft/powerplatform-actions/import-solution@v1
