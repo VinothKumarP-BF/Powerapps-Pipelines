@@ -1,7 +1,18 @@
-- name: Checkout PAV Branch
-  uses: actions/checkout@v4
-  with:
-    ref: PowerApps_Versions
+name: Deploy Solution
+
+on:
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    #runs-on: [self-hosted, Linux, X64]
+
+    steps:
+        - name: Checkout PAV Branch
+          uses: actions/checkout@v4
+          with:
+            ref: PowerApps_Versions
 
 - name: Install Power Platform CLI
   uses: microsoft/powerplatform-actions/actions-install@v1
