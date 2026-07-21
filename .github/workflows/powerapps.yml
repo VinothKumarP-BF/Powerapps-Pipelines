@@ -1,86 +1,43 @@
-name: Power Platform CI/CD
-
+name: Deploy Managed Solution
+ 
 on:
   workflow_dispatch:
-
+ 
 jobs:
   deploy:
     runs-on: ubuntu-latest
-
-    env:
-      SOLUTION_NAME: Pipeline_Test
-
+ 
     steps:
-
-    # Checkout repo
-    - name: Checkout code
-      uses: actions/checkout@v4
-
-    # Install Power Platform CLI
-    - name: Install Power Platform CLI
-      uses: microsoft/powerplatform-actions/actions-install@v1
-
-    # WhoAmI (validates authentication)
-    # - name: Validate DEV connection
-    #   uses: microsoft/powerplatform-actions/who-am-i@v1
-    #   with:
-    #     environment-url: ${{ secrets.DEV_ENV_URL }}
-    #     tenant-id: ${{ secrets.TENANT_ID }}
-    #     app-id: ${{ secrets.CLIENT_ID }}
-    #     client-secret: ${{ secrets.CLIENT_SECRET }}
-
-    # Export solution from DEV
-    - name: Export solution
-      uses: microsoft/powerplatform-actions/export-solution@v1
-      with:
-        environment-url: ${{ secrets.DEV_ENV_URL }}
-        tenant-id: ${{ secrets.TENANT_ID }}
-        app-id: ${{ secrets.CLIENT_ID }}
-        client-secret: ${{ secrets.CLIENT_SECRET }}
-        solution-name: ${{ env.SOLUTION_NAME }}
-        solution-output-file: ${{ env.SOLUTION_NAME }}.zip
-        managed: false
-        # use-node-auth: true
-
-    # Unpack solution
-    - name: Unpack solution
-      uses: microsoft/powerplatform-actions/unpack-solution@v1
-      with:
-        solution-file: ${{ env.SOLUTION_NAME }}.zip
-        solution-folder: solutions/${{ env.SOLUTION_NAME }}
-        solution-type: Unmanaged
-
-    # Commit only solution files
-    - name: Commit solution to repo
-      run: |
-        git config user.name "github-actions"
-        git config user.email "actions@github.com"
-
-        git fetch origin
-
-        git checkout PowerApps_Versions || git checkout -b PowerApps_Versions
-        git reset --hard origin/PowerApps_Versions || echo "First run"
-
-        git add solutions/
-        git commit -m "Update solution $SOLUTION_NAME" || echo "No changes"
-
-        git push origin PowerApps_Versions
-
-    # Upload artifact
-    - name: Upload artifact
-      uses: actions/upload-artifact@v4
-      with:
-        name: solution_drop
-        path: ${{ env.SOLUTION_NAME }}.zip
-
-    # Import solution into TEST
-    - name: Import solution to TEST
-      uses: microsoft/powerplatform-actions/import-solution@v1
-      with:
-        environment-url: ${{ secrets.TEST_ENV_URL }}
-        tenant-id: ${{ secrets.TENANT_ID }}
-        app-id: ${{ secrets.CLIENT_ID }}
-        client-secret: ${{ secrets.CLIENT_SECRET }}
-        solution-file: ${{ env.SOLUTION_NAME }}.zip
-        publish-changes: true
-        use-node-auth: true
+ 
+      # Checkout repository
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          ref: PowerApps_Versions
+ 
+      # Install PAC CLI
+      - name: Install Power Platform CLI
+        uses: microsoft/powerplatform-actions/actions-install@v1
+ 
+      # Pack the unpacked solution from Git as a MANAGED solution
+      - name: Pack Managed Solution
+        uses: microsoft/powerplatform-actions/pack-solution@v1
+        with:
+          solution-folder: ./solutions/Pipeline_Test
+          solution-file: ./artifacts/Pipeline_Test_Managed.zip
+          solution-type: Managed
+ 
+      # Import Managed Solution
+      - name: Import Managed Solution
+        uses: microsoft/powerplatform-actions/import-solution@v1
+        with:
+          environment-url: ${{ secrets.TEST_ENV_URL }}
+          tenant-id: ${{ secrets.TENANT_ID }}
+          app-id: ${{ secrets.CLIENT_ID }}
+          client-secret: ${{ secrets.CLIENT_SECRET }}
+ 
+          solution-file: ./artifacts/Pipeline_Test_Managed.zip
+ 
+          publish-changes: true
+          overwrite-unmanaged-customizations: true
+          holding-solution: false
