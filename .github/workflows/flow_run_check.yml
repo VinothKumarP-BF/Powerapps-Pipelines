@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
 
 env:
-  PAC_CLI_VERSION: "latest"
+  PAC_CLI_VERSION: "2.9.3"
  
 jobs:
  
