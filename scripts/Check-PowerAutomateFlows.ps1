@@ -13,7 +13,7 @@ Write-Host ""
 $TenantId = $env:TENANT_ID
 $ClientId = $env:CLIENT_ID
 $ClientSecret = $env:CLIENT_SECRET
-$EnvironmentId = $env:DEV_ENV_ID
+$EnvironmentId = $env:ENVIRONMENT_ID
  
 # ============================================================
 # Validate inputs
@@ -32,7 +32,7 @@ if ([string]::IsNullOrWhiteSpace($ClientSecret)) {
 }
  
 if ([string]::IsNullOrWhiteSpace($EnvironmentId)) {
-    throw "DEV_ENV_ID is not configured."
+    throw "ENVIRONMENT_ID is not configured."
 }
  
 Write-Host "Tenant ID       : $TenantId"
