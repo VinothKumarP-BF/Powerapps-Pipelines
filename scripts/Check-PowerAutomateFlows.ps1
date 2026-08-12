@@ -90,7 +90,7 @@ $TokenResponse = Invoke-RestMethod `
 
 $AccessToken = $TokenResponse.access_token
 
-if (:IsNullOrWhiteSpace($AccessToken)) {
+if ([string]::IsNullOrWhiteSpace($AccessToken)) {
     throw "Failed to obtain access token."
 }
 
