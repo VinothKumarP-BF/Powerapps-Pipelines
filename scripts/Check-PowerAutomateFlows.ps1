@@ -32,7 +32,7 @@ if ([string]::IsNullOrWhiteSpace($ClientSecret)) {
 }
  
 if ([string]::IsNullOrWhiteSpace($EnvironmentId)) {
-    throw "ENVIRONMENT_ID is not configured."
+    throw "DEV_ENV_ID is not configured."
 }
  
 Write-Host "Tenant ID       : $TenantId"
