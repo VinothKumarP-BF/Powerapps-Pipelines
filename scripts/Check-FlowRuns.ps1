@@ -21,19 +21,19 @@ $SolutionName   = "POC_CR"
 # Validation
 # =================================================
 
-if (:IsNullOrWhiteSpace($EnvironmentUrl)) {
+if ([string]::IsNullOrWhiteSpace($EnvironmentUrl)) {
     throw "DEV_ENV_URL is not configured."
 }
 
-if (:IsNullOrWhiteSpace($TenantId)) {
+if ([string]::IsNullOrWhiteSpace($TenantId)) {
     throw "TENANT_ID is not configured."
 }
 
-if (:IsNullOrWhiteSpace($ClientId)) {
+if ([string]::IsNullOrWhiteSpace($ClientId)) {
     throw "CLIENT_ID is not configured."
 }
 
-if (:IsNullOrWhiteSpace($ClientSecret)) {
+if ([string]::IsNullOrWhiteSpace($ClientSecret)) {
     throw "CLIENT_SECRET is not configured."
 }
 
@@ -79,7 +79,7 @@ $TokenResponse = Invoke-RestMethod `
 
 $AccessToken = $TokenResponse.access_token
 
-if (:IsNullOrWhiteSpace($AccessToken)) {
+if ([string]::IsNullOrWhiteSpace($AccessToken)) {
     throw "Failed to obtain access token."
 }
 
