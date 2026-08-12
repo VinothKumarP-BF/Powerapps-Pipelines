@@ -2,6 +2,9 @@ name: Flow Health Check
  
 on:
   workflow_dispatch:
+
+env:
+  PAC_CLI_VERSION: "2.9.3"
  
 jobs:
  
@@ -13,8 +16,11 @@ jobs:
  
       - uses: actions/checkout@v4
  
-      - name: Install PAC
-        uses: microsoft/powerplatform-actions/actions-install@v1
+      - name: Install PAC CLI ${{ env.PAC_CLI_VERSION }}
+        shell: powershell
+        run: |
+          dotnet tool install --global Microsoft.PowerApps.CLI.Tool --version $env:PAC_CLI_VERSION
+          echo "$env:USERPROFILE\.dotnet\tools" | Out-File -FilePath $env:GITHUB_PATH -Append
  
       - name: Check flows
         shell: pwsh
