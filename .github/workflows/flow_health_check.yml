@@ -1,43 +1,27 @@
-name: Power Automate Flow Health Check
+name: Flow Health Check
  
 on:
   workflow_dispatch:
  
-  # Run every 5 minutes
-  schedule:
-    - cron: "*/5 * * * *"
- 
 jobs:
-  flow-health-check:
+ 
+  flow-check:
  
     runs-on: windows-latest
-    
+ 
     steps:
  
-      # ---------------------------------------------------------
-      # Step 1: Checkout repository
-      # ---------------------------------------------------------
-      - name: Checkout repository
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
  
-      # ---------------------------------------------------------
-      # Step 2: Check required tools
-      # ---------------------------------------------------------
-      - name: Check PowerShell
-        shell: bash
-        run: |
-          echo "Checking PowerShell..."
-          pwsh --version
+      - name: Install PAC
+        uses: microsoft/powerplatform-actions/actions-install@v1
  
-      # ---------------------------------------------------------
-      # Step 3: Run Power Automate Flow Health Check
-      # ---------------------------------------------------------
-      - name: Check Power Automate flows
+      - name: Check flows
         shell: pwsh
         env:
           TENANT_ID: ${{ secrets.TENANT_ID }}
           CLIENT_ID: ${{ secrets.CLIENT_ID }}
           CLIENT_SECRET: ${{ secrets.CLIENT_SECRET }}
-          ENVIRONMENT_ID: ${{ secrets.DEV_ENV_ID }}
+          DEV_ENV_URL: ${{ secrets.DEV_ENV_URL }}
         run: |
           ./scripts/Check-PowerAutomateFlows.ps1
