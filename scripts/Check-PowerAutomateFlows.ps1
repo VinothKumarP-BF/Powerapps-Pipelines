@@ -84,8 +84,8 @@ Write-Host ""
 # Step 2 - Call Power Platform Cloud Flows API
 # ============================================================
 
-$ApiUri = "https://api.powerplatform.com/powerautomate/environments/$EnvironmentId/cloudFlows?api-version=2024-10-01%22
- 
+$ApiUri = "https://api.powerplatform.com/powerautomate/environments/$EnvironmentId/cloudFlows?api-version=2024-10-01"
+
 Write-Host "Calling Power Platform Cloud Flows API..."
 Write-Host "API URL:"
 Write-Host $ApiUri
