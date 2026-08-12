@@ -14,7 +14,9 @@ $EnvironmentUrl = $env:DEV_ENV_URL
 $TenantId       = $env:TENANT_ID
 $ClientId       = $env:CLIENT_ID
 $ClientSecret   = $env:CLIENT_SECRET
-$SolutionName   = $env:SOLUTION_NAME
+
+# Set your solution unique name here
+$SolutionUniqueName = "POC_CR"
 
 # -------------------------------------------------
 # Validation
