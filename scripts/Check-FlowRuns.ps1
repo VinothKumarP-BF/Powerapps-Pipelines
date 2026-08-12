@@ -20,23 +20,23 @@ $SolutionName   = $env:SOLUTION_NAME
 # Validation
 # -------------------------------------------------
 
-if (:IsNullOrWhiteSpace($EnvironmentUrl)) {
+if ([string]::IsNullOrWhiteSpace($EnvironmentUrl)) {
     throw "DEV_ENV_URL is not configured."
 }
 
-if (:IsNullOrWhiteSpace($TenantId)) {
+if ([string]::IsNullOrWhiteSpace($TenantId)) {
     throw "TENANT_ID is not configured."
 }
 
-if (:IsNullOrWhiteSpace($ClientId)) {
+if ([string]::IsNullOrWhiteSpace($ClientId)) {
     throw "CLIENT_ID is not configured."
 }
 
-if (:IsNullOrWhiteSpace($ClientSecret)) {
+if ([string]::IsNullOrWhiteSpace($ClientSecret)) {
     throw "CLIENT_SECRET is not configured."
 }
 
-if (:IsNullOrWhiteSpace($SolutionName)) {
+if ([string]::IsNullOrWhiteSpace($SolutionName)) {
     throw "SOLUTION_NAME is not configured."
 }
 
