@@ -1,243 +1,249 @@
 $ErrorActionPreference = "Stop"
- 
+
 Write-Host ""
 Write-Host "================================================="
-Write-Host "Power Automate Flow Health Check"
+Write-Host "Power Platform Solution Flow Health Check"
 Write-Host "================================================="
 Write-Host ""
- 
-# =================================================
-# Environment details
-# =================================================
- 
+
+# -------------------------------------------------
+# Configuration
+# -------------------------------------------------
+
 $EnvironmentUrl = $env:DEV_ENV_URL
 $TenantId       = $env:TENANT_ID
 $ClientId       = $env:CLIENT_ID
 $ClientSecret   = $env:CLIENT_SECRET
- 
-if ([string]::IsNullOrWhiteSpace($EnvironmentUrl)) {
+
+# Solution Unique Name
+$SolutionUniqueName = "POC_CR"
+
+# -------------------------------------------------
+# Validate Inputs
+# -------------------------------------------------
+
+if (:IsNullOrWhiteSpace($EnvironmentUrl)) {
     throw "DEV_ENV_URL is not configured."
 }
- 
-if ([string]::IsNullOrWhiteSpace($TenantId)) {
+
+if (:IsNullOrWhiteSpace($TenantId)) {
     throw "TENANT_ID is not configured."
 }
- 
-if ([string]::IsNullOrWhiteSpace($ClientId)) {
+
+if (:IsNullOrWhiteSpace($ClientId)) {
     throw "CLIENT_ID is not configured."
 }
- 
-if ([string]::IsNullOrWhiteSpace($ClientSecret)) {
+
+if (:IsNullOrWhiteSpace($ClientSecret)) {
     throw "CLIENT_SECRET is not configured."
 }
- 
-# Remove trailing slash from environment URL
+
+if (:IsNullOrWhiteSpace($SolutionUniqueName)) {
+    throw "Solution unique name is not configured."
+}
+
 $EnvironmentUrl = $EnvironmentUrl.TrimEnd('/')
- 
-Write-Host "Environment: $EnvironmentUrl"
+
+Write-Host "Environment : $EnvironmentUrl"
+Write-Host "Solution    : $SolutionUniqueName"
 Write-Host ""
- 
-# =================================================
-# Step 1 - Authenticate using PAC
-# =================================================
- 
-Write-Host "Authenticating..."
- 
+
+# -------------------------------------------------
+# Authenticate using PAC CLI
+# -------------------------------------------------
+
+Write-Host "Authenticating with PAC CLI..."
+
 pac auth create `
     --url $EnvironmentUrl `
     --applicationId $ClientId `
     --clientSecret $ClientSecret `
     --tenant $TenantId
- 
+
 if ($LASTEXITCODE -ne 0) {
-    throw "PAC Authentication failed."
+    throw "PAC authentication failed."
 }
- 
+
 Write-Host "Authentication successful."
 Write-Host ""
- 
-# =================================================
-# Step 2 - Get PAC authentication token
-# =================================================
- 
-Write-Host "Getting authentication token..."
- 
-$authInfo = pac auth list
- 
-if ($LASTEXITCODE -ne 0) {
-    throw "Unable to retrieve PAC authentication information."
-}
- 
-Write-Host "PAC authentication profile is available."
-Write-Host ""
- 
-# =================================================
-# Step 3 - Query Dataverse
-# =================================================
- 
-Write-Host "Getting Power Automate flows..."
- 
-$select = "name,statecode,statuscode,workflowid,category"
-$filter = "category eq 5"
- 
-$ApiUrl = "$EnvironmentUrl/api/data/v9.2/workflows?`$select=$select&`$filter=$filter"
- 
-Write-Host "Dataverse API:"
-Write-Host $ApiUrl
-Write-Host ""
- 
-# =================================================
-# Step 4 - Get access token for Dataverse
-# =================================================
- 
+
+# -------------------------------------------------
+# Request Dataverse Token
+# -------------------------------------------------
+
 Write-Host "Requesting Dataverse access token..."
- 
+
 $TokenUrl = "https://login.microsoftonline.com/$TenantId/oauth2/v2.0/token"
- 
+
 $TokenBody = @{
     client_id     = $ClientId
     client_secret = $ClientSecret
     scope         = "$EnvironmentUrl/.default"
     grant_type    = "client_credentials"
 }
- 
+
 try {
- 
+
     $TokenResponse = Invoke-RestMethod `
-        -Uri $TokenUrl `
         -Method Post `
+        -Uri $TokenUrl `
         -ContentType "application/x-www-form-urlencoded" `
         -Body $TokenBody
- 
+
 }
 catch {
- 
-    Write-Host ""
-    Write-Host "================================================="
-    Write-Host "TOKEN REQUEST FAILED"
-    Write-Host "================================================="
-    Write-Host $_.Exception.Message
- 
-    exit 1
+
+    throw "Failed to acquire Dataverse access token. $($_.Exception.Message)"
 }
- 
+
 $AccessToken = $TokenResponse.access_token
- 
-if ([string]::IsNullOrWhiteSpace($AccessToken)) {
-    throw "Dataverse access token was not returned."
+
+if (:IsNullOrWhiteSpace($AccessToken)) {
+    throw "Access token was not returned."
 }
- 
-Write-Host "Dataverse access token obtained successfully."
+
+Write-Host "Access token acquired."
 Write-Host ""
- 
-# =================================================
-# Step 5 - Call Dataverse Web API
-# =================================================
- 
+
+# -------------------------------------------------
+# Headers
+# -------------------------------------------------
+
 $Headers = @{
-    Authorization = "Bearer $AccessToken"
-    Accept        = "application/json"
+    Authorization      = "Bearer $AccessToken"
+    Accept             = "application/json"
     "OData-MaxVersion" = "4.0"
     "OData-Version"    = "4.0"
 }
- 
-try {
- 
-    $Response = Invoke-RestMethod `
-        -Uri $ApiUrl `
-        -Method Get `
-        -Headers $Headers
- 
+
+# -------------------------------------------------
+# Retrieve Solution
+# -------------------------------------------------
+
+Write-Host "Retrieving solution..."
+
+$SolutionUrl = "$EnvironmentUrl/api/data/v9.2/solutions?`$select=solutionid,friendlyname,uniquename&`$filter=uniquename eq '$SolutionUniqueName'"
+
+$SolutionResponse = Invoke-RestMethod `
+    -Method Get `
+    -Uri $SolutionUrl `
+    -Headers $Headers
+
+if ($SolutionResponse.value.Count -eq 0) {
+    throw "Solution '$SolutionUniqueName' was not found."
 }
-catch {
- 
-    Write-Host ""
-    Write-Host "================================================="
-    Write-Host "DATAVERSE API ERROR"
-    Write-Host "================================================="
- 
-    Write-Host ""
-    Write-Host "Error:"
-    Write-Host $_.Exception.Message
- 
-    if ($_.ErrorDetails.Message) {
-        Write-Host ""
-        Write-Host "API Response:"
-        Write-Host $_.ErrorDetails.Message
-    }
- 
-    Write-Host ""
-    Write-Host "================================================="
- 
-    exit 1
-}
- 
-# =================================================
-# Step 6 - Process flows
-# =================================================
- 
-$Flows = @($Response.value)
- 
+
+$Solution = $SolutionResponse.value[0]
+$SolutionId = $Solution.solutionid
+
+Write-Host "Solution Found:"
+Write-Host "Name       : $($Solution.friendlyname)"
+Write-Host "Unique Name: $($Solution.uniquename)"
+Write-Host "SolutionId : $SolutionId"
+Write-Host ""
+
+# -------------------------------------------------
+# Retrieve Workflow Components
+# ComponentType 29 = Workflow
+# -------------------------------------------------
+
+Write-Host "Retrieving solution components..."
+
+$ComponentUrl = "$EnvironmentUrl/api/data/v9.2/solutioncomponents?`$select=objectid,componenttype&`$filter=componenttype eq 29"
+
+$ComponentResponse = Invoke-RestMethod `
+    -Method Get `
+    -Uri $ComponentUrl `
+    -Headers $Headers
+
+$FlowCount = 0
+$EnabledCount = 0
+$DisabledCount = 0
+
 Write-Host ""
 Write-Host "================================================="
-Write-Host "FLOW STATUS"
+Write-Host "FLOW DETAILS"
 Write-Host "================================================="
 Write-Host ""
- 
-Write-Host "Total Flows Found: $($Flows.Count)"
-Write-Host ""
- 
-$disabled = 0
-$enabled  = 0
- 
-foreach ($flow in $Flows) {
- 
-    if ($flow.statecode -eq 1) {
-        $state = "Enabled"
-        $enabled++
+
+foreach ($component in $ComponentResponse.value) {
+
+    $WorkflowId = $component.objectid
+
+    try {
+
+        $FlowUrl = "$EnvironmentUrl/api/data/v9.2/workflows($WorkflowId)?`$select=name,workflowid,statecode,statuscode,category"
+
+        $Flow = Invoke-RestMethod `
+            -Method Get `
+            -Uri $FlowUrl `
+            -Headers $Headers
+
+        # Category 5 = Cloud Flow
+        if ($Flow.category -ne 5) {
+            continue
+        }
+
+        $FlowCount++
+
+        if ($Flow.statecode -eq 1) {
+
+            $State = "Enabled"
+            $EnabledCount++
+
+        }
+        else {
+
+            $State = "Disabled"
+            $DisabledCount++
+
+            Write-Host "##[warning]Flow '$($Flow.name)' is disabled."
+        }
+
+        Write-Host "-----------------------------------------"
+        Write-Host "Flow Name   : $($Flow.name)"
+        Write-Host "Workflow Id : $($Flow.workflowid)"
+        Write-Host "State       : $State"
+        Write-Host "State Code  : $($Flow.statecode)"
+        Write-Host "Status Code : $($Flow.statuscode)"
     }
-    else {
-        $state = "Disabled"
-        $disabled++
+    catch {
+
+        Write-Host "##[warning]Unable to retrieve workflow details for $WorkflowId"
     }
- 
-    Write-Host "------------------------------------"
-    Write-Host "Name      : $($flow.name)"
-    Write-Host "State     : $state"
-    Write-Host "StateCode : $($flow.statecode)"
-    Write-Host "StatusCode: $($flow.statuscode)"
-    Write-Host "WorkflowId: $($flow.workflowid)"
 }
- 
-# =================================================
-# Step 7 - Summary
-# =================================================
- 
+
+# -------------------------------------------------
+# Summary
+# -------------------------------------------------
+
 Write-Host ""
 Write-Host "================================================="
 Write-Host "FLOW HEALTH SUMMARY"
 Write-Host "================================================="
 Write-Host ""
- 
-Write-Host "Total Flows   : $($Flows.Count)"
-Write-Host "Enabled Flows : $enabled"
-Write-Host "Disabled Flows: $disabled"
- 
+
+Write-Host "Total Cloud Flows : $FlowCount"
+Write-Host "Enabled Flows     : $EnabledCount"
+Write-Host "Disabled Flows    : $DisabledCount"
+
 Write-Host ""
- 
-if ($disabled -gt 0) {
- 
-    Write-Host "WARNING: Disabled flows were detected."
- 
-    throw "$disabled flow(s) are disabled."
- 
+
+if ($DisabledCount -gt 0) {
+
+    Write-Host "##[warning]Disabled flows were detected."
+    Write-Host "Health check completed successfully."
+
 }
 else {
- 
-    Write-Host "SUCCESS: All flows are enabled."
+
+    Write-Host "All flows are enabled."
 }
- 
+
 Write-Host ""
 Write-Host "================================================="
-Write-Host "Flow health check completed."
+Write-Host "Flow health check completed successfully."
 Write-Host "================================================="
+Write-Host ""
+
+exit 0
