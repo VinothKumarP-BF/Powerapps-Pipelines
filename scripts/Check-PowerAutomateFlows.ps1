@@ -63,73 +63,76 @@ Write-Host "Environment ID  : $EnvironmentId"
 Write-Host ""
  
 # ============================================================
-
 # Step 3 - Get Microsoft Entra access token
-
 # ============================================================
  
 Write-Host "Getting Power Platform access token..."
  
 $TokenUri = "https://login.microsoftonline.com/$TenantId/oauth2/v2.0/token"
  
+Write-Host "Token endpoint:"
+Write-Host $TokenUri
+Write-Host ""
+ 
 $TokenBody = @{
-
     client_id     = $ClientId
-
     client_secret = $ClientSecret
-
     scope         = "https://api.powerplatform.com/.default"
-
     grant_type    = "client_credentials"
-
 }
  
 try {
  
-    $TokenResponse = Invoke-RestMethod `
-
-        -Uri $TokenUri `
-
-        -Method Post `
-
-        -ContentType "application/x-www-form-urlencoded" `
-
-        -Body $TokenBody
+    $TokenResponse = Invoke-RestMethod -Uri $TokenUri -Method Post -ContentType "application/x-www-form-urlencoded" -Body $TokenBody
  
 }
-
 catch {
  
     Write-Host ""
-
     Write-Host "============================================================"
-
     Write-Host "             TOKEN REQUEST FAILED"
-
     Write-Host "============================================================"
- 
-    Write-Host "Error:"
-
-    Write-Host $_.Exception.Message
  
     Write-Host ""
-
+    Write-Host "Exception:"
+    Write-Host $_.Exception.Message
+ 
+    if ($null -ne $_.Exception.Response) {
+ 
+        Write-Host ""
+        Write-Host "HTTP Status Code:"
+ 
+        try {
+            Write-Host ([int]$_.Exception.Response.StatusCode)
+        }
+        catch {
+            Write-Host "Unable to determine HTTP status code."
+        }
+ 
+        Write-Host ""
+        Write-Host "HTTP Status Description:"
+ 
+        try {
+            Write-Host $_.Exception.Response.StatusDescription
+        }
+        catch {
+            Write-Host "Unable to determine HTTP status description."
+        }
+    }
+ 
+    Write-Host ""
     Write-Host "============================================================"
  
     exit 1
-
 }
  
 $AccessToken = $TokenResponse.access_token
  
 if ([string]::IsNullOrWhiteSpace($AccessToken)) {
-
     throw "Access token was not returned."
-
 }
  
 Write-Host "Access token obtained successfully."
-
 Write-Host ""
  
 # ============================================================
