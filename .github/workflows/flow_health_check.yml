@@ -1,0 +1,43 @@
+name: Power Automate Flow Health Check
+ 
+on:
+  workflow_dispatch:
+ 
+  # Run every 5 minutes
+  schedule:
+    - cron: "*/5 * * * *"
+ 
+jobs:
+  flow-health-check:
+ 
+    runs-on: ubuntu-latest
+    
+    steps:
+ 
+      # ---------------------------------------------------------
+      # Step 1: Checkout repository
+      # ---------------------------------------------------------
+      - name: Checkout repository
+        uses: actions/checkout@v4
+ 
+      # ---------------------------------------------------------
+      # Step 2: Check required tools
+      # ---------------------------------------------------------
+      - name: Check PowerShell
+        shell: bash
+        run: |
+          echo "Checking PowerShell..."
+          pwsh --version
+ 
+      # ---------------------------------------------------------
+      # Step 3: Run Power Automate Flow Health Check
+      # ---------------------------------------------------------
+      - name: Check Power Automate flows
+        shell: pwsh
+        env:
+          TENANT_ID: ${{ secrets.TENANT_ID }}
+          CLIENT_ID: ${{ secrets.CLIENT_ID }}
+          CLIENT_SECRET: ${{ secrets.CLIENT_SECRET }}
+          ENVIRONMENT_ID: ${{ secrets.DEV_ENV_ID }}
+        run: |
+          ./scripts/Check-PowerAutomateFlows.ps1
