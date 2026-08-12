@@ -83,18 +83,17 @@ Write-Host "================================================="
 # Get Flows From Solution
 # -------------------------------------------------
 
-try {
+Write-Host "Getting flows..."
 
-    $flowsJson = pac flow list `
-        --solution $SolutionName `
-        --json
+$flowsJson = pac flow list --solution $SolutionName --json 2>&1
 
-    $Flows = $flowsJson | ConvertFrom-Json
+Write-Host $flowsJson
+
+if ($LASTEXITCODE -ne 0) {
+throw "PAC flow list command failed."
 }
-catch {
 
-    throw "Unable to retrieve flows from solution '$SolutionName'."
-}
+$Flows = $flowsJson | ConvertFrom-Json
 
 if (-not $Flows) {
 
