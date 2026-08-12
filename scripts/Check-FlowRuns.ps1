@@ -16,7 +16,7 @@ $ClientId       = $env:CLIENT_ID
 $ClientSecret   = $env:CLIENT_SECRET
 
 # Set your solution unique name here
-$SolutionUniqueName = "POC_CR"
+$SolutionName = "POC_CR"
 
 # -------------------------------------------------
 # Validation
