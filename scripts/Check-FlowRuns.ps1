@@ -207,7 +207,7 @@ foreach ($WorkflowId in $WorkflowIds) {
 
             $FlowAccessToken = $FlowTokenResponse.access_token
 
-            if (:IsNullOrWhiteSpace($FlowAccessToken)) {
+            if ([string]::IsNullOrWhiteSpace($FlowAccessToken)) {
                 throw "Unable to obtain Power Automate access token."
             }
 
