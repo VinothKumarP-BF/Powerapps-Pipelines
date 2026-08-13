@@ -1,0 +1,7 @@
+{
+  "EnvironmentId": "24b559b0-ad76-ebfe-8eeb-07695bb8f305",
+  "Flows": {
+    "PES Submit Provider Application On Create": "afeb70e3-0b6f-f111-ab0d-000d3a3ac8b3",
+    "PES Validate Provider Application On Submit": "d2f98c0b-1d6f-f111-ab0d-000d3a3ac8b3"
+  }
+}
