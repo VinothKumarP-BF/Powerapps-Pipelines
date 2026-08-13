@@ -1,6 +1,4 @@
-$ErrorActionPreference = "Continue"
-
-$EnvironmentId = "24b559b0-ad76-ebfe-8eeb-07695bb8f305"
+$ErrorActionPreference = "Stop"
 
 Write-Host ""
 Write-Host "==============================================="
@@ -9,30 +7,58 @@ Write-Host "==============================================="
 Write-Host ""
 
 # =================================================
-# Get Token
+# CONFIGURATION
 # =================================================
 
+$TenantId       = $env:TENANT_ID
+$ClientId       = $env:CLIENT_ID
+$ClientSecret   = $env:CLIENT_SECRET
+
+$EnvironmentId = "24b559b0-ad76-ebfe-8eeb-07695bb8f305"
+
+# =================================================
+# VALIDATION
+# =================================================
+
+if (:IsNullOrWhiteSpace($TenantId)) {
+    throw "TENANT_ID is missing"
+}
+
+if (:IsNullOrWhiteSpace($ClientId)) {
+    throw "CLIENT_ID is missing"
+}
+
+if (:IsNullOrWhiteSpace($ClientSecret)) {
+    throw "CLIENT_SECRET is missing"
+}
+
+# =================================================
+# GET FLOW TOKEN
+# =================================================
+
+Write-Host "Getting Flow access token..."
+
 $TokenBody = @{
-    client_id     = $env:CLIENT_ID
-    client_secret = $env:CLIENT_SECRET
+    client_id     = $ClientId
+    client_secret = $ClientSecret
     scope         = "https://service.flow.microsoft.com/.default"
     grant_type    = "client_credentials"
 }
 
 $TokenResponse = Invoke-RestMethod `
     -Method Post `
-    -Uri "https://login.microsoftonline.com/$env:TENANT_ID/oauth2/v2.0/token" `
+    -Uri "https://login.microsoftonline.com/$TenantId/oauth2/v2.0/token" `
     -ContentType "application/x-www-form-urlencoded" `
     -Body $TokenBody
 
 $AccessToken = $TokenResponse.access_token
 
-Write-Host "Token Retrieved : $(-not [string]::IsNullOrWhiteSpace($AccessToken))"
+Write-Host "Token Retrieved : $(-not :IsNullOrWhiteSpace($AccessToken))"
 Write-Host "Token Length    : $($AccessToken.Length)"
 Write-Host ""
 
 # =================================================
-# HEADERS
+# BUILD HEADERS
 # =================================================
 
 $Headers = @{
@@ -41,29 +67,15 @@ $Headers = @{
     "x-ms-client-scope" = "admin"
 }
 
-Write-Host "Headers Created"
-Write-Host ""
-
 # =================================================
-# API URL
+# CALL FLOW API
 # =================================================
 
-$FlowUrl = "$EnvironmentUrl/api/data/v9.2/workflows($WorkflowId)"
+$FlowsUrl = "https://api.flow.microsoft.com/providers/Microsoft.ProcessSimple/environments/$EnvironmentId/flows?api-version=2016-11-01"
 
-$Flow = Invoke-RestMethod `
-    -Method Get `
-    -Uri $FlowUrl `
-    -Headers $Headers
-
-$Flow | ConvertTo-Json -Depth 100
-
-Write-Host "Calling:"
+Write-Host "Calling API:"
 Write-Host $FlowsUrl
 Write-Host ""
-
-# =================================================
-# CALL API
-# =================================================
 
 try {
 
@@ -78,15 +90,9 @@ try {
     Write-Host "==============================================="
     Write-Host ""
 
-    Write-Host "Flow Count:"
-    Write-Host $Response.value.Count
-
-    Write-Host ""
-
-    foreach ($Flow in ($Response.value | Select-Object -First 10)) {
+    foreach ($Flow in ($Response.value | Select-Object -First 20)) {
 
         Write-Host "----------------------------------------"
-
         Write-Host "Flow Id      : $($Flow.name)"
 
         if ($Flow.properties.displayName) {
@@ -95,12 +101,6 @@ try {
 
         Write-Host "----------------------------------------"
     }
-
-    Write-Host ""
-    Write-Host "RAW RESPONSE"
-    Write-Host "==============================================="
-
-    $Response | ConvertTo-Json -Depth 20
 }
 catch {
 
@@ -110,13 +110,11 @@ catch {
     Write-Host "==============================================="
     Write-Host ""
 
-    Write-Host "Exception Message:"
+    Write-Host "Exception:"
     Write-Host $_.Exception.Message
-
     Write-Host ""
 
     if ($_.ErrorDetails.Message) {
-
         Write-Host "Error Details:"
         Write-Host $_.ErrorDetails.Message
     }
@@ -124,7 +122,6 @@ catch {
     Write-Host ""
 
     if ($_.Exception.Response) {
-
         Write-Host "Status Code:"
         Write-Host $_.Exception.Response.StatusCode
     }
