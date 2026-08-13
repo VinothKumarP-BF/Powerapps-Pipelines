@@ -20,15 +20,15 @@ $EnvironmentId = "24b559b0-ad76-ebfe-8eeb-07695bb8f305"
 # VALIDATION
 # =================================================
 
-if (:IsNullOrWhiteSpace($TenantId)) {
+if ([string]::IsNullOrWhiteSpace($TenantId)) {
     throw "TENANT_ID is missing"
 }
 
-if (:IsNullOrWhiteSpace($ClientId)) {
+if ([string]::IsNullOrWhiteSpace($ClientId)) {
     throw "CLIENT_ID is missing"
 }
 
-if (:IsNullOrWhiteSpace($ClientSecret)) {
+if ([string]::IsNullOrWhiteSpace($ClientSecret)) {
     throw "CLIENT_SECRET is missing"
 }
 
