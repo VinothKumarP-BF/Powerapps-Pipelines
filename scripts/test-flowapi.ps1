@@ -48,7 +48,14 @@ Write-Host ""
 # API URL
 # =================================================
 
-$FlowsUrl = "https://api.flow.microsoft.com/providers/Microsoft.ProcessSimple/environments/$EnvironmentId/flows?api-version=2016-11-01"
+$FlowUrl = "$EnvironmentUrl/api/data/v9.2/workflows($WorkflowId)"
+
+$Flow = Invoke-RestMethod `
+    -Method Get `
+    -Uri $FlowUrl `
+    -Headers $Headers
+
+$Flow | ConvertTo-Json -Depth 100
 
 Write-Host "Calling:"
 Write-Host $FlowsUrl
