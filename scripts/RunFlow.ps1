@@ -18,6 +18,15 @@ $ClientSecret   = $env:CLIENT_SECRET
 $SolutionName   = "POC_Solution"
 
 # =================================================
+# Flow Name -> Cloud Flow Id Mapping
+# =================================================
+$EnvironmentId = "24b559b0-ad76-ebfe-8eeb-07695bb8f305"
+$FlowMappings = @{
+    "PES Submit Provider Application On Create" = "afeb70e3-0b6f-f111-ab0d-000d3a3ac8b3"
+    "PES Validate Provider Application On Submit" = "d2f98c0b-1d6f-f111-ab0d-000d3a3ac8b3"
+}
+
+# =================================================
 # Validation
 # =================================================
 
@@ -188,17 +197,16 @@ foreach ($WorkflowId in $WorkflowIds) {
 
         try {
 
-            # -------------------------------------------------
-            # IMPORTANT
-            # Replace these two values for initial testing
-            # -------------------------------------------------
+            if ($FlowMappings.ContainsKey($Flow.name)) {
 
-            $EnvironmentId = "24b559b0-ad76-ebfe-8eeb-07695bb8f305"
-            $CloudFlowId   = "d2f98c0b-1d6f-f111-ab0d-000d3a3ac8b3"
+                $CloudFlowId = $FlowMappings[$Flow.name]
 
-            # -------------------------------------------------
-            # Get Power Automate Token
-            # -------------------------------------------------
+            }
+            else {
+
+                Write-Host "##[warning]No Cloud Flow Id mapping found for $($Flow.name)"
+                continue
+            }
 
             $FlowTokenBody = @{
                 client_id     = $ClientId
@@ -216,17 +224,13 @@ foreach ($WorkflowId in $WorkflowIds) {
             $FlowAccessToken = $FlowTokenResponse.access_token
 
             if ([string]::IsNullOrWhiteSpace($FlowAccessToken)) {
-                throw "Unable to obtain Power Automate access token."
+                throw "Unable to obtain Power Automate token."
             }
 
             $RunHeaders = @{
                 Authorization = "Bearer $FlowAccessToken"
                 Accept        = "application/json"
             }
-
-            # -------------------------------------------------
-            # Get Flow Runs
-            # -------------------------------------------------
 
             $RunsUrl = "https://api.flow.microsoft.com/providers/Microsoft.ProcessSimple/environments/$EnvironmentId/flows/$CloudFlowId/runs?api-version=2016-11-01"
 
@@ -246,7 +250,7 @@ foreach ($WorkflowId in $WorkflowIds) {
             }
             else {
 
-                foreach ($Run in $RunsResponse.value) {
+                foreach ($Run in ($RunsResponse.value | Select-Object -First 10)) {
 
                     $RunStatus = $Run.properties.status
 
@@ -265,19 +269,16 @@ foreach ($WorkflowId in $WorkflowIds) {
                     Write-Host "----------------------------------------"
                 }
             }
-
         }
         catch {
 
-            Write-Host ""
-            Write-Host "##[warning]Unable to retrieve run history."
+            Write-Host "##[warning]Unable to retrieve run history for $($Flow.name)"
             Write-Host $_.Exception.Message
 
             if ($_.ErrorDetails.Message) {
                 Write-Host $_.ErrorDetails.Message
             }
         }
-
     }
     catch {
 
