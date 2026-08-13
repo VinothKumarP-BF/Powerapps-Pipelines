@@ -15,7 +15,7 @@ $TenantId       = $env:TENANT_ID
 $ClientId       = $env:CLIENT_ID
 $ClientSecret   = $env:CLIENT_SECRET
 
-$SolutionName   = "POC_CR"
+$SolutionName   = "POC_Solution"
 
 # =================================================
 # Validation
@@ -116,7 +116,7 @@ Write-Host ""
 # Get Workflow Components
 # =================================================
 
-$ComponentUrl = "$EnvironmentUrl/api/data/v9.2/solutioncomponents?`$select=objectid,componenttype&`$filter=componenttype eq 29"
+$ComponentUrl = "$EnvironmentUrl/api/data/v9.2/solutioncomponents?`$select=objectid,componenttype,_solutionid_value&`$filter=_solutionid_value eq $SolutionId and componenttype eq 29"
 
 $ComponentResponse = Invoke-RestMethod `
     -Method Get `
@@ -124,6 +124,14 @@ $ComponentResponse = Invoke-RestMethod `
     -Headers $Headers
 
 $WorkflowIds = @($ComponentResponse.value | Select-Object -ExpandProperty objectid)
+
+Write-Host ""
+Write-Host "Workflows Found In Solution : $($WorkflowIds.Count)"
+Write-Host ""
+
+foreach ($id in $WorkflowIds) {
+    Write-Host $id
+}
 
 Write-Host ""
 Write-Host "================================================="
@@ -166,30 +174,100 @@ foreach ($WorkflowId in $WorkflowIds) {
         Write-Host "State       : $State"
         Write-Host "----------------------------------------"
 
-        #
+        # =================================================
         # Run History Section
-        #
-        # NOTE:
-        # Dataverse workflowid is NOT the same as Flow API flow id.
-        # This query attempts to find run data when exposed.
-        #
+        # =================================================
 
         try {
 
-            $RunUrl = "$EnvironmentUrl/api/data/v9.2/workflows($WorkflowId)"
+            # -------------------------------------------------
+            # IMPORTANT
+            # Replace these two values for initial testing
+            # -------------------------------------------------
 
-            $RunResponse = Invoke-RestMethod `
+            $EnvironmentId = "24b559b0-ad76-ebfe-8eeb-07695bb8f305"
+            $CloudFlowId   = "d2f98c0b-1d6f-f111-ab0d-000d3a3ac8b3"
+
+            # -------------------------------------------------
+            # Get Power Automate Token
+            # -------------------------------------------------
+
+            $FlowTokenBody = @{
+                client_id     = $ClientId
+                client_secret = $ClientSecret
+                scope         = "https://service.flow.microsoft.com/.default"
+                grant_type    = "client_credentials"
+            }
+
+            $FlowTokenResponse = Invoke-RestMethod `
+                -Method Post `
+                -Uri "https://login.microsoftonline.com/$TenantId/oauth2/v2.0/token" `
+                -ContentType "application/x-www-form-urlencoded" `
+                -Body $FlowTokenBody
+
+            $FlowAccessToken = $FlowTokenResponse.access_token
+
+            if (:IsNullOrWhiteSpace($FlowAccessToken)) {
+                throw "Unable to obtain Power Automate access token."
+            }
+
+            $RunHeaders = @{
+                Authorization = "Bearer $FlowAccessToken"
+                Accept        = "application/json"
+            }
+
+            # -------------------------------------------------
+            # Get Flow Runs
+            # -------------------------------------------------
+
+            $RunsUrl = "https://api.flow.microsoft.com/providers/Microsoft.ProcessSimple/environments/$EnvironmentId/flows/$CloudFlowId/runs?api-version=2016-11-01"
+
+            Write-Host ""
+            Write-Host "Recent Runs"
+            Write-Host "----------------------------------------"
+
+            $RunsResponse = Invoke-RestMethod `
                 -Method Get `
-                -Uri $RunUrl `
-                -Headers $Headers
+                -Uri $RunsUrl `
+                -Headers $RunHeaders
 
-            Write-Host "Run history retrieval requires Flow API identifiers."
-            Write-Host "Workflow retrieved successfully."
+            if (-not $RunsResponse.value) {
+
+                Write-Host "No run history returned."
+
+            }
+            else {
+
+                foreach ($Run in $RunsResponse.value) {
+
+                    $RunStatus = $Run.properties.status
+
+                    Write-Host "Run Id      : $($Run.name)"
+                    Write-Host "Status      : $RunStatus"
+                    Write-Host "Start Time  : $($Run.properties.startTime)"
+                    Write-Host "End Time    : $($Run.properties.endTime)"
+
+                    if ($RunStatus -eq "Failed") {
+
+                        $FailedRuns++
+
+                        Write-Host "##[warning]FAILED RUN DETECTED"
+                    }
+
+                    Write-Host "----------------------------------------"
+                }
+            }
 
         }
         catch {
 
-            Write-Host "Unable to retrieve run details."
+            Write-Host ""
+            Write-Host "##[warning]Unable to retrieve run history."
+            Write-Host $_.Exception.Message
+
+            if ($_.ErrorDetails.Message) {
+                Write-Host $_.ErrorDetails.Message
+            }
         }
 
     }
