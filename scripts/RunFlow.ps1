@@ -154,6 +154,14 @@ foreach ($WorkflowId in $WorkflowIds) {
             -Uri $FlowUrl `
             -Headers $Headers
 
+        Write-Host ""
+        Write-Host "FLOW RAW DATA"
+        Write-Host "================================"
+
+        $Flow | ConvertTo-Json -Depth 20
+
+        Write-Host "================================"
+
         if ($Flow.category -ne 5) {
             continue
         }
