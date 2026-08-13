@@ -53,7 +53,7 @@ $TokenResponse = Invoke-RestMethod `
 
 $AccessToken = $TokenResponse.access_token
 
-Write-Host "Token Retrieved : $(-not :IsNullOrWhiteSpace($AccessToken))"
+Write-Host "Token Retrieved : $(-not [string]::IsNullOrWhiteSpace($AccessToken))"
 Write-Host "Token Length    : $($AccessToken.Length)"
 Write-Host ""
 
