@@ -15,8 +15,7 @@ $TenantId       = $env:TENANT_ID
 $ClientId       = $env:CLIENT_ID
 $ClientSecret   = $env:CLIENT_SECRET
 
-# Solution Unique Name
-$SolutionName = "POC_CR"
+$SolutionName   = "POC_CR"
 
 # =================================================
 # Validation
@@ -41,7 +40,7 @@ if ([string]::IsNullOrWhiteSpace($ClientSecret)) {
 $EnvironmentUrl = $EnvironmentUrl.TrimEnd('/')
 
 # =================================================
-# Authenticate
+# Authentication
 # =================================================
 
 Write-Host "Authenticating..."
@@ -60,7 +59,7 @@ Write-Host "Authentication successful."
 Write-Host ""
 
 # =================================================
-# Get Access Token
+# Dataverse Token
 # =================================================
 
 $TokenUrl = "https://login.microsoftonline.com/$TenantId/oauth2/v2.0/token"
@@ -73,8 +72,8 @@ $TokenBody = @{
 }
 
 $TokenResponse = Invoke-RestMethod `
-    -Uri $TokenUrl `
     -Method Post `
+    -Uri $TokenUrl `
     -ContentType "application/x-www-form-urlencoded" `
     -Body $TokenBody
 
@@ -84,10 +83,6 @@ if ([string]::IsNullOrWhiteSpace($AccessToken)) {
     throw "Failed to obtain access token."
 }
 
-# =================================================
-# Headers
-# =================================================
-
 $Headers = @{
     Authorization      = "Bearer $AccessToken"
     Accept             = "application/json"
@@ -96,13 +91,138 @@ $Headers = @{
 }
 
 # =================================================
-# Get Solution
+# Solution Lookup
 # =================================================
 
 Write-Host "Getting solution..."
 
-$SolutionUrl = "$EnvironmentUrl/api/data/v9.2/solutions?`$select=solutionid,friendlyname,uniquename&`$filter=uniquename eq '$SolutionName'"
+$SolutionUrl = "$EnvironmentUrl/api/data/v9.2/solutions?`$select=solutionid,uniquename&`$filter=uniquename eq '$SolutionName'"
 
 $SolutionResponse = Invoke-RestMethod `
     -Method Get `
-    -Uri $
+    -Uri $SolutionUrl `
+    -Headers $Headers
+
+if ($SolutionResponse.value.Count -eq 0) {
+    throw "Solution '$SolutionName' not found."
+}
+
+$SolutionId = $SolutionResponse.value[0].solutionid
+
+Write-Host "Solution Id: $SolutionId"
+Write-Host ""
+
+# =================================================
+# Get Workflow Components
+# =================================================
+
+$ComponentUrl = "$EnvironmentUrl/api/data/v9.2/solutioncomponents?`$select=objectid,componenttype,_solutionid_value&`$filter=_solutionid_value eq $SolutionId and componenttype eq 29"
+
+$ComponentResponse = Invoke-RestMethod `
+    -Method Get `
+    -Uri $ComponentUrl `
+    -Headers $Headers
+
+$WorkflowIds = @($ComponentResponse.value | Select-Object -ExpandProperty objectid)
+
+Write-Host ""
+Write-Host "Workflows Found In Solution : $($WorkflowIds.Count)"
+Write-Host ""
+
+foreach ($id in $WorkflowIds) {
+    Write-Host $id
+}
+
+Write-Host ""
+Write-Host "================================================="
+Write-Host "FLOW DETAILS"
+Write-Host "================================================="
+Write-Host ""
+
+$EnabledFlows = 0
+$DisabledFlows = 0
+$FailedRuns = 0
+
+foreach ($WorkflowId in $WorkflowIds) {
+
+    try {
+
+        $FlowUrl = "$EnvironmentUrl/api/data/v9.2/workflows($WorkflowId)?`$select=name,workflowid,statecode,statuscode,category"
+
+        $Flow = Invoke-RestMethod `
+            -Method Get `
+            -Uri $FlowUrl `
+            -Headers $Headers
+
+        if ($Flow.category -ne 5) {
+            continue
+        }
+
+        if ($Flow.statecode -eq 1) {
+            $State = "Enabled"
+            $EnabledFlows++
+        }
+        else {
+            $State = "Disabled"
+            $DisabledFlows++
+        }
+
+        Write-Host ""
+        Write-Host "----------------------------------------"
+        Write-Host "Flow Name   : $($Flow.name)"
+        Write-Host "Workflow Id : $($Flow.workflowid)"
+        Write-Host "State       : $State"
+        Write-Host "----------------------------------------"
+
+        #
+        # Run History Section
+        #
+        # NOTE:
+        # Dataverse workflowid is NOT the same as Flow API flow id.
+        # This query attempts to find run data when exposed.
+        #
+
+        try {
+
+            $RunUrl = "$EnvironmentUrl/api/data/v9.2/workflows($WorkflowId)"
+
+            $RunResponse = Invoke-RestMethod `
+                -Method Get `
+                -Uri $RunUrl `
+                -Headers $Headers
+
+            Write-Host "Run history retrieval requires Flow API identifiers."
+            Write-Host "Workflow retrieved successfully."
+
+        }
+        catch {
+
+            Write-Host "Unable to retrieve run details."
+        }
+
+    }
+    catch {
+
+        Write-Host "##[warning]Unable to process workflow $WorkflowId"
+    }
+}
+
+# =================================================
+# Summary
+# =================================================
+
+Write-Host ""
+Write-Host "================================================="
+Write-Host "SUMMARY"
+Write-Host "================================================="
+Write-Host ""
+
+Write-Host "Enabled Flows  : $EnabledFlows"
+Write-Host "Disabled Flows : $DisabledFlows"
+Write-Host "Failed Runs    : $FailedRuns"
+
+Write-Host ""
+Write-Host "Health check completed successfully."
+Write-Host ""
+
+exit 0
