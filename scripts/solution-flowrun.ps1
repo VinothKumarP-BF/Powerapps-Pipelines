@@ -15,7 +15,7 @@ $TenantId       = $env:TENANT_ID
 $ClientId       = $env:CLIENT_ID
 $ClientSecret   = $env:CLIENT_SECRET
 
-$SolutionName   = "POC_CR"
+$SolutionName   = "POC_Solution"
 
 # =================================================
 # Validation
