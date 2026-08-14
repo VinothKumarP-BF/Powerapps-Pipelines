@@ -9,9 +9,9 @@ on:
         default: "1.8.6.1"
 
 env:
-  TARGET_BRANCH: CMdS_Managed_Solutions
+  TARGET_BRANCH: Managed_Solutions
   PAC_CLI_VERSION: "2.10.1"
-  SOLUTIONS: " "
+  SOLUTIONS: "POC_CR Devops_POC POC_Solution"
 
 jobs:
   export:
@@ -34,10 +34,10 @@ jobs:
         shell: bash
         run: |
           pac auth create \
-            --url "${{ secrets.CMDS_NEXTGENPEM_DEV_URL }}" \
-            --applicationId "${{ vars.CMDS_NEXTGENPEM_DEV_PP_APPID }}" \
-            --clientSecret "${{ secrets.CMDS_NEXTGENPEM_DEV_PP }}" \
-            --tenant "${{ vars.CMDS_NEXTGENPEM_DEV_TENANTID }}"
+            --url "${{ secrets.DEV_ENV_URL }}" \
+            --applicationId "${{ secrets.CLIENT_ID }}" \
+            --clientSecret "${{ secrets.CLIENT_SECRET }}" \
+            --tenant "${{ secrets.TENANT_ID }}"
 
       - name: Export Managed Solutions
         shell: bash
