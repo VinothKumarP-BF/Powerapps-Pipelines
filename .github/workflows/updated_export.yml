@@ -10,13 +10,12 @@ on:
 
 env:
   TARGET_BRANCH: CMdS_Managed_Solutions
-  PAC_CLI_VERSION: "2.9.3"
-  SOLUTIONS: "CMdSCore 04_CMds_Custom_Control_Solutions CMdSDataModel CMdSAutomation CMdSAppExperience"
+  PAC_CLI_VERSION: "2.10.1"
+  SOLUTIONS: " "
 
 jobs:
   export:
     runs-on: windows-latest
-    environment: DEV
 
     steps:
       - name: Checkout Managed Solutions Branch
