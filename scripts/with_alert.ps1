@@ -167,25 +167,36 @@ foreach ($WorkflowId in $WorkflowIds) {
             -Uri $FlowUrl `
             -Headers $Headers
 
-        Write-Host ""
-        Write-Host "FLOW RAW DATA"
-        Write-Host "================================"
-
-        $Flow | ConvertTo-Json -Depth 20
-
-        Write-Host "================================"
-
         if ($Flow.category -ne 5) {
             continue
         }
 
+        # =================================================
+        # Flow State
+        # =================================================
+
         if ($Flow.statecode -eq 1) {
+
             $State = "Enabled"
             $EnabledFlows++
+
         }
         else {
+
             $State = "Disabled"
             $DisabledFlows++
+
+            # IMPORTANT:
+            # Add disabled flow immediately.
+            # Do not wait for run history.
+
+            $AlertFlows += [PSCustomObject]@{
+                FlowName           = $Flow.name
+                State              = "Disabled"
+                LatestRunStatus    = "N/A"
+                LatestRunStartTime = $null
+                LatestRunEndTime   = $null
+            }
         }
 
         Write-Host ""
@@ -196,7 +207,7 @@ foreach ($WorkflowId in $WorkflowIds) {
         Write-Host "----------------------------------------"
 
         # =================================================
-        # Run History Section
+        # Run History
         # =================================================
 
         try {
@@ -206,12 +217,17 @@ foreach ($WorkflowId in $WorkflowIds) {
                 $CloudFlowId = $FlowMappings[$Flow.name]
 
                 Write-Host "Cloud Flow Id : $CloudFlowId"
+
             }
             else {
 
                 Write-Host "##[warning]No Cloud Flow mapping found for $($Flow.name)"
                 continue
             }
+
+            # =================================================
+            # Power Automate Token
+            # =================================================
 
             $FlowTokenBody = @{
                 client_id     = $ClientId
@@ -237,6 +253,10 @@ foreach ($WorkflowId in $WorkflowIds) {
                 Accept        = "application/json"
             }
 
+            # =================================================
+            # Get Runs
+            # =================================================
+
             $RunsUrl = "https://api.flow.microsoft.com/providers/Microsoft.ProcessSimple/environments/$EnvironmentId/flows/$CloudFlowId/runs?api-version=2016-11-01"
 
             Write-Host ""
@@ -259,34 +279,70 @@ foreach ($WorkflowId in $WorkflowIds) {
                     Sort-Object { $_.properties.startTime } -Descending |
                     Select-Object -First 1
 
-                $RunStatus = $LatestRun.properties.status
+                $RunStatus      = $LatestRun.properties.status
                 $LatestRunStart = $LatestRun.properties.startTime
                 $LatestRunEnd   = $LatestRun.properties.endTime
 
+                Write-Host ""
                 Write-Host "Latest Run"
                 Write-Host "----------------------------------------"
                 Write-Host "Run Id      : $($LatestRun.name)"
                 Write-Host "Status      : $RunStatus"
-                Write-Host "Start Time  : $($LatestRun.properties.startTime)"
-                Write-Host "End Time    : $($LatestRun.properties.endTime)"
+                Write-Host "Start Time  : $LatestRunStart"
+                Write-Host "End Time    : $LatestRunEnd"
                 Write-Host "----------------------------------------"
 
-                if ($State -eq "Disabled") {
-
-                    $AlertFlows += @{
-                        FlowName           = $Flow.name
-                        State              = $State
-                        LatestRunStatus    = $RunStatus
-                        LatestRunStartTime = $LatestRunStart
-                        LatestRunEndTime   = $LatestRunEnd
-                    }
-                }
+                # =================================================
+                # Failed Run Detection
+                # =================================================
 
                 if ($RunStatus -eq "Failed") {
 
                     $FailedRuns++
 
                     Write-Host "##[warning]ALERT: Latest run failed for '$($Flow.name)'"
+
+                    # Check whether this flow was already added
+                    # because it was disabled.
+                    $ExistingAlert = $AlertFlows |
+                        Where-Object { $_.FlowName -eq $Flow.name }
+
+                    if ($ExistingAlert) {
+
+                        # Update existing disabled alert
+                        $ExistingAlert.LatestRunStatus    = $RunStatus
+                        $ExistingAlert.LatestRunStartTime = $LatestRunStart
+                        $ExistingAlert.LatestRunEndTime   = $LatestRunEnd
+
+                    }
+                    else {
+
+                        # Add failed flow
+                        $AlertFlows += [PSCustomObject]@{
+                            FlowName           = $Flow.name
+                            State              = $State
+                            LatestRunStatus    = $RunStatus
+                            LatestRunStartTime = $LatestRunStart
+                            LatestRunEndTime   = $LatestRunEnd
+                        }
+                    }
+                }
+
+                # =================================================
+                # Update Disabled Flow Run Information
+                # =================================================
+
+                if ($State -eq "Disabled") {
+
+                    $ExistingDisabledAlert = $AlertFlows |
+                        Where-Object { $_.FlowName -eq $Flow.name }
+
+                    if ($ExistingDisabledAlert) {
+
+                        $ExistingDisabledAlert.LatestRunStatus    = $RunStatus
+                        $ExistingDisabledAlert.LatestRunStartTime = $LatestRunStart
+                        $ExistingDisabledAlert.LatestRunEndTime   = $LatestRunEnd
+                    }
                 }
             }
         }
@@ -303,6 +359,7 @@ foreach ($WorkflowId in $WorkflowIds) {
     catch {
 
         Write-Host "##[warning]Unable to process workflow $WorkflowId"
+        Write-Host $_.Exception.Message
     }
 }
 
@@ -321,21 +378,32 @@ Write-Host "Disabled Flows : $DisabledFlows"
 Write-Host "Failed Runs    : $FailedRuns"
 
 Write-Host ""
-Write-Host "Health check completed successfully."
-Write-Host ""
 
 # =================================================
-# Send Alert Email
+# Alert Decision
 # =================================================
 
-if ($AlertFlows.Count -gt 0) {
+if ($DisabledFlows -gt 0 -or $FailedRuns -gt 0) {
+
+    Write-Host "##[warning]ALERT CONDITION DETECTED"
+
+    if ($DisabledFlows -gt 0) {
+        Write-Host "Disabled flows detected : $DisabledFlows"
+    }
+
+    if ($FailedRuns -gt 0) {
+        Write-Host "Failed runs detected     : $FailedRuns"
+    }
 
     Write-Host ""
-    Write-Host "Disabled flows found. Sending alert email..."
+    Write-Host "Sending alert email..."
 
     $Payload = @{
-        Environment = "DEV"
-        Flows       = $AlertFlows
+        Environment  = "DEV"
+        EnabledFlows = $EnabledFlows
+        DisabledFlows = $DisabledFlows
+        FailedRuns    = $FailedRuns
+        Flows         = $AlertFlows
     } | ConvertTo-Json -Depth 10
 
     Invoke-RestMethod `
@@ -345,11 +413,12 @@ if ($AlertFlows.Count -gt 0) {
         -Body $Payload
 
     Write-Host "Email alert triggered successfully."
+
 }
 else {
 
-    Write-Host ""
-    Write-Host "No disabled flows found. No email sent."
+    Write-Host "Health check completed successfully."
+    Write-Host "No disabled or failed flows found. No email sent."
 }
 
 exit 0
