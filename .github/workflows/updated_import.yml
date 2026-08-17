@@ -6,7 +6,7 @@ on:
       release_version:
         required: true
         type: string
-        default: "1.8.6.1"
+        default: "0.0.0.0"
 
 env:
   PAC_CLI_VERSION: "2.10.1"
@@ -17,7 +17,7 @@ permissions:
 
 jobs:
   import-solutions:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout Managed Solutions Branch
@@ -32,19 +32,20 @@ jobs:
           path: yaml-config
 
       - name: Install PAC CLI
-        shell: powershell
         run: |
-          dotnet tool install --global Microsoft.PowerApps.CLI.Tool --version $env:PAC_CLI_VERSION
-          echo "$env:USERPROFILE\.dotnet\tools" | Out-File -FilePath $env:GITHUB_PATH -Append
+          dotnet tool update --global Microsoft.PowerApps.CLI.Tool --version $PAC_CLI_VERSION || \
+          dotnet tool install --global Microsoft.PowerApps.CLI.Tool --version $PAC_CLI_VERSION
+ 
+          echo "$HOME/.dotnet/tools" >> $GITHUB_PATH
 
       - name: Authenticate Test
         run: |
-          $env:PATH += ";$HOME\.dotnet\tools"
+          export PATH="$PATH:$HOME/.dotnet/tools"
 
-          pac auth create `
-            --url "${{ secrets.TEST_ENV_URL }}" `
-            --applicationId "${{ secrets.CLIENT_ID }}" `
-            --clientSecret "${{ secrets.CLIENT_SECRET }}" `
+          pac auth create \
+            --url "${{ secrets.TEST_ENV_URL }}" \
+            --applicationId "${{ secrets.CLIENT_ID }}" \
+            --clientSecret "${{ secrets.CLIENT_SECRET }}" \
             --tenant "${{ secrets.TENANT_ID }}"
 
       - name: Set Release Folder
@@ -55,55 +56,55 @@ jobs:
 
       - name: Pack POC_CR
         run: |
-          $env:PATH += ";$HOME\.dotnet\tools"
+          export PATH="$PATH:$HOME/.dotnet/tools"
 
-          pac solution pack `
-            --folder "$RELEASE_FOLDER/POC_CR" `
-            --zipfile /tmp/POC_CR.zip `
+          pac solution pack \
+            --folder "$RELEASE_FOLDER/POC_CR" \
+            --zipfile /tmp/POC_CR.zip \
             --packagetype Managed
 
       - name: Import POC_CR
         run: |
-          $env:PATH += ";$HOME\.dotnet\tools"
+          export PATH="$PATH:$HOME/.dotnet/tools"
 
-          pac solution import `
-            --path /tmp/POC_CR.zip `
+          pac solution import \
+            --path /tmp/POC_CR.zip \
 
       # 2. Devops_POC
 
       - name: Pack Custom Control
         run: |
-          $env:PATH += ";$HOME\.dotnet\tools"
+          export PATH="$PATH:$HOME/.dotnet/tools"
 
-          pac solution pack `
-            --folder "$RELEASE_FOLDER/Devops_POC" `
-            --zipfile /tmp/Devops_POC.zip `
+          pac solution pack \
+            --folder "$RELEASE_FOLDER/Devops_POC" \
+            --zipfile /tmp/Devops_POC.zip \
             --packagetype Managed
 
       - name: Import Devops_POC
         run: |
-          $env:PATH += ";$HOME\.dotnet\tools"
+          export PATH="$PATH:$HOME/.dotnet/tools"
 
-          pac solution import `
+          pac solution import \
             --path /tmp/Devops_POC.zip
 
       # 3. POC_Solution
 
       - name: Pack POC_Solution
         run: |
-          $env:PATH += ";$HOME\.dotnet\tools"
+          export PATH="$PATH:$HOME/.dotnet/tools"
 
-          pac solution pack `
-            --folder "$RELEASE_FOLDER/POC_Solution" `
-            --zipfile /tmp/POC_Solution.zip `
+          pac solution pack \
+            --folder "$RELEASE_FOLDER/POC_Solution" \
+            --zipfile /tmp/POC_Solution.zip \
             --packagetype Managed
 
       - name: Import POC_Solution
         run: |
-          $env:PATH += ";$HOME\.dotnet\tools"
+          export PATH="$PATH:$HOME/.dotnet/tools"
 
-          pac solution import `
-            --path /tmp/POC_Solution.zip `
+          pac solution import \
+            --path /tmp/POC_Solution.zip \
 
       - name: Deployment Complete
         run: |
