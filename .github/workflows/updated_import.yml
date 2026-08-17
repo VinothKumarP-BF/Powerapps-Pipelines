@@ -39,7 +39,7 @@ jobs:
 
       - name: Authenticate Test
         run: |
-          export PATH="$PATH:$HOME/.dotnet/tools"
+          $env:PATH += ";$HOME\.dotnet\tools"
 
           pac auth create \
             --url "${{ secrets.TEST_ENV_URL }}" \
@@ -55,7 +55,7 @@ jobs:
 
       - name: Pack POC_CR
         run: |
-          export PATH="$PATH:$HOME/.dotnet/tools"
+          $env:PATH += ";$HOME\.dotnet\tools"
 
           pac solution pack \
             --folder "$RELEASE_FOLDER/POC_CR" \
@@ -64,7 +64,7 @@ jobs:
 
       - name: Import POC_CR
         run: |
-          export PATH="$PATH:$HOME/.dotnet/tools"
+          $env:PATH += ";$HOME\.dotnet\tools"
 
           pac solution import \
             --path /tmp/POC_CR.zip \
@@ -73,7 +73,7 @@ jobs:
 
       - name: Pack Custom Control
         run: |
-          export PATH="$PATH:$HOME/.dotnet/tools"
+          $env:PATH += ";$HOME\.dotnet\tools"
 
           pac solution pack \
             --folder "$RELEASE_FOLDER/Devops_POC" \
@@ -82,7 +82,7 @@ jobs:
 
       - name: Import Devops_POC
         run: |
-          export PATH="$PATH:$HOME/.dotnet/tools"
+          $env:PATH += ";$HOME\.dotnet\tools"
 
           pac solution import \
             --path /tmp/Devops_POC.zip
@@ -91,7 +91,7 @@ jobs:
 
       - name: Pack POC_Solution
         run: |
-          export PATH="$PATH:$HOME/.dotnet/tools"
+          $env:PATH += ";$HOME\.dotnet\tools"
 
           pac solution pack \
             --folder "$RELEASE_FOLDER/POC_Solution" \
@@ -100,7 +100,7 @@ jobs:
 
       - name: Import POC_Solution
         run: |
-          export PATH="$PATH:$HOME/.dotnet/tools"
+          $env:PATH += ";$HOME\.dotnet\tools"
 
           pac solution import \
             --path /tmp/POC_Solution.zip \
