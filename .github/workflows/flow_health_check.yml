@@ -4,8 +4,8 @@ on:
   workflow_dispatch:
  
   # Run every 5 minutes
-  schedule:
-    - cron: "*/5 * * * *"
+  # schedule:
+  #   - cron: "*/5 * * * *"
  
 jobs:
   flow-health-check:
