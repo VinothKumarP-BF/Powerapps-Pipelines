@@ -25,6 +25,7 @@ jobs:
       - name: Check flows
         shell: pwsh
         env:
+          FLOW_ALERT_URL: ${{ secrets.FLOW_ALERT_URL }}
           TENANT_ID: ${{ secrets.TENANT_ID }}
           CLIENT_ID: ${{ secrets.CLIENT_ID }}
           CLIENT_SECRET: ${{ secrets.CLIENT_SECRET }}
