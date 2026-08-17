@@ -45,11 +45,11 @@ jobs:
           RELEASE_FOLDER="Releases/v${{ github.event.inputs.release_version }}"
 
           if [ -d "$RELEASE_FOLDER" ]; then
-            echo "Release folder already exists"
-            exit 1
+              echo "Release folder already exists"
+          else
+              mkdir -p "$RELEASE_FOLDER"
+              echo "Created release folder: $RELEASE_FOLDER"
           fi
-
-          mkdir -p "$RELEASE_FOLDER"
 
           for SOLUTION in $SOLUTIONS; do
 
