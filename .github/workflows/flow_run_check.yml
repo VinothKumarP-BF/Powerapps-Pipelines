@@ -30,4 +30,4 @@ jobs:
           CLIENT_SECRET: ${{ secrets.CLIENT_SECRET }}
           DEV_ENV_URL: ${{ secrets.DEV_ENV_URL }}
         run: |
-          ./scripts/latest-run.ps1
+          ./scripts/with_alert.ps1
