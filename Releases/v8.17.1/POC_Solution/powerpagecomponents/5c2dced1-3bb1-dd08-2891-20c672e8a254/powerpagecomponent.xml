@@ -1,0 +1,18 @@
+<powerpagecomponent powerpagecomponentid="5c2dced1-3bb1-dd08-2891-20c672e8a254">
+  <content>{
+  "type": 756150000,
+  "display_name": "Logo URL",
+  "value": "/A-lightbulb.png"
+}</content>
+  <iscustomizable>1</iscustomizable>
+  <name>Logo URL</name>
+  <powerpagecomponenttype>7</powerpagecomponenttype>
+  <powerpagesiteid>
+    <powerpagesiteid>a9b0a41b-5591-42f8-bdbc-5a64b2597cfa</powerpagesiteid>
+  </powerpagesiteid>
+  <powerpagesitelanguageid>
+    <powerpagesitelanguageid>5c7c0683-e4d6-4baa-ae97-71b9e6e5a1ab</powerpagesitelanguageid>
+  </powerpagesitelanguageid>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</powerpagecomponent>

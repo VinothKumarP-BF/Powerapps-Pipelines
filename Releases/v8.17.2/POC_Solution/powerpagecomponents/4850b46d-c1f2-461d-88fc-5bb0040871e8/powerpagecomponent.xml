@@ -1,0 +1,17 @@
+<powerpagecomponent powerpagecomponentid="4850b46d-c1f2-461d-88fc-5bb0040871e8">
+  <content>{
+  "entityform": "f95efa79-77ed-4afe-bc5f-f94baaabc568",
+  "webformstep": "f95efa79-77ed-4afe-bc5f-f94baaabc568",
+  "type": 100000001,
+  "label": "[{\"LCID\":1033,\"Value\":\"Provider Information\"}]",
+  "sectionname": "pes_frm_providerinformation"
+}</content>
+  <iscustomizable>1</iscustomizable>
+  <name>Provider Application - Portal Intake Form pes_frm_providerinformation</name>
+  <powerpagecomponenttype>16</powerpagecomponenttype>
+  <powerpagesiteid>
+    <powerpagesiteid>a9b0a41b-5591-42f8-bdbc-5a64b2597cfa</powerpagesiteid>
+  </powerpagesiteid>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</powerpagecomponent>

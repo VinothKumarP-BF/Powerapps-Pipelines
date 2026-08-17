@@ -1,0 +1,10 @@
+<botcomponent schemaname="cre09_4fcc07a3-5a72-4ca9-89d0-d0933043a83a.topic.StartOver">
+  <componenttype>9</componenttype>
+  <iscustomizable>0</iscustomizable>
+  <name>Start Over</name>
+  <parentbotid>
+    <schemaname>cre09_4fcc07a3-5a72-4ca9-89d0-d0933043a83a</schemaname>
+  </parentbotid>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</botcomponent>

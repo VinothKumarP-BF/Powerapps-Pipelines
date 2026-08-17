@@ -1,0 +1,86 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_office365_1": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "cnt_CR_OUTLOOK_CORE"
+        },
+        "api": {
+          "name": "shared_office365"
+        }
+      },
+      "shared_office365": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "pes_cr_Office365Outlook"
+        },
+        "api": {
+          "name": "shared_office365"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "When_a_new_email_arrives_(V3)": {
+          "splitOn": "@triggerOutputs()?['body/value']",
+          "metadata": {
+            "operationMetadataId": "54be884f-d7d9-4730-9c8b-78ab7bfaa7ad"
+          },
+          "type": "OpenApiConnectionNotification",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_office365_1",
+              "operationId": "OnNewEmailV3",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_office365"
+            },
+            "parameters": {
+              "folderPath": "Inbox",
+              "includeAttachments": false,
+              "importance": "Any",
+              "fetchOnlyWithAttachment": false
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        }
+      },
+      "actions": {
+        "Send_an_email_(V2)": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "d7c32b6c-9567-4aaa-a8c1-b689fa977f62"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_office365",
+              "operationId": "SendEmailV2",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_office365"
+            },
+            "parameters": {
+              "emailMessage/To": "aman.kumar@infinite.com",
+              "emailMessage/Subject": "Patch-2",
+              "emailMessage/Body": "<p>Hii&nbsp;</p>",
+              "emailMessage/Importance": "Normal"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        }
+      }
+    },
+    "templateName": null
+  },
+  "schemaVersion": "1.0.0.0"
+}

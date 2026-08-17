@@ -1,0 +1,11 @@
+<powerpagecomponent powerpagecomponentid="16d24153-083f-4039-94ac-e9ef3c4c93a9">
+  <content>{"description":"The default number of unauthenticated login attempts from an IP address before the IP address is blocked for Authentication/LoginThrottling/IpAddressTimeoutTimeSpan if the attempts occur within Authentication/LoginThrottling/MaxAttemptsTimeLimitTimeSpan amount of time. Default: 5","value":"5"}</content>
+  <iscustomizable>1</iscustomizable>
+  <name>Authentication/LoginThrottling/MaxInvaildAttemptsFromIPAddress</name>
+  <powerpagecomponenttype>9</powerpagecomponenttype>
+  <powerpagesiteid>
+    <powerpagesiteid>a9b0a41b-5591-42f8-bdbc-5a64b2597cfa</powerpagesiteid>
+  </powerpagesiteid>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</powerpagecomponent>
