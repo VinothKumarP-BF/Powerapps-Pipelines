@@ -194,8 +194,7 @@ foreach ($WorkflowId in $WorkflowIds) {
                 FlowName           = $Flow.name
                 State              = "Disabled"
                 LatestRunStatus    = "N/A"
-                LatestRunStartTime = $null
-                LatestRunEndTime   = $null
+                LatestRunStartTime = ""
             }
         }
 
