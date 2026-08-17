@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>0</isdefault>
+    <savedqueryid>{819013a2-a4a4-42ec-9220-73181e6a57c2}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="msdyn_filename" select="1" icon="1" preview="1">
+        <row name="result" id="msdyn_kbattachmentid">
+          <cell name="msdyn_fileattachment" width="100" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>0</querytype>
+    <fetchxml>
+      <fetch version="1.0" output-format="xml-platform" mapping="logical">
+        <entity name="msdyn_kbattachment">
+          <attribute name="msdyn_fileattachment" />
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.0.0.0</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Provider Registration bot Answers" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>
