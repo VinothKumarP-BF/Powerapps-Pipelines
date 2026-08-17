@@ -1,0 +1,110 @@
+name: Updated Import
+
+on:
+  workflow_dispatch:
+    inputs:
+      release_version:
+        required: true
+        type: string
+        default: "1.8.6.1"
+
+env:
+  PAC_CLI_VERSION: "2.10.1"
+  SOURCE_BRANCH: Managed_Solutions
+
+permissions:
+  contents: read
+
+jobs:
+  import-solutions:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout Managed Solutions Branch
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ env.SOURCE_BRANCH }}
+
+      - name: Checkout YAML Branch
+        uses: actions/checkout@v4
+        with:
+          ref: yaml
+          path: yaml-config
+
+      - name: Install PAC CLI
+        shell: powershell
+        run: |
+          dotnet tool install --global Microsoft.PowerApps.CLI.Tool --version $env:PAC_CLI_VERSION
+          echo "$env:USERPROFILE\.dotnet\tools" | Out-File -FilePath $env:GITHUB_PATH -Append
+
+      - name: Authenticate Test
+        run: |
+          export PATH="$PATH:$HOME/.dotnet/tools"
+
+          pac auth create \
+            --url "${{ secrets.TEST_ENV_URL }}" \
+            --applicationId "${{ secrets.CLIENT_ID }}" \
+            --clientSecret "${{ secrets.CLIENT_SECRET }}" \
+            --tenant "${{ secrets.TENANT_ID }}"
+
+      - name: Set Release Folder
+        run: |
+          echo "RELEASE_FOLDER=Releases/v${{ github.event.inputs.release_version }}" >> $GITHUB_ENV
+
+      # 1. POC_CR
+
+      - name: Pack POC_CR
+        run: |
+          export PATH="$PATH:$HOME/.dotnet/tools"
+
+          pac solution pack \
+            --folder "$RELEASE_FOLDER/POC_CR" \
+            --zipfile /tmp/POC_CR.zip \
+            --packagetype Managed
+
+      - name: Import POC_CR
+        run: |
+          export PATH="$PATH:$HOME/.dotnet/tools"
+
+          pac solution import \
+            --path /tmp/POC_CR.zip \
+
+      # 2. Devops_POC
+
+      - name: Pack Custom Control
+        run: |
+          export PATH="$PATH:$HOME/.dotnet/tools"
+
+          pac solution pack \
+            --folder "$RELEASE_FOLDER/Devops_POC" \
+            --zipfile /tmp/Devops_POC.zip \
+            --packagetype Managed
+
+      - name: Import Devops_POC
+        run: |
+          export PATH="$PATH:$HOME/.dotnet/tools"
+
+          pac solution import \
+            --path /tmp/Devops_POC.zip
+
+      # 3. POC_Solution
+
+      - name: Pack POC_Solution
+        run: |
+          export PATH="$PATH:$HOME/.dotnet/tools"
+
+          pac solution pack \
+            --folder "$RELEASE_FOLDER/POC_Solution" \
+            --zipfile /tmp/POC_Solution.zip \
+            --packagetype Managed
+
+      - name: Import POC_Solution
+        run: |
+          export PATH="$PATH:$HOME/.dotnet/tools"
+
+          pac solution import \
+            --path /tmp/POC_Solution.zip \
+
+      - name: Deployment Complete
+        run: |
+          echo "DEV2 deployment completed for release v${{ github.event.inputs.release_version }}"
