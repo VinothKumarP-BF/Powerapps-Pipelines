@@ -41,10 +41,10 @@ jobs:
         run: |
           $env:PATH += ";$HOME\.dotnet\tools"
 
-          pac auth create \
-            --url "${{ secrets.TEST_ENV_URL }}" \
-            --applicationId "${{ secrets.CLIENT_ID }}" \
-            --clientSecret "${{ secrets.CLIENT_SECRET }}" \
+          pac auth create `
+            --url "${{ secrets.TEST_ENV_URL }}" `
+            --applicationId "${{ secrets.CLIENT_ID }}" `
+            --clientSecret "${{ secrets.CLIENT_SECRET }}" `
             --tenant "${{ secrets.TENANT_ID }}"
 
       - name: Set Release Folder
@@ -57,17 +57,17 @@ jobs:
         run: |
           $env:PATH += ";$HOME\.dotnet\tools"
 
-          pac solution pack \
-            --folder "$RELEASE_FOLDER/POC_CR" \
-            --zipfile /tmp/POC_CR.zip \
+          pac solution pack `
+            --folder "$RELEASE_FOLDER/POC_CR" `
+            --zipfile /tmp/POC_CR.zip `
             --packagetype Managed
 
       - name: Import POC_CR
         run: |
           $env:PATH += ";$HOME\.dotnet\tools"
 
-          pac solution import \
-            --path /tmp/POC_CR.zip \
+          pac solution import `
+            --path /tmp/POC_CR.zip `
 
       # 2. Devops_POC
 
@@ -75,16 +75,16 @@ jobs:
         run: |
           $env:PATH += ";$HOME\.dotnet\tools"
 
-          pac solution pack \
-            --folder "$RELEASE_FOLDER/Devops_POC" \
-            --zipfile /tmp/Devops_POC.zip \
+          pac solution pack `
+            --folder "$RELEASE_FOLDER/Devops_POC" `
+            --zipfile /tmp/Devops_POC.zip `
             --packagetype Managed
 
       - name: Import Devops_POC
         run: |
           $env:PATH += ";$HOME\.dotnet\tools"
 
-          pac solution import \
+          pac solution import `
             --path /tmp/Devops_POC.zip
 
       # 3. POC_Solution
@@ -93,17 +93,17 @@ jobs:
         run: |
           $env:PATH += ";$HOME\.dotnet\tools"
 
-          pac solution pack \
-            --folder "$RELEASE_FOLDER/POC_Solution" \
-            --zipfile /tmp/POC_Solution.zip \
+          pac solution pack `
+            --folder "$RELEASE_FOLDER/POC_Solution" `
+            --zipfile /tmp/POC_Solution.zip `
             --packagetype Managed
 
       - name: Import POC_Solution
         run: |
           $env:PATH += ";$HOME\.dotnet\tools"
 
-          pac solution import \
-            --path /tmp/POC_Solution.zip \
+          pac solution import `
+            --path /tmp/POC_Solution.zip `
 
       - name: Deployment Complete
         run: |
