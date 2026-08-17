@@ -90,21 +90,21 @@ jobs:
 
       # 3. POC_Solution
 
-      - name: Pack POC_Solution
-        run: |
-          export PATH="$PATH:$HOME/.dotnet/tools"
+      # - name: Pack POC_Solution
+      #   run: |
+      #     export PATH="$PATH:$HOME/.dotnet/tools"
 
-          pac solution pack \
-            --folder "$RELEASE_FOLDER/POC_Solution" \
-            --zipfile /tmp/POC_Solution.zip \
-            --packagetype Managed
+      #     pac solution pack \
+      #       --folder "$RELEASE_FOLDER/POC_Solution" \
+      #       --zipfile /tmp/POC_Solution.zip \
+      #       --packagetype Managed
 
-      - name: Import POC_Solution
-        run: |
-          export PATH="$PATH:$HOME/.dotnet/tools"
+      # - name: Import POC_Solution
+      #   run: |
+      #     export PATH="$PATH:$HOME/.dotnet/tools"
 
-          pac solution import \
-            --path /tmp/POC_Solution.zip \
+      #     pac solution import \
+      #       --path /tmp/POC_Solution.zip \
 
       - name: Deployment Complete
         run: |
