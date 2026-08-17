@@ -1,0 +1,11 @@
+<botcomponent schemaname="cre09_4fcc07a3-5a72-4ca9-89d0-d0933043a83a.topic.Search">
+  <componenttype>9</componenttype>
+  <description>Create generative answers from data sources.</description>
+  <iscustomizable>0</iscustomizable>
+  <name>Conversational boosting</name>
+  <parentbotid>
+    <schemaname>cre09_4fcc07a3-5a72-4ca9-89d0-d0933043a83a</schemaname>
+  </parentbotid>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</botcomponent>
