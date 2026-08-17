@@ -80,8 +80,70 @@
       </Addresses>
     </Publisher>
     <RootComponents>
+      <RootComponent type="1" schemaName="comment" behavior="0" />
       <RootComponent type="300" schemaName="vp_sampleapp_c361d" behavior="0" />
     </RootComponents>
-    <MissingDependencies />
+    <MissingDependencies>
+      <MissingDependency>
+        <Required type="1" schemaName="comment" displayName="Comment" solution="msdyn_CollaborativeComments (9.1.0.27)">
+          <package appName="CommentingApp Package" version="9.1.0.27">msdyn_CollaborativeComments_Anchor (9.1.0.27)</package>
+        </Required>
+        <Dependent type="1" schemaName="comment" displayName="Comment" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="comment" displayName="Comment" solution="msdyn_CollaborativeComments (9.1.0.27)">
+          <package appName="CommentingApp Package" version="9.1.0.27">msdyn_CollaborativeComments_Anchor (9.1.0.27)</package>
+        </Required>
+        <Dependent type="2" schemaName="createdby" displayName="Created By" parentSchemaName="comment" parentDisplayName="Comment" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="comment" displayName="Comment" solution="msdyn_CollaborativeComments (9.1.0.27)">
+          <package appName="CommentingApp Package" version="9.1.0.27">msdyn_CollaborativeComments_Anchor (9.1.0.27)</package>
+        </Required>
+        <Dependent type="2" schemaName="createdonbehalfby" displayName="Created By (Delegate)" parentSchemaName="comment" parentDisplayName="Comment" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="comment" displayName="Comment" solution="msdyn_CollaborativeComments (9.1.0.27)">
+          <package appName="CommentingApp Package" version="9.1.0.27">msdyn_CollaborativeComments_Anchor (9.1.0.27)</package>
+        </Required>
+        <Dependent type="2" schemaName="modifiedby" displayName="Modified By" parentSchemaName="comment" parentDisplayName="Comment" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="comment" displayName="Comment" solution="msdyn_CollaborativeComments (9.1.0.27)">
+          <package appName="CommentingApp Package" version="9.1.0.27">msdyn_CollaborativeComments_Anchor (9.1.0.27)</package>
+        </Required>
+        <Dependent type="2" schemaName="modifiedonbehalfby" displayName="Modified By (Delegate)" parentSchemaName="comment" parentDisplayName="Comment" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="comment" displayName="Comment" solution="msdyn_CollaborativeComments (9.1.0.27)">
+          <package appName="CommentingApp Package" version="9.1.0.27">msdyn_CollaborativeComments_Anchor (9.1.0.27)</package>
+        </Required>
+        <Dependent type="2" schemaName="ownerid" displayName="Owner" parentSchemaName="comment" parentDisplayName="Comment" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="comment" displayName="Comment" solution="msdyn_CollaborativeComments (9.1.0.27)">
+          <package appName="CommentingApp Package" version="9.1.0.27">msdyn_CollaborativeComments_Anchor (9.1.0.27)</package>
+        </Required>
+        <Dependent type="2" schemaName="owningbusinessunit" displayName="Owning Business Unit" parentSchemaName="comment" parentDisplayName="Comment" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="comment" displayName="Comment" solution="msdyn_CollaborativeComments (9.1.0.27)">
+          <package appName="CommentingApp Package" version="9.1.0.27">msdyn_CollaborativeComments_Anchor (9.1.0.27)</package>
+        </Required>
+        <Dependent type="2" schemaName="owningteam" displayName="Owning Team" parentSchemaName="comment" parentDisplayName="Comment" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="comment" displayName="Comment" solution="msdyn_CollaborativeComments (9.1.0.27)">
+          <package appName="CommentingApp Package" version="9.1.0.27">msdyn_CollaborativeComments_Anchor (9.1.0.27)</package>
+        </Required>
+        <Dependent type="2" schemaName="owninguser" displayName="Owning User" parentSchemaName="comment" parentDisplayName="Comment" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="comment" displayName="Comment" solution="msdyn_CollaborativeComments (9.1.0.27)">
+          <package appName="CommentingApp Package" version="9.1.0.27">msdyn_CollaborativeComments_Anchor (9.1.0.27)</package>
+        </Required>
+        <Dependent type="2" schemaName="versionnumber" displayName="Version Number" parentSchemaName="comment" parentDisplayName="Comment" />
+      </MissingDependency>
+    </MissingDependencies>
   </SolutionManifest>
 </ImportExportXml>

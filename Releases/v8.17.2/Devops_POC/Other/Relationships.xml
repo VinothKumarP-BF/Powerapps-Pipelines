@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<EntityRelationships xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <EntityRelationship Name="business_unit_comment" />
+  <EntityRelationship Name="Comment_Artifact_AppModule" />
+  <EntityRelationship Name="Comment_Artifact_Bot" />
+  <EntityRelationship Name="Comment_Artifact_BotComponent" />
+  <EntityRelationship Name="Comment_Artifact_CanvasApp" />
+  <EntityRelationship Name="Comment_Artifact_PowerPageSite" />
+  <EntityRelationship Name="Comment_Artifact_Workflow" />
+  <EntityRelationship Name="Comment_Container_Comment" />
+  <EntityRelationship Name="Comment_Parent_Comment" />
+  <EntityRelationship Name="lk_comment_createdby" />
+  <EntityRelationship Name="lk_comment_modifiedby" />
+  <EntityRelationship Name="owner_comment" />
+  <EntityRelationship Name="team_comment" />
+  <EntityRelationship Name="user_comment" />
+</EntityRelationships>
