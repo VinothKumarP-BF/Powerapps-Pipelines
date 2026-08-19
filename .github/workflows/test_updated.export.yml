@@ -9,16 +9,14 @@ on:
         default: "0.0.0.0"
  
 env:
-  TARGET_BRANCH: CMDS-Sprint1-DEV2
+  TARGET_BRANCH: Managed_Solutions
   PAC_CLI_VERSION: "2.9.3"
-  # SOLUTIONS: "CMdSCore CMdS_NxtGenPE_PCF_V5 CMdSDataModel CMdSAutomation CMdSAppExperience"
-  SOLUTIONS: "CMdSAutomation"
+  SOLUTIONS: "POC_CR Devops_POC POC_Solution"
  
 jobs:
   export:
-    runs-on: cmds-nextgenprv-lower-runner-ghhosted
-    environment: DEV
- 
+    runs-on: ubuntu-latest
+    
     steps:
       - name: Checkout Managed Solutions Branch
         uses: actions/checkout@v4
@@ -37,10 +35,10 @@ jobs:
         shell: bash
         run: |
           pac auth create \
-            --url "${{ secrets.CMDS_NEXTGENPEM_DEV_URL }}" \
-            --applicationId "${{ vars.CMDS_NEXTGENPEM_DEV_PP_APPID }}" \
-            --clientSecret "${{ secrets.CMDS_NEXTGENPEM_DEV_PP }}" \
-            --tenant "${{ vars.CMDS_NEXTGENPEM_DEV_TENANTID }}"
+            --url "${{ secrets.DEV_ENV_URL }}" \
+            --applicationId "${{ secrets.CLIENT_ID }}" \
+            --clientSecret "${{ secrets.CLIENT_SECRET }}" \
+            --tenant "${{ secrets.TENANT_ID }}"
  
       - name: Export Managed Solutions
         shell: bash
