@@ -1,0 +1,109 @@
+name: Test Updated Export Managed Solutions
+ 
+on:
+  workflow_dispatch:
+    inputs:
+      release_version:
+        required: true
+        type: string
+        default: "0.0.0.0"
+ 
+env:
+  TARGET_BRANCH: Managed_Solutions
+  PAC_CLI_VERSION: "2.9.3"
+  SOLUTIONS: "POC_CR Devops_POC POC_Solution"
+ 
+jobs:
+  export:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout Managed Solutions Branch
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ env.TARGET_BRANCH }}
+          fetch-depth: 0
+ 
+      - name: Install PAC CLI
+        run: |
+          dotnet tool update --global Microsoft.PowerApps.CLI.Tool --version $PAC_CLI_VERSION || \
+          dotnet tool install --global Microsoft.PowerApps.CLI.Tool --version $PAC_CLI_VERSION
+ 
+          echo "$HOME/.dotnet/tools" >> $GITHUB_PATH
+ 
+      - name: Authenticate DEV
+        shell: bash
+        run: |
+          pac auth create \
+            --url "${{ secrets.DEV_ENV_URL }}" \
+            --applicationId "${{ secrets.CLIENT_ID }}" \
+            --clientSecret "${{ secrets.CLIENT_SECRET }}" \
+            --tenant "${{ secrets.TENANT_ID }}"
+ 
+      - name: Export Managed Solutions
+        shell: bash
+        run: |
+          RELEASE_FOLDER="Releases/v${{ github.event.inputs.release_version }}"
+ 
+          # Create release folder if it does not exist
+          if [ -d "$RELEASE_FOLDER" ]; then
+              echo "Release folder already exists: $RELEASE_FOLDER"
+          else
+              mkdir -p "$RELEASE_FOLDER"
+              echo "Created release folder: $RELEASE_FOLDER"
+          fi
+ 
+          for SOLUTION in $SOLUTIONS; do
+ 
+            echo "----------------------------------------"
+            echo "Processing solution: $SOLUTION"
+            echo "Release folder: $RELEASE_FOLDER"
+            echo "----------------------------------------"
+ 
+            SOLUTION_FOLDER="$RELEASE_FOLDER/$SOLUTION"
+ 
+            # Delete existing solution folder if it exists
+            if [ -d "$SOLUTION_FOLDER" ]; then
+                echo "Solution folder already exists."
+                echo "Deleting: $SOLUTION_FOLDER"
+ 
+                rm -rf "$SOLUTION_FOLDER"
+ 
+                echo "Deleted existing solution folder."
+            else
+                echo "Solution folder does not exist."
+                echo "Creating fresh solution folder during unpack."
+            fi
+ 
+            ZIP_FILE="/tmp/${SOLUTION}.zip"
+ 
+            echo "Exporting managed solution: $SOLUTION"
+ 
+            pac solution export \
+              --name "$SOLUTION" \
+              --path "$ZIP_FILE" \
+              --managed \
+              --overwrite true
+ 
+            echo "Unpacking managed solution: $SOLUTION"
+ 
+            pac solution unpack \
+              --zipfile "$ZIP_FILE" \
+              --folder "$SOLUTION_FOLDER" \
+              --packagetype Managed
+ 
+            echo "Successfully processed: $SOLUTION"
+ 
+          done
+ 
+      - name: Commit Release
+        shell: bash
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+ 
+          git add Releases/
+ 
+          git commit -m "Release v${{ github.event.inputs.release_version }}" || echo "No changes detected"
+ 
+          git push origin "${TARGET_BRANCH}"
