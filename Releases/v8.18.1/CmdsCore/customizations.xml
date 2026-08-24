@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ImportExportXml xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" OrganizationVersion="9.2.26072.150" OrganizationSchemaType="Standard" CRMServerServiceabilityVersion="9.2.26072.00150">
+  <Entities />
+  <Roles />
+  <Workflows />
+  <FieldSecurityProfiles />
+  <Templates />
+  <EntityMaps />
+  <EntityRelationships />
+  <OrganizationSettings />
+  <optionsets>
+    <optionset Name="cmdspp_env_choice" localizedName="Env_Choice">
+      <OptionSetType>picklist</OptionSetType>
+      <IsGlobal>1</IsGlobal>
+      <IntroducedVersion>1.8.8.3</IntroducedVersion>
+      <IsCustomizable>1</IsCustomizable>
+      <ExternalTypeName></ExternalTypeName>
+      <displaynames>
+        <displayname description="Env_Choice" languagecode="1033" />
+      </displaynames>
+      <Descriptions>
+        <Description description="" languagecode="1033" />
+      </Descriptions>
+      <options>
+        <option value="908820000" ExternalValue="" IsHidden="0">
+          <labels>
+            <label description="DEV" languagecode="1033" />
+          </labels>
+          <Descriptions>
+            <Description description="" languagecode="1033" />
+          </Descriptions>
+        </option>
+        <option value="908820001" ExternalValue="" IsHidden="0">
+          <labels>
+            <label description="DEV2" languagecode="1033" />
+          </labels>
+          <Descriptions>
+            <Description description="" languagecode="1033" />
+          </Descriptions>
+        </option>
+        <option value="908820002" ExternalValue="" IsHidden="0">
+          <labels>
+            <label description="SIT" languagecode="1033" />
+          </labels>
+          <Descriptions>
+            <Description description="" languagecode="1033" />
+          </Descriptions>
+        </option>
+        <option value="908820003" ExternalValue="" IsHidden="0">
+          <labels>
+            <label description="UAT" languagecode="1033" />
+          </labels>
+          <Descriptions>
+            <Description description="" languagecode="1033" />
+          </Descriptions>
+        </option>
+        <option value="908820004" ExternalValue="" IsHidden="0">
+          <labels>
+            <label description="PROD" languagecode="1033" />
+          </labels>
+          <Descriptions>
+            <Description description="" languagecode="1033" />
+          </Descriptions>
+        </option>
+      </options>
+    </optionset>
+  </optionsets>
+  <CustomControls />
+  <EntityDataProviders />
+  <Languages>
+    <Language>1033</Language>
+  </Languages>
+</ImportExportXml>

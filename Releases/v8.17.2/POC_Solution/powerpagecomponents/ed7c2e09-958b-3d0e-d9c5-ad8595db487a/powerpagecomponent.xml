@@ -1,0 +1,18 @@
+<powerpagecomponent powerpagecomponentid="ed7c2e09-958b-3d0e-d9c5-ad8595db487a">
+  <content>{
+  "type": 756150000,
+  "display_name": "Site name",
+  "value": "Provider Enrollment Service"
+}</content>
+  <iscustomizable>1</iscustomizable>
+  <name>Site name</name>
+  <powerpagecomponenttype>7</powerpagecomponenttype>
+  <powerpagesiteid>
+    <powerpagesiteid>a9b0a41b-5591-42f8-bdbc-5a64b2597cfa</powerpagesiteid>
+  </powerpagesiteid>
+  <powerpagesitelanguageid>
+    <powerpagesitelanguageid>5c7c0683-e4d6-4baa-ae97-71b9e6e5a1ab</powerpagesitelanguageid>
+  </powerpagesitelanguageid>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</powerpagecomponent>

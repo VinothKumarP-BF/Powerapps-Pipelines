@@ -1,0 +1,11 @@
+<environmentvariabledefinition schemaname="pes_ev_ExternalApiBaseUrl">
+  <defaultvalue>https://mock-dev.example.com</defaultvalue>
+  <displayname default="PES_ev_ExternalApiBaseUrl">
+    <label description="PES_ev_ExternalApiBaseUrl" languagecode="1033" />
+  </displayname>
+  <introducedversion>1.0.0.0</introducedversion>
+  <iscustomizable>1</iscustomizable>
+  <isrequired>0</isrequired>
+  <secretstore>0</secretstore>
+  <type>100000000</type>
+</environmentvariabledefinition>
