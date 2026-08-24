@@ -1,0 +1,11 @@
+<powerpagecomponent powerpagecomponentid="9118a7de-e2fd-4172-a6ca-c953105005be">
+  <content>{"description":"A true or false value. If set to true, the portal will display the terms and conditions of the site. Users must agree to the terms and conditions before they are considered authenticated and can use the site.","value":"false"}</content>
+  <iscustomizable>1</iscustomizable>
+  <name>Authentication/Registration/TermsAgreementEnabled</name>
+  <powerpagecomponenttype>9</powerpagecomponenttype>
+  <powerpagesiteid>
+    <powerpagesiteid>abccaafd-73d6-47dd-bb55-b09b911f0d43</powerpagesiteid>
+  </powerpagesiteid>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</powerpagecomponent>

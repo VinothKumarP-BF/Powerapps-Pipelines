@@ -1,0 +1,14 @@
+<powerpagecomponent powerpagecomponentid="e6e0d9d9-8381-f111-ab0e-70a8a5b02d34">
+  <content>{
+  "value": "*",
+  "source": 0
+}</content>
+  <iscustomizable>1</iscustomizable>
+  <name>ebapi/cr834_cfg_pvd_typ_map/fields</name>
+  <powerpagecomponenttype>9</powerpagecomponenttype>
+  <powerpagesiteid>
+    <powerpagesiteid>abccaafd-73d6-47dd-bb55-b09b911f0d43</powerpagesiteid>
+  </powerpagesiteid>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</powerpagecomponent>

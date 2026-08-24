@@ -1,0 +1,17 @@
+<powerpagecomponent powerpagecomponentid="68860fdb-fd24-4029-8c8e-dc671d282d74">
+  <content>{
+  "entityform": "b478420f-1c3e-4bb5-bbcb-0d055549c5ce",
+  "webformstep": "b478420f-1c3e-4bb5-bbcb-0d055549c5ce",
+  "type": 100000002,
+  "label": "[{\"LCID\":1033,\"Value\":\"New user registration\"}]",
+  "tabname": "DETAILS_TAB"
+}</content>
+  <iscustomizable>1</iscustomizable>
+  <name>User Register DETAILS_TAB</name>
+  <powerpagecomponenttype>16</powerpagecomponenttype>
+  <powerpagesiteid>
+    <powerpagesiteid>abccaafd-73d6-47dd-bb55-b09b911f0d43</powerpagesiteid>
+  </powerpagesiteid>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</powerpagecomponent>

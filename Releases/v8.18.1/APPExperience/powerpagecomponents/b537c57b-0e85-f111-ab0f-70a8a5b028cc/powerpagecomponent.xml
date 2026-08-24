@@ -1,0 +1,20 @@
+<powerpagecomponent powerpagecomponentid="b537c57b-0e85-f111-ab0f-70a8a5b028cc">
+  <content>{
+  "partialurl": "cmdsspp_enrollment_styles.css",
+  "excludefromsearch": false,
+  "hiddenfromsitemap": false,
+  "contentdisposition": 756150000,
+  "publishingstateid": "c7294317-419f-4724-8068-a91d5da8d92c",
+  "alloworigin": "*",
+  "parentpageid": "551cf2a7-4cb2-4424-8af7-3422ddbd968e"
+}</content>
+  <filecontent mimetype="text/css">cmdspp_EnrollmentType.css</filecontent>
+  <iscustomizable>1</iscustomizable>
+  <name>cmdsspp_enrollment_styles.css</name>
+  <powerpagecomponenttype>3</powerpagecomponenttype>
+  <powerpagesiteid>
+    <powerpagesiteid>abccaafd-73d6-47dd-bb55-b09b911f0d43</powerpagesiteid>
+  </powerpagesiteid>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</powerpagecomponent>

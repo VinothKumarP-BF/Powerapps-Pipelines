@@ -1,0 +1,257 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ImportExportXml version="9.2.26072.150" SolutionPackageVersion="9.2" languagecode="1033" generatedBy="CrmLive" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" OrganizationVersion="9.2.26072.150" OrganizationSchemaType="Standard" CRMServerServiceabilityVersion="9.2.26072.00150">
+  <SolutionManifest>
+    <UniqueName>CMdSAppExperience</UniqueName>
+    <LocalizedNames>
+      <LocalizedName description="CMdS_NxtGenPE_AppExperience" languagecode="1033" />
+    </LocalizedNames>
+    <Descriptions>
+      <Description description="Upgrade of 05_CMdS_AppExperience" languagecode="1033" />
+    </Descriptions>
+    <Version>1.8.21.1</Version>
+    <Managed>1</Managed>
+    <Publisher>
+      <UniqueName>Conduent</UniqueName>
+      <LocalizedNames>
+        <LocalizedName description="CMdSNxtGenPP" languagecode="1033" />
+      </LocalizedNames>
+      <Descriptions>
+        <Description description="Conduent" languagecode="1033" />
+      </Descriptions>
+      <EMailAddress xsi:nil="true"></EMailAddress>
+      <SupportingWebsiteUrl xsi:nil="true"></SupportingWebsiteUrl>
+      <CustomizationPrefix>cmdspp</CustomizationPrefix>
+      <CustomizationOptionValuePrefix>90882</CustomizationOptionValuePrefix>
+      <Addresses>
+        <Address>
+          <AddressNumber>1</AddressNumber>
+          <AddressTypeCode>1</AddressTypeCode>
+          <City xsi:nil="true"></City>
+          <County xsi:nil="true"></County>
+          <Country xsi:nil="true"></Country>
+          <Fax xsi:nil="true"></Fax>
+          <FreightTermsCode xsi:nil="true"></FreightTermsCode>
+          <ImportSequenceNumber xsi:nil="true"></ImportSequenceNumber>
+          <Latitude xsi:nil="true"></Latitude>
+          <Line1 xsi:nil="true"></Line1>
+          <Line2 xsi:nil="true"></Line2>
+          <Line3 xsi:nil="true"></Line3>
+          <Longitude xsi:nil="true"></Longitude>
+          <Name xsi:nil="true"></Name>
+          <PostalCode xsi:nil="true"></PostalCode>
+          <PostOfficeBox xsi:nil="true"></PostOfficeBox>
+          <PrimaryContactName xsi:nil="true"></PrimaryContactName>
+          <ShippingMethodCode>1</ShippingMethodCode>
+          <StateOrProvince xsi:nil="true"></StateOrProvince>
+          <Telephone1 xsi:nil="true"></Telephone1>
+          <Telephone2 xsi:nil="true"></Telephone2>
+          <Telephone3 xsi:nil="true"></Telephone3>
+          <TimeZoneRuleVersionNumber xsi:nil="true"></TimeZoneRuleVersionNumber>
+          <UPSZone xsi:nil="true"></UPSZone>
+          <UTCOffset xsi:nil="true"></UTCOffset>
+          <UTCConversionTimeZoneCode xsi:nil="true"></UTCConversionTimeZoneCode>
+        </Address>
+        <Address>
+          <AddressNumber>2</AddressNumber>
+          <AddressTypeCode>1</AddressTypeCode>
+          <City xsi:nil="true"></City>
+          <County xsi:nil="true"></County>
+          <Country xsi:nil="true"></Country>
+          <Fax xsi:nil="true"></Fax>
+          <FreightTermsCode xsi:nil="true"></FreightTermsCode>
+          <ImportSequenceNumber xsi:nil="true"></ImportSequenceNumber>
+          <Latitude xsi:nil="true"></Latitude>
+          <Line1 xsi:nil="true"></Line1>
+          <Line2 xsi:nil="true"></Line2>
+          <Line3 xsi:nil="true"></Line3>
+          <Longitude xsi:nil="true"></Longitude>
+          <Name xsi:nil="true"></Name>
+          <PostalCode xsi:nil="true"></PostalCode>
+          <PostOfficeBox xsi:nil="true"></PostOfficeBox>
+          <PrimaryContactName xsi:nil="true"></PrimaryContactName>
+          <ShippingMethodCode>1</ShippingMethodCode>
+          <StateOrProvince xsi:nil="true"></StateOrProvince>
+          <Telephone1 xsi:nil="true"></Telephone1>
+          <Telephone2 xsi:nil="true"></Telephone2>
+          <Telephone3 xsi:nil="true"></Telephone3>
+          <TimeZoneRuleVersionNumber xsi:nil="true"></TimeZoneRuleVersionNumber>
+          <UPSZone xsi:nil="true"></UPSZone>
+          <UTCOffset xsi:nil="true"></UTCOffset>
+          <UTCConversionTimeZoneCode xsi:nil="true"></UTCConversionTimeZoneCode>
+        </Address>
+      </Addresses>
+    </Publisher>
+    <RootComponents>
+      <RootComponent type="1" schemaName="cmdspp_g_adr_tb" behavior="0" />
+      <RootComponent type="1" schemaName="cmdspp_g_ce_dflt_call_script_tb" behavior="0" />
+      <RootComponent type="1" schemaName="cmdspp_g_cmn_entity_tb" behavior="0" />
+      <RootComponent type="1" schemaName="cmdspp_g_e_adr_tb" behavior="0" />
+      <RootComponent type="1" schemaName="cmdspp_g_note_cex_tb" behavior="0" />
+      <RootComponent type="1" schemaName="cmdspp_g_note_set_tb" behavior="0" />
+      <RootComponent type="1" schemaName="cmdspp_g_note_tb" behavior="0" />
+      <RootComponent type="1" schemaName="cmdspp_g_phone_tb" behavior="0" />
+      <RootComponent type="1" schemaName="cmdspp_g_pye_pyr_eft_setup_tb" behavior="0" />
+      <RootComponent type="1" schemaName="cmdspp_g_rep_prov_id_tb" behavior="0" />
+      <RootComponent type="1" schemaName="cmdspp_g_rep_prov_tb" behavior="0" />
+      <RootComponent type="1" schemaName="cmdspp_g_rep_prov_xref_tb" behavior="0" />
+      <RootComponent type="1" schemaName="cmdspp_g_rep_tb" behavior="0" />
+      <RootComponent type="1" schemaName="cmdspp_g_usr_dtls_tb" behavior="0" />
+      <RootComponent type="1" schemaName="cmdspp_g_usr_inbox_atch" behavior="0" />
+      <RootComponent type="1" schemaName="cmdspp_g_usr_inbox_tb" behavior="0" />
+      <RootComponent type="1" schemaName="cmdspp_g_usr_inbox_thread" behavior="0" />
+      <RootComponent type="1" schemaName="cmdspp_p_acptnc_tb" behavior="0" />
+      <RootComponent type="1" schemaName="cmdspp_p_affl_tb" behavior="0" />
+      <RootComponent type="1" schemaName="cmdspp_p_alt_id_tb" behavior="0" />
+      <RootComponent type="1" schemaName="cmdspp_p_billing_address_tb" behavior="0" />
+      <RootComponent type="1" schemaName="cmdspp_p_blng_medm_tb" behavior="0" />
+      <RootComponent type="1" schemaName="cmdspp_p_cln_lab_imp_clia" behavior="0" />
+      <RootComponent type="1" schemaName="cmdspp_p_documents_tb" behavior="0" />
+      <RootComponent type="1" schemaName="cmdspp_p_dtl_tb" behavior="0" />
+      <RootComponent type="1" schemaName="cmdspp_p_ecs_all_transactions_tb" behavior="0" />
+      <RootComponent type="1" schemaName="cmdspp_p_ecs_transaction_tb" behavior="0" />
+      <RootComponent type="1" schemaName="cmdspp_p_eft_sign_tb" behavior="0" />
+      <RootComponent type="1" schemaName="cmdspp_p_elrn_fund_pmt_tb" behavior="0" />
+      <RootComponent type="1" schemaName="cmdspp_p_enrol_alt_id_tb" behavior="0" />
+      <RootComponent type="1" schemaName="cmdspp_p_enrol_dyn_fld" behavior="0" />
+      <RootComponent type="1" schemaName="cmdspp_p_enrol_tp_info_tb" behavior="0" />
+      <RootComponent type="1" schemaName="cmdspp_p_faci_tb" behavior="0" />
+      <RootComponent type="1" schemaName="cmdspp_p_grp_affl_dtl" behavior="0" />
+      <RootComponent type="1" schemaName="cmdspp_p_idt_inf_dtl" behavior="0" />
+      <RootComponent type="1" schemaName="cmdspp_p_interp_svc_tb" behavior="0" />
+      <RootComponent type="1" schemaName="cmdspp_p_lang_tb" behavior="0" />
+      <RootComponent type="1" schemaName="cmdspp_p_lic_cert_tb" behavior="0" />
+      <RootComponent type="1" schemaName="cmdspp_p_loc_cp_ba_tb" behavior="0" />
+      <RootComponent type="1" schemaName="cmdspp_p_loc_cp_mailing_address" behavior="0" />
+      <RootComponent type="1" schemaName="cmdspp_p_mcare_other" behavior="0" />
+      <RootComponent type="1" schemaName="cmdspp_p_mcare_part_tb" behavior="0" />
+      <RootComponent type="1" schemaName="cmdspp_p_mcare_tb" behavior="0" />
+      <RootComponent type="1" schemaName="cmdspp_p_num_bed_tb" behavior="0" />
+      <RootComponent type="1" schemaName="cmdspp_p_ofc_hrs_tb" behavior="0" />
+      <RootComponent type="1" schemaName="cmdspp_p_owner_dtl_tb" behavior="0" />
+      <RootComponent type="1" schemaName="cmdspp_p_owner_xref_tb" behavior="0" />
+      <RootComponent type="1" schemaName="cmdspp_p_ownership_dtl" behavior="0" />
+      <RootComponent type="1" schemaName="cmdspp_p_ownership_dtl_tb" behavior="0" />
+      <RootComponent type="1" schemaName="cmdspp_p_phn_fax_tb" behavior="0" />
+      <RootComponent type="1" schemaName="cmdspp_p_phone_fax_ba_tb" behavior="0" />
+      <RootComponent type="1" schemaName="cmdspp_p_pin_dea_dtl" behavior="0" />
+      <RootComponent type="1" schemaName="cmdspp_p_pin_mcp_dtl" behavior="0" />
+      <RootComponent type="1" schemaName="cmdspp_p_pin_mcp_on_dtl" behavior="0" />
+      <RootComponent type="1" schemaName="cmdspp_p_pin_oth_smpi_dtl" behavior="0" />
+      <RootComponent type="1" schemaName="cmdspp_p_pin_reval_st" behavior="0" />
+      <RootComponent type="1" schemaName="cmdspp_p_prev_mcaid_tb" behavior="0" />
+      <RootComponent type="1" schemaName="cmdspp_p_qstnr_addtnl_act" behavior="0" />
+      <RootComponent type="1" schemaName="cmdspp_p_qstnr_conviction_b_tb" behavior="0" />
+      <RootComponent type="1" schemaName="cmdspp_p_qstnr_conviction_tb" behavior="0" />
+      <RootComponent type="1" schemaName="cmdspp_p_qstnr_exclns_tb" behavior="0" />
+      <RootComponent type="1" schemaName="cmdspp_p_qstnr_litign_tb" behavior="0" />
+      <RootComponent type="1" schemaName="cmdspp_p_qstnr_other_state_tb" behavior="0" />
+      <RootComponent type="1" schemaName="cmdspp_p_qstnr_ovr_pmt_tb" behavior="0" />
+      <RootComponent type="1" schemaName="cmdspp_p_qstnr_pend_actn_tb" behavior="0" />
+      <RootComponent type="1" schemaName="cmdspp_p_qstnr_pmt_suspn_tb" behavior="0" />
+      <RootComponent type="1" schemaName="cmdspp_p_qstnr_restitution_tb" behavior="0" />
+      <RootComponent type="1" schemaName="cmdspp_p_qstnr_sanction_tb" behavior="0" />
+      <RootComponent type="1" schemaName="cmdspp_p_qstnr_tb" behavior="0" />
+      <RootComponent type="1" schemaName="cmdspp_p_ra_medm_tb" behavior="0" />
+      <RootComponent type="1" schemaName="cmdspp_p_relative_dtl_tb" behavior="0" />
+      <RootComponent type="1" schemaName="cmdspp_p_ser_bilagt_inf_tb" behavior="0" />
+      <RootComponent type="1" schemaName="cmdspp_p_ser_era_sub_inf_tb" behavior="0" />
+      <RootComponent type="1" schemaName="cmdspp_p_ser_hof_inf_tb" behavior="0" />
+      <RootComponent type="1" schemaName="cmdspp_p_ser_isa_inf_tb" behavior="0" />
+      <RootComponent type="1" schemaName="cmdspp_p_ser_loc_inf_tb" behavior="0" />
+      <RootComponent type="1" schemaName="cmdspp_p_ser_ma_inf_tb" behavior="0" />
+      <RootComponent type="1" schemaName="cmdspp_p_ser_paf_ma_inf_tb" behavior="0" />
+      <RootComponent type="1" schemaName="cmdspp_p_ser_ra_inf_tb" behavior="0" />
+      <RootComponent type="1" schemaName="cmdspp_p_ser_sa_inf_tb" behavior="0" />
+      <RootComponent type="1" schemaName="cmdspp_p_ser_sev_inf_tb" behavior="0" />
+      <RootComponent type="1" schemaName="cmdspp_p_ser_si_inf_tb" behavior="0" />
+      <RootComponent type="1" schemaName="cmdspp_p_serv_loc_inf" behavior="0" />
+      <RootComponent type="1" schemaName="cmdspp_p_specl_need_tb" behavior="0" />
+      <RootComponent type="1" schemaName="cmdspp_p_specl_tb" behavior="0" />
+      <RootComponent type="1" schemaName="cmdspp_p_subcontractor_dtl_tb" behavior="0" />
+      <RootComponent type="1" schemaName="cmdspp_p_svc_ty_cd_tb" behavior="0" />
+      <RootComponent type="1" schemaName="cmdspp_p_txnmy_tb" behavior="0" />
+      <RootComponent type="1" schemaName="cmdspp_pc_audits" behavior="0" />
+      <RootComponent type="1" schemaName="cmdspp_pc_ctrl_tb" behavior="0" />
+      <RootComponent type="1" schemaName="cmdspp_pc_docu_typ_tb" behavior="0" />
+      <RootComponent type="1" schemaName="cmdspp_pc_enrol_docu_tb" behavior="0" />
+      <RootComponent type="1" schemaName="cmdspp_pc_enrol_page_json" behavior="0" />
+      <RootComponent type="1" schemaName="cmdspp_pc_enrol_page_json_tb" behavior="0" />
+      <RootComponent type="1" schemaName="cmdspp_pc_enrol_typ_map" behavior="0" />
+      <RootComponent type="1" schemaName="cmdspp_pc_enrol_typ_tb" behavior="0" />
+      <RootComponent type="1" schemaName="cmdspp_pc_pg_tb" behavior="0" />
+      <RootComponent type="1" schemaName="cmdspp_pc_pvd_enrol_map_tb" behavior="0" />
+      <RootComponent type="1" schemaName="cmdspp_pc_pvd_typ_tb" behavior="0" />
+      <RootComponent type="1" schemaName="cmdspp_pc_pvdty_specl_txnmy_map_tb" behavior="0" />
+      <RootComponent type="1" schemaName="cmdspp_pc_section_tb" behavior="0" />
+      <RootComponent type="1" schemaName="cmdspp_pc_specl_pvdty_map" behavior="0" />
+      <RootComponent type="1" schemaName="cmdspp_pc_txnmy_codes_tb" behavior="0" />
+      <RootComponent type="1" schemaName="cmdspp_r_vv_tb" behavior="0" />
+      <RootComponent type="1" schemaName="cmdspp_t_carr_tb" behavior="0" />
+      <RootComponent type="1" schemaName="cmdspp_w_tp_prov_xref_tb" behavior="0" />
+      <RootComponent type="1" schemaName="cmdspp_w_tp_tb" behavior="0" />
+      <RootComponent type="1" schemaName="cmdspp_w_tp_txn_ty_tb" behavior="0" />
+      <RootComponent type="1" schemaName="contact" behavior="2" />
+      <RootComponent type="1" schemaName="cr834_cfg_ctlog_fld_tb" behavior="0" />
+      <RootComponent type="1" schemaName="cr834_cfg_ctrl_opt_list_tb" behavior="0" />
+      <RootComponent type="1" schemaName="cr834_cfg_ctrl_tb" behavior="0" />
+      <RootComponent type="1" schemaName="cr834_cfg_enrol_form_tb" behavior="0" />
+      <RootComponent type="1" schemaName="cr834_cfg_map_tb" behavior="0" />
+      <RootComponent type="1" schemaName="cr834_cfg_pg_tb" behavior="0" />
+      <RootComponent type="1" schemaName="cr834_cfg_pvd_typ_map" behavior="0" />
+      <RootComponent type="1" schemaName="cr834_cfg_pvd_typ_tb" behavior="0" />
+      <RootComponent type="1" schemaName="cr834_cfg_section_tb" behavior="0" />
+      <RootComponent type="1" schemaName="cr834_poc_enroll_idty_inf_tb" behavior="0" />
+      <RootComponent type="1" schemaName="cr834_poc_spc_tb" behavior="0" />
+      <RootComponent type="61" schemaName="cr834_gridHdlr" behavior="0" />
+      <RootComponent type="61" schemaName="new_enrform_dynamic" behavior="0" />
+      <RootComponent type="9" schemaName="cmdspp_applicationstatus" behavior="0" />
+      <RootComponent type="9" schemaName="cmdspp_g_user_role" behavior="0" />
+      <RootComponent type="9" schemaName="cmdspp_p_gnr_typ" behavior="0" />
+      <RootComponent type="9" schemaName="cmdspp_p_operator_list" behavior="0" />
+    </RootComponents>
+    <MissingDependencies>
+      <MissingDependency>
+        <Required type="1" schemaName="mspp_sitesetting" displayName="Site Setting" solution="PowerPages_Apps (1.0.2605.0)">
+          <package appName="Power Pages Core Package" version="1.1.2605.265">PowerPages_Core (1.1.2605.265)</package>
+        </Required>
+        <Dependent type="powerpagecomponent" id="{66ac0f65-7cc6-4ddf-8ae6-ec3318dbd63c}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="181" schemaName="NonRelational Data Provider" displayName="NonRelational Data Provider" solution="NonRelationalDataProvider (9.1.0.469)" id="{1d9bde74-9ebd-4da9-8ff5-aa74945b9f74}">
+          <package appName="NonRelational Data Provider Package" version="9.1.0.469">NonRelationalCustomActions (9.1.0.469)</package>
+        </Required>
+        <Dependent type="1" schemaName="cmdspp_g_usr_inbox_tb" displayName="G_USR_INBOX_TB" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="181" schemaName="NonRelational Data Provider" displayName="NonRelational Data Provider" solution="NonRelationalDataProvider (9.1.0.469)" id="{1d9bde74-9ebd-4da9-8ff5-aa74945b9f74}">
+          <package appName="NonRelational Data Provider Package" version="9.1.0.469">NonRelationalCustomActions (9.1.0.469)</package>
+        </Required>
+        <Dependent type="1" schemaName="cmdspp_pc_enrol_page_json" displayName="PC_ENROL_PAGE_JSON" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="183" schemaName="NonRelational Data Provider" displayName="NonRelational Data Provider" solution="NonRelationalDataProvider (9.1.0.469)" id="{19897b6e-b2c2-461c-8f32-5a2413028030}">
+          <package appName="NonRelational Data Provider Package" version="9.1.0.469">NonRelationalCustomActions (9.1.0.469)</package>
+        </Required>
+        <Dependent type="1" schemaName="cmdspp_g_usr_inbox_tb" displayName="G_USR_INBOX_TB" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="183" schemaName="NonRelational Data Provider" displayName="NonRelational Data Provider" solution="NonRelationalDataProvider (9.1.0.469)" id="{19897b6e-b2c2-461c-8f32-5a2413028030}">
+          <package appName="NonRelational Data Provider Package" version="9.1.0.469">NonRelationalCustomActions (9.1.0.469)</package>
+        </Required>
+        <Dependent type="1" schemaName="cmdspp_pc_enrol_page_json" displayName="PC_ENROL_PAGE_JSON" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="adx_organizationname" displayName="Organization Name" parentSchemaName="contact" parentDisplayName="Contact" solution="PowerPages_RuntimeCoreDependencies (1.0.2305.1)">
+          <package appName="Power Pages Core Package" version="1.1.2605.265">PowerPages_Core (1.1.2605.265)</package>
+        </Required>
+        <Dependent type="60" displayName="User Register" parentDisplayName="Contact" id="{71750861-6b80-f111-ab0e-70a8a5b02d28}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="66" schemaName="Microsoft.PowerApps.PowerAppsOneGrid" displayName="Microsoft.PowerApps.PowerAppsOneGrid" solution="BaseCustomControlsCore (9.0.2607.2008)">
+          <package appName="Base Custom Controls" version="9.0.2607.2008">BaseCustomControlsCore (9.0.2607.2008)</package>
+        </Required>
+        <Dependent type="60" displayName="Information" parentDisplayName="P_DTL_TB" id="{be9b2b39-fd34-4d9e-8d85-74758d8f8133}" />
+      </MissingDependency>
+    </MissingDependencies>
+  </SolutionManifest>
+</ImportExportXml>

@@ -1,0 +1,13 @@
+<powerpagecomponent powerpagecomponentid="203d7da6-897f-f111-ab0e-70a8a5b02d34">
+  <content>{
+  "source": "&lt;header class=\"provider-header\"&gt;\r\n    &lt;div class=\"container\"&gt;\r\n\r\n        &lt;div class=\"brand\"&gt;\r\n            &lt;a&gt;\r\n                CMdS NextGen Provider\r\n            &lt;/a&gt;\r\n        &lt;/div&gt;\r\n\r\n        &lt;nav class=\"header-nav\"&gt;\r\n            /about&gt;\r\n            /guidelines\r\n            -center\"&gt;Help Center&lt;/a&gt;\r\n            tel:1800NMEHELP\"&gt;1800-NME-HELP&lt;/a&gt;\r\n            /sign-inLogin&lt;/a&gt;\r\n        &lt;/nav&gt;\r\n\r\n    &lt;/div&gt;\r\n&lt;/header&gt;"
+}</content>
+  <iscustomizable>1</iscustomizable>
+  <name>Provider Header</name>
+  <powerpagecomponenttype>8</powerpagecomponenttype>
+  <powerpagesiteid>
+    <powerpagesiteid>abccaafd-73d6-47dd-bb55-b09b911f0d43</powerpagesiteid>
+  </powerpagesiteid>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</powerpagecomponent>

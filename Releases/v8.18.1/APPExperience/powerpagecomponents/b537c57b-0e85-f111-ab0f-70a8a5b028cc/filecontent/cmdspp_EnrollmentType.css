@@ -1,0 +1,340 @@
+/* DashboardView */
+.cmdspp-enrollment-page {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 24px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.cmdspp-enroll-link.disabled {
+    color: #B0B0B0;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+/* Provider Modal */
+.cmdspp-enroll-modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background: rgba(39,68,99,0.30);
+    backdrop-filter: blur(2px);
+    justify-content: center;
+    align-items: center;
+}
+
+.cmdspp-enroll-modal {
+    width: 420px;
+    background: #FFFFFF;
+    border-radius: 12px;
+    padding: 16px;
+    box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+}
+
+.cmdspp-enroll-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #274463;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.cmdspp-enroll-close {
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.cmdspp-enroll-modal-body {
+    margin-top: 16px;
+}
+
+.cmdspp-enroll-modal-description {
+    font-size: 12px;
+    color: #5A7099;
+    margin-bottom: 12px;
+}
+
+.cmdspp-enroll-modal-label {
+    display: block;
+    margin-bottom: 6px;
+    color: #274463;
+    font-size: 12px;
+}
+
+.cmdspp-enroll-provider-select {
+    width: 100%;
+    height: 38px;
+    border: 1px solid #D6DCE8;
+    border-radius: 6px;
+    padding: 0 10px;
+}
+
+.cmdspp-enroll-modal-footer {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.cmdspp-enroll-cancel-btn,
+.cmdspp-enroll-submit-btn {
+    flex: 1;
+    height: 38px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.cmdspp-enroll-cancel-btn {
+    background: #fff;
+    border: 1px solid #274463;
+    color: #274463;
+}
+
+.cmdspp-enroll-submit-btn {
+    background: #274463;
+    border: none;
+    color: #fff;
+}
+
+
+/* Enrollment text */
+.cmdspp-enroll-page-title {
+    /* width: 289px; */
+    margin: 0;
+    font-weight: 600;
+    font-size: 36px;
+    line-height: 40px;
+    color: #274463;
+    letter-spacing: 0;
+}
+/* Container */
+.cmdspp-main-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Heading 2 + Paragraph container */
+.cmdspp-info-container {
+    /* width: 264px; */
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+/* Heading 2 */
+.cmdspp-enroll-subtitle {
+font-weight: 400;
+font-size: 14px;
+line-height: 20px;
+letter-spacing: 0px;
+color:#274463;
+
+}
+
+/* Paragraph */
+.cmdspp-enroll-description {
+    /* width: 260px; */
+    max-width: 320px;
+    margin-top: 2px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 0;
+    color: #5A7099;
+}
+
+/* Container:margin */
+.cmdspp-grid-wrapper {
+    padding-top: 16px;
+    width: 100%;
+}
+
+/* Grid */
+.cmdspp-enrollment-grid,
+#cmdsppEnrollmentGrid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(320px, 1fr));
+    gap: 12px;
+    width: 100%;
+}
+
+.cmdspp-enrollment-grid,
+#cmdsppEnrollmentGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+/* Tablet */
+@media (max-width: 1430px) {
+  .cmdspp-enrollment-grid,
+#cmdsppEnrollmentGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Mobile */
+@media (max-width: 767px) {
+  .cmdspp-enrollment-grid,
+#cmdsppEnrollmentGrid  {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Card */
+.cmdspp-enrollment-card {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px;
+    min-height: 125px; 
+    background: #FFFFFF;
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    border-radius: 14px;
+    box-sizing: border-box;
+    transition: all 0.2s ease;
+}
+
+
+/* Icon Box */
+.cmdspp-card-icon {
+    width: 92px;
+    height: 92px;
+    min-width: 92px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+}
+
+
+/* Content */
+.cmdspp-card-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Card Title */
+.cmdspp-card-title {
+    margin-bottom: 4px;
+    
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 18px;
+    color: #0B3A6F;
+}
+
+/* Card Description */
+.cmdspp-card-description {
+    margin-bottom: 8px;
+    
+    font-style: normal;
+    font-weight: 500;
+    font-size: 11px;
+    line-height: 15px;
+    color: #5A7099;
+}
+.cmdspp-enrollment-card {
+    position: relative;
+}
+
+.cmdspp-card-tooltip {
+    display: none;
+    position: absolute;
+    min-width: 273px;
+    padding: 10px;
+    border: 1px solid #C2C2C2;
+    border-radius: 8px;
+    background: #FFFFFF;
+    color: #274463;
+    font-size: 12px;
+    line-height: 17px;
+    font-weight: 400;
+    left: 50%;
+    top:-30px;
+    transform: translateX(-50%);
+    z-index: 9999;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.cmdspp-enrollment-card:hover .cmdspp-card-tooltip {
+    display: block;
+}
+/* Enroll Link */
+.cmdspp-enroll-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 2px;
+    
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 16px;
+    color: #0196F3;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.cmdspp-enroll-link:hover {
+    color: #0078D4;
+}
+
+/* Icon Backgrounds */
+.cmdspp-purple-bg {
+    background: rgba(124, 58, 237, 0.09);
+    color: #7C3AED;
+}
+
+.cmdspp-red-bg {
+    background: rgba(220, 38, 38, 0.09);
+    color: #DC2626;
+}
+
+.cmdspp-blue-bg {
+    background: rgba(28, 112, 222, 0.09);
+    color: #1C70DE;
+}
+
+.cmdspp-orange-bg {
+    background: rgba(217, 119, 6, 0.09);
+    color: #D97706;
+}
+
+.cmdspp-green-bg {
+    background: rgba(5, 150, 105, 0.09);
+    color: #059669;
+}
+
+.cmdspp-cyan-bg {
+    background: rgba(8, 145, 178, 0.09);
+    color: #0891B2;
+}
+
+/* Tablet */
+@media (max-width: 1024px) {
+    #cmdsppEnrollmentGrid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    #cmdsppEnrollmentGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .cmdspp-card-icon {
+        width: 70px;
+        height: 70px;
+        min-width: 70px;
+        font-size: 32px;
+    }
+}

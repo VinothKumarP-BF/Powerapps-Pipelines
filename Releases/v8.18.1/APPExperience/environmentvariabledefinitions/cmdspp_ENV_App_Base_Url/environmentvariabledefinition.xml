@@ -1,0 +1,11 @@
+<environmentvariabledefinition schemaname="cmdspp_ENV_App_Base_Url">
+  <defaultvalue>https://cmds-nextgenprovider-dev.powerappsportals.com</defaultvalue>
+  <displayname default="ENV_App_Base_Url">
+    <label description="ENV_App_Base_Url" languagecode="1033" />
+  </displayname>
+  <introducedversion>1.8.6.2</introducedversion>
+  <iscustomizable>1</iscustomizable>
+  <isrequired>0</isrequired>
+  <secretstore>0</secretstore>
+  <type>100000000</type>
+</environmentvariabledefinition>

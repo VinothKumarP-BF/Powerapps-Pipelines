@@ -1,0 +1,43 @@
+<powerpagecomponent powerpagecomponentid="ac42cac1-f980-c388-4692-2076d71a3740">
+  <content>{
+  "displayorder": 4,
+  "pagetemplateid": "718ed8c8-9407-4620-adf3-832ec188887d",
+  "parentpageid": "51d44b41-26bf-6d84-f130-1b2b46867671",
+  "partialurl": "Speciality-Licenses",
+  "isroot": false,
+  "rootwebpageid": "2e9c0929-747d-12af-51a2-9082cd7a6b60",
+  "title": "Speciality Licenses",
+  "summary": "&lt;p&gt;This is a sample landing page designed to be a starting point for your website&lt;/p&gt;",
+  "publishingstateid": "c7294317-419f-4724-8068-a91d5da8d92c",
+  "enablerating": false,
+  "enabletracking": false,
+  "excludefromsearch": false,
+  "hiddenfromsitemap": true,
+  "sharedpageconfiguration": false,
+  "feedbackpolicy": 756150000,
+  "copy": "{% include 'cmdspp_Enrollment_Form_Header' %}\r\n\r\n\r\n&lt;div class=\"cmdspp-form-body\"&gt;\r\n\r\n    &lt;div id=\"identity-form-container\"&gt;\r\n        {% include 'specialtyLicenseStep' %}\r\n    &lt;/div&gt;\r\n\r\n    {% include 'cmdspp_Enrollment_Form_SidePanel' %}\r\n\r\n&lt;/div&gt;"
+}</content>
+  <iscustomizable>1</iscustomizable>
+  <name>Speciality Licenses</name>
+  <powerpagecomponenttype>2</powerpagecomponenttype>
+  <powerpagesiteid>
+    <powerpagesiteid>abccaafd-73d6-47dd-bb55-b09b911f0d43</powerpagesiteid>
+  </powerpagesiteid>
+  <powerpagesitelanguageid>
+    <powerpagesitelanguageid>7b340d7a-188d-4ed8-b16c-cc6e959fb5c2</powerpagesitelanguageid>
+  </powerpagesitelanguageid>
+  <searchcontent>Speciality Licenses{% include 'cmdspp_Enrollment_Form_Header' %}
+
+
+&lt;div class="cmdspp-form-body"&gt;
+
+    &lt;div id="identity-form-container"&gt;
+        {% include 'specialtyLicenseStep' %}
+    &lt;/div&gt;
+
+    {% include 'cmdspp_Enrollment_Form_SidePanel' %}
+
+&lt;/div&gt;Speciality Licenses</searchcontent>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</powerpagecomponent>

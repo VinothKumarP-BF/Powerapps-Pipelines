@@ -1,0 +1,23 @@
+<powerpagecomponent powerpagecomponentid="3a310d60-5763-cd5c-dc91-e716e4b13dd2">
+  <content>{
+  "filecontent": null,
+  "displayorder": 2,
+  "parentweblinkid": "0d4df65d-ef40-4497-56ee-17fe892dd6e6",
+  "weblinksetid": "aba765dd-0f02-4f05-ae0f-a524623441a0",
+  "pageid": "6dfb2d8f-94c5-7b7f-7501-ebeb47bcb9a9",
+  "publishingstateid": "c7294317-419f-4724-8068-a91d5da8d92c",
+  "displaypagevalidation": false,
+  "displayimageonly": false,
+  "displaypagechildlinks": false,
+  "openinnewwindow": false,
+  "robotsfollowlink": true
+}</content>
+  <iscustomizable>1</iscustomizable>
+  <name>Application</name>
+  <powerpagecomponenttype>5</powerpagecomponenttype>
+  <powerpagesiteid>
+    <powerpagesiteid>abccaafd-73d6-47dd-bb55-b09b911f0d43</powerpagesiteid>
+  </powerpagesiteid>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</powerpagecomponent>

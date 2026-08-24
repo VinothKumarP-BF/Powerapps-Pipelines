@@ -1,0 +1,14 @@
+<powerpagecomponent powerpagecomponentid="b2d2f7db-ef80-f111-ab0e-70a8a5b02d28">
+  <content>{
+  "value": "*",
+  "source": 0
+}</content>
+  <iscustomizable>1</iscustomizable>
+  <name>Webapi/cmdspp_pc_ctrl_tb/fields</name>
+  <powerpagecomponenttype>9</powerpagecomponenttype>
+  <powerpagesiteid>
+    <powerpagesiteid>abccaafd-73d6-47dd-bb55-b09b911f0d43</powerpagesiteid>
+  </powerpagesiteid>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</powerpagecomponent>

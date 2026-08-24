@@ -1,0 +1,14 @@
+<powerpagecomponent powerpagecomponentid="d0566b0b-388f-407a-ade3-1eba03bde836">
+  <content>{
+  "value": "false",
+  "source": 0
+}</content>
+  <iscustomizable>1</iscustomizable>
+  <name>Authentication/Registration/EmailConfirmationEnabled</name>
+  <powerpagecomponenttype>9</powerpagecomponenttype>
+  <powerpagesiteid>
+    <powerpagesiteid>abccaafd-73d6-47dd-bb55-b09b911f0d43</powerpagesiteid>
+  </powerpagesiteid>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</powerpagecomponent>

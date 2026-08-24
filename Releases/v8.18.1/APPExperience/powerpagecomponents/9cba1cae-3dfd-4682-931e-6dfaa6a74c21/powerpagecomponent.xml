@@ -1,0 +1,22 @@
+<powerpagecomponent powerpagecomponentid="9cba1cae-3dfd-4682-931e-6dfaa6a74c21">
+  <content>{
+  "filecontent": null,
+  "displayorder": 13,
+  "weblinksetid": "aba765dd-0f02-4f05-ae0f-a524623441a0",
+  "pageid": "07dd9f0b-2605-5700-3dbe-d421d635aab4",
+  "publishingstateid": "c7294317-419f-4724-8068-a91d5da8d92c",
+  "displaypagevalidation": false,
+  "displayimageonly": false,
+  "displaypagechildlinks": false,
+  "openinnewwindow": false,
+  "robotsfollowlink": true
+}</content>
+  <iscustomizable>1</iscustomizable>
+  <name>Forgot Password</name>
+  <powerpagecomponenttype>5</powerpagecomponenttype>
+  <powerpagesiteid>
+    <powerpagesiteid>abccaafd-73d6-47dd-bb55-b09b911f0d43</powerpagesiteid>
+  </powerpagesiteid>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</powerpagecomponent>

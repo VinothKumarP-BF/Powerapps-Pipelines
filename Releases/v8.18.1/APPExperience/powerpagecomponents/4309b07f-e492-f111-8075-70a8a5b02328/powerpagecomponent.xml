@@ -1,0 +1,14 @@
+<powerpagecomponent powerpagecomponentid="4309b07f-e492-f111-8075-70a8a5b02328">
+  <content>{
+  "envvar_schema": "cmdspp_ENV_App_Base_Url",
+  "source": 1
+}</content>
+  <iscustomizable>1</iscustomizable>
+  <name>cmdspp_ENV_App_Base_Url</name>
+  <powerpagecomponenttype>9</powerpagecomponenttype>
+  <powerpagesiteid>
+    <powerpagesiteid>abccaafd-73d6-47dd-bb55-b09b911f0d43</powerpagesiteid>
+  </powerpagesiteid>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</powerpagecomponent>

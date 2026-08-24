@@ -1,0 +1,26 @@
+<powerpagecomponent powerpagecomponentid="a8f9e4bb-f185-f111-ab0f-70a8a5b02d28">
+  <content>{
+  "scope": 756150000,
+  "entitylogicalname": "cmdspp_pc_enrol_typ_map",
+  "entityname": "cmdspp_pc_enrol_typ_map",
+  "appendto": true,
+  "append": true,
+  "delete": true,
+  "create": true,
+  "write": true,
+  "read": true,
+  "adx_entitypermission_webrole": [
+    "43123b46-21f2-4834-8177-926e09ee53ab",
+    "f899f791-55b3-4fd6-86ac-f9addbb7477b",
+    "04aca432-bb7b-f111-ab0e-000d3a3586e4"
+  ]
+}</content>
+  <iscustomizable>1</iscustomizable>
+  <name>cmdspp_pc_enrol_typ_map</name>
+  <powerpagecomponenttype>18</powerpagecomponenttype>
+  <powerpagesiteid>
+    <powerpagesiteid>abccaafd-73d6-47dd-bb55-b09b911f0d43</powerpagesiteid>
+  </powerpagesiteid>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</powerpagecomponent>

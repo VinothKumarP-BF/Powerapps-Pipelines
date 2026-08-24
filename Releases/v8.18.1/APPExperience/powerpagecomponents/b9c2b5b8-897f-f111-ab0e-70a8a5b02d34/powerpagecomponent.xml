@@ -1,0 +1,11 @@
+<powerpagecomponent powerpagecomponentid="b9c2b5b8-897f-f111-ab0e-70a8a5b02d34">
+  <content>{"source":"&lt;footer class=\"provider-footer\"&gt;\r\n    &lt;div class=\"container\"&gt;\r\n\r\n        &lt;div class=\"left\"&gt;\r\n            © 2026 U.S. Department of Health &amp; Human Services\r\n        &lt;/div&gt;\r\n\r\n        &lt;div class=\"right\"&gt;\r\n            #\r\n           &lt;a&gt; #Terms of Use&lt;/a&gt;\r\n            &lt;a&gt; #Support&lt;/a&gt;\r\n        &lt;/div&gt;\r\n\r\n    &lt;/div&gt;\r\n&lt;/footer&gt;"}</content>
+  <iscustomizable>1</iscustomizable>
+  <name>Provider Footer</name>
+  <powerpagecomponenttype>8</powerpagecomponenttype>
+  <powerpagesiteid>
+    <powerpagesiteid>abccaafd-73d6-47dd-bb55-b09b911f0d43</powerpagesiteid>
+  </powerpagesiteid>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</powerpagecomponent>

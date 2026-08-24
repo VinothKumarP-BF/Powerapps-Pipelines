@@ -1,0 +1,24 @@
+<powerpagecomponent powerpagecomponentid="462bbbcc-ba9c-f111-b8db-70a8a5b02d28">
+  <content>{
+   "scope": 756150000,
+   "entitylogicalname": "cmdspp_p_billing_address_tb",
+   "entityname": "cmdspp_p_billing_address_tb",
+   "appendto": true,
+   "append": true,
+   "delete": false,
+   "create": true,
+   "write": true,
+   "read": true,
+   "adx_entitypermission_webrole": [
+      "3e0eed5c-e2e0-46fa-a82c-1f6c985badca"
+   ]
+}</content>
+  <iscustomizable>1</iscustomizable>
+  <name>cmdspp_p_billing_address_tb</name>
+  <powerpagecomponenttype>18</powerpagecomponenttype>
+  <powerpagesiteid>
+    <powerpagesiteid>abccaafd-73d6-47dd-bb55-b09b911f0d43</powerpagesiteid>
+  </powerpagesiteid>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</powerpagecomponent>

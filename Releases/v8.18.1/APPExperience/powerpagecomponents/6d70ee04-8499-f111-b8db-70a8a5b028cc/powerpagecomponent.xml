@@ -1,0 +1,24 @@
+<powerpagecomponent powerpagecomponentid="6d70ee04-8499-f111-b8db-70a8a5b028cc">
+  <content>{
+   "scope": 756150000,
+   "entitylogicalname": "cmdspp_pc_specl_pvdty_map",
+   "entityname": "cmdspp_pc_specl_pvdty_map",
+   "appendto": true,
+   "append": true,
+   "delete": false,
+   "create": true,
+   "write": true,
+   "read": true,
+   "adx_entitypermission_webrole": [
+      "3e0eed5c-e2e0-46fa-a82c-1f6c985badca"
+   ]
+}</content>
+  <iscustomizable>1</iscustomizable>
+  <name>cmdspp_pc_specl_pvdty_map</name>
+  <powerpagecomponenttype>18</powerpagecomponenttype>
+  <powerpagesiteid>
+    <powerpagesiteid>abccaafd-73d6-47dd-bb55-b09b911f0d43</powerpagesiteid>
+  </powerpagesiteid>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</powerpagecomponent>

@@ -1,0 +1,23 @@
+<powerpagecomponent powerpagecomponentid="de9e96c3-6be7-eb97-b997-87523076e607">
+  <content>{
+  "filecontent": null,
+  "displayorder": 11,
+  "weblinksetid": "aba765dd-0f02-4f05-ae0f-a524623441a0",
+  "pageid": "7c549f07-2591-ce5c-f47e-907b7509b099",
+  "publishingstateid": "c7294317-419f-4724-8068-a91d5da8d92c",
+  "displaypagevalidation": false,
+  "displayimageonly": false,
+  "displaypagechildlinks": false,
+  "openinnewwindow": false,
+  "robotsfollowlink": true,
+  "parentweblinkid": null
+}</content>
+  <iscustomizable>1</iscustomizable>
+  <name>Form Config</name>
+  <powerpagecomponenttype>5</powerpagecomponenttype>
+  <powerpagesiteid>
+    <powerpagesiteid>abccaafd-73d6-47dd-bb55-b09b911f0d43</powerpagesiteid>
+  </powerpagesiteid>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</powerpagecomponent>

@@ -1,0 +1,18 @@
+<powerpagesites>
+  <powerpagesite powerpagesiteid="abccaafd-73d6-47dd-bb55-b09b911f0d43">
+    <content>{
+  "defaultlanguage": "7b340d7a-188d-4ed8-b16c-cc6e959fb5c2",
+  "footerwebtemplateid": "468cedbb-ff20-4134-8710-2becb5faef4f",
+  "website_language": 1033,
+  "defaultbotconsumerid": "f46d54e6-3679-f111-ab0f-000d3a31b966",
+  "headerwebtemplateid": "91cfddc5-867b-420c-b4e1-bdedf86c7cfc"
+}</content>
+    <datamodelversion>2.0</datamodelversion>
+    <enhancedauthorization>0</enhancedauthorization>
+    <iscustomizable>1</iscustomizable>
+    <name>CMdS Next Gen Provider Dev - cmds-nextgenprovider-dev</name>
+    <primarydomainname>cmds-nextgenprovider-dev.powerappsportals.com</primarydomainname>
+    <statecode>0</statecode>
+    <statuscode>1</statuscode>
+  </powerpagesite>
+</powerpagesites>

@@ -1,0 +1,317 @@
+<powerpagecomponent powerpagecomponentid="2262d48a-43ac-07a3-a580-2d8fb06c18a2">
+  <content>{
+  "filecontent": null,
+  "displayorder": 2,
+  "pagetemplateid": "718ed8c8-9407-4620-adf3-832ec188887d",
+  "parentpageid": "551cf2a7-4cb2-4424-8af7-3422ddbd968e",
+  "partialurl": "Provider-Configuration-Editor-deleted",
+  "isroot": false,
+  "rootwebpageid": "9863f629-483c-4bfe-08a1-f0ebe6695e0c",
+  "title": "Provider Configuration Editor",
+  "summary": "&lt;p&gt;This is a sample landing page designed to be a starting point for your website&lt;/p&gt;",
+  "copy": "&lt;div class=\"container-fluid form-builder\"&gt;\n\n    &lt;!-- Header --&gt;\n    &lt;div class=\"builder-header d-flex justify-content-between align-items-center mb-4\"&gt;\n        &lt;div&gt;\n            &lt;h3 class=\"mb-0\"&gt;Form Configuration Builder&lt;/h3&gt;\n            &lt;small class=\"text-muted\"&gt;\n                Configure pages, sections, and fields per enrollment type and provider type\n            &lt;/small&gt;\n        &lt;/div&gt;\n\n        &lt;div class=\"d-flex align-items-center gap-3\"&gt;\n            &lt;span class=\"badge bg-light text-dark p-2\"&gt;\n                20 / 33 Fields Active\n            &lt;/span&gt;\n            &lt;button class=\"btn btn-primary\"&gt;\n                Save Configuration\n            &lt;/button&gt;\n        &lt;/div&gt;\n    &lt;/div&gt;\n\n    &lt;!-- Enrollment Types --&gt;\n    &lt;div class=\"mb-4\"&gt;\n        &lt;label class=\"text-uppercase small text-muted fw-bold\"&gt;\n            Enrollment Type\n        &lt;/label&gt;\n\n        &lt;div class=\"d-flex flex-wrap gap-3 mt-2\"&gt;\n            &lt;div class=\"config-card active\"&gt;\n                &lt;div class=\"card-title\"&gt;New Provider Enrollment&lt;/div&gt;\n                &lt;small&gt;Active&lt;/small&gt;\n            &lt;/div&gt;\n\n            &lt;div class=\"config-card\"&gt;\n                &lt;div class=\"card-title\"&gt;Provider Re-enrollment&lt;/div&gt;\n            &lt;/div&gt;\n\n            &lt;div class=\"config-card\"&gt;\n                &lt;div class=\"card-title\"&gt;Bulk Group Intake&lt;/div&gt;\n            &lt;/div&gt;\n\n            &lt;div class=\"config-card add-card\"&gt;\n                + Add Type\n            &lt;/div&gt;\n        &lt;/div&gt;\n    &lt;/div&gt;\n\n    &lt;!-- Provider Tabs --&gt;\n    &lt;div class=\"mb-3\"&gt;\n        &lt;label class=\"text-uppercase small text-muted fw-bold\"&gt;\n            Provider\n        &lt;/label&gt;\n\n        &lt;div class=\"provider-tabs mt-2\"&gt;\n            &lt;button class=\"btn btn-sm btn-dark rounded-pill\"&gt;Clinical&lt;/button&gt;\n            &lt;button class=\"btn btn-sm btn-light rounded-pill\"&gt;Ambulance / EMS&lt;/button&gt;\n            &lt;button class=\"btn btn-sm btn-light rounded-pill\"&gt;Social Workers&lt;/button&gt;\n            &lt;button class=\"btn btn-sm btn-light rounded-pill\"&gt;Pharmacy&lt;/button&gt;\n            &lt;button class=\"btn btn-sm btn-light rounded-pill\"&gt;Specialist / Surgical&lt;/button&gt;\n            &lt;button class=\"btn btn-sm btn-light rounded-pill\"&gt;Preventive Care&lt;/button&gt;\n            &lt;button class=\"btn btn-sm btn-outline-secondary rounded-pill\"&gt;\n                + Add Provider\n            &lt;/button&gt;\n        &lt;/div&gt;\n    &lt;/div&gt;\n\n    &lt;!-- Tabs --&gt;\n    &lt;div class=\"nav-border mb-3\"&gt;\n        &lt;ul class=\"nav nav-tabs\"&gt;\n            &lt;li class=\"nav-item\"&gt;\n                #Form Fields&lt;/a&gt;\n            &lt;/li&gt;\n            &lt;li class=\"nav-item\"&gt;\n                &lt;a class=\"nav-link&gt;\n        &lt;/ul&gt;\n    &lt;/div&gt;\n\n    &lt;!-- Builder Body --&gt;\n    &lt;div class=\"row gx-3\"&gt;\n\n        &lt;!-- Pages --&gt;\n        &lt;div class=\"col-md-3\"&gt;\n            &lt;div class=\"panel\"&gt;\n                &lt;div class=\"panel-header\"&gt;\n                    &lt;strong&gt;Pages&lt;/strong&gt;\n                &lt;/div&gt;\n\n                &lt;ul class=\"list-group list-group-flush\"&gt;\n\n                    &lt;li class=\"list-group-item active-item\"&gt;\n                        &lt;input type=\"checkbox\" checked&gt;\n                        Identifying Information\n                    &lt;/li&gt;\n\n                    &lt;li class=\"list-group-item\"&gt;\n                        &lt;input type=\"checkbox\" checked&gt;\n                        Practice Location\n                    &lt;/li&gt;\n\n                    &lt;li class=\"list-group-item\"&gt;\n                        &lt;input type=\"checkbox\"&gt;\n                        Credentialing\n                    &lt;/li&gt;\n\n                    &lt;li class=\"list-group-item\"&gt;\n                        &lt;input type=\"checkbox\"&gt;\n                        Service Location Billing\n                    &lt;/li&gt;\n\n                    &lt;li class=\"list-group-item\"&gt;\n                        &lt;input type=\"checkbox\" checked&gt;\n                        Signature Page\n                    &lt;/li&gt;\n\n                &lt;/ul&gt;\n            &lt;/div&gt;\n        &lt;/div&gt;\n\n        &lt;!-- Sections --&gt;\n        &lt;div class=\"col-md-3\"&gt;\n            &lt;div class=\"panel\"&gt;\n                &lt;div class=\"panel-header\"&gt;\n                    &lt;strong&gt;Sections&lt;/strong&gt;\n                &lt;/div&gt;\n\n                &lt;ul class=\"list-group list-group-flush\"&gt;\n\n                    &lt;li class=\"list-group-item active-item\"&gt;\n                        &lt;input type=\"checkbox\" checked&gt;\n                        Provider Type\n                    &lt;/li&gt;\n\n                    &lt;li class=\"list-group-item\"&gt;\n                        &lt;input type=\"checkbox\" checked&gt;\n                        NPI &amp;amp; Identifiers\n                    &lt;/li&gt;\n\n                    &lt;li class=\"list-group-item\"&gt;\n                        &lt;input type=\"checkbox\" checked&gt;\n                        Previous Medicaid Information\n                    &lt;/li&gt;\n\n                &lt;/ul&gt;\n            &lt;/div&gt;\n        &lt;/div&gt;\n\n        &lt;!-- Fields --&gt;\n        &lt;div class=\"col-md-6\"&gt;\n            &lt;div class=\"panel\"&gt;\n\n                &lt;div class=\"panel-header d-flex justify-content-between\"&gt;\n                    &lt;strong&gt;Fields&lt;/strong&gt;\n\n                    &lt;div class=\"d-flex gap-5 text-muted small\"&gt;\n                        &lt;span&gt;Required&lt;/span&gt;\n                        &lt;span&gt;Validate&lt;/span&gt;\n                    &lt;/div&gt;\n                &lt;/div&gt;\n\n                &lt;div class=\"field-list\"&gt;\n\n                    &lt;!-- Field --&gt;\n                    &lt;div class=\"field-row\"&gt;\n                        &lt;div class=\"field-name\"&gt;\n                            &lt;input type=\"checkbox\" checked&gt;\n                            National Provider Identifier (NPI)\n                        &lt;/div&gt;\n\n                        &lt;div&gt;\n                            &lt;span class=\"badge bg-secondary\"&gt;Text&lt;/span&gt;\n                        &lt;/div&gt;\n\n                        &lt;div class=\"form-check form-switch\"&gt;\n                            &lt;input class=\"form-check-input\" type=\"checkbox\"&gt;\n                        &lt;/div&gt;\n\n                        &lt;div class=\"form-check form-switch\"&gt;\n                            &lt;input class=\"form-check-input\" type=\"checkbox\"&gt;\n                        &lt;/div&gt;\n                    &lt;/div&gt;\n\n                    &lt;div class=\"field-row\"&gt;\n                        &lt;div class=\"field-name\"&gt;\n                            &lt;input type=\"checkbox\" checked&gt;\n                            Other ID 1\n                        &lt;/div&gt;\n\n                        &lt;div&gt;\n                            &lt;span class=\"badge bg-secondary\"&gt;Text&lt;/span&gt;\n                        &lt;/div&gt;\n\n                        &lt;div class=\"form-check form-switch\"&gt;\n                            &lt;input class=\"form-check-input\" type=\"checkbox\"&gt;\n                        &lt;/div&gt;\n\n                        &lt;div class=\"form-check form-switch\"&gt;\n                            &lt;input class=\"form-check-input\" type=\"checkbox\"&gt;\n                        &lt;/div&gt;\n                    &lt;/div&gt;\n\n                    &lt;div class=\"field-row\"&gt;\n                        &lt;div class=\"field-name\"&gt;\n                            &lt;input type=\"checkbox\" checked&gt;\n                            Social Security Number (SSN)\n                        &lt;/div&gt;\n\n                        &lt;div&gt;\n                            &lt;span class=\"badge bg-danger\"&gt;Masked&lt;/span&gt;\n                        &lt;/div&gt;\n\n                        &lt;div class=\"form-check form-switch\"&gt;\n                            &lt;input class=\"form-check-input\" type=\"checkbox\"&gt;\n                        &lt;/div&gt;\n\n                        &lt;div class=\"form-check form-switch\"&gt;\n                            &lt;input class=\"form-check-input\" type=\"checkbox\"&gt;\n                        &lt;/div&gt;\n                    &lt;/div&gt;\n\n                    &lt;div class=\"field-row\"&gt;\n                        &lt;div class=\"field-name\"&gt;\n                            &lt;input type=\"checkbox\"&gt;\n                            Federal Tax ID (EIN)\n                        &lt;/div&gt;\n\n                        &lt;div&gt;\n                            &lt;span class=\"badge bg-secondary\"&gt;Text&lt;/span&gt;\n                        &lt;/div&gt;\n\n                        &lt;div class=\"form-check form-switch\"&gt;\n                            &lt;input class=\"form-check-input\" type=\"checkbox\"&gt;\n                        &lt;/div&gt;\n\n                        &lt;div class=\"form-check form-switch\"&gt;\n                            &lt;input class=\"form-check-input\" type=\"checkbox\"&gt;\n                        &lt;/div&gt;\n                    &lt;/div&gt;\n\n                    &lt;div class=\"field-row\"&gt;\n                        &lt;div class=\"field-name\"&gt;\n                            &lt;input type=\"checkbox\" checked&gt;\n                            Date of Birth\n                        &lt;/div&gt;\n\n                        &lt;div&gt;\n                            &lt;span class=\"badge bg-success\"&gt;Date&lt;/span&gt;\n                        &lt;/div&gt;\n\n                        &lt;div class=\"form-check form-switch\"&gt;\n                            &lt;input class=\"form-check-input\" type=\"checkbox\"&gt;\n                        &lt;/div&gt;\n\n                        &lt;div class=\"form-check form-switch\"&gt;\n                            &lt;input class=\"form-check-input\" type=\"checkbox\"&gt;\n                        &lt;/div&gt;\n                    &lt;/div&gt;\n\n                    &lt;div class=\"field-row\"&gt;\n                        &lt;div class=\"field-name\"&gt;\n                            &lt;input type=\"checkbox\" checked&gt;\n                            Gender\n                        &lt;/div&gt;\n\n                        &lt;div&gt;\n                            &lt;span class=\"badge bg-info\"&gt;Select&lt;/span&gt;\n                        &lt;/div&gt;\n\n                        &lt;div class=\"form-check form-switch\"&gt;\n                            &lt;input class=\"form-check-input\" type=\"checkbox\"&gt;\n                        &lt;/div&gt;\n\n                        &lt;div class=\"form-check form-switch\"&gt;\n                            &lt;input class=\"form-check-input\" type=\"checkbox\"&gt;\n                        &lt;/div&gt;\n                    &lt;/div&gt;\n\n                &lt;/div&gt;\n\n            &lt;/div&gt;\n        &lt;/div&gt;\n\n    &lt;/div&gt;\n\n&lt;/div&gt;",
+  "publishingstateid": "c7294317-419f-4724-8068-a91d5da8d92c",
+  "enablerating": false,
+  "enabletracking": false,
+  "excludefromsearch": false,
+  "hiddenfromsitemap": true,
+  "sharedpageconfiguration": false,
+  "feedbackpolicy": 756150000,
+  "customcss": ".form-builder {\r\n    background: #f8f9fb;\r\n    padding: 20px;\r\n    min-height: 100vh;\r\n}\r\n\r\n.config-card {\r\n    width: 180px;\r\n    padding: 14px;\r\n    background: #fff;\r\n    border: 1px solid #e4e7ec;\r\n    border-radius: 12px;\r\n    cursor: pointer;\r\n}\r\n\r\n.config-card.active {\r\n    border: 2px solid #7c4dff;\r\n    background: #f6f2ff;\r\n}\r\n\r\n.add-card {\r\n    border: 2px dashed #d0d5dd;\r\n    display: flex;\r\n    justify-content: center;\r\n    align-items: center;\r\n}\r\n\r\n.provider-tabs {\r\n    display: flex;\r\n    gap: 8px;\r\n    flex-wrap: wrap;\r\n}\r\n\r\n.panel {\r\n    background: #fff;\r\n    border: 1px solid #e5e7eb;\r\n    border-radius: 12px;\r\n    overflow: hidden;\r\n}\r\n\r\n.panel-header {\r\n    padding: 12px 16px;\r\n    border-bottom: 1px solid #eee;\r\n    background: #fafafa;\r\n}\r\n\r\n.active-item {\r\n    background: #f3f0ff;\r\n    border-left: 4px solid #7c4dff;\r\n}\r\n\r\n.field-list {\r\n    padding: 10px;\r\n}\r\n\r\n.field-row {\r\n    display: grid;\r\n    grid-template-columns: 1fr 80px 80px 80px;\r\n    gap: 10px;\r\n    align-items: center;\r\n    padding: 12px;\r\n    margin-bottom: 8px;\r\n    border: 1px solid #ececec;\r\n    border-radius: 10px;\r\n    background: #fff;\r\n}\r\n\r\n.field-name {\r\n    display: flex;\r\n    align-items: center;\r\n    gap: 10px;\r\n}\r\n\r\n.nav-border {\r\n    border-bottom: 1px solid #dee2e6;\r\n}"
+}</content>
+  <iscustomizable>1</iscustomizable>
+  <name>Provider Configuration Editor-deleted</name>
+  <powerpagecomponenttype>2</powerpagecomponenttype>
+  <powerpagesiteid>
+    <powerpagesiteid>abccaafd-73d6-47dd-bb55-b09b911f0d43</powerpagesiteid>
+  </powerpagesiteid>
+  <powerpagesitelanguageid>
+    <powerpagesitelanguageid>7b340d7a-188d-4ed8-b16c-cc6e959fb5c2</powerpagesitelanguageid>
+  </powerpagesitelanguageid>
+  <searchcontent>Provider Configuration Editor&lt;div class="container-fluid form-builder"&gt;
+
+    &lt;!-- Header --&gt;
+    &lt;div class="builder-header d-flex justify-content-between align-items-center mb-4"&gt;
+        &lt;div&gt;
+            &lt;h3 class="mb-0"&gt;Form Configuration Builder&lt;/h3&gt;
+            &lt;small class="text-muted"&gt;
+                Configure pages, sections, and fields per enrollment type and provider type
+            &lt;/small&gt;
+        &lt;/div&gt;
+
+        &lt;div class="d-flex align-items-center gap-3"&gt;
+            &lt;span class="badge bg-light text-dark p-2"&gt;
+                20 / 33 Fields Active
+            &lt;/span&gt;
+            &lt;button class="btn btn-primary"&gt;
+                Save Configuration
+            &lt;/button&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;!-- Enrollment Types --&gt;
+    &lt;div class="mb-4"&gt;
+        &lt;label class="text-uppercase small text-muted fw-bold"&gt;
+            Enrollment Type
+        &lt;/label&gt;
+
+        &lt;div class="d-flex flex-wrap gap-3 mt-2"&gt;
+            &lt;div class="config-card active"&gt;
+                &lt;div class="card-title"&gt;New Provider Enrollment&lt;/div&gt;
+                &lt;small&gt;Active&lt;/small&gt;
+            &lt;/div&gt;
+
+            &lt;div class="config-card"&gt;
+                &lt;div class="card-title"&gt;Provider Re-enrollment&lt;/div&gt;
+            &lt;/div&gt;
+
+            &lt;div class="config-card"&gt;
+                &lt;div class="card-title"&gt;Bulk Group Intake&lt;/div&gt;
+            &lt;/div&gt;
+
+            &lt;div class="config-card add-card"&gt;
+                + Add Type
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;!-- Provider Tabs --&gt;
+    &lt;div class="mb-3"&gt;
+        &lt;label class="text-uppercase small text-muted fw-bold"&gt;
+            Provider
+        &lt;/label&gt;
+
+        &lt;div class="provider-tabs mt-2"&gt;
+            &lt;button class="btn btn-sm btn-dark rounded-pill"&gt;Clinical&lt;/button&gt;
+            &lt;button class="btn btn-sm btn-light rounded-pill"&gt;Ambulance / EMS&lt;/button&gt;
+            &lt;button class="btn btn-sm btn-light rounded-pill"&gt;Social Workers&lt;/button&gt;
+            &lt;button class="btn btn-sm btn-light rounded-pill"&gt;Pharmacy&lt;/button&gt;
+            &lt;button class="btn btn-sm btn-light rounded-pill"&gt;Specialist / Surgical&lt;/button&gt;
+            &lt;button class="btn btn-sm btn-light rounded-pill"&gt;Preventive Care&lt;/button&gt;
+            &lt;button class="btn btn-sm btn-outline-secondary rounded-pill"&gt;
+                + Add Provider
+            &lt;/button&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;!-- Tabs --&gt;
+    &lt;div class="nav-border mb-3"&gt;
+        &lt;ul class="nav nav-tabs"&gt;
+            &lt;li class="nav-item"&gt;
+                #Form Fields&lt;/a&gt;
+            &lt;/li&gt;
+            &lt;li class="nav-item"&gt;
+                &lt;a class="nav-link&gt;
+        &lt;/ul&gt;
+    &lt;/div&gt;
+
+    &lt;!-- Builder Body --&gt;
+    &lt;div class="row gx-3"&gt;
+
+        &lt;!-- Pages --&gt;
+        &lt;div class="col-md-3"&gt;
+            &lt;div class="panel"&gt;
+                &lt;div class="panel-header"&gt;
+                    &lt;strong&gt;Pages&lt;/strong&gt;
+                &lt;/div&gt;
+
+                &lt;ul class="list-group list-group-flush"&gt;
+
+                    &lt;li class="list-group-item active-item"&gt;
+                        &lt;input type="checkbox" checked&gt;
+                        Identifying Information
+                    &lt;/li&gt;
+
+                    &lt;li class="list-group-item"&gt;
+                        &lt;input type="checkbox" checked&gt;
+                        Practice Location
+                    &lt;/li&gt;
+
+                    &lt;li class="list-group-item"&gt;
+                        &lt;input type="checkbox"&gt;
+                        Credentialing
+                    &lt;/li&gt;
+
+                    &lt;li class="list-group-item"&gt;
+                        &lt;input type="checkbox"&gt;
+                        Service Location Billing
+                    &lt;/li&gt;
+
+                    &lt;li class="list-group-item"&gt;
+                        &lt;input type="checkbox" checked&gt;
+                        Signature Page
+                    &lt;/li&gt;
+
+                &lt;/ul&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;!-- Sections --&gt;
+        &lt;div class="col-md-3"&gt;
+            &lt;div class="panel"&gt;
+                &lt;div class="panel-header"&gt;
+                    &lt;strong&gt;Sections&lt;/strong&gt;
+                &lt;/div&gt;
+
+                &lt;ul class="list-group list-group-flush"&gt;
+
+                    &lt;li class="list-group-item active-item"&gt;
+                        &lt;input type="checkbox" checked&gt;
+                        Provider Type
+                    &lt;/li&gt;
+
+                    &lt;li class="list-group-item"&gt;
+                        &lt;input type="checkbox" checked&gt;
+                        NPI &amp;amp; Identifiers
+                    &lt;/li&gt;
+
+                    &lt;li class="list-group-item"&gt;
+                        &lt;input type="checkbox" checked&gt;
+                        Previous Medicaid Information
+                    &lt;/li&gt;
+
+                &lt;/ul&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;!-- Fields --&gt;
+        &lt;div class="col-md-6"&gt;
+            &lt;div class="panel"&gt;
+
+                &lt;div class="panel-header d-flex justify-content-between"&gt;
+                    &lt;strong&gt;Fields&lt;/strong&gt;
+
+                    &lt;div class="d-flex gap-5 text-muted small"&gt;
+                        &lt;span&gt;Required&lt;/span&gt;
+                        &lt;span&gt;Validate&lt;/span&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+
+                &lt;div class="field-list"&gt;
+
+                    &lt;!-- Field --&gt;
+                    &lt;div class="field-row"&gt;
+                        &lt;div class="field-name"&gt;
+                            &lt;input type="checkbox" checked&gt;
+                            National Provider Identifier (NPI)
+                        &lt;/div&gt;
+
+                        &lt;div&gt;
+                            &lt;span class="badge bg-secondary"&gt;Text&lt;/span&gt;
+                        &lt;/div&gt;
+
+                        &lt;div class="form-check form-switch"&gt;
+                            &lt;input class="form-check-input" type="checkbox"&gt;
+                        &lt;/div&gt;
+
+                        &lt;div class="form-check form-switch"&gt;
+                            &lt;input class="form-check-input" type="checkbox"&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+
+                    &lt;div class="field-row"&gt;
+                        &lt;div class="field-name"&gt;
+                            &lt;input type="checkbox" checked&gt;
+                            Other ID 1
+                        &lt;/div&gt;
+
+                        &lt;div&gt;
+                            &lt;span class="badge bg-secondary"&gt;Text&lt;/span&gt;
+                        &lt;/div&gt;
+
+                        &lt;div class="form-check form-switch"&gt;
+                            &lt;input class="form-check-input" type="checkbox"&gt;
+                        &lt;/div&gt;
+
+                        &lt;div class="form-check form-switch"&gt;
+                            &lt;input class="form-check-input" type="checkbox"&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+
+                    &lt;div class="field-row"&gt;
+                        &lt;div class="field-name"&gt;
+                            &lt;input type="checkbox" checked&gt;
+                            Social Security Number (SSN)
+                        &lt;/div&gt;
+
+                        &lt;div&gt;
+                            &lt;span class="badge bg-danger"&gt;Masked&lt;/span&gt;
+                        &lt;/div&gt;
+
+                        &lt;div class="form-check form-switch"&gt;
+                            &lt;input class="form-check-input" type="checkbox"&gt;
+                        &lt;/div&gt;
+
+                        &lt;div class="form-check form-switch"&gt;
+                            &lt;input class="form-check-input" type="checkbox"&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+
+                    &lt;div class="field-row"&gt;
+                        &lt;div class="field-name"&gt;
+                            &lt;input type="checkbox"&gt;
+                            Federal Tax ID (EIN)
+                        &lt;/div&gt;
+
+                        &lt;div&gt;
+                            &lt;span class="badge bg-secondary"&gt;Text&lt;/span&gt;
+                        &lt;/div&gt;
+
+                        &lt;div class="form-check form-switch"&gt;
+                            &lt;input class="form-check-input" type="checkbox"&gt;
+                        &lt;/div&gt;
+
+                        &lt;div class="form-check form-switch"&gt;
+                            &lt;input class="form-check-input" type="checkbox"&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+
+                    &lt;div class="field-row"&gt;
+                        &lt;div class="field-name"&gt;
+                            &lt;input type="checkbox" checked&gt;
+                            Date of Birth
+                        &lt;/div&gt;
+
+                        &lt;div&gt;
+                            &lt;span class="badge bg-success"&gt;Date&lt;/span&gt;
+                        &lt;/div&gt;
+
+                        &lt;div class="form-check form-switch"&gt;
+                            &lt;input class="form-check-input" type="checkbox"&gt;
+                        &lt;/div&gt;
+
+                        &lt;div class="form-check form-switch"&gt;
+                            &lt;input class="form-check-input" type="checkbox"&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+
+                    &lt;div class="field-row"&gt;
+                        &lt;div class="field-name"&gt;
+                            &lt;input type="checkbox" checked&gt;
+                            Gender
+                        &lt;/div&gt;
+
+                        &lt;div&gt;
+                            &lt;span class="badge bg-info"&gt;Select&lt;/span&gt;
+                        &lt;/div&gt;
+
+                        &lt;div class="form-check form-switch"&gt;
+                            &lt;input class="form-check-input" type="checkbox"&gt;
+                        &lt;/div&gt;
+
+                        &lt;div class="form-check form-switch"&gt;
+                            &lt;input class="form-check-input" type="checkbox"&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+
+                &lt;/div&gt;
+
+            &lt;/div&gt;
+        &lt;/div&gt;
+
+    &lt;/div&gt;
+
+&lt;/div&gt;Provider Configuration Editor-deleted</searchcontent>
+  <statecode>1</statecode>
+  <statuscode>2</statuscode>
+</powerpagecomponent>

@@ -1,0 +1,40 @@
+<powerpagecomponent powerpagecomponentid="b478420f-1c3e-4bb5-bbcb-0d055549c5ce">
+  <content>{
+  "filecontent": null,
+  "lcid": 1033,
+  "entityname": "cmdspp_g_usr_dtls_tb",
+  "formname": "User registration",
+  "mode": 100000000,
+  "onsuccess": "756150001",
+  "hideformonsuccess": false,
+  "redirectwebpage": "5c8e49a7-1f09-713c-d804-3ac43710b320",
+  "redirecturl": null,
+  "captcharequired": false,
+  "showcaptchaforauthenticatedusers": false,
+  "entitypermissionsenabled": true,
+  "attachfilestoragelocation": 756150000,
+  "attachfilemaxsize": null,
+  "maximumnooffiles": 5,
+  "entitysourcetype": null,
+  "recordidquerystringparametername": null,
+  "entityFormMetadatas": [
+    "75a68cec-3afd-44fa-8171-bc1244c55dc0",
+    "68860fdb-fd24-4029-8c8e-dc671d282d74"
+  ],
+  "geolocation_maptype": 756150000,
+  "redirecturlappendentityidquerystring": true,
+  "redirecturlquerystringname": "id",
+  "successmessage": "[{\"LCID\":1033,\"Value\":\"\"}]",
+  "attachfilelabel": "[{\"LCID\":1033,\"Value\":\"\"}]",
+  "containername": "",
+  "storageaccountname": ""
+}</content>
+  <iscustomizable>1</iscustomizable>
+  <name>User Register</name>
+  <powerpagecomponenttype>15</powerpagecomponenttype>
+  <powerpagesiteid>
+    <powerpagesiteid>abccaafd-73d6-47dd-bb55-b09b911f0d43</powerpagesiteid>
+  </powerpagesiteid>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</powerpagecomponent>

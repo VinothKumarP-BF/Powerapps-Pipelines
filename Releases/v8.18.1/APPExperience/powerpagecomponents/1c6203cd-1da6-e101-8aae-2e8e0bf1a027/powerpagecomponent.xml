@@ -1,0 +1,29 @@
+<powerpagecomponent powerpagecomponentid="1c6203cd-1da6-e101-8aae-2e8e0bf1a027">
+  <content>{
+  "displayorder": 23,
+  "customcss": "",
+  "customjavascript": "",
+  "pagetemplateid": "718ed8c8-9407-4620-adf3-832ec188887d",
+  "parentpageid": "551cf2a7-4cb2-4424-8af7-3422ddbd968e",
+  "partialurl": "Service-Loc-ERA-deleted",
+  "isroot": true,
+  "title": "Service-Loc-ERA",
+  "summary": "&lt;p&gt;This is a sample landing page designed to be a starting point for your website&lt;/p&gt;",
+  "copy": "",
+  "publishingstateid": "c7294317-419f-4724-8068-a91d5da8d92c",
+  "enablerating": false,
+  "enabletracking": false,
+  "excludefromsearch": false,
+  "hiddenfromsitemap": true,
+  "sharedpageconfiguration": false
+}</content>
+  <iscustomizable>1</iscustomizable>
+  <name>Service-Loc-ERA-deleted</name>
+  <powerpagecomponenttype>2</powerpagecomponenttype>
+  <powerpagesiteid>
+    <powerpagesiteid>abccaafd-73d6-47dd-bb55-b09b911f0d43</powerpagesiteid>
+  </powerpagesiteid>
+  <searchcontent>Service-Loc-ERAService-Loc-ERA-deleted</searchcontent>
+  <statecode>1</statecode>
+  <statuscode>2</statuscode>
+</powerpagecomponent>

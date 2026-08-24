@@ -1,0 +1,32 @@
+<powerpagecomponent powerpagecomponentid="b9c6520d-ab3a-4db1-abaa-bd8321c953f1">
+  <content>{
+  "lcid": 1033,
+  "entityname": "account",
+  "formname": "Information",
+  "mode": 100000000,
+  "onsuccess": "756150000",
+  "successmessage": "",
+  "hideformonsuccess": true,
+  "redirectwebpage": null,
+  "redirecturl": null,
+  "captcharequired": true,
+  "showcaptchaforauthenticatedusers": true,
+  "entitypermissionsenabled": true,
+  "attachfilelabel": "",
+  "attachfilestoragelocation": 756150000,
+  "attachfilemaxsize": null,
+  "maximumnooffiles": 5,
+  "containername": "",
+  "storageaccountname": "",
+  "entitysourcetype": null,
+  "recordidquerystringparametername": null
+}</content>
+  <iscustomizable>1</iscustomizable>
+  <name>Information</name>
+  <powerpagecomponenttype>15</powerpagecomponenttype>
+  <powerpagesiteid>
+    <powerpagesiteid>abccaafd-73d6-47dd-bb55-b09b911f0d43</powerpagesiteid>
+  </powerpagesiteid>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</powerpagecomponent>

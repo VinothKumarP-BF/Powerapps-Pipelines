@@ -1,0 +1,80 @@
+<powerpagecomponent powerpagecomponentid="1d491d9f-dad1-4beb-8f1f-8c03a2194402">
+  <content>{
+  "filecontent": null,
+  "copy": "{% include 'cmdspp_ToastModal' %}\n&lt;section class=\"cmdspp-home-hero-section\"&gt;\n  &lt;div class=\"cmdspp-home-hero-content\"&gt;\n    &lt;div class=\"cmdspp-home-gov-badge\"&gt;&lt;img src=\"/cmdspp_HomeBadge\"/&gt;OFFICIAL GOVERNMENT PORTAL · SECURE &amp;amp; VERIFIED&lt;/div&gt;\n    &lt;h1&gt;\n      Welcome to CMdS&lt;br /&gt;\n      NextGen Provider Portal\n    &lt;/h1&gt;\n    &lt;p&gt;Get access to all the tools you need to manage your day-to-day practice and deliver excellent service to your patients.&lt;/p&gt;\n    &lt;div class=\"cmdspp-home-hero-buttons\"&gt;&lt;button id=\"cmdspp-home-btn-primary-id\" class=\" cmdspp-home-btn cmdspp-home-btn-primary\"&gt;Get Registered&lt;/button&gt;&lt;button id=\"cmdspp-home-btn-secondary-id\" class=\"cmdspp-home-btn cmdspp-home-btn-secondary\"&gt;Enrollment&lt;/button&gt;&lt;/div&gt;\n  &lt;/div&gt;\n&lt;/section&gt;\n&lt;section class=\"cmdspp-home-services-section\"&gt;\n  &lt;div class=\"cmdspp-home-service-card\"&gt;\n    &lt;div class=\"cmdspp-home-service-text\"&gt;\n      &lt;h3&gt;Clinical&lt;/h3&gt;\n      &lt;p&gt;Manage clinical professionals and specializations&lt;/p&gt;\n      &lt;span class=\"cmdspp-home-service-text-learnmore\"&gt;Learn more...&lt;span&gt; &lt;/span&gt;&lt;/span&gt;\n    &lt;/div&gt;\n    &lt;img src=\"/cmdspp_clinicdoctor\" /&gt;\n  &lt;/div&gt;\n  &lt;div class=\"cmdspp-home-service-card\"&gt;\n    &lt;div class=\"cmdspp-home-service-text\"&gt;\n      &lt;h3&gt;Ambulance / EMS&lt;/h3&gt;\n      &lt;p&gt;Register and verify EMS personnel and ambulance services&lt;/p&gt;\n      &lt;span class=\"cmdspp-home-service-text-learnmore\"&gt;Learn more...&lt;span&gt; &lt;/span&gt;&lt;/span&gt;\n    &lt;/div&gt;\n    &lt;img src=\"/cmdspp-ambulance\" /&gt;\n  &lt;/div&gt;\n  &lt;div class=\"cmdspp-home-service-card\"&gt;\n    &lt;div class=\"cmdspp-home-service-text\"&gt;\n      &lt;h3&gt;Social Workers&lt;/h3&gt;\n      &lt;p&gt;Onboard social workers and community professionals&lt;/p&gt;\n      &lt;span class=\"cmdspp-home-service-text-learnmore\"&gt;Learn more...&lt;span&gt; &lt;/span&gt;&lt;/span&gt;\n    &lt;/div&gt;\n    &lt;img src=\"/cmdspp-socialworker\" /&gt;\n  &lt;/div&gt;\n&lt;/section&gt;\n&lt;section class=\"cmdspp-home-ai-section\"&gt;\n  &lt;h2&gt;Every Decision, Powered by AI&lt;/h2&gt;\n  &lt;p&gt;We're dedicated to providing our members with the care they deserve.&lt;/p&gt;\n  &lt;p&gt;That's why we're focused on giving you the tools you need to deliver the highest quality service.&lt;/p&gt;\n&lt;/section&gt;\n&lt;div class=\"row sectionBlockLayout text-start\" style=\"display: none; flex-wrap: wrap; margin: 0px; min-height: auto; padding: 8px;\"&gt;\n  &lt;div class=\"container\" style=\"padding: 0px; display: flex; flex-wrap: wrap;\"&gt;&lt;div class=\"col-lg-12 columnBlockLayout\" style=\"flex-grow: 1; display: flex; flex-direction: column; min-width: 250px;\"&gt;&lt;/div&gt;&lt;/div&gt;\n&lt;/div&gt;",
+  "displayorder": 1,
+  "enablerating": false,
+  "enabletracking": false,
+  "excludefromsearch": false,
+  "feedbackpolicy": 756150005,
+  "hiddenfromsitemap": false,
+  "isroot": false,
+  "pagetemplateid": "718ed8c8-9407-4620-adf3-832ec188887d",
+  "partialurl": "/",
+  "publishingstateid": "c7294317-419f-4724-8068-a91d5da8d92c",
+  "rootwebpageid": "551cf2a7-4cb2-4424-8af7-3422ddbd968e",
+  "sharedpageconfiguration": false,
+  "summary": "&lt;p&gt;This is a sample landing page for you to start creating your website.&lt;/p&gt;",
+  "title": "Home",
+  "parentpageid": null,
+  "customcss": "/* HERO */\r\n\r\n\r\n\r\n.cmdspp-home-hero-section {\r\n    padding-top: 60px !important;\r\n    padding: 132px 92px;\r\n     background-image: url(\"/cmdspp_Langing_page_bg.png\");\r\n    background-repeat: no-repeat;\r\n    background-size: cover;\r\n    background-position: center;\r\n    background-attachment: fixed;\r\n    display: flex;\r\n    height: 524px;\r\n    \r\n}\r\n\r\n.cmdspp-home-hero-content {\r\n    width: 700px;\r\n    color: #ffffff;\r\n}\r\n\r\n.cmdspp-home-gov-badge {\r\n    display: inline-block;\r\n    padding: 8px 18px;\r\n    border-radius: 20px;\r\n    background: rgba(0, 61, 130, 0.45);\r\n    border: 1px solid rgba(255,255,255,.15);\r\n    font-size: 12px;\r\n    font-weight: 400;\r\n    letter-spacing: .5px;\r\n    margin-bottom: 30px;\r\n    img{\r\n        margin-bottom: 3px;\r\n        margin-right: 8px;\r\n    }\r\n}\r\n\r\n.cmdspp-home-hero-content h1 {\r\n    font-size: 58px;\r\n    line-height: 1.1;\r\n    font-weight: 400 !important;\r\n    margin-bottom: 25px;\r\n}\r\n\r\n.cmdspp-home-hero-content p {\r\n    width: 562px;\r\n    font-size: 16px;\r\n    font-weight: 400 !important;\r\n    line-height: 1.6;\r\n    margin-bottom: 28px;\r\n    color: #ffffff;\r\n}\r\n\r\n.cmdspp-home-hero-buttons {\r\n    display: flex;\r\n    gap: 15px;\r\n}\r\n\r\n.cmdspp-home-btn{\r\n    height: 46px;\r\n    font-size: 14px;\r\n    font-weight: 400 !important;\r\n    line-height: 20px;\r\n    border: none !important;\r\n    box-shadow: none !important;\r\n\r\n}\r\n\r\n.cmdspp-home-btn-primary {\r\n    display: inline-block;\r\n    padding: 12px 25px;\r\n    background: #0B3A6F;\r\n    color: #FFFFFF;\r\n    border-radius: 8px;\r\n    text-decoration: none;\r\n}\r\n\r\n.cmdspp-home-btn-secondary {\r\n    display: inline-block;\r\n    padding: 12px 25px;\r\n    background: #FFFFFF;\r\n    color: #0B3A6F;\r\n    border-radius: 8px;\r\n    text-decoration: none;\r\n}\r\n\r\n/* SERVICES */\r\n\r\n.cmdspp-home-services-section {\r\n    max-width: 1200px;\r\n    margin: -60px auto 33px;\r\n    display: flex;\r\n    justify-content: center;\r\n    gap: 15px;\r\n    flex-wrap: nowrap;\r\n    position: relative;\r\n    z-index: 10;\r\n}\r\n\r\n.cmdspp-home-service-card {\r\n    width: 327px;\r\n    height: 139px;\r\n    background: #fff;\r\n    border: 1px solid #d8e2ea;\r\n    border-radius: 6px;\r\n    padding: 12px;\r\n    display: flex;\r\n    justify-content: space-between;\r\n    align-items: center;\r\n    box-shadow: 0 2px 8px rgba(0,0,0,.08);\r\n}\r\n\r\n.cmdspp-home-service-text {\r\n    width: 48%;\r\n    .cmdspp-home-service-text-learnmore {\r\n        color: #1AA3A3;\r\n        font-size: 14px;\r\n        font-weight: 400 !important;\r\n    }\r\n}\r\n\r\n.cmdspp-home-service-card h3 {\r\n    font-size: 16px;\r\n    font-weight: 400 !important;\r\n    color: #0B3A6F;\r\n    margin-bottom: 10px;\r\n    margin-top: 0px !important;\r\n}\r\n\r\n.cmdspp-home-service-card p {\r\n    font-size: 12px;\r\n    line-height: 100%;\r\n    margin-bottom: 10px;\r\n    color: #060606;\r\n}\r\n\r\n.cmdspp-home-service-card img {\r\n    width: 140px;\r\n    height: 104px;\r\n}\r\n\r\n\r\n/* AI SECTION */\r\n.cmdspp-home-ai-section {\r\n    text-align: center;\r\n    padding: 0px 20px 0px;\r\n    margin-bottom: 29px !important;\r\n}\r\n\r\n.cmdspp-home-ai-section h2 {\r\n    font-size: 42px;\r\n    line-height: 63px;\r\n    font-weight: 400 !important;\r\n    margin-bottom: 16px;\r\n    color: #292A30;\r\n}\r\n\r\n.cmdspp-home-ai-section p {\r\n    color: #686677;\r\n    font-size: 17px;\r\n    line-height: 29px;\r\n    margin-bottom: 0px !important;\r\n    font-weight: 400 !important;\r\n}\r\n\r\n/* RESPONSIVE */\r\n\r\n@media (max-width: 960px) {\r\n\r\n    .cmdspp-home-hero-content {\r\n        width: 100%;\r\n    }\r\n\r\n    .cmdspp-home-hero-content h1 {\r\n        font-size: 42px;\r\n    }\r\n\r\n    .cmdspp-home-hero-content p {\r\n        width: 100%;\r\n    }\r\n\r\n    .cmdspp-home-services-section {\r\n        flex-direction: column;\r\n        align-items: center;\r\n    }\r\n\r\n}",
+  "customjavascript": "document.getElementById(\"cmdspp-home-btn-primary-id\")\r\n    .addEventListener(\"click\", async function () {\r\n        window.location.href =\r\n            \"/user-registration\";\r\n\r\n    });\r\n\r\ndocument.getElementById(\"cmdspp-home-btn-secondary-id\")\r\n    .addEventListener(\"click\", function () {\r\n        window.location.href =\r\n            \"/signIn\";\r\n\r\n    });"
+}</content>
+  <iscustomizable>1</iscustomizable>
+  <name>Home</name>
+  <powerpagecomponenttype>2</powerpagecomponenttype>
+  <powerpagesiteid>
+    <powerpagesiteid>abccaafd-73d6-47dd-bb55-b09b911f0d43</powerpagesiteid>
+  </powerpagesiteid>
+  <powerpagesitelanguageid>
+    <powerpagesitelanguageid>7b340d7a-188d-4ed8-b16c-cc6e959fb5c2</powerpagesitelanguageid>
+  </powerpagesitelanguageid>
+  <searchcontent>Home{% include 'cmdspp_ToastModal' %}
+&lt;section class="cmdspp-home-hero-section"&gt;
+  &lt;div class="cmdspp-home-hero-content"&gt;
+    &lt;div class="cmdspp-home-gov-badge"&gt;&lt;img src="/cmdspp_HomeBadge"/&gt;OFFICIAL GOVERNMENT PORTAL · SECURE &amp;amp; VERIFIED&lt;/div&gt;
+    &lt;h1&gt;
+      Welcome to CMdS&lt;br /&gt;
+      NextGen Provider Portal
+    &lt;/h1&gt;
+    &lt;p&gt;Get access to all the tools you need to manage your day-to-day practice and deliver excellent service to your patients.&lt;/p&gt;
+    &lt;div class="cmdspp-home-hero-buttons"&gt;&lt;button id="cmdspp-home-btn-primary-id" class=" cmdspp-home-btn cmdspp-home-btn-primary"&gt;Get Registered&lt;/button&gt;&lt;button id="cmdspp-home-btn-secondary-id" class="cmdspp-home-btn cmdspp-home-btn-secondary"&gt;Enrollment&lt;/button&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/section&gt;
+&lt;section class="cmdspp-home-services-section"&gt;
+  &lt;div class="cmdspp-home-service-card"&gt;
+    &lt;div class="cmdspp-home-service-text"&gt;
+      &lt;h3&gt;Clinical&lt;/h3&gt;
+      &lt;p&gt;Manage clinical professionals and specializations&lt;/p&gt;
+      &lt;span class="cmdspp-home-service-text-learnmore"&gt;Learn more...&lt;span&gt; &lt;/span&gt;&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;img src="/cmdspp_clinicdoctor" /&gt;
+  &lt;/div&gt;
+  &lt;div class="cmdspp-home-service-card"&gt;
+    &lt;div class="cmdspp-home-service-text"&gt;
+      &lt;h3&gt;Ambulance / EMS&lt;/h3&gt;
+      &lt;p&gt;Register and verify EMS personnel and ambulance services&lt;/p&gt;
+      &lt;span class="cmdspp-home-service-text-learnmore"&gt;Learn more...&lt;span&gt; &lt;/span&gt;&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;img src="/cmdspp-ambulance" /&gt;
+  &lt;/div&gt;
+  &lt;div class="cmdspp-home-service-card"&gt;
+    &lt;div class="cmdspp-home-service-text"&gt;
+      &lt;h3&gt;Social Workers&lt;/h3&gt;
+      &lt;p&gt;Onboard social workers and community professionals&lt;/p&gt;
+      &lt;span class="cmdspp-home-service-text-learnmore"&gt;Learn more...&lt;span&gt; &lt;/span&gt;&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;img src="/cmdspp-socialworker" /&gt;
+  &lt;/div&gt;
+&lt;/section&gt;
+&lt;section class="cmdspp-home-ai-section"&gt;
+  &lt;h2&gt;Every Decision, Powered by AI&lt;/h2&gt;
+  &lt;p&gt;We're dedicated to providing our members with the care they deserve.&lt;/p&gt;
+  &lt;p&gt;That's why we're focused on giving you the tools you need to deliver the highest quality service.&lt;/p&gt;
+&lt;/section&gt;
+&lt;div class="row sectionBlockLayout text-start" style="display: none; flex-wrap: wrap; margin: 0px; min-height: auto; padding: 8px;"&gt;
+  &lt;div class="container" style="padding: 0px; display: flex; flex-wrap: wrap;"&gt;&lt;div class="col-lg-12 columnBlockLayout" style="flex-grow: 1; display: flex; flex-direction: column; min-width: 250px;"&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;/div&gt;Home</searchcontent>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</powerpagecomponent>

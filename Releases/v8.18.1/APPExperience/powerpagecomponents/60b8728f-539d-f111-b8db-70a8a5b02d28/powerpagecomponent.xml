@@ -1,0 +1,19 @@
+<powerpagecomponent powerpagecomponentid="60b8728f-539d-f111-b8db-70a8a5b02d28">
+  <content>{
+  "partialurl": "cmdspp_sbm_doc_icon",
+  "excludefromsearch": false,
+  "hiddenfromsitemap": false,
+  "contentdisposition": 756150000,
+  "publishingstateid": "c7294317-419f-4724-8068-a91d5da8d92c",
+  "parentpageid": "551cf2a7-4cb2-4424-8af7-3422ddbd968e"
+}</content>
+  <filecontent mimetype="image/svg+xml">Icon.svg</filecontent>
+  <iscustomizable>1</iscustomizable>
+  <name>cmdspp_sbm_doc_icon</name>
+  <powerpagecomponenttype>3</powerpagecomponenttype>
+  <powerpagesiteid>
+    <powerpagesiteid>abccaafd-73d6-47dd-bb55-b09b911f0d43</powerpagesiteid>
+  </powerpagesiteid>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</powerpagecomponent>

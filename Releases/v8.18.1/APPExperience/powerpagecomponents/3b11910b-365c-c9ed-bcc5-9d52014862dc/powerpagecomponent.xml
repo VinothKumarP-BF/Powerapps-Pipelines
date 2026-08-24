@@ -1,0 +1,27 @@
+<powerpagecomponent powerpagecomponentid="3b11910b-365c-c9ed-bcc5-9d52014862dc">
+  <content>{
+  "displayorder": 14,
+  "pagetemplateid": "718ed8c8-9407-4620-adf3-832ec188887d",
+  "parentpageid": "551cf2a7-4cb2-4424-8af7-3422ddbd968e",
+  "partialurl": "Specialty-Maintenance",
+  "isroot": true,
+  "title": "Speciality Maintenance",
+  "summary": "&lt;p&gt;This is a sample landing page designed to be a starting point for your website&lt;/p&gt;",
+  "publishingstateid": "c7294317-419f-4724-8068-a91d5da8d92c",
+  "enablerating": false,
+  "enabletracking": false,
+  "excludefromsearch": false,
+  "hiddenfromsitemap": true,
+  "sharedpageconfiguration": false,
+  "feedbackpolicy": 756150000
+}</content>
+  <iscustomizable>1</iscustomizable>
+  <name>Specialty Maintenance</name>
+  <powerpagecomponenttype>2</powerpagecomponenttype>
+  <powerpagesiteid>
+    <powerpagesiteid>abccaafd-73d6-47dd-bb55-b09b911f0d43</powerpagesiteid>
+  </powerpagesiteid>
+  <searchcontent>Speciality MaintenanceSpecialty Maintenance</searchcontent>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</powerpagecomponent>

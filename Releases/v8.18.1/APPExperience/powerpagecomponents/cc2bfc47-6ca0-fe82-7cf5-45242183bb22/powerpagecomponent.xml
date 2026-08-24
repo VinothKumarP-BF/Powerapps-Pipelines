@@ -1,0 +1,161 @@
+<powerpagecomponent powerpagecomponentid="cc2bfc47-6ca0-fe82-7cf5-45242183bb22">
+  <content>{
+  "displayorder": 23,
+  "pagetemplateid": "718ed8c8-9407-4620-adf3-832ec188887d",
+  "parentpageid": "51d44b41-26bf-6d84-f130-1b2b46867671",
+  "partialurl": "Service-Location",
+  "isroot": false,
+  "rootwebpageid": "86480e13-d371-f640-2883-f5438aaf7144",
+  "title": "Service Location",
+  "summary": "&lt;p&gt;This is a sample landing page designed to be a starting point for your website&lt;/p&gt;",
+  "copy": "{% include 'cmdspp_Enrollment_Form_Header' %}\n\n&lt;div class=\"cmdspp-form-body\"&gt;\n\n    &lt;div id=\"identity-form-container\"&gt;\n        {% include 'Service-Location' %}\n    &lt;/div&gt;\n\n    {% include 'cmdspp_Enrollment_Form_SidePanel' %}\n\n&lt;/div&gt;\n\n\n&lt;style&gt;\n    #sectionPContainer .col-md-6.mb-3{\n    width: 100%;\n    /* display: flex !important; */\n    /* justify-content: space-between;\n    flex-direction: column; */\n    }\n    \n    \n.cmdspp-checkbox-group {\n    display: grid !important;\n    grid-template-columns: 1fr 1fr;\n    width: 100%;\n    width: 100%;\n    column-gap:10px;\n    row-gap: 10px;\n}\n \n\n#sectionEContainer .col-md-6.mb-3{\n        width: 100% !important;\n}\n#sectionGContainer .col-md-6.mb-3{\n        width: 100% !important;\n}\n#sectionQContainer .col-md-6.mb-3{\n        width: 100% !important;\n}\n.cmdspp-checkbox-group .form-check-input{\n border-radius:4px !important;\n}\n.form-check-input:focus{\n    box-shadow: none;\n    border: 1px solid rgba(0, 0, 0, .25) ;\n    border-radius: 4px !important;\n}\n.cmdspp-checkbox-group .form-check {\n    width: auto !important; /* override the inline calc(50% - 10px) */\n    display: flex;\n    align-items: center;\n    gap: 8px;\n    margin: 0;\n    padding: 12px 16px;\n    border-bottom: 1px solid #e5e7eb;\n    \n}\n\n/* vertical divider between the two columns */\n.cmdspp-checkbox-group .form-check {\n        border: 1px solid #e5e7eb;\n    border-radius: 4px !important;\n}\n\n.cmdspp-checkbox-group .form-check-input {\n    width: 16px;\n    height: 16px;\n    margin: 0;\n    flex-shrink: 0;\n    cursor: pointer;\n}\n\n.cmdspp-checkbox-group .form-check-label {\n    font-weight: 400;\n    font-size: 14px;\n    color: #212529;\n    cursor: pointer;\n    margin: 0;\n       white-space: nowrap;\n}\n#sectionFContainer .col-md-12.mb-3{\n      width: 100% !important;\n\n}\n  \n#sectionFContainer .col-md-12.mb-3 .field-card-container .row{\n    width: 100% !important;\n    padding: 0px;\n}\n#sectionFContainer .col-md-12.mb-3 .field-card-container .row .col-md-6.checkboxgroup.mb-3{\n    width: 100%;\n    padding: 0px !important;\n    border: none;\n}\n#sectionFContainer .cmdspp-form-card .checkboxgroup &gt; .form-label{\n  display: none;\n}\n\n#sectionFContainer .cmdspp-form-card .checkboxgroup .form-check{\n   width: calc(50% - 5px);\n}\n\n\n\n\n\n#sectionGContainer .col-md-12.mb-3{\n      width: 100% !important;\n\n}\n  \n#sectionGContainer .col-md-12.mb-3 .field-card-container .row{\n    width: 100% !important;\n    padding: 0px;\n}\n#sectionGContainer .col-md-12.mb-3 .field-card-container .row .col-md-6.checkboxgroup.mb-3{\n    width: 100%;\n    padding: 0px !important;\n    border: none;\n}\n#sectionGContainer .cmdspp-form-card .checkboxgroup &gt; .form-label{\n  display: none;\n}\n\n#sectionGContainer .cmdspp-form-card .checkboxgroup .form-check{\n   width: calc(50% - 5px);\n}\n    &lt;/style&gt;",
+  "publishingstateid": "c7294317-419f-4724-8068-a91d5da8d92c",
+  "enablerating": false,
+  "enabletracking": false,
+  "excludefromsearch": false,
+  "hiddenfromsitemap": true,
+  "sharedpageconfiguration": false,
+  "feedbackpolicy": 756150000
+}</content>
+  <iscustomizable>1</iscustomizable>
+  <name>Service Location</name>
+  <powerpagecomponenttype>2</powerpagecomponenttype>
+  <powerpagesiteid>
+    <powerpagesiteid>abccaafd-73d6-47dd-bb55-b09b911f0d43</powerpagesiteid>
+  </powerpagesiteid>
+  <powerpagesitelanguageid>
+    <powerpagesitelanguageid>7b340d7a-188d-4ed8-b16c-cc6e959fb5c2</powerpagesitelanguageid>
+  </powerpagesitelanguageid>
+  <searchcontent>Service Location{% include 'cmdspp_Enrollment_Form_Header' %}
+
+&lt;div class="cmdspp-form-body"&gt;
+
+    &lt;div id="identity-form-container"&gt;
+        {% include 'Service-Location' %}
+    &lt;/div&gt;
+
+    {% include 'cmdspp_Enrollment_Form_SidePanel' %}
+
+&lt;/div&gt;
+
+
+&lt;style&gt;
+    #sectionPContainer .col-md-6.mb-3{
+    width: 100%;
+    /* display: flex !important; */
+    /* justify-content: space-between;
+    flex-direction: column; */
+    }
+    
+    
+.cmdspp-checkbox-group {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr;
+    width: 100%;
+    width: 100%;
+    column-gap:10px;
+    row-gap: 10px;
+}
+ 
+
+#sectionEContainer .col-md-6.mb-3{
+        width: 100% !important;
+}
+#sectionGContainer .col-md-6.mb-3{
+        width: 100% !important;
+}
+#sectionQContainer .col-md-6.mb-3{
+        width: 100% !important;
+}
+.cmdspp-checkbox-group .form-check-input{
+ border-radius:4px !important;
+}
+.form-check-input:focus{
+    box-shadow: none;
+    border: 1px solid rgba(0, 0, 0, .25) ;
+    border-radius: 4px !important;
+}
+.cmdspp-checkbox-group .form-check {
+    width: auto !important; /* override the inline calc(50% - 10px) */
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 0;
+    padding: 12px 16px;
+    border-bottom: 1px solid #e5e7eb;
+    
+}
+
+/* vertical divider between the two columns */
+.cmdspp-checkbox-group .form-check {
+        border: 1px solid #e5e7eb;
+    border-radius: 4px !important;
+}
+
+.cmdspp-checkbox-group .form-check-input {
+    width: 16px;
+    height: 16px;
+    margin: 0;
+    flex-shrink: 0;
+    cursor: pointer;
+}
+
+.cmdspp-checkbox-group .form-check-label {
+    font-weight: 400;
+    font-size: 14px;
+    color: #212529;
+    cursor: pointer;
+    margin: 0;
+       white-space: nowrap;
+}
+#sectionFContainer .col-md-12.mb-3{
+      width: 100% !important;
+
+}
+  
+#sectionFContainer .col-md-12.mb-3 .field-card-container .row{
+    width: 100% !important;
+    padding: 0px;
+}
+#sectionFContainer .col-md-12.mb-3 .field-card-container .row .col-md-6.checkboxgroup.mb-3{
+    width: 100%;
+    padding: 0px !important;
+    border: none;
+}
+#sectionFContainer .cmdspp-form-card .checkboxgroup &gt; .form-label{
+  display: none;
+}
+
+#sectionFContainer .cmdspp-form-card .checkboxgroup .form-check{
+   width: calc(50% - 5px);
+}
+
+
+
+
+
+#sectionGContainer .col-md-12.mb-3{
+      width: 100% !important;
+
+}
+  
+#sectionGContainer .col-md-12.mb-3 .field-card-container .row{
+    width: 100% !important;
+    padding: 0px;
+}
+#sectionGContainer .col-md-12.mb-3 .field-card-container .row .col-md-6.checkboxgroup.mb-3{
+    width: 100%;
+    padding: 0px !important;
+    border: none;
+}
+#sectionGContainer .cmdspp-form-card .checkboxgroup &gt; .form-label{
+  display: none;
+}
+
+#sectionGContainer .cmdspp-form-card .checkboxgroup .form-check{
+   width: calc(50% - 5px);
+}
+    &lt;/style&gt;Service Location</searchcontent>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</powerpagecomponent>

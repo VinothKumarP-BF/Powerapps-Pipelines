@@ -1,0 +1,39 @@
+<powerpagecomponent powerpagecomponentid="a29e0f69-5c2b-4e33-baae-78c18396201c">
+  <content>{
+  "copy": "{% include 'cmdspp_ToastModal' %}\r\n{% if user %}\r\n    \r\n{% else %}\r\n    &lt;script&gt;\r\n        window.location.href = \"/SignIn\";\r\n    &lt;/script&gt;\r\n{% endif %}",
+  "enablerating": false,
+  "enabletracking": false,
+  "excludefromsearch": false,
+  "hiddenfromsitemap": true,
+  "isroot": false,
+  "pagetemplateid": "955b0d7f-29db-4119-82db-04f419ce3ee7",
+  "parentpageid": "551cf2a7-4cb2-4424-8af7-3422ddbd968e",
+  "partialurl": "profile",
+  "publishingstateid": "c7294317-419f-4724-8068-a91d5da8d92c",
+  "rootwebpageid": "a7593268-8a3f-4bc1-986b-9535d1769458",
+  "sharedpageconfiguration": false,
+  "title": "Profile",
+  "feedbackpolicy": 756150000,
+  "customjavascript": "$(window).on('load', function () {\r\n    // document.documentElement.style.visibility = \"hidden\";\r\n    document.body.style.visibility = \"hidden\";\r\n\r\n\r\n    const forceLogout = sessionStorage.getItem(\"cmdsppForceLogout\");\r\n    const currentRole = window.cmdsppCurrentRole || \"\";\r\n\r\n    console.log(\"forceLog\", forceLogout);\r\n\r\n    if (forceLogout === \"true\") {\r\n\r\n        sessionStorage.removeItem(\"cmdsppForceLogout\");\r\n        sessionStorage.removeItem('pp_login_contact_updated');\r\n\r\n        let url = \"/Account/Login/LogOff?returnUrl=/signin\";\r\n        cmdsppNavigateWithToast(\"success\", \"Password set successfully\", url);\r\n\r\n    } else {\r\n        if (currentRole.indexOf(\"Organization Administrator\") !== -1) {\r\n            window.location.href = \"/dashboard\";\r\n        } else if (currentRole.indexOf(\"Configuration Administrator\") !== -1) {\r\n            window.location.href = \"/Form-Config/\";\r\n        } else {\r\n            window.location.href = \"/dashboard\"; // fallback default\r\n        }\r\n    }\r\n\r\n});",
+  "customcss": ".row{\r\n    .col-lg-4{\r\n        display: none !important;\r\n    }\r\n    .col-lg-8{\r\n        display: none !important;\r\n    }\r\n}"
+}</content>
+  <iscustomizable>1</iscustomizable>
+  <name>Profile</name>
+  <powerpagecomponenttype>2</powerpagecomponenttype>
+  <powerpagesiteid>
+    <powerpagesiteid>abccaafd-73d6-47dd-bb55-b09b911f0d43</powerpagesiteid>
+  </powerpagesiteid>
+  <powerpagesitelanguageid>
+    <powerpagesitelanguageid>7b340d7a-188d-4ed8-b16c-cc6e959fb5c2</powerpagesitelanguageid>
+  </powerpagesitelanguageid>
+  <searchcontent>Profile{% include 'cmdspp_ToastModal' %}
+{% if user %}
+    
+{% else %}
+    &lt;script&gt;
+        window.location.href = "/SignIn";
+    &lt;/script&gt;
+{% endif %}Profile</searchcontent>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</powerpagecomponent>

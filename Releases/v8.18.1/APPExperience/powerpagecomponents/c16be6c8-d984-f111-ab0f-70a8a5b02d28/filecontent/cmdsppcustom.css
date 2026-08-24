@@ -1,0 +1,22 @@
+
+.cmdspp-registration-pages-bg{
+
+ background-image: url("/cmdspp_registration_pages_background.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+
+}
+.page-content{
+    margin-top: 0px !important;
+}
+
+.cmdspp-field-error {
+    box-shadow: inset 0 0 0 1px #CD3D64, 0 0 0 2px #FDE2DD;
+}
+
+
+div#privateModeText {
+     display: none !important;
+}

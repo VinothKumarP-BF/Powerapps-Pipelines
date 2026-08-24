@@ -1,0 +1,14 @@
+<powerpagecomponent powerpagecomponentid="c3206dd5-e89b-f111-b8db-70a8a5b02d28">
+  <content>{
+  "value": "*",
+  "source": 0
+}</content>
+  <iscustomizable>1</iscustomizable>
+  <name>Webapi/cmdspp_p_cln_lab_imp_clia/fields</name>
+  <powerpagecomponenttype>9</powerpagecomponenttype>
+  <powerpagesiteid>
+    <powerpagesiteid>abccaafd-73d6-47dd-bb55-b09b911f0d43</powerpagesiteid>
+  </powerpagesiteid>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</powerpagecomponent>

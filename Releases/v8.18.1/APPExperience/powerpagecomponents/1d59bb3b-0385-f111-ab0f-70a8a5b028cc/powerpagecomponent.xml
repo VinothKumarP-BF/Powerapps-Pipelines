@@ -1,0 +1,24 @@
+<powerpagecomponent powerpagecomponentid="1d59bb3b-0385-f111-ab0f-70a8a5b028cc">
+  <content>{
+   "entityname": "Provider Portal - Enrollment Types",
+   "scope": 756150000,
+   "entitylogicalname": "cmdspp_pc_enrol_typ_tb",
+   "appendto": false,
+   "append": false,
+   "delete": false,
+   "create": false,
+   "write": false,
+   "read": true,
+   "adx_entitypermission_webrole": [
+      "3e0eed5c-e2e0-46fa-a82c-1f6c985badca"
+   ]
+}</content>
+  <iscustomizable>1</iscustomizable>
+  <name>Provider Portal - Enrollment Types</name>
+  <powerpagecomponenttype>18</powerpagecomponenttype>
+  <powerpagesiteid>
+    <powerpagesiteid>abccaafd-73d6-47dd-bb55-b09b911f0d43</powerpagesiteid>
+  </powerpagesiteid>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</powerpagecomponent>

@@ -1,0 +1,43 @@
+<powerpagecomponent powerpagecomponentid="0250a13a-8335-9034-a1a5-177920efe387">
+  <content>{
+  "displayorder": 25,
+  "pagetemplateid": "718ed8c8-9407-4620-adf3-832ec188887d",
+  "parentpageid": "51d44b41-26bf-6d84-f130-1b2b46867671",
+  "partialurl": "E-signature",
+  "isroot": false,
+  "rootwebpageid": "46b4f685-d2be-a8c0-9fa9-69d4e5c31b2b",
+  "title": "E signature",
+  "summary": "&lt;p&gt;This is a sample landing page designed to be a starting point for your website&lt;/p&gt;",
+  "copy": "{% include 'cmdspp_Enrollment_Form_Header' %}\n\n\n&lt;div class=\"cmdspp-form-body\"&gt;\n\n    &lt;div id=\"identity-form-container\"&gt;\n        {% include 'signatureCompleted' %}\n    &lt;/div&gt;\n\n    {% include 'cmdspp_Enrollment_Form_SidePanel' %}\n\n&lt;/div&gt;",
+  "publishingstateid": "c7294317-419f-4724-8068-a91d5da8d92c",
+  "enablerating": false,
+  "enabletracking": false,
+  "excludefromsearch": false,
+  "hiddenfromsitemap": true,
+  "sharedpageconfiguration": false,
+  "feedbackpolicy": 756150000
+}</content>
+  <iscustomizable>1</iscustomizable>
+  <name>E signature</name>
+  <powerpagecomponenttype>2</powerpagecomponenttype>
+  <powerpagesiteid>
+    <powerpagesiteid>abccaafd-73d6-47dd-bb55-b09b911f0d43</powerpagesiteid>
+  </powerpagesiteid>
+  <powerpagesitelanguageid>
+    <powerpagesitelanguageid>7b340d7a-188d-4ed8-b16c-cc6e959fb5c2</powerpagesitelanguageid>
+  </powerpagesitelanguageid>
+  <searchcontent>E signature{% include 'cmdspp_Enrollment_Form_Header' %}
+
+
+&lt;div class="cmdspp-form-body"&gt;
+
+    &lt;div id="identity-form-container"&gt;
+        {% include 'signatureCompleted' %}
+    &lt;/div&gt;
+
+    {% include 'cmdspp_Enrollment_Form_SidePanel' %}
+
+&lt;/div&gt;E signature</searchcontent>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</powerpagecomponent>

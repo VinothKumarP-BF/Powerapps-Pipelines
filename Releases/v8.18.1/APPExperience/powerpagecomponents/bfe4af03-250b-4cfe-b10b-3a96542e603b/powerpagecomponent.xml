@@ -1,0 +1,12 @@
+<powerpagecomponent powerpagecomponentid="bfe4af03-250b-4cfe-b10b-3a96542e603b">
+  <content>{"createdOn":"2026-07-14T14:13:10.285Z","parentpageid":"551cf2a7-4cb2-4424-8af7-3422ddbd968e","publishingstateid":"c7294317-419f-4724-8068-a91d5da8d92c","partialurl":"provider-image1.jpg","title":"","summary":"","enabletracking":false,"excludefromsearch":false,"hiddenfromsitemap":false}</content>
+  <filecontent mimetype="image/jpeg">provider-image1.jpg</filecontent>
+  <iscustomizable>1</iscustomizable>
+  <name>provider-image1.jpg</name>
+  <powerpagecomponenttype>3</powerpagecomponenttype>
+  <powerpagesiteid>
+    <powerpagesiteid>abccaafd-73d6-47dd-bb55-b09b911f0d43</powerpagesiteid>
+  </powerpagesiteid>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</powerpagecomponent>

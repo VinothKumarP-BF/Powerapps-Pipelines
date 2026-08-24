@@ -1,0 +1,13 @@
+<powerpagecomponent powerpagecomponentid="560e9826-9a85-f111-ab0f-70a8a5b02d34">
+  <content>{
+  "source": "&lt;div id=\"cmdspp-toast-container\"&gt;&lt;/div&gt;\r\n\r\n&lt;style&gt;\r\n/* Toast CSS */\r\n#cmdspp-toast-container {\r\n    position: fixed;\r\n    top: 74px;\r\n    right: 40px;\r\n    z-index: 999999;\r\n}\r\n\r\n.cmdspp-toast {\r\n    /* min-width: 300px; */\r\n    /* max-width: 500px; */\r\n    padding: 6px 10px 6px 10px;\r\n    border-radius: 5px;\r\n    color: #fff;\r\n    margin-bottom: 10px;\r\n    height: 28px;\r\n    font-size: 12px;\r\n    font-weight: 400 !important;\r\n    line-height: 16px;\r\n    display: flex;\r\n    align-items: center;\r\n\r\n}\r\n\r\n.cmdspp-toast-success {\r\n    background: #007A55;\r\n}\r\n\r\n.cmdspp-toast-error {\r\n    background: #C50F12;\r\n}\r\n&lt;/style&gt;\r\n\r\n&lt;script&gt;\r\n\r\nlet cmdsppActiveToast = null;\r\nlet cmdsppToastTimer = null;\r\n\r\nfunction cmdsppShowToast(type, message) {\r\n\r\n    if (cmdsppActiveToast) {\r\n\r\n        cmdsppActiveToast.remove();\r\n\r\n        clearTimeout(cmdsppToastTimer);\r\n    }\r\n\r\n    const container =\r\n        document.getElementById(\r\n            \"cmdspp-toast-container\"\r\n        );\r\n\r\n    const toast =\r\n        document.createElement(\"div\");\r\n\r\n    toast.className =\r\n        `cmdspp-toast cmdspp-toast-${type}`;\r\n\r\n    toast.textContent =\r\n        message;\r\n\r\n    container.appendChild(toast);\r\n\r\n    cmdsppActiveToast = toast;\r\n\r\n    cmdsppToastTimer =\r\n        setTimeout(function () {\r\n\r\n            toast.remove();\r\n\r\n            cmdsppActiveToast = null;\r\n            cmdsppToastTimer = null;\r\n\r\n        }, 5000);\r\n}\r\n\r\nfunction cmdsppNavigateWithToast(type, message, url) {\r\n\r\n    sessionStorage.setItem(\r\n        \"cmdspp-toast\",\r\n        JSON.stringify({\r\n            type: type,\r\n            message: message\r\n        })\r\n    );\r\n\r\n    window.location.href = url;\r\n}\r\n\r\n(function () {\r\n\r\n    const savedToast =\r\n        sessionStorage.getItem(\"cmdspp-toast\");\r\n\r\n    if (!savedToast) {\r\n        return;\r\n    }\r\n\r\n    const toast =\r\n        JSON.parse(savedToast);\r\n\r\n    cmdsppShowToast(\r\n        toast.type,\r\n        toast.message\r\n    );\r\n\r\n    sessionStorage.removeItem(\"cmdspp-toast\");\r\n\r\n})();\r\n&lt;/script&gt;"
+}</content>
+  <iscustomizable>1</iscustomizable>
+  <name>cmdspp_ToastModal</name>
+  <powerpagecomponenttype>8</powerpagecomponenttype>
+  <powerpagesiteid>
+    <powerpagesiteid>abccaafd-73d6-47dd-bb55-b09b911f0d43</powerpagesiteid>
+  </powerpagesiteid>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</powerpagecomponent>

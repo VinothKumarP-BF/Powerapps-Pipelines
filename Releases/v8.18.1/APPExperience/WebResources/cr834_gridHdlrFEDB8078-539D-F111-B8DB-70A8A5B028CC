@@ -1,0 +1,43 @@
+var DtlGridHandler = DtlGridHandler || {};
+
+// 1. Triggered when the Main Form loads
+DtlGridHandler.onFormLoad = function (executionContext) {
+    var formContext = executionContext.getFormContext();
+    
+    // Replace 'Subgrid_p_dtl_tb' with your subgrid control name
+    var subgridControl = formContext.getControl("Subgrid_p_dtl_tb");
+
+    if (subgridControl) {
+        // Attach event listener once grid is ready
+        subgridControl.addOnLoad(DtlGridHandler.onSubgridLoaded);
+    } else {
+        console.warn("Subgrid control not found on form.");
+    }
+};
+
+// 2. Triggered whenever the subgrid finishes loading/refreshing or a row selection changes
+DtlGridHandler.onSubgridLoaded = function (executionContext) {
+    var formContext = executionContext.getFormContext();
+    var subgridControl = formContext.getControl("Subgrid_p_dtl_tb");
+
+    if (subgridControl) {
+        var grid = subgridControl.getGrid();
+        var selectedRows = grid.getSelectedRows();
+
+        if (selectedRows && selectedRows.getLength() > 0) {
+            var selectedRecord = selectedRows.get(0);
+            var rawGuid = selectedRecord.getData().getEntity().getId();
+            var cleanGuid = rawGuid.replace("{", "").replace("}", "").toLowerCase();
+
+            // Set global variables for getParentRecordGuid()
+            window.parent.activeDtlApplicationId = cleanGuid;
+            window.activeDtlApplicationId = cleanGuid;
+
+            // Switch to the Dynamic Wizard Tab
+            var wizardTab = formContext.ui.tabs.get("tab_dynamic_wizard");
+            if (wizardTab) {
+                wizardTab.setFocus();
+            }
+        }
+    }
+};

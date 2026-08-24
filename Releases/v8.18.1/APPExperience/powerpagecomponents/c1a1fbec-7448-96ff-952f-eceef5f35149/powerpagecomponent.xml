@@ -1,0 +1,23 @@
+<powerpagecomponent powerpagecomponentid="c1a1fbec-7448-96ff-952f-eceef5f35149">
+  <content>{
+  "filecontent": null,
+  "displayorder": 5,
+  "weblinksetid": "aba765dd-0f02-4f05-ae0f-a524623441a0",
+  "pageid": "1d00d537-b8b2-03ca-8729-3e41d9104352",
+  "publishingstateid": "c7294317-419f-4724-8068-a91d5da8d92c",
+  "displaypagevalidation": false,
+  "displayimageonly": false,
+  "displaypagechildlinks": false,
+  "openinnewwindow": false,
+  "robotsfollowlink": true,
+  "parentweblinkid": null
+}</content>
+  <iscustomizable>1</iscustomizable>
+  <name>Dashboard</name>
+  <powerpagecomponenttype>5</powerpagecomponenttype>
+  <powerpagesiteid>
+    <powerpagesiteid>abccaafd-73d6-47dd-bb55-b09b911f0d43</powerpagesiteid>
+  </powerpagesiteid>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</powerpagecomponent>

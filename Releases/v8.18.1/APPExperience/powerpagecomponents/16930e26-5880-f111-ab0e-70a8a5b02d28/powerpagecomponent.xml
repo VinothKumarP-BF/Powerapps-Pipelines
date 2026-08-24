@@ -1,0 +1,18 @@
+<powerpagecomponent powerpagecomponentid="16930e26-5880-f111-ab0e-70a8a5b02d28">
+  <content>{
+  "partialurl": "dynamicform.js",
+  "excludefromsearch": false,
+  "hiddenfromsitemap": false,
+  "contentdisposition": 756150000,
+  "publishingstateid": "c7294317-419f-4724-8068-a91d5da8d92c"
+}</content>
+  <filecontent mimetype="application/javascript">dynamicform.js</filecontent>
+  <iscustomizable>1</iscustomizable>
+  <name>dynamicform.js</name>
+  <powerpagecomponenttype>3</powerpagecomponenttype>
+  <powerpagesiteid>
+    <powerpagesiteid>abccaafd-73d6-47dd-bb55-b09b911f0d43</powerpagesiteid>
+  </powerpagesiteid>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</powerpagecomponent>

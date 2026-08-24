@@ -1,0 +1,19 @@
+<powerpagecomponent powerpagecomponentid="ebad5269-7588-72f6-94e0-e9de6a4558a8">
+  <content>{
+  "filecontent": null,
+  "type": 756150000,
+  "display_name": "Site name",
+  "value": "NextGen Provider Enrolment"
+}</content>
+  <iscustomizable>1</iscustomizable>
+  <name>Site name</name>
+  <powerpagecomponenttype>7</powerpagecomponenttype>
+  <powerpagesiteid>
+    <powerpagesiteid>abccaafd-73d6-47dd-bb55-b09b911f0d43</powerpagesiteid>
+  </powerpagesiteid>
+  <powerpagesitelanguageid>
+    <powerpagesitelanguageid>7b340d7a-188d-4ed8-b16c-cc6e959fb5c2</powerpagesitelanguageid>
+  </powerpagesitelanguageid>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</powerpagecomponent>

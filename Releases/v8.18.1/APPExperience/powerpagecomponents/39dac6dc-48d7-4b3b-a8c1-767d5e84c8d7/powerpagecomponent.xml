@@ -1,0 +1,16 @@
+<powerpagecomponent powerpagecomponentid="39dac6dc-48d7-4b3b-a8c1-767d5e84c8d7">
+  <content>{
+  "progressindicatorenabled": true,
+  "multiplerecordsperuserpermitted": true,
+  "progressindicatorposition": 756150000,
+  "editexistingrecordpermitted": true
+}</content>
+  <iscustomizable>1</iscustomizable>
+  <name>Provider Enrolment</name>
+  <powerpagecomponenttype>19</powerpagecomponenttype>
+  <powerpagesiteid>
+    <powerpagesiteid>abccaafd-73d6-47dd-bb55-b09b911f0d43</powerpagesiteid>
+  </powerpagesiteid>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</powerpagecomponent>

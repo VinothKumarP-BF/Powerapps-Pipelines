@@ -1,0 +1,14 @@
+<powerpagecomponent powerpagecomponentid="d0e58e1b-b185-f111-ab0f-70a8a5b02d34">
+  <content>{
+  "value": "&lt;script&gt;\r\n$(document).ready(function () {\r\n    document.title = \"CMdS NextGen Provider Portal\";\r\n    const params =\r\n        new URLSearchParams(window.location.search);\r\n\r\n    const invitation =\r\n        params.get(\"invitation\");\r\n    console.log(\"invitcode\",invitation)    \r\n\r\n    const isRegisterPage =\r\n        window.location.pathname\r\n            .toLowerCase()\r\n            .includes(\"/account/register\");\r\n\r\n    if (isRegisterPage &amp;&amp; invitation) {\r\n        console.log(\"invitcode\",invitation)\r\n        document.body.style.visibility = \"hidden\";\r\n        setTimeout(function () {\r\n\r\n            if ($(\"#submit-redeem-invitation\").length) {\r\n\r\n                $(\"#submit-redeem-invitation\").click();\r\n\r\n            } else {\r\n\r\n                document.body.style.visibility = \"visible\";\r\n\r\n            }\r\n\r\n        }, 500);\r\n\r\n    } else {\r\n\r\n        document.body.style.visibility = \"visible\";\r\n\r\n    }\r\n\r\n});\r\n&lt;/script&gt;",
+  "type": 756150001
+}</content>
+  <iscustomizable>1</iscustomizable>
+  <name>Tracking Code</name>
+  <powerpagecomponenttype>7</powerpagecomponenttype>
+  <powerpagesiteid>
+    <powerpagesiteid>abccaafd-73d6-47dd-bb55-b09b911f0d43</powerpagesiteid>
+  </powerpagesiteid>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</powerpagecomponent>

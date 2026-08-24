@@ -1,0 +1,17 @@
+<powerpagecomponent powerpagecomponentid="34278f6a-f1d0-4fbb-b715-d068bb3dfef4">
+  <content>{
+  "description": "This is the default studio template. Please do not modify.",
+  "type": 756150001,
+  "usewebsiteheaderandfooter": true,
+  "webtemplateid": "afe6ea06-b01e-461c-bcab-4b3edf479964",
+  "isdefault": false
+}</content>
+  <iscustomizable>1</iscustomizable>
+  <name>AI Search PageTemplate</name>
+  <powerpagecomponenttype>6</powerpagecomponenttype>
+  <powerpagesiteid>
+    <powerpagesiteid>abccaafd-73d6-47dd-bb55-b09b911f0d43</powerpagesiteid>
+  </powerpagesiteid>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</powerpagecomponent>

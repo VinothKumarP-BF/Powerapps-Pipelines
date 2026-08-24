@@ -1,0 +1,19 @@
+<powerpagecomponent powerpagecomponentid="8c17708b-a0ae-d0e7-1fb9-aa9e88c93257">
+  <content>{
+  "filecontent": null,
+  "type": 756150000,
+  "display_name": "Logo URL",
+  "value": "/cndt.jpg"
+}</content>
+  <iscustomizable>1</iscustomizable>
+  <name>Logo URL</name>
+  <powerpagecomponenttype>7</powerpagecomponenttype>
+  <powerpagesiteid>
+    <powerpagesiteid>abccaafd-73d6-47dd-bb55-b09b911f0d43</powerpagesiteid>
+  </powerpagesiteid>
+  <powerpagesitelanguageid>
+    <powerpagesitelanguageid>7b340d7a-188d-4ed8-b16c-cc6e959fb5c2</powerpagesitelanguageid>
+  </powerpagesitelanguageid>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</powerpagecomponent>
