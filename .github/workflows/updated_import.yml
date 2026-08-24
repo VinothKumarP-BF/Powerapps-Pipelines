@@ -56,21 +56,21 @@ jobs:
       # 1. CMdSCore
       ####################################################
 
-      - name: Pack CMdSCore
-        run: |
-          export PATH="$PATH:$HOME/.dotnet/tools"
+      # - name: Pack CMdSCore
+      #   run: |
+      #     export PATH="$PATH:$HOME/.dotnet/tools"
 
-          pac solution pack \
-            --folder $RELEASE_FOLDER/CmdsCore \
-            --zipfile /tmp/CMdSCore.zip \
-            --packagetype Managed
+      #     pac solution pack \
+      #       --folder $RELEASE_FOLDER/CmdsCore \
+      #       --zipfile /tmp/CMdSCore.zip \
+      #       --packagetype Managed
 
       - name: Import CMdSCore
         run: |
           export PATH="$PATH:$HOME/.dotnet/tools"
 
           pac solution import \
-            --path /tmp/CMdSCore.zip \
+            --path $RELEASE_FOLDER/CMdSCore.zip \
             --settings-file "$GITHUB_WORKSPACE/yaml-config/deployment-settings/dev2.deploymentSettings.json" \
             --async \
             --max-async-wait-time 60
