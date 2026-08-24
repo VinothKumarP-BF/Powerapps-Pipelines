@@ -52,41 +52,46 @@ jobs:
         run: |
           echo "RELEASE_FOLDER=Releases/v${{ github.event.inputs.release_version }}" >> $GITHUB_ENV
 
-      # 1. POC_CR
+     ####################################################
+      # 1. CMdSCore
+      ####################################################
 
-      - name: Pack POC_CR
+      - name: Pack CMdSCore
         run: |
           export PATH="$PATH:$HOME/.dotnet/tools"
 
           pac solution pack \
-            --folder "$RELEASE_FOLDER/POC_CR" \
-            --zipfile /tmp/POC_CR.zip \
+            --folder $RELEASE_FOLDER/CmdsCore \
+            --zipfile /tmp/CMdSCore.zip \
             --packagetype Managed
 
-      - name: Import POC_CR
+      - name: Import CMdSCore
         run: |
           export PATH="$PATH:$HOME/.dotnet/tools"
 
           pac solution import \
-            --path /tmp/POC_CR.zip \
+            --path /tmp/CMdSCore.zip \
+            --settings-file "$GITHUB_WORKSPACE/yaml-config/deployment-settings/dev2.deploymentSettings.json" \
+            --async \
+            --max-async-wait-time 60
 
-      # 2. Devops_POC
+      # # 2. Devops_POC
 
-      - name: Pack Custom Control
-        run: |
-          export PATH="$PATH:$HOME/.dotnet/tools"
+      # - name: Pack Custom Control
+      #   run: |
+      #     export PATH="$PATH:$HOME/.dotnet/tools"
 
-          pac solution pack \
-            --folder "$RELEASE_FOLDER/Devops_POC" \
-            --zipfile /tmp/Devops_POC.zip \
-            --packagetype Managed
+      #     pac solution pack \
+      #       --folder "$RELEASE_FOLDER/Devops_POC" \
+      #       --zipfile /tmp/Devops_POC.zip \
+      #       --packagetype Managed
 
-      - name: Import Devops_POC
-        run: |
-          export PATH="$PATH:$HOME/.dotnet/tools"
+      # - name: Import Devops_POC
+      #   run: |
+      #     export PATH="$PATH:$HOME/.dotnet/tools"
 
-          pac solution import \
-            --path /tmp/Devops_POC.zip
+      #     pac solution import \
+      #       --path /tmp/Devops_POC.zip
 
       # 3. POC_Solution
 
