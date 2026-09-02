@@ -9,7 +9,6 @@ on:
         default: "0.0.0.0"
 
 env:
-  TARGET_BRANCH: Managed_Solutions
   PAC_CLI_VERSION: "2.10.1"
   SOLUTIONS: "POC_CR Devops_POC"
 
@@ -21,10 +20,9 @@ jobs:
     runs-on: windows-latest
 
     steps:
-      - name: Checkout Managed Solutions Branch
+      - name: Checkout Repository
         uses: actions/checkout@v4
         with:
-          ref: ${{ env.TARGET_BRANCH }}
           fetch-depth: 0
 
       - name: Install PAC CLI
@@ -45,42 +43,21 @@ jobs:
       - name: Export Managed Solutions
         shell: bash
         run: |
-          RELEASE_FOLDER="Releases/v${{ github.event.inputs.release_version }}"
           ASSET_FOLDER="ReleaseAssets/v${{ github.event.inputs.release_version }}"
 
-          mkdir -p "$RELEASE_FOLDER"
           mkdir -p "$ASSET_FOLDER"
 
           for SOLUTION in $SOLUTIONS; do
 
             echo "Processing $SOLUTION"
 
-            ZIP_FILE="$ASSET_FOLDER/${SOLUTION}_managed.zip"
-
             pac solution export \
               --name "$SOLUTION" \
-              --path "$ZIP_FILE" \
+              --path "$ASSET_FOLDER/${SOLUTION}_managed.zip" \
               --managed \
               --overwrite true
 
-            pac solution unpack \
-              --zipfile "$ZIP_FILE" \
-              --folder "$RELEASE_FOLDER/$SOLUTION" \
-              --packagetype Managed
-
           done
-
-      - name: Commit Release Contents
-        shell: bash
-        run: |
-          git config user.name "github-actions"
-          git config user.email "actions@github.com"
-
-          git add Releases/
-
-          git commit -m "Release v${{ github.event.inputs.release_version }}" || echo "No changes detected"
-
-          git push origin "${TARGET_BRANCH}"
 
       - name: Check Tag Does Not Exist
         shell: bash
@@ -88,7 +65,7 @@ jobs:
           TAG="v${{ github.event.inputs.release_version }}"
 
           if git ls-remote --tags origin | grep -q "refs/tags/$TAG$"; then
-            echo "Tag $TAG already exists."
+            echo "Tag $TAG already exists"
             exit 1
           fi
 
@@ -102,7 +79,7 @@ jobs:
             ReleaseAssets/v${{ github.event.inputs.release_version }}/POC_CR_managed.zip
             ReleaseAssets/v${{ github.event.inputs.release_version }}/Devops_POC_managed.zip
 
-      - name: Release Complete
+      - name: Export Complete
         shell: bash
         run: |
           echo "Release v${{ github.event.inputs.release_version }} created successfully"
