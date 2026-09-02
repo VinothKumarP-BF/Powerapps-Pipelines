@@ -11,7 +11,7 @@ on:
 
 env:
   PAC_CLI_VERSION: "2.10.1"
-  SOLUTIONS: "POC_CR Devops_POC"
+  SOLUTIONS: "POC_CR Devops_POC POC_ALM"
 
 permissions:
   contents: write
