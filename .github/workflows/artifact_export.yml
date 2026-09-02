@@ -1,4 +1,4 @@
-name: Artifact Export Managed Solutions
+name: Release Export Managed Solutions
 
 on:
   workflow_dispatch:
@@ -12,6 +12,9 @@ env:
   TARGET_BRANCH: Managed_Solutions
   PAC_CLI_VERSION: "2.10.1"
   SOLUTIONS: "POC_CR Devops_POC"
+
+permissions:
+  contents: write
 
 jobs:
   export:
@@ -43,16 +46,16 @@ jobs:
         shell: bash
         run: |
           RELEASE_FOLDER="Releases/v${{ github.event.inputs.release_version }}"
-          ARTIFACT_FOLDER="Artifacts/v${{ github.event.inputs.release_version }}"
+          ASSET_FOLDER="ReleaseAssets/v${{ github.event.inputs.release_version }}"
 
           mkdir -p "$RELEASE_FOLDER"
-          mkdir -p "$ARTIFACT_FOLDER"
+          mkdir -p "$ASSET_FOLDER"
 
           for SOLUTION in $SOLUTIONS; do
 
             echo "Processing $SOLUTION"
 
-            ZIP_FILE="$ARTIFACT_FOLDER/${SOLUTION}_managed.zip"
+            ZIP_FILE="$ASSET_FOLDER/${SOLUTION}_managed.zip"
 
             pac solution export \
               --name "$SOLUTION" \
@@ -67,15 +70,7 @@ jobs:
 
           done
 
-      - name: Upload Managed Solution Artifacts
-        uses: actions/upload-artifact@v4
-        with:
-          name: ManagedSolutions-v${{ github.event.inputs.release_version }}
-          path: Artifacts/v${{ github.event.inputs.release_version }}
-          if-no-files-found: error
-          retention-days: 30
-
-      - name: Commit Release
+      - name: Commit Release Contents
         shell: bash
         run: |
           git config user.name "github-actions"
@@ -86,3 +81,28 @@ jobs:
           git commit -m "Release v${{ github.event.inputs.release_version }}" || echo "No changes detected"
 
           git push origin "${TARGET_BRANCH}"
+
+      - name: Check Tag Does Not Exist
+        shell: bash
+        run: |
+          TAG="v${{ github.event.inputs.release_version }}"
+
+          if git ls-remote --tags origin | grep -q "refs/tags/$TAG$"; then
+            echo "Tag $TAG already exists."
+            exit 1
+          fi
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: v${{ github.event.inputs.release_version }}
+          name: Release v${{ github.event.inputs.release_version }}
+          generate_release_notes: true
+          files: |
+            ReleaseAssets/v${{ github.event.inputs.release_version }}/POC_CR_managed.zip
+            ReleaseAssets/v${{ github.event.inputs.release_version }}/Devops_POC_managed.zip
+
+      - name: Release Complete
+        shell: bash
+        run: |
+          echo "Release v${{ github.event.inputs.release_version }} created successfully"
