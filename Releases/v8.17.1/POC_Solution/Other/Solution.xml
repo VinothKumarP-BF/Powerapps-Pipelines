@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ImportExportXml version="9.2.26072.150" SolutionPackageVersion="9.2" languagecode="1033" generatedBy="CrmLive" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" OrganizationVersion="9.2.26072.150" OrganizationSchemaType="Standard" CRMServerServiceabilityVersion="9.2.26072.00150">
+<ImportExportXml version="9.2.26074.163" SolutionPackageVersion="9.2" languagecode="1033" generatedBy="CrmLive" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" OrganizationVersion="9.2.26074.163" OrganizationSchemaType="Standard" CRMServerServiceabilityVersion="9.2.26074.00163">
   <SolutionManifest>
     <UniqueName>POC_Solution</UniqueName>
     <LocalizedNames>
@@ -93,20 +93,20 @@
     </RootComponents>
     <MissingDependencies>
       <MissingDependency>
-        <Required type="1" schemaName="msdyn_kbattachment" displayName="Knowledge Article Attachment" solution="msdynce_KnowledgeManagementFeatures (9.0.26071.3015)">
-          <package appName="msdynce_KnowledgeManagement" version="9.0.26071.3015">msdynce_KnowledgeManagementAnchor (9.0.26071.3015)</package>
+        <Required type="1" schemaName="msdyn_kbattachment" displayName="Knowledge Article Attachment" solution="msdynce_KnowledgeManagementFeatures (9.0.26073.3008)">
+          <package appName="msdynce_KnowledgeManagement" version="9.0.26073.3008">msdynce_KnowledgeManagementAnchor (9.0.26073.3008)</package>
         </Required>
         <Dependent type="1" schemaName="msdyn_kbattachment" displayName="Knowledge Article Attachment" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="1" schemaName="msdyn_kbattachment" displayName="Knowledge Article Attachment" solution="msdynce_KnowledgeManagementFeatures (9.0.26071.3015)">
-          <package appName="msdynce_KnowledgeManagement" version="9.0.26071.3015">msdynce_KnowledgeManagementAnchor (9.0.26071.3015)</package>
+        <Required type="1" schemaName="msdyn_kbattachment" displayName="Knowledge Article Attachment" solution="msdynce_KnowledgeManagementFeatures (9.0.26073.3008)">
+          <package appName="msdynce_KnowledgeManagement" version="9.0.26073.3008">msdynce_KnowledgeManagementAnchor (9.0.26073.3008)</package>
         </Required>
         <Dependent type="26" schemaName="Provider Registration bot Answers" displayName="Provider Registration bot Answers" parentSchemaName="msdyn_kbattachment" parentDisplayName="Knowledge Article Attachment" id="{819013a2-a4a4-42ec-9220-73181e6a57c2}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="1" schemaName="msdyn_kbattachment" displayName="Knowledge Article Attachment" solution="msdynce_KnowledgeManagementFeatures (9.0.26071.3015)">
-          <package appName="msdynce_KnowledgeManagement" version="9.0.26071.3015">msdynce_KnowledgeManagementAnchor (9.0.26071.3015)</package>
+        <Required type="1" schemaName="msdyn_kbattachment" displayName="Knowledge Article Attachment" solution="msdynce_KnowledgeManagementFeatures (9.0.26073.3008)">
+          <package appName="msdynce_KnowledgeManagement" version="9.0.26073.3008">msdynce_KnowledgeManagementAnchor (9.0.26073.3008)</package>
         </Required>
         <Dependent type="DVFileSearchEntity" id="{7f1f71ae-47ef-49a3-ba92-b5f577205817}" />
       </MissingDependency>
@@ -167,26 +167,26 @@
         <Dependent type="26" schemaName="Inactive Provider Documents" displayName="Inactive Provider Documents" parentSchemaName="pes_providerdocument" parentDisplayName="Provider Document" id="{acaa8e82-784b-43ba-a3ec-a46c40a06bc9}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="2" schemaName="msdyn_contentstore" displayName="File storage content reference" parentSchemaName="knowledgearticle" parentDisplayName="Knowledge Article" solution="msdynce_KnowledgeManagementPatch (9.0.26071.3015)">
-          <package appName="msdynce_KnowledgeManagement" version="9.0.26071.3015">msdynce_KnowledgeManagementAnchor (9.0.26071.3015)</package>
+        <Required type="2" schemaName="msdyn_contentstore" displayName="File storage content reference" parentSchemaName="knowledgearticle" parentDisplayName="Knowledge Article" solution="msdynce_KnowledgeManagementPatch (9.0.26073.3008)">
+          <package appName="msdynce_KnowledgeManagement" version="9.0.26073.3008">msdynce_KnowledgeManagementAnchor (9.0.26073.3008)</package>
         </Required>
         <Dependent type="26" schemaName="Provider Registration bot Answers" displayName="Provider Registration bot Answers" parentSchemaName="knowledgearticle" parentDisplayName="Knowledge Article" id="{265fd21d-c587-45f2-92d5-f3ed49af6a8a}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="2" schemaName="msdyn_contentstore" displayName="File storage content reference" parentSchemaName="knowledgearticle" parentDisplayName="Knowledge Article" solution="msdynce_KnowledgeManagementPatch (9.0.26071.3015)">
-          <package appName="msdynce_KnowledgeManagement" version="9.0.26071.3015">msdynce_KnowledgeManagementAnchor (9.0.26071.3015)</package>
+        <Required type="2" schemaName="msdyn_contentstore" displayName="File storage content reference" parentSchemaName="knowledgearticle" parentDisplayName="Knowledge Article" solution="msdynce_KnowledgeManagementPatch (9.0.26073.3008)">
+          <package appName="msdynce_KnowledgeManagement" version="9.0.26073.3008">msdynce_KnowledgeManagementAnchor (9.0.26073.3008)</package>
         </Required>
         <Dependent type="DVFileSearchAttribute" displayName="ppages_09388479-dde4-4c4d-bdfd-90042096e0f7.msdyn_contentstore" id.uniquename="ppages_09388479-dde4-4c4d-bdfd-90042096e0f7.msdyn_contentstore" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="2" schemaName="msdyn_fileattachment" displayName="File Attachment" parentSchemaName="msdyn_kbattachment" parentDisplayName="Knowledge Article Attachment" solution="msdynce_KnowledgeManagementFeatures (9.0.26071.3015)">
-          <package appName="msdynce_KnowledgeManagement" version="9.0.26071.3015">msdynce_KnowledgeManagementAnchor (9.0.26071.3015)</package>
+        <Required type="2" schemaName="msdyn_fileattachment" displayName="File Attachment" parentSchemaName="msdyn_kbattachment" parentDisplayName="Knowledge Article Attachment" solution="msdynce_KnowledgeManagementFeatures (9.0.26073.3008)">
+          <package appName="msdynce_KnowledgeManagement" version="9.0.26073.3008">msdynce_KnowledgeManagementAnchor (9.0.26073.3008)</package>
         </Required>
         <Dependent type="26" schemaName="Provider Registration bot Answers" displayName="Provider Registration bot Answers" parentSchemaName="msdyn_kbattachment" parentDisplayName="Knowledge Article Attachment" id="{819013a2-a4a4-42ec-9220-73181e6a57c2}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="2" schemaName="msdyn_fileattachment" displayName="File Attachment" parentSchemaName="msdyn_kbattachment" parentDisplayName="Knowledge Article Attachment" solution="msdynce_KnowledgeManagementFeatures (9.0.26071.3015)">
-          <package appName="msdynce_KnowledgeManagement" version="9.0.26071.3015">msdynce_KnowledgeManagementAnchor (9.0.26071.3015)</package>
+        <Required type="2" schemaName="msdyn_fileattachment" displayName="File Attachment" parentSchemaName="msdyn_kbattachment" parentDisplayName="Knowledge Article Attachment" solution="msdynce_KnowledgeManagementFeatures (9.0.26073.3008)">
+          <package appName="msdynce_KnowledgeManagement" version="9.0.26073.3008">msdynce_KnowledgeManagementAnchor (9.0.26073.3008)</package>
         </Required>
         <Dependent type="DVFileSearchAttribute" displayName="ppages_2a9ca0e0-b21e-4061-9e98-4612fb9183b8.msdyn_fileattachment" id.uniquename="ppages_2a9ca0e0-b21e-4061-9e98-4612fb9183b8.msdyn_fileattachment" />
       </MissingDependency>

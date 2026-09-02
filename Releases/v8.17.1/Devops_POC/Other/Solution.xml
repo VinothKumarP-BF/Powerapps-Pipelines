@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ImportExportXml version="9.2.26072.150" SolutionPackageVersion="9.2" languagecode="1033" generatedBy="CrmLive" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" OrganizationVersion="9.2.26072.150" OrganizationSchemaType="Standard" CRMServerServiceabilityVersion="9.2.26072.00150">
+<ImportExportXml version="9.2.26074.163" SolutionPackageVersion="9.2" languagecode="1033" generatedBy="CrmLive" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" OrganizationVersion="9.2.26074.163" OrganizationSchemaType="Standard" CRMServerServiceabilityVersion="9.2.26074.00163">
   <SolutionManifest>
     <UniqueName>Devops_POC</UniqueName>
     <LocalizedNames>
@@ -80,69 +80,45 @@
       </Addresses>
     </Publisher>
     <RootComponents>
-      <RootComponent type="1" schemaName="comment" behavior="0" />
-      <RootComponent type="300" schemaName="vp_sampleapp_c361d" behavior="0" />
+      <RootComponent type="1" schemaName="vp_auditlog" behavior="0" />
+      <RootComponent type="1" schemaName="vp_projectrequest" behavior="0" />
+      <RootComponent type="1" schemaName="vp_vendorrecord" behavior="0" />
+      <RootComponent type="61" schemaName="vp_ICS_logo" behavior="0" />
+      <RootComponent type="61" schemaName="vp_OrangeAppHeader" behavior="0" />
+      <RootComponent type="61" schemaName="vp_OrangeThemeLogo" behavior="0" />
+      <RootComponent type="62" schemaName="vp_NavigationSecurityPOC" behavior="0" />
+      <RootComponent type="80" schemaName="vp_NavigationSecurityPOC" behavior="0" />
     </RootComponents>
     <MissingDependencies>
       <MissingDependency>
-        <Required type="1" schemaName="comment" displayName="Comment" solution="msdyn_CollaborativeComments (9.1.0.27)">
-          <package appName="CommentingApp Package" version="9.1.0.27">msdyn_CollaborativeComments_Anchor (9.1.0.27)</package>
+        <Required type="61" schemaName="msdyn_/Images/AppModule_Default_Icon.png" displayName="msdyn_/Images/AppModule_Default_Icon.png" solution="AppModuleWebResources (2.5)">
+          <package appName="AppModule Web Resources Package" version="2.5">AppModuleWebResources (2.5)</package>
         </Required>
-        <Dependent type="1" schemaName="comment" displayName="Comment" />
+        <Dependent type="80" schemaName="vp_NavigationSecurityPOC" displayName="Navigation Security POC" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="1" schemaName="comment" displayName="Comment" solution="msdyn_CollaborativeComments (9.1.0.27)">
-          <package appName="CommentingApp Package" version="9.1.0.27">msdyn_CollaborativeComments_Anchor (9.1.0.27)</package>
+        <Required type="SettingDefinition" displayName="AppChannel" solution="msdyn_AppFrameworkInfraExtensions (1.0.0.19)" id.uniquename="AppChannel">
+          <package appName="PowerAppsAppFramework Package" version="1.0.0.25">PowerAppsAppFramework_Anchor (1.0.0.25)</package>
         </Required>
-        <Dependent type="2" schemaName="createdby" displayName="Created By" parentSchemaName="comment" parentDisplayName="Comment" />
+        <Dependent type="AppSetting" displayName="parentappmoduleid.uniquename=vp_NavigationSecurityPOC,settingdefinitionid.uniquename=AppChannel" id.parentappmoduleid.uniquename="vp_NavigationSecurityPOC" id.settingdefinitionid.uniquename="AppChannel" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="1" schemaName="comment" displayName="Comment" solution="msdyn_CollaborativeComments (9.1.0.27)">
-          <package appName="CommentingApp Package" version="9.1.0.27">msdyn_CollaborativeComments_Anchor (9.1.0.27)</package>
+        <Required type="SettingDefinition" displayName="CustomThemeDefinition" solution="msdyn_PowerAppsThemingSettings (1.0.0.13)" id.uniquename="CustomThemeDefinition">
+          <package appName="PowerAppsThemingApp Package" version="1.0.0.12">PowerAppsThemingApp_Anchor (1.0.0.12)</package>
         </Required>
-        <Dependent type="2" schemaName="createdonbehalfby" displayName="Created By (Delegate)" parentSchemaName="comment" parentDisplayName="Comment" />
+        <Dependent type="OrganizationSetting" displayName="CustomThemeDefinition" id.settingdefinitionid.uniquename="CustomThemeDefinition" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="1" schemaName="comment" displayName="Comment" solution="msdyn_CollaborativeComments (9.1.0.27)">
-          <package appName="CommentingApp Package" version="9.1.0.27">msdyn_CollaborativeComments_Anchor (9.1.0.27)</package>
+        <Required type="SettingDefinition" displayName="CustomThemeDefinition" solution="msdyn_PowerAppsThemingSettings (1.0.0.13)" id.uniquename="CustomThemeDefinition">
+          <package appName="PowerAppsThemingApp Package" version="1.0.0.12">PowerAppsThemingApp_Anchor (1.0.0.12)</package>
         </Required>
-        <Dependent type="2" schemaName="modifiedby" displayName="Modified By" parentSchemaName="comment" parentDisplayName="Comment" />
+        <Dependent type="SettingDefinition" displayName="CustomThemeDefinition" id.uniquename="CustomThemeDefinition" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="1" schemaName="comment" displayName="Comment" solution="msdyn_CollaborativeComments (9.1.0.27)">
-          <package appName="CommentingApp Package" version="9.1.0.27">msdyn_CollaborativeComments_Anchor (9.1.0.27)</package>
+        <Required type="SettingDefinition" displayName="OverrideAppHeaderColor" solution="msdyn_PowerAppsThemingSettings (1.0.0.13)" id.uniquename="OverrideAppHeaderColor">
+          <package appName="PowerAppsThemingApp Package" version="1.0.0.12">PowerAppsThemingApp_Anchor (1.0.0.12)</package>
         </Required>
-        <Dependent type="2" schemaName="modifiedonbehalfby" displayName="Modified By (Delegate)" parentSchemaName="comment" parentDisplayName="Comment" />
-      </MissingDependency>
-      <MissingDependency>
-        <Required type="1" schemaName="comment" displayName="Comment" solution="msdyn_CollaborativeComments (9.1.0.27)">
-          <package appName="CommentingApp Package" version="9.1.0.27">msdyn_CollaborativeComments_Anchor (9.1.0.27)</package>
-        </Required>
-        <Dependent type="2" schemaName="ownerid" displayName="Owner" parentSchemaName="comment" parentDisplayName="Comment" />
-      </MissingDependency>
-      <MissingDependency>
-        <Required type="1" schemaName="comment" displayName="Comment" solution="msdyn_CollaborativeComments (9.1.0.27)">
-          <package appName="CommentingApp Package" version="9.1.0.27">msdyn_CollaborativeComments_Anchor (9.1.0.27)</package>
-        </Required>
-        <Dependent type="2" schemaName="owningbusinessunit" displayName="Owning Business Unit" parentSchemaName="comment" parentDisplayName="Comment" />
-      </MissingDependency>
-      <MissingDependency>
-        <Required type="1" schemaName="comment" displayName="Comment" solution="msdyn_CollaborativeComments (9.1.0.27)">
-          <package appName="CommentingApp Package" version="9.1.0.27">msdyn_CollaborativeComments_Anchor (9.1.0.27)</package>
-        </Required>
-        <Dependent type="2" schemaName="owningteam" displayName="Owning Team" parentSchemaName="comment" parentDisplayName="Comment" />
-      </MissingDependency>
-      <MissingDependency>
-        <Required type="1" schemaName="comment" displayName="Comment" solution="msdyn_CollaborativeComments (9.1.0.27)">
-          <package appName="CommentingApp Package" version="9.1.0.27">msdyn_CollaborativeComments_Anchor (9.1.0.27)</package>
-        </Required>
-        <Dependent type="2" schemaName="owninguser" displayName="Owning User" parentSchemaName="comment" parentDisplayName="Comment" />
-      </MissingDependency>
-      <MissingDependency>
-        <Required type="1" schemaName="comment" displayName="Comment" solution="msdyn_CollaborativeComments (9.1.0.27)">
-          <package appName="CommentingApp Package" version="9.1.0.27">msdyn_CollaborativeComments_Anchor (9.1.0.27)</package>
-        </Required>
-        <Dependent type="2" schemaName="versionnumber" displayName="Version Number" parentSchemaName="comment" parentDisplayName="Comment" />
+        <Dependent type="OrganizationSetting" displayName="OverrideAppHeaderColor" id.settingdefinitionid.uniquename="OverrideAppHeaderColor" />
       </MissingDependency>
     </MissingDependencies>
   </SolutionManifest>
