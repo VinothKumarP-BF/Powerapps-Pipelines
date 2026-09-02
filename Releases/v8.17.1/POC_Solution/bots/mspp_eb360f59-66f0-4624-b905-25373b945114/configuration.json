@@ -1,6 +1,0 @@
-{
-  "$kind": "BotConfiguration",
-  "settings": {
-    "AddBingDataSourceForPowerPages": false
-  }
-}
