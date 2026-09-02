@@ -1,0 +1,88 @@
+name: Artifact Export Managed Solutions
+
+on:
+  workflow_dispatch:
+    inputs:
+      release_version:
+        required: true
+        type: string
+        default: "8.17.1"
+
+env:
+  TARGET_BRANCH: Managed_Solutions
+  PAC_CLI_VERSION: "2.10.1"
+  SOLUTIONS: "POC_CR Devops_POC POC_Solution"
+
+jobs:
+  export:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout Managed Solutions Branch
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ env.TARGET_BRANCH }}
+          fetch-depth: 0
+
+      - name: Install PAC CLI
+        shell: powershell
+        run: |
+          dotnet tool install --global Microsoft.PowerApps.CLI.Tool --version $env:PAC_CLI_VERSION
+          echo "$env:USERPROFILE\.dotnet\tools" | Out-File -FilePath $env:GITHUB_PATH -Append
+
+      - name: Authenticate DEV
+        shell: bash
+        run: |
+          pac auth create \
+            --url "${{ secrets.DEV_ENV_URL }}" \
+            --applicationId "${{ secrets.CLIENT_ID }}" \
+            --clientSecret "${{ secrets.CLIENT_SECRET }}" \
+            --tenant "${{ secrets.TENANT_ID }}"
+
+      - name: Export Managed Solutions
+        shell: bash
+        run: |
+          RELEASE_FOLDER="Releases/v${{ github.event.inputs.release_version }}"
+          ARTIFACT_FOLDER="Artifacts/v${{ github.event.inputs.release_version }}"
+
+          mkdir -p "$RELEASE_FOLDER"
+          mkdir -p "$ARTIFACT_FOLDER"
+
+          for SOLUTION in $SOLUTIONS; do
+
+            echo "Processing $SOLUTION"
+
+            ZIP_FILE="$ARTIFACT_FOLDER/${SOLUTION}_managed.zip"
+
+            pac solution export \
+              --name "$SOLUTION" \
+              --path "$ZIP_FILE" \
+              --managed \
+              --overwrite true
+
+            pac solution unpack \
+              --zipfile "$ZIP_FILE" \
+              --folder "$RELEASE_FOLDER/$SOLUTION" \
+              --packagetype Managed
+
+          done
+
+      - name: Upload Managed Solution Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: ManagedSolutions-v${{ github.event.inputs.release_version }}
+          path: Artifacts/v${{ github.event.inputs.release_version }}
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Commit Release
+        shell: bash
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+
+          git add Releases/
+
+          git commit -m "Release v${{ github.event.inputs.release_version }}" || echo "No changes detected"
+
+          git push origin "${TARGET_BRANCH}"
