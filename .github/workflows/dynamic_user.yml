@@ -1,0 +1,33 @@
+name: DYNAMIC USER
+on:
+  workflow_dispatch:
+
+jobs:
+  export:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Install Power Platform CLI
+        uses: microsoft/powerplatform-actions/actions-install@v1
+
+      - name: Authenticate and Assign User Role
+        env:
+          TENANT_ID: ${{ secrets.TENANT_ID }}
+          CLIENT_ID: ${{ secrets.CLIENT_ID }}
+          CLIENT_SECRET: ${{ secrets.CLIENT_SECRET }}
+          # ENVIRONMENT_ID: ${{ secrets.ENVIRONMENT_ID }}
+          # TARGET_USER_UPN: ${{ secrets.TARGET_USER_UPN }}
+        run: |
+          # Authenticate using service principal
+          pac auth create \
+            --tenant "$TENANT_ID" \
+            --applicationId "$CLIENT_ID" \
+            --clientSecret "$CLIENT_SECRET"
+
+          pac auth who
+
+          # Assign role to user
+          pac admin assign-user \
+            --environment "c606f688-ad0a-e2fc-bf69-45eeb002a01d" \
+            --user "Akash@barrelfuel.com" \
+            --role "APIGM"
