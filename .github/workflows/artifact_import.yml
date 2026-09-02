@@ -1,0 +1,100 @@
+name: Artifact Import
+
+on:
+  workflow_dispatch:
+    inputs:
+      release_version:
+        description: Release version to deploy
+        required: true
+        type: string
+        default: "8.17.1"
+
+env:
+  PAC_CLI_VERSION: "2.10.1"
+
+permissions:
+  contents: read
+
+jobs:
+  import-solutions:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout YAML Branch
+        uses: actions/checkout@v4
+        with:
+          ref: yaml
+          path: yaml-config
+
+      - name: Download Release Artifact
+        uses: dawidd6/action-download-artifact@v6
+        with:
+          workflow: Updated Export Managed Solutions.yml
+          name: ManagedSolutions-v${{ github.event.inputs.release_version }}
+          path: artifacts
+
+      - name: Verify Downloaded Files
+        run: |
+          echo "Downloaded files:"
+          find artifacts -type f
+
+      - name: Install PAC CLI
+        run: |
+          dotnet tool update --global Microsoft.PowerApps.CLI.Tool --version $PAC_CLI_VERSION || \
+          dotnet tool install --global Microsoft.PowerApps.CLI.Tool --version $PAC_CLI_VERSION
+
+          echo "$HOME/.dotnet/tools" >> $GITHUB_PATH
+
+      - name: Authenticate DEV2
+        run: |
+          export PATH="$PATH:$HOME/.dotnet/tools"
+
+          pac auth create \
+            --url "${{ secrets.TEST_ENV_URL }}" \
+            --applicationId "${{ secrets.CLIENT_ID }}" \
+            --clientSecret "${{ secrets.CLIENT_SECRET }}" \
+            --tenant "${{ secrets.TENANT_ID }}"
+
+      ####################################################
+      # 1. POC_CR
+      ####################################################
+
+      - name: Import POC_CR
+        run: |
+          export PATH="$PATH:$HOME/.dotnet/tools"
+
+          pac solution import \
+            --path artifacts/POC_CR_managed.zip \
+            --settings-file "$GITHUB_WORKSPACE/yaml-config/deployment-settings/dev2.deploymentSettings.json" \
+            --async \
+            --max-async-wait-time 60
+
+      ####################################################
+      # 2. Devops_POC
+      ####################################################
+
+      - name: Import Devops_POC
+        run: |
+          export PATH="$PATH:$HOME/.dotnet/tools"
+
+          pac solution import \
+            --path artifacts/Devops_POC_managed.zip \
+            --async \
+            --max-async-wait-time 60
+
+      ####################################################
+      # 3. POC_Solution
+      ####################################################
+
+      - name: Import POC_Solution
+        run: |
+          export PATH="$PATH:$HOME/.dotnet/tools"
+
+          pac solution import \
+            --path artifacts/POC_Solution_managed.zip \
+            --async \
+            --max-async-wait-time 60
+
+      - name: Deployment Complete
+        run: |
+          echo "DEV2 deployment completed for release v${{ github.event.inputs.release_version }}"
