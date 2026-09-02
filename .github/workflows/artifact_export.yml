@@ -4,6 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       release_version:
+        description: Release Version
         required: true
         type: string
         default: "0.0.0.0"
@@ -43,29 +44,35 @@ jobs:
       - name: Export Managed Solutions
         shell: bash
         run: |
-          ASSET_FOLDER="ReleaseAssets/v${{ github.event.inputs.release_version }}"
+          RELEASE_FOLDER="ReleaseAssets/v${{ github.event.inputs.release_version }}"
 
-          mkdir -p "$ASSET_FOLDER"
+          mkdir -p "$RELEASE_FOLDER"
 
           for SOLUTION in $SOLUTIONS; do
 
-            echo "Processing $SOLUTION"
+            echo "Exporting $SOLUTION"
 
             pac solution export \
               --name "$SOLUTION" \
-              --path "$ASSET_FOLDER/${SOLUTION}_managed.zip" \
+              --path "$RELEASE_FOLDER/${SOLUTION}_managed.zip" \
               --managed \
               --overwrite true
 
           done
 
-      - name: Check Tag Does Not Exist
+      - name: Verify Exported Files
+        shell: bash
+        run: |
+          echo "Exported Solution Files:"
+          ls -la ReleaseAssets/v${{ github.event.inputs.release_version }}
+
+      - name: Check Release Tag Does Not Exist
         shell: bash
         run: |
           TAG="v${{ github.event.inputs.release_version }}"
 
           if git ls-remote --tags origin | grep -q "refs/tags/$TAG$"; then
-            echo "Tag $TAG already exists"
+            echo "ERROR: Release tag $TAG already exists."
             exit 1
           fi
 
@@ -75,11 +82,9 @@ jobs:
           tag_name: v${{ github.event.inputs.release_version }}
           name: Release v${{ github.event.inputs.release_version }}
           generate_release_notes: true
-          files: |
-            ReleaseAssets/v${{ github.event.inputs.release_version }}/POC_CR_managed.zip
-            ReleaseAssets/v${{ github.event.inputs.release_version }}/Devops_POC_managed.zip
+          files: ReleaseAssets/v${{ github.event.inputs.release_version }}/*.zip
 
-      - name: Export Complete
+      - name: Release Complete
         shell: bash
         run: |
-          echo "Release v${{ github.event.inputs.release_version }} created successfully"
+          echo "Release v${{ github.event.inputs.release_version }} created successfully."
