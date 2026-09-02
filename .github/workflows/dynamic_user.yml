@@ -36,15 +36,6 @@ jobs:
 
           echo "$HOME/.dotnet/tools" >> "$GITHUB_PATH"
 
-          $HOME/.dotnet/tools/pac --version
-
-      - name: Verify PAC CLI
-        shell: bash
-        run: |
-          echo "PATH=$PATH"
-          ls -la $HOME/.dotnet/tools
-          $HOME/.dotnet/tools/pac --version
-
       - name: Authenticate
         shell: bash
         run: |
