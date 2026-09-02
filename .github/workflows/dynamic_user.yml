@@ -10,6 +10,12 @@ jobs:
       - name: Install Power Platform CLI
         uses: microsoft/powerplatform-actions/actions-install@v1
 
+      - name: Verify PAC CLI
+        run: |
+
+          which pac
+          pac --version
+
       - name: Authenticate and Assign User Role
         env:
           TENANT_ID: ${{ secrets.TENANT_ID }}
