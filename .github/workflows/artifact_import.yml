@@ -1,4 +1,4 @@
-name: Artifact Import
+name: Release Import
 
 on:
   workflow_dispatch:
@@ -7,7 +7,7 @@ on:
         description: Release version to deploy
         required: true
         type: string
-        default: "8.17.1"
+        default: "0.0.0.0"
 
 env:
   PAC_CLI_VERSION: "2.10.1"
@@ -26,12 +26,12 @@ jobs:
           ref: yaml
           path: yaml-config
 
-      - name: Download Release Artifact
-        uses: dawidd6/action-download-artifact@v6
+      - name: Download Release Assets
+        uses: robinraju/release-downloader@v1.12
         with:
-          workflow: artifact_export.yml
-          name: ManagedSolutions-v${{ github.event.inputs.release_version }}
-          path: artifacts
+          tag: v${{ github.event.inputs.release_version }}
+          fileName: "*.zip"
+          out-file-path: artifacts
 
       - name: Verify Downloaded Files
         run: |
@@ -64,7 +64,7 @@ jobs:
           export PATH="$PATH:$HOME/.dotnet/tools"
 
           pac solution import \
-            --path artifacts/POC_CR_managed.zip \
+            --path "artifacts/POC_CR_managed.zip" \
             --settings-file "$GITHUB_WORKSPACE/yaml-config/deployment-settings/dev2.deploymentSettings.json" \
             --async \
             --max-async-wait-time 60
@@ -78,20 +78,20 @@ jobs:
           export PATH="$PATH:$HOME/.dotnet/tools"
 
           pac solution import \
-            --path artifacts/Devops_POC_managed.zip \
+            --path "artifacts/Devops_POC_managed.zip" \
             --async \
             --max-async-wait-time 60
 
       ####################################################
-      # 3. POC_ALM
+      # 3. POC_Solution
       ####################################################
 
-      - name: Import POC_ALM
+      - name: Import POC_Solution
         run: |
           export PATH="$PATH:$HOME/.dotnet/tools"
 
           pac solution import \
-            --path artifacts/POC_ALM_managed.zip \
+            --path "artifacts/POC_Solution_managed.zip" \
             --async \
             --max-async-wait-time 60
 
