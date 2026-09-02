@@ -86,14 +86,14 @@ jobs:
       # 3. POC_Solution
       ####################################################
 
-      - name: Import POC_Solution
-        run: |
-          export PATH="$PATH:$HOME/.dotnet/tools"
+      # - name: Import POC_Solution
+      #   run: |
+      #     export PATH="$PATH:$HOME/.dotnet/tools"
 
-          pac solution import \
-            --path artifacts/POC_Solution_managed.zip \
-            --async \
-            --max-async-wait-time 60
+      #     pac solution import \
+      #       --path artifacts/POC_Solution_managed.zip \
+      #       --async \
+      #       --max-async-wait-time 60
 
       - name: Deployment Complete
         run: |
