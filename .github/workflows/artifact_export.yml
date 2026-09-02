@@ -6,12 +6,12 @@ on:
       release_version:
         required: true
         type: string
-        default: "8.17.1"
+        default: "0.0.0.0"
 
 env:
   TARGET_BRANCH: Managed_Solutions
   PAC_CLI_VERSION: "2.10.1"
-  SOLUTIONS: "POC_CR Devops_POC POC_Solution"
+  SOLUTIONS: "POC_CR Devops_POC POC_ALM"
 
 jobs:
   export:
