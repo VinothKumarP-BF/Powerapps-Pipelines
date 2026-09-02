@@ -1,39 +1,60 @@
-name: DYNAMIC USER
+name: Assign Dataverse role
+ 
 on:
   workflow_dispatch:
-
+    inputs:
+      target_user_upn:
+        description: "User principal name, e.g. user@company.com"
+        required: true
+        type: string
+ 
+permissions:
+  contents: read
+ 
 jobs:
-  export:
+  assign-role:
     runs-on: ubuntu-latest
-
+ 
+    env:
+      TENANT_ID: ${{ vars.PP_TENANT_ID }}
+      CLIENT_ID: ${{ vars.PP_CLIENT_ID }}
+      CLIENT_SECRET: ${{ secrets.PP_CLIENT_SECRET }}
+      ENVIRONMENT_ID: ${{ vars.PP_ENVIRONMENT_ID }}
+      TARGET_ROLE: ${{ vars.PP_TARGET_ROLE }}
+      TARGET_USER_UPN: ${{ inputs.target_user_upn }}
+ 
     steps:
-      - name: Install Power Platform CLI
-        uses: microsoft/powerplatform-actions/actions-install@v1
-
-      - name: Verify PAC CLI
+      - name: Install .NET
+        uses: actions/setup-dotnet@v5
+        with:
+          dotnet-version: "10.0.x"
+ 
+      - name: Install latest PAC CLI
+        shell: bash
         run: |
-
-          which pac
-          pac --version
-
-      - name: Authenticate and Assign User Role
-        env:
-          TENANT_ID: ${{ secrets.TENANT_ID }}
-          CLIENT_ID: ${{ secrets.CLIENT_ID }}
-          CLIENT_SECRET: ${{ secrets.CLIENT_SECRET }}
-          # ENVIRONMENT_ID: ${{ secrets.ENVIRONMENT_ID }}
-          # TARGET_USER_UPN: ${{ secrets.TARGET_USER_UPN }}
+          dotnet tool install --global \
+            Microsoft.PowerApps.CLI.Tool \
+            --no-cache
+ 
+          echo "$HOME/.dotnet/tools" >> "$GITHUB_PATH"
+ 
+          "$HOME/.dotnet/tools/pac" --version
+          "$HOME/.dotnet/tools/pac" admin assign-user help >/dev/null
+ 
+      - name: Authenticate and assign role
+        shell: bash
         run: |
-          # Authenticate using service principal
+          set -euo pipefail
+ 
           pac auth create \
+            --name github-role-job \
             --tenant "$TENANT_ID" \
             --applicationId "$CLIENT_ID" \
             --clientSecret "$CLIENT_SECRET"
-
+ 
           pac auth who
-
-          # Assign role to user
+ 
           pac admin assign-user \
             --environment "c606f688-ad0a-e2fc-bf69-45eeb002a01d" \
             --user "Akash@barrelfuel.com" \
-            --role "APIGM"
+            --role "APIGM
