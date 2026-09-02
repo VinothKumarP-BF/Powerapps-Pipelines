@@ -16,11 +16,11 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      TENANT_ID: ${{ vars.PP_TENANT_ID }}
-      CLIENT_ID: ${{ vars.PP_CLIENT_ID }}
-      CLIENT_SECRET: ${{ secrets.PP_CLIENT_SECRET }}
-      ENVIRONMENT_ID: ${{ vars.PP_ENVIRONMENT_ID }}
-      TARGET_ROLE: ${{ vars.PP_TARGET_ROLE }}
+      TENANT_ID: ${{ secrets.TENANT_ID  }}
+      CLIENT_ID: ${{ secrets.CLIENT_ID }}
+      CLIENT_SECRET: ${{ secrets.CLIENT_SECRET  }}
+      # ENVIRONMENT_ID: ${{ vars.PP_ENVIRONMENT_ID }}
+      # TARGET_ROLE: ${{ vars.PP_TARGET_ROLE }}
       TARGET_USER_UPN: ${{ inputs.target_user_upn }}
 
     steps:
