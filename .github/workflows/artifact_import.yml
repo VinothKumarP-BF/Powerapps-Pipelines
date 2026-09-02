@@ -83,15 +83,15 @@ jobs:
             --max-async-wait-time 60
 
       ####################################################
-      # 3. POC_Solution
+      # 3. POC_ALM
       ####################################################
 
-      - name: Import POC_Solution
+      - name: Import POC_ALM
         run: |
           export PATH="$PATH:$HOME/.dotnet/tools"
 
           pac solution import \
-            --path artifacts/POC_Solution_managed.zip \
+            --path artifacts/POC_ALM_managed.zip \
             --async \
             --max-async-wait-time 60
 
