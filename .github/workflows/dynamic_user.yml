@@ -49,6 +49,10 @@ jobs:
 
           $HOME/.dotnet/tools/pac auth who
 
+      - name: List solutions
+        run: |
+          $HOME/.dotnet/tools/pac solution list
+
       - name: Assign Dataverse Role
         shell: bash
         run: |
