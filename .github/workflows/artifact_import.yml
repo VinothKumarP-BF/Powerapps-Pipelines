@@ -29,7 +29,7 @@ jobs:
       - name: Download Release Artifact
         uses: dawidd6/action-download-artifact@v6
         with:
-          workflow: Updated Export Managed Solutions.yml
+          workflow: artifact_export.yml
           name: ManagedSolutions-v${{ github.event.inputs.release_version }}
           path: artifacts
 
