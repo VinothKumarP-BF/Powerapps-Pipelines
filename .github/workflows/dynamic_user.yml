@@ -1,20 +1,20 @@
-name: Assign Dataverse role
- 
+name: Assign Dataverse Role
+
 on:
   workflow_dispatch:
     inputs:
       target_user_upn:
-        description: "User principal name, e.g. user@company.com"
+        description: "User principal name (e.g. user@company.com)"
         required: true
         type: string
- 
+
 permissions:
   contents: read
- 
+
 jobs:
   assign-role:
     runs-on: ubuntu-latest
- 
+
     env:
       TENANT_ID: ${{ vars.PP_TENANT_ID }}
       CLIENT_ID: ${{ vars.PP_CLIENT_ID }}
@@ -22,39 +22,50 @@ jobs:
       ENVIRONMENT_ID: ${{ vars.PP_ENVIRONMENT_ID }}
       TARGET_ROLE: ${{ vars.PP_TARGET_ROLE }}
       TARGET_USER_UPN: ${{ inputs.target_user_upn }}
- 
+
     steps:
-      - name: Install .NET
+      - name: Setup .NET
         uses: actions/setup-dotnet@v5
         with:
-          dotnet-version: "10.0.x"
- 
-      - name: Install latest PAC CLI
+          dotnet-version: "8.0.x"
+
+      - name: Install PAC CLI
         shell: bash
         run: |
-          dotnet tool install --global \
-            Microsoft.PowerApps.CLI.Tool \
-            --no-cache
- 
+          dotnet tool install --global Microsoft.PowerApps.CLI.Tool
+
           echo "$HOME/.dotnet/tools" >> "$GITHUB_PATH"
- 
-          "$HOME/.dotnet/tools/pac" --version
-          "$HOME/.dotnet/tools/pac" admin assign-user help >/dev/null
- 
-      - name: Authenticate and assign role
+
+          $HOME/.dotnet/tools/pac --version
+
+      - name: Verify PAC CLI
+        shell: bash
+        run: |
+          echo "PATH=$PATH"
+          ls -la $HOME/.dotnet/tools
+          $HOME/.dotnet/tools/pac --version
+
+      - name: Authenticate
         shell: bash
         run: |
           set -euo pipefail
- 
-          pac auth create \
+
+          $HOME/.dotnet/tools/pac auth create \
             --name github-role-job \
             --tenant "$TENANT_ID" \
             --applicationId "$CLIENT_ID" \
             --clientSecret "$CLIENT_SECRET"
- 
-          pac auth who
- 
-          pac admin assign-user \
+
+          $HOME/.dotnet/tools/pac auth who
+
+      - name: Assign Dataverse Role
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          $HOME/.dotnet/tools/pac admin assign-user \
             --environment "c606f688-ad0a-e2fc-bf69-45eeb002a01d" \
-            --user "Akash@barrelfuel.com" \
-            --role "APIGM
+            --user "$TARGET_USER_UPN" \
+            --role "APIGM"
+
+          echo "Role '$TARGET_ROLE' assigned to '$TARGET_USER_UPN'"
