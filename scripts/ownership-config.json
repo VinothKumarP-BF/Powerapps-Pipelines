@@ -1,9 +1,9 @@
 {
   "ownershipRules": {
-    "DataModel": {
+    "POC_DataModel": {
       "allowEntityMetadata": true
     },
-    "Automation": {
+    "POC_Automation": {
       "allowEntityMetadata": false
     }
   }
