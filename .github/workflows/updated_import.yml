@@ -43,7 +43,6 @@ jobs:
           export PATH="$PATH:$HOME/.dotnet/tools"
 
           pac auth create \
-            # --url "${{ secrets.TEST_ENV_URL }}" \
             --url "${{ secrets.PROD_TRIAL_URL }}" \
             --applicationId "${{ secrets.CLIENT_ID }}" \
             --clientSecret "${{ secrets.CLIENT_SECRET }}" \
