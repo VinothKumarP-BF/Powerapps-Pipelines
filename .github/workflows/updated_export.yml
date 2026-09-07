@@ -11,7 +11,7 @@ on:
 env:
   TARGET_BRANCH: Managed_Solutions
   PAC_CLI_VERSION: "2.10.1"
-  SOLUTIONS: "POC_DataModel POC_Automation"
+  SOLUTIONS: "DependencyLabCore DepedencyLabAutomation"
 
 jobs:
   export:
@@ -34,7 +34,7 @@ jobs:
         shell: bash
         run: |
           pac auth create \
-            --url "${{ secrets.DEV_ENV_URL }}" \
+            --url "${{ secrets.PPS_POC_URL }}" \
             --applicationId "${{ secrets.CLIENT_ID }}" \
             --clientSecret "${{ secrets.CLIENT_SECRET }}" \
             --tenant "${{ secrets.TENANT_ID }}"
