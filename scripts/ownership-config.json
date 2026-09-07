@@ -1,0 +1,10 @@
+{
+  "ownershipRules": {
+    "DataModel": {
+      "allowEntityMetadata": true
+    },
+    "Automation": {
+      "allowEntityMetadata": false
+    }
+  }
+}
