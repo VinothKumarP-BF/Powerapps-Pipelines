@@ -2,7 +2,7 @@
   "ConnectionReferences": [
     {
       "LogicalName": "dl_Dataverse",
-      "ConnectionId": "5a5034b6-a941-40e6-869b-817631a69d54",
+      "ConnectionId": "7cfe9e0365bd473b8ccd9e79130f5287",
       "ConnectorId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
     }
   ]
