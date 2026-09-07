@@ -77,39 +77,39 @@ jobs:
 
       # # 2. POC_DataModel
 
-      - name: Pack POC_DataModel
-        run: |
-          export PATH="$PATH:$HOME/.dotnet/tools"
+      # - name: Pack POC_DataModel
+      #   run: |
+      #     export PATH="$PATH:$HOME/.dotnet/tools"
 
-          pac solution pack \
-            --folder "$RELEASE_FOLDER/POC_DataModel" \
-            --zipfile /tmp/POC_DataModel.zip \
-            --packagetype Managed
+      #     pac solution pack \
+      #       --folder "$RELEASE_FOLDER/POC_DataModel" \
+      #       --zipfile /tmp/POC_DataModel.zip \
+      #       --packagetype Managed
 
-      - name: Import Devops_POC
-        run: |
-          export PATH="$PATH:$HOME/.dotnet/tools"
+      # - name: Import Devops_POC
+      #   run: |
+      #     export PATH="$PATH:$HOME/.dotnet/tools"
 
-          pac solution import \
-            --path /tmp/POC_DataModel.zip
+      #     pac solution import \
+      #       --path /tmp/POC_DataModel.zip
 
       # # 2. POC_Automation
 
-      - name: Pack POC_Automation
-        run: |
-          export PATH="$PATH:$HOME/.dotnet/tools"
+      # - name: Pack POC_Automation
+      #   run: |
+      #     export PATH="$PATH:$HOME/.dotnet/tools"
 
-          pac solution pack \
-            --folder "$RELEASE_FOLDER/POC_Automation" \
-            --zipfile /tmp/POC_Automation.zip \
-            --packagetype Managed
+      #     pac solution pack \
+      #       --folder "$RELEASE_FOLDER/POC_Automation" \
+      #       --zipfile /tmp/POC_Automation.zip \
+      #       --packagetype Managed
 
-      - name: Import POC_Automation
-        run: |
-          export PATH="$PATH:$HOME/.dotnet/tools"
+      # - name: Import POC_Automation
+      #   run: |
+      #     export PATH="$PATH:$HOME/.dotnet/tools"
 
-          pac solution import \
-            --path /tmp/POC_Automation.zip
+      #     pac solution import \
+      #       --path /tmp/POC_Automation.zip
 
 
       # 3. POC_Solution
