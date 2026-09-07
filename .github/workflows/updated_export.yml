@@ -60,8 +60,7 @@ jobs:
             pac solution export \
               --name "$SOLUTION" \
               --path "$ZIP_FILE" \
-              --managed \
-              --overwrite true
+              --managed 
 
             pac solution unpack \
               --zipfile "$ZIP_FILE" \
