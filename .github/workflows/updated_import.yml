@@ -104,7 +104,7 @@ jobs:
             --zipfile /tmp/POC_Automation.zip \
             --packagetype Managed
 
-      - name: Import Devops_POC
+      - name: Import POC_Automation
         run: |
           export PATH="$PATH:$HOME/.dotnet/tools"
 
