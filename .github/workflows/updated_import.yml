@@ -130,6 +130,48 @@ jobs:
       #     pac solution import \
       #       --path /tmp/POC_Solution.zip \
 
+        
+      # 3. POC_Solution
+
+      - name: Pack DependencyLabCore
+        run: |
+          export PATH="$PATH:$HOME/.dotnet/tools"
+
+          pac solution pack \
+            --folder "$RELEASE_FOLDER/DependencyLabCore" \
+            --zipfile /tmp/DependencyLabCore.zip \
+            --packagetype Managed
+
+      - name: Import POC_Solution
+        run: |
+          export PATH="$PATH:$HOME/.dotnet/tools"
+
+          pac solution import \
+            --path /tmp/DependencyLabCore.zip \
+
+
+
+      ####################################################
+      # 1. DepedencyLabAutomation
+      ####################################################
+
+      - name: Pack DepedencyLabAutomation
+        run: |
+          export PATH="$PATH:$HOME/.dotnet/tools"
+
+          pac solution pack \
+            --folder $RELEASE_FOLDER/DepedencyLabAutomation \
+            --zipfile /tmp/DepedencyLabAutomation.zip \
+            --packagetype Managed
+
+      - name: Import DepedencyLabAutomation
+        run: |
+          export PATH="$PATH:$HOME/.dotnet/tools"
+
+          pac solution import \
+            --path $RELEASE_FOLDER/DepedencyLabAutomation.zip \
+            --settings-file "$GITHUB_WORKSPACE/yaml-config/deployment-settings/dev2.deploymentSettings.json" \
+
       - name: Deployment Complete
         run: |
           echo "DEV2 deployment completed for release v${{ github.event.inputs.release_version }}"
