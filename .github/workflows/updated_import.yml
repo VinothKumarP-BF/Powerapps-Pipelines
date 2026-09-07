@@ -169,7 +169,7 @@ jobs:
           export PATH="$PATH:$HOME/.dotnet/tools"
 
           pac solution import \
-            --path $RELEASE_FOLDER/DepedencyLabAutomation.zip \
+            --path /tmp/DepedencyLabAutomation.zip \
             --settings-file "$GITHUB_WORKSPACE/yaml-config/deployment-settings/POC.json" \
 
       - name: Deployment Complete
