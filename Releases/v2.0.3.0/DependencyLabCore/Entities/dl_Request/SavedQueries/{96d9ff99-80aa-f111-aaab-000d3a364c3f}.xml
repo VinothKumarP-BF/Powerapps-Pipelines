@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>0</isdefault>
+    <savedqueryid>{96d9ff99-80aa-f111-aaab-000d3a364c3f}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="dl_name" select="1" icon="1" preview="1">
+        <row name="result" id="dl_requestid">
+          <cell name="dl_name" width="96" />
+          <cell name="dl_status" width="100" />
+          <cell name="dl_description" width="106" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>0</querytype>
+    <fetchxml>
+      <fetch version="1.0" output-format="xml-platform" mapping="logical">
+        <entity name="dl_request">
+          <attribute name="dl_name" />
+          <attribute name="dl_requestid" />
+          <attribute name="dl_status" />
+          <attribute name="dl_description" />
+          <filter type="and">
+            <condition attribute="dl_status" operator="eq" value="New" />
+          </filter>
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.0.0.0</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Acitve Views" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>
