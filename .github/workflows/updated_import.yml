@@ -65,33 +65,52 @@ jobs:
       #       --zipfile /tmp/CMdSCore.zip \
       #       --packagetype Managed
 
-      - name: Import CMdSCore
-        run: |
-          export PATH="$PATH:$HOME/.dotnet/tools"
-
-          pac solution import \
-            --path $RELEASE_FOLDER/CMdSCore.zip \
-            --settings-file "$GITHUB_WORKSPACE/yaml-config/deployment-settings/dev2.deploymentSettings.json" \
-            --async \
-            --max-async-wait-time 60
-
-      # # 2. Devops_POC
-
-      # - name: Pack Custom Control
-      #   run: |
-      #     export PATH="$PATH:$HOME/.dotnet/tools"
-
-      #     pac solution pack \
-      #       --folder "$RELEASE_FOLDER/Devops_POC" \
-      #       --zipfile /tmp/Devops_POC.zip \
-      #       --packagetype Managed
-
-      # - name: Import Devops_POC
+      # - name: Import CMdSCore
       #   run: |
       #     export PATH="$PATH:$HOME/.dotnet/tools"
 
       #     pac solution import \
-      #       --path /tmp/Devops_POC.zip
+      #       --path $RELEASE_FOLDER/CMdSCore.zip \
+      #       --settings-file "$GITHUB_WORKSPACE/yaml-config/deployment-settings/dev2.deploymentSettings.json" \
+      #       --async \
+      #       --max-async-wait-time 60
+
+      # # 2. POC_DataModel
+
+      - name: Pack POC_DataModel
+        run: |
+          export PATH="$PATH:$HOME/.dotnet/tools"
+
+          pac solution pack \
+            --folder "$RELEASE_FOLDER/POC_DataModel" \
+            --zipfile /tmp/POC_DataModel.zip \
+            --packagetype Managed
+
+      - name: Import Devops_POC
+        run: |
+          export PATH="$PATH:$HOME/.dotnet/tools"
+
+          pac solution import \
+            --path /tmp/POC_DataModel.zip
+
+      # # 2. POC_Automation
+
+      - name: Pack POC_Automation
+        run: |
+          export PATH="$PATH:$HOME/.dotnet/tools"
+
+          pac solution pack \
+            --folder "$RELEASE_FOLDER/POC_Automation" \
+            --zipfile /tmp/POC_Automation.zip \
+            --packagetype Managed
+
+      - name: Import Devops_POC
+        run: |
+          export PATH="$PATH:$HOME/.dotnet/tools"
+
+          pac solution import \
+            --path /tmp/POC_Automation.zip
+
 
       # 3. POC_Solution
 
