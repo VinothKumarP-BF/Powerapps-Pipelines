@@ -38,12 +38,12 @@ jobs:
  
           echo "$HOME/.dotnet/tools" >> $GITHUB_PATH
 
-      - name: Authenticate Test
+      - name: Authenticate Dev2
         run: |
           export PATH="$PATH:$HOME/.dotnet/tools"
 
           pac auth create \
-            --url "${{ secrets.TEST_ENV_URL }}" \
+            --url "${{ secrets.DEV2_ENV_URL }}" \
             --applicationId "${{ secrets.CLIENT_ID }}" \
             --clientSecret "${{ secrets.CLIENT_SECRET }}" \
             --tenant "${{ secrets.TENANT_ID }}"
@@ -52,125 +52,117 @@ jobs:
         run: |
           echo "RELEASE_FOLDER=Releases/v${{ github.event.inputs.release_version }}" >> $GITHUB_ENV
 
-     ####################################################
-      # 1. CMdSCore
+      ###################################################
+      # 1. CMdsNextGenPP_Core
       ####################################################
 
-      # - name: Pack CMdSCore
-      #   run: |
-      #     export PATH="$PATH:$HOME/.dotnet/tools"
+      - name: Pack CMdsNextGenPP_Core
+        run: |
+          export PATH="$PATH:$HOME/.dotnet/tools"
 
-      #     pac solution pack \
-      #       --folder $RELEASE_FOLDER/CmdsCore \
-      #       --zipfile /tmp/CMdSCore.zip \
-      #       --packagetype Managed
+          pac solution pack \
+            --folder $RELEASE_FOLDER/CMdsNextGenPP_Core \
+            --zipfile /tmp/CMdsNextGenPP_Core.zip \
+            --packagetype Managed
 
-      # - name: Import CMdSCore
-      #   run: |
-      #     export PATH="$PATH:$HOME/.dotnet/tools"
+      - name: Import CMdsNextGenPP_Core
+        run: |
+          export PATH="$PATH:$HOME/.dotnet/tools"
 
-      #     pac solution import \
-      #       --path $RELEASE_FOLDER/CMdSCore.zip \
-      #       --settings-file "$GITHUB_WORKSPACE/yaml-config/deployment-settings/dev2.deploymentSettings.json" \
-      #       --async \
-      #       --max-async-wait-time 60
+          pac solution import \
+            --path $RELEASE_FOLDER/CMdsNextGenPP_Core.zip \
+            --settings-file "$GITHUB_WORKSPACE/yaml-config/deployment-settings/dev2.deploymentSettings.json" \
+            --async \
+            --max-async-wait-time 60
+            
+      ###################################################
+      # 2. CMdsNextGenPP_DataModel
+      ####################################################
 
-      # # 2. POC_DataModel
+      - name: Pack CMdsNextGenPP_DataModel
+        run: |
+          export PATH="$PATH:$HOME/.dotnet/tools"
 
-      # - name: Pack POC_DataModel
-      #   run: |
-      #     export PATH="$PATH:$HOME/.dotnet/tools"
+          pac solution pack \
+            --folder "$RELEASE_FOLDER/CMdsNextGenPP_DataModel" \
+            --zipfile /tmp/CMdsNextGenPP_DataModel.zip \
+            --packagetype Managed
 
-      #     pac solution pack \
-      #       --folder "$RELEASE_FOLDER/POC_DataModel" \
-      #       --zipfile /tmp/POC_DataModel.zip \
-      #       --packagetype Managed
+      - name: Import CMdsNextGenPP_DataModel
+        run: |
+          export PATH="$PATH:$HOME/.dotnet/tools"
 
-      # - name: Import Devops_POC
-      #   run: |
-      #     export PATH="$PATH:$HOME/.dotnet/tools"
+          pac solution import \
+            --path /tmp/CMdsNextGenPP_DataModel.zip
+            --async \
+            --max-async-wait-time 60
 
-      #     pac solution import \
-      #       --path /tmp/POC_DataModel.zip
+      ###################################################
+      # 3. CMdsNextGenPP_Automation
+      ####################################################
 
-      # # 2. POC_Automation
+      - name: Pack CMdsNextGenPP_Automation
+        run: |
+          export PATH="$PATH:$HOME/.dotnet/tools"
 
-      # - name: Pack POC_Automation
-      #   run: |
-      #     export PATH="$PATH:$HOME/.dotnet/tools"
+          pac solution pack \
+            --folder "$RELEASE_FOLDER/CMdsNextGenPP_Automation" \
+            --zipfile /tmp/CMdsNextGenPP_Automation.zip \
+            --packagetype Managed
 
-      #     pac solution pack \
-      #       --folder "$RELEASE_FOLDER/POC_Automation" \
-      #       --zipfile /tmp/POC_Automation.zip \
-      #       --packagetype Managed
+      - name: Import CMdsNextGenPP_Automation
+        run: |
+          export PATH="$PATH:$HOME/.dotnet/tools"
 
-      # - name: Import POC_Automation
-      #   run: |
-      #     export PATH="$PATH:$HOME/.dotnet/tools"
+          pac solution import \
+            --path /tmp/CMdsNextGenPP_Automation.zip
+            --settings-file "$GITHUB_WORKSPACE/yaml-config/deployment-settings/dev2.deploymentSettings.json" \
+            --async \
+            --max-async-wait-time 60
 
-      #     pac solution import \
-      #       --path /tmp/POC_Automation.zip
+      ###################################################
+      # 4. CMdsNextGenPP_ModelApp
+      ####################################################
 
+      - name: Pack CMdsNextGenPP_ModelApp
+        run: |
+          export PATH="$PATH:$HOME/.dotnet/tools"
 
-      # 3. POC_Solution
+          pac solution pack \
+            --folder "$RELEASE_FOLDER/CMdsNextGenPP_ModelApp" \
+            --zipfile /tmp/CMdsNextGenPP_ModelApp.zip \
+            --packagetype Managed
 
-      # - name: Pack POC_Solution
-      #   run: |
-      #     export PATH="$PATH:$HOME/.dotnet/tools"
+      - name: Import CMdsNextGenPP_ModelApp
+        run: |
+          export PATH="$PATH:$HOME/.dotnet/tools"
 
-      #     pac solution pack \
-      #       --folder "$RELEASE_FOLDER/POC_Solution" \
-      #       --zipfile /tmp/POC_Solution.zip \
-      #       --packagetype Managed
-
-      # - name: Import POC_Solution
-      #   run: |
-      #     export PATH="$PATH:$HOME/.dotnet/tools"
-
-      #     pac solution import \
-      #       --path /tmp/POC_Solution.zip \
-
+          pac solution import \
+            --path /tmp/CMdsNextGenPP_ModelApp.zip
+            --async \
+            --max-async-wait-time 60
         
-      # 3. POC_Solution
+      ###################################################
+      # 5. CMdsNextGenPP_AppExperience
+      ####################################################
 
-      - name: Pack DependencyLabCore
+      - name: Pack CMdsNextGenPP_AppExperience
         run: |
           export PATH="$PATH:$HOME/.dotnet/tools"
 
           pac solution pack \
-            --folder "$RELEASE_FOLDER/DependencyLabCore" \
-            --zipfile /tmp/DependencyLabCore.zip \
+            --folder "$RELEASE_FOLDER/CMdsNextGenPP_AppExperience" \
+            --zipfile /tmp/CMdsNextGenPP_AppExperience.zip \
             --packagetype Managed
 
-      - name: Import POC_Solution
+      - name: Import CMdsNextGenPP_AppExperience
         run: |
           export PATH="$PATH:$HOME/.dotnet/tools"
 
           pac solution import \
-            --path /tmp/DependencyLabCore.zip \
-
-
-
-      ####################################################
-      # 1. DepedencyLabAutomation
-      ####################################################
-
-      - name: Pack DepedencyLabAutomation
-        run: |
-          export PATH="$PATH:$HOME/.dotnet/tools"
-
-          pac solution pack \
-            --folder $RELEASE_FOLDER/DepedencyLabAutomation \
-            --zipfile /tmp/DepedencyLabAutomation.zip \
-            --packagetype Managed
-
-      - name: Import DepedencyLabAutomation
-        run: |
-          export PATH="$PATH:$HOME/.dotnet/tools"
-
-          pac solution import \
-            --path /tmp/DepedencyLabAutomation.zip \
-            --settings-file "$GITHUB_WORKSPACE/yaml-config/deployment-settings/POC.json" \
+            --path /tmp/CMdsNextGenPP_AppExperience.zip
+            --async \
+            --max-async-wait-time 60
 
       - name: Deployment Complete
         run: |
