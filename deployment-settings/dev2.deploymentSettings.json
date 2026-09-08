@@ -46,5 +46,37 @@
     }
     
     
-  ]
+  ],
+  "ConnectionReferences": [
+    {
+      "LogicalName": "dl_Dataverse",
+      "ConnectionId": "7cfe9e0365bd473b8ccd9e79130f5287",
+      "ConnectorId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+    },
+    {
+      "LogicalName": "dl_Dataverse",
+      "ConnectionId": "7cfe9e0365bd473b8ccd9e79130f5287",
+      "ConnectorId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+    },
+    {
+      "LogicalName": "dl_Dataverse",
+      "ConnectionId": "7cfe9e0365bd473b8ccd9e79130f5287",
+      "ConnectorId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+    },
+    {
+      "LogicalName": "dl_Dataverse",
+      "ConnectionId": "7cfe9e0365bd473b8ccd9e79130f5287",
+      "ConnectorId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+    },
+    {
+      "LogicalName": "dl_Dataverse",
+      "ConnectionId": "7cfe9e0365bd473b8ccd9e79130f5287",
+      "ConnectorId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+    },
+    {
+      "LogicalName": "dl_Dataverse",
+      "ConnectionId": "7cfe9e0365bd473b8ccd9e79130f5287",
+      "ConnectorId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+    }
+  ] 
 }
