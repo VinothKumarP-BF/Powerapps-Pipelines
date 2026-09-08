@@ -49,34 +49,39 @@
   ],
   "ConnectionReferences": [
     {
-      "LogicalName": "dl_Dataverse",
-      "ConnectionId": "7cfe9e0365bd473b8ccd9e79130f5287",
+      "LogicalName": "cmdspp_CR_Outlook_Core_DEV",
+      "ConnectionId": "707b4c80d37d436e9484edb00dbff4f5",
+      "ConnectorId": "/providers/Microsoft.PowerApps/apis/shared_office365"
+    },
+    {
+      "LogicalName": "cmdspp_CR_SharePoint_Core_DEV",
+      "ConnectionId": "b906925bccfe494c8554005d642777ed",
+      "ConnectorId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline"
+    },
+    {
+      "LogicalName": "cmdspp_CR_Dataverse_Core_DEV",
+      "ConnectionId": "5bafe50f8ae54855b8c0d5089c6755ec",
       "ConnectorId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
     },
     {
-      "LogicalName": "dl_Dataverse",
-      "ConnectionId": "7cfe9e0365bd473b8ccd9e79130f5287",
-      "ConnectorId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+      "LogicalName": "cmdspp_CR_DocusignDemo_Core_DEV",
+      "ConnectionId": "49f73bcf6b8a461eb453b40d3bf35cbb",
+      "ConnectorId": "/providers/Microsoft.PowerApps/apis/shared_docusigndemo"
     },
     {
-      "LogicalName": "dl_Dataverse",
-      "ConnectionId": "7cfe9e0365bd473b8ccd9e79130f5287",
-      "ConnectorId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+      "LogicalName": "cmdspp_CR_HttpEntra_Core_DEV",
+      "ConnectionId": "592a62c0302549cf84c45f379227493a",
+      "ConnectorId": "/providers/Microsoft.PowerApps/apis/shared_webcontents"     
     },
     {
-      "LogicalName": "dl_Dataverse",
-      "ConnectionId": "7cfe9e0365bd473b8ccd9e79130f5287",
-      "ConnectorId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+      "LogicalName": "cmdspp_CR_MsWord_Core_DEV",
+      "ConnectionId": "49edbfb85cc646a4a0b3018b440bd291",
+      "ConnectorId": "/providers/Microsoft.PowerApps/apis/shared_wordonlinebusiness"     
     },
     {
-      "LogicalName": "dl_Dataverse",
-      "ConnectionId": "7cfe9e0365bd473b8ccd9e79130f5287",
-      "ConnectorId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
-    },
-    {
-      "LogicalName": "dl_Dataverse",
-      "ConnectionId": "7cfe9e0365bd473b8ccd9e79130f5287",
-      "ConnectorId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+      "LogicalName": "cmdspp_CR_OneDrive_Core_DEV",
+      "ConnectionId": "b64b0c3128af4cd2bacf43e6896be7f8",
+      "ConnectorId": "/providers/Microsoft.PowerApps/apis/shared_onedriveforbusiness"     
     }
-  ] 
+   ] 
 }
