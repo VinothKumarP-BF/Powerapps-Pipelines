@@ -93,7 +93,7 @@ jobs:
           export PATH="$PATH:$HOME/.dotnet/tools"
 
           pac solution import \
-            --path /tmp/CMdsNextGenPP_DataModel.zip
+            --path /tmp/CMdsNextGenPP_DataModel.zip \
             --async \
             --max-async-wait-time 60
 
