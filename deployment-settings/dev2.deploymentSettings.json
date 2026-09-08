@@ -50,38 +50,33 @@
   "ConnectionReferences": [
     {
       "LogicalName": "cmdspp_CR_Outlook_Core_DEV",
-      "ConnectionId": "707b4c80d37d436e9484edb00dbff4f5",
+      "ConnectionId": "cc45e9daffd24f31ac30d56c0f6ae8bb",
       "ConnectorId": "/providers/Microsoft.PowerApps/apis/shared_office365"
     },
     {
       "LogicalName": "cmdspp_CR_SharePoint_Core_DEV",
-      "ConnectionId": "b906925bccfe494c8554005d642777ed",
+      "ConnectionId": "e03f5f9ab37c4440bf7fd7b3a2207dc9",
       "ConnectorId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline"
     },
     {
       "LogicalName": "cmdspp_CR_Dataverse_Core_DEV",
-      "ConnectionId": "5bafe50f8ae54855b8c0d5089c6755ec",
+      "ConnectionId": "fe8e997ee9844c1a8abc731b87323696",
       "ConnectorId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
     },
     {
       "LogicalName": "cmdspp_CR_DocusignDemo_Core_DEV",
-      "ConnectionId": "49f73bcf6b8a461eb453b40d3bf35cbb",
+      "ConnectionId": "92fc74ea2e664700a0f865ccd5f2d61e",
       "ConnectorId": "/providers/Microsoft.PowerApps/apis/shared_docusigndemo"
     },
     {
       "LogicalName": "cmdspp_CR_HttpEntra_Core_DEV",
-      "ConnectionId": "592a62c0302549cf84c45f379227493a",
+      "ConnectionId": "dbf7a7459f294d9ebfbda3269f8f4558",
       "ConnectorId": "/providers/Microsoft.PowerApps/apis/shared_webcontents"     
     },
     {
       "LogicalName": "cmdspp_CR_MsWord_Core_DEV",
-      "ConnectionId": "49edbfb85cc646a4a0b3018b440bd291",
+      "ConnectionId": "e6668e30a20543b3a2e816ee4e45964c",
       "ConnectorId": "/providers/Microsoft.PowerApps/apis/shared_wordonlinebusiness"     
     },
-    {
-      "LogicalName": "cmdspp_CR_OneDrive_Core_DEV",
-      "ConnectionId": "b64b0c3128af4cd2bacf43e6896be7f8",
-      "ConnectorId": "/providers/Microsoft.PowerApps/apis/shared_onedriveforbusiness"     
-    }
   ] 
 }
