@@ -83,6 +83,7 @@
       <RootComponent type="300" schemaName="cmdspp_dashboarddata_05e92" behavior="0" />
       <RootComponent type="62" schemaName="cmdspp_CMdSModalApp" behavior="0" />
       <RootComponent type="62" schemaName="cmdspp_cmdspp_test" behavior="0" />
+      <RootComponent type="80" schemaName="cmdspp_CMdSModalApp" behavior="0" />
     </RootComponents>
     <MissingDependencies>
       <MissingDependency>
@@ -106,6 +107,10 @@
         <Dependent type="62" schemaName="cmdspp_cmdspp_test" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="1" schemaName="cmdspp_p_dtl_tb" displayName="Provider Detail" solution="Active" />
+        <Dependent type="80" schemaName="cmdspp_CMdSModalApp" displayName="CMdSModalApp" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="1" schemaName="cmdspp_p_idt_inf_dtl" displayName="P_IDT_INF_DTL" solution="Active" />
         <Dependent type="300" schemaName="cmdspp_dashboarddata_05e92" displayName="Dashboarddata" />
       </MissingDependency>
@@ -122,8 +127,30 @@
         <Dependent type="300" schemaName="cmdspp_dashboarddata_05e92" displayName="Dashboarddata" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="1" schemaName="cmdspp_pc_enrol_typ_tb" displayName="PC_ENROL_TYP_TB" solution="Active" />
+        <Dependent type="80" schemaName="cmdspp_CMdSModalApp" displayName="CMdSModalApp" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="1" schemaName="cmdspp_pc_pvd_typ_tb" displayName="Provider Type" solution="Active" />
         <Dependent type="300" schemaName="cmdspp_dashboarddata_05e92" displayName="Dashboarddata" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="61" schemaName="msdyn_/Images/AppModule_Default_Icon.png" displayName="msdyn_/Images/AppModule_Default_Icon.png" solution="AppModuleWebResources (2.5)">
+          <package appName="AppModule Web Resources Package" version="2.5">AppModuleWebResources (2.5)</package>
+        </Required>
+        <Dependent type="80" schemaName="cmdspp_CMdSModalApp" displayName="CMdSModalApp" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="SettingDefinition" displayName="AppChannel" solution="msdyn_AppFrameworkInfraExtensions (1.0.0.19)" id.uniquename="AppChannel">
+          <package appName="PowerAppsAppFramework Package" version="1.0.0.25">PowerAppsAppFramework_Anchor (1.0.0.25)</package>
+        </Required>
+        <Dependent type="AppSetting" displayName="parentappmoduleid.uniquename=cmdspp_CMdSModalApp,settingdefinitionid.uniquename=AppChannel" id.parentappmoduleid.uniquename="cmdspp_CMdSModalApp" id.settingdefinitionid.uniquename="AppChannel" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="SettingDefinition" displayName="CustomThemeDefinition" solution="msdyn_PowerAppsThemingSettings (1.0.0.13)" id.uniquename="CustomThemeDefinition">
+          <package appName="PowerAppsThemingApp Package" version="1.0.0.12">PowerAppsThemingApp_Anchor (1.0.0.12)</package>
+        </Required>
+        <Dependent type="AppSetting" displayName="parentappmoduleid.uniquename=cmdspp_CMdSModalApp,settingdefinitionid.uniquename=CustomThemeDefinition" id.parentappmoduleid.uniquename="cmdspp_CMdSModalApp" id.settingdefinitionid.uniquename="CustomThemeDefinition" />
       </MissingDependency>
       <MissingDependency>
         <Required type="SettingDefinition" displayName="CustomThemeDefinition" solution="msdyn_PowerAppsThemingSettings (1.0.0.13)" id.uniquename="CustomThemeDefinition">
@@ -136,6 +163,12 @@
           <package appName="PowerAppsThemingApp Package" version="1.0.0.12">PowerAppsThemingApp_Anchor (1.0.0.12)</package>
         </Required>
         <Dependent type="SettingDefinition" displayName="CustomThemeDefinition" id.uniquename="CustomThemeDefinition" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="SettingDefinition" displayName="FormFillBarUXEnabled" solution="msdyn_FormsInfraSettings (1.0.0.8)" id.uniquename="FormFillBarUXEnabled">
+          <package appName="PowerAppsFormsApp Package" version="1.0.0.5">msdyn_FormsInsightSettings (1.0.0.5)</package>
+        </Required>
+        <Dependent type="AppSetting" displayName="parentappmoduleid.uniquename=cmdspp_CMdSModalApp,settingdefinitionid.uniquename=FormFillBarUXEnabled" id.parentappmoduleid.uniquename="cmdspp_CMdSModalApp" id.settingdefinitionid.uniquename="FormFillBarUXEnabled" />
       </MissingDependency>
     </MissingDependencies>
   </SolutionManifest>

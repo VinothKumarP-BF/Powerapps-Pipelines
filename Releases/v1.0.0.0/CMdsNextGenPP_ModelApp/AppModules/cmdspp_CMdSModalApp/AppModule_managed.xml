@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<AppModule>
+  <UniqueName>cmdspp_CMdSModalApp</UniqueName>
+  <IntroducedVersion>1.0.0.0</IntroducedVersion>
+  <WebResourceId>953b9fac-1e5e-e611-80d6-00155ded156f</WebResourceId>
+  <OptimizedFor></OptimizedFor>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+  <FormFactor>1</FormFactor>
+  <ClientType>4</ClientType>
+  <NavigationType>0</NavigationType>
+  <AppModuleComponents>
+    <AppModuleComponent type="1" schemaName="cmdspp_p_dtl_tb" />
+    <AppModuleComponent type="1" schemaName="cmdspp_pc_enrol_typ_tb" />
+    <AppModuleComponent type="62" schemaName="cmdspp_CMdSModalApp" />
+  </AppModuleComponents>
+  <AppModuleRoleMaps>
+    <Role id="{627090ff-40a3-4053-8790-584edc5be201}" />
+    <Role id="{119f245c-3cc8-4b62-b31c-d1a046ced15d}" />
+  </AppModuleRoleMaps>
+  <LocalizedNames>
+    <LocalizedName description="CMdSModalApp" languagecode="1033" />
+  </LocalizedNames>
+  <Descriptions>
+    <Description description="Streamline business processes by centralizing key data management and operational workflows. Empower users to efficiently organize, track, and update essential information for improved productivity." languagecode="1033" />
+  </Descriptions>
+  <appelements>
+    <appelement uniquename="cmdspp_cmdspp_CMdSModalApp_canvasappid_cmdspp_cmdsmodalappdefaultcommandlibrary_44d2e">
+      <canvasappid>
+        <name>cmdspp_cmdsmodalappdefaultcommandlibrary_44d2e</name>
+      </canvasappid>
+      <iscustomizable>1</iscustomizable>
+      <name>cmdspp_cmdspp_CMdSModalApp_canvasappid_cmdspp_cmdsmodalappdefaultcommandlibrary_44d2e</name>
+    </appelement>
+    <appelement uniquename="cmdspp_cmdspp_CMdSModalApp_canvasappid_cmdspp_dashboarddata_05e92">
+      <canvasappid>
+        <name>cmdspp_dashboarddata_05e92</name>
+      </canvasappid>
+      <iscustomizable>1</iscustomizable>
+      <name>cmdspp_cmdspp_CMdSModalApp_canvasappid_cmdspp_dashboarddata_05e92</name>
+    </appelement>
+  </appelements>
+  <appsettings>
+    <appsetting settingdefinitionid.uniquename="AppChannel">
+      <iscustomizable>1</iscustomizable>
+      <value>1</value>
+    </appsetting>
+    <appsetting settingdefinitionid.uniquename="CustomThemeDefinition">
+      <iscustomizable>1</iscustomizable>
+      <value>cmdspp_cmdspp_modern_theme</value>
+    </appsetting>
+    <appsetting settingdefinitionid.uniquename="FormFillBarUXEnabled">
+      <iscustomizable>1</iscustomizable>
+      <value>1</value>
+    </appsetting>
+  </appsettings>
+</AppModule>
