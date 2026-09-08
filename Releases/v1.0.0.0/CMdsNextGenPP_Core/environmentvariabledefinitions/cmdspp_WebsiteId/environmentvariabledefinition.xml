@@ -1,0 +1,11 @@
+<environmentvariabledefinition schemaname="cmdspp_WebsiteId">
+  <defaultvalue>abccaafd-73d6-47dd-bb55-b09b911f0d43</defaultvalue>
+  <displayname default="ENV_Website_Id">
+    <label description="ENV_Website_Id" languagecode="1033" />
+  </displayname>
+  <introducedversion>1.0.0.0</introducedversion>
+  <iscustomizable>1</iscustomizable>
+  <isrequired>0</isrequired>
+  <secretstore>0</secretstore>
+  <type>100000000</type>
+</environmentvariabledefinition>

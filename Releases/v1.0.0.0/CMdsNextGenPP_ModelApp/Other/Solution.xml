@@ -1,0 +1,142 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ImportExportXml version="9.2.26081.172" SolutionPackageVersion="9.2" languagecode="1033" generatedBy="CrmLive" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" OrganizationVersion="9.2.26081.172" OrganizationSchemaType="Standard" CRMServerServiceabilityVersion="9.2.26081.00172">
+  <SolutionManifest>
+    <UniqueName>CMdsNextGenPP_ModelApp</UniqueName>
+    <LocalizedNames>
+      <LocalizedName description="CMdsNextGenPP_ModelApp" languagecode="1033" />
+    </LocalizedNames>
+    <Descriptions />
+    <Version>1.0.0.0</Version>
+    <Managed>1</Managed>
+    <Publisher>
+      <UniqueName>CMdSNextGenPP</UniqueName>
+      <LocalizedNames>
+        <LocalizedName description="CMdSNextGenPP" languagecode="1033" />
+      </LocalizedNames>
+      <Descriptions />
+      <EMailAddress xsi:nil="true"></EMailAddress>
+      <SupportingWebsiteUrl xsi:nil="true"></SupportingWebsiteUrl>
+      <CustomizationPrefix>cmdspp</CustomizationPrefix>
+      <CustomizationOptionValuePrefix>42345</CustomizationOptionValuePrefix>
+      <Addresses>
+        <Address>
+          <AddressNumber>1</AddressNumber>
+          <AddressTypeCode>1</AddressTypeCode>
+          <City xsi:nil="true"></City>
+          <County xsi:nil="true"></County>
+          <Country xsi:nil="true"></Country>
+          <Fax xsi:nil="true"></Fax>
+          <FreightTermsCode xsi:nil="true"></FreightTermsCode>
+          <ImportSequenceNumber xsi:nil="true"></ImportSequenceNumber>
+          <Latitude xsi:nil="true"></Latitude>
+          <Line1 xsi:nil="true"></Line1>
+          <Line2 xsi:nil="true"></Line2>
+          <Line3 xsi:nil="true"></Line3>
+          <Longitude xsi:nil="true"></Longitude>
+          <Name xsi:nil="true"></Name>
+          <PostalCode xsi:nil="true"></PostalCode>
+          <PostOfficeBox xsi:nil="true"></PostOfficeBox>
+          <PrimaryContactName xsi:nil="true"></PrimaryContactName>
+          <ShippingMethodCode>1</ShippingMethodCode>
+          <StateOrProvince xsi:nil="true"></StateOrProvince>
+          <Telephone1 xsi:nil="true"></Telephone1>
+          <Telephone2 xsi:nil="true"></Telephone2>
+          <Telephone3 xsi:nil="true"></Telephone3>
+          <TimeZoneRuleVersionNumber xsi:nil="true"></TimeZoneRuleVersionNumber>
+          <UPSZone xsi:nil="true"></UPSZone>
+          <UTCOffset xsi:nil="true"></UTCOffset>
+          <UTCConversionTimeZoneCode xsi:nil="true"></UTCConversionTimeZoneCode>
+        </Address>
+        <Address>
+          <AddressNumber>2</AddressNumber>
+          <AddressTypeCode>1</AddressTypeCode>
+          <City xsi:nil="true"></City>
+          <County xsi:nil="true"></County>
+          <Country xsi:nil="true"></Country>
+          <Fax xsi:nil="true"></Fax>
+          <FreightTermsCode xsi:nil="true"></FreightTermsCode>
+          <ImportSequenceNumber xsi:nil="true"></ImportSequenceNumber>
+          <Latitude xsi:nil="true"></Latitude>
+          <Line1 xsi:nil="true"></Line1>
+          <Line2 xsi:nil="true"></Line2>
+          <Line3 xsi:nil="true"></Line3>
+          <Longitude xsi:nil="true"></Longitude>
+          <Name xsi:nil="true"></Name>
+          <PostalCode xsi:nil="true"></PostalCode>
+          <PostOfficeBox xsi:nil="true"></PostOfficeBox>
+          <PrimaryContactName xsi:nil="true"></PrimaryContactName>
+          <ShippingMethodCode>1</ShippingMethodCode>
+          <StateOrProvince xsi:nil="true"></StateOrProvince>
+          <Telephone1 xsi:nil="true"></Telephone1>
+          <Telephone2 xsi:nil="true"></Telephone2>
+          <Telephone3 xsi:nil="true"></Telephone3>
+          <TimeZoneRuleVersionNumber xsi:nil="true"></TimeZoneRuleVersionNumber>
+          <UPSZone xsi:nil="true"></UPSZone>
+          <UTCOffset xsi:nil="true"></UTCOffset>
+          <UTCConversionTimeZoneCode xsi:nil="true"></UTCConversionTimeZoneCode>
+        </Address>
+      </Addresses>
+    </Publisher>
+    <RootComponents>
+      <RootComponent type="300" schemaName="cmdspp_canvascomponent_df888" behavior="0" />
+      <RootComponent type="300" schemaName="cmdspp_cmdsmodalappdefaultcommandlibrary_44d2e" behavior="0" />
+      <RootComponent type="300" schemaName="cmdspp_dashboarddata_05e92" behavior="0" />
+      <RootComponent type="62" schemaName="cmdspp_CMdSModalApp" behavior="0" />
+      <RootComponent type="62" schemaName="cmdspp_cmdspp_test" behavior="0" />
+    </RootComponents>
+    <MissingDependencies>
+      <MissingDependency>
+        <Required type="1" schemaName="cmdspp_p_appl_scenario_tb" displayName="P_APPL_SCENARIO_TB" solution="Active" />
+        <Dependent type="300" schemaName="cmdspp_dashboarddata_05e92" displayName="Dashboarddata" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="cmdspp_p_dtl_tb" displayName="Provider Detail" solution="Active" />
+        <Dependent type="300" schemaName="cmdspp_cmdsmodalappdefaultcommandlibrary_44d2e" displayName="CMdSModalApp_DefaultCommandLibrary" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="cmdspp_p_dtl_tb" displayName="Provider Detail" solution="Active" />
+        <Dependent type="300" schemaName="cmdspp_dashboarddata_05e92" displayName="Dashboarddata" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="cmdspp_p_dtl_tb" displayName="Provider Detail" solution="Active" />
+        <Dependent type="62" schemaName="cmdspp_CMdSModalApp" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="cmdspp_p_dtl_tb" displayName="Provider Detail" solution="Active" />
+        <Dependent type="62" schemaName="cmdspp_cmdspp_test" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="cmdspp_p_idt_inf_dtl" displayName="P_IDT_INF_DTL" solution="Active" />
+        <Dependent type="300" schemaName="cmdspp_dashboarddata_05e92" displayName="Dashboarddata" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="cmdspp_p_req_doc_tb" displayName="P_REQ_DOC_TB" solution="Active" />
+        <Dependent type="300" schemaName="cmdspp_dashboarddata_05e92" displayName="Dashboarddata" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="cmdspp_pc_dashboard_cards" displayName="pc_dashboard_cards" solution="Active" />
+        <Dependent type="300" schemaName="cmdspp_dashboarddata_05e92" displayName="Dashboarddata" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="cmdspp_pc_enrol_typ_tb" displayName="PC_ENROL_TYP_TB" solution="Active" />
+        <Dependent type="300" schemaName="cmdspp_dashboarddata_05e92" displayName="Dashboarddata" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="cmdspp_pc_pvd_typ_tb" displayName="Provider Type" solution="Active" />
+        <Dependent type="300" schemaName="cmdspp_dashboarddata_05e92" displayName="Dashboarddata" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="SettingDefinition" displayName="CustomThemeDefinition" solution="msdyn_PowerAppsThemingSettings (1.0.0.13)" id.uniquename="CustomThemeDefinition">
+          <package appName="PowerAppsThemingApp Package" version="1.0.0.12">PowerAppsThemingApp_Anchor (1.0.0.12)</package>
+        </Required>
+        <Dependent type="OrganizationSetting" displayName="CustomThemeDefinition" id.settingdefinitionid.uniquename="CustomThemeDefinition" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="SettingDefinition" displayName="CustomThemeDefinition" solution="msdyn_PowerAppsThemingSettings (1.0.0.13)" id.uniquename="CustomThemeDefinition">
+          <package appName="PowerAppsThemingApp Package" version="1.0.0.12">PowerAppsThemingApp_Anchor (1.0.0.12)</package>
+        </Required>
+        <Dependent type="SettingDefinition" displayName="CustomThemeDefinition" id.uniquename="CustomThemeDefinition" />
+      </MissingDependency>
+    </MissingDependencies>
+  </SolutionManifest>
+</ImportExportXml>

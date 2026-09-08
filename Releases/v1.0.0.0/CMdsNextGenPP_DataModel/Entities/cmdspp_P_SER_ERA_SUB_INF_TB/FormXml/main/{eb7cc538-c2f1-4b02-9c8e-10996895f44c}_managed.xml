@@ -1,0 +1,136 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<forms xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <systemform>
+    <formid>{eb7cc538-c2f1-4b02-9c8e-10996895f44c}</formid>
+    <IntroducedVersion>1.0</IntroducedVersion>
+    <FormPresentation>1</FormPresentation>
+    <FormActivationState>1</FormActivationState>
+    <form headerdensity="HighWithControls">
+      <tabs>
+        <tab verticallayout="true" id="{392ffba8-4edf-40fa-a2b1-526ba84ad80f}" IsUserDefined="1">
+          <labels>
+            <label description="General" languagecode="1033" />
+          </labels>
+          <columns>
+            <column width="100%">
+              <sections>
+                <section showlabel="false" showbar="false" IsUserDefined="0" id="{bb228e67-67eb-47af-bb97-b6b3e9bcbf36}" columns="11">
+                  <labels>
+                    <label description="General" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{b3d0a219-a3ca-4db4-85d1-19c14f9cb514}" showlabel="false" availableforphone="false" visible="false">
+                        <labels>
+                          <label description="p_ser_era_sub_inf_tb_sk" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_p_ser_era_sub_inf_tb_sk" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="cmdspp_p_ser_era_sub_inf_tb_sk" />
+                      </cell>
+                      <cell id="{c2b9e5f1-6550-4f60-9f12-55162fe372d6}" colspan="1" rowspan="1" showlabel="false" availableforphone="false" visible="false">
+                        <labels>
+                          <label description="Owner" languagecode="1033" />
+                        </labels>
+                        <control id="ownerid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="ownerid" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{bff45809-6f57-4e45-9d1f-60ab64452e2d}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Preference for Aggregation of Remittance Date " languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_p_era_agg_rmt_date" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="cmdspp_p_era_agg_rmt_date" disabled="true">
+                          <parameters>
+                            <DefaultViewId>{6E89000C-59A8-F111-B8DE-70A8A5B02D34}</DefaultViewId>
+                            <AvailableViewIds>{7735878B-98D0-4EC9-A90A-D903327DC996},{64CA6896-0E0F-4900-898D-71C6B40C7F12},{F12353B5-57A8-F111-B8DE-70A8A5B02328},{87D73E27-A5A7-F111-B8DE-70A8A5B02D34},{58733369-BBA6-F111-B8DE-70A8A5B02D34},{3BD4E7E6-BDA6-F111-B8DE-70A8A5B02D34},{6E89000C-59A8-F111-B8DE-70A8A5B02D34},{03228501-A5A7-F111-B8DE-70A8A5B02D34},{299E1019-5AA8-F111-B8DE-70A8A5B02D74},{FD514600-58A8-F111-B8DE-70A8A5B02D28},{BDC47EDD-59A8-F111-B8DE-70A8A5B02D28},{6EBF90A5-59A8-F111-B8DE-70A8A5B02D34},{7FC31845-A5A7-F111-B8DE-70A8A5B02D28},{20DE6FBF-02A5-F111-B8DE-70A8A5B02328},{97D45F28-11A5-F111-B8DE-70A8A5B02684},{D6A067F3-8EA7-F111-B8DD-70A8A5B028CC},{9968C64F-1697-F111-8075-70A8A5B028CC},{018D2F0F-F1A5-F111-B8DE-70A8A5B02D28},{D448848C-DBA6-F111-B8DD-70A8A5B028CC},{67C2D717-02A5-F111-B8DE-70A8A5B02328},{CA553ED7-1697-F111-8075-70A8A5B02D34},{3C37C7FA-D8A2-F111-B8DE-70A8A5B02D28},{4756C924-D9A2-F111-B8DE-70A8A5B02D28}</AvailableViewIds>
+                            <DisableViewPicker>true</DisableViewPicker>
+                          </parameters>
+                        </control>
+                      </cell>
+                      <cell id="{b69e73b4-1396-4da8-9f06-b572fbc3cbac}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Reason For Submission" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_p_era_sign_reason" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="cmdspp_p_era_sign_reason" disabled="true">
+                          <parameters>
+                            <DefaultViewId>{6E89000C-59A8-F111-B8DE-70A8A5B02D34}</DefaultViewId>
+                            <AvailableViewIds>{7735878B-98D0-4EC9-A90A-D903327DC996},{64CA6896-0E0F-4900-898D-71C6B40C7F12},{F12353B5-57A8-F111-B8DE-70A8A5B02328},{87D73E27-A5A7-F111-B8DE-70A8A5B02D34},{58733369-BBA6-F111-B8DE-70A8A5B02D34},{3BD4E7E6-BDA6-F111-B8DE-70A8A5B02D34},{6E89000C-59A8-F111-B8DE-70A8A5B02D34},{03228501-A5A7-F111-B8DE-70A8A5B02D34},{299E1019-5AA8-F111-B8DE-70A8A5B02D74},{FD514600-58A8-F111-B8DE-70A8A5B02D28},{BDC47EDD-59A8-F111-B8DE-70A8A5B02D28},{6EBF90A5-59A8-F111-B8DE-70A8A5B02D34},{7FC31845-A5A7-F111-B8DE-70A8A5B02D28},{20DE6FBF-02A5-F111-B8DE-70A8A5B02328},{97D45F28-11A5-F111-B8DE-70A8A5B02684},{D6A067F3-8EA7-F111-B8DD-70A8A5B028CC},{9968C64F-1697-F111-8075-70A8A5B028CC},{018D2F0F-F1A5-F111-B8DE-70A8A5B02D28},{D448848C-DBA6-F111-B8DD-70A8A5B028CC},{67C2D717-02A5-F111-B8DE-70A8A5B02328},{CA553ED7-1697-F111-8075-70A8A5B02D34},{3C37C7FA-D8A2-F111-B8DE-70A8A5B02D28},{4756C924-D9A2-F111-B8DE-70A8A5B02D28}</AvailableViewIds>
+                          </parameters>
+                        </control>
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{3c70525a-d03a-4462-aefe-e55307458212}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Authorized Signature" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_p_era_authr_sign" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="cmdspp_p_era_authr_sign" disabled="true" />
+                      </cell>
+                      <cell locklevel="0" id="{315e1eab-473c-4d80-996e-c1eef1038810}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+          </columns>
+        </tab>
+      </tabs>
+      <header id="{0c418216-4483-468c-a353-857fffab21b3}" celllabelposition="Top" columns="111" labelwidth="115" celllabelalignment="Left">
+        <rows>
+          <row>
+            <cell id="{5bb6e03f-9d64-43f9-a44d-8b879c4f2601}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{c61aa331-d49f-48a5-a23e-2b484d15304a}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{fcda5660-34ac-4b5c-8206-d0050d26d425}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+          </row>
+        </rows>
+      </header>
+      <footer id="{1d56419c-d7c4-42b6-826f-0a96ddc6cb74}" celllabelposition="Top" columns="111" labelwidth="115" celllabelalignment="Left">
+        <rows>
+          <row>
+            <cell id="{0f5121c8-f362-4bb7-b7b6-0373a7d20087}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{68f86d99-cf46-447f-b6fa-c804edd91a94}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{c3b6053a-610b-45f2-aa90-9259a59a62c5}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+          </row>
+        </rows>
+      </footer>
+      <DisplayConditions Order="0" FallbackForm="true">
+        <Everyone />
+      </DisplayConditions>
+    </form>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <LocalizedNames>
+      <LocalizedName description="Information" languagecode="1033" />
+    </LocalizedNames>
+    <Descriptions>
+      <Description description="A form for this entity." languagecode="1033" />
+    </Descriptions>
+  </systemform>
+</forms>

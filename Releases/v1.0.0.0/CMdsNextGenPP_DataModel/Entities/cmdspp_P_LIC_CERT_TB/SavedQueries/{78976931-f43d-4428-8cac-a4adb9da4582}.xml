@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>0</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>1</isdefault>
+    <savedqueryid>{78976931-f43d-4428-8cac-a4adb9da4582}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="cmdspp_p_lic_cert_sk" select="1" icon="1" preview="1">
+        <row name="result" id="cmdspp_p_lic_cert_tbid">
+          <cell name="cmdspp_cmdspp_p_lic_cert_ind_code3" width="164" />
+          <cell name="cmdspp_p_lic_cert_num" width="128" />
+          <cell name="cmdspp_p_lic_cert_agcy_cdid" width="167" />
+          <cell name="cmdspp_p_lic_cert_state_cd" width="137" />
+          <cell name="cmdspp_p_lic_cert_beg_dt" width="142" />
+          <cell name="cmdspp_p_lic_cert_end_dt" width="142" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>0</querytype>
+    <fetchxml>
+      <fetch version="1.0" mapping="logical">
+        <entity name="cmdspp_p_lic_cert_tb">
+          <attribute name="cmdspp_p_lic_cert_tbid" />
+          <filter type="and">
+            <condition attribute="statecode" operator="eq" value="0" />
+          </filter>
+          <attribute name="cmdspp_cmdspp_p_lic_cert_ind_code3" />
+          <attribute name="cmdspp_p_lic_cert_num" />
+          <attribute name="cmdspp_p_lic_cert_beg_dt" />
+          <attribute name="cmdspp_p_lic_cert_end_dt" />
+          <attribute name="cmdspp_p_lic_cert_agcy_cdid" />
+          <attribute name="cmdspp_p_lic_cert_state_cd" />
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.0</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Active P_LIC_CERT_TBS" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>

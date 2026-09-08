@@ -1,0 +1,431 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps_1": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "cmdspp_CR_Dataverse_Core_DEV"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "manual": {
+          "metadata": {
+            "operationMetadataId": "40cf8bd3-6cb8-4d33-901c-705abb34881b"
+          },
+          "type": "Request",
+          "kind": "Http",
+          "inputs": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "userId": {
+                  "type": "string"
+                },
+                "transType": {
+                  "type": "string"
+                },
+                "threadId": {
+                  "type": "string"
+                },
+                "rowCount": {
+                  "type": "integer"
+                },
+                "searchString": {
+                  "type": "string"
+                }
+              }
+            },
+            "triggerAuthenticationType": "All"
+          }
+        }
+      },
+      "actions": {
+        "Switch": {
+          "runAfter": {},
+          "cases": {
+            "Case": {
+              "case": "fetchThreads",
+              "actions": {
+                "List_rows_Threads": {
+                  "runAfter": {},
+                  "metadata": {
+                    "operationMetadataId": "f2facc87-d61e-4f06-bac1-398cfaf9ab75"
+                  },
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "host": {
+                      "connectionName": "shared_commondataserviceforapps_1",
+                      "operationId": "ListRecords",
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                    },
+                    "parameters": {
+                      "entityName": "cmdspp_g_usr_inbox_threads",
+                      "$filter": "_cmdspp_g_web_user_value eq '@{triggerBody()?['userId']}' and cmdspp_g_active_ind eq true",
+                      "$orderby": "createdon desc",
+                      "$top": "@triggerBody()?['rowCount']",
+                      "$expand": "cmdspp_g_latest_messageid(\n    $select=cmdspp_g_subject,cmdspp_g_body,cmdspp_p_pvd_type;\n    $expand=cmdspp_g_senderid(\n        $select=cmdspp_g_fst_nam,cmdspp_g_lst_nam\n    )\n)"
+                    },
+                    "authentication": "@parameters('$authentication')"
+                  }
+                },
+                "Response": {
+                  "runAfter": {
+                    "Select": [
+                      "Succeeded"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "6c268774-9b33-4c14-9060-33d1b355b31d"
+                  },
+                  "type": "Response",
+                  "kind": "Http",
+                  "inputs": {
+                    "statusCode": 200,
+                    "body": {
+                      "data": "@body('Select')"
+                    }
+                  }
+                },
+                "Select": {
+                  "runAfter": {
+                    "List_rows_Threads": [
+                      "Succeeded"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "1c2328d5-7bc7-4f6f-9100-9f1cd807b871"
+                  },
+                  "type": "Select",
+                  "inputs": {
+                    "from": "@outputs('List_rows_Threads')?['body/value']",
+                    "select": {
+                      "threadId": "@item()?['cmdspp_g_usr_inbox_threadid']",
+                      "messageType": "@item()?['cmdspp_g_message_type@OData.Community.Display.V1.FormattedValue']",
+                      "modifiedTime": "@item()?['createdon']",
+                      "readInd": "@item()?['cmdspp_g_read_ind']",
+                      "senderName": "@item()?['cmdspp_g_latest_messageid/cmdspp_g_senderidname']",
+                      "emailSubject": "@item()?['cmdspp_g_latest_messageid/cmdspp_g_subject']",
+                      "emailBody": "@item()?['cmdspp_g_latest_messageid/cmdspp_g_body']",
+                      "providerType": "@item()?['cmdspp_g_latest_messageid/cmdspp_p_pvd_type']",
+                      "senderEmail": "@item()?['cmdspp_g_latest_messageid/cmdspp_g_sender_mail']"
+                    }
+                  }
+                }
+              }
+            },
+            "Case_2": {
+              "case": "fetchThreadDetail",
+              "actions": {
+                "List_rows_messages": {
+                  "runAfter": {},
+                  "metadata": {
+                    "operationMetadataId": "ac1ebfd0-c1d6-4917-a09c-1120956c9318"
+                  },
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "host": {
+                      "connectionName": "shared_commondataserviceforapps_1",
+                      "operationId": "ListRecords",
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                    },
+                    "parameters": {
+                      "entityName": "cmdspp_g_usr_inbox_tbs",
+                      "$filter": "_cmdspp_g_usr_inbox_to_thread_lkp_value eq '@{triggerBody()?['threadId']}'",
+                      "$expand": "cmdspp_g_senderid(\n        $select=cmdspp_g_fst_nam,cmdspp_g_lst_nam\n )"
+                    },
+                    "authentication": "@parameters('$authentication')"
+                  }
+                },
+                "Response_4": {
+                  "runAfter": {
+                    "Select_2": [
+                      "Succeeded"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "78a06824-fd1a-46ad-aeb6-5c48cf3d3280"
+                  },
+                  "type": "Response",
+                  "kind": "Http",
+                  "inputs": {
+                    "statusCode": 200,
+                    "body": {
+                      "data": "@body('Select_2')"
+                    }
+                  }
+                },
+                "Select_2": {
+                  "runAfter": {
+                    "List_rows_messages": [
+                      "Succeeded"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "2a77738a-1939-441d-aeb2-2d3405298cc5"
+                  },
+                  "type": "Select",
+                  "inputs": {
+                    "from": "@outputs('List_rows_messages')?['body/value']",
+                    "select": {
+                      "emailSubject": "@item()?['cmdspp_g_subject']",
+                      "senderFirstName": "@item()?['cmdspp_g_senderid/cmdspp_g_fst_nam']",
+                      "senderLastName": "@item()?['cmdspp_g_senderid/cmdspp_g_lst_nam']",
+                      "senderEmail": "@item()?['cmdspp_g_sender_mail']",
+                      "providerType": "@item()?['cmdspp_p_pvd_type']",
+                      "createdTime": "@item()?['createdon']",
+                      "emailBody": "@item()?['cmdspp_g_body']"
+                    }
+                  }
+                }
+              }
+            },
+            "Case_3": {
+              "case": "deleteThread",
+              "actions": {
+                "Update_a_row": {
+                  "runAfter": {},
+                  "metadata": {
+                    "operationMetadataId": "358239eb-f594-4c40-8425-5f7741a3f3f6"
+                  },
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "host": {
+                      "connectionName": "shared_commondataserviceforapps_1",
+                      "operationId": "UpdateOnlyRecord",
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                    },
+                    "parameters": {
+                      "entityName": "cmdspp_g_usr_inbox_threads",
+                      "recordId": "@triggerBody()?['threadId']",
+                      "item/cmdspp_g_active_ind": false,
+                      "item/cmdspp_g_read_ind": true
+                    },
+                    "authentication": "@parameters('$authentication')"
+                  }
+                },
+                "Response_2": {
+                  "runAfter": {
+                    "Update_a_row": [
+                      "Succeeded"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "2c847af6-45be-4385-932e-eab99045c276"
+                  },
+                  "type": "Response",
+                  "kind": "Http",
+                  "inputs": {
+                    "statusCode": 200,
+                    "body": {
+                      "message": "success"
+                    }
+                  }
+                }
+              }
+            },
+            "Case_4": {
+              "case": "markThreadAsRead",
+              "actions": {
+                "Update_a_row_2": {
+                  "runAfter": {},
+                  "metadata": {
+                    "operationMetadataId": "2cebbd61-6f9c-4ebc-bed2-a7849d60b668"
+                  },
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "host": {
+                      "connectionName": "shared_commondataserviceforapps_1",
+                      "operationId": "UpdateOnlyRecord",
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                    },
+                    "parameters": {
+                      "entityName": "cmdspp_g_usr_inbox_threads",
+                      "recordId": "@triggerBody()?['threadId']",
+                      "item/cmdspp_g_read_ind": true
+                    },
+                    "authentication": "@parameters('$authentication')"
+                  }
+                },
+                "Response_3": {
+                  "runAfter": {
+                    "Update_a_row_2": [
+                      "Succeeded"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "188632f5-70c3-4e6a-8df4-0c8ef87654d9"
+                  },
+                  "type": "Response",
+                  "kind": "Http",
+                  "inputs": {
+                    "statusCode": 200,
+                    "body": {
+                      "message": "success"
+                    }
+                  }
+                }
+              }
+            },
+            "Case_5": {
+              "case": "markAllAsRead",
+              "actions": {
+                "List_rows": {
+                  "runAfter": {},
+                  "metadata": {
+                    "operationMetadataId": "b4766483-35df-4725-b22c-f0f5e1eaad89"
+                  },
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "host": {
+                      "connectionName": "shared_commondataserviceforapps_1",
+                      "operationId": "ListRecords",
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                    },
+                    "parameters": {
+                      "entityName": "cmdspp_g_usr_inbox_threads",
+                      "$filter": "_cmdspp_g_web_user_value eq '@{triggerBody()?['userId']}' and cmdspp_g_read_ind eq false"
+                    },
+                    "authentication": "@parameters('$authentication')"
+                  }
+                },
+                "Apply_to_each": {
+                  "foreach": "@outputs('List_rows')?['body/value']",
+                  "actions": {
+                    "Update_a_row_3": {
+                      "runAfter": {},
+                      "metadata": {
+                        "operationMetadataId": "1486be27-1c16-45fc-b57a-5b6c97ab75d9"
+                      },
+                      "type": "OpenApiConnection",
+                      "inputs": {
+                        "host": {
+                          "connectionName": "shared_commondataserviceforapps_1",
+                          "operationId": "UpdateOnlyRecord",
+                          "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                        },
+                        "parameters": {
+                          "entityName": "cmdspp_g_usr_inbox_threads",
+                          "recordId": "@items('Apply_to_each')?['cmdspp_g_usr_inbox_threadid']",
+                          "item/cmdspp_g_read_ind": true
+                        },
+                        "authentication": "@parameters('$authentication')"
+                      }
+                    }
+                  },
+                  "runAfter": {
+                    "List_rows": [
+                      "Succeeded"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "d37aad99-1d61-4108-abf5-13494cfed15a"
+                  },
+                  "type": "Foreach"
+                },
+                "Response_5": {
+                  "runAfter": {
+                    "Apply_to_each": [
+                      "Succeeded"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "8c04dbc5-721e-4916-aa99-00a27490f7b8"
+                  },
+                  "type": "Response",
+                  "kind": "Http",
+                  "inputs": {
+                    "statusCode": 200,
+                    "body": {
+                      "message": "success"
+                    }
+                  }
+                }
+              }
+            },
+            "Case_6": {
+              "case": "searchEmails",
+              "actions": {
+                "List_rows_2": {
+                  "runAfter": {},
+                  "metadata": {
+                    "operationMetadataId": "7eac8c88-fa90-430c-bb23-226850383576"
+                  },
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "host": {
+                      "connectionName": "shared_commondataserviceforapps_1",
+                      "operationId": "ListRecords",
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                    },
+                    "parameters": {
+                      "entityName": "cmdspp_g_usr_inbox_threads",
+                      "fetchXml": "<fetch top=\"1\">\n  <entity name=\"cmdspp_g_usr_inbox_thread\">\n\n    <attribute name=\"cmdspp_g_usr_inbox_threadid\" />\n\n    <link-entity\n        name=\"cmdspp_g_usr_inbox_tb\"\n        from=\"cmdspp_g_usr_inbox_to_thread_lkp\"\n        to=\"cmdspp_g_usr_inbox_threadid\"\n        alias=\"msg\"\n        link-type=\"inner\">\n\n        <all-attributes />\n\n    </link-entity>\n\n  </entity>\n</fetch>"
+                    },
+                    "authentication": "@parameters('$authentication')"
+                  }
+                },
+                "Response_6": {
+                  "runAfter": {
+                    "Compose": [
+                      "Succeeded"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "febc4471-80d9-4e99-bd7b-b7fa2603f51b"
+                  },
+                  "type": "Response",
+                  "kind": "Http",
+                  "inputs": {
+                    "statusCode": 200,
+                    "body": {
+                      "data": "@outputs('Compose')"
+                    }
+                  }
+                },
+                "Compose": {
+                  "runAfter": {
+                    "List_rows_2": [
+                      "Succeeded"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "2d172ad0-f54e-4db6-90fc-3fb2deceebd1"
+                  },
+                  "type": "Compose",
+                  "inputs": "@first(body('List_rows_2')?['value'])"
+                }
+              }
+            }
+          },
+          "default": {
+            "actions": {}
+          },
+          "expression": "@triggerBody()?['transType']",
+          "metadata": {
+            "operationMetadataId": "09cd21a3-0eac-46a3-b3bf-8f82425bf529"
+          },
+          "type": "Switch"
+        }
+      }
+    },
+    "templateName": ""
+  },
+  "schemaVersion": "1.0.0.0"
+}

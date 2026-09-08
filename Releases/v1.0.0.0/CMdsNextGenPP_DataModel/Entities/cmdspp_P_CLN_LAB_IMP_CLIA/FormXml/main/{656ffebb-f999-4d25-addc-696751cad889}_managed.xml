@@ -1,0 +1,152 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<forms xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <systemform>
+    <formid>{656ffebb-f999-4d25-addc-696751cad889}</formid>
+    <IntroducedVersion>1.0</IntroducedVersion>
+    <FormPresentation>1</FormPresentation>
+    <FormActivationState>1</FormActivationState>
+    <form headerdensity="HighWithControls" shownavigationbar="false">
+      <tabs>
+        <tab verticallayout="true" id="{FB5B0554-7C89-41F7-8C3B-A184BECF6E15}" IsUserDefined="1">
+          <labels>
+            <label description="General" languagecode="1033" />
+          </labels>
+          <columns>
+            <column width="100%">
+              <sections>
+                <section showlabel="false" showbar="false" IsUserDefined="0" id="{7EBC297B-832B-444C-AF9F-817A6F9A7DA1}" columns="11" celllabelposition="Top">
+                  <labels>
+                    <label description="General" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{1C216732-347B-439C-8BB0-CB8C81CE7CB2}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_p_seq_num" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="cmdspp_P_seq_num" />
+                      </cell>
+                      <cell id="{0e0cb6a3-fb2c-413f-ac21-80dc36f5dc48}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Effective Date" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_p_clia_eff_dt" classid="{5B773807-9FB2-42DB-97C3-7A91EFF8ADFF}" datafieldname="cmdspp_p_clia_eff_dt" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{3319897F-F3EC-4BDD-B9AB-F53942BECA4F}" visible="false">
+                        <labels>
+                          <label description="Owner" languagecode="1033" />
+                        </labels>
+                        <control id="ownerid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="ownerid" />
+                      </cell>
+                      <cell locklevel="0" id="{4e6982a0-0d8a-4c7d-903e-53d9d23ce186}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{4954458d-774f-4c40-b951-6921788d423f}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="CLIA" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_p_clia_num" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="cmdspp_p_clia_num" disabled="false" />
+                      </cell>
+                      <cell locklevel="0" id="{ba03c475-50db-48ad-acc0-d3f111c418a0}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{58a03c5a-c91f-4537-9866-77375af84d83}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Expiration Date" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_p_clia_exp_dt" classid="{5B773807-9FB2-42DB-97C3-7A91EFF8ADFF}" datafieldname="cmdspp_p_clia_exp_dt" disabled="false" />
+                      </cell>
+                      <cell locklevel="0" id="{7091b8dd-c0c9-4ed8-b0f5-9cfabe83e9b3}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+          </columns>
+        </tab>
+      </tabs>
+      <header id="{31a5d076-819f-4af2-a9e8-17bb712dd286}" celllabelposition="Top" columns="111" labelwidth="115" celllabelalignment="Left">
+        <rows>
+          <row>
+            <cell id="{611b065b-1075-4256-986d-497a157a8d20}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{c4e57793-74a1-4d4f-a461-cad9f18b60e6}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{7bbef3df-1ee4-4856-9f14-a8a56a8b9003}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+          </row>
+        </rows>
+      </header>
+      <footer id="{ffe89929-b4a4-43bd-a59d-8c75ba070528}" celllabelposition="Top" columns="111" labelwidth="115" celllabelalignment="Left">
+        <rows>
+          <row>
+            <cell id="{1f84435e-f489-4fd4-aee5-6d32e5509b0f}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{82638365-878d-4c61-87fc-0b7e884a6b03}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{1ffae33a-20b5-4fa6-ad0a-76cee5f6cd8c}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+          </row>
+        </rows>
+      </footer>
+      <DisplayConditions Order="0" FallbackForm="true">
+        <Everyone />
+      </DisplayConditions>
+      <formLibraries>
+        <Library name="cmdspp_screening_web_res" libraryUniqueId="{792b56cd-b0d8-4361-b842-c8797751e7e1}" />
+      </formLibraries>
+      <events>
+        <event name="onchange" application="false" active="false" attribute="cmdspp_p_clia_eff_dt">
+          <Handlers>
+            <Handler functionName="validateDateField" libraryName="cmdspp_screening_web_res" handlerUniqueId="{87a1f924-3722-4c1d-9625-86bf90df684a}" enabled="true" parameters="&quot;cmdspp_p_clia_eff_dt&quot;, &quot;cmdspp_p_clia_exp_dt&quot;, &quot;dateComparison&quot;, &quot;lessThanOrEqual&quot;, &quot;Effective Date cannot be after Expiration Date.&quot;" passExecutionContext="true" />
+          </Handlers>
+        </event>
+        <event name="onchange" application="false" active="false" attribute="cmdspp_p_clia_exp_dt">
+          <Handlers>
+            <Handler functionName="validateDateField" libraryName="cmdspp_screening_web_res" handlerUniqueId="{b6ce1b07-8753-4c94-877f-29277222d52a}" enabled="true" parameters="&quot;cmdspp_p_clia_exp_dt&quot;, &quot;cmdspp_p_clia_eff_dt&quot;, &quot;dateComparison&quot;, &quot;greaterThanOrEqual&quot;, &quot;Expiration Date cannot be before Effective Date.&quot;" passExecutionContext="true" />
+          </Handlers>
+        </event>
+      </events>
+    </form>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <LocalizedNames>
+      <LocalizedName description="Information" languagecode="1033" />
+    </LocalizedNames>
+    <Descriptions>
+      <Description description="A form for this entity." languagecode="1033" />
+    </Descriptions>
+  </systemform>
+</forms>

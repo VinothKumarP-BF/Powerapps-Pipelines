@@ -1,0 +1,179 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps_1": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "cmdspp_CR_Dataverse_Core_DEV"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "manual": {
+          "metadata": {
+            "operationMetadataId": "cc0a18e2-8b57-4115-ab4e-73d00e12cbab"
+          },
+          "type": "Request",
+          "kind": "Http",
+          "inputs": {
+            "triggerAuthenticationType": "All"
+          }
+        }
+      },
+      "actions": {
+        "Switch": {
+          "runAfter": {},
+          "cases": {
+            "Case": {
+              "case": "GetPaltIdCds",
+              "actions": {
+                "Select": {
+                  "runAfter": {
+                    "List_rows": [
+                      "Succeeded"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "2c6f5238-c30d-4fc2-8d01-b12be690ee91"
+                  },
+                  "type": "Select",
+                  "inputs": {
+                    "from": "@body('List_rows')?['value']",
+                    "select": {
+                      "id": "@item()?['cmdspp_r_vv_tbid']",
+                      "name": "@item()?['cmdspp_r_vv_short_desc']"
+                    }
+                  }
+                },
+                "Response": {
+                  "runAfter": {
+                    "Select": [
+                      "Succeeded"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "ade204e9-b1df-4c2c-a90e-d642043b6104"
+                  },
+                  "type": "Response",
+                  "kind": "Http",
+                  "inputs": {
+                    "statusCode": 200,
+                    "body": {
+                      "data": "@body('Select')"
+                    }
+                  }
+                },
+                "List_rows": {
+                  "runAfter": {},
+                  "metadata": {
+                    "operationMetadataId": "ac18e732-2a6c-415b-85d7-c2b043dcdba1"
+                  },
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "host": {
+                      "connectionName": "shared_commondataserviceforapps_1",
+                      "operationId": "ListRecords",
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                    },
+                    "parameters": {
+                      "entityName": "cmdspp_r_vv_tbs",
+                      "$filter": "cmdspp_r_vv_domain_nam eq 'P_ALT_ID_TY_CD'"
+                    },
+                    "authentication": "@parameters('$authentication')"
+                  }
+                }
+              }
+            },
+            "Case_2": {
+              "case": "Questions",
+              "actions": {
+                "List_rows_2": {
+                  "runAfter": {},
+                  "metadata": {
+                    "operationMetadataId": "9a000074-9682-40e1-92a5-be09540fd618"
+                  },
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "host": {
+                      "connectionName": "shared_commondataserviceforapps_1",
+                      "operationId": "ListRecords",
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                    },
+                    "parameters": {
+                      "entityName": "cmdspp_r_vv_tbs",
+                      "$filter": "cmdspp_r_vv_domain_nam eq 'p_qstnr_ty_cd'"
+                    },
+                    "authentication": "@parameters('$authentication')"
+                  }
+                },
+                "Select_2": {
+                  "runAfter": {
+                    "List_rows_2": [
+                      "Succeeded"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "5cc51304-1a67-401e-b0fa-99e91210e224"
+                  },
+                  "type": "Select",
+                  "inputs": {
+                    "from": "@outputs('List_rows_2')?['body/value']",
+                    "select": {
+                      "id": "@item()?['cmdspp_r_vv_tbid']",
+                      "name": "@item()?['cmdspp_r_vv_short_desc']",
+                      "code": "@item()?['cmdspp_r_vv_cd']"
+                    }
+                  }
+                },
+                "Response_2": {
+                  "runAfter": {
+                    "Select_2": [
+                      "Succeeded"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "59df46d6-b3e2-4b35-831c-43475717ce39"
+                  },
+                  "type": "Response",
+                  "kind": "Http",
+                  "inputs": {
+                    "statusCode": 200,
+                    "body": {
+                      "data": "@body('Select_2')"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "actions": {}
+          },
+          "expression": "@triggerBody()?['action']",
+          "metadata": {
+            "operationMetadataId": "b7b9b510-a993-40c4-ae83-859d4b2547a3"
+          },
+          "type": "Switch"
+        }
+      }
+    },
+    "templateName": ""
+  },
+  "schemaVersion": "1.0.0.0"
+}

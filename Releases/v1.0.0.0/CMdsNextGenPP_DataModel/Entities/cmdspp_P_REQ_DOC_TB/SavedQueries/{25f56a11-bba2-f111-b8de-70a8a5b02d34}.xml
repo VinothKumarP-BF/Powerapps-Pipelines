@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>0</isdefault>
+    <savedqueryid>{25f56a11-bba2-f111-b8de-70a8a5b02d34}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="cmdspp_p_req_doc_id" select="1" icon="1" preview="1">
+        <row name="result" id="cmdspp_p_req_doc_tbid">
+          <cell name="cmdspp_p_req_desc" width="104" />
+          <cell name="cmdspp_p_req_doc_status" width="138" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>0</querytype>
+    <fetchxml>
+      <fetch version="1.0" output-format="xml-platform" mapping="logical">
+        <entity name="cmdspp_p_req_doc_tb">
+          <attribute name="cmdspp_p_req_doc_tbid" />
+          <attribute name="cmdspp_p_req_desc" />
+          <attribute name="cmdspp_p_req_doc_status" />
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.8.26.1</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Request Documents" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>

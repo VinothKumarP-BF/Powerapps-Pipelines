@@ -1,0 +1,14 @@
+<powerpagecomponent powerpagecomponentid="4772731f-c19b-f111-b8db-70a8a5b02d28">
+  <content>{
+  "value": "cmdspp_p_ser_loc_inf_tbid,cmdspp_p_qstnr_primary_phys_addr,cmdspp_p_qstnr_building_suite,cmdspp_p_qstnr_state_cd,_cmdspp_p_qstnr_state_cd_value,cmdspp_p_qstnr_zip,cmdspp_p_qstnr_ext,cmdspp_created_by_user,_cmdspp_created_by_user_value,cmdspp_p_sys_id,_cmdspp_p_sys_id_value,cmdspp_modified_by_user,_cmdspp_modified_by_user_value,cmdspp_p_qstnr_country_cd,_cmdspp_p_qstnr_country_cd_value,_cmdspp_p_qstnr_city2_value,statecode,cmdspp_p_qstnr_city2",
+  "source": 0
+}</content>
+  <iscustomizable>1</iscustomizable>
+  <name>Webapi/cmdspp_p_ser_loc_inf_tb/fields</name>
+  <powerpagecomponenttype>9</powerpagecomponenttype>
+  <powerpagesiteid>
+    <powerpagesiteid>abccaafd-73d6-47dd-bb55-b09b911f0d43</powerpagesiteid>
+  </powerpagesiteid>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</powerpagecomponent>

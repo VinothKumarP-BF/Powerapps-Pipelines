@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Workflow WorkflowId="{37364c44-eda6-f111-b8de-70a8a5b02d28}" Name="Date validation" Description="Click to add description" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <XamlFileName>/Workflows/Datevalidation-37364C44-EDA6-F111-B8DE-70A8A5B02D28.xaml</XamlFileName>
+  <Type>1</Type>
+  <Subprocess>0</Subprocess>
+  <Category>2</Category>
+  <Mode>1</Mode>
+  <Scope>4</Scope>
+  <OnDemand>0</OnDemand>
+  <TriggerOnCreate>0</TriggerOnCreate>
+  <TriggerOnDelete>0</TriggerOnDelete>
+  <AsyncAutodelete>0</AsyncAutodelete>
+  <SyncWorkflowLogOnFailure>0</SyncWorkflowLogOnFailure>
+  <StateCode>0</StateCode>
+  <StatusCode>1</StatusCode>
+  <RunAs>1</RunAs>
+  <IsTransacted>1</IsTransacted>
+  <IntroducedVersion>1.9.1.1</IntroducedVersion>
+  <IsCustomizable>1</IsCustomizable>
+  <BusinessProcessType>0</BusinessProcessType>
+  <IsCustomProcessingStepAllowedForOtherPublishers>1</IsCustomProcessingStepAllowedForOtherPublishers>
+  <ProcessTriggerScope>1</ProcessTriggerScope>
+  <ModernFlowType>0</ModernFlowType>
+  <PrimaryEntity>cmdspp_P_LIC_CERT_TB</PrimaryEntity>
+  <LocalizedNames>
+    <LocalizedName languagecode="1033" description="Date validation" />
+  </LocalizedNames>
+  <Descriptions>
+    <Description languagecode="1033" description="Click to add description" />
+  </Descriptions>
+  <labels>
+    <steplabels id="{b8a207b6-fe10-4e74-9486-a286f5880a6f}">
+      <label languagecode="1033" description="Effective Date cannot be after Expiration Date." />
+    </steplabels>
+    <steplabels id="{5058b955-8db5-4133-a2e1-db5cbf959d65}">
+      <label languagecode="1033" description="Expiration Date cannot be before Effective Date." />
+    </steplabels>
+  </labels>
+</Workflow>

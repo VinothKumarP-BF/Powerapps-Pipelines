@@ -1,0 +1,164 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<forms xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <systemform>
+    <formid>{bb3ec39b-c1a2-f111-b8de-70a8a5b02d34}</formid>
+    <IntroducedVersion>1.8.26.1</IntroducedVersion>
+    <FormPresentation>1</FormPresentation>
+    <FormActivationState>1</FormActivationState>
+    <form headerdensity="HighWithControls" shownavigationbar="false">
+      <tabs>
+        <tab verticallayout="true" id="{38d69585-65b9-4e9b-b774-703b1b0e9aa8}" IsUserDefined="1" labelid="{4cbe271f-18e7-48c9-b33a-0cfa8c345c55}">
+          <labels>
+            <label description="General" languagecode="1033" />
+          </labels>
+          <columns>
+            <column width="100%">
+              <sections>
+                <section showlabel="false" showbar="false" IsUserDefined="0" id="{c35d96c0-3e15-4589-a83c-9ec56c4dc267}" labelid="{0b95dcba-6eab-4a2f-b6e4-f27be965955c}" celllabelposition="Top">
+                  <labels>
+                    <label description="General" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{e8020a7c-0395-400b-87ba-9fe1f5201e58}" locklevel="0" colspan="1" rowspan="1" labelid="{3ea78192-35e7-44e0-bacb-771d8fb92467}">
+                        <labels>
+                          <label description="Request" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_p_req_desc" classid="{E0DECE4B-6FC8-4A8F-A065-082708572369}" datafieldname="cmdspp_p_req_desc" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{b6687777-fadf-4a81-aca9-d96cd06ab68b}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Created By" languagecode="1033" />
+                        </labels>
+                        <control id="createdby" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="createdby" disabled="true" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{3f2ce383-84d1-46d1-adcc-121c3b4c1cf0}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Created On" languagecode="1033" />
+                        </labels>
+                        <control id="createdon" classid="{5B773807-9FB2-42DB-97C3-7A91EFF8ADFF}" datafieldname="createdon" disabled="true" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{dfde6914-5fc0-49fc-b340-c195234f9bc5}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Modified By" languagecode="1033" />
+                        </labels>
+                        <control id="modifiedby" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="modifiedby" disabled="true" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{f76b1408-2f15-4225-88c0-1ba3882ec66f}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Modified On" languagecode="1033" />
+                        </labels>
+                        <control id="modifiedon" classid="{5B773807-9FB2-42DB-97C3-7A91EFF8ADFF}" datafieldname="modifiedon" disabled="true" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{35b08299-a936-4637-8419-0fbd3968df38}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Status" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_p_req_doc_status" classid="{3EF39988-22BB-4F0B-BBBE-64B5A3748AEE}" datafieldname="cmdspp_p_req_doc_status" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{019db8c7-1240-41d7-ad33-ec33dab44644}" locklevel="0" colspan="1" rowspan="1" visible="false">
+                        <labels>
+                          <label description="Logged User" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_loggeduser" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="cmdspp_loggeduser" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{c5ecc8be-be1f-46b0-bbff-571b2f245b77}" colspan="1" rowspan="1" labelid="{b3c51957-10be-4e6b-8587-73e6d06647af}" showlabel="true" visible="false">
+                        <labels>
+                          <label description="Owner" languagecode="1033" />
+                        </labels>
+                        <control id="ownerid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="ownerid" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+          </columns>
+        </tab>
+      </tabs>
+      <header id="{5929b1b4-8098-4dd9-8c07-c9dbf2308863}" celllabelposition="Top" columns="111" labelwidth="115" celllabelalignment="Left">
+        <rows>
+          <row>
+            <cell id="{edea6e92-10b2-48d2-b78f-d16cf62eca4d}" showlabel="false" labelid="{fbd29eb1-89a2-45df-ae60-ddf927c0e398}">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{7fe3b118-54ac-4133-a757-a50c12f6ee4f}" showlabel="false" labelid="{a077c93e-b226-4ad4-9a60-ac06c554e354}">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{dc56bc5d-cb96-468a-9183-5f9c79c86e4f}" showlabel="false" labelid="{ac8e1d72-a6a6-4c43-bfee-27fd0397451d}">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+          </row>
+        </rows>
+      </header>
+      <footer id="{d598892c-0308-429d-9c73-daf559c90054}" celllabelposition="Top" columns="111" labelwidth="115" celllabelalignment="Left">
+        <rows>
+          <row>
+            <cell id="{956a82bb-d7c6-4bf3-a9e7-eddf88fd7fe2}" showlabel="false" labelid="{7e8c6e73-65a2-46ed-afcf-9951e14e9ad8}">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{4a66dbc1-220e-4e07-931d-6f1a6813b300}" showlabel="false" labelid="{3334480b-c800-4059-ba64-7a82f1f0c45e}">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{ab66189e-5095-4bf6-8a63-e357154ed26a}" showlabel="false" labelid="{bb15cab1-e0f2-44cc-bdef-e0172241ed19}">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+          </row>
+        </rows>
+      </footer>
+      <DisplayConditions Order="1" FallbackForm="true">
+        <Role Id="{627090ff-40a3-4053-8790-584edc5be201}" />
+        <Role Id="{119f245c-3cc8-4b62-b31c-d1a046ced15d}" />
+      </DisplayConditions>
+      <formLibraries>
+        <Library name="cmdspp_screening_web_res" libraryUniqueId="{7bf16b70-308a-4210-b0fd-3f696438b8d9}" />
+      </formLibraries>
+      <events>
+        <event name="onload" application="false" active="false">
+          <Handlers>
+            <Handler functionName="setStatusOptions" libraryName="cmdspp_screening_web_res" handlerUniqueId="{df93925b-2f28-4206-9c40-c0fc1284beef}" enabled="true" parameters="" passExecutionContext="true" />
+          </Handlers>
+        </event>
+        <event name="onsave" application="false" active="false">
+          <Handlers>
+            <Handler functionName="createRFIInquiry" libraryName="cmdspp_screening_web_res" handlerUniqueId="{9615f08f-4707-4c38-b40c-947641391043}" enabled="true" parameters="" passExecutionContext="true" />
+          </Handlers>
+        </event>
+      </events>
+    </form>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <LocalizedNames>
+      <LocalizedName description="Add New Request" languagecode="1033" />
+    </LocalizedNames>
+    <Descriptions>
+      <Description description="A form for this entity." languagecode="1033" />
+    </Descriptions>
+  </systemform>
+</forms>

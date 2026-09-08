@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>0</isdefault>
+    <savedqueryid>{83552c3a-55a7-f111-b8de-70a8a5b02d28}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="cmdspp_pnetwenrl" select="1" icon="1" preview="1">
+        <row name="result" id="cmdspp_p_netw_enrl_tbid">
+          <cell name="cmdspp_p_network_nam" width="131" />
+          <cell name="cmdspp_p_begin_dt" width="103" />
+          <cell name="cmdspp_p_end_dt" width="100" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>0</querytype>
+    <fetchxml>
+      <fetch version="1.0" output-format="xml-platform" mapping="logical">
+        <entity name="cmdspp_p_netw_enrl_tb">
+          <attribute name="cmdspp_p_netw_enrl_tbid" />
+          <attribute name="cmdspp_p_begin_dt" />
+          <attribute name="cmdspp_p_end_dt" />
+          <attribute name="cmdspp_p_network_nam" />
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.9.2.1</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="CMDSPP_P_Network_Enrollment" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>

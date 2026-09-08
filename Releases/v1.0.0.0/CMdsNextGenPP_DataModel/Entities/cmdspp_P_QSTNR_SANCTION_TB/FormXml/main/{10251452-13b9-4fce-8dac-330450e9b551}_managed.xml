@@ -1,0 +1,235 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<forms xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <systemform>
+    <formid>{10251452-13b9-4fce-8dac-330450e9b551}</formid>
+    <IntroducedVersion>1.0</IntroducedVersion>
+    <FormPresentation>1</FormPresentation>
+    <FormActivationState>1</FormActivationState>
+    <form headerdensity="HighWithControls" shownavigationbar="false">
+      <tabs>
+        <tab verticallayout="true" id="{3D03DFCA-C2A9-4A52-B9C0-65BB2E884B08}" IsUserDefined="1">
+          <labels>
+            <label description="General" languagecode="1033" />
+          </labels>
+          <columns>
+            <column width="100%">
+              <sections>
+                <section showlabel="false" showbar="false" IsUserDefined="0" id="{1A9D4DD8-5251-4375-8DBB-18E1A2E05AB7}" visible="false">
+                  <labels>
+                    <label description="General" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{5A5F6D7C-0F08-45B8-A969-63680703F484}">
+                        <labels>
+                          <label description="ID" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_p_qstnr_seq_num" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="cmdspp_p_qstnr_seq_num" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{E8C57ACC-34B3-4A92-BFF7-9CBC8AE0D4A3}">
+                        <labels>
+                          <label description="Owner" languagecode="1033" />
+                        </labels>
+                        <control id="ownerid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="ownerid" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+                <section name="null_section_3" id="fd585170-64ca-4247-b3b5-21e82873faf6" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Top" columns="11" labelwidth="115">
+                  <labels>
+                    <label description="Sanction Information" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell locklevel="0" id="{b866f450-75ad-4eab-a6e7-1bd02451349c}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                      <cell locklevel="0" id="{c423c9c1-0b1a-4b84-9f8d-3e4c8a41da88}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{e2445dc2-bdcd-4f81-8964-64d7bdeeef3d}" locklevel="0" colspan="2" rowspan="1">
+                        <labels>
+                          <label description="Have you or any of your employees, contract employees, or any person or entity with ownership of your business, ever been sanctioned by the Office of Inspector General (OIG), Medicare, Medicaid, or the Social Security Act, including a state Medicaid program?" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_p_qstnr_sanc_q1" classid="{F9A8A302-114E-466A-B582-6771B2AE0D92}" datafieldname="cmdspp_p_qstnr_sanc_q1" disabled="false" uniqueid="{cdd6b49c-de12-4a80-8d03-d1f6b268acc1}" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{5b3dedf9-a800-4011-8264-7c12f3408a57}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Last Name" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_p_qstnr_last_nam" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="cmdspp_p_qstnr_last_nam" disabled="false" />
+                      </cell>
+                      <cell id="{b54e3ef0-7e6a-4ead-96e4-420e3224dfb9}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="First Name" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_p_qstnr_first_nam" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="cmdspp_p_qstnr_first_nam" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{99f533ab-e12c-4271-8808-58c2c9bc9bb3}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="MI" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_p_qstnr_mi_nam" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="cmdspp_p_qstnr_mi_nam" disabled="false" />
+                      </cell>
+                      <cell id="{4e2e84f9-3ba0-43dd-8423-15a42cf6cf4b}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Relationship" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_p_qstnr_rel_cd" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="cmdspp_p_qstnr_rel_cd" disabled="false">
+                          <parameters>
+                            <DefaultViewId>{018D2F0F-F1A5-F111-B8DE-70A8A5B02D28}</DefaultViewId>
+                            <AvailableViewIds>{7735878B-98D0-4EC9-A90A-D903327DC996},{64CA6896-0E0F-4900-898D-71C6B40C7F12},{20DE6FBF-02A5-F111-B8DE-70A8A5B02328},{97D45F28-11A5-F111-B8DE-70A8A5B02684},{9968C64F-1697-F111-8075-70A8A5B028CC},{018D2F0F-F1A5-F111-B8DE-70A8A5B02D28},{67C2D717-02A5-F111-B8DE-70A8A5B02328},{CA553ED7-1697-F111-8075-70A8A5B02D34},{3C37C7FA-D8A2-F111-B8DE-70A8A5B02D28},{4756C924-D9A2-F111-B8DE-70A8A5B02D28}</AvailableViewIds>
+                            <DisableViewPicker>true</DisableViewPicker>
+                          </parameters>
+                        </control>
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{a64b5a8e-a8cb-480d-a24d-cab66aaa232c}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Type Of Sanction" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_p_qstnr_sanc_type" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="cmdspp_p_qstnr_sanc_type" disabled="false" />
+                      </cell>
+                      <cell id="{84775ea9-1263-46e9-a959-446397b8b1a1}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Date Of Sanction" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_p_qstnr_san_dt" classid="{5B773807-9FB2-42DB-97C3-7A91EFF8ADFF}" datafieldname="cmdspp_p_qstnr_san_dt" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{056b3391-2960-429b-ba3f-1a6d4eb76b3b}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Sanction City" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_p_qstnr_san_city" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="cmdspp_p_qstnr_san_city" disabled="false" />
+                      </cell>
+                      <cell id="{e321cf02-a6ba-412a-b558-de0c72dad250}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Sanction State" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_p_qstnr_san_state_cd" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="cmdspp_p_qstnr_san_state_cd" disabled="false">
+                          <parameters>
+                            <DefaultViewId>{CA553ED7-1697-F111-8075-70A8A5B02D34}</DefaultViewId>
+                            <AvailableViewIds>{7735878B-98D0-4EC9-A90A-D903327DC996},{64CA6896-0E0F-4900-898D-71C6B40C7F12},{20DE6FBF-02A5-F111-B8DE-70A8A5B02328},{97D45F28-11A5-F111-B8DE-70A8A5B02684},{9968C64F-1697-F111-8075-70A8A5B028CC},{018D2F0F-F1A5-F111-B8DE-70A8A5B02D28},{67C2D717-02A5-F111-B8DE-70A8A5B02328},{CA553ED7-1697-F111-8075-70A8A5B02D34},{3C37C7FA-D8A2-F111-B8DE-70A8A5B02D28},{4756C924-D9A2-F111-B8DE-70A8A5B02D28}</AvailableViewIds>
+                            <DisableViewPicker>true</DisableViewPicker>
+                          </parameters>
+                        </control>
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{b664ea27-44a7-4937-b1ad-e4443d74ebf8}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Program Type" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_p_qstnr_pgm_ty" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="cmdspp_p_qstnr_pgm_ty" disabled="false" />
+                      </cell>
+                      <cell locklevel="0" id="{a2c7bd9f-552b-4c60-96b3-14006eab3a82}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+          </columns>
+        </tab>
+      </tabs>
+      <header id="{970aa7ce-f9f7-4ae3-b611-a3f5bf04712b}" celllabelposition="Top" columns="111" labelwidth="115" celllabelalignment="Left">
+        <rows>
+          <row>
+            <cell id="{dafac8e6-be93-4efe-a96c-774d0ed3f1c0}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{0d17fff4-34be-4da5-9a17-43dc8e5cfbab}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{59bdf646-fd11-4c37-97fa-58d1576b56b5}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+          </row>
+        </rows>
+      </header>
+      <footer id="{fb823a8e-ed74-4362-be36-fff707a19410}" celllabelposition="Top" columns="111" labelwidth="115" celllabelalignment="Left">
+        <rows>
+          <row>
+            <cell id="{1909c1c1-f91e-4e9c-9442-7704103d39c7}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{02faa4ba-bde8-4e2b-9d7e-adc64c9e8032}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{4ec8983b-57ae-474e-958e-5ff3fce9d420}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+          </row>
+        </rows>
+      </footer>
+      <DisplayConditions Order="0" FallbackForm="true">
+        <Everyone />
+      </DisplayConditions>
+      <controlDescriptions>
+        <controlDescription forControl="{cdd6b49c-de12-4a80-8d03-d1f6b268acc1}">
+          <customControl id="{67FAC785-CD58-4F9F-ABB3-4B7DDC6ED5ED}">
+            <parameters>
+              <datafieldname>cmdspp_p_qstnr_sanc_q1</datafieldname>
+            </parameters>
+          </customControl>
+          <customControl formFactor="0" name="MscrmControls.FieldControls.ToggleControl">
+            <parameters>
+              <value type="TwoOptions">cmdspp_p_qstnr_sanc_q1</value>
+            </parameters>
+          </customControl>
+          <customControl formFactor="2" name="MscrmControls.FieldControls.ToggleControl">
+            <parameters>
+              <value type="TwoOptions">cmdspp_p_qstnr_sanc_q1</value>
+            </parameters>
+          </customControl>
+          <customControl formFactor="1" name="MscrmControls.FieldControls.ToggleControl">
+            <parameters>
+              <value type="TwoOptions">cmdspp_p_qstnr_sanc_q1</value>
+            </parameters>
+          </customControl>
+        </controlDescription>
+      </controlDescriptions>
+      <formLibraries>
+        <Library name="cmdspp_screening_web_res" libraryUniqueId="{ea9fdb09-2b77-49b1-a44a-fe4d63431679}" />
+      </formLibraries>
+    </form>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <LocalizedNames>
+      <LocalizedName description="Information" languagecode="1033" />
+    </LocalizedNames>
+    <Descriptions>
+      <Description description="A form for this entity." languagecode="1033" />
+    </Descriptions>
+  </systemform>
+</forms>

@@ -1,0 +1,265 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps_1": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "cmdspp_CR_Dataverse_Core_DEV"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "manual": {
+          "metadata": {
+            "operationMetadataId": "b423a7c0-df57-44c6-9bf7-a000ea1ff1c7"
+          },
+          "type": "Request",
+          "kind": "Http",
+          "inputs": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "enrollId": {
+                  "type": "string"
+                },
+                "transType": {
+                  "type": "string"
+                }
+              }
+            },
+            "triggerAuthenticationType": "All"
+          }
+        }
+      },
+      "actions": {
+        "Switch": {
+          "runAfter": {},
+          "cases": {
+            "Case": {
+              "case": "Documents",
+              "actions": {
+                "List_rows_2": {
+                  "runAfter": {},
+                  "metadata": {
+                    "operationMetadataId": "cf7c8a04-7bc4-4693-96f2-c4e03270ae62"
+                  },
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "host": {
+                      "connectionName": "shared_commondataserviceforapps_1",
+                      "operationId": "ListRecords",
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                    },
+                    "parameters": {
+                      "entityName": "cmdspp_pc_enrol_docu_tbs",
+                      "$filter": "_cmdspp_p_fld_to_enrol_fk_value eq @{triggerBody()?['enrollId']} and statecode eq 0",
+                      "$orderby": "modifiedon desc",
+                      "$expand": "cmdspp_p_docu_list_fk($select=cmdspp_p_docu_type_nam)"
+                    },
+                    "authentication": "@parameters('$authentication')"
+                  }
+                },
+                "Select_2": {
+                  "runAfter": {
+                    "List_rows_2": [
+                      "Succeeded"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "68139bd1-c37f-422b-91a8-f1ef81bd1a22"
+                  },
+                  "type": "Select",
+                  "inputs": {
+                    "from": "@outputs('List_rows_2')?['body/value']",
+                    "select": {
+                      "id": "@item()?['cmdspp_pc_enrol_docu_tbid']",
+                      "docName": "@item()?['cmdspp_p_enter_docu_nam']",
+                      "esignature": "@item()?['cmdspp_p_e_signature']",
+                      "condition": "@item()?['cmdspp_p_cond']",
+                      "operator": "@item()?['cmdspp_p_operator']",
+                      "fileName": "@item()?['cmdspp_p_file_nam']",
+                      "sharepointId": "@item()?['cmdspp_p_sharepoint_file_id']",
+                      "sharepontLink": "@item()?['cmdspp_p_sharepoint_link']",
+                      "docType": "@item()?['cmdspp_p_docu_list_fk/cmdspp_p_docu_type_nam']",
+                      "docTypeId": "@item()?['_cmdspp_p_docu_list_fk_value']"
+                    }
+                  }
+                },
+                "Response_2": {
+                  "runAfter": {
+                    "Select_2": [
+                      "Succeeded"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "7a892b5b-df47-4d66-a0bc-e4d045d64e30"
+                  },
+                  "type": "Response",
+                  "kind": "Http",
+                  "inputs": {
+                    "statusCode": 200,
+                    "body": {
+                      "docList": "@body('Select_2')"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "actions": {
+              "List_rows": {
+                "runAfter": {},
+                "metadata": {
+                  "operationMetadataId": "6361a37f-95ba-4366-bbf4-e942dad5f499"
+                },
+                "type": "OpenApiConnection",
+                "inputs": {
+                  "host": {
+                    "connectionName": "shared_commondataserviceforapps_1",
+                    "operationId": "ListRecords",
+                    "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                  },
+                  "parameters": {
+                    "entityName": "cmdspp_pc_enrol_typ_maps",
+                    "$filter": "_cmdspp_p_enrol_map_to_enrol_fk_value eq @{triggerBody()?['enrollId']} and cmdspp_p_visible eq true",
+                    "x-ms-odata-metadata-full": true
+                  },
+                  "authentication": "@parameters('$authentication')"
+                }
+              },
+              "Select": {
+                "runAfter": {
+                  "List_rows": [
+                    "Succeeded"
+                  ]
+                },
+                "metadata": {
+                  "operationMetadataId": "ebea1187-85d1-43e5-bf9b-21f3cb1df23e"
+                },
+                "type": "Select",
+                "inputs": {
+                  "from": "@outputs('List_rows')?['body/value']",
+                  "select": {
+                    "id": "@item()?['cmdspp_pc_enrol_typ_mapid']",
+                    "ctrlId": "@item()?['_cmdspp_p_enrol_map_to_ctrl_fk_value']",
+                    "secId": "@item()?['_cmdspp_p_enrol_map_to_section_fk_value']",
+                    "pageId": "@item()?['_cmdspp_p_enrol_map_to_pg_fk_value']",
+                    "visible": "@item()?['cmdspp_p_visible']",
+                    "validate": "@item()?['cmdspp_p_validated_ind']",
+                    "required": "@item()?['cmdspp_p_req_ind']"
+                  }
+                }
+              },
+              "Response": {
+                "runAfter": {
+                  "Compose": [
+                    "Succeeded"
+                  ]
+                },
+                "metadata": {
+                  "operationMetadataId": "450350da-44f9-44aa-91c0-90ee6dccd391"
+                },
+                "type": "Response",
+                "kind": "Http",
+                "inputs": {
+                  "statusCode": 200,
+                  "body": {
+                    "mappings": "@body('Select')",
+                    "fieldCount": "@outputs('Compose')"
+                  }
+                }
+              },
+              "List_rows_4": {
+                "runAfter": {
+                  "Select": [
+                    "Succeeded"
+                  ]
+                },
+                "metadata": {
+                  "operationMetadataId": "31d07686-51a5-402a-b781-8f3e95cce697"
+                },
+                "type": "OpenApiConnection",
+                "inputs": {
+                  "host": {
+                    "connectionName": "shared_commondataserviceforapps_1",
+                    "operationId": "ListRecords",
+                    "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                  },
+                  "parameters": {
+                    "entityName": "cmdspp_pc_ctrl_tbs",
+                    "$select": "cmdspp_p_ctrl_to_section_fk",
+                    "$expand": "cmdspp_p_ctrl_to_section_fk($select=cmdspp_pc_section_tbid,cmdspp_p_section_nam,cmdspp_p_section_id_sk,cmdspp_p_section_order;$expand=cmdspp_p_section_to_pg_fk($select=cmdspp_pc_pg_tbid,_cmdspp_p_pg_to_enrol_fk_value,cmdspp_p_pg_nam,cmdspp_p_pg_order)) "
+                  },
+                  "authentication": "@parameters('$authentication')"
+                }
+              },
+              "Compose": {
+                "runAfter": {
+                  "Compose_2": [
+                    "Succeeded"
+                  ]
+                },
+                "metadata": {
+                  "operationMetadataId": "c7549fdc-f354-4902-81be-189db190a47c"
+                },
+                "type": "Compose",
+                "inputs": "@length(outputs('Compose_2'))"
+              },
+              "Filter_array": {
+                "runAfter": {
+                  "List_rows_4": [
+                    "Succeeded"
+                  ]
+                },
+                "metadata": {
+                  "operationMetadataId": "7145606d-f51e-4e8c-aee7-78713f2f312a"
+                },
+                "type": "Query",
+                "inputs": {
+                  "from": "@outputs('List_rows_4')?['body/value']",
+                  "where": "@equals(item()?['cmdspp_p_ctrl_to_section_fk']?['cmdspp_p_section_to_pg_fk']?['_cmdspp_p_pg_to_enrol_fk_value'], triggerBody()?['enrollId'])"
+                }
+              },
+              "Compose_2": {
+                "runAfter": {
+                  "Filter_array": [
+                    "Succeeded"
+                  ]
+                },
+                "metadata": {
+                  "operationMetadataId": "233e751d-d750-4ae4-b14f-8c18a9ffa2e6"
+                },
+                "type": "Compose",
+                "inputs": "@outputs('List_rows_4')?['body/value']"
+              }
+            }
+          },
+          "expression": "@triggerBody()?['transType']",
+          "metadata": {
+            "operationMetadataId": "a31881cf-7771-4606-b2f3-3b6f7bd49c41"
+          },
+          "type": "Switch"
+        }
+      }
+    },
+    "templateName": ""
+  },
+  "schemaVersion": "1.0.0.0"
+}

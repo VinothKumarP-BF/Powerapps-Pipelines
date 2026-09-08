@@ -1,0 +1,14 @@
+<powerpagecomponent powerpagecomponentid="e417344d-2e9a-f111-b8db-70a8a5b02d34">
+  <content>{
+  "value": "cmdspp_p_subcontractor_dtl_tbid,cmdspp_p_subcontractor_name,cmdspp_p_subcontractor_add,cmdspp_p_subcontractor_city,cmdspp_p_subcontractor_occ_st_cd,_cmdspp_p_subcontractor_occ_st_cd_value,cmdspp_p_subcontractor_zip_cd,cmdspp_p_subcontractor_ind,cmdspp_p_sys_id,_cmdspp_p_sys_id_value,statecode,statuscode",
+  "source": 0
+}</content>
+  <iscustomizable>1</iscustomizable>
+  <name>Webapi/cmdspp_p_subcontractor_dtl_tb/fields</name>
+  <powerpagecomponenttype>9</powerpagecomponenttype>
+  <powerpagesiteid>
+    <powerpagesiteid>abccaafd-73d6-47dd-bb55-b09b911f0d43</powerpagesiteid>
+  </powerpagesiteid>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</powerpagecomponent>

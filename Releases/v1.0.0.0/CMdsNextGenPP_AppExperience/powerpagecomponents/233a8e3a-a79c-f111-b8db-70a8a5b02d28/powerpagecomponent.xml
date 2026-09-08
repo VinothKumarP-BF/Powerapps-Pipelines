@@ -1,0 +1,14 @@
+<powerpagecomponent powerpagecomponentid="233a8e3a-a79c-f111-b8db-70a8a5b02d28">
+  <content>{
+  "source": 0,
+  "value": "cmdspp_p_cp_ba_email,cmdspp_p_cp_ba_extension,cmdspp_p_cp_ba_fax,cmdspp_p_cp_ba_first_name,cmdspp_p_cp_ba_last_name,cmdspp_p_cp_ba_middle_name,cmdspp_p_cp_ba_phone,cmdspp_p_cp_ba_position,_cmdspp_p_cp_ba_position_value,cmdspp_p_loc_cp_ba_tbid,cmdspp_p_sys_id,_cmdspp_p_sys_id_value,statecode"
+}</content>
+  <iscustomizable>1</iscustomizable>
+  <name>Webapi/cmdspp_p_loc_cp_ba_tb/fields</name>
+  <powerpagecomponenttype>9</powerpagecomponenttype>
+  <powerpagesiteid>
+    <powerpagesiteid>abccaafd-73d6-47dd-bb55-b09b911f0d43</powerpagesiteid>
+  </powerpagesiteid>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</powerpagecomponent>

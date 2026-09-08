@@ -1,0 +1,911 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_sharepointonline": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "cmdspp_CR_SharePoint_Core_DEV"
+        },
+        "api": {
+          "name": "shared_sharepointonline"
+        }
+      },
+      "shared_commondataserviceforapps_1": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "cmdspp_CR_Dataverse_Core_DEV"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "manual": {
+          "metadata": {
+            "operationMetadataId": "6eda3095-b535-41df-a3ec-cde359767755"
+          },
+          "type": "Request",
+          "kind": "Http",
+          "inputs": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "event": {
+                  "type": "string"
+                },
+                "apiVersion": {
+                  "type": "string"
+                },
+                "uri": {
+                  "type": "string"
+                },
+                "retryCount": {
+                  "type": "integer"
+                },
+                "configurationId": {
+                  "type": "integer"
+                },
+                "generatedDateTime": {
+                  "type": "string"
+                },
+                "data": {
+                  "type": "object",
+                  "properties": {
+                    "accountId": {
+                      "type": "string"
+                    },
+                    "userId": {
+                      "type": "string"
+                    },
+                    "envelopeId": {
+                      "type": "string"
+                    },
+                    "envelopeSummary": {
+                      "type": "object",
+                      "properties": {
+                        "status": {
+                          "type": "string"
+                        },
+                        "documentsUri": {
+                          "type": "string"
+                        },
+                        "recipientsUri": {
+                          "type": "string"
+                        },
+                        "attachmentsUri": {
+                          "type": "string"
+                        },
+                        "envelopeUri": {
+                          "type": "string"
+                        },
+                        "emailSubject": {
+                          "type": "string"
+                        },
+                        "envelopeId": {
+                          "type": "string"
+                        },
+                        "signingLocation": {
+                          "type": "string"
+                        },
+                        "customFieldsUri": {
+                          "type": "string"
+                        },
+                        "notificationUri": {
+                          "type": "string"
+                        },
+                        "enableWetSign": {
+                          "type": "string"
+                        },
+                        "allowMarkup": {
+                          "type": "string"
+                        },
+                        "allowReassign": {
+                          "type": "string"
+                        },
+                        "createdDateTime": {
+                          "type": "string"
+                        },
+                        "lastModifiedDateTime": {
+                          "type": "string"
+                        },
+                        "deliveredDateTime": {
+                          "type": "string"
+                        },
+                        "initialSentDateTime": {
+                          "type": "string"
+                        },
+                        "sentDateTime": {
+                          "type": "string"
+                        },
+                        "completedDateTime": {
+                          "type": "string"
+                        },
+                        "statusChangedDateTime": {
+                          "type": "string"
+                        },
+                        "documentsCombinedUri": {
+                          "type": "string"
+                        },
+                        "certificateUri": {
+                          "type": "string"
+                        },
+                        "templatesUri": {
+                          "type": "string"
+                        },
+                        "expireEnabled": {
+                          "type": "string"
+                        },
+                        "expireDateTime": {
+                          "type": "string"
+                        },
+                        "expireAfter": {
+                          "type": "string"
+                        },
+                        "sender": {
+                          "type": "object",
+                          "properties": {
+                            "userName": {
+                              "type": "string"
+                            },
+                            "userId": {
+                              "type": "string"
+                            },
+                            "accountId": {
+                              "type": "string"
+                            },
+                            "email": {
+                              "type": "string"
+                            },
+                            "ipAddress": {
+                              "type": "string"
+                            }
+                          }
+                        },
+                        "recipients": {
+                          "type": "object",
+                          "properties": {
+                            "signers": {
+                              "type": "array",
+                              "items": {
+                                "type": "object",
+                                "properties": {
+                                  "signatureInfo": {
+                                    "type": "object",
+                                    "properties": {
+                                      "signatureName": {
+                                        "type": "string"
+                                      },
+                                      "signatureInitials": {
+                                        "type": "string"
+                                      },
+                                      "fontStyle": {
+                                        "type": "string"
+                                      }
+                                    }
+                                  },
+                                  "creationReason": {
+                                    "type": "string"
+                                  },
+                                  "isBulkRecipient": {
+                                    "type": "string"
+                                  },
+                                  "requireUploadSignature": {
+                                    "type": "string"
+                                  },
+                                  "name": {
+                                    "type": "string"
+                                  },
+                                  "email": {
+                                    "type": "string"
+                                  },
+                                  "recipientId": {
+                                    "type": "string"
+                                  },
+                                  "recipientIdGuid": {
+                                    "type": "string"
+                                  },
+                                  "requireIdLookup": {
+                                    "type": "string"
+                                  },
+                                  "userId": {
+                                    "type": "string"
+                                  },
+                                  "clientUserId": {
+                                    "type": "string"
+                                  },
+                                  "routingOrder": {
+                                    "type": "string"
+                                  },
+                                  "status": {
+                                    "type": "string"
+                                  },
+                                  "completedCount": {
+                                    "type": "string"
+                                  },
+                                  "signedDateTime": {
+                                    "type": "string"
+                                  },
+                                  "deliveredDateTime": {
+                                    "type": "string"
+                                  },
+                                  "sentDateTime": {
+                                    "type": "string"
+                                  },
+                                  "deliveryMethod": {
+                                    "type": "string"
+                                  },
+                                  "recipientType": {
+                                    "type": "string"
+                                  }
+                                }
+                              }
+                            },
+                            "agents": {
+                              "type": "array"
+                            },
+                            "editors": {
+                              "type": "array"
+                            },
+                            "intermediaries": {
+                              "type": "array"
+                            },
+                            "carbonCopies": {
+                              "type": "array"
+                            },
+                            "certifiedDeliveries": {
+                              "type": "array"
+                            },
+                            "inPersonSigners": {
+                              "type": "array"
+                            },
+                            "seals": {
+                              "type": "array"
+                            },
+                            "witnesses": {
+                              "type": "array"
+                            },
+                            "notaries": {
+                              "type": "array"
+                            },
+                            "recipientCount": {
+                              "type": "string"
+                            },
+                            "currentRoutingOrder": {
+                              "type": "string"
+                            },
+                            "verificationSigners": {
+                              "type": "array"
+                            },
+                            "verifiers": {
+                              "type": "array"
+                            }
+                          }
+                        },
+                        "envelopeDocuments": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "documentId": {
+                                "type": "string"
+                              },
+                              "documentIdGuid": {
+                                "type": "string"
+                              },
+                              "name": {
+                                "type": "string"
+                              },
+                              "type": {
+                                "type": "string"
+                              },
+                              "uri": {
+                                "type": "string"
+                              },
+                              "order": {
+                                "type": "string"
+                              },
+                              "pages": {
+                                "type": "array",
+                                "items": {
+                                  "type": "object",
+                                  "properties": {
+                                    "pageId": {
+                                      "type": "string"
+                                    },
+                                    "sequence": {
+                                      "type": "string"
+                                    },
+                                    "height": {
+                                      "type": "string"
+                                    },
+                                    "width": {
+                                      "type": "string"
+                                    },
+                                    "dpi": {
+                                      "type": "string"
+                                    }
+                                  }
+                                }
+                              },
+                              "display": {
+                                "type": "string"
+                              },
+                              "includeInDownload": {
+                                "type": "string"
+                              },
+                              "signerMustAcknowledge": {
+                                "type": "string"
+                              },
+                              "templateRequired": {
+                                "type": "string"
+                              },
+                              "authoritativeCopy": {
+                                "type": "string"
+                              },
+                              "PDFBytes": {
+                                "type": "string"
+                              }
+                            }
+                          }
+                        },
+                        "purgeState": {
+                          "type": "string"
+                        },
+                        "envelopeIdStamping": {
+                          "type": "string"
+                        },
+                        "is21CFRPart11": {
+                          "type": "string"
+                        },
+                        "signerCanSignOnMobile": {
+                          "type": "string"
+                        },
+                        "autoNavigation": {
+                          "type": "string"
+                        },
+                        "isSignatureProviderEnvelope": {
+                          "type": "string"
+                        },
+                        "uSigState": {
+                          "type": "string"
+                        },
+                        "hasFormDataChanged": {
+                          "type": "string"
+                        },
+                        "allowComments": {
+                          "type": "string"
+                        },
+                        "hasComments": {
+                          "type": "string"
+                        },
+                        "allowViewHistory": {
+                          "type": "string"
+                        },
+                        "envelopeMetadata": {
+                          "type": "object",
+                          "properties": {
+                            "allowAdvancedCorrect": {
+                              "type": "string"
+                            },
+                            "enableSignWithNotary": {
+                              "type": "string"
+                            },
+                            "allowCorrect": {
+                              "type": "string"
+                            }
+                          }
+                        },
+                        "anySigner": {},
+                        "envelopeLocation": {
+                          "type": "string"
+                        },
+                        "isDynamicEnvelope": {
+                          "type": "string"
+                        },
+                        "burnDefaultTabData": {
+                          "type": "string"
+                        },
+                        "isTicketRelatedEnvelope": {
+                          "type": "string"
+                        },
+                        "watermarkLanguage": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "triggerAuthenticationType": "All"
+          }
+        }
+      },
+      "actions": {
+        "Condition": {
+          "actions": {
+            "Apply_to_each": {
+              "foreach": "@triggerBody()?['data']?['envelopeSummary']?['envelopeDocuments']",
+              "actions": {
+                "Scope": {
+                  "actions": {
+                    "Get_folder_metadata_using_path": {
+                      "runAfter": {},
+                      "metadata": {
+                        "operationMetadataId": "05ffaa10-be6f-4d87-be9a-7f1c851c7c20"
+                      },
+                      "type": "OpenApiConnection",
+                      "inputs": {
+                        "host": {
+                          "connectionName": "shared_sharepointonline",
+                          "operationId": "GetFolderMetadataByPath",
+                          "apiId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline"
+                        },
+                        "parameters": {
+                          "dataset": "@body('Parse_JSON_-_SharePoint_Config')?['siteAddress']",
+                          "path": "@concat(body('Parse_JSON_-_SharePoint_Config')?['folderPath'],variables('EnrollmentID'))"
+                        },
+                        "authentication": "@parameters('$authentication')"
+                      }
+                    }
+                  },
+                  "runAfter": {},
+                  "metadata": {
+                    "operationMetadataId": "537b8c61-b9a1-4201-b27f-108a8ce958d3"
+                  },
+                  "type": "Scope"
+                },
+                "Scope_2": {
+                  "actions": {
+                    "Create_new_folder": {
+                      "runAfter": {},
+                      "metadata": {
+                        "operationMetadataId": "d01c269b-dae0-464d-bfea-228cddc396a7"
+                      },
+                      "type": "OpenApiConnection",
+                      "inputs": {
+                        "host": {
+                          "connectionName": "shared_sharepointonline",
+                          "operationId": "CreateNewFolder",
+                          "apiId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline"
+                        },
+                        "parameters": {
+                          "dataset": "@body('Parse_JSON_-_SharePoint_Config')?['siteAddress']",
+                          "table": "@body('Parse_JSON_-_SharePoint_Config')?['libraryName']",
+                          "parameters/path": "@concat(body('Parse_JSON_-_SharePoint_Config')?['parametersPath'],variables('EnrollmentID'))"
+                        },
+                        "authentication": "@parameters('$authentication')"
+                      }
+                    }
+                  },
+                  "runAfter": {
+                    "Scope": [
+                      "Failed"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "e014bdd8-7a93-4ab8-8000-7da19cc79345"
+                  },
+                  "type": "Scope"
+                },
+                "Scope_3": {
+                  "actions": {
+                    "Create_file": {
+                      "runAfter": {},
+                      "metadata": {
+                        "operationMetadataId": "9291157d-dff6-4b23-b483-ea8ab19f7f33"
+                      },
+                      "type": "OpenApiConnection",
+                      "inputs": {
+                        "host": {
+                          "connectionName": "shared_sharepointonline",
+                          "operationId": "CreateFile",
+                          "apiId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline"
+                        },
+                        "parameters": {
+                          "dataset": "@body('Parse_JSON_-_SharePoint_Config')?['siteAddress']",
+                          "folderPath": "@concat(body('Parse_JSON_-_SharePoint_Config')?['folderPath'],variables('EnrollmentID'),'/Required')",
+                          "name": "@items('Apply_to_each')?['name']",
+                          "body": "@base64ToBinary(items('Apply_to_each')?['PDFBytes'])"
+                        },
+                        "authentication": "@parameters('$authentication')"
+                      },
+                      "runtimeConfiguration": {
+                        "contentTransfer": {
+                          "transferMode": "Chunked"
+                        }
+                      }
+                    }
+                  },
+                  "runAfter": {
+                    "Scope_2": [
+                      "Succeeded",
+                      "Skipped"
+                    ],
+                    "Scope": [
+                      "Succeeded",
+                      "Failed"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "f9d121fa-3013-4131-b5bd-0db76957a8a4"
+                  },
+                  "type": "Scope"
+                },
+                "Get_file_properties": {
+                  "runAfter": {
+                    "Scope_3": [
+                      "Succeeded"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "5e19ac83-f317-460b-a425-189e5e89d3d1"
+                  },
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "host": {
+                      "connectionName": "shared_sharepointonline",
+                      "operationId": "GetFileItem",
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline"
+                    },
+                    "parameters": {
+                      "dataset": "@body('Parse_JSON_-_SharePoint_Config')?['siteAddress']",
+                      "table": "@body('Parse_JSON_-_SharePoint_Config')?['libraryName']",
+                      "id": "@outputs('Create_file')?['body/ItemId']"
+                    },
+                    "authentication": "@parameters('$authentication')"
+                  }
+                },
+                "Add_a_new_row": {
+                  "runAfter": {
+                    "Get_file_properties": [
+                      "Succeeded"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "717c1528-6780-4d2a-983d-aaa66874bfa3"
+                  },
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "host": {
+                      "connectionName": "shared_commondataserviceforapps_1",
+                      "operationId": "CreateRecord",
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                    },
+                    "parameters": {
+                      "entityName": "cmdspp_p_documents_tbs",
+                      "item/cmdspp_p_file_nam": "@items('Apply_to_each')?['name']",
+                      "item/cmdspp_p_doc_to_p_dtl_fk@odata.bind": "/cmdspp_p_dtl_tbs(@{variables('ApplicationID')})",
+                      "item/cmdspp_p_enrol_id": "@variables('EnrollmentID')",
+                      "item/cmdspp_p_envlop_id": "@outputs('Get_a_row_by_ID')?['body/cmdspp_p_envelope_id']",
+                      "item/cmdspp_p_sharepoint_file_id": "@outputs('Create_file')?['body/Id']",
+                      "item/cmdspp_p_sign_status": "completed",
+                      "item/cmdspp_p_sharepoint_path": "@concat(outputs('Get_file_properties')?['body/{Link}'],'?web=1')",
+                      "item/cmdspp_p_document_type": "pdf"
+                    },
+                    "authentication": "@parameters('$authentication')"
+                  }
+                }
+              },
+              "runAfter": {
+                "Set_variable_2": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "db510904-60ab-4e74-8949-adce1d2bef3c"
+              },
+              "type": "Foreach"
+            },
+            "Get_a_row_by_ID": {
+              "runAfter": {
+                "Set_variable": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "0a8fcd5f-7a3e-4161-b3ee-625a2f8e040d"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps_1",
+                  "operationId": "GetItem",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "cmdspp_p_dtl_tbs",
+                  "recordId": "@variables('ApplicationID')"
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            },
+            "Set_variable_2": {
+              "runAfter": {
+                "Get_a_row_by_ID": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "7f2f1b6a-5096-4677-a675-08458d46714f"
+              },
+              "type": "SetVariable",
+              "inputs": {
+                "name": "EnrollmentID",
+                "value": "@outputs('Get_a_row_by_ID')?['body/cmdspp_p_sys_id']"
+              }
+            },
+            "Select": {
+              "runAfter": {
+                "Parse_JSON_-_SharePoint_Config": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "a865f550-a64a-4e2d-a302-ab8cf45718ba"
+              },
+              "type": "Select",
+              "inputs": {
+                "from": "@triggerBody()?['data']?['envelopeSummary']?['recipients']?['signers']",
+                "select": {
+                  "clientUserID": "@item()?['clientUserId']"
+                }
+              }
+            },
+            "Set_variable": {
+              "runAfter": {
+                "Select": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "0284d4a0-ce35-42cb-b983-fb01196f6cc0"
+              },
+              "type": "SetVariable",
+              "inputs": {
+                "name": "ApplicationID",
+                "value": "@first(body('Select'))?['clientUserId']"
+              }
+            },
+            "Update_a_row": {
+              "runAfter": {
+                "Apply_to_each": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "c7aa990a-ac1f-45cf-a709-10b6d5fa543c"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps_1",
+                  "operationId": "UpdateOnlyRecord",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "cmdspp_p_dtl_tbs",
+                  "recordId": "@variables('ApplicationID')",
+                  "item/cmdspp_p_appln_status": 2
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            },
+            "List_rows_-_Env_Definition": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "56f112ad-1f5e-4079-8e8e-05fe4850e4e4"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps_1",
+                  "operationId": "ListRecords",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "environmentvariabledefinitions",
+                  "$filter": "schemaname eq 'cmdspp_ENV_SharePointPath_Config'"
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            },
+            "Compose_-_Env_Definition_Id": {
+              "runAfter": {
+                "List_rows_-_Env_Definition": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "1ba2a8ac-9a7d-415f-882e-be9a2477499e"
+              },
+              "type": "Compose",
+              "inputs": "@first(body('List_rows_-_Env_Definition')?['value'])?['environmentvariabledefinitionid']"
+            },
+            "List_rows_-_Env_Value": {
+              "runAfter": {
+                "Compose_-_Env_Definition_Id": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "97cf9d48-1ece-4762-b7ad-d4024e132c57"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps_1",
+                  "operationId": "ListRecords",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "environmentvariablevalues",
+                  "$filter": "_environmentvariabledefinitionid_value eq @{outputs('Compose_-_Env_Definition_Id')}"
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            },
+            "Compose_-_Sharepoint_config_Raw": {
+              "runAfter": {
+                "List_rows_-_Env_Value": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "edeba9cc-0f4e-4757-af12-a2017f0415a1"
+              },
+              "type": "Compose",
+              "inputs": "@if(\r\n  empty(body('List_rows_-_Env_Value')?['value']),\r\n  first(body('List_rows_-_Env_Definition')?['value'])?['defaultvalue'],\r\n  first(body('List_rows_-_Env_Value')?['value'])?['value']\r\n)"
+            },
+            "Parse_JSON_-_SharePoint_Config": {
+              "runAfter": {
+                "Compose_-_Sharepoint_config_Raw": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "e6caaa47-5f48-42d0-ae39-ed89883c4703"
+              },
+              "type": "ParseJson",
+              "inputs": {
+                "content": "@outputs('Compose_-_SharePoint_Config_Raw')",
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "siteAddress": {
+                      "type": "string"
+                    },
+                    "libraryName": {
+                      "type": "string"
+                    },
+                    "folderPath": {
+                      "type": "string"
+                    },
+                    "configFolderPath": {
+                      "type": "string"
+                    },
+                    "parametersPath": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            },
+            "Run_a_Child_Flow": {
+              "runAfter": {
+                "Update_a_row": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "b3221704-5c34-4870-8d76-1d7798276611"
+              },
+              "type": "Workflow",
+              "inputs": {
+                "host": {
+                  "workflowReferenceName": "0fbc6b50-1fa8-f111-b8de-70a8a5b02d34"
+                },
+                "body": {
+                  "text": "create",
+                  "text_1": "@concat('/cmdspp_p_dtl_tbs(',variables('ApplicationID'),')')",
+                  "text_2": "Apllication Submitted by @{triggerBody()?['data']?['envelopeSummary']?['sender']?['userName']}",
+                  "text_3": "Application Submitted",
+                  "text_4": "@triggerBody()?['data']?['envelopeSummary']?['sender']?['userName']"
+                }
+              }
+            }
+          },
+          "runAfter": {
+            "Initialize_variable": [
+              "Succeeded"
+            ]
+          },
+          "expression": {
+            "equals": [
+              "@triggerBody()?['data']?['envelopeSummary']?['status']",
+              "completed"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "3a439897-40f7-4c45-8082-c3928dc10b10"
+          },
+          "type": "If"
+        },
+        "Initialize_variable": {
+          "runAfter": {
+            "Initialize_variable_2": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "ee77a2eb-d3ec-4bf1-92fc-550bea6c9aaf"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "EnrollmentID",
+                "type": "string"
+              }
+            ]
+          }
+        },
+        "Compose": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "78db3bf0-23f8-45cf-8fce-294feabb282c"
+          },
+          "type": "Compose",
+          "inputs": "@triggerBody()"
+        },
+        "Compose_2": {
+          "runAfter": {
+            "Compose": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "0c19372b-e81f-40ec-868d-cb59d6f4e439"
+          },
+          "type": "Compose",
+          "inputs": "@triggerBody()?['data']"
+        },
+        "Initialize_variable_2": {
+          "runAfter": {
+            "Compose_2": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "e4a99b68-725e-4703-b2a0-58e1169f05cb"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "ApplicationID",
+                "type": "string"
+              }
+            ]
+          }
+        }
+      }
+    },
+    "templateName": ""
+  },
+  "schemaVersion": "1.0.0.0"
+}

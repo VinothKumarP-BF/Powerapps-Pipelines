@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>0</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>1</isdefault>
+    <savedqueryid>{8ad4e15c-ca1f-4d7f-a49b-6ff07c2f636b}</savedqueryid>
+    <layoutxml>
+      <grid name="cmdspp_p_ecs_transaction_tbs" jump="cmdspp_p_ecs_transaction_tb" select="1" icon="1" preview="0">
+        <row name="cmdspp_p_ecs_transaction_tb" id="cmdspp_p_ecs_transaction_tbid">
+          <cell name="cmdspp_p_ecs_transaction_tb" width="300" />
+          <cell name="createdon" width="125" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>64</querytype>
+    <fetchxml>
+      <fetch version="1.0" mapping="logical">
+        <entity name="cmdspp_p_ecs_transaction_tb">
+          <attribute name="cmdspp_p_ecs_transaction_tbid" />
+          <attribute name="cmdspp_p_ecs_transaction_tb" />
+          <attribute name="createdon" />
+          <filter type="and">
+            <condition attribute="statecode" operator="eq" value="0" />
+          </filter>
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.0</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="P_ECS_TRANSACTION_TB Lookup View" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>

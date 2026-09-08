@@ -1,0 +1,14 @@
+<powerpagecomponent powerpagecomponentid="c9d3fcc9-ad97-f111-8075-70a8a5b02d34">
+  <content>{
+  "value": "statecode,cmdspp_p_pin_mcp_dtl_sk,cmdspp_p_pin_mcp_dtlid,cmdspp_p_medicare_n,cmdspp_p_mcare_part_cd,_cmdspp_p_mcare_part_cd_value,cmdspp_created_by_user,_cmdspp_created_by_user_value,cmdspp_p_sys_id,_cmdspp_p_sys_id_value,cmdspp_modified_by_user,_cmdspp_modified_by_user_value",
+  "source": 0
+}</content>
+  <iscustomizable>1</iscustomizable>
+  <name>Webapi/cmdspp_p_pin_mcp_dtl/fields</name>
+  <powerpagecomponenttype>9</powerpagecomponenttype>
+  <powerpagesiteid>
+    <powerpagesiteid>abccaafd-73d6-47dd-bb55-b09b911f0d43</powerpagesiteid>
+  </powerpagesiteid>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</powerpagecomponent>

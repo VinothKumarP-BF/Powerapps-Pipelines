@@ -1,0 +1,125 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<forms xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <systemform>
+    <formid>{0ef184db-b585-f111-ab0f-70a8a5b028cc}</formid>
+    <IntroducedVersion>1.0.0.0</IntroducedVersion>
+    <FormPresentation>1</FormPresentation>
+    <FormActivationState>1</FormActivationState>
+    <form headerdensity="HighWithControls">
+      <tabs>
+        <tab verticallayout="true" id="{a95a7350-50ce-4495-8020-834d1dc10568}" IsUserDefined="1" name="General" labelid="{f81a8aef-1bc3-4f20-b506-87b29d440102}">
+          <labels>
+            <label description="General" languagecode="1033" />
+          </labels>
+          <columns>
+            <column width="100%">
+              <sections>
+                <section showlabel="true" showbar="false" IsUserDefined="0" id="{fc84e4a9-df12-4fc7-8623-3a0d002bcc6f}" name="Add Enrollment Type" labelid="{dc86e2a9-375f-4502-b17b-b9583eb72e5e}">
+                  <labels>
+                    <label description="Add Enrollment Type" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{782280bd-71ee-4d78-b5ad-587ad4b6c1a8}" visible="false" labelid="{ea9f8f66-3a4c-44a1-917c-cea7a7fe9ca3}">
+                        <labels>
+                          <label description="Owner" languagecode="1033" />
+                        </labels>
+                        <control id="ownerid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="ownerid" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{3b96fc96-75bb-4af7-b052-7dfdf0db8cdf}" locklevel="0" colspan="1" rowspan="1" labelid="{b7dc6cfb-eec0-462a-8ed2-4eef8fc4952a}">
+                        <labels>
+                          <label description="Enrollment Name" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_p_enrol_typ_nam" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="cmdspp_p_enrol_typ_nam" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{755caa0a-790d-4f9c-b56c-3576469cf97e}" locklevel="0" colspan="1" rowspan="1" labelid="{0e58b7c8-50c6-4ddd-b210-14a9b44befaa}">
+                        <labels>
+                          <label description="Sub Text" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_p_enrol_descr" classid="{E0DECE4B-6FC8-4A8F-A065-082708572369}" datafieldname="cmdspp_p_enrol_descr" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{b5789c20-8882-49df-82e2-849c0f3e14a6}" locklevel="0" colspan="1" rowspan="1" labelid="{f94603e5-edc3-465c-b05e-3cc892ebbd52}">
+                        <labels>
+                          <label description="Tooltip" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_p_enrol_tooltip" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="cmdspp_p_enrol_tooltip" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{2411cf9b-bedb-44f5-8f28-efd04800a425}" locklevel="0" colspan="1" rowspan="1" showlabel="false">
+                        <labels>
+                          <label description="p_file" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_p_file" classid="{7E548B0D-209C-477B-9DCD-F0F44472381D}" datafieldname="cmdspp_p_file" disabled="false" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+          </columns>
+        </tab>
+      </tabs>
+      <header id="{9429e6cd-724c-417c-bc31-b63b4d2a4964}" celllabelposition="Top" columns="111" labelwidth="115" celllabelalignment="Left">
+        <rows>
+          <row>
+            <cell id="{d2c0dffd-f862-45b9-be88-a623076facfb}" showlabel="false" labelid="{abeec74f-41a6-48cc-a4aa-d5fe2c50080b}">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{728d3ef1-0cf8-4791-a739-bb0109edb3d5}" showlabel="false" labelid="{8d9d7115-6d5a-4ac8-b50b-dcf862bdbfe5}">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{68c534f2-7ad8-4665-9b8c-211d56a11a11}" showlabel="false" labelid="{f5b7e927-00bf-4f8a-9e60-9ca5856de5d2}">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+          </row>
+        </rows>
+      </header>
+      <footer id="{0129111f-2eb2-4473-b306-684d581bbe0e}" celllabelposition="Top" columns="111" labelwidth="115" celllabelalignment="Left">
+        <rows>
+          <row>
+            <cell id="{5aa3ab5b-dc33-4f7b-b5fb-31c57b12057d}" showlabel="false" labelid="{46b63983-3a31-473a-a0f3-f1baeeb35eda}">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{5bb9992f-34bc-4c6c-b8bc-020d5279557e}" showlabel="false" labelid="{bea09a68-8130-4c7e-9127-cc0a4e23ba62}">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{b040f889-2382-47a3-bfb9-7bd3ab3a41e2}" showlabel="false" labelid="{0769a1de-07c2-4344-9451-44ad349522f6}">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+          </row>
+        </rows>
+      </footer>
+      <DisplayConditions Order="1" FallbackForm="true">
+        <Role Id="{627090ff-40a3-4053-8790-584edc5be201}" />
+        <Role Id="{119f245c-3cc8-4b62-b31c-d1a046ced15d}" />
+      </DisplayConditions>
+    </form>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <LocalizedNames>
+      <LocalizedName description="Add_EnrollmentType" languagecode="1033" />
+    </LocalizedNames>
+    <Descriptions>
+      <Description description="A form for this entity." languagecode="1033" />
+    </Descriptions>
+  </systemform>
+</forms>

@@ -1,0 +1,40 @@
+<powerpagecomponent powerpagecomponentid="b16415fa-da83-0f9c-9200-999130f7449d">
+  <content>{
+  "filecontent": null,
+  "displayorder": 2,
+  "customcss": ".row.sectionBlockLayout &gt; .container{\r\npadding: 0px !important;\r\nmargin: 0px !important;\r\nwidth: 100%;\r\nmax-width: 100%;\r\n\r\n}\r\n.row.sectionBlockLayout.text-start {\r\n    width: 100%;\r\n    height: 100%;\r\n}\r\n\r\n.col-lg-12.columnBlockLayout {\r\n    padding: 0px !important;\r\n    margin: 0px !important;\r\n}\r\n\r\n\r\ntd.clearfix.cell {\r\n     padding: 0px !important;\r\n}\r\n.crmEntityFormView{\r\n   background-color: unset !important;\r\n    border: none !important;\r\n}\r\n\r\n\r\n.actions {\r\n    display: none;\r\n}\r\n\r\nbutton[disabled]{\r\n    background-color:#23456d !important;\r\n}\r\n\r\n.custom-select {\r\n    background-image: url(\"data:image/svg+xml,%3Csvg width='10' height='6' viewBox='0 0 10 6' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L5 5L9 1' stroke='%233f4d67' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E\") !important;\r\n    background-repeat: no-repeat !important;\r\n    background-position: right 12px center !important;\r\n}",
+  "pagetemplateid": "718ed8c8-9407-4620-adf3-832ec188887d",
+  "parentpageid": "d85c2d1b-c8de-5d88-e6cf-b5cc351a0e23",
+  "partialurl": "Application",
+  "isroot": false,
+  "rootwebpageid": "6dfb2d8f-94c5-7b7f-7501-ebeb47bcb9a9",
+  "title": "Application",
+  "summary": "&lt;p&gt;This is a sample landing page designed to be a starting point for your website&lt;/p&gt;",
+  "copy": "&lt;div class=\"row sectionBlockLayout text-start\" style=\"display: flex; flex-wrap: wrap; margin: 0px; min-height: auto; padding: 8px;\"&gt;\n  &lt;div class=\"container\" style=\"display: flex; flex-wrap: wrap;\"&gt;\n    &lt;div class=\"col-lg-12 columnBlockLayout\" style=\"flex-grow: 1; display: flex; flex-direction: column; min-width: 250px; padding: 16px; margin: 60px 0px;\"&gt;\n      {% entityform name: 'PVD_Enrol_Form' %}\n    &lt;/div&gt;\n  &lt;/div&gt;\n&lt;/div&gt;",
+  "publishingstateid": "c7294317-419f-4724-8068-a91d5da8d92c",
+  "enablerating": false,
+  "enabletracking": false,
+  "excludefromsearch": false,
+  "hiddenfromsitemap": true,
+  "sharedpageconfiguration": false,
+  "feedbackpolicy": 756150000
+}</content>
+  <iscustomizable>1</iscustomizable>
+  <name>Application</name>
+  <powerpagecomponenttype>2</powerpagecomponenttype>
+  <powerpagesiteid>
+    <powerpagesiteid>abccaafd-73d6-47dd-bb55-b09b911f0d43</powerpagesiteid>
+  </powerpagesiteid>
+  <powerpagesitelanguageid>
+    <powerpagesitelanguageid>7b340d7a-188d-4ed8-b16c-cc6e959fb5c2</powerpagesitelanguageid>
+  </powerpagesitelanguageid>
+  <searchcontent>Application&lt;div class="row sectionBlockLayout text-start" style="display: flex; flex-wrap: wrap; margin: 0px; min-height: auto; padding: 8px;"&gt;
+  &lt;div class="container" style="display: flex; flex-wrap: wrap;"&gt;
+    &lt;div class="col-lg-12 columnBlockLayout" style="flex-grow: 1; display: flex; flex-direction: column; min-width: 250px; padding: 16px; margin: 60px 0px;"&gt;
+      {% entityform name: 'PVD_Enrol_Form' %}
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;Application</searchcontent>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</powerpagecomponent>

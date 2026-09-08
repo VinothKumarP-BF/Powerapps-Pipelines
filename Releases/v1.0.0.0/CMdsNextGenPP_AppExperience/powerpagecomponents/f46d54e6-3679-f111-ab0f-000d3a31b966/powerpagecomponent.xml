@@ -1,0 +1,11 @@
+<powerpagecomponent powerpagecomponentid="f46d54e6-3679-f111-ab0f-000d3a31b966">
+  <content>{"botschemaname":"cr834_8b45cbb0-7290-49c5-b762-70fb7628d59a","configjson":"{\"skillConfigViewName\":\"CMdS Next Gen Provider Dev bot Answers\",\"botSchemaName\":\"cr834_8b45cbb0-7290-49c5-b762-70fb7628d59a\",\"version\":\"v2\",\"isVisible\":true}","adx_botconsumer_adx_webrole":["04aca432-bb7b-f111-ab0e-000d3a3586e4","3e0eed5c-e2e0-46fa-a82c-1f6c985badca","f899f791-55b3-4fd6-86ac-f9addbb7477b"]}</content>
+  <iscustomizable>1</iscustomizable>
+  <name>Bot Consumer</name>
+  <powerpagecomponenttype>27</powerpagecomponenttype>
+  <powerpagesiteid>
+    <powerpagesiteid>abccaafd-73d6-47dd-bb55-b09b911f0d43</powerpagesiteid>
+  </powerpagesiteid>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</powerpagecomponent>

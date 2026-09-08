@@ -1,0 +1,223 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps_1": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "cmdspp_CR_Dataverse_Core_DEV"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "manual": {
+          "metadata": {
+            "operationMetadataId": "08454ae6-5363-47c5-8be5-88b98fb3e6f3"
+          },
+          "type": "Request",
+          "kind": "Button",
+          "inputs": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "text": {
+                  "title": "payload",
+                  "type": "string",
+                  "x-ms-dynamically-added": true,
+                  "description": "Please enter your input",
+                  "x-ms-content-hint": "TEXT"
+                }
+              },
+              "required": [
+                "text"
+              ]
+            }
+          }
+        }
+      },
+      "actions": {
+        "Add_a_new_row_thread": {
+          "runAfter": {
+            "Parse_JSON": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "29673d2e-6825-4046-a002-ae31e1f8f366"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps_1",
+              "operationId": "CreateRecord",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "cmdspp_g_usr_inbox_threads",
+              "item/cmdspp_g_message_type": "@if(\r\n    equals(\r\n        toLower(\r\n            coalesce(\r\n                body('Parse_JSON')?['messageType'],\r\n                ''\r\n            )\r\n        ),\r\n        'request'\r\n    ),\r\n    3,\r\n    1\r\n)",
+              "item/cmdspp_g_read_ind": false,
+              "item/cmdspp_g_web_user@odata.bind": "/cmdspp_g_usr_dtls_tbs(@{body('Parse_JSON')?['userId']})"
+            },
+            "authentication": {
+              "type": "Raw",
+              "value": "@json(decodeBase64(triggerOutputs().headers['X-MS-APIM-Tokens']))['$ConnectionKey']"
+            }
+          }
+        },
+        "Parse_JSON": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "5f8805f9-d865-4068-8ea9-654d359353ac"
+          },
+          "type": "ParseJson",
+          "inputs": {
+            "content": "@triggerBody()['text']",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "transType": {
+                  "type": "string"
+                },
+                "userId": {
+                  "type": "string"
+                },
+                "userEmail": {
+                  "type": "string"
+                },
+                "emailSubject": {
+                  "type": "string"
+                },
+                "emailBody": {
+                  "type": "string"
+                },
+                "providerType": {
+                  "type": "string"
+                },
+                "senderEmail": {
+                  "type": "string"
+                },
+                "senderId": {
+                  "type": "string"
+                },
+                "messageType": {
+                  "type": "string"
+                },
+                "attachmentName": {
+                  "type": "string"
+                },
+                "attachmentContent": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        },
+        "Add_a_new_row_message": {
+          "runAfter": {
+            "Add_a_new_row_thread": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "1ea3d84b-7ba0-4bbd-87ae-b65297bc2f2a"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps_1",
+              "operationId": "CreateRecord",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "cmdspp_g_usr_inbox_tbs",
+              "item/cmdspp_g_body": "@body('Parse_JSON')?['emailBody']",
+              "item/cmdspp_g_reciever_mail": "@body('Parse_JSON')?['userEmail']",
+              "item/cmdspp_g_recieverid@odata.bind": "/cmdspp_g_usr_dtls_tbs(@{body('Parse_JSON')?['userId']})",
+              "item/cmdspp_g_sender_mail": "@body('Parse_JSON')?['senderEmail']",
+              "item/cmdspp_g_senderid@odata.bind": "@body('Parse_JSON')?['senderId']",
+              "item/cmdspp_g_subject": "@body('Parse_JSON')?['emailSubject']",
+              "item/cmdspp_g_usr_inbox_to_thread_lkp@odata.bind": "@outputs('Add_a_new_row_thread')?['body/@odata.id']",
+              "item/cmdspp_p_pvd_type": "@body('Parse_JSON')?['providerType']"
+            },
+            "authentication": {
+              "type": "Raw",
+              "value": "@json(decodeBase64(triggerOutputs().headers['X-MS-APIM-Tokens']))['$ConnectionKey']"
+            }
+          }
+        },
+        "Update_a_row": {
+          "runAfter": {
+            "Add_a_new_row_message": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "e60f60f8-6543-41f0-9637-a924464deb69"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps_1",
+              "operationId": "UpdateOnlyRecord",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "cmdspp_g_usr_inbox_threads",
+              "recordId": "@outputs('Add_a_new_row_thread')?['body/cmdspp_g_usr_inbox_threadid']",
+              "item/cmdspp_g_latest_messageid@odata.bind": "/cmdspp_g_usr_inbox_tbs(@{outputs('Add_a_new_row_message')?['body/cmdspp_g_usr_inbox_tbid']})"
+            },
+            "authentication": {
+              "type": "Raw",
+              "value": "@json(decodeBase64(triggerOutputs().headers['X-MS-APIM-Tokens']))['$ConnectionKey']"
+            }
+          }
+        },
+        "Respond_to_a_Power_App_or_flow": {
+          "runAfter": {
+            "Update_a_row": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "5652b640-78eb-458c-a082-b7fb44e53190"
+          },
+          "type": "Response",
+          "kind": "PowerApp",
+          "inputs": {
+            "statusCode": 200,
+            "body": {
+              "message": "success"
+            },
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "title": "message",
+                  "x-ms-dynamically-added": true,
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "templateName": ""
+  },
+  "schemaVersion": "1.0.0.0"
+}

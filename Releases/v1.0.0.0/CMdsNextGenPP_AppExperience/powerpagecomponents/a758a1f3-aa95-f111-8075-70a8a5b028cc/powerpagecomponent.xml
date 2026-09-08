@@ -1,0 +1,19 @@
+<powerpagecomponent powerpagecomponentid="a758a1f3-aa95-f111-8075-70a8a5b028cc">
+  <content>{
+  "partialurl": "cmdspp_enrollmentTypes_pp.js",
+  "excludefromsearch": false,
+  "hiddenfromsitemap": false,
+  "contentdisposition": 756150000,
+  "publishingstateid": "c7294317-419f-4724-8068-a91d5da8d92c",
+  "parentpageid": "551cf2a7-4cb2-4424-8af7-3422ddbd968e"
+}</content>
+  <filecontent mimetype="application/javascript">cmdspp_enrollmentTypes.js</filecontent>
+  <iscustomizable>1</iscustomizable>
+  <name>cmdspp_enrollmentTypes_pp.js</name>
+  <powerpagecomponenttype>3</powerpagecomponenttype>
+  <powerpagesiteid>
+    <powerpagesiteid>abccaafd-73d6-47dd-bb55-b09b911f0d43</powerpagesiteid>
+  </powerpagesiteid>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</powerpagecomponent>

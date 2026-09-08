@@ -1,0 +1,239 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps_1": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "cmdspp_CR_Dataverse_Core_DEV"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "manual": {
+          "metadata": {
+            "operationMetadataId": "3bf5fc03-b368-40fc-a428-8690cfd8bd3d"
+          },
+          "type": "Request",
+          "kind": "Http",
+          "inputs": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "enrollId": {
+                  "type": "string"
+                }
+              }
+            },
+            "triggerAuthenticationType": "All"
+          }
+        }
+      },
+      "actions": {
+        "List_rows_pages": {
+          "runAfter": {
+            "Initialize_variable": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "d299cfb6-893f-48dd-9bb8-37a0eecc1cdd"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps_1",
+              "operationId": "ListRecords",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "cmdspp_pc_pg_tbs",
+              "$filter": "_cmdspp_p_pg_to_enrol_fk_value eq @{triggerBody()?['enrollId']}"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Condition": {
+          "actions": {
+            "List_rows": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "2178c5ba-bea7-4948-8a90-03fd33ac6662"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps_1",
+                  "operationId": "ListRecords",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "cmdspp_pc_pg_tbs"
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            },
+            "Apply_to_each_2": {
+              "foreach": "@outputs('List_rows')?['body/value']",
+              "actions": {
+                "Apply_to_each_3": {
+                  "foreach": "@outputs('List_rows_pages')?['body/value']",
+                  "actions": {
+                    "Append_to_array_variable_2": {
+                      "runAfter": {},
+                      "metadata": {
+                        "operationMetadataId": "1d90c1e1-ed8e-44e6-b3d4-18c9fe1e058c"
+                      },
+                      "type": "AppendToArrayVariable",
+                      "inputs": {
+                        "name": "Pages",
+                        "value": {
+                          "id": "@items('Apply_to_each_2')?['cmdspp_pc_pg_tbid']",
+                          "name": "@items('Apply_to_each_2')?['cmdspp_p_pg_nam']",
+                          "enrollId": "@items('Apply_to_each_2')?['_cmdspp_p_pg_to_enrol_fk_value']",
+                          "code": "@items('Apply_to_each_2')?['cmdspp_p_pg_id_pk']",
+                          "order": "@items('Apply_to_each_3')?['cmdspp_p_pg_order']",
+                          "sections": []
+                        }
+                      }
+                    }
+                  },
+                  "runAfter": {},
+                  "metadata": {
+                    "operationMetadataId": "47821fa6-db86-4423-8a12-dc577db356be"
+                  },
+                  "type": "Foreach"
+                }
+              },
+              "runAfter": {
+                "List_rows": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "9c51300a-a26c-42b0-85f4-ad8c601e5265"
+              },
+              "type": "Foreach"
+            },
+            "Response_2": {
+              "runAfter": {
+                "Apply_to_each_2": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "87d4f169-5ab1-4454-8b91-c666f491a93b"
+              },
+              "type": "Response",
+              "kind": "Http",
+              "inputs": {
+                "statusCode": 200,
+                "body": {
+                  "pages": "@variables('Pages')"
+                }
+              }
+            }
+          },
+          "runAfter": {
+            "List_rows_pages": [
+              "Succeeded"
+            ]
+          },
+          "else": {
+            "actions": {
+              "Apply_to_each": {
+                "foreach": "@outputs('List_rows_pages')?['body/value']",
+                "actions": {
+                  "Append_to_array_variable": {
+                    "runAfter": {},
+                    "metadata": {
+                      "operationMetadataId": "41f19ddd-2822-4444-8097-c8f44f4b3217"
+                    },
+                    "type": "AppendToArrayVariable",
+                    "inputs": {
+                      "name": "Pages",
+                      "value": {
+                        "id": "@items('Apply_to_each')?['cmdspp_pc_pg_tbid']",
+                        "name": "@items('Apply_to_each')?['cmdspp_p_pg_nam']",
+                        "enrollId": "@items('Apply_to_each')?['_cmdspp_p_pg_to_enrol_fk_value']",
+                        "code": "@items('Apply_to_each')?['cmdspp_p_pg_id_pk']",
+                        "order": "@items('Apply_to_each')?['cmdspp_p_pg_order']",
+                        "sections": []
+                      }
+                    }
+                  }
+                },
+                "runAfter": {},
+                "metadata": {
+                  "operationMetadataId": "6cecb70f-387d-4a85-bc61-ca410bb72e2f"
+                },
+                "type": "Foreach"
+              },
+              "Response": {
+                "runAfter": {
+                  "Apply_to_each": [
+                    "Succeeded"
+                  ]
+                },
+                "metadata": {
+                  "operationMetadataId": "296d3d46-8f26-45ff-8982-a28434dc02f3"
+                },
+                "type": "Response",
+                "kind": "Http",
+                "inputs": {
+                  "statusCode": 200,
+                  "body": {
+                    "pages": "@variables('Pages')"
+                  }
+                }
+              }
+            }
+          },
+          "expression": {
+            "equals": [
+              "@length(outputs('List_rows_pages')?['body/value'])",
+              0
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "30446c59-9aca-4b13-bfa6-9445fac5b5b7"
+          },
+          "type": "If"
+        },
+        "Initialize_variable": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "a06871bb-3f58-4c45-bf3a-2b8ec487077a"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "Pages",
+                "type": "array",
+                "value": []
+              }
+            ]
+          }
+        }
+      }
+    },
+    "templateName": ""
+  },
+  "schemaVersion": "1.0.0.0"
+}

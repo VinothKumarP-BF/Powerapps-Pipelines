@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>0</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>1</isdefault>
+    <savedqueryid>{db638a4e-11f4-4cc8-8ad5-7351606c3271}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="cmdspp_psubcontractordtlsk" select="1" icon="1" preview="1">
+        <row name="result" id="cmdspp_p_subcontractor_dtl_tbid">
+          <cell name="cmdspp_p_subcontractor_ind" width="100" />
+          <cell name="cmdspp_p_subcontractor_name" width="168" />
+          <cell name="cmdspp_p_subcontractor_add" width="158" />
+          <cell name="cmdspp_p_subcontractor_city" width="159" />
+          <cell name="cmdspp_p_subcontractor_occ_st_cd" width="194" />
+          <cell name="cmdspp_p_subcontractor_zip_cd" width="175" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>0</querytype>
+    <fetchxml>
+      <fetch version="1.0" mapping="logical">
+        <entity name="cmdspp_p_subcontractor_dtl_tb">
+          <attribute name="cmdspp_p_subcontractor_dtl_tbid" />
+          <filter type="and">
+            <condition attribute="statecode" operator="eq" value="0" />
+          </filter>
+          <attribute name="cmdspp_p_subcontractor_add" />
+          <attribute name="cmdspp_p_subcontractor_name" />
+          <attribute name="cmdspp_p_subcontractor_city" />
+          <attribute name="cmdspp_p_subcontractor_occ_st_cd" />
+          <attribute name="cmdspp_p_subcontractor_zip_cd" />
+          <attribute name="cmdspp_p_subcontractor_ind" />
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.0</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Active P_SUBCONTRACTOR_DTL_TBS" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>

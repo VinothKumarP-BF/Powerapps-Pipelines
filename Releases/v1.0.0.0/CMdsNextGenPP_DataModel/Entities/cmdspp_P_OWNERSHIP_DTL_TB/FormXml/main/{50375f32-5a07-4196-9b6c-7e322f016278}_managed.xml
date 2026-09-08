@@ -1,0 +1,302 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<forms xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <systemform>
+    <formid>{50375f32-5a07-4196-9b6c-7e322f016278}</formid>
+    <IntroducedVersion>1.0</IntroducedVersion>
+    <FormPresentation>1</FormPresentation>
+    <FormActivationState>1</FormActivationState>
+    <form headerdensity="HighWithControls" shownavigationbar="false">
+      <tabs>
+        <tab verticallayout="true" id="{10604b9f-3d48-44b4-ab81-eb4920f7a6d9}" IsUserDefined="1" expanded="false">
+          <labels>
+            <label description="General" languagecode="1033" />
+          </labels>
+          <columns>
+            <column width="100%">
+              <sections>
+                <section showlabel="false" showbar="false" IsUserDefined="0" id="{e94aa01a-fc00-4209-b657-37e1cb5c71aa}" columns="11" celllabelposition="Top" visible="false" name="general" availableforphone="false" locklevel="1">
+                  <labels>
+                    <label description="General" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{3371724a-3854-428c-8172-daba7be0720e}" visible="false" showlabel="false" availableforphone="false" locklevel="1">
+                        <labels>
+                          <label description="p_ownership_dtl_sk" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_pownershipdtlsk" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="cmdspp_pownershipdtlsk" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{d3ea9709-c8de-4b1a-9804-8b865a6bfe63}" visible="false" showlabel="false" availableforphone="false" locklevel="1">
+                        <labels>
+                          <label description="Owner" languagecode="1033" />
+                        </labels>
+                        <control id="ownerid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="ownerid" />
+                      </cell>
+                      <cell locklevel="0" id="{03e11704-e17f-4862-ac8b-12eb85ffbb61}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+                <section name="null_section_3" id="4b918919-9a25-48e5-8d73-b474aa69a14b" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Top" columns="11" labelwidth="115">
+                  <labels>
+                    <label description="Ownership" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row />
+                    <row>
+                      <cell id="{39ce905a-0540-47e8-85f5-9e7846b43f0c}" locklevel="1" colspan="2" rowspan="1">
+                        <labels>
+                          <label description="Have you ever had ownership in any organization that has billed, or is currently billing Medicare or NH Title XIX Program services?" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_hadownershipind" classid="{F9A8A302-114E-466A-B582-6771B2AE0D92}" datafieldname="cmdspp_hadownershipind" disabled="false" uniqueid="{cce69e10-4120-4151-8b0a-5c4fe77ec28a}" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{e606fe1b-6abc-4557-898f-b3fcb5b05ed4}" locklevel="1" colspan="1" rowspan="1" visible="true" availableforphone="true" showlabel="true">
+                        <labels>
+                          <label description="Organization’s Legal Business Name" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_p_owner_org_legal_name" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="cmdspp_p_owner_org_legal_name" disabled="false" />
+                      </cell>
+                      <cell id="{da6e72c8-b8dd-40cc-857e-5b51d9891035}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Effective Date" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_p_owner_effective_dt" classid="{5B773807-9FB2-42DB-97C3-7A91EFF8ADFF}" datafieldname="cmdspp_p_owner_effective_dt" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{4aa8ed0c-4e8f-4502-ab4b-475d0ba53362}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="End Date" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_p_owner_end_dt" classid="{5B773807-9FB2-42DB-97C3-7A91EFF8ADFF}" datafieldname="cmdspp_p_owner_end_dt" disabled="false" />
+                      </cell>
+                      <cell id="{de222172-6433-4f47-b7bb-01b59aa88edd}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Address" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_p_owner_add" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="cmdspp_p_owner_add" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{2843885d-8622-475d-a299-810240c2938f}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="City" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_p_owner_city" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="cmdspp_p_owner_city" disabled="false" />
+                      </cell>
+                      <cell id="{6b9df662-edb8-44d5-824b-e6d345d940af}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="State" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_p_owner_occ_st_cd" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="cmdspp_p_owner_occ_st_cd" disabled="false">
+                          <parameters>
+                            <DefaultViewId>{CA553ED7-1697-F111-8075-70A8A5B02D34}</DefaultViewId>
+                            <AvailableViewIds>{CA553ED7-1697-F111-8075-70A8A5B02D34}</AvailableViewIds>
+                            <DisableViewPicker>true</DisableViewPicker>
+                          </parameters>
+                        </control>
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{f9606525-fc25-47eb-a4e3-0eca2b5b2498}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="ZIP" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_p_owner_zip_cd" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="cmdspp_p_owner_zip_cd" disabled="false" />
+                      </cell>
+                      <cell id="{281aefd1-2352-41cc-bbe2-7536c8eb1abd}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="FEIN" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_p_owner_fein" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="cmdspp_p_owner_fein" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{7d70db7c-fad5-4540-9a34-8ddadea5fe20}" locklevel="1" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Please enter a Medicare and/or Title XIX" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_cmdspp_p_owner_participation_type" classid="{F9A8A302-114E-466A-B582-6771B2AE0D92}" datafieldname="cmdspp_cmdspp_p_owner_participation_type" disabled="false" uniqueid="{95e96de9-7147-4e74-bbc7-01a09bf39b0a}" />
+                      </cell>
+                      <cell id="{402d369c-b612-447b-a701-420148a681c6}" locklevel="1" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Current Medicaid" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_p_owner_current_medicaid_id" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="cmdspp_p_owner_current_medicaid_id" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{e8d434a1-afa2-4004-8cab-373afdc9cbdb}" locklevel="1" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Current Medicare" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_p_owner_current_medicare_id" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="cmdspp_p_owner_current_medicare_id" disabled="false" />
+                      </cell>
+                      <cell locklevel="0" id="{6dc54b9d-37eb-41e1-a63e-0b1f9cd28dc4}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+          </columns>
+        </tab>
+      </tabs>
+      <header id="{a56a79cc-eb5f-483a-9eb9-5af89c427887}" celllabelposition="Top" columns="111" labelwidth="115" celllabelalignment="Left">
+        <rows>
+          <row>
+            <cell id="{10cd872e-1fb3-4b7a-aaca-cc429fa34f9a}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{003335e9-cddc-4f02-84b9-5d96863fafc3}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{22762be5-00df-42c0-8cb5-7b1e6b2d6760}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+          </row>
+        </rows>
+      </header>
+      <footer id="{37cb290b-e9ea-45c6-bc7a-3c76ff5095b0}" celllabelposition="Top" columns="111" labelwidth="115" celllabelalignment="Left">
+        <rows>
+          <row>
+            <cell id="{a2cd5083-3de0-4cd2-8217-05f25f86a0ac}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{7ce07d5a-a1d3-4049-bc10-0ef3a573718d}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{076b7cf1-ee0c-41a5-99e5-7e0bbe043ed6}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+          </row>
+        </rows>
+      </footer>
+      <DisplayConditions Order="0" FallbackForm="true">
+        <Everyone />
+      </DisplayConditions>
+      <controlDescriptions>
+        <controlDescription forControl="{cce69e10-4120-4151-8b0a-5c4fe77ec28a}">
+          <customControl id="{67FAC785-CD58-4F9F-ABB3-4B7DDC6ED5ED}">
+            <parameters>
+              <datafieldname>cmdspp_hadownershipind</datafieldname>
+            </parameters>
+          </customControl>
+          <customControl formFactor="0" name="MscrmControls.FieldControls.ToggleControl">
+            <parameters>
+              <value type="TwoOptions">cmdspp_hadownershipind</value>
+            </parameters>
+          </customControl>
+          <customControl formFactor="2" name="MscrmControls.FieldControls.ToggleControl">
+            <parameters>
+              <value type="TwoOptions">cmdspp_hadownershipind</value>
+            </parameters>
+          </customControl>
+          <customControl formFactor="1" name="MscrmControls.FieldControls.ToggleControl">
+            <parameters>
+              <value type="TwoOptions">cmdspp_hadownershipind</value>
+            </parameters>
+          </customControl>
+        </controlDescription>
+        <controlDescription forControl="{95e96de9-7147-4e74-bbc7-01a09bf39b0a}">
+          <customControl id="{4AA28AB7-9C13-4F57-A73D-AD894D048B5F}">
+            <parameters>
+              <datafieldname>cmdspp_cmdspp_p_owner_participation_type</datafieldname>
+            </parameters>
+          </customControl>
+          <customControl formFactor="0" name="PowerApps.CoreControls.MultiSelectOptionSet">
+            <parameters>
+              <value type="MultiSelectOptionSet">cmdspp_cmdspp_p_owner_participation_type</value>
+            </parameters>
+          </customControl>
+          <customControl formFactor="2" name="PowerApps.CoreControls.MultiSelectOptionSet">
+            <parameters>
+              <value type="MultiSelectOptionSet">cmdspp_cmdspp_p_owner_participation_type</value>
+            </parameters>
+          </customControl>
+          <customControl formFactor="1" name="PowerApps.CoreControls.MultiSelectOptionSet">
+            <parameters>
+              <value type="MultiSelectOptionSet">cmdspp_cmdspp_p_owner_participation_type</value>
+            </parameters>
+          </customControl>
+        </controlDescription>
+      </controlDescriptions>
+      <formLibraries>
+        <Library name="cmdspp_screening_web_res" libraryUniqueId="{28ecba9e-5427-424a-ad84-6a217b9c3603}" />
+      </formLibraries>
+      <events>
+        <event name="onchange" application="false" active="false" attribute="cmdspp_cmdspp_p_owner_participation_type">
+          <Handlers>
+            <Handler functionName="toggleParticipationFields" libraryName="cmdspp_screening_web_res" handlerUniqueId="{6f065f6c-d0e9-4bd7-8d49-614e6a8e24f4}" enabled="true" parameters="&quot;cmdspp_hadownershipind&quot;,&quot;cmdspp_cmdspp_p_owner_participation_type&quot;,&quot;cmdspp_p_owner_current_medicare_id&quot;,&quot;cmdspp_p_owner_current_medicaid_id&quot;" passExecutionContext="true" />
+          </Handlers>
+          <dependencies>
+            <dependency id="cmdspp_cmdspp_p_owner_participation_type" />
+            <dependency id="cmdspp_p_owner_current_medicaid_id" />
+            <dependency id="cmdspp_p_owner_current_medicare_id" />
+            <dependency id="cmdspp_hadownershipind" />
+          </dependencies>
+        </event>
+        <event name="onload" application="false" active="false">
+          <Handlers>
+            <Handler functionName="toggleParticipationFields" libraryName="cmdspp_screening_web_res" handlerUniqueId="{1a5cb852-bdea-4129-bd7c-869846ea2041}" enabled="true" parameters="&quot;cmdspp_hadownershipind&quot;,&quot;cmdspp_cmdspp_p_owner_participation_type&quot;,&quot;cmdspp_p_owner_current_medicare_id&quot;,&quot;cmdspp_p_owner_current_medicaid_id&quot;" passExecutionContext="true" />
+          </Handlers>
+        </event>
+        <event name="onchange" application="false" active="false" attribute="cmdspp_hadownershipind">
+          <Handlers>
+            <Handler functionName="toggleParticipationFields" libraryName="cmdspp_screening_web_res" handlerUniqueId="{ec5a85e9-2663-427d-b87f-366f0906e5ca}" enabled="true" parameters="&quot;cmdspp_hadownershipind&quot;,&quot;cmdspp_cmdspp_p_owner_participation_type&quot;,&quot;cmdspp_p_owner_current_medicare_id&quot;,&quot;cmdspp_p_owner_current_medicaid_id&quot;" passExecutionContext="true" />
+          </Handlers>
+        </event>
+        <event name="onchange" application="false" active="false" attribute="cmdspp_p_owner_zip_cd">
+          <Handlers>
+            <Handler functionName="validateField" libraryName="cmdspp_screening_web_res" handlerUniqueId="{ced34872-2050-4041-ac3a-388049e4ad9a}" enabled="true" parameters="&quot;cmdspp_p_owner_zip_cd&quot;, &quot;pattern&quot;, &quot;^[0-9]{5}(-[0-9]{4})?$&quot;, &quot;Enter a valid ZIP code.&quot;" passExecutionContext="true" />
+          </Handlers>
+        </event>
+        <event name="onchange" application="false" active="false" attribute="cmdspp_p_owner_fein">
+          <Handlers>
+            <Handler functionName="validateField" libraryName="cmdspp_screening_web_res" handlerUniqueId="{d857568a-8e7d-4429-ba1a-0e14f38cfba4}" enabled="true" parameters="&quot;cmdspp_p_owner_fein&quot;, &quot;pattern&quot;, &quot;^[0-9]{9}$&quot;, &quot;FEIN must be 9 digits.&quot;" passExecutionContext="true" />
+          </Handlers>
+        </event>
+        <event name="onchange" application="false" active="false" attribute="cmdspp_p_owner_end_dt">
+          <Handlers>
+            <Handler functionName="validateDateField" libraryName="cmdspp_screening_web_res" handlerUniqueId="{607e07cf-a81c-4b6c-ae90-aa9a6ebe6e4b}" enabled="true" parameters="&quot;cmdspp_p_owner_end_dt&quot;, &quot;cmdspp_p_owner_effective_dt&quot;, &quot;dateComparison&quot;, &quot;greaterThanOrEqual&quot;, &quot;Expiration Date cannot be before Effective Date.&quot;" passExecutionContext="true" />
+          </Handlers>
+        </event>
+        <event name="onchange" application="false" active="false" attribute="cmdspp_p_owner_effective_dt">
+          <Handlers>
+            <Handler functionName="validateDateField" libraryName="cmdspp_screening_web_res" handlerUniqueId="{c2af2b92-0be5-4065-a1fb-59a5e71c1d14}" enabled="true" parameters="&quot;cmdspp_p_owner_effective_dt&quot;, &quot;cmdspp_p_owner_end_dt&quot;, &quot;dateComparison&quot;, &quot;lessThanOrEqual&quot;, &quot;Effective Date cannot be after Expiration Date.&quot;" passExecutionContext="true" />
+          </Handlers>
+        </event>
+      </events>
+    </form>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <LocalizedNames>
+      <LocalizedName description="Information" languagecode="1033" />
+    </LocalizedNames>
+    <Descriptions>
+      <Description description="A form for this entity." languagecode="1033" />
+    </Descriptions>
+  </systemform>
+</forms>

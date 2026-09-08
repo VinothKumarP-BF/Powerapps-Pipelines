@@ -1,0 +1,108 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<forms xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <systemform>
+    <formid>{da0d6d6b-108c-f111-ab0f-70a8a5b02d28}</formid>
+    <IntroducedVersion>1.0.0.0</IntroducedVersion>
+    <FormPresentation>1</FormPresentation>
+    <FormActivationState>1</FormActivationState>
+    <form headerdensity="HighWithControls">
+      <tabs>
+        <tab verticallayout="true" id="{d25b8567-1194-4084-8470-620de490fe06}" IsUserDefined="1" labelid="{50aceb44-2be9-4ee6-a73e-a86822fe4004}">
+          <labels>
+            <label description="General" languagecode="1033" />
+          </labels>
+          <columns>
+            <column width="100%">
+              <sections>
+                <section showlabel="false" showbar="false" IsUserDefined="0" id="{9e64a01c-03ab-49a1-a8aa-6ed84547c278}" labelid="{ff5246e4-5148-415d-8aec-cf8498148b1b}">
+                  <labels>
+                    <label description="General" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{3779bd5d-d0f7-4361-846f-57934e483f8f}" labelid="{ff3a6a8e-8cb7-4a3a-b5f4-c15516c2ebf1}">
+                        <labels>
+                          <label description="Owner" languagecode="1033" />
+                        </labels>
+                        <control id="ownerid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="ownerid" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{5743eb54-4898-456b-bddb-e4dfe73a3148}" locklevel="0" colspan="1" rowspan="1" labelid="{10e1d692-7533-4874-aa5f-fbdf18f87a2c}">
+                        <labels>
+                          <label description="Specialty Code" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_pc_specl_cd" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="cmdspp_pc_specl_cd" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{e0bfa663-53a9-4372-be8e-7e9f66a82089}" locklevel="0" colspan="1" rowspan="1" labelid="{c054cda8-2aba-4509-ba8e-3bea8aee69d8}">
+                        <labels>
+                          <label description="Specialty Description" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_pc_specl_desc" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="cmdspp_pc_specl_desc" disabled="false" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+          </columns>
+        </tab>
+      </tabs>
+      <header id="{df29f7e2-0b7a-4bc6-81a1-e93048501933}" celllabelposition="Top" columns="111" labelwidth="115" celllabelalignment="Left">
+        <rows>
+          <row>
+            <cell id="{9433d5a1-4213-4c34-a304-8cd3cb79b705}" showlabel="false" labelid="{149b233f-a123-44e2-a7ce-d5b4bf1b5037}">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{6bcc21e2-f50b-490d-a4d9-b1dd5aa271f3}" showlabel="false" labelid="{bba5613e-28bf-4838-a966-5431da838164}">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{2b5c74e4-5d17-40fd-8176-daaad0c15121}" showlabel="false" labelid="{553a0847-d7eb-43a4-8c78-deb8ffeda81c}">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+          </row>
+        </rows>
+      </header>
+      <footer id="{b3b89571-8c87-46f7-9a44-c0b210210498}" celllabelposition="Top" columns="111" labelwidth="115" celllabelalignment="Left">
+        <rows>
+          <row>
+            <cell id="{3e317836-d6da-4843-9faa-b2a500af2e24}" showlabel="false" labelid="{c3bf498e-6c7c-4991-9e3a-16173fa10892}">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{18ba0381-35fe-46e3-89b5-e486eaca85ba}" showlabel="false" labelid="{28619d48-b9c0-4d57-878e-8567bc811a5d}">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{5ef882e6-849b-4efb-b274-da747bab5f44}" showlabel="false" labelid="{7361b282-f197-4a22-8072-ad32582db7dc}">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+          </row>
+        </rows>
+      </footer>
+      <DisplayConditions Order="1" FallbackForm="true">
+        <Everyone />
+      </DisplayConditions>
+    </form>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <LocalizedNames>
+      <LocalizedName description="Add_Specialty" languagecode="1033" />
+    </LocalizedNames>
+    <Descriptions>
+      <Description description="This form is to create a new specialty based on provider type" languagecode="1033" />
+    </Descriptions>
+  </systemform>
+</forms>

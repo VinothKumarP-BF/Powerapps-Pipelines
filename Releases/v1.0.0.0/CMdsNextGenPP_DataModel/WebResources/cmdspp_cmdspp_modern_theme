@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CustomTheme
+    basepalettecolor="#0067B8"
+    lockprimary="false"
+    font="'Segoe UI', sans-serif"
+    logowebresource="cmdspp_conduent_logo"
+    logotooltip="CMdS NextGen Provider Portal"
+>
+  <AppHeaderColors
+    background="#0B3A6F"
+	foreground="#FFFFFF"
+	backgroundhover="#125C7A"
+	foregroundhover="#FFFFFF"
+	backgroundpressed="#082E59"
+	foregroundpressed="#FFFFFF"
+	backgroundselected="#1AA3A3"
+	foregroundselected="#FFFFFF"
+  />
+</CustomTheme>

@@ -1,0 +1,44 @@
+function checkSubgridRows(executionContext) {
+    var formContext = executionContext.getFormContext();
+    var subgridControl = formContext.getControl("Subgrid_new_17"); // Replace with your subgrid schema name
+ console.log("subgridControl"+subgridControl);
+    if (subgridControl) {
+        // Register an event listener to run when the subgrid finishes loading
+        subgridControl.addOnLoad(function () {
+            var totalRecords = subgridControl.getGrid().getTotalRecordCount();
+	    console.log("total"+subgridControl.getGrid());
+            var grid = subgridControl.getGrid();
+    	    var rows = grid.getRows();
+	var valueset = false;
+    rows.forEach(function (row) {
+        var rowData = row.getData();
+        var entity = rowData.getEntity();
+        
+        // 1. Get Primary ID & Name of the row record
+        var recordId = entity.getId();
+        var primaryName = entity.getPrimaryAttributeValue();
+
+        console.log("Record ID: " + recordId + " | Name: " + primaryName);
+
+        console.log(entity);
+	console.log(entity.attributes);
+	
+	if (entity.attributes) {
+            entity.attributes.forEach(function (attr) {
+                console.log(attr.getName() + " = " + attr.getValue());
+		if (attr.getValue() !== null && attr.getValue() !== "") {
+        			hasValue = true;
+    			}			
+            	});
+        	}
+    	});
+            if (!valueset)
+		{
+			var section = subgridControl.getParent();
+			section.setLabel("Conviction Information - Click Go To Record to update the response for the question");
+			
+		}
+
+        });
+    }
+}

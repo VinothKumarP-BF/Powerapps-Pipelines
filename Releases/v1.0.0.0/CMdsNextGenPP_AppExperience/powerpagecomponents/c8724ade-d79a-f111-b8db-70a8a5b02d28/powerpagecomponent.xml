@@ -1,0 +1,11 @@
+<powerpagecomponent powerpagecomponentid="c8724ade-d79a-f111-b8db-70a8a5b02d28">
+  <content>{"source":"&lt;!-- Power Pages Web Template --&gt;\r\n{% assign appId = request.params['record'] | default: request.params['id'] %}\r\n\r\n{% fetchxml sectionJsonSchema %}\r\n&lt;fetch&gt;\r\n  &lt;entity name=\"cmdspp_pc_enrol_page_json_tb\"&gt;\r\n    &lt;attribute name=\"cmdspp_p_jsontxt\" /&gt;\r\n    &lt;attribute name=\"cmdspp_p_table_nam\" /&gt;\r\n    &lt;attribute name=\"cmdspp_p_page_nam\" /&gt;\r\n    &lt;filter&gt;\r\n      &lt;condition attribute=\"cmdspp_p_page_nam\" operator=\"eq\" value=\"exclusion_sanction\" /&gt;\r\n    &lt;/filter&gt;\r\n  &lt;/entity&gt;\r\n&lt;/fetch&gt;\r\n{% endfetchxml %}\r\n\r\n&lt;!-- 1. Liquid renders data into HTML DOM context --&gt;\r\n&lt;script id=\"wizardSchemaData\" type=\"application/json\"&gt;\r\n[\r\n  {% for rec in sectionJsonSchema.results.entities %}\r\n      {{ rec.cmdspp_p_jsontxt }}{% unless forloop.last %},{% endunless %}\r\n  {% endfor %}\r\n]\r\n&lt;/script&gt;\r\n\r\n&lt;style&gt;\r\n  .cmdspp-sidemenu { display: none; }\r\n  \r\n  .cmdspp-loader-overlay {\r\n    position: fixed;\r\n    top: 0;\r\n    left: 0;\r\n    width: 100vw;\r\n    height: 100vh;\r\n    background-color: rgba(255, 255, 255, 0.85);\r\n    backdrop-filter: blur(4px);\r\n    z-index: 99999;\r\n    display: flex;\r\n    justify-content: center;\r\n    align-items: center;\r\n    transition: opacity 0.3s ease, visibility 0.3s ease;\r\n  }\r\n  .cmdspp-loader-content {\r\n    text-align: center;\r\n  }\r\n  .cmdspp-loader-overlay.hidden {\r\n    opacity: 0;\r\n    visibility: hidden;\r\n    pointer-events: none;\r\n  }\r\n&lt;/style&gt;\r\n&lt;div id=\"wizardContainer\"&gt;&lt;/div&gt;\r\n\r\n&lt;script src=\"/new_cmn_template\"&gt;&lt;/script&gt;\r\n"}</content>
+  <iscustomizable>1</iscustomizable>
+  <name>cmdspp_cmnPgTemplate</name>
+  <powerpagecomponenttype>8</powerpagecomponenttype>
+  <powerpagesiteid>
+    <powerpagesiteid>abccaafd-73d6-47dd-bb55-b09b911f0d43</powerpagesiteid>
+  </powerpagesiteid>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</powerpagecomponent>

@@ -1,0 +1,887 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_sharepointonline_1": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "cmdspp_CR_SharePoint_Core_DEV"
+        },
+        "api": {
+          "name": "shared_sharepointonline"
+        }
+      },
+      "shared_office365": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "cmdspp_CR_Outlook_Core_DEV"
+        },
+        "api": {
+          "name": "shared_office365"
+        }
+      },
+      "shared_commondataserviceforapps_1": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "cmdspp_CR_Dataverse_Core_DEV"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "When_a_row_is_added,_modified_or_deleted": {
+          "metadata": {
+            "operationMetadataId": "df332116-09e7-4983-b0c6-701d4aa7232d"
+          },
+          "type": "OpenApiConnectionWebhook",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps_1",
+              "operationId": "SubscribeWebhookTrigger",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "subscriptionRequest/message": 3,
+              "subscriptionRequest/entityname": "cmdspp_p_dtl_tb",
+              "subscriptionRequest/scope": 4,
+              "subscriptionRequest/filteringattributes": "cmdspp_p_appln_status"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        }
+      },
+      "actions": {
+        "Condition": {
+          "actions": {
+            "Switch": {
+              "runAfter": {},
+              "cases": {
+                "Case": {
+                  "case": 4,
+                  "actions": {
+                    "Compose_Denied_File_Path": {
+                      "runAfter": {},
+                      "metadata": {
+                        "operationMetadataId": "43b7e5ec-4802-4924-8b70-53b45f869efe"
+                      },
+                      "type": "Compose",
+                      "inputs": "@concat(\r\n    body('Parse_JSON_-_SharePoint_Config')?['ApplicationDecisionLettersFolderPath'],\r\n    'Denied.pdf'\r\n)"
+                    },
+                    "Get_file_content_using_path": {
+                      "runAfter": {
+                        "Compose_Denied_File_Path": [
+                          "Succeeded"
+                        ]
+                      },
+                      "metadata": {
+                        "operationMetadataId": "309dfdf6-bc6e-4d27-8948-35e3229e33c3"
+                      },
+                      "type": "OpenApiConnection",
+                      "inputs": {
+                        "host": {
+                          "connectionName": "shared_sharepointonline_1",
+                          "operationId": "GetFileContentByPath",
+                          "apiId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline"
+                        },
+                        "parameters": {
+                          "dataset": "@body('Parse_JSON_-_SharePoint_Config')?['siteAddress']",
+                          "path": "@outputs('Compose_Denied_File_Path')",
+                          "inferContentType": true
+                        },
+                        "authentication": "@parameters('$authentication')"
+                      }
+                    },
+                    "Send_an_email_(V2)_2": {
+                      "runAfter": {
+                        "Compose_Denied_File_Link": [
+                          "Succeeded"
+                        ]
+                      },
+                      "metadata": {
+                        "operationMetadataId": "18eba297-b692-424c-af60-97c0e47bebef"
+                      },
+                      "type": "OpenApiConnection",
+                      "inputs": {
+                        "host": {
+                          "connectionName": "shared_office365",
+                          "operationId": "SendEmailV2",
+                          "apiId": "/providers/Microsoft.PowerApps/apis/shared_office365"
+                        },
+                        "parameters": {
+                          "emailMessage/To": "@first(body('List_rows')?['value'])?['cmdspp_p_createdby_user_id']?['cmdspp_g_email']",
+                          "emailMessage/Subject": "New Secure Message Available",
+                          "emailMessage/Body": "<div style=\"margin:0;padding:0;background-color:#ffffff;font-family:Segoe UI, Arial, sans-serif;\">\n\n    <table role=\"presentation\"\n           cellpadding=\"0\"\n           cellspacing=\"0\"\n           border=\"0\"\n           width=\"100%\"\n           style=\"background-color:#ffffff;\">\n\n        <tr>\n            <td align=\"center\">\n\n                <!-- Main Container -->\n                <table role=\"presentation\"\n                       cellpadding=\"0\"\n                       cellspacing=\"0\"\n                       border=\"0\"\n                       width=\"866\"\n                       style=\"background:#ffffff;\">\n\n                    <!-- Header -->\n                    <tr>\n                        <td align=\"center\"\n                            style=\"background:#263B68;\n                                   padding:34px 20px;\n                                   color:#FFFFFF;\n                                   font-size:28px;\n                                   font-weight:400;\n                                   line-height:1.2;\">\n\n                            CMdS NextGen Provider Portal\n                            <br>\n                            – New Secure Message Available\n\n                        </td>\n                    </tr>\n\n                    <!-- Body -->\n                    <tr>\n                        <td style=\"padding:55px 58px 30px 58px;\n                                   color:#2C3E50;\n                                   font-size:20px;\n                                   line-height:1.7;\">\n\n                            <p style=\"margin:0 0 35px 0;\">\n                                Hi @{first(body('List_rows')?['value'])?['cmdspp_p_fst_nam']},\n                            </p>\n\n                            <p style=\"margin:0 0 10px 0;\">\n                                You have a new secure message regarding your Provider Enrollment.\n                            </p>\n\n                            <p style=\"margin:0 0 45px 0;\">\n                                Please log in to the Provider Portal to view your message.\n                            </p>\n\n                            <p style=\"margin:0 0 5px 0;color:#6B7A90;\">\n                                Thank you,\n                            </p>\n\n                            <p style=\"margin:0;color:#344B70;\">\n                                CMDS Next Gen Provider Portal Support Team\n                            </p>\n\n                        </td>\n                    </tr>\n\n                    <!-- Footer -->\n                    <tr>\n                        <td style=\"background:#F5F7FA;\n                                   padding:32px 40px;\n                                   text-align:center;\n                                   color:#8A9AB0;\n                                   font-size:14px;\n                                   line-height:1.6;\">\n\n                            <div>\n                                This is an automated message from the CMDS Next Gen Provider Portal.\n                                Please do not reply directly to this email.\n                            </div>\n\n                            <div style=\"margin-top:12px;\">\n                                © @{formatDateTime(utcNow(),'yyyy')} CMDS Next Gen Provider Portal · All rights reserved\n                            </div>\n\n                        </td>\n                    </tr>\n\n                </table>\n\n            </td>\n        </tr>\n\n    </table>\n\n</div>",
+                          "emailMessage/Importance": "Normal"
+                        },
+                        "authentication": "@parameters('$authentication')"
+                      }
+                    },
+                    "Compose_Inbox_Body": {
+                      "runAfter": {
+                        "Send_an_email_(V2)_2": [
+                          "Succeeded"
+                        ]
+                      },
+                      "metadata": {
+                        "operationMetadataId": "f201ab82-4c73-40b9-9e5a-79c83bff94be"
+                      },
+                      "type": "Compose",
+                      "inputs": "Hi @{first(body('List_rows')?['value'])?['cmdspp_p_fst_nam']},\n\nA Denial Letter has been successfully generated for the provider enrollment application below.\n\nThe generated Denial Letter PDF is attached for reference.\n\n<a href=\"@{outputs('Compose_Denied_File_Link')}\" target=\"_blank\">View Denial Letter PDF</a>\n\n\nBest regards,\nCMDS Next Gen Provider Portal Support Team"
+                    },
+                    "Run_a_Child_Flow": {
+                      "runAfter": {
+                        "Compose_Denied_Payload": [
+                          "Succeeded"
+                        ]
+                      },
+                      "metadata": {
+                        "operationMetadataId": "17d22bd6-ad62-4003-bc25-cb240412c8d6"
+                      },
+                      "type": "Workflow",
+                      "inputs": {
+                        "host": {
+                          "workflowReferenceName": "27b723b9-2c90-f111-8076-70a8a5b02d34"
+                        },
+                        "body": {
+                          "text": "@string(outputs('Compose_Denied_Payload'))"
+                        }
+                      }
+                    },
+                    "Compose_Denied_Payload": {
+                      "runAfter": {
+                        "Compose_Inbox_Body": [
+                          "Succeeded"
+                        ]
+                      },
+                      "metadata": {
+                        "operationMetadataId": "40b3b24d-ea1c-49b1-8241-f384e5c606ac"
+                      },
+                      "type": "Compose",
+                      "inputs": {
+                        "userId": "@first(body('List_rows')?['value'])?['_cmdspp_p_createdby_user_id_value']",
+                        "userEmail": "@first(body('List_rows')?['value'])?['cmdspp_p_createdby_user_id']?['cmdspp_g_email']",
+                        "emailBody": "@outputs('Compose_Inbox_Body')",
+                        "emailSubject": "Application Denied",
+                        "providerType": "@first(body('List_rows')?['value'])?['_cmdspp_p_pvd_typ_lkp_value@OData.Community.Display.V1.FormattedValue']",
+                        "senderEmail": "@outputs('Get_a_row_by_ID_2')?['body/internalemailaddress']",
+                        "attachmentName": "Denied.pdf",
+                        "attachmentContent": "@{body('Get_file_content_using_path')?['$content']}",
+                        "senderId": ""
+                      }
+                    },
+                    "Get_file_metadata_using_path": {
+                      "runAfter": {
+                        "Get_file_content_using_path": [
+                          "Succeeded"
+                        ]
+                      },
+                      "metadata": {
+                        "operationMetadataId": "a6fc9b6c-7ac9-46a7-af8e-609c6d91536d"
+                      },
+                      "type": "OpenApiConnection",
+                      "inputs": {
+                        "host": {
+                          "connectionName": "shared_sharepointonline_1",
+                          "operationId": "GetFileMetadataByPath",
+                          "apiId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline"
+                        },
+                        "parameters": {
+                          "dataset": "@body('Parse_JSON_-_SharePoint_Config')?['siteAddress']",
+                          "path": "@outputs('Compose_Denied_File_Path')"
+                        },
+                        "authentication": "@parameters('$authentication')"
+                      }
+                    },
+                    "Get_file_properties_2": {
+                      "runAfter": {
+                        "Get_file_metadata_using_path": [
+                          "Succeeded"
+                        ]
+                      },
+                      "metadata": {
+                        "operationMetadataId": "e9cbb595-4320-4c84-8bf2-73114f162327"
+                      },
+                      "type": "OpenApiConnection",
+                      "inputs": {
+                        "host": {
+                          "connectionName": "shared_sharepointonline_1",
+                          "operationId": "GetFileItem",
+                          "apiId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline"
+                        },
+                        "parameters": {
+                          "dataset": "@body('Parse_JSON_-_SharePoint_Config')?['siteAddress']",
+                          "table": "@body('Parse_JSON_-_SharePoint_Config')?['libraryName']",
+                          "id": "@outputs('Get_file_metadata_using_path')?['body/ItemId']"
+                        },
+                        "authentication": "@parameters('$authentication')"
+                      }
+                    },
+                    "Compose_Denied_File_Link": {
+                      "runAfter": {
+                        "Get_file_properties_2": [
+                          "Succeeded"
+                        ]
+                      },
+                      "metadata": {
+                        "operationMetadataId": "9a128c8f-0d1c-4bd7-aacd-9dfa18b0eef9"
+                      },
+                      "type": "Compose",
+                      "inputs": "@concat(\r\n    body('Get_file_properties_2')?['{Link}'],\r\n    '?web=1'\r\n)"
+                    }
+                  }
+                },
+                "Case_2": {
+                  "case": 6,
+                  "actions": {
+                    "Compose_Approved_File_Path": {
+                      "runAfter": {},
+                      "metadata": {
+                        "operationMetadataId": "84d32eca-a88e-40cc-9c33-c4ae15b06373"
+                      },
+                      "type": "Compose",
+                      "inputs": "@concat(\r\n    body('Parse_JSON_-_SharePoint_Config')?['ApplicationDecisionLettersFolderPath'],\r\n    'Approved.pdf'\r\n)"
+                    },
+                    "Get_file_content_using_path_2": {
+                      "runAfter": {
+                        "Compose_Approved_File_Path": [
+                          "Succeeded"
+                        ]
+                      },
+                      "metadata": {
+                        "operationMetadataId": "1117a0f3-aeaf-4b4e-917b-daa3fc33b7c2"
+                      },
+                      "type": "OpenApiConnection",
+                      "inputs": {
+                        "host": {
+                          "connectionName": "shared_sharepointonline_1",
+                          "operationId": "GetFileContentByPath",
+                          "apiId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline"
+                        },
+                        "parameters": {
+                          "dataset": "@body('Parse_JSON_-_SharePoint_Config')?['siteAddress']",
+                          "path": "@outputs('Compose_Approved_File_Path')",
+                          "inferContentType": true
+                        },
+                        "authentication": "@parameters('$authentication')"
+                      }
+                    },
+                    "Send_an_email_(V2)": {
+                      "runAfter": {
+                        "Get_file_properties": [
+                          "Succeeded"
+                        ]
+                      },
+                      "metadata": {
+                        "operationMetadataId": "4d681551-2b96-4940-8337-3acf6424ff24"
+                      },
+                      "type": "OpenApiConnection",
+                      "inputs": {
+                        "host": {
+                          "connectionName": "shared_office365",
+                          "operationId": "SendEmailV2",
+                          "apiId": "/providers/Microsoft.PowerApps/apis/shared_office365"
+                        },
+                        "parameters": {
+                          "emailMessage/To": "@first(body('List_rows')?['value'])?['cmdspp_p_createdby_user_id']?['cmdspp_g_email']",
+                          "emailMessage/Subject": "New Secure Message Available",
+                          "emailMessage/Body": "<div style=\"margin:0;padding:0;background-color:#ffffff;font-family:Segoe UI, Arial, sans-serif;\">\n\n    <table role=\"presentation\"\n           cellpadding=\"0\"\n           cellspacing=\"0\"\n           border=\"0\"\n           width=\"100%\"\n           style=\"background-color:#ffffff;\">\n\n        <tr>\n            <td align=\"center\">\n\n                <!-- Main Container -->\n                <table role=\"presentation\"\n                       cellpadding=\"0\"\n                       cellspacing=\"0\"\n                       border=\"0\"\n                       width=\"866\"\n                       style=\"background:#ffffff;\">\n\n                    <!-- Header -->\n                    <tr>\n                        <td align=\"center\"\n                            style=\"background:#263B68;\n                                   padding:34px 20px;\n                                   color:#FFFFFF;\n                                   font-size:28px;\n                                   font-weight:400;\n                                   line-height:1.2;\">\n\n                            CMdS NextGen Provider Portal\n                            <br>\n                            – New Secure Message Available\n\n                        </td>\n                    </tr>\n\n                    <!-- Body -->\n                    <tr>\n                        <td style=\"padding:55px 58px 30px 58px;\n                                   color:#2C3E50;\n                                   font-size:20px;\n                                   line-height:1.7;\">\n\n                            <p style=\"margin:0 0 35px 0;\">\n                                Hi @{first(body('List_rows')?['value'])?['cmdspp_p_fst_nam']},\n                            </p>\n\n                            <p style=\"margin:0 0 10px 0;\">\n                                You have a new secure message regarding your Provider Enrollment.\n                            </p>\n\n                            <p style=\"margin:0 0 45px 0;\">\n                                Please log in to the Provider Portal to view your message.\n                            </p>\n\n                            <p style=\"margin:0 0 5px 0;color:#6B7A90;\">\n                                Thank you,\n                            </p>\n\n                            <p style=\"margin:0;color:#344B70;\">\n                                CMDS Next Gen Provider Portal Support Team\n                            </p>\n\n                        </td>\n                    </tr>\n\n                    <!-- Footer -->\n                    <tr>\n                        <td style=\"background:#F5F7FA;\n                                   padding:32px 40px;\n                                   text-align:center;\n                                   color:#8A9AB0;\n                                   font-size:14px;\n                                   line-height:1.6;\">\n\n                            <div>\n                                This is an automated message from the CMDS Next Gen Provider Portal.\n                                Please do not reply directly to this email.\n                            </div>\n\n                            <div style=\"margin-top:12px;\">\n                                © @{formatDateTime(utcNow(),'yyyy')} CMDS Next Gen Provider Portal · All rights reserved\n                            </div>\n\n                        </td>\n                    </tr>\n\n                </table>\n\n            </td>\n        </tr>\n\n    </table>\n\n</div>",
+                          "emailMessage/Importance": "Normal"
+                        },
+                        "authentication": "@parameters('$authentication')"
+                      }
+                    },
+                    "Compose_Inbox": {
+                      "runAfter": {
+                        "Compose_Approved_File_Link": [
+                          "Succeeded"
+                        ]
+                      },
+                      "metadata": {
+                        "operationMetadataId": "5114affc-3291-4486-bfcd-f29763e77d64"
+                      },
+                      "type": "Compose",
+                      "inputs": "Hi @{first(body('List_rows')?['value'])?['cmdspp_p_fst_nam']},\n\nA Welcome Letter has been successfully generated for the provider enrollment application below.\n\nThe generated Welcome Letter PDF is attached for reference.\n\n<a href=\"@{outputs('Compose_Approved_File_Link')}\" target=\"_blank\">View Welcome Letter PDF</a>\n\n\nBest regards,\nCMDS Next Gen Provider Portal Support Team"
+                    },
+                    "Compose_Approved_Payload": {
+                      "runAfter": {
+                        "Compose_Inbox": [
+                          "Succeeded"
+                        ]
+                      },
+                      "metadata": {
+                        "operationMetadataId": "81c3552a-da2b-4e50-9f5d-c96d03f3b45e"
+                      },
+                      "type": "Compose",
+                      "inputs": {
+                        "userId": "@first(body('List_rows')?['value'])?['_cmdspp_p_createdby_user_id_value']",
+                        "userEmail": "@first(body('List_rows')?['value'])?['cmdspp_p_createdby_user_id']?['cmdspp_g_email']",
+                        "emailBody": "@outputs('Compose_Inbox')",
+                        "emailSubject": "Application Approved",
+                        "providerType": "@first(body('List_rows')?['value'])?['_cmdspp_p_pvd_typ_lkp_value@OData.Community.Display.V1.FormattedValue']",
+                        "senderEmail": "@outputs('Get_a_row_by_ID_2')?['body/internalemailaddress']",
+                        "attachmentName": "Approved.pdf",
+                        "attachmentContent": "@{body('Get_file_content_using_path_2')?['$content']}",
+                        "senderId": ""
+                      }
+                    },
+                    "Run_a_Child_Flow_2": {
+                      "runAfter": {
+                        "Compose_Approved_Payload": [
+                          "Succeeded"
+                        ]
+                      },
+                      "metadata": {
+                        "operationMetadataId": "5a70b03c-cbd1-43fc-9da4-480f38e0225c"
+                      },
+                      "type": "Workflow",
+                      "inputs": {
+                        "host": {
+                          "workflowReferenceName": "27b723b9-2c90-f111-8076-70a8a5b02d34"
+                        },
+                        "body": {
+                          "text": "@string(outputs('Compose_Approved_Payload'))"
+                        }
+                      }
+                    },
+                    "Get_file_metadata_using_path_2": {
+                      "runAfter": {
+                        "Get_file_content_using_path_2": [
+                          "Succeeded"
+                        ]
+                      },
+                      "metadata": {
+                        "operationMetadataId": "5d43c6b8-3813-4d78-a0d5-0fd7c09efbbb"
+                      },
+                      "type": "OpenApiConnection",
+                      "inputs": {
+                        "host": {
+                          "connectionName": "shared_sharepointonline_1",
+                          "operationId": "GetFileMetadataByPath",
+                          "apiId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline"
+                        },
+                        "parameters": {
+                          "dataset": "@body('Parse_JSON_-_SharePoint_Config')?['siteAddress']",
+                          "path": "@outputs('Compose_Approved_File_Path')"
+                        },
+                        "authentication": "@parameters('$authentication')"
+                      }
+                    },
+                    "Get_file_properties": {
+                      "runAfter": {
+                        "Get_file_metadata_using_path_2": [
+                          "Succeeded"
+                        ]
+                      },
+                      "metadata": {
+                        "operationMetadataId": "e8dedbc2-33bf-4803-bdbb-cb02f3417323"
+                      },
+                      "type": "OpenApiConnection",
+                      "inputs": {
+                        "host": {
+                          "connectionName": "shared_sharepointonline_1",
+                          "operationId": "GetFileItem",
+                          "apiId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline"
+                        },
+                        "parameters": {
+                          "dataset": "@body('Parse_JSON_-_SharePoint_Config')?['siteAddress']",
+                          "table": "@body('Parse_JSON_-_SharePoint_Config')?['libraryName']",
+                          "id": "@outputs('Get_file_metadata_using_path_2')?['body/ItemId']"
+                        },
+                        "authentication": "@parameters('$authentication')"
+                      }
+                    },
+                    "Compose_Approved_File_Link": {
+                      "runAfter": {
+                        "Send_an_email_(V2)": [
+                          "Succeeded"
+                        ]
+                      },
+                      "metadata": {
+                        "operationMetadataId": "350f3318-005e-478d-bf52-178ce9e8147a"
+                      },
+                      "type": "Compose",
+                      "inputs": "@concat(\r\n    body('Get_file_properties')?['{Link}'],\r\n    '?web=1'\r\n)"
+                    }
+                  }
+                },
+                "Case_3": {
+                  "case": 7,
+                  "actions": {
+                    "Compose_Cancelled_File_Path": {
+                      "runAfter": {},
+                      "metadata": {
+                        "operationMetadataId": "83ef7428-e66e-4665-97da-8f00de6a749b"
+                      },
+                      "type": "Compose",
+                      "inputs": "@concat(\r\n    body('Parse_JSON_-_SharePoint_Config')?['ApplicationDecisionLettersFolderPath'],\r\n    'Cancelled.pdf'\r\n)"
+                    },
+                    "Get_file_content_using_path_3": {
+                      "runAfter": {
+                        "Compose_Cancelled_File_Path": [
+                          "Succeeded"
+                        ]
+                      },
+                      "metadata": {
+                        "operationMetadataId": "3f9960df-817f-4f2b-80ef-d3672d4a2264"
+                      },
+                      "type": "OpenApiConnection",
+                      "inputs": {
+                        "host": {
+                          "connectionName": "shared_sharepointonline_1",
+                          "operationId": "GetFileContentByPath",
+                          "apiId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline"
+                        },
+                        "parameters": {
+                          "dataset": "@body('Parse_JSON_-_SharePoint_Config')?['siteAddress']",
+                          "path": "@outputs('Compose_Cancelled_File_Path')",
+                          "inferContentType": true
+                        },
+                        "authentication": "@parameters('$authentication')"
+                      }
+                    },
+                    "Send_an_email_(V2)_3": {
+                      "runAfter": {
+                        "Compose_Cancelled_File_Link": [
+                          "Succeeded"
+                        ]
+                      },
+                      "metadata": {
+                        "operationMetadataId": "ae7da0f4-0830-4894-83a0-69b272404d81"
+                      },
+                      "type": "OpenApiConnection",
+                      "inputs": {
+                        "host": {
+                          "connectionName": "shared_office365",
+                          "operationId": "SendEmailV2",
+                          "apiId": "/providers/Microsoft.PowerApps/apis/shared_office365"
+                        },
+                        "parameters": {
+                          "emailMessage/To": "@first(body('List_rows')?['value'])?['cmdspp_p_createdby_user_id']?['cmdspp_g_email']",
+                          "emailMessage/Subject": "New Secure Message Available",
+                          "emailMessage/Body": "<div style=\"margin:0;padding:0;background-color:#ffffff;font-family:Segoe UI, Arial, sans-serif;\">\n\n    <table role=\"presentation\"\n           cellpadding=\"0\"\n           cellspacing=\"0\"\n           border=\"0\"\n           width=\"100%\"\n           style=\"background-color:#ffffff;\">\n\n        <tr>\n            <td align=\"center\">\n\n                <!-- Main Container -->\n                <table role=\"presentation\"\n                       cellpadding=\"0\"\n                       cellspacing=\"0\"\n                       border=\"0\"\n                       width=\"866\"\n                       style=\"background:#ffffff;\">\n\n                    <!-- Header -->\n                    <tr>\n                        <td align=\"center\"\n                            style=\"background:#263B68;\n                                   padding:34px 20px;\n                                   color:#FFFFFF;\n                                   font-size:28px;\n                                   font-weight:400;\n                                   line-height:1.2;\">\n\n                            CMdS NextGen Provider Portal\n                            <br>\n                            – New Secure Message Available\n\n                        </td>\n                    </tr>\n\n                    <!-- Body -->\n                    <tr>\n                        <td style=\"padding:55px 58px 30px 58px;\n                                   color:#2C3E50;\n                                   font-size:20px;\n                                   line-height:1.7;\">\n\n                            <p style=\"margin:0 0 35px 0;\">\n                                Hi @{first(body('List_rows')?['value'])?['cmdspp_p_fst_nam']},\n                            </p>\n\n                            <p style=\"margin:0 0 10px 0;\">\n                                You have a new secure message regarding your Provider Enrollment.\n                            </p>\n\n                            <p style=\"margin:0 0 45px 0;\">\n                                Please log in to the Provider Portal to view your message.\n                            </p>\n\n                            <p style=\"margin:0 0 5px 0;color:#6B7A90;\">\n                                Thank you,\n                            </p>\n\n                            <p style=\"margin:0;color:#344B70;\">\n                                CMDS Next Gen Provider Portal Support Team\n                            </p>\n\n                        </td>\n                    </tr>\n\n                    <!-- Footer -->\n                    <tr>\n                        <td style=\"background:#F5F7FA;\n                                   padding:32px 40px;\n                                   text-align:center;\n                                   color:#8A9AB0;\n                                   font-size:14px;\n                                   line-height:1.6;\">\n\n                            <div>\n                                This is an automated message from the CMDS Next Gen Provider Portal.\n                                Please do not reply directly to this email.\n                            </div>\n\n                            <div style=\"margin-top:12px;\">\n                                © @{formatDateTime(utcNow(),'yyyy')} CMDS Next Gen Provider Portal · All rights reserved\n                            </div>\n\n                        </td>\n                    </tr>\n\n                </table>\n\n            </td>\n        </tr>\n\n    </table>\n\n</div>",
+                          "emailMessage/Importance": "Normal"
+                        },
+                        "authentication": "@parameters('$authentication')"
+                      }
+                    },
+                    "Compose_2": {
+                      "runAfter": {
+                        "Send_an_email_(V2)_3": [
+                          "Succeeded"
+                        ]
+                      },
+                      "metadata": {
+                        "operationMetadataId": "b88a4648-6d1b-4f23-991a-d14c26ea4767"
+                      },
+                      "type": "Compose",
+                      "inputs": "Hi @{first(body('List_rows')?['value'])?['cmdspp_p_fst_nam']},\n\nA Cancellation Letter has been successfully generated for the provider enrollment application below.\n\nThe generated Cancellation Letter PDF is attached for reference.\n\n<a href=\"@{outputs('Compose_Cancelled_File_Link')}\" target=\"_blank\">View Cancellation Letter PDF\n</a>\n\nBest regards,\nCMDS Next Gen Provider Portal Support Team"
+                    },
+                    "Compose_Cancelled_Payload": {
+                      "runAfter": {
+                        "Compose_2": [
+                          "Succeeded"
+                        ]
+                      },
+                      "metadata": {
+                        "operationMetadataId": "72aa4e46-8900-4d26-8a45-81cf2f82c8d4"
+                      },
+                      "type": "Compose",
+                      "inputs": {
+                        "userId": "@first(body('List_rows')?['value'])?['_cmdspp_p_createdby_user_id_value']",
+                        "userEmail": "@first(body('List_rows')?['value'])?['cmdspp_p_createdby_user_id']?['cmdspp_g_email']",
+                        "emailBody": "@outputs('Compose_2')",
+                        "emailSubject": "Application Cancelled",
+                        "providerType": "@first(body('List_rows')?['value'])?['_cmdspp_p_pvd_typ_lkp_value@OData.Community.Display.V1.FormattedValue']",
+                        "senderEmail": "@outputs('Get_a_row_by_ID_2')?['body/internalemailaddress']",
+                        "attachmentName": "Cancelled.pdf",
+                        "attachmentContent": "@{body('Get_file_content_using_path_3')?['$content']}",
+                        "senderId": ""
+                      }
+                    },
+                    "Run_a_Child_Flow_3": {
+                      "runAfter": {
+                        "Compose_Cancelled_Payload": [
+                          "Succeeded"
+                        ]
+                      },
+                      "metadata": {
+                        "operationMetadataId": "7aafdd35-4b24-4a61-a890-3e057d265c16"
+                      },
+                      "type": "Workflow",
+                      "inputs": {
+                        "host": {
+                          "workflowReferenceName": "27b723b9-2c90-f111-8076-70a8a5b02d34"
+                        },
+                        "body": {
+                          "text": "@string(outputs('Compose_Cancelled_Payload'))"
+                        }
+                      }
+                    },
+                    "Get_file_metadata_using_path_3": {
+                      "runAfter": {
+                        "Get_file_content_using_path_3": [
+                          "Succeeded"
+                        ]
+                      },
+                      "metadata": {
+                        "operationMetadataId": "a5646606-8052-40db-9af0-f4369f32efad"
+                      },
+                      "type": "OpenApiConnection",
+                      "inputs": {
+                        "host": {
+                          "connectionName": "shared_sharepointonline_1",
+                          "operationId": "GetFileMetadataByPath",
+                          "apiId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline"
+                        },
+                        "parameters": {
+                          "dataset": "@body('Parse_JSON_-_SharePoint_Config')?['siteAddress']",
+                          "path": "@outputs('Compose_Cancelled_File_Path')"
+                        },
+                        "authentication": "@parameters('$authentication')"
+                      }
+                    },
+                    "Get_file_properties_3": {
+                      "runAfter": {
+                        "Get_file_metadata_using_path_3": [
+                          "Succeeded"
+                        ]
+                      },
+                      "metadata": {
+                        "operationMetadataId": "553384ec-898a-468d-bacb-df752b47aec6"
+                      },
+                      "type": "OpenApiConnection",
+                      "inputs": {
+                        "host": {
+                          "connectionName": "shared_sharepointonline_1",
+                          "operationId": "GetFileItem",
+                          "apiId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline"
+                        },
+                        "parameters": {
+                          "dataset": "@body('Parse_JSON_-_SharePoint_Config')?['siteAddress']",
+                          "table": "@body('Parse_JSON_-_SharePoint_Config')?['libraryName']",
+                          "id": "@outputs('Get_file_metadata_using_path_3')?['body/ItemId']"
+                        },
+                        "authentication": "@parameters('$authentication')"
+                      }
+                    },
+                    "Compose_Cancelled_File_Link": {
+                      "runAfter": {
+                        "Get_file_properties_3": [
+                          "Succeeded"
+                        ]
+                      },
+                      "metadata": {
+                        "operationMetadataId": "d13e056a-c26a-4d58-ab5a-805e7e61606f"
+                      },
+                      "type": "Compose",
+                      "inputs": "@concat(\r\n    body('Get_file_properties_3')?['{Link}'],\r\n    '?web=1'\r\n)"
+                    }
+                  }
+                }
+              },
+              "default": {
+                "actions": {}
+              },
+              "expression": "@triggerOutputs()?['body/cmdspp_p_appln_status']",
+              "metadata": {
+                "operationMetadataId": "3ca23185-1e8a-44ca-95cb-f41624d5ed8f"
+              },
+              "type": "Switch"
+            }
+          },
+          "runAfter": {
+            "Compose": [
+              "Succeeded"
+            ]
+          },
+          "expression": {
+            "or": [
+              {
+                "equals": [
+                  "@triggerOutputs()?['body/cmdspp_p_appln_status']",
+                  4
+                ]
+              },
+              {
+                "equals": [
+                  "@triggerOutputs()?['body/cmdspp_p_appln_status']",
+                  6
+                ]
+              },
+              {
+                "equals": [
+                  "@triggerOutputs()?['body/cmdspp_p_appln_status']",
+                  7
+                ]
+              }
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "91306330-62f7-4154-be08-3dfafc0a3a43"
+          },
+          "type": "If"
+        },
+        "Get_a_row_by_ID": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "93ca2f3f-29a4-4174-ab8b-a30944b53d7e"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps_1",
+              "operationId": "GetItem",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "cmdspp_p_dtl_tbs",
+              "recordId": "@triggerOutputs()?['body/cmdspp_p_dtl_tbid']"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "List_rows": {
+          "runAfter": {
+            "Get_a_row_by_ID": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "82bb241b-6073-4072-8ae3-45fbbba41b1d"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps_1",
+              "operationId": "ListRecords",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "cmdspp_p_idt_inf_dtls",
+              "$filter": "_cmdspp_p_app_id_lkp_value eq @{outputs('Get_a_row_by_ID')?['body/cmdspp_p_dtl_tbid']}",
+              "$expand": "cmdspp_p_createdby_user_id($select = cmdspp_g_email)"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Get_a_row_by_ID_2": {
+          "runAfter": {
+            "List_rows": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "c5fe9180-1a8d-491f-af10-deae085b69f7"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps_1",
+              "operationId": "GetItem",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "systemusers",
+              "recordId": "@triggerOutputs()?['body/cmdspp_loggeduser']"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "List_rows_G_User": {
+          "runAfter": {
+            "Get_a_row_by_ID_2": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "f5bfc834-16b8-4327-b320-59b4878c3c3e"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps_1",
+              "operationId": "ListRecords",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "cmdspp_g_usr_dtls_tbs",
+              "$filter": "cmdspp_g_usr_sk eq @{first(body('List_rows')?['value'])?['_cmdspp_p_createdby_user_id_value']}"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Compose": {
+          "runAfter": {
+            "Parse_JSON_-_SharePoint_Config": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "788e85d5-3079-4f6e-9d29-f5be3c4aa9e5"
+          },
+          "type": "Compose",
+          "inputs": "@outputs('List_rows')?['body/value']"
+        },
+        "List_rows_2": {
+          "runAfter": {
+            "List_rows_G_User": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "04f17aef-c1bb-4374-b7f3-9e35cf3d2b19"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps_1",
+              "operationId": "ListRecords",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "environmentvariabledefinitions",
+              "$filter": "schemaname eq 'cmdspp_ENV_DocInt_endPointSettings' or schemaname eq 'cmdspp_ENV_SharePointPath_Config'"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Filter_array_-_SharePoint_Definition_Id": {
+          "runAfter": {
+            "List_rows_2": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "43c6de84-3728-4414-b46f-160888a6e94a"
+          },
+          "type": "Query",
+          "inputs": {
+            "from": "@outputs('List_rows_2')?['body/value']",
+            "where": "@equals(item()?['schemaname'], 'cmdspp_ENV_SharePointPath_Config')"
+          }
+        },
+        "Compose_-_SharePoint_Definition_Id": {
+          "runAfter": {
+            "Filter_array_-_SharePoint_Definition_Id": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "cb88a732-81a9-40e5-bc7b-fd02ca1fb323"
+          },
+          "type": "Compose",
+          "inputs": "@first(body('Filter_array_-_SharePoint_Definition_Id'))?['environmentvariabledefinitionid']"
+        },
+        "List_rows_-_Env_Values": {
+          "runAfter": {
+            "Compose_-_SharePoint_Definition_Id": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "e586719c-aa94-42e5-b4a1-7461aa0c2d12"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps_1",
+              "operationId": "ListRecords",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "environmentvariablevalues",
+              "$filter": "_environmentvariabledefinitionid_value eq @{outputs('Compose_-_SharePoint_Definition_Id')}"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Filter_array_-_SharePoint_Value": {
+          "runAfter": {
+            "List_rows_-_Env_Values": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "d7396f4a-fa4d-4fd1-b162-e74704bc7777"
+          },
+          "type": "Query",
+          "inputs": {
+            "from": "@outputs('List_rows_-_Env_Values')?['body/value']",
+            "where": "@equals(item()?['_environmentvariabledefinitionid_value'], outputs('Compose_-_SharePoint_Definition_Id'))"
+          }
+        },
+        "Compose_-_SharePoint_Config_Raw": {
+          "runAfter": {
+            "Filter_array_-_SharePoint_Value": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "9387e029-6b84-4812-8fdc-889393f2bae0"
+          },
+          "type": "Compose",
+          "inputs": "@if(\r\n  empty(body('Filter_array_-_SharePoint_Value')),\r\n  first(body('Filter_array_-_SharePoint_Definition_Id'))?['defaultvalue'],\r\n  first(body('Filter_array_-_SharePoint_Value'))?['value']\r\n)"
+        },
+        "Parse_JSON_-_SharePoint_Config": {
+          "runAfter": {
+            "Compose_-_SharePoint_Config_Raw": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "23bfc22f-4be0-4466-b61b-c47aab8acdfd"
+          },
+          "type": "ParseJson",
+          "inputs": {
+            "content": "@outputs('Compose_-_SharePoint_Config_Raw')",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "siteAddress": {
+                  "type": "string"
+                },
+                "libraryName": {
+                  "type": "string"
+                },
+                "folderPath": {
+                  "type": "string"
+                },
+                "configFolderPath": {
+                  "type": "string"
+                },
+                "screeningFolderPath": {
+                  "type": "string"
+                },
+                "parametersPath": {
+                  "type": "string"
+                },
+                "parametersConfigPath": {
+                  "type": "string"
+                },
+                "parametersScreeningPath": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "templateName": ""
+  },
+  "schemaVersion": "1.0.0.0"
+}

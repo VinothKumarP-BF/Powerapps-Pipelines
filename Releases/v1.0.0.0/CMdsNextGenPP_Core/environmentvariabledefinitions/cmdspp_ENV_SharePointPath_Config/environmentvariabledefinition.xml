@@ -1,0 +1,10 @@
+<environmentvariabledefinition schemaname="cmdspp_ENV_SharePointPath_Config">
+  <displayname default="ENV_SharePointPath_Config">
+    <label description="ENV_SharePointPath_Config" languagecode="1033" />
+  </displayname>
+  <introducedversion>1.8.5.1</introducedversion>
+  <iscustomizable>1</iscustomizable>
+  <isrequired>0</isrequired>
+  <secretstore>0</secretstore>
+  <type>100000003</type>
+</environmentvariabledefinition>

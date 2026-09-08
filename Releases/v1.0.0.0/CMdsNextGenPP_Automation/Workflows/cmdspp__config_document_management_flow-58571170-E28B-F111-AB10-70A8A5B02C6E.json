@@ -1,0 +1,920 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps_1": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "cmdspp_CR_Dataverse_Core_DEV"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      },
+      "shared_sharepointonline": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "cmdspp_CR_SharePoint_Core_DEV"
+        },
+        "api": {
+          "name": "shared_sharepointonline"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "manual": {
+          "metadata": {
+            "operationMetadataId": "5195c74c-11ce-485c-94c3-4350a3a25540"
+          },
+          "type": "Request",
+          "kind": "Http",
+          "inputs": {
+            "schema": {
+              "action": "",
+              "recordId": "",
+              "documentType": "",
+              "fileName": "",
+              "fileContent": "",
+              "enrollmentId": ""
+            },
+            "triggerAuthenticationType": "All"
+          }
+        }
+      },
+      "actions": {
+        "Switch": {
+          "runAfter": {
+            "Initialize_variable": [
+              "Succeeded"
+            ]
+          },
+          "cases": {
+            "Case": {
+              "case": "Upload",
+              "actions": {
+                "Condition": {
+                  "actions": {
+                    "HTTP_-_analyze_document": {
+                      "runAfter": {},
+                      "metadata": {
+                        "operationMetadataId": "0e0ec841-71fd-4949-93bb-d65b3ccfb8ad"
+                      },
+                      "type": "Http",
+                      "inputs": {
+                        "method": "POST",
+                        "uri": "@concat(  'https://docintelsvc01.cognitiveservices.azure.com/documentintelligence/documentModels/',outputs('Compose_-_Request')?['documentIntelligence']?['modelId'],':analyze?_overload=analyzeDocument&api-version=',outputs('Compose_-_Request')?['documentIntelligence']?['apiVersion'],\r\n  '&features=',outputs('Compose_-_Request')?['documentIntelligence']?['features']\r\n)",
+                        "headers": {
+                          "Ocp-Apim-Subscription-Key": "Fd0SNwcBxQWQFCfJGqmVfD90qKdHt7CCcfJ9IcI80GboiAhaU2t2JQQJ99BDACYeBjFXJ3w3AAALACOGMEbr",
+                          "Content-type": "application/json"
+                        },
+                        "body": {
+                          "base64Source": "@{outputs('Compose_-_Request')?['file']?['base64']}"
+                        }
+                      },
+                      "runtimeConfiguration": {
+                        "contentTransfer": {
+                          "transferMode": "Chunked"
+                        }
+                      }
+                    },
+                    "Do_until": {
+                      "actions": {
+                        "HTTP_-_Get_Analyze_Result": {
+                          "runAfter": {
+                            "Delay": [
+                              "Succeeded"
+                            ]
+                          },
+                          "metadata": {
+                            "operationMetadataId": "5a007965-8dae-460a-8879-60f42eed97d9"
+                          },
+                          "type": "Http",
+                          "inputs": {
+                            "method": "GET",
+                            "uri": "@outputs('HTTP_-_Analyze_Document')?['headers']?['Operation-Location']",
+                            "headers": {
+                              "Ocp-Apim-Subscription-Key": "Fd0SNwcBxQWQFCfJGqmVfD90qKdHt7CCcfJ9IcI80GboiAhaU2t2JQQJ99BDACYeBjFXJ3w3AAALACOGMEbr"
+                            }
+                          },
+                          "runtimeConfiguration": {
+                            "contentTransfer": {
+                              "transferMode": "Chunked"
+                            }
+                          }
+                        },
+                        "Set_variable": {
+                          "runAfter": {
+                            "HTTP_-_Get_Analyze_Result": [
+                              "Succeeded"
+                            ]
+                          },
+                          "metadata": {
+                            "operationMetadataId": "38d0c301-8657-417b-83cb-aeb220e819bb"
+                          },
+                          "type": "SetVariable",
+                          "inputs": {
+                            "name": "varAnalyzeStatus",
+                            "value": "@body('HTTP_-_Get_Analyze_Result')?['status']"
+                          }
+                        },
+                        "Delay": {
+                          "runAfter": {},
+                          "metadata": {
+                            "operationMetadataId": "2a3f283d-7112-4f31-b776-a9f9efc81416"
+                          },
+                          "type": "Wait",
+                          "inputs": {
+                            "interval": {
+                              "count": 5,
+                              "unit": "Second"
+                            }
+                          }
+                        }
+                      },
+                      "runAfter": {
+                        "HTTP_-_analyze_document": [
+                          "Succeeded"
+                        ]
+                      },
+                      "expression": "@or(equals(variables('varAnalyzeStatus'), 'succeeded'),  equals(variables('varAnalyzeStatus'), 'failed'))",
+                      "limit": {
+                        "count": 5,
+                        "timeout": "PT1H"
+                      },
+                      "metadata": {
+                        "operationMetadataId": "f735f984-a636-427b-92df-ccb926ca99bf"
+                      },
+                      "type": "Until"
+                    },
+                    "Condition_1": {
+                      "actions": {
+                        "Compose_-_Raw_OCR_Text": {
+                          "runAfter": {},
+                          "metadata": {
+                            "operationMetadataId": "2ebcd887-1715-424f-bad5-c16fe06951f9"
+                          },
+                          "type": "Compose",
+                          "inputs": "@body('HTTP_-_Get_Analyze_Result')?['analyzeResult']?['content']"
+                        },
+                        "Compose_-_Raw_Key_Value_Pairs": {
+                          "runAfter": {
+                            "Compose_-_Raw_OCR_Text": [
+                              "Succeeded"
+                            ]
+                          },
+                          "metadata": {
+                            "operationMetadataId": "262f25e4-863b-4e54-a83b-f042922cd1e8"
+                          },
+                          "type": "Compose",
+                          "inputs": "@body('HTTP_-_Get_Analyze_Result')?['analyzeResult']?['keyValuePairs']"
+                        },
+                        "Compose_-_Raw_Tables": {
+                          "runAfter": {
+                            "Compose_-_Raw_Key_Value_Pairs": [
+                              "Succeeded"
+                            ]
+                          },
+                          "metadata": {
+                            "operationMetadataId": "2d45ae03-414f-4be3-998e-de5f79aac3d6"
+                          },
+                          "type": "Compose",
+                          "inputs": "@body('HTTP_-_Get_Analyze_Result')?['analyzeResult']?['tables']"
+                        },
+                        "Select_-_Normalized_Key_Value_Pairs": {
+                          "runAfter": {
+                            "Compose_-_Raw_Tables": [
+                              "Succeeded"
+                            ]
+                          },
+                          "metadata": {
+                            "operationMetadataId": "7d3ca550-6489-49af-84d8-1b875aa0c863"
+                          },
+                          "type": "Select",
+                          "inputs": {
+                            "from": "@body('HTTP_-_Get_Analyze_Result')?['analyzeResult']?['keyValuePairs']",
+                            "select": {
+                              "Key": "@toLower(trim(replace(replace(coalesce(item()?['key']?['content'], ''), ':', ''), '#', '')))",
+                              "originalKey": "@trim(coalesce(item()?['key']?['content'], ''))",
+                              "value": "@trim(coalesce(item()?['value']?['content'], ''))",
+                              "confidence": "@coalesce(item()?['confidence'], 0)"
+                            }
+                          }
+                        },
+                        "Compose_-_Tables_JSON": {
+                          "runAfter": {
+                            "Select_-_Normalized_Key_Value_Pairs": [
+                              "Succeeded"
+                            ]
+                          },
+                          "metadata": {
+                            "operationMetadataId": "c2a5e9d1-76af-45f0-8516-a99f67b5f546"
+                          },
+                          "type": "Compose",
+                          "inputs": "@string(body('HTTP_-_Get_Analyze_Result')?['analyzeResult']?['tables'])"
+                        },
+                        "Response_-_DocInt_Data": {
+                          "runAfter": {
+                            "Compose_-_Tables_JSON": [
+                              "Succeeded"
+                            ]
+                          },
+                          "metadata": {
+                            "operationMetadataId": "0da8ecc9-3ab9-4f24-96c9-e6a876175257"
+                          },
+                          "type": "Response",
+                          "kind": "Http",
+                          "inputs": {
+                            "statusCode": 200,
+                            "headers": {
+                              "content-type": "application/json"
+                            },
+                            "body": {
+                              "data": "@body('Select_-_Normalized_Key_Value_Pairs')",
+                              "type": "Doc_Int",
+                              "status": "Success",
+                              "fileName": "@{outputs('Create_file_2')?['body/Name']}",
+                              "documentId": "@{outputs('Create_file_2')?['body/ItemId']}",
+                              "recordId": "@{outputs('Add_a_new_row_2')?['body/cmdspp_p_documents_tbid']}"
+                            }
+                          }
+                        }
+                      },
+                      "runAfter": {
+                        "Do_until": [
+                          "Succeeded"
+                        ]
+                      },
+                      "else": {
+                        "actions": {
+                          "Response_-_Failed": {
+                            "runAfter": {},
+                            "metadata": {
+                              "operationMetadataId": "1bc3c523-365e-42e1-91d4-b4dcfcd1fc6f"
+                            },
+                            "type": "Response",
+                            "kind": "Http",
+                            "inputs": {
+                              "statusCode": 200,
+                              "body": {
+                                "status": "Failed"
+                              }
+                            }
+                          }
+                        }
+                      },
+                      "expression": {
+                        "and": [
+                          {
+                            "equals": [
+                              "@body('HTTP_-_Get_Analyze_Result')?['status']",
+                              "succeeded"
+                            ]
+                          }
+                        ]
+                      },
+                      "metadata": {
+                        "operationMetadataId": "912ec5c0-ec34-41c2-b448-b2a953368c06"
+                      },
+                      "type": "If"
+                    }
+                  },
+                  "runAfter": {
+                    "Add_a_new_row_2": [
+                      "Succeeded"
+                    ]
+                  },
+                  "else": {
+                    "actions": {
+                      "Response_4": {
+                        "runAfter": {},
+                        "metadata": {
+                          "operationMetadataId": "af504375-47ba-43dc-8788-abf7261054b8"
+                        },
+                        "type": "Response",
+                        "kind": "Http",
+                        "inputs": {
+                          "statusCode": 200,
+                          "body": {
+                            "status": "Success",
+                            "fileName": "@{outputs('Create_file_2')?['body/Name']}",
+                            "documentId": "@{outputs('Create_file_2')?['body/ItemId']}",
+                            "recordId": "@{outputs('Add_a_new_row_2')?['body/cmdspp_p_documents_tbid']}"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "expression": {
+                    "or": [
+                      {
+                        "contains": [
+                          "@triggerBody()?['fileName']",
+                          "DEA"
+                        ]
+                      },
+                      {
+                        "contains": [
+                          "@triggerBody()?['fileName']",
+                          "CLIA"
+                        ]
+                      }
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "9dbdbe3c-4c2b-4b39-818a-4b6ecb7bd8e8"
+                  },
+                  "type": "If"
+                },
+                "Add_a_new_row_2": {
+                  "runAfter": {
+                    "Scope_CreateFile": [
+                      "Succeeded"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "6b4694e7-4761-4ac7-9d59-93a08db7a972"
+                  },
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "host": {
+                      "connectionName": "shared_commondataserviceforapps_1",
+                      "operationId": "CreateRecord",
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                    },
+                    "parameters": {
+                      "entityName": "cmdspp_p_documents_tbs",
+                      "item/cmdspp_p_document_type": "@triggerBody()?['documentType']",
+                      "item/cmdspp_p_enrol_id": "@triggerBody()?['enrollmentId']",
+                      "item/cmdspp_p_file_nam": "@triggerBody()?['fileName']",
+                      "item/cmdspp_p_sharepoint_file_id": "@outputs('Create_file_2')?['body/Id']",
+                      "item/cmdspp_p_sharepoint_path": "@concat(\r\n'https://conduent.sharepoint.com/teams/CMdSNextGenProviderModule/Shared Documents/SharePoint for DEV & QA Vendors/Infinite/uploadedDocuments/',\r\ntriggerBody()?['enrollmentId'],\r\n'/',\r\ntriggerBody()?['fileName']\r\n)"
+                    },
+                    "authentication": "@parameters('$authentication')"
+                  }
+                },
+                "Compose_Enrollment_Id": {
+                  "runAfter": {},
+                  "metadata": {
+                    "operationMetadataId": "51c407a4-b9f7-47fe-9bba-62c2dee80a70"
+                  },
+                  "type": "Compose",
+                  "inputs": "@triggerBody()?['enrollmentId']"
+                },
+                "Compose_Parent_Folder_Path": {
+                  "runAfter": {
+                    "Compose_Enrollment_Id": [
+                      "Succeeded"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "370e6d94-7cf6-4619-a232-0b0b6babe814"
+                  },
+                  "type": "Compose",
+                  "inputs": "/SharePoint for DEV & QA Vendors/Infinite/uploadedDocuments"
+                },
+                "Compose_Dynamic_Folder": {
+                  "runAfter": {
+                    "Compose_Parent_Folder_Path": [
+                      "Succeeded"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "b45bdd29-5f54-49b8-a130-2cbc060d08b7"
+                  },
+                  "type": "Compose",
+                  "inputs": "@concat(outputs('Compose_Parent_Folder_Path'),'/',outputs('Compose_Enrollment_Id'))"
+                },
+                "Scope_CheckFolder": {
+                  "actions": {
+                    "Get_folder_metadata_using_path": {
+                      "runAfter": {},
+                      "metadata": {
+                        "operationMetadataId": "20badd5d-a8bd-488b-b922-9d7946eb45e8"
+                      },
+                      "type": "OpenApiConnection",
+                      "inputs": {
+                        "host": {
+                          "connectionName": "shared_sharepointonline",
+                          "operationId": "GetFolderMetadataByPath",
+                          "apiId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline"
+                        },
+                        "parameters": {
+                          "dataset": "https://conduent.sharepoint.com/teams/CMdSNextGenProviderModule",
+                          "path": "@concat('/Shared Documents/SharePoint for DEV & QA Vendors/Infinite/uploadedDocuments/',triggerBody()?['enrollmentId'])"
+                        },
+                        "authentication": "@parameters('$authentication')"
+                      }
+                    }
+                  },
+                  "runAfter": {
+                    "Compose_Dynamic_Folder": [
+                      "Succeeded"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "e2f73c52-96ef-4f3a-8da3-772fcbc2d071"
+                  },
+                  "type": "Scope"
+                },
+                "Scope_CreateFolderIfMissing": {
+                  "actions": {
+                    "SharePoint_Create_New_Folder": {
+                      "runAfter": {},
+                      "metadata": {
+                        "operationMetadataId": "68439cbf-3af4-4d3d-8f95-f302c5d1c9f6"
+                      },
+                      "type": "OpenApiConnection",
+                      "inputs": {
+                        "host": {
+                          "connectionName": "shared_sharepointonline",
+                          "operationId": "CreateNewFolder",
+                          "apiId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline"
+                        },
+                        "parameters": {
+                          "dataset": "https://conduent.sharepoint.com/teams/CMdSNextGenProviderModule",
+                          "table": "0f44ddd2-0765-428b-912d-4330735f9bc8",
+                          "parameters/path": "@outputs('Compose_Dynamic_Folder')"
+                        },
+                        "authentication": "@parameters('$authentication')"
+                      }
+                    }
+                  },
+                  "runAfter": {
+                    "Scope_CheckFolder": [
+                      "Failed"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "5d85c7bd-3fac-47ec-862c-57a9781924d3"
+                  },
+                  "type": "Scope"
+                },
+                "Scope_CreateFile": {
+                  "actions": {
+                    "Create_file_2": {
+                      "runAfter": {},
+                      "metadata": {
+                        "operationMetadataId": "14294c9d-e7f7-4a86-85af-2bc4a53d4741"
+                      },
+                      "type": "OpenApiConnection",
+                      "inputs": {
+                        "host": {
+                          "connectionName": "shared_sharepointonline",
+                          "operationId": "CreateFile",
+                          "apiId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline"
+                        },
+                        "parameters": {
+                          "dataset": "https://conduent.sharepoint.com/teams/CMdSNextGenProviderModule",
+                          "folderPath": "@concat('Shared Documents/SharePoint for DEV & QA Vendors/Infinite/uploadedDocuments/',triggerBody()?['enrollmentId'] )",
+                          "name": "@triggerBody()?['fileName']",
+                          "body": "@triggerBody()?['fileContent']"
+                        },
+                        "authentication": "@parameters('$authentication')"
+                      },
+                      "runtimeConfiguration": {
+                        "contentTransfer": {
+                          "transferMode": "Chunked"
+                        }
+                      }
+                    }
+                  },
+                  "runAfter": {
+                    "Scope_CreateFolderIfMissing": [
+                      "Skipped",
+                      "Succeeded"
+                    ],
+                    "Scope_CheckFolder": [
+                      "Succeeded",
+                      "Failed"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "21cae939-38f4-4908-bf28-c44fe88915b0"
+                  },
+                  "type": "Scope"
+                }
+              }
+            },
+            "Case_2": {
+              "case": "View",
+              "actions": {
+                "Get_a_row_by_ID": {
+                  "runAfter": {},
+                  "metadata": {
+                    "operationMetadataId": "cce396d7-6c1c-4b35-bbb2-7f481b513f67"
+                  },
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "host": {
+                      "connectionName": "shared_commondataserviceforapps_1",
+                      "operationId": "GetItem",
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                    },
+                    "parameters": {
+                      "entityName": "cmdspp_p_documents_tbs",
+                      "recordId": "@triggerBody()?['recordId']"
+                    },
+                    "authentication": "@parameters('$authentication')"
+                  }
+                },
+                "Download_a_file_or_an_image": {
+                  "runAfter": {
+                    "Get_a_row_by_ID": [
+                      "Succeeded"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "c1682f42-b387-47ee-8d2e-1a445583d614"
+                  },
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "host": {
+                      "connectionName": "shared_commondataserviceforapps_1",
+                      "operationId": "GetEntityFileImageFieldContent",
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                    },
+                    "parameters": {
+                      "entityName": "cmdspp_p_documents_tbs",
+                      "recordId": "@triggerBody()?['recordId']",
+                      "fileImageFieldName": "cmdspp_p_file"
+                    },
+                    "authentication": "@parameters('$authentication')"
+                  }
+                },
+                "Response": {
+                  "runAfter": {
+                    "Download_a_file_or_an_image": [
+                      "Succeeded"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "a66bbf2a-f994-4e8b-947a-80d8c54ad680"
+                  },
+                  "type": "Response",
+                  "kind": "Http",
+                  "inputs": {
+                    "statusCode": 200,
+                    "body": {
+                      "status": "Success",
+                      "fileContent": "@{body('Download_a_file_or_an_image')?['$content']}"
+                    }
+                  }
+                }
+              }
+            },
+            "Case_3": {
+              "case": "Replace",
+              "actions": {
+                "Get_a_row_by_ID_2": {
+                  "runAfter": {},
+                  "metadata": {
+                    "operationMetadataId": "7cd7c0c9-c2da-40b6-ba44-41f30dcecf67"
+                  },
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "host": {
+                      "connectionName": "shared_commondataserviceforapps_1",
+                      "operationId": "GetItem",
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                    },
+                    "parameters": {
+                      "entityName": "cmdspp_p_documents_tbs",
+                      "recordId": "@triggerBody()?['recordId']"
+                    },
+                    "authentication": "@parameters('$authentication')"
+                  }
+                },
+                "Update_a_row_3": {
+                  "runAfter": {
+                    "Create_file": [
+                      "Succeeded"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "b92ef90b-1144-4d7e-be08-c5ee9dbbbd6a"
+                  },
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "host": {
+                      "connectionName": "shared_commondataserviceforapps_1",
+                      "operationId": "UpdateOnlyRecord",
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                    },
+                    "parameters": {
+                      "entityName": "cmdspp_p_documents_tbs",
+                      "recordId": "@outputs('Get_a_row_by_ID_2')?['body/cmdspp_p_documents_tbid']",
+                      "item/cmdspp_p_document_type": "@triggerBody()?['documentType']",
+                      "item/cmdspp_p_enrol_id": "@triggerBody()?['enrollmentId']",
+                      "item/cmdspp_p_file_nam": "@triggerBody()?['fileName']",
+                      "item/cmdspp_p_file_status": 3,
+                      "item/cmdspp_p_sharepoint_file_id": "@outputs('Create_file')?['body/Id']",
+                      "item/cmdspp_p_sharepoint_path": "@concat(\r\n'https://conduent.sharepoint.com/teams/CMdSNextGenProviderModule/Shared Documents/SharePoint for DEV & QA Vendors/Infinite/uploadedDocuments/',\r\ntriggerBody()?['enrollmentId'],\r\n'/',\r\ntriggerBody()?['fileName']\r\n)",
+                      "item/statecode": 0
+                    },
+                    "authentication": "@parameters('$authentication')"
+                  }
+                },
+                "Delete_file_2": {
+                  "runAfter": {
+                    "Get_a_row_by_ID_2": [
+                      "Succeeded"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "62e88ca9-f341-4772-97cf-f57b9ddc88ce"
+                  },
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "host": {
+                      "connectionName": "shared_sharepointonline",
+                      "operationId": "DeleteFile",
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline"
+                    },
+                    "parameters": {
+                      "dataset": "https://conduent.sharepoint.com/teams/CMdSNextGenProviderModule",
+                      "id": "@outputs('Get_a_row_by_ID_2')?['body/cmdspp_p_sharepoint_file_id']"
+                    },
+                    "authentication": "@parameters('$authentication')"
+                  }
+                },
+                "Create_file": {
+                  "runAfter": {
+                    "Delete_file_2": [
+                      "Succeeded"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "65bac744-7500-4659-bfcd-c72d505d40da"
+                  },
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "host": {
+                      "connectionName": "shared_sharepointonline",
+                      "operationId": "CreateFile",
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline"
+                    },
+                    "parameters": {
+                      "dataset": "https://conduent.sharepoint.com/teams/CMdSNextGenProviderModule",
+                      "folderPath": "@concat('Shared Documents/SharePoint for DEV & QA Vendors/Infinite/uploadedDocuments/',triggerBody()?['enrollmentId'] )",
+                      "name": "@triggerBody()?['fileName']",
+                      "body": "@triggerBody()?['fileContent']"
+                    },
+                    "authentication": "@parameters('$authentication')"
+                  },
+                  "runtimeConfiguration": {
+                    "contentTransfer": {
+                      "transferMode": "Chunked"
+                    }
+                  }
+                },
+                "Condition_2": {
+                  "actions": {
+                    "HTTP": {
+                      "runAfter": {},
+                      "metadata": {
+                        "operationMetadataId": "8754fcfd-3153-4a7e-8a12-bfa48469f428"
+                      },
+                      "type": "Http",
+                      "inputs": {
+                        "method": "POST",
+                        "uri": "@{concat(  'https://docintelsvc01.cognitiveservices.azure.com/documentintelligence/documentModels/',outputs('Compose_-_Request')?['documentIntelligence']?['modelId'],':analyze?_overload=analyzeDocument&api-version=',outputs('Compose_-_Request')?['documentIntelligence']?['apiVersion'],\r\n  '&features=',outputs('Compose_-_Request')?['documentIntelligence']?['features']\r\n)}",
+                        "headers": {
+                          "Ocp-Apim-Subscription-Key": "Fd0SNwcBxQWQFCfJGqmVfD90qKdHt7CCcfJ9IcI80GboiAhaU2t2JQQJ99BDACYeBjFXJ3w3AAALACOGMEbr",
+                          "Content-type": "application/json"
+                        },
+                        "body": {
+                          "base64Source": "@{outputs('Compose_-_Request')?['file']?['base64']}"
+                        }
+                      }
+                    }
+                  },
+                  "runAfter": {
+                    "Response_3": [
+                      "Succeeded"
+                    ]
+                  },
+                  "else": {
+                    "actions": {
+                      "Response_5": {
+                        "runAfter": {},
+                        "metadata": {
+                          "operationMetadataId": "891ef808-6e73-48b2-ac54-1947c3ac1abc"
+                        },
+                        "type": "Response",
+                        "kind": "Http",
+                        "inputs": {
+                          "statusCode": 200,
+                          "body": {
+                            "status": "Success",
+                            "fileName": "@{outputs('Create_file')?['body/Name']}",
+                            "documentId": "@{outputs('Create_file')?['body/ItemId']}",
+                            "recordId": "@{outputs('Update_a_row_3')?['body/cmdspp_p_documents_tbid']}"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "expression": {
+                    "or": [
+                      {
+                        "contains": [
+                          "@triggerBody()?['fileName']",
+                          "DEA"
+                        ]
+                      },
+                      {
+                        "contains": [
+                          "@triggerBody()?['fileName']",
+                          "CLA"
+                        ]
+                      }
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "17f7700a-4d77-4f92-9a6d-46444a71932e"
+                  },
+                  "type": "If"
+                },
+                "Response_3": {
+                  "runAfter": {
+                    "Update_a_row_3": [
+                      "Succeeded"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "f06c5ba8-d86b-49e3-9add-afef4cf70363"
+                  },
+                  "type": "Response",
+                  "kind": "Http",
+                  "inputs": {
+                    "statusCode": 200,
+                    "body": {
+                      "status": "Success",
+                      "fileName": "@{outputs('Create_file')?['body/Name']}",
+                      "documentId": "@{outputs('Create_file')?['body/ItemId']}",
+                      "recordId": "@{outputs('Update_a_row_3')?['body/cmdspp_p_documents_tbid']}"
+                    }
+                  }
+                }
+              }
+            },
+            "Case_4": {
+              "case": "Detach",
+              "actions": {
+                "Response_2": {
+                  "runAfter": {
+                    "Delete_a_row": [
+                      "Succeeded"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "45b3403e-fd6e-42ce-9c01-6ef906910ba8"
+                  },
+                  "type": "Response",
+                  "kind": "Http",
+                  "inputs": {
+                    "statusCode": 200,
+                    "body": {
+                      "status": "Success"
+                    }
+                  }
+                },
+                "Get_a_row_by_ID_3": {
+                  "runAfter": {},
+                  "metadata": {
+                    "operationMetadataId": "ef8d81b2-606e-466c-888d-b5763c274729"
+                  },
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "host": {
+                      "connectionName": "shared_commondataserviceforapps_1",
+                      "operationId": "GetItem",
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                    },
+                    "parameters": {
+                      "entityName": "cmdspp_p_documents_tbs",
+                      "recordId": "@triggerBody()?['recordId']"
+                    },
+                    "authentication": "@parameters('$authentication')"
+                  }
+                },
+                "Delete_file_3": {
+                  "runAfter": {
+                    "Get_a_row_by_ID_3": [
+                      "Succeeded"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "9608be78-fb38-4858-95cb-c5d6c89db06e"
+                  },
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "host": {
+                      "connectionName": "shared_sharepointonline",
+                      "operationId": "DeleteFile",
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline"
+                    },
+                    "parameters": {
+                      "dataset": "https://conduent.sharepoint.com/teams/CMdSNextGenProviderModule",
+                      "id": "@outputs('Get_a_row_by_ID_3')?['body/cmdspp_p_sharepoint_file_id']"
+                    },
+                    "authentication": "@parameters('$authentication')"
+                  }
+                },
+                "Delete_a_row": {
+                  "runAfter": {
+                    "Delete_file_3": [
+                      "Succeeded"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "011e2a43-005e-444b-a5d5-46d9a302b98e"
+                  },
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "host": {
+                      "connectionName": "shared_commondataserviceforapps_1",
+                      "operationId": "DeleteRecord",
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                    },
+                    "parameters": {
+                      "entityName": "cmdspp_p_documents_tbs",
+                      "recordId": "@triggerBody()?['recordId']"
+                    },
+                    "authentication": "@parameters('$authentication')"
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "actions": {}
+          },
+          "expression": "@triggerBody()?['action']",
+          "metadata": {
+            "operationMetadataId": "87e20b75-53a9-42c2-8b5f-d010b7ad5cb5"
+          },
+          "type": "Switch"
+        },
+        "Compose_-_Request": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "450ebf4a-b72d-4fb9-bb40-b4a9b4709f79"
+          },
+          "type": "Compose",
+          "inputs": {
+            "source": "PowerPages",
+            "requestId": "@{guid()}",
+            "requestTimestamp": "@{utcNow()}",
+            "file": {
+              "name": "@{triggerBody()?['fileName']}",
+              "base64": "@{triggerBody()?['fileContent']}"
+            },
+            "documentIntelligence": {
+              "modelId": "prebuilt-layout",
+              "apiVersion": "2024-11-30",
+              "features": "keyValuePairs"
+            },
+            "business": {
+              "documentCategory": "CLIA&DEACertificates"
+            }
+          }
+        },
+        "Initialize_variable": {
+          "runAfter": {
+            "Compose_-_Request": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "ff4fee9c-57dd-4a5d-b885-e8c5c3887184"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "varAnalyzeStatus",
+                "type": "string",
+                "value": "Running"
+              }
+            ]
+          }
+        }
+      }
+    },
+    "templateName": ""
+  },
+  "schemaVersion": "1.0.0.0"
+}

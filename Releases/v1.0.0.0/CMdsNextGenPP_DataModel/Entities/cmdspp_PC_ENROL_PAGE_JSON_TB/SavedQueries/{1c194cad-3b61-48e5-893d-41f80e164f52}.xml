@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>0</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>0</isdefault>
+    <savedqueryid>{1c194cad-3b61-48e5-893d-41f80e164f52}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="cmdspp_pc_enrol_page_json_sk" select="1" icon="1" preview="1">
+        <row name="result" id="cmdspp_pc_enrol_page_json_tbid">
+          <cell name="cmdspp_pc_enrol_page_json_sk" width="300" />
+          <cell name="createdon" width="125" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>0</querytype>
+    <fetchxml>
+      <fetch version="1.0" mapping="logical">
+        <entity name="cmdspp_pc_enrol_page_json_tb">
+          <attribute name="cmdspp_pc_enrol_page_json_tbid" />
+          <attribute name="cmdspp_pc_enrol_page_json_sk" />
+          <attribute name="createdon" />
+          <order attribute="cmdspp_pc_enrol_page_json_sk" descending="false" />
+          <filter type="and">
+            <condition attribute="statecode" operator="eq" value="1" />
+          </filter>
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.0</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Inactive PC_ENROL_PAGE_JSON_TBS" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>

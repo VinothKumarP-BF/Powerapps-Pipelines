@@ -1,0 +1,11 @@
+<environmentvariabledefinition schemaname="cmdspp_ENV_Attachment_Urls">
+  <defaultvalue>{     "cmdspp_document_management_flow": "https://68800e766659e6b2b28f47b46ad295.0f.environment.api.powerplatform.com:443/powerautomate/automations/direct/cu/31/workflows/ee864a1582e04d99af3f606b3487084a/triggers/manual/paths/invoke?api-version=1&amp;sp=%2Ftriggers%2Fmanual%2Frun&amp;sv=1.0&amp;sig=1By1TuugiA_h3mw_8a2CvUFXMYiKnY6gwySKD5nOP-E",     "cmdspp_required_document_management_flow": "https://68800e766659e6b2b28f47b46ad295.0f.environment.api.powerplatform.com:443/powerautomate/automations/direct/cu/03/workflows/ba2a690216e4498f95e4037a79cdb28c/triggers/manual/paths/invoke?api-version=1&amp;sp=%2Ftriggers%2Fmanual%2Frun&amp;sv=1.0&amp;sig=-6F1n6GkkI9mDubyBCQO3D0XjYdR9v6-QSLtmSBr9C0",     "cmdspp_fetch_configAudits": "https://68800e766659e6b2b28f47b46ad295.0f.environment.api.powerplatform.com:443/powerautomate/automations/direct/cu/12/workflows/4711b936ea4546f590bd45203fd48cfc/triggers/manual/paths/invoke?api-version=1&amp;sp=%2Ftriggers%2Fmanual%2Frun&amp;sv=1.0&amp;sig=N93Sd-Vv6KEW_mrk7h3VI_FmjIkmar7mMmjig6bvEsU",     "CMDSPP_Create_Docusign_Envelope": "https://68800e766659e6b2b28f47b46ad295.0f.environment.api.powerplatform.com:443/powerautomate/automations/direct/cu/11/workflows/2ada6a91c6764cceb29797a49c2ea54c/triggers/manual/paths/invoke?api-version=1&amp;sp=%2Ftriggers%2Fmanual%2Frun&amp;sv=1.0&amp;sig=mV5R3BHzebKgwoF3jmJjdPfEQr37ycEJ_qcq_D72IpE",     "cmdspp_Signature_Updates": "https://68800e766659e6b2b28f47b46ad295.0f.environment.api.powerplatform.com:443/powerautomate/automations/direct/cu/14/workflows/d2be914df44e43a59822f0a701e7a630/triggers/manual/paths/invoke?api-version=1&amp;sp=%2Ftriggers%2Fmanual%2Frun&amp;sv=1.0&amp;sig=Pbu9jUxZyl00OFyKmVQlYj3ji7S3aqyBfo8hOdzA3rw" }</defaultvalue>
+  <displayname default="ENV_Attachment_Urls">
+    <label description="ENV_Attachment_Urls" languagecode="1033" />
+  </displayname>
+  <introducedversion>1.8.8.3</introducedversion>
+  <iscustomizable>1</iscustomizable>
+  <isrequired>0</isrequired>
+  <secretstore>0</secretstore>
+  <type>100000003</type>
+</environmentvariabledefinition>

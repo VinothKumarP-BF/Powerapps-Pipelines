@@ -1,0 +1,43 @@
+<powerpagecomponent powerpagecomponentid="21a6eb1c-1617-179d-6d59-0e47e79e910c">
+  <content>{
+  "displayorder": 3,
+  "pagetemplateid": "718ed8c8-9407-4620-adf3-832ec188887d",
+  "parentpageid": "51d44b41-26bf-6d84-f130-1b2b46867671",
+  "partialurl": "Attachments",
+  "isroot": false,
+  "rootwebpageid": "9674a815-a129-844d-dadf-76554a5f0df1",
+  "title": "Attachments",
+  "summary": "&lt;p&gt;This is a sample landing page designed to be a starting point for your website&lt;/p&gt;",
+  "copy": "{% include 'cmdspp_Enrollment_Form_Header' %}\n\n&lt;div class=\"cmdspp-form-body\"&gt;\n\n  &lt;div id=\"identity-form-container\" class=\"cmdspp-form-main\"&gt;\n    {% include 'cmdspp_Attachment_Renderer' %}\n  &lt;/div&gt;\n\n  {% include 'cmdspp_Enrollment_Form_SidePanel' %}\n\n&lt;/div&gt;",
+  "publishingstateid": "c7294317-419f-4724-8068-a91d5da8d92c",
+  "enablerating": false,
+  "enabletracking": false,
+  "excludefromsearch": false,
+  "hiddenfromsitemap": true,
+  "sharedpageconfiguration": false,
+  "feedbackpolicy": 756150000,
+  "customcss": ".actions{\r\n    display: none;\r\n}\r\n.cmdspp-enrollment-page{\r\n   padding: 0px !important;\r\n}\r\n.save-btn{\r\n    display: none;\r\n}\r\n\r\n.cmdspp-btn.cmdspp-btn-primary{\r\n    position: absolute;\r\n}\r\n.crmEntityFormView, .entitylist, .modal-content, .popover-content{\r\n    border: none;\r\n}\r\n.crmEntityFormView .cell{\r\n    padding: 0px;\r\n}\r\n\r\n.cmdspp-form-body {\r\n    display: flex;\r\n    padding: 24px;\r\n    padding-top: 10px !important;\r\n    width: 100%;\r\n    gap: 24px;\r\n}\r\n\r\n#identity-form-container{\r\n    width: 100%;\r\n\r\n}"
+}</content>
+  <iscustomizable>1</iscustomizable>
+  <name>Attachments</name>
+  <powerpagecomponenttype>2</powerpagecomponenttype>
+  <powerpagesiteid>
+    <powerpagesiteid>abccaafd-73d6-47dd-bb55-b09b911f0d43</powerpagesiteid>
+  </powerpagesiteid>
+  <powerpagesitelanguageid>
+    <powerpagesitelanguageid>7b340d7a-188d-4ed8-b16c-cc6e959fb5c2</powerpagesitelanguageid>
+  </powerpagesitelanguageid>
+  <searchcontent>Attachments{% include 'cmdspp_Enrollment_Form_Header' %}
+
+&lt;div class="cmdspp-form-body"&gt;
+
+  &lt;div id="identity-form-container" class="cmdspp-form-main"&gt;
+    {% include 'cmdspp_Attachment_Renderer' %}
+  &lt;/div&gt;
+
+  {% include 'cmdspp_Enrollment_Form_SidePanel' %}
+
+&lt;/div&gt;Attachments</searchcontent>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</powerpagecomponent>

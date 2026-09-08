@@ -1,0 +1,18 @@
+<powerpagecomponent powerpagecomponentid="75a68cec-3afd-44fa-8171-bc1244c55dc0">
+  <content>{
+  "filecontent": null,
+  "entityform": "b478420f-1c3e-4bb5-bbcb-0d055549c5ce",
+  "webformstep": "b478420f-1c3e-4bb5-bbcb-0d055549c5ce",
+  "type": 100000001,
+  "label": "[{\"LCID\":1033,\"Value\":\"&lt;br&gt;\"}]",
+  "sectionname": "DETAILS_TAB_section_5"
+}</content>
+  <iscustomizable>1</iscustomizable>
+  <name>User Register DETAILS_TAB_section_5</name>
+  <powerpagecomponenttype>16</powerpagecomponenttype>
+  <powerpagesiteid>
+    <powerpagesiteid>abccaafd-73d6-47dd-bb55-b09b911f0d43</powerpagesiteid>
+  </powerpagesiteid>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</powerpagecomponent>

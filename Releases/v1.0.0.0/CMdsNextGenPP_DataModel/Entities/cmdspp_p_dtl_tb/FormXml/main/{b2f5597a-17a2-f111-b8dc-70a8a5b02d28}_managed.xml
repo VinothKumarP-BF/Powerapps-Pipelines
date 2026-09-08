@@ -1,0 +1,151 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<forms xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <systemform>
+    <formid>{b2f5597a-17a2-f111-b8dc-70a8a5b02d28}</formid>
+    <IntroducedVersion>1.8.26.1</IntroducedVersion>
+    <FormPresentation>1</FormPresentation>
+    <FormActivationState>1</FormActivationState>
+    <form headerdensity="HighWithControls" shownavigationbar="false">
+      <tabs>
+        <tab verticallayout="true" id="{c688f110-b61a-4e0e-a1e7-0c32e1f97e20}" IsUserDefined="1" visible="false" labelid="{647fea29-d86f-4a83-8ddb-ef4e305e529b}">
+          <labels>
+            <label description="General" languagecode="1033" />
+          </labels>
+          <columns>
+            <column width="100%">
+              <sections>
+                <section showlabel="false" showbar="false" IsUserDefined="0" id="{178e24fe-4860-40e7-a726-2f2e58392624}" labelid="{91a23a2b-028a-4e2e-b170-02bcdb8ddeb0}">
+                  <labels>
+                    <label description="General" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{6394244e-84a0-48af-ba14-11d7fdc2f84f}" labelid="{f0f6d021-9342-45ad-9e5f-2e7b2742f495}">
+                        <labels>
+                          <label description="Application ID" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_p_sys_id" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="cmdspp_p_sys_id" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{169b29c2-0a2b-4f3c-88ed-b1c08d45b7c9}" labelid="{7a3d7860-294c-400e-a358-88a4496a9e81}">
+                        <labels>
+                          <label description="Owner" languagecode="1033" />
+                        </labels>
+                        <control id="ownerid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="ownerid" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+          </columns>
+        </tab>
+        <tab name="tab_2" id="d6a9526d-dbbe-46cf-8ade-b44f77e1ee0d" IsUserDefined="0" locklevel="0" showlabel="true" labelid="{e8952321-9e43-499c-90a5-71d8c73b22f7}">
+          <labels>
+            <label description="Documents" languagecode="1033" />
+          </labels>
+          <columns>
+            <column width="100%">
+              <sections>
+                <section name="tab_2_section_1" id="a370af31-6146-45a9-92d0-1235371af582" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115" labelid="{8be30da3-cc57-46a9-97d5-e51604bde5e6}">
+                  <labels>
+                    <label description="Review Documents " languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row />
+                    <row>
+                      <cell locklevel="0" id="{0e2b31b6-cc8f-46cb-b741-34f22d3a4d85}" rowspan="4" colspan="1" auto="true" labelid="{8c8682b8-6db8-4451-b825-79d3cb63caaf}" showlabel="false">
+                        <labels>
+                          <label description="New SG control 1787835662509" languagecode="1033" />
+                        </labels>
+                        <control indicationOfSubgrid="true" id="Subgrid_new_2" classid="{E7A81278-8635-4D9E-8D4D-59480B391C5B}">
+                          <parameters>
+                            <RecordsPerPage>10</RecordsPerPage>
+                            <AutoExpand>Auto</AutoExpand>
+                            <EnableQuickFind>false</EnableQuickFind>
+                            <EnableViewPicker>false</EnableViewPicker>
+                            <EnableChartPicker>true</EnableChartPicker>
+                            <ChartGridMode>All</ChartGridMode>
+                            <RelationshipName>cmdspp_p_documents_tb_p_doc_to_p_dtl_fk_cmdspp_p_dtl_tb</RelationshipName>
+                            <TargetEntityType>cmdspp_p_documents_tb</TargetEntityType>
+                            <ViewId>{C0E77284-13A2-F111-B8DC-70A8A5B02D34}</ViewId>
+                            <ViewIds>{786001C2-3BA4-4C7E-AB42-028AA6CB2AAF},{C0E77284-13A2-F111-B8DC-70A8A5B02D34}</ViewIds>
+                          </parameters>
+                        </control>
+                      </cell>
+                    </row>
+                    <row />
+                    <row />
+                    <row />
+                  </rows>
+                </section>
+              </sections>
+            </column>
+          </columns>
+        </tab>
+      </tabs>
+      <header id="{2ba47678-7dca-4e17-954e-de9cc534cea0}" celllabelposition="Top" columns="111" labelwidth="115" celllabelalignment="Left">
+        <rows>
+          <row>
+            <cell id="{d319d527-5b63-4b9a-ae55-a98169ad8e2c}" showlabel="false" labelid="{95695199-e20a-4845-b67a-a85d5b779d11}">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{9fa26ca8-1a07-43ac-b4bf-4346b408263a}" showlabel="false" labelid="{4ff44d35-0b06-4e63-8fcb-cdf236016ab4}">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{a2db268d-66f2-4a5e-ac4a-a579f67eb200}" showlabel="false" labelid="{8216214b-0cfa-41e7-8e2d-ace2a37b1707}">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+          </row>
+        </rows>
+      </header>
+      <footer id="{e528c933-eab8-4abf-a339-acd6f3156d6d}" celllabelposition="Top" columns="111" labelwidth="115" celllabelalignment="Left">
+        <rows>
+          <row>
+            <cell id="{b7a4be13-94c0-4466-84a2-8e4ee072c62b}" showlabel="false" labelid="{09268141-0fae-484f-997c-997061b448fe}">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{3ac71d4b-c9e7-4685-983a-c36d1481b917}" showlabel="false" labelid="{9a6837d6-acda-4a90-9d0e-2f05f2197f69}">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{892c594e-4e8b-4f9b-9966-1cf4972446f3}" showlabel="false" labelid="{0ce652ba-38b4-47da-9142-3628faf3fa5a}">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+          </row>
+        </rows>
+      </footer>
+      <DisplayConditions Order="6" FallbackForm="true">
+        <Role Id="{66852B38-E6A5-F111-B8DE-70A8A5B02D28}" />
+        <Role Id="{537FE0F4-C7A5-F111-B8DE-70A8A5B02D74}" />
+        <Role Id="{627090ff-40a3-4053-8790-584edc5be201}" />
+        <Role Id="{119f245c-3cc8-4b62-b31c-d1a046ced15d}" />
+      </DisplayConditions>
+      <controlDescriptions />
+      <formLibraries>
+        <Library name="cr834_formroute_enrform" libraryUniqueId="{d8ef0fbc-7b25-4bed-acee-110bb5237564}" />
+        <Library name="cr834_ReviewDocuments_form" libraryUniqueId="{e4136a00-2c93-4116-b7d4-05e0ae382d68}" />
+      </formLibraries>
+    </form>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <LocalizedNames>
+      <LocalizedName description="Review Documents" languagecode="1033" />
+    </LocalizedNames>
+    <Descriptions>
+      <Description description="A form for this entity." languagecode="1033" />
+    </Descriptions>
+  </systemform>
+</forms>

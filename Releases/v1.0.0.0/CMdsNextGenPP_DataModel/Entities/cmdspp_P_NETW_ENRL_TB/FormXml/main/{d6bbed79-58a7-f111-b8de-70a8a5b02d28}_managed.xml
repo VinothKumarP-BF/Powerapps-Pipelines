@@ -1,0 +1,161 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<forms xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <systemform>
+    <formid>{d6bbed79-58a7-f111-b8de-70a8a5b02d28}</formid>
+    <IntroducedVersion>1.9.2.1</IntroducedVersion>
+    <FormPresentation>1</FormPresentation>
+    <FormActivationState>1</FormActivationState>
+    <form headerdensity="HighWithControls" shownavigationbar="false">
+      <tabs>
+        <tab verticallayout="true" id="{d2c1dd42-3b72-44e6-9382-e708184549a0}" IsUserDefined="1" labelid="{040a92bb-9b43-4e7e-b6c8-74d5f27d2813}" visible="true" name="Network">
+          <labels>
+            <label description="General" languagecode="1033" />
+          </labels>
+          <columns>
+            <column width="100%">
+              <sections>
+                <section showlabel="false" showbar="false" IsUserDefined="0" id="{eb2063cc-7ef7-4abc-83d5-db1e11c1c3d8}" columns="1111" celllabelposition="Top" labelid="{dcb57d07-31db-4382-8b08-893ab6ece90f}">
+                  <labels>
+                    <label description="General" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{48cab424-9d70-4fc9-ad90-92df95a0e0f3}" locklevel="0" colspan="2" rowspan="1" labelid="{15f21b8d-ae08-4191-b0b5-9ad61529a37d}">
+                        <labels>
+                          <label description="Network ID - Name" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_p_network_nam" classid="{3EF39988-22BB-4F0B-BBBE-64B5A3748AEE}" datafieldname="cmdspp_p_network_nam" disabled="false" />
+                      </cell>
+                      <cell id="{e538d37b-e207-456e-a4c0-c0e35163326b}" locklevel="0" colspan="1" rowspan="1" labelid="{900f8eab-ee36-4fb5-ba2a-fd21e822dc7b}">
+                        <labels>
+                          <label description="Begin Date" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_p_begin_dt" classid="{5B773807-9FB2-42DB-97C3-7A91EFF8ADFF}" datafieldname="cmdspp_p_begin_dt" disabled="false" />
+                      </cell>
+                      <cell id="{3d464b89-a2da-44e1-8451-9a06a1545c43}" locklevel="0" colspan="1" rowspan="1" labelid="{cf1b4568-9753-4759-8911-56395f486da0}">
+                        <labels>
+                          <label description="End Date" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_p_end_dt" classid="{5B773807-9FB2-42DB-97C3-7A91EFF8ADFF}" datafieldname="cmdspp_p_end_dt" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{f52d5021-5bcc-4a4c-8502-c8e4812cac08}" visible="false" labelid="{042758ec-847d-4b58-a7ea-4c6779c6527d}">
+                        <labels>
+                          <label description="Network ID" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_pnetwenrl" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="cmdspp_pnetwenrl" />
+                      </cell>
+                      <cell locklevel="0" id="{33bdfdb6-fac2-447f-af20-8346e2933658}" labelid="{eadd538f-3f8b-4f82-abf7-d00860764224}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                      <cell locklevel="0" id="{a4bbf8b5-a98a-41c7-be7b-a1a305dcab63}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                      <cell locklevel="0" id="{0b0ca8a0-f8ab-40d5-8ede-a1de134f8851}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{040ab74a-7d30-435a-bf59-db504d318d56}" visible="false" labelid="{78d968f3-ced7-4774-b573-a04338f82ec6}">
+                        <labels>
+                          <label description="Owner" languagecode="1033" />
+                        </labels>
+                        <control id="ownerid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="ownerid" />
+                      </cell>
+                      <cell locklevel="0" id="{b8f6421d-c6dd-4799-9892-32c958bfb5a5}" labelid="{112bc722-957a-46d4-9b48-6072b654d135}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                      <cell locklevel="0" id="{a6f3d939-d1f5-41f4-a5af-5e8b37174c76}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                      <cell locklevel="0" id="{cf3d0415-e199-4c6a-83a5-bfe42bd51826}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+          </columns>
+        </tab>
+      </tabs>
+      <header id="{8d54fd7f-021d-40d9-81c7-014622377f6b}" celllabelposition="Top" columns="111" labelwidth="115" celllabelalignment="Left">
+        <rows>
+          <row>
+            <cell id="{cdb2ed72-9217-467e-a168-86c5504d5876}" showlabel="false" labelid="{2431866b-73e7-479a-be33-61190fe5211d}">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{181de8a2-7765-42da-a508-44ac77a8d06b}" showlabel="false" labelid="{a35418c0-a54e-4c76-a3d2-420289d3377f}">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{b31ad30c-d7ed-4e74-8e70-50348121091c}" showlabel="false" labelid="{d78d7c98-0cd0-4ee7-b4be-4ff3c10ddf0d}">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+          </row>
+        </rows>
+      </header>
+      <footer id="{95653898-8a4a-4272-addf-ab5fca386131}" celllabelposition="Top" columns="111" labelwidth="115" celllabelalignment="Left">
+        <rows>
+          <row>
+            <cell id="{cb0c2bec-61b3-42af-b0c1-d38c92932b51}" showlabel="false" labelid="{ab3fb4dd-a2b2-4288-b6a1-a0b706e9ec4f}">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{500e51d8-8796-41ad-a02e-333f4626fddd}" showlabel="false" labelid="{e7f59ea9-318a-4dce-bea2-50fc2bafa551}">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{db6fea6f-4a7a-4535-a348-03f68d4b6fb6}" showlabel="false" labelid="{41776521-3df3-428b-8b2a-86d6a55c60a3}">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+          </row>
+        </rows>
+      </footer>
+      <DisplayConditions Order="1" FallbackForm="true">
+        <Role Id="{627090ff-40a3-4053-8790-584edc5be201}" />
+        <Role Id="{119f245c-3cc8-4b62-b31c-d1a046ced15d}" />
+      </DisplayConditions>
+      <formLibraries>
+        <Library name="cmdspp_Enrollment_actions_resource" libraryUniqueId="{a9b9775b-7b52-47fd-b68d-6f70918ab5ed}" />
+      </formLibraries>
+      <events>
+        <event name="onload" application="false" active="false">
+          <Handlers>
+            <Handler functionName="onNetworkEnrollmentFormLoad" libraryName="cmdspp_Enrollment_actions_resource" handlerUniqueId="{826dd54c-5290-4b84-9cac-34ed90f0e028}" enabled="true" parameters="" passExecutionContext="true" />
+          </Handlers>
+        </event>
+      </events>
+    </form>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <LocalizedNames>
+      <LocalizedName description="Add Network Enrollment" languagecode="1033" />
+    </LocalizedNames>
+    <Descriptions>
+      <Description description="A form for this entity." languagecode="1033" />
+    </Descriptions>
+  </systemform>
+</forms>

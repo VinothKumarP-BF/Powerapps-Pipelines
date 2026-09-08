@@ -1,0 +1,30 @@
+<powerpagecomponent powerpagecomponentid="c4bd111e-dc6f-4763-8e37-57ab1928a712">
+  <content>{
+  "entityname": "cmdspp_P_ECS_TRANSACTION_TB",
+  "entitylogicalname": "cmdspp_p_ecs_transaction_tb",
+  "scope": 756150000,
+  "append": true,
+  "appendto": true,
+  "delete": true,
+  "read": true,
+  "create": true,
+  "write": true,
+  "parentrelationship": null,
+  "parententitypermission": null,
+  "contactrelationship": null,
+  "accountrelationship": null,
+  "childTablePermissions": [],
+  "adx_entitypermission_webrole": [
+    "3e0eed5c-e2e0-46fa-a82c-1f6c985badca"
+  ],
+  "permissionfetchxml": null
+}</content>
+  <iscustomizable>1</iscustomizable>
+  <name>cmdspp_P_ECS_TRANSACTION_TB</name>
+  <powerpagecomponenttype>18</powerpagecomponenttype>
+  <powerpagesiteid>
+    <powerpagesiteid>abccaafd-73d6-47dd-bb55-b09b911f0d43</powerpagesiteid>
+  </powerpagesiteid>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</powerpagecomponent>

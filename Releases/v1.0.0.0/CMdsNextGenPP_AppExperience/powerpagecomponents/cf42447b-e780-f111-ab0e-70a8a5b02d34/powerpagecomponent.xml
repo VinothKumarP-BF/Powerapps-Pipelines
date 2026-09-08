@@ -1,0 +1,14 @@
+<powerpagecomponent powerpagecomponentid="cf42447b-e780-f111-ab0e-70a8a5b02d34">
+  <content>{
+  "value": "cmdspp_r_vv_cd,cmdspp_r_vv_domain_nam,cmdspp_r_vv_long_desc,statecode,cmdspp_r_used_in_appl_ind,cmdspp_r_vv_short_desc,cmdspp_r_vv_tbid,cmdspp_p_qstnr_obj",
+  "source": 0
+}</content>
+  <iscustomizable>1</iscustomizable>
+  <name>Webapi/cmdspp_r_vv_tb/fields</name>
+  <powerpagecomponenttype>9</powerpagecomponenttype>
+  <powerpagesiteid>
+    <powerpagesiteid>abccaafd-73d6-47dd-bb55-b09b911f0d43</powerpagesiteid>
+  </powerpagesiteid>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</powerpagecomponent>

@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<WebResource xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <WebResourceId>{410befb0-a1aa-f111-aaac-70a8a5b02d34}</WebResourceId>
+  <Name>cmdspp_remittance_advice_instructions</Name>
+  <DisplayName>Remittance Advice Instructions</DisplayName>
+  <LanguageCode>0</LanguageCode>
+  <WebResourceType>1</WebResourceType>
+  <IntroducedVersion>2.0.3.0</IntroducedVersion>
+  <IsEnabledForMobileClient>0</IsEnabledForMobileClient>
+  <IsAvailableForMobileOffline>0</IsAvailableForMobileOffline>
+  <IsCustomizable>1</IsCustomizable>
+  <CanBeDeleted>1</CanBeDeleted>
+  <IsHidden>0</IsHidden>
+  <FileName>/WebResources/cmdspp_remittance_advice_instructions410BEFB0-A1AA-F111-AAAC-70A8A5B02D34</FileName>
+</WebResource>

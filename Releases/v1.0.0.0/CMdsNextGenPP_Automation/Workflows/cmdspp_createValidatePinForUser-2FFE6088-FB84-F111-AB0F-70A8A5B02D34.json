@@ -1,0 +1,539 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps_1": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "cmdspp_CR_Dataverse_Core_DEV"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      },
+      "shared_office365_1": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "cmdspp_CR_Outlook_Core_DEV"
+        },
+        "api": {
+          "name": "shared_office365"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "manual": {
+          "metadata": {
+            "operationMetadataId": "532bb2a4-e4e6-4bdf-93cc-4e37bc8406f7"
+          },
+          "type": "Request",
+          "kind": "Http",
+          "inputs": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "registrationId": {
+                  "type": "string"
+                },
+                "transType": {
+                  "type": "string"
+                },
+                "email": {
+                  "type": "string"
+                },
+                "pin": {
+                  "type": "string"
+                },
+                "isReset": {
+                  "type": "boolean"
+                },
+                "userEmail": {
+                  "type": "string"
+                },
+                "userId": {
+                  "type": "string"
+                },
+                "providerType": {
+                  "type": "string"
+                },
+                "applicationId": {
+                  "type": "string"
+                },
+                "userName": {
+                  "type": "string"
+                }
+              }
+            },
+            "triggerAuthenticationType": "All"
+          }
+        }
+      },
+      "actions": {
+        "Switch": {
+          "runAfter": {},
+          "cases": {
+            "Case": {
+              "case": "set",
+              "actions": {
+                "Compose": {
+                  "runAfter": {},
+                  "metadata": {
+                    "operationMetadataId": "de38786c-6593-4b12-b317-46369a09e8f8"
+                  },
+                  "type": "Compose",
+                  "inputs": "@rand(100000,999999)"
+                },
+                "Get_a_row_by_ID_User": {
+                  "runAfter": {
+                    "Compose": [
+                      "Succeeded"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "50d96d81-1cb0-4c2e-beff-954b9d8dc589"
+                  },
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "host": {
+                      "connectionName": "shared_commondataserviceforapps_1",
+                      "operationId": "GetItem",
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                    },
+                    "parameters": {
+                      "entityName": "cmdspp_g_usr_dtls_tbs",
+                      "recordId": "@triggerBody()?['registrationId']"
+                    },
+                    "authentication": "@parameters('$authentication')"
+                  }
+                },
+                "Condition_2": {
+                  "actions": {
+                    "Update_a_row_user": {
+                      "runAfter": {},
+                      "metadata": {
+                        "operationMetadataId": "f8795723-6084-4f9f-a668-ad133e61bacc"
+                      },
+                      "type": "OpenApiConnection",
+                      "inputs": {
+                        "host": {
+                          "connectionName": "shared_commondataserviceforapps_1",
+                          "operationId": "UpdateOnlyRecord",
+                          "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                        },
+                        "parameters": {
+                          "entityName": "cmdspp_g_usr_dtls_tbs",
+                          "recordId": "@triggerBody()?['registrationId']",
+                          "item/cmdspp_g_email_pin": "@outputs('Compose')",
+                          "item/cmdspp_g_email_pin_validupto_ts": "@addMinutes(utcNow(), 15)"
+                        },
+                        "authentication": "@parameters('$authentication')"
+                      }
+                    },
+                    "Send_an_email_(V2)_1": {
+                      "runAfter": {
+                        "Update_a_row_user": [
+                          "Succeeded"
+                        ]
+                      },
+                      "metadata": {
+                        "operationMetadataId": "989587a2-5b83-4af1-8879-58abe53c2844"
+                      },
+                      "type": "OpenApiConnection",
+                      "inputs": {
+                        "host": {
+                          "connectionName": "shared_office365_1",
+                          "operationId": "SendEmailV2",
+                          "apiId": "/providers/Microsoft.PowerApps/apis/shared_office365"
+                        },
+                        "parameters": {
+                          "emailMessage/To": "@outputs('Update_a_row_user')?['body/cmdspp_g_email']",
+                          "emailMessage/Subject": "Verification PIN",
+                          "emailMessage/Body": "\n\n\n\n<table cellpadding=\"0\" cellspacing=\"0\" style=\"background:#f3f3f3;padding:20px;\">\n<tbody><tr>\n<td>\n\n<table cellpadding=\"0\" cellspacing=\"0\" style=\"background:#ffffff;border-radius:4px;overflow:hidden;\">\n\n<tbody><tr>\n<td style=\"background:#1f3b6d;color:white;padding:24px;text-align:center;font-size:28px;\">\nCMDS NextGen Provider Portal\n</td>\n</tr>\n\n<tr>\n<td style=\"padding:35px;color:#333333;font-size:16px;line-height:1.6;\">\n\n<p>Hi @{outputs('Update_a_row_user')?['body/cmdspp_g_fst_nam']},</p>\n\n<p>\nYour verification PIN is ready. Please enter this PIN in the portal to proceed. This PIN will expire in 15 minutes.\n</p>\n\n<div style=\"text-align:center;padding:25px 0;\">\n<div style=\"display:inline-block;\nbackground:#f5f7fa;\nborder:1px solid #d9dde5;\nborder-radius:6px;\npadding:25px 50px;\">\n<div style=\"font-size:11px;\nletter-spacing:2px;\ncolor:#7a8494;\nmargin-bottom:10px;\">\nYOUR PIN\n</div>\n\n<div style=\"font-size:42px;\nletter-spacing:8px;\ncolor:#1f3b6d;\nfont-weight:300;\">\n@{outputs('Compose')}\n</div>\n</div>\n</div>\n\n<div style=\"background:#fff8e5;\nborder:1px solid #e8d38b;\nborder-radius:4px;\npadding:15px;\ncolor:#8a6d3b;\nfont-size:14px;\">\n\nSecurity notice: For your protection, do not share this PIN with anyone.\nCMDS staff will never ask for your PIN.\n\n</div>\n\n<p style=\"margin-top:30px;\">\nThank you,<br>\nCMDS Next Gen Provider Portal Support Team\n</p>\n\n</td>\n</tr>\n\n<tr>\n<td style=\"background:#f1f3f5;\npadding:20px;\nfont-size:12px;\ncolor:#888888;\ntext-align:center;\">\n\nThis is an automated message from the CMDS Next Gen Provider Portal.\nPlease do not reply directly to this email.<br><br>\n\n© @{formatDateTime(utcNow(),'yyyy')} CMDS Next Gen Provider Portal. All rights reserved.\n\n</td>\n</tr>\n\n</tbody></table>\n\n</td>\n</tr>\n</tbody></table>\n\n\n",
+                          "emailMessage/Importance": "Normal"
+                        },
+                        "authentication": "@parameters('$authentication')"
+                      }
+                    },
+                    "Response_3": {
+                      "runAfter": {
+                        "Send_an_email_(V2)_1": [
+                          "Succeeded"
+                        ]
+                      },
+                      "metadata": {
+                        "operationMetadataId": "ff2382b2-b66f-463d-906c-93bb8a8c8fd7"
+                      },
+                      "type": "Response",
+                      "kind": "Http",
+                      "inputs": {
+                        "statusCode": 200,
+                        "body": {
+                          "message": "PIN sent"
+                        }
+                      }
+                    }
+                  },
+                  "runAfter": {
+                    "Get_a_row_by_ID_User": [
+                      "Succeeded"
+                    ]
+                  },
+                  "expression": {
+                    "or": [
+                      {
+                        "equals": [
+                          "@outputs('Get_a_row_by_ID_User')?['body/cmdspp_g_email_pin']",
+                          "@null"
+                        ]
+                      },
+                      {
+                        "equals": [
+                          "@triggerBody()?['isReset']",
+                          true
+                        ]
+                      }
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "81991f68-26c9-4388-9e15-ec760722b5b6"
+                  },
+                  "type": "If"
+                }
+              }
+            },
+            "Case 2": {
+              "case": "validate",
+              "actions": {
+                "Get_a_row_by_ID": {
+                  "runAfter": {},
+                  "metadata": {
+                    "operationMetadataId": "984f5789-5ecf-4156-b2b9-81720df8335c"
+                  },
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "host": {
+                      "connectionName": "shared_commondataserviceforapps_1",
+                      "operationId": "GetItem",
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                    },
+                    "parameters": {
+                      "entityName": "cmdspp_g_usr_dtls_tbs",
+                      "recordId": "@triggerBody()?['registrationId']"
+                    },
+                    "authentication": "@parameters('$authentication')"
+                  }
+                },
+                "Condition": {
+                  "actions": {
+                    "Condition_1": {
+                      "actions": {
+                        "Response": {
+                          "runAfter": {
+                            "For_each": [
+                              "Succeeded"
+                            ]
+                          },
+                          "metadata": {
+                            "operationMetadataId": "49956a7c-86b4-4113-97e1-9df117c34fc1"
+                          },
+                          "type": "Response",
+                          "kind": "Http",
+                          "inputs": {
+                            "statusCode": 200,
+                            "body": {
+                              "success": true,
+                              "message": "PIN verified",
+                              "invitationCode": "@outputs('Invitation_Code')"
+                            }
+                          }
+                        },
+                        "List_rows": {
+                          "runAfter": {},
+                          "metadata": {
+                            "operationMetadataId": "ea6611ae-99ef-4b0d-8cf4-6452182e93ae"
+                          },
+                          "type": "OpenApiConnection",
+                          "inputs": {
+                            "host": {
+                              "connectionName": "shared_commondataserviceforapps_1",
+                              "operationId": "ListRecords",
+                              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                            },
+                            "parameters": {
+                              "entityName": "adx_invitations",
+                              "$filter": "_adx_invitecontact_value eq @{outputs('Get_a_row_by_ID')?['body/_cmdspp_g_usrtocontact_lkpid_value']}"
+                            },
+                            "authentication": "@parameters('$authentication')"
+                          }
+                        },
+                        "For_each": {
+                          "foreach": "@outputs('List_rows')?['body/value']",
+                          "actions": {
+                            "Invitation_Code": {
+                              "runAfter": {},
+                              "metadata": {
+                                "operationMetadataId": "2ceba0a7-7411-4ada-883b-316bd7a7c601"
+                              },
+                              "type": "Compose",
+                              "inputs": "@items('For_each')?['adx_invitationcode']"
+                            }
+                          },
+                          "runAfter": {
+                            "List_rows": [
+                              "Succeeded"
+                            ]
+                          },
+                          "metadata": {
+                            "operationMetadataId": "662d7d87-698d-4021-b7ad-ba6a04922ca5"
+                          },
+                          "type": "Foreach"
+                        },
+                        "Update_a_row": {
+                          "runAfter": {
+                            "Response": [
+                              "Succeeded"
+                            ]
+                          },
+                          "metadata": {
+                            "operationMetadataId": "066ca7d0-7880-4cf4-aa50-de6e127ef336"
+                          },
+                          "type": "OpenApiConnection",
+                          "inputs": {
+                            "host": {
+                              "connectionName": "shared_commondataserviceforapps_1",
+                              "operationId": "UpdateOnlyRecord",
+                              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                            },
+                            "parameters": {
+                              "entityName": "cmdspp_g_usr_dtls_tbs",
+                              "recordId": "@outputs('Get_a_row_by_ID')?['body/cmdspp_g_usr_dtls_tbid']",
+                              "item/cmdspp_g_acct_sts": 2
+                            },
+                            "authentication": "@parameters('$authentication')"
+                          }
+                        }
+                      },
+                      "runAfter": {},
+                      "else": {
+                        "actions": {
+                          "Response_1": {
+                            "runAfter": {},
+                            "metadata": {
+                              "operationMetadataId": "19668cbf-4949-4c71-a4d8-bd93a43c3ce0"
+                            },
+                            "type": "Response",
+                            "kind": "Http",
+                            "inputs": {
+                              "statusCode": 200,
+                              "body": {
+                                "success": false,
+                                "message": "Verification code has expired, Please request a new code"
+                              }
+                            }
+                          }
+                        }
+                      },
+                      "expression": {
+                        "and": [
+                          {
+                            "greaterOrEquals": [
+                              "@outputs('Get_a_row_by_ID')?['body/cmdspp_g_email_pin_validupto_ts']",
+                              "@utcNow()"
+                            ]
+                          }
+                        ]
+                      },
+                      "metadata": {
+                        "operationMetadataId": "5d9b0485-3bc5-470d-802e-4f0e05c62d18"
+                      },
+                      "type": "If"
+                    }
+                  },
+                  "runAfter": {
+                    "Get_a_row_by_ID": [
+                      "Succeeded"
+                    ]
+                  },
+                  "else": {
+                    "actions": {
+                      "Response_2": {
+                        "runAfter": {},
+                        "metadata": {
+                          "operationMetadataId": "50be29c8-1bdb-40e6-94ae-b2fbe39ab4a2"
+                        },
+                        "type": "Response",
+                        "kind": "Http",
+                        "inputs": {
+                          "statusCode": 200,
+                          "body": {
+                            "success": false,
+                            "message": "Incorrect verification code. Please try again"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "expression": {
+                    "and": [
+                      {
+                        "equals": [
+                          "@triggerBody()?['pin']",
+                          "@string(outputs('Get_a_row_by_ID')?['body/cmdspp_g_email_pin'])"
+                        ]
+                      }
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "228c7f75-72f6-4876-8f5a-003483fca2fa"
+                  },
+                  "type": "If"
+                }
+              }
+            },
+            "Case_3": {
+              "case": "email_MSG278",
+              "actions": {
+                "Compose_2": {
+                  "runAfter": {},
+                  "metadata": {
+                    "operationMetadataId": "d688290e-4aa5-497c-ad74-fb2e2279d06c"
+                  },
+                  "type": "Compose",
+                  "inputs": "Hi @{triggerBody()?['userName']},\n\nThank you for submitting your application through the CMDS Next Gen Provider Portal. We have successfully received your application, and it is now under review.\n\nApplication Details\nApplication ID @{triggerBody()?['applicationId']}\nSubmission Date @{formatDateTime(utcNow(),'MM/dd/yyyy')}\n\nYou can log in to the portal at any time to track the status of your application and view updates. We will notify you once the review process is completed or if any additional information is required.\n\nThank you for your submission.\n\nBest regards,\nCMDS Next Gen Provider Portal Support Team"
+                },
+                "Compose_3": {
+                  "runAfter": {
+                    "List_rows_Environment_Variable_Values": [
+                      "Succeeded"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "bca12804-479b-48c4-83a4-b92f06b56d52"
+                  },
+                  "type": "Compose",
+                  "inputs": {
+                    "userId": "@triggerBody()?['userId']",
+                    "userEmail": "@triggerBody()?['userEmail']",
+                    "emailBody": "@outputs('Compose_2')",
+                    "emailSubject": "Application Submitted Successfully",
+                    "providerType": "@triggerBody()?['providerType']",
+                    "senderEmail": "@first(body('List_rows_Environment_Variable_Values')?['value'])?['value']",
+                    "senderId": ""
+                  }
+                },
+                "Run_a_Child_Flow": {
+                  "runAfter": {
+                    "Compose_3": [
+                      "Succeeded"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "02d303c2-365e-4af4-bc09-44ac77087101"
+                  },
+                  "type": "Workflow",
+                  "inputs": {
+                    "host": {
+                      "workflowReferenceName": "27b723b9-2c90-f111-8076-70a8a5b02d34"
+                    },
+                    "body": {
+                      "text": "@string(outputs('Compose_3'))"
+                    }
+                  }
+                },
+                "List_rows_Environment_Variable_Values": {
+                  "runAfter": {
+                    "Send_an_email_(V2)_2": [
+                      "Succeeded"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "01997f5d-da88-4f17-b907-8107bbd4ac5c"
+                  },
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "host": {
+                      "connectionName": "shared_commondataserviceforapps_1",
+                      "operationId": "ListRecords",
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                    },
+                    "parameters": {
+                      "entityName": "environmentvariablevalues",
+                      "$filter": "schemaname eq 'cmdspp_ENV_Default_Email_Sender'",
+                      "$top": 1
+                    },
+                    "authentication": "@parameters('$authentication')"
+                  }
+                },
+                "Send_an_email_(V2)_2": {
+                  "runAfter": {
+                    "Compose_2": [
+                      "Succeeded"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "5cea6565-b89e-422c-9823-abe8657a3ab7"
+                  },
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "host": {
+                      "connectionName": "shared_office365_1",
+                      "operationId": "SendEmailV2",
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_office365"
+                    },
+                    "parameters": {
+                      "emailMessage/To": "@triggerBody()?['userEmail']",
+                      "emailMessage/Subject": "Application Submitted Successfully",
+                      "emailMessage/Body": "<div style=\"margin:0;padding:0;background-color:#f4f5f7;font-family:Segoe UI, Arial, sans-serif;\">\n    <table role=\"presentation\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\" width=\"100%\" style=\"background-color:#f4f5f7;\">\n        <tr>\n            <td align=\"center\">\n                <div style=\"border-radius:6px;overflow:hidden; width:600px\">\n                <table role=\"presentation\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\" width=\"600\" style=\"background:#ffffff;border:1px solid #d6dce6;\">\n\n                    <!-- Header -->\n                    <tr>\n                        <td align=\"center\"\n                            style=\"background:#1A3A5C;padding:28px 20px;color:#FFFFFFE5;font-size:22px;font-weight:400;\">\n                            CMDS NextGen Provider Portal\n                        </td>\n                    </tr>\n\n                    <!-- Body -->\n                    <tr>\n                        <td style=\"padding:32px 39px;color:#2C3E50;font-size:15px;font-weight:400;line-height:1.8;\">\n\n                            <p style=\"margin:0 0 24px 0;color:#2C3E50;font-size:15px;font-weight:400;\">\n                                Hi @{triggerBody()?['userName']},\n                            </p>\n\n                            <p style=\"margin:0 0 24px 0;color:#2C3E50;font-size:15px;font-weight:400;\">\n                                Thank you for submitting your application through the CMDS Next Gen\n                                Provider Portal. We have successfully received your application,\n                                and it is now under review.\n                            </p>\n\n                            <!-- Application Details Box -->\n                            <div style=\"border-radius:6px;overflow:hidden; width:100%\">\n                            <table role=\"presentation\"\n                                   cellpadding=\"0\"\n                                   cellspacing=\"0\"\n                                   border=\"0\"\n                                   width=\"100%\"\n                                   style=\"border:1px solid #1A3A5C;border-left:4px solid #1A3A5C;border-radius:6px;background:#F4F7FB;\">\n\n                                <tr>\n                                    <td colspan=\"2\"\n                                        style=\"padding:18px 22px 10px 22px;color:#5A6A80;font-size:11px;font-weight:400;letter-spacing:0.88px;\">\n                                        APPLICATION DETAILS\n                                    </td>\n                                </tr>\n\n                                <tr>\n                                    <td style=\"padding:8px 22px;color:#5A6A80;font-size:13px;font-weight:400;border-bottom:1px solid #dfe5ee;\">\n                                        Application ID\n                                    </td>\n                                    <td align=\"right\"\n                                        style=\"padding:8px 22px;color:#1A3A5C;font-size:13px;font-weight:400;border-bottom:1px solid #dfe5ee;\">\n                                        @{triggerBody()?['applicationId']}\n                                    </td>\n                                </tr>\n\n                                <tr>\n                                    <td style=\"padding:10px 22px;color:#5A6A80;font-size:13px;font-weight:400;\">\n                                        Submission Date\n                                    </td>\n                                    <td align=\"right\"\n                                        style=\"padding:10px 22px;color:#1A3A5C;font-size:13px;font-weight:400;\">\n                                        @{formatDateTime(utcNow(),'MM/dd/yyyy')}\n                                    </td>\n                                </tr>\n\n                            </table>\n                            </div> \n                            <p style=\"margin:24px 0 24px 0;color:#2C3E50;font-size:15px;font-weight:400;\">\n                                You can log in to the portal at any time to track the status of your\n                                application and view updates. We will notify you once the review\n                                process is completed or if any additional information is required.\n                            </p>\n\n                            <p style=\"margin:0 0 25px 0;color:#2C3E50;font-size:15px;font-weight:400;\">\n                                Thank you for your submission.\n                            </p>\n\n                            <p style=\"margin:0;color:#5A6A80;font-size:14px;font-weight:400;\">\n                                Best regards,\n                            </p>\n\n                            <p style=\"margin:4px 0 0 0;color:#1A2A3A;font-size:13px;font-weight:400;\">\n                                CMDS Next Gen Provider Portal Support Team\n                            </p>\n\n                        </td>\n                    </tr>\n\n                    <!-- Footer -->\n                    <tr>\n                        <td style=\"background:#F8F9FC;padding:24px 30px;text-align:center;color:#8A9AB0;font-size:11px;line-height:17.6px;\">\n\n                            <div>\n                                This is an automated message from the CMDS NextGen Provider Portal.\n                                Please do not reply directly to this email.\n                            </div>\n\n                            <div style=\"margin-top:10px;\">\n                                © @{formatDateTime(utcNow(),'yyyy')} CMDS Next Gen Provider Portal. All rights reserved.\n                            </div>\n\n                        </td>\n                    </tr>\n\n                </table>\n               </div>\n            </td>\n        </tr>\n    </table>\n</div>",
+                      "emailMessage/Importance": "Normal"
+                    },
+                    "authentication": "@parameters('$authentication')"
+                  }
+                },
+                "Response_4": {
+                  "runAfter": {
+                    "Run_a_Child_Flow": [
+                      "Succeeded"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "088b9b39-92bf-4b33-a0f3-9157eacc00f0"
+                  },
+                  "type": "Response",
+                  "kind": "Http",
+                  "inputs": {
+                    "statusCode": 200,
+                    "body": {
+                      "message": "success"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "actions": {}
+          },
+          "expression": "@triggerBody()?['transType']",
+          "metadata": {
+            "operationMetadataId": "ea53c868-7f34-4135-a2e6-99e14bc75caa"
+          },
+          "type": "Switch"
+        }
+      }
+    },
+    "templateName": ""
+  },
+  "schemaVersion": "1.0.0.0"
+}

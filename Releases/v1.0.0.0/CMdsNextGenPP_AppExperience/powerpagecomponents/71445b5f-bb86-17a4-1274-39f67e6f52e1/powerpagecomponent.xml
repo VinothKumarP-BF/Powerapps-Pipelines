@@ -1,0 +1,22 @@
+<powerpagecomponent powerpagecomponentid="71445b5f-bb86-17a4-1274-39f67e6f52e1">
+  <content>{
+  "displayorder": 25,
+  "parentweblinkid": "9bcba9fb-ba33-f44d-3157-4eab4b2152ad",
+  "weblinksetid": "aba765dd-0f02-4f05-ae0f-a524623441a0",
+  "pageid": "46b4f685-d2be-a8c0-9fa9-69d4e5c31b2b",
+  "publishingstateid": "c7294317-419f-4724-8068-a91d5da8d92c",
+  "displaypagevalidation": false,
+  "displayimageonly": false,
+  "displaypagechildlinks": false,
+  "openinnewwindow": false,
+  "robotsfollowlink": true
+}</content>
+  <iscustomizable>1</iscustomizable>
+  <name>E signature</name>
+  <powerpagecomponenttype>5</powerpagecomponenttype>
+  <powerpagesiteid>
+    <powerpagesiteid>abccaafd-73d6-47dd-bb55-b09b911f0d43</powerpagesiteid>
+  </powerpagesiteid>
+  <statecode>1</statecode>
+  <statuscode>2</statuscode>
+</powerpagecomponent>

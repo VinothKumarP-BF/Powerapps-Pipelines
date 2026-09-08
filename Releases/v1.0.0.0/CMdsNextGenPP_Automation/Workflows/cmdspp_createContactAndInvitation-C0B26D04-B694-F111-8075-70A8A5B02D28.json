@@ -1,0 +1,153 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "cmdspp_CR_Dataverse_Core_DEV"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "When_a_row_is_added,_modified_or_deleted": {
+          "metadata": {
+            "operationMetadataId": "efce02aa-be41-422e-a101-dc4626b78f24"
+          },
+          "type": "OpenApiConnectionWebhook",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "SubscribeWebhookTrigger",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "subscriptionRequest/message": 1,
+              "subscriptionRequest/entityname": "cmdspp_g_usr_dtls_tb",
+              "subscriptionRequest/scope": 4
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        }
+      },
+      "actions": {
+        "Add_a_new_row_Contacts": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "42248412-5e32-4ca9-a6e6-5e2379af9186"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "CreateRecord",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "contacts",
+              "item/lastname": "@triggerOutputs()?['body/cmdspp_g_lst_nam']",
+              "item/emailaddress1": "@triggerOutputs()?['body/cmdspp_g_email']",
+              "item/firstname": "@triggerOutputs()?['body/cmdspp_g_fst_nam']",
+              "item/mobilephone": "@triggerOutputs()?['body/cmdspp_g_phn_num']",
+              "item/company": "@triggerOutputs()?['body/cmdspp_g_phn_num']",
+              "item/adx_organizationname": "@triggerOutputs()?['body/cmdspp_g_org_nam']"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Update_a_row_user": {
+          "runAfter": {
+            "Add_a_new_row_Contacts": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "f8aefc6c-fc7a-4b04-9625-1e9530dcab96"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "UpdateOnlyRecord",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "cmdspp_g_usr_dtls_tbs",
+              "recordId": "@triggerOutputs()?['body/cmdspp_g_usr_dtls_tbid']",
+              "item/cmdspp_g_usrtocontact_lkpid@odata.bind": "@concat(\r\n    '/contacts(',\r\n    outputs('Add_a_new_row_Contacts')?['body/contactid'],\r\n    ')'\r\n)"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Add_a_new_row_invitation": {
+          "runAfter": {
+            "List_rows_Environment_Variable_Values": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "005b0f1a-64ea-4eae-b0d8-1999fe05b003"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "CreateRecord",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "adx_invitations",
+              "item/adx_name": "User Invitation",
+              "item/adx_type": 756150000,
+              "item/adx_inviteContact@odata.bind": "@concat(\r\n  '/contacts(',\r\n  outputs('Add_a_new_row_Contacts')?['body/contactid'],\r\n  ')'\r\n)",
+              "item/mspp_websiteid@odata.bind": "@concat(\r\n'/mspp_websites(',\r\nfirst(body('List_rows_Environment_Variable_Values')?['value'])?['value'],\r\n')'\r\n)"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "List_rows_Environment_Variable_Values": {
+          "runAfter": {
+            "Update_a_row_user": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "0a3b55db-f67d-4b0a-a4c2-527b1c85e654"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "ListRecords",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "environmentvariablevalues",
+              "$filter": "schemaname eq 'cmdspp_WebsiteId'",
+              "$top": 1
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        }
+      },
+      "outputs": {}
+    },
+    "templateName": ""
+  },
+  "schemaVersion": "1.0.0.0"
+}

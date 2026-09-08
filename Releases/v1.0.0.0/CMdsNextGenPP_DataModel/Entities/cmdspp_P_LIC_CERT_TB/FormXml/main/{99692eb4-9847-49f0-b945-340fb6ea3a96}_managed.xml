@@ -1,0 +1,184 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<forms xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <systemform>
+    <formid>{99692eb4-9847-49f0-b945-340fb6ea3a96}</formid>
+    <IntroducedVersion>1.0</IntroducedVersion>
+    <FormPresentation>1</FormPresentation>
+    <FormActivationState>1</FormActivationState>
+    <form headerdensity="HighReadOnlyValues" shownavigationbar="false">
+      <tabs>
+        <tab verticallayout="true" id="{53da83d5-eda0-4212-a97d-1bc92494b1c8}" IsUserDefined="1">
+          <labels>
+            <label description="General" languagecode="1033" />
+          </labels>
+          <columns>
+            <column width="100%">
+              <sections>
+                <section showlabel="false" showbar="false" IsUserDefined="0" id="{3eb9ca8b-0897-4a46-9ef5-5a9ec4126abb}" visible="false">
+                  <labels>
+                    <label description="General" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{ce35d523-d70e-4d1c-b26a-f78a3f76bade}">
+                        <labels>
+                          <label description="ID" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_p_lic_cert_sk" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="cmdspp_p_lic_cert_sk" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{efd4a706-9dd5-4900-a07e-feb2e52b9542}">
+                        <labels>
+                          <label description="Owner" languagecode="1033" />
+                        </labels>
+                        <control id="ownerid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="ownerid" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+                <section name="null_section_3" id="310db8b3-84ac-42f3-b77a-762cf6f0b561" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Top" columns="11" labelwidth="115">
+                  <labels>
+                    <label description="Licensure and Certification" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell locklevel="0" id="{228fb1f5-e3e8-4725-bc57-c1d21c295840}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                      <cell id="{b1823b74-01c4-4297-a9d8-6d8ab4d53244}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="License" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_p_lic_cert_num" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="cmdspp_p_lic_cert_num" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{ecee53eb-c64a-499d-b18a-fa20bbf687a0}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Are you adding License or Certification information" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_cmdspp_p_lic_cert_ind_code3" classid="{3EF39988-22BB-4F0B-BBBE-64B5A3748AEE}" datafieldname="cmdspp_cmdspp_p_lic_cert_ind_code3" disabled="false" />
+                      </cell>
+                      <cell id="{25df6381-b338-4286-9049-5fd31881d7b7}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Effective Date" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_p_lic_cert_beg_dt" classid="{5B773807-9FB2-42DB-97C3-7A91EFF8ADFF}" datafieldname="cmdspp_p_lic_cert_beg_dt" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{a2ad2542-1c79-4a00-bb6d-237e07583ddf}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Licensing Agency" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_p_lic_cert_agcy_cdid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="cmdspp_p_lic_cert_agcy_cdid" disabled="false">
+                          <parameters>
+                            <DefaultViewId>{20DE6FBF-02A5-F111-B8DE-70A8A5B02328}</DefaultViewId>
+                            <AvailableViewIds>{7735878B-98D0-4EC9-A90A-D903327DC996},{64CA6896-0E0F-4900-898D-71C6B40C7F12},{20DE6FBF-02A5-F111-B8DE-70A8A5B02328},{9968C64F-1697-F111-8075-70A8A5B028CC},{67C2D717-02A5-F111-B8DE-70A8A5B02328},{CA553ED7-1697-F111-8075-70A8A5B02D34},{3C37C7FA-D8A2-F111-B8DE-70A8A5B02D28},{4756C924-D9A2-F111-B8DE-70A8A5B02D28}</AvailableViewIds>
+                            <DisableViewPicker>true</DisableViewPicker>
+                          </parameters>
+                        </control>
+                      </cell>
+                      <cell id="{e17f36bb-ad80-4d17-ac58-a71dc72c0d4d}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="State" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_p_lic_cert_state_cd" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="cmdspp_p_lic_cert_state_cd" disabled="false">
+                          <parameters>
+                            <DefaultViewId>{CA553ED7-1697-F111-8075-70A8A5B02D34}</DefaultViewId>
+                            <AvailableViewIds>{7735878B-98D0-4EC9-A90A-D903327DC996},{64CA6896-0E0F-4900-898D-71C6B40C7F12},{9968C64F-1697-F111-8075-70A8A5B028CC},{CA553ED7-1697-F111-8075-70A8A5B02D34},{3C37C7FA-D8A2-F111-B8DE-70A8A5B02D28},{4756C924-D9A2-F111-B8DE-70A8A5B02D28}</AvailableViewIds>
+                            <DisableViewPicker>true</DisableViewPicker>
+                          </parameters>
+                        </control>
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{8762d868-7312-45e6-9ef0-be0f186771ed}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Expiration Date" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_p_lic_cert_end_dt" classid="{5B773807-9FB2-42DB-97C3-7A91EFF8ADFF}" datafieldname="cmdspp_p_lic_cert_end_dt" disabled="false" />
+                      </cell>
+                      <cell locklevel="0" id="{9973c9a1-c4fa-4e35-ae9f-f5e9326bea24}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+          </columns>
+        </tab>
+      </tabs>
+      <header id="{002ef822-a0bc-4b81-8a49-66888a2f8f7e}" celllabelposition="Top" columns="111" labelwidth="115" celllabelalignment="Left">
+        <rows>
+          <row>
+            <cell id="{671137db-6a66-4523-ab2f-150a3857c77d}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{f773b57b-8828-4f74-b52e-b5c55fa3a284}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{ba5775f4-2674-4a22-be62-0f7666c32e82}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+          </row>
+        </rows>
+      </header>
+      <footer id="{85abb6f3-8c83-4e28-b40a-9c01e670b85a}" celllabelposition="Top" columns="111" labelwidth="115" celllabelalignment="Left">
+        <rows>
+          <row>
+            <cell id="{7172ab16-e68d-4d95-ab7b-7a48602d3243}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{184e579f-373a-4571-aa8c-2532f32f8a6c}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{e8cbef34-9cfb-4a34-b597-6052b8c4aca4}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+          </row>
+        </rows>
+      </footer>
+      <DisplayConditions Order="0" FallbackForm="true">
+        <Everyone />
+      </DisplayConditions>
+      <controlDescriptions />
+      <formLibraries>
+        <Library name="cmdspp_screening_web_res" libraryUniqueId="{7d58942f-c49e-491e-99af-b814171eb645}" />
+      </formLibraries>
+      <events>
+        <event name="onload" application="false" active="false">
+          <Handlers>
+            <Handler functionName="disableAllLookupNavigation" libraryName="cmdspp_screening_web_res" handlerUniqueId="{6a7c948e-2c59-4c70-8638-e6e9c986b81f}" enabled="true" parameters="" passExecutionContext="true" />
+          </Handlers>
+        </event>
+      </events>
+    </form>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <LocalizedNames>
+      <LocalizedName description="Information" languagecode="1033" />
+    </LocalizedNames>
+    <Descriptions>
+      <Description description="A form for this entity." languagecode="1033" />
+    </Descriptions>
+  </systemform>
+</forms>

@@ -1,0 +1,14 @@
+<powerpagecomponent powerpagecomponentid="cbc9520d-2897-f111-8075-70a8a5b02d28">
+  <content>{
+  "value": "cmdspp_p_ownership_dtl_tbid,cmdspp_p_is_managing_ind,cmdspp_p_owner_org_legal_name,cmdspp_p_owner_effective_dt,cmdspp_p_owner_end_dt,cmdspp_p_owner_add,cmdspp_p_owner_city,cmdspp_p_owner_occ_st_cd,_cmdspp_p_owner_occ_st_cd_value,cmdspp_p_owner_zip_cd,cmdspp_p_owner_fein,cmdspp_cmdspp_p_owner_participation_type,cmdspp_p_owner_current_medicaid_id,cmdspp_p_owner_current_medicare_id,cmdspp_hadownershipind,cmdspp_p_sys_id,_cmdspp_p_sys_id_value,statecode,statuscode",
+  "source": 0
+}</content>
+  <iscustomizable>1</iscustomizable>
+  <name>Webapi/cmdspp_p_ownership_dtl_tb/fields</name>
+  <powerpagecomponenttype>9</powerpagecomponenttype>
+  <powerpagesiteid>
+    <powerpagesiteid>abccaafd-73d6-47dd-bb55-b09b911f0d43</powerpagesiteid>
+  </powerpagesiteid>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</powerpagecomponent>

@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>0</isdefault>
+    <savedqueryid>{f2931bff-a99b-f111-b8db-70a8a5b02d34}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="cmdspp_p_sys_id" select="1" icon="1" preview="1">
+        <row name="result" id="cmdspp_p_dtl_tbid">
+          <cell name="cmdspp_p_sys_id" width="200" />
+          <cell name="cmdspp_p_provider_ty_lkpid" width="145" />
+          <cell name="cmdspp_p_birth_state_cd" width="134" />
+          <cell name="cmdspp_created_by_user" width="132" />
+          <cell name="cmdspp_g_web_user_id" width="126" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>0</querytype>
+    <fetchxml>
+      <fetch version="1.0" output-format="xml-platform" mapping="logical">
+        <entity name="cmdspp_p_dtl_tb">
+          <attribute name="cmdspp_p_sys_id" />
+          <attribute name="cmdspp_p_dtl_tbid" />
+          <attribute name="cmdspp_p_provider_ty_lkpid" />
+          <attribute name="cmdspp_p_birth_state_cd" />
+          <attribute name="cmdspp_created_by_user" />
+          <attribute name="cmdspp_g_web_user_id" />
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.0.0.0</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="InternalDashboardView" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>

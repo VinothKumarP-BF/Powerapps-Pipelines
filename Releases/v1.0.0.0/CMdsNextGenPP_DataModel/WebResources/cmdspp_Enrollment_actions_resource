@@ -1,0 +1,2919 @@
+// ============================================================================
+// CONFIGURATION
+// ============================================================================
+
+var EnrollmentValidationConfig = {
+
+    EFFECTIVE_DATE_FIELD:
+        "cmdspp_p_enrollment_effective_date",
+
+    RETROACTIVE_FIELD:
+        "cmdspp_p_retroactive_eligibility",
+
+    STATUS_FIELD:
+        "cmdspp_p_appln_status",
+
+    APPLICATION_ID_FIELD:
+        "cmdspp_p_sys_id",
+
+    PROVIDER_ID_FIELD:
+        "cmdspp_providerid",
+
+    LOGGED_USER_FIELD:
+        "cmdspp_loggeduser",
+
+    // NETWORK ENROLLMENT
+    NETWORK_TABLE:
+        "cmdspp_p_netw_enrl_tb",
+
+    NETWORK_PRIMARY_KEY:
+        "cmdspp_p_netw_enrl_tbid",
+
+    APPROVAL_LOOKUP:
+        "cmdspp_p_application_id",
+
+    // Leave blank to automatically locate the
+    // Network Enrollment subgrid by table name.
+    NETWORK_SUBGRID_NAME:
+        ""
+};
+
+
+// ============================================================================
+// APPROVAL SAVE STATE
+// ============================================================================
+
+var EnrollmentValidationState = {
+
+    allowApprovalSaveOnce:
+        false
+};
+
+
+// ============================================================================
+// NETWORK ENROLLMENT SUBGRID STATE
+// ============================================================================
+
+var NetworkEnrollmentSubgridState = {
+
+    initialized:
+        false,
+
+    previousCount:
+        null,
+
+    handlerRegistered:
+        false
+};
+
+
+// ============================================================================
+// GET FORM CONTEXT
+// ============================================================================
+
+function getFormContextFromInput(
+    input
+) {
+
+    if (!input) {
+        return null;
+    }
+
+    if (
+        typeof input.getFormContext ===
+        "function"
+    ) {
+
+        return input.getFormContext();
+    }
+
+    if (
+        input.data &&
+        input.ui
+    ) {
+
+        return input;
+    }
+
+    return null;
+}
+
+
+// ============================================================================
+// INLINE FIELD NOTIFICATION
+// ============================================================================
+
+function setInlineFieldNotification(
+    formContext,
+    fieldName,
+    message,
+    notificationId
+) {
+
+    if (!formContext) {
+        return;
+    }
+
+    var attribute =
+        formContext.getAttribute(
+            fieldName
+        );
+
+    if (!attribute) {
+        return;
+    }
+
+    attribute.controls.forEach(
+        function (control) {
+
+            if (
+                control &&
+                typeof control.setNotification ===
+                    "function"
+            ) {
+
+                control.setNotification(
+                    message,
+                    notificationId
+                );
+            }
+        }
+    );
+}
+
+
+// ============================================================================
+// CLEAR INLINE FIELD NOTIFICATION
+// ============================================================================
+
+function clearInlineFieldNotification(
+    formContext,
+    fieldName,
+    notificationId
+) {
+
+    if (!formContext) {
+        return;
+    }
+
+    var attribute =
+        formContext.getAttribute(
+            fieldName
+        );
+
+    if (!attribute) {
+        return;
+    }
+
+    attribute.controls.forEach(
+        function (control) {
+
+            if (
+                control &&
+                typeof control.clearNotification ===
+                    "function"
+            ) {
+
+                control.clearNotification(
+                    notificationId
+                );
+            }
+        }
+    );
+}
+
+
+// ============================================================================
+// TEMPORARY FORM MESSAGE
+// ============================================================================
+
+function showTemporaryFormMessage(
+    formContext,
+    message,
+    notificationId
+) {
+
+    if (!formContext) {
+        return;
+    }
+
+    formContext.ui.clearFormNotification(
+        notificationId
+    );
+
+    formContext.ui.setFormNotification(
+        message,
+        "INFO",
+        notificationId
+    );
+
+    setTimeout(
+        function () {
+
+            formContext.ui.clearFormNotification(
+                notificationId
+            );
+
+        },
+        5000
+    );
+}
+
+
+// ============================================================================
+// UTC DATE MM/DD/YYYY
+// ============================================================================
+
+function getCurrentUtcDateMMDDYYYY() {
+
+    var now =
+        new Date();
+
+    var month =
+        String(
+            now.getUTCMonth() + 1
+        ).padStart(
+            2,
+            "0"
+        );
+
+    var day =
+        String(
+            now.getUTCDate()
+        ).padStart(
+            2,
+            "0"
+        );
+
+    var year =
+        now.getUTCFullYear();
+
+    return (
+        month +
+        "/" +
+        day +
+        "/" +
+        year
+    );
+}
+
+
+// ============================================================================
+// GET LOGGED-IN USER
+//
+// IMPORTANT:
+// This only reads the current user's name.
+// It does NOT update cmdspp_loggeduser on the application form.
+// ============================================================================
+
+async function getLoggedInUserName(
+    executionContext
+) {
+
+    var userName =
+        Xrm.Utility
+            .getGlobalContext()
+            .userSettings
+            .userName;
+
+
+    if (!userName) {
+
+        return null;
+    }
+
+
+    userName =
+        userName.replace(
+            /\s*\(.*?\)\s*/g,
+            ""
+        );
+
+
+    userName =
+        userName.replace(
+            /#/g,
+            ""
+        ).trim();
+
+
+    return userName;
+}
+
+
+// ============================================================================
+// UPDATE TIMELINE
+//
+// Timeline failure does NOT:
+// - block save
+// - restore status
+// - show error
+//
+// cmdspp_loggeduser below belongs to the TIMELINE record,
+// not the parent application record.
+// ============================================================================
+
+async function updateTimeLine(
+    status,
+    description,
+    sysId,
+    executionContext,
+    loggedInUserName
+) {
+
+    try {
+
+        var data = {};
+
+        data[
+            "cmdspp_p_inquiry_desc"
+        ] =
+            description;
+
+        data[
+            "cmdspp_p_inquiry_status"
+        ] =
+            status;
+
+        data[
+            "cmdspp_loggeduser"
+        ] =
+            loggedInUserName;
+
+        data[
+            "cmdspp_p_event_dt"
+        ] =
+            new Date();
+
+        sysId =
+            String(
+                sysId
+            ).replace(
+                /[{}]/g,
+                ""
+            );
+
+        data[
+            "cmdspp_p_sys_id_fk@odata.bind"
+        ] =
+            "/cmdspp_p_dtl_tbs(" +
+            sysId +
+            ")";
+
+        return await Xrm.WebApi.createRecord(
+            "cmdspp_p_enrol_status_inquiry_tb",
+            data
+        );
+    }
+
+    catch (error) {
+
+        return null;
+    }
+}
+
+
+// ============================================================================
+// EFFECTIVE DATE ONCHANGE
+// ============================================================================
+
+function onEnrollmentEffectiveDateChange(
+    executionContext
+) {
+
+    var formContext =
+        executionContext.getFormContext();
+
+    var fieldName =
+        EnrollmentValidationConfig
+            .EFFECTIVE_DATE_FIELD;
+
+    var attribute =
+        formContext.getAttribute(
+            fieldName
+        );
+
+    if (!attribute) {
+        return;
+    }
+
+    var value =
+        attribute.getValue();
+
+    if (
+        value ===
+        null
+    ) {
+
+        setInlineFieldNotification(
+            formContext,
+            fieldName,
+            "Enrollment Effective Date is required.",
+            "EFFECTIVE_DATE_REQUIRED"
+        );
+    }
+
+    else {
+
+        clearInlineFieldNotification(
+            formContext,
+            fieldName,
+            "EFFECTIVE_DATE_REQUIRED"
+        );
+    }
+}
+
+
+// ============================================================================
+// DENIAL / CANCELLATION REASON ONCHANGE
+// ============================================================================
+
+function onDispositionReasonChange(
+    executionContext
+) {
+
+    var attribute =
+        executionContext.getEventSource();
+
+    if (!attribute) {
+        return;
+    }
+
+    var value =
+        attribute.getValue();
+
+    var hasValue =
+        !(
+            value === null ||
+            value === undefined ||
+
+            (
+                typeof value ===
+                    "string" &&
+                value.trim() ===
+                    ""
+            ) ||
+
+            (
+                Array.isArray(
+                    value
+                ) &&
+                value.length ===
+                    0
+            )
+        );
+
+    if (!hasValue) {
+        return;
+    }
+
+    attribute.controls.forEach(
+        function (control) {
+
+            if (
+                control &&
+                typeof control.clearNotification ===
+                    "function"
+            ) {
+
+                control.clearNotification(
+                    "DISPOSITION_REASON_REQUIRED"
+                );
+            }
+        }
+    );
+}
+
+
+// ============================================================================
+// FIND NETWORK ENROLLMENT SUBGRID
+// ============================================================================
+
+function getNetworkEnrollmentSubgrid(
+    formContext
+) {
+
+    if (!formContext) {
+        return null;
+    }
+
+    var configuredName =
+        EnrollmentValidationConfig
+            .NETWORK_SUBGRID_NAME;
+
+    // Try configured subgrid name first
+    if (
+        configuredName &&
+        String(
+            configuredName
+        ).trim() !==
+            ""
+    ) {
+
+        var configuredControl =
+            formContext.getControl(
+                configuredName
+            );
+
+        if (
+            configuredControl
+        ) {
+
+            return configuredControl;
+        }
+    }
+
+    // Automatically locate by table logical name
+    var foundControl =
+        null;
+
+    if (
+        !formContext.ui ||
+        !formContext.ui.controls
+    ) {
+
+        return null;
+    }
+
+    formContext.ui.controls.forEach(
+        function (control) {
+
+            if (
+                foundControl ||
+                !control
+            ) {
+
+                return;
+            }
+
+            try {
+
+                if (
+                    typeof control.getControlType !==
+                    "function"
+                ) {
+
+                    return;
+                }
+
+                if (
+                    control.getControlType() !==
+                    "subgrid"
+                ) {
+
+                    return;
+                }
+
+                if (
+                    typeof control.getEntityName !==
+                    "function"
+                ) {
+
+                    return;
+                }
+
+                var entityName =
+                    control.getEntityName();
+
+                if (
+                    entityName ===
+                    EnrollmentValidationConfig
+                        .NETWORK_TABLE
+                ) {
+
+                    foundControl =
+                        control;
+                }
+            }
+
+            catch (error) {
+
+                return;
+            }
+        }
+    );
+
+    return foundControl;
+}
+
+
+// ============================================================================
+// NETWORK ENROLLMENT ACTIONS
+// ============================================================================
+
+var NetworkEnrollmentActions =
+    NetworkEnrollmentActions || {};
+
+
+// ============================================================================
+// NETWORK ENROLLMENT ADDED SUCCESS
+// ============================================================================
+
+NetworkEnrollmentActions.showAddedSuccess =
+    function (
+        formContext
+    ) {
+
+        if (!formContext) {
+            return;
+        }
+
+        formContext.ui.clearFormNotification(
+            "NETWORK_ENROLLMENT_REQUIRED"
+        );
+
+        showTemporaryFormMessage(
+            formContext,
+            "Network Enrollment added successfully.",
+            "NETWORK_ENROLLMENT_ADDED_SUCCESS"
+        );
+    };
+
+
+// ============================================================================
+// NETWORK ENROLLMENT REMOVED SUCCESS
+// ============================================================================
+
+NetworkEnrollmentActions.showRemovedSuccess =
+    function (
+        formContext
+    ) {
+
+        if (!formContext) {
+            return;
+        }
+
+        showTemporaryFormMessage(
+            formContext,
+            "Network Enrollment removed successfully.",
+            "NETWORK_ENROLLMENT_REMOVED_SUCCESS"
+        );
+    };
+
+
+// ============================================================================
+// NETWORK ENROLLMENT REQUIRED
+// ============================================================================
+
+NetworkEnrollmentActions.showRequired =
+    function (
+        formContext
+    ) {
+
+        if (!formContext) {
+            return;
+        }
+
+        formContext.ui.setFormNotification(
+            "At least one Network Enrollment record is required.",
+            "ERROR",
+            "NETWORK_ENROLLMENT_REQUIRED"
+        );
+    };
+
+
+// ============================================================================
+// CLEAR NETWORK ENROLLMENT REQUIRED
+// ============================================================================
+
+NetworkEnrollmentActions.clearRequired =
+    function (
+        formContext
+    ) {
+
+        if (!formContext) {
+            return;
+        }
+
+        formContext.ui.clearFormNotification(
+            "NETWORK_ENROLLMENT_REQUIRED"
+        );
+    };
+
+
+// ============================================================================
+// NETWORK ENROLLMENT SUBGRID ONLOAD
+//
+// Detect Add / Remove by comparing row count.
+// ============================================================================
+
+function NetworkEnrollmentSubgridOnLoad(
+    executionContext
+) {
+
+    var formContext =
+        executionContext.getFormContext();
+
+    if (!formContext) {
+        return;
+    }
+
+    var networkSubgrid =
+        getNetworkEnrollmentSubgrid(
+            formContext
+        );
+
+    if (!networkSubgrid) {
+        return;
+    }
+
+    var grid =
+        networkSubgrid.getGrid();
+
+    if (!grid) {
+        return;
+    }
+
+    var currentCount =
+        grid.getTotalRecordCount();
+
+
+    // First load
+    if (
+        NetworkEnrollmentSubgridState
+            .initialized ===
+        false
+    ) {
+
+        NetworkEnrollmentSubgridState
+            .initialized =
+                true;
+
+        NetworkEnrollmentSubgridState
+            .previousCount =
+                currentCount;
+
+        return;
+    }
+
+
+    var previousCount =
+        NetworkEnrollmentSubgridState
+            .previousCount;
+
+
+    // Record added
+    if (
+        currentCount >
+        previousCount
+    ) {
+
+        NetworkEnrollmentActions
+            .showAddedSuccess(
+                formContext
+            );
+    }
+
+
+    // Record removed
+    else if (
+        currentCount <
+        previousCount
+    ) {
+
+        NetworkEnrollmentActions
+            .showRemovedSuccess(
+                formContext
+            );
+    }
+
+
+    NetworkEnrollmentSubgridState
+        .previousCount =
+            currentCount;
+}
+
+
+// ============================================================================
+// REGISTER NETWORK ENROLLMENT SUBGRID ONLOAD
+// ============================================================================
+
+function registerNetworkEnrollmentSubgrid(
+    formContext
+) {
+
+    if (!formContext) {
+        return;
+    }
+
+    if (
+        NetworkEnrollmentSubgridState
+            .handlerRegistered ===
+        true
+    ) {
+
+        return;
+    }
+
+    var networkSubgrid =
+        getNetworkEnrollmentSubgrid(
+            formContext
+        );
+
+    if (!networkSubgrid) {
+        return;
+    }
+
+    if (
+        typeof networkSubgrid.addOnLoad !==
+        "function"
+    ) {
+
+        return;
+    }
+
+    if (
+        typeof networkSubgrid.removeOnLoad ===
+        "function"
+    ) {
+
+        networkSubgrid.removeOnLoad(
+            NetworkEnrollmentSubgridOnLoad
+        );
+    }
+
+    networkSubgrid.addOnLoad(
+        NetworkEnrollmentSubgridOnLoad
+    );
+
+    NetworkEnrollmentSubgridState
+        .handlerRegistered =
+            true;
+
+    try {
+
+        var grid =
+            networkSubgrid.getGrid();
+
+        if (grid) {
+
+            NetworkEnrollmentSubgridState
+                .previousCount =
+                    grid.getTotalRecordCount();
+
+            NetworkEnrollmentSubgridState
+                .initialized =
+                    true;
+        }
+    }
+
+    catch (error) {
+
+        NetworkEnrollmentSubgridState
+            .initialized =
+                false;
+    }
+}
+
+
+// ============================================================================
+// APPROVAL VALIDATION
+// ============================================================================
+
+var ApprovalValidation =
+    async function (
+        executionContext
+    ) {
+
+        var formContext =
+            executionContext.getFormContext();
+
+        var eventArgs =
+            executionContext.getEventArgs();
+
+        var config =
+            EnrollmentValidationConfig;
+
+        var saveMode =
+            eventArgs.getSaveMode();
+
+
+        const notificationId =
+            "NETWORK_VALIDATION";
+
+        const networkNotificationId =
+            "NETWORK_ENROLLMENT_REQUIRED";
+
+        const effectiveDateNotificationId =
+            "EFFECTIVE_DATE_REQUIRED";
+
+
+        // ====================================================================
+        // SECOND SAVE
+        // ====================================================================
+
+        if (
+            EnrollmentValidationState
+                .allowApprovalSaveOnce ===
+            true
+        ) {
+
+            EnrollmentValidationState
+                .allowApprovalSaveOnce =
+                    false;
+
+            return;
+        }
+
+
+        formContext.ui.clearFormNotification(
+            notificationId
+        );
+
+
+        // ====================================================================
+        // GET APPROVAL FIELDS
+        // ====================================================================
+
+        var effectiveDateAttribute =
+            formContext.getAttribute(
+                config.EFFECTIVE_DATE_FIELD
+            );
+
+        var retroactiveAttribute =
+            formContext.getAttribute(
+                config.RETROACTIVE_FIELD
+            );
+
+        var statusAttribute =
+            formContext.getAttribute(
+                config.STATUS_FIELD
+            );
+
+        var applicationIdAttribute =
+            formContext.getAttribute(
+                config.APPLICATION_ID_FIELD
+            );
+
+        var providerIdAttribute =
+            formContext.getAttribute(
+                config.PROVIDER_ID_FIELD
+            );
+
+
+        // ====================================================================
+        // EFFECTIVE DATE FIELD
+        // ====================================================================
+
+        if (
+            !effectiveDateAttribute
+        ) {
+
+            eventArgs.preventDefault();
+
+            formContext.ui.setFormNotification(
+                "Enrollment Effective Date field is not available on the form.",
+                "ERROR",
+                notificationId
+            );
+
+            return;
+        }
+
+
+        effectiveDateAttribute.removeOnChange(
+            onEnrollmentEffectiveDateChange
+        );
+
+        effectiveDateAttribute.addOnChange(
+            onEnrollmentEffectiveDateChange
+        );
+
+
+        effectiveDateAttribute.setRequiredLevel(
+            "required"
+        );
+
+
+        var effectiveDate =
+            effectiveDateAttribute.getValue();
+
+
+        clearInlineFieldNotification(
+            formContext,
+            config.EFFECTIVE_DATE_FIELD,
+            effectiveDateNotificationId
+        );
+
+
+        if (
+            effectiveDate ===
+            null
+        ) {
+
+            eventArgs.preventDefault();
+
+            setInlineFieldNotification(
+                formContext,
+                config.EFFECTIVE_DATE_FIELD,
+                "Enrollment Effective Date is required.",
+                effectiveDateNotificationId
+            );
+
+            return;
+        }
+
+
+        // ====================================================================
+        // RETROACTIVE ELIGIBILITY
+        // ====================================================================
+
+        if (
+            !retroactiveAttribute
+        ) {
+
+            eventArgs.preventDefault();
+
+            formContext.ui.setFormNotification(
+                "Retroactive Eligibility field is not available on the form.",
+                "ERROR",
+                notificationId
+            );
+
+            return;
+        }
+
+
+        retroactiveAttribute.setRequiredLevel(
+            "required"
+        );
+
+
+        var retroactiveEligibility =
+            retroactiveAttribute.getValue();
+
+
+        if (
+            retroactiveEligibility ===
+            null
+        ) {
+
+            eventArgs.preventDefault();
+
+            formContext.ui.setFormNotification(
+                "Retroactive Eligibility is required.",
+                "ERROR",
+                notificationId
+            );
+
+            return;
+        }
+
+
+        // ====================================================================
+        // STATUS FIELD
+        // ====================================================================
+
+        if (
+            !statusAttribute
+        ) {
+
+            eventArgs.preventDefault();
+
+            formContext.ui.setFormNotification(
+                "Application Status field is not available on the form.",
+                "ERROR",
+                notificationId
+            );
+
+            return;
+        }
+
+
+        // ====================================================================
+        // APPLICATION ID FIELD
+        // ====================================================================
+
+        if (
+            !applicationIdAttribute
+        ) {
+
+            eventArgs.preventDefault();
+
+            formContext.ui.setFormNotification(
+                "Application ID field is not available on the form.",
+                "ERROR",
+                notificationId
+            );
+
+            return;
+        }
+
+
+        // ====================================================================
+        // PROVIDER ID FIELD
+        // ====================================================================
+
+        if (
+            !providerIdAttribute
+        ) {
+
+            eventArgs.preventDefault();
+
+            formContext.ui.setFormNotification(
+                "Provider ID field is not available on the form.",
+                "ERROR",
+                notificationId
+            );
+
+            return;
+        }
+
+
+        // ====================================================================
+        // APPLICATION ID VALUE
+        // ====================================================================
+
+        var applicationIdValue =
+            applicationIdAttribute.getValue();
+
+
+        if (
+            applicationIdValue ===
+                null ||
+
+            applicationIdValue ===
+                undefined ||
+
+            String(
+                applicationIdValue
+            ).trim() ===
+                ""
+        ) {
+
+            eventArgs.preventDefault();
+
+            formContext.ui.setFormNotification(
+                "Application ID is required before Provider ID can be generated.",
+                "ERROR",
+                notificationId
+            );
+
+            return;
+        }
+
+
+        // ====================================================================
+        // CURRENT APPLICATION RECORD
+        // ====================================================================
+
+        var approvalId =
+            formContext
+                .data
+                .entity
+                .getId();
+
+
+        // Allow initial create save
+        if (
+            !approvalId
+        ) {
+
+            return;
+        }
+
+
+        approvalId =
+            approvalId.replace(
+                /[{}]/g,
+                ""
+            );
+
+
+        // ====================================================================
+        // SAVE AND CONTINUE / AUTOSAVE
+        //
+        // Do not perform final Approval processing.
+        // ====================================================================
+
+        if (
+            saveMode ===
+                2 ||
+
+            saveMode ===
+                70
+        ) {
+
+            formContext.ui.clearFormNotification(
+                networkNotificationId
+            );
+
+            return;
+        }
+
+
+        // ====================================================================
+        // CANCEL CURRENT SAVE BEFORE ASYNC VALIDATION
+        // ====================================================================
+
+        eventArgs.preventDefault();
+
+
+        var originalStatus =
+            statusAttribute.getValue();
+
+
+        var originalProviderId =
+            providerIdAttribute.getValue();
+
+
+        var statusPrepared =
+            false;
+
+
+        var providerIdPrepared =
+            false;
+
+
+        try {
+
+            // =================================================================
+            // NETWORK ENROLLMENT VALIDATION
+            // =================================================================
+
+            var query =
+                "?$select=" +
+                config.NETWORK_PRIMARY_KEY +
+
+                "&$filter=_" +
+                config.APPROVAL_LOOKUP +
+
+                "_value eq " +
+                approvalId +
+
+                "&$top=1";
+
+
+            var networkResult =
+                await Xrm.WebApi
+                    .retrieveMultipleRecords(
+                        config.NETWORK_TABLE,
+                        query
+                    );
+
+
+            var hasNetworkEnrollment =
+                networkResult
+                    .entities
+                    .length >
+                0;
+
+
+            // =================================================================
+            // NETWORK ENROLLMENT REQUIRED
+            // =================================================================
+
+            if (
+                !hasNetworkEnrollment
+            ) {
+
+                formContext.ui.setFormNotification(
+                    "At least one Network Enrollment record is required.",
+                    "ERROR",
+                    networkNotificationId
+                );
+
+                return;
+            }
+
+
+            formContext.ui.clearFormNotification(
+                networkNotificationId
+            );
+
+
+            // =================================================================
+            // APPROVED STATUS = 6
+            // =================================================================
+
+            statusAttribute.setValue(
+                6
+            );
+
+
+            statusAttribute.setSubmitMode(
+                "always"
+            );
+
+
+            statusPrepared =
+                true;
+
+
+            // =================================================================
+            // GENERATE PROVIDER ID IF BLANK
+            // =================================================================
+
+            if (
+                originalProviderId ===
+                    null ||
+
+                originalProviderId ===
+                    undefined ||
+
+                String(
+                    originalProviderId
+                ).trim() ===
+                    ""
+            ) {
+
+                var generatedProviderId =
+                    "PRV" +
+                    String(
+                        applicationIdValue
+                    )
+                        .trim()
+                        .padStart(
+                            10,
+                            "0"
+                        );
+
+
+                providerIdAttribute.setValue(
+                    generatedProviderId
+                );
+
+
+                providerIdAttribute.setSubmitMode(
+                    "always"
+                );
+
+
+                providerIdPrepared =
+                    true;
+            }
+
+
+            // =================================================================
+            // APPROVAL TIMELINE
+            // =================================================================
+
+            if (
+                originalStatus !==
+                6
+            ) {
+
+                var currentDate =
+                    getCurrentUtcDateMMDDYYYY();
+
+
+                var loggedInUserName =
+                    await getLoggedInUserName(
+                        executionContext
+                    );
+
+
+                var providerIdValue =
+                    providerIdAttribute.getValue();
+
+
+                var description =
+                    "Application Approved by " +
+                    loggedInUserName +
+                    " and Provider ID " +
+                    providerIdValue +
+                    " assigned successfully.";
+
+
+                await updateTimeLine(
+                    "Application Approved - " +
+                        currentDate,
+
+                    description,
+
+                    approvalId,
+
+                    executionContext,
+
+                    loggedInUserName
+                );
+            }
+
+
+            // =================================================================
+            // CLEAR VALIDATION
+            // =================================================================
+
+            clearInlineFieldNotification(
+                formContext,
+                config.EFFECTIVE_DATE_FIELD,
+                effectiveDateNotificationId
+            );
+
+
+            formContext.ui.clearFormNotification(
+                notificationId
+            );
+
+
+            formContext.ui.clearFormNotification(
+                networkNotificationId
+            );
+
+
+            // =================================================================
+            // ALLOW SECOND SAVE
+            // =================================================================
+
+            EnrollmentValidationState
+                .allowApprovalSaveOnce =
+                    true;
+
+
+            setTimeout(
+                function () {
+
+                    var savePromise =
+                        formContext.data.save(
+                            {
+                                saveMode:
+                                    1
+                            }
+                        );
+
+
+                    if (
+                        savePromise &&
+                        typeof savePromise.catch ===
+                            "function"
+                    ) {
+
+                        savePromise.catch(
+                            function () {
+
+                                EnrollmentValidationState
+                                    .allowApprovalSaveOnce =
+                                        false;
+
+
+                                if (
+                                    statusPrepared &&
+                                    statusAttribute
+                                ) {
+
+                                    statusAttribute.setValue(
+                                        originalStatus
+                                    );
+
+
+                                    statusAttribute.setSubmitMode(
+                                        "always"
+                                    );
+                                }
+
+
+                                if (
+                                    providerIdPrepared &&
+                                    providerIdAttribute
+                                ) {
+
+                                    providerIdAttribute.setValue(
+                                        originalProviderId
+                                    );
+
+
+                                    providerIdAttribute.setSubmitMode(
+                                        "always"
+                                    );
+                                }
+
+
+                                formContext.ui.setFormNotification(
+                                    "Unable to save the approved application.",
+                                    "ERROR",
+                                    notificationId
+                                );
+                            }
+                        );
+                    }
+
+                },
+                100
+            );
+
+
+            return;
+        }
+
+        catch (error) {
+
+            if (
+                statusPrepared &&
+                statusAttribute
+            ) {
+
+                statusAttribute.setValue(
+                    originalStatus
+                );
+
+
+                statusAttribute.setSubmitMode(
+                    "always"
+                );
+            }
+
+
+            if (
+                providerIdPrepared &&
+                providerIdAttribute
+            ) {
+
+                providerIdAttribute.setValue(
+                    originalProviderId
+                );
+
+
+                providerIdAttribute.setSubmitMode(
+                    "always"
+                );
+            }
+
+
+            EnrollmentValidationState
+                .allowApprovalSaveOnce =
+                    false;
+
+
+            formContext.ui.setFormNotification(
+                "Unable to complete Approval validation.",
+                "ERROR",
+                notificationId
+            );
+
+
+            return;
+        }
+    };
+
+
+// ============================================================================
+// DENIAL / CANCEL CONFIGURATION
+// ============================================================================
+
+var EnrollmentActionValidation =
+    EnrollmentActionValidation || {};
+
+
+EnrollmentActionValidation.Config = {
+
+    STATUS_FIELD:
+        "cmdspp_p_appln_status",
+
+
+    // DENIAL
+    DENIAL_REASON_FIELD:
+        "cmdspp_p_appln_denial_reasons",
+
+    DENIAL_EXPLANATION_FIELD:
+        "cmdspp_p_appln_denial_expln",
+
+    DENIAL_STATUS_VALUE:
+        4,
+
+
+    // CANCEL
+    CANCELLATION_REASON_FIELD:
+        "cmdspp_p_appln_cancellation_rsn",
+
+    CANCEL_EXPLANATION_FIELD:
+        "cmdspp_p_appln_cancellation_expln",
+
+    CANCEL_STATUS_VALUE:
+        7
+};
+
+
+// ============================================================================
+// DENIAL / CANCEL VALIDATION
+// ============================================================================
+
+EnrollmentActionValidation.validateAction =
+    async function (
+        executionContext,
+        actionType
+    ) {
+
+        var formContext =
+            executionContext.getFormContext();
+
+
+        var eventArgs =
+            executionContext.getEventArgs();
+
+
+        var config =
+            EnrollmentActionValidation.Config;
+
+
+        const notificationId =
+            "ENROLLMENT_ACTION_VALIDATION";
+
+
+        const reasonNotificationId =
+            "DISPOSITION_REASON_REQUIRED";
+
+
+        formContext.ui.clearFormNotification(
+            notificationId
+        );
+
+
+        formContext.ui.clearFormNotification(
+            "DISPOSITION_SUCCESS"
+        );
+
+
+        var reasonFieldName =
+            null;
+
+
+        var explanationFieldName =
+            null;
+
+
+        var reasonRequiredMessage =
+            null;
+
+
+        var targetStatus =
+            null;
+
+
+        var timelineStatus =
+            null;
+
+
+        var currentDate =
+            getCurrentUtcDateMMDDYYYY();
+
+
+        // ====================================================================
+        // DENIAL
+        // ====================================================================
+
+        if (
+            actionType ===
+            "DENIAL"
+        ) {
+
+            reasonFieldName =
+                config.DENIAL_REASON_FIELD;
+
+
+            explanationFieldName =
+                config.DENIAL_EXPLANATION_FIELD;
+
+
+            reasonRequiredMessage =
+                "Denial Reason is required.";
+
+
+            targetStatus =
+                config.DENIAL_STATUS_VALUE;
+
+
+            timelineStatus =
+                "Application Denied - " +
+                currentDate;
+        }
+
+
+        // ====================================================================
+        // CANCEL
+        // ====================================================================
+
+        else if (
+            actionType ===
+            "CANCEL"
+        ) {
+
+            reasonFieldName =
+                config.CANCELLATION_REASON_FIELD;
+
+
+            explanationFieldName =
+                config.CANCEL_EXPLANATION_FIELD;
+
+
+            reasonRequiredMessage =
+                "Cancellation Reason is required.";
+
+
+            targetStatus =
+                config.CANCEL_STATUS_VALUE;
+
+
+            timelineStatus =
+                "Application Cancelled - " +
+                currentDate;
+        }
+
+
+        else {
+
+            eventArgs.preventDefault();
+
+
+            formContext.ui.setFormNotification(
+                "Invalid enrollment action type.",
+                "ERROR",
+                notificationId
+            );
+
+
+            return;
+        }
+
+
+        // ====================================================================
+        // GET ATTRIBUTES
+        // ====================================================================
+
+        var reasonAttribute =
+            formContext.getAttribute(
+                reasonFieldName
+            );
+
+
+        var explanationAttribute =
+            formContext.getAttribute(
+                explanationFieldName
+            );
+
+
+        var statusAttribute =
+            formContext.getAttribute(
+                config.STATUS_FIELD
+            );
+
+
+        // ====================================================================
+        // REASON FIELD
+        // ====================================================================
+
+        if (
+            !reasonAttribute
+        ) {
+
+            eventArgs.preventDefault();
+
+
+            formContext.ui.setFormNotification(
+                "Reason field is not available on the form.",
+                "ERROR",
+                notificationId
+            );
+
+
+            return;
+        }
+
+
+        // ====================================================================
+        // REASON ONCHANGE
+        // ====================================================================
+
+        reasonAttribute.removeOnChange(
+            onDispositionReasonChange
+        );
+
+
+        reasonAttribute.addOnChange(
+            onDispositionReasonChange
+        );
+
+
+        // ====================================================================
+        // EXPLANATION OPTIONAL
+        // ====================================================================
+
+        if (
+            explanationAttribute
+        ) {
+
+            explanationAttribute.setRequiredLevel(
+                "none"
+            );
+        }
+
+
+        // ====================================================================
+        // STATUS FIELD
+        // ====================================================================
+
+        if (
+            !statusAttribute
+        ) {
+
+            eventArgs.preventDefault();
+
+
+            formContext.ui.setFormNotification(
+                "Application Status field is not available on the form.",
+                "ERROR",
+                notificationId
+            );
+
+
+            return;
+        }
+
+
+        // ====================================================================
+        // REASON REQUIRED
+        // ====================================================================
+
+        reasonAttribute.setRequiredLevel(
+            "required"
+        );
+
+
+        var reason =
+            reasonAttribute.getValue();
+
+
+        clearInlineFieldNotification(
+            formContext,
+            reasonFieldName,
+            reasonNotificationId
+        );
+
+
+        if (
+            reason ===
+                null ||
+
+            reason ===
+                undefined ||
+
+            (
+                typeof reason ===
+                    "string" &&
+                reason.trim() ===
+                    ""
+            ) ||
+
+            (
+                Array.isArray(
+                    reason
+                ) &&
+                reason.length ===
+                    0
+            )
+        ) {
+
+            eventArgs.preventDefault();
+
+
+            setInlineFieldNotification(
+                formContext,
+                reasonFieldName,
+                reasonRequiredMessage,
+                reasonNotificationId
+            );
+
+
+            return;
+        }
+
+
+        // ====================================================================
+        // CURRENT RECORD ID
+        // ====================================================================
+
+        var sysId =
+            formContext
+                .data
+                .entity
+                .getId();
+
+
+        if (
+            sysId
+        ) {
+
+            sysId =
+                sysId.replace(
+                    /[{}]/g,
+                    ""
+                );
+        }
+
+
+        // ====================================================================
+        // REASON DISPLAY TEXT
+        // ====================================================================
+
+        var reasonText =
+            "";
+
+
+        if (
+            typeof reasonAttribute.getText ===
+            "function"
+        ) {
+
+            try {
+
+                reasonText =
+                    reasonAttribute.getText();
+            }
+
+            catch (error) {
+
+                reasonText =
+                    "";
+            }
+        }
+
+
+        if (
+            Array.isArray(
+                reasonText
+            )
+        ) {
+
+            reasonText =
+                reasonText.join(
+                    ", "
+                );
+        }
+
+
+        if (
+            reasonText ===
+                null ||
+
+            reasonText ===
+                undefined ||
+
+            String(
+                reasonText
+            ).trim() ===
+                ""
+        ) {
+
+            if (
+                Array.isArray(
+                    reason
+                )
+            ) {
+
+                reasonText =
+                    reason.join(
+                        ", "
+                    );
+            }
+
+            else {
+
+                reasonText =
+                    String(
+                        reason
+                    );
+            }
+        }
+
+
+        // ====================================================================
+        // OPTIONAL EXPLANATION
+        // ====================================================================
+
+        var explanation =
+            explanationAttribute
+
+                ? explanationAttribute.getValue()
+
+                : null;
+
+
+        // ====================================================================
+        // ORIGINAL STATUS
+        // ====================================================================
+
+        var originalStatus =
+            statusAttribute.getValue();
+
+
+        // ====================================================================
+        // UPDATE STATUS
+        // ====================================================================
+
+        statusAttribute.setValue(
+            targetStatus
+        );
+
+
+        statusAttribute.setSubmitMode(
+            "always"
+        );
+
+
+        // ====================================================================
+        // LOGGED-IN USER
+        // ====================================================================
+
+        var loggedInUserNametext =
+            await getLoggedInUserName(
+                executionContext
+            );
+
+
+        // ====================================================================
+        // TIMELINE DESCRIPTION
+        // ====================================================================
+
+        var timelineDescription;
+
+
+        if (
+            actionType ===
+            "DENIAL"
+        ) {
+
+            timelineDescription =
+                "Application Denied by " +
+                loggedInUserNametext +
+                " with reason " +
+                reasonText +
+                ".";
+        }
+
+        else {
+
+            timelineDescription =
+                "Application Cancelled by " +
+                loggedInUserNametext +
+                " with reason " +
+                reasonText +
+                ".";
+        }
+
+
+        if (
+            explanation !==
+                null &&
+            explanation !==
+                undefined &&
+            String(
+                explanation
+            ).trim() !==
+                ""
+        ) {
+
+            timelineDescription +=
+                " Explanation: " +
+                String(
+                    explanation
+                ).trim() +
+                ".";
+        }
+
+
+        // ====================================================================
+        // TIMELINE
+        // ====================================================================
+
+        if (
+            originalStatus !==
+                targetStatus &&
+            sysId
+        ) {
+
+            await updateTimeLine(
+                timelineStatus,
+
+                timelineDescription,
+
+                sysId,
+
+                executionContext,
+
+                loggedInUserNametext
+            );
+        }
+
+
+        // ====================================================================
+        // CLEAR VALIDATION
+        // ====================================================================
+
+        clearInlineFieldNotification(
+            formContext,
+            reasonFieldName,
+            reasonNotificationId
+        );
+
+
+        formContext.ui.clearFormNotification(
+            notificationId
+        );
+
+
+        // ====================================================================
+        // SUCCESS
+        // ====================================================================
+
+        showTemporaryFormMessage(
+            formContext,
+            "Disposition processed successfully.",
+            "DISPOSITION_SUCCESS"
+        );
+
+
+        return;
+    };
+
+
+// ============================================================================
+// DENIAL FORM ON SAVE
+// ============================================================================
+
+EnrollmentActionValidation.onSaveDenial =
+    function (
+        executionContext
+    ) {
+
+        return EnrollmentActionValidation
+            .validateAction(
+                executionContext,
+                "DENIAL"
+            );
+    };
+
+
+// ============================================================================
+// CANCEL FORM ON SAVE
+// ============================================================================
+
+EnrollmentActionValidation.onSaveCancel =
+    function (
+        executionContext
+    ) {
+
+        return EnrollmentActionValidation
+            .validateAction(
+                executionContext,
+                "CANCEL"
+            );
+    };
+
+
+// ============================================================================
+// POST SAVE - CLOSE FORM AFTER TERMINAL DISPOSITION
+//
+// 4 = Denied
+// 6 = Approved
+// 7 = Cancelled
+// ============================================================================
+
+function onEnrollmentActionPostSave(
+    executionContext
+) {
+
+    var formContext =
+        executionContext.getFormContext();
+
+
+    var eventArgs =
+        executionContext.getEventArgs();
+
+
+    if (
+        !eventArgs ||
+        typeof eventArgs.getIsSaveSuccess !==
+            "function" ||
+        eventArgs.getIsSaveSuccess() !==
+            true
+    ) {
+
+        return;
+    }
+
+
+    var statusAttribute =
+        formContext.getAttribute(
+            "cmdspp_p_appln_status"
+        );
+
+
+    if (!statusAttribute) {
+
+        return;
+    }
+
+
+    var statusValue =
+        statusAttribute.getValue();
+
+
+    if (
+        statusValue === 4 ||
+        statusValue === 6 ||
+        statusValue === 7
+    ) {
+
+        formContext.ui.close();
+    }
+}
+
+
+// ============================================================================
+// REGISTER POST SAVE CLOSE HANDLER
+// ============================================================================
+
+function registerEnrollmentPostSave(
+    formContext
+) {
+
+    if (!formContext) {
+
+        return;
+    }
+
+
+    formContext.data.entity.removeOnPostSave(
+        onEnrollmentActionPostSave
+    );
+
+
+    formContext.data.entity.addOnPostSave(
+        onEnrollmentActionPostSave
+    );
+}
+
+
+// ============================================================================
+// DENIAL FORM ONLOAD
+// ============================================================================
+
+function onDenialFormLoad(
+    executionContext
+) {
+
+    var formContext =
+        executionContext.getFormContext();
+
+
+    registerEnrollmentPostSave(
+        formContext
+    );
+
+
+    var denialReasonAttribute =
+        formContext.getAttribute(
+            "cmdspp_p_appln_denial_reasons"
+        );
+
+
+    if (
+        denialReasonAttribute
+    ) {
+
+        denialReasonAttribute.removeOnChange(
+            onDispositionReasonChange
+        );
+
+
+        denialReasonAttribute.addOnChange(
+            onDispositionReasonChange
+        );
+    }
+
+
+    var denialExplanationAttribute =
+        formContext.getAttribute(
+            "cmdspp_p_appln_denial_expln"
+        );
+
+
+    if (
+        denialExplanationAttribute
+    ) {
+
+        denialExplanationAttribute.setRequiredLevel(
+            "none"
+        );
+    }
+}
+
+
+// ============================================================================
+// CANCEL FORM ONLOAD
+// ============================================================================
+
+function onCancelFormLoad(
+    executionContext
+) {
+
+    var formContext =
+        executionContext.getFormContext();
+
+
+    registerEnrollmentPostSave(
+        formContext
+    );
+
+
+    var cancellationReasonAttribute =
+        formContext.getAttribute(
+            "cmdspp_p_appln_cancellation_rsn"
+        );
+
+
+    if (
+        cancellationReasonAttribute
+    ) {
+
+        cancellationReasonAttribute.removeOnChange(
+            onDispositionReasonChange
+        );
+
+
+        cancellationReasonAttribute.addOnChange(
+            onDispositionReasonChange
+        );
+    }
+
+
+    var cancellationExplanationAttribute =
+        formContext.getAttribute(
+            "cmdspp_p_appln_cancellation_expln"
+        );
+
+
+    if (
+        cancellationExplanationAttribute
+    ) {
+
+        cancellationExplanationAttribute.setRequiredLevel(
+            "none"
+        );
+    }
+}
+
+
+// ============================================================================
+// APPROVAL FORM ONLOAD
+// ============================================================================
+
+function onApprovalFormLoad(
+    executionContext
+) {
+
+    var formContext =
+        executionContext.getFormContext();
+
+
+    registerEnrollmentPostSave(
+        formContext
+    );
+
+
+    var config =
+        EnrollmentValidationConfig;
+
+
+    // Reset subgrid state
+    NetworkEnrollmentSubgridState
+        .initialized =
+            false;
+
+
+    NetworkEnrollmentSubgridState
+        .previousCount =
+            null;
+
+
+    NetworkEnrollmentSubgridState
+        .handlerRegistered =
+            false;
+
+
+    // ========================================================================
+    // EFFECTIVE DATE
+    // ========================================================================
+
+    var effectiveDateAttribute =
+        formContext.getAttribute(
+            config.EFFECTIVE_DATE_FIELD
+        );
+
+
+    if (
+        effectiveDateAttribute
+    ) {
+
+        effectiveDateAttribute.removeOnChange(
+            onEnrollmentEffectiveDateChange
+        );
+
+
+        effectiveDateAttribute.addOnChange(
+            onEnrollmentEffectiveDateChange
+        );
+
+
+        // Default current date when blank
+        if (
+            effectiveDateAttribute.getValue() ===
+            null
+        ) {
+
+            effectiveDateAttribute.setValue(
+                new Date()
+            );
+        }
+
+
+        // Clear stale notification
+        if (
+            effectiveDateAttribute.getValue() !==
+            null
+        ) {
+
+            clearInlineFieldNotification(
+                formContext,
+                config.EFFECTIVE_DATE_FIELD,
+                "EFFECTIVE_DATE_REQUIRED"
+            );
+        }
+    }
+
+
+    // ========================================================================
+    // REGISTER SUBGRID ONLOAD
+    // ========================================================================
+
+    registerNetworkEnrollmentSubgrid(
+        formContext
+    );
+
+
+    // Retry because subgrid may load after form
+    setTimeout(
+        function () {
+
+            registerNetworkEnrollmentSubgrid(
+                formContext
+            );
+
+        },
+        500
+    );
+
+
+    setTimeout(
+        function () {
+
+            registerNetworkEnrollmentSubgrid(
+                formContext
+            );
+
+        },
+        1500
+    );
+
+
+    setTimeout(
+        function () {
+
+            registerNetworkEnrollmentSubgrid(
+                formContext
+            );
+
+        },
+        3000
+    );
+}
+
+
+// ============================================================================
+// NETWORK ENROLLMENT FORM ONLOAD
+//
+// Register this function on the Network Enrollment ADD form.
+//
+// Event:
+// On Load
+//
+// Function:
+// onNetworkEnrollmentFormLoad
+//
+// Pass execution context:
+// Yes
+// ============================================================================
+
+function onNetworkEnrollmentFormLoad(
+    executionContext
+) {
+
+    populateNetworkEnrollmentDefaultDates(
+        executionContext
+    );
+}
+
+
+// ============================================================================
+// POPULATE NETWORK ENROLLMENT DEFAULT DATES
+//
+// Beginning Date:
+// Parent Application Enrollment Effective Date
+//
+// If unavailable:
+// Current Date
+//
+// End Date:
+// 12/31/9999
+//
+// IMPORTANT:
+// cmdspp_p_application_id does NOT have to be on this form.
+// Parent Application is obtained from createFromEntity.
+// ============================================================================
+
+async function populateNetworkEnrollmentDefaultDates(
+    executionContext
+) {
+
+    var formContext =
+        executionContext.getFormContext();
+
+
+    // ========================================================================
+    // ONLY RUN FOR CREATE FORM
+    //
+    // 1 = Create
+    // ========================================================================
+
+    if (
+        formContext.ui.getFormType() !==
+        1
+    ) {
+
+        return;
+    }
+
+
+    // ========================================================================
+    // CONFIGURATION
+    // ========================================================================
+
+    // Parent Application table logical name
+    const APPLICATION_TABLE =
+        "cmdspp_p_dtl_tb";
+
+
+    // Parent Enrollment Effective Date
+    const EFFECTIVE_DATE_FIELD =
+        "cmdspp_p_enrollment_effective_date";
+
+
+    // Network Enrollment Beginning Date
+    const BEGIN_DATE_FIELD =
+        "cmdspp_p_begin_dt";
+
+
+    // Network Enrollment End Date
+    const END_DATE_FIELD =
+        "cmdspp_p_end_dt";
+
+
+    // ========================================================================
+    // GET NETWORK ENROLLMENT DATE FIELDS
+    // ========================================================================
+
+    var beginDateAttribute =
+        formContext.getAttribute(
+            BEGIN_DATE_FIELD
+        );
+
+
+    var endDateAttribute =
+        formContext.getAttribute(
+            END_DATE_FIELD
+        );
+
+
+    if (
+        !beginDateAttribute ||
+        !endDateAttribute
+    ) {
+
+        return;
+    }
+
+
+    // ========================================================================
+    // DEFAULT END DATE
+    //
+    // 12/31/9999
+    //
+    // Only when blank.
+    // ========================================================================
+
+    if (
+        endDateAttribute.getValue() ===
+        null
+    ) {
+
+        var defaultEndDate =
+            new Date(
+                9999,
+                11,
+                31,
+                12,
+                0,
+                0
+            );
+
+
+        endDateAttribute.setValue(
+            defaultEndDate
+        );
+    }
+
+
+    // ========================================================================
+    // DO NOT OVERWRITE EXISTING BEGIN DATE
+    // ========================================================================
+
+    if (
+        beginDateAttribute.getValue() !==
+        null
+    ) {
+
+        return;
+    }
+
+
+    // ========================================================================
+    // FALLBACK BEGIN DATE = CURRENT DATE
+    // ========================================================================
+
+    var defaultBeginDate =
+        new Date();
+
+
+    try {
+
+        // ====================================================================
+        // GET PARENT APPLICATION FROM PAGE CONTEXT
+        //
+        // When Network Enrollment is created using:
+        //
+        // Application
+        //    ↓
+        // Network Enrollment subgrid
+        //    ↓
+        // Add
+        //
+        // Power Apps supplies the parent Application through:
+        //
+        // createFromEntity
+        // ====================================================================
+
+        var pageContext =
+            Xrm.Utility.getPageContext();
+
+
+        var createFromEntity =
+            pageContext &&
+            pageContext.input
+
+                ? pageContext.input
+                    .createFromEntity
+
+                : null;
+
+
+        // ====================================================================
+        // NO PARENT CONTEXT
+        //
+        // Use current date.
+        // ====================================================================
+
+        if (
+            !createFromEntity ||
+            !createFromEntity.id
+        ) {
+
+            beginDateAttribute.setValue(
+                defaultBeginDate
+            );
+
+            return;
+        }
+
+
+        // ====================================================================
+        // VERIFY PARENT IS APPLICATION TABLE
+        // ====================================================================
+
+        if (
+            createFromEntity.entityType &&
+            createFromEntity.entityType !==
+                APPLICATION_TABLE
+        ) {
+
+            beginDateAttribute.setValue(
+                defaultBeginDate
+            );
+
+            return;
+        }
+
+
+        // ====================================================================
+        // GET PARENT APPLICATION GUID
+        // ====================================================================
+
+        var applicationId =
+            String(
+                createFromEntity.id
+            ).replace(
+                /[{}]/g,
+                ""
+            );
+
+
+        if (!applicationId) {
+
+            beginDateAttribute.setValue(
+                defaultBeginDate
+            );
+
+            return;
+        }
+
+
+        // ====================================================================
+        // RETRIEVE PARENT ENROLLMENT EFFECTIVE DATE
+        // ====================================================================
+
+        var applicationRecord =
+            await Xrm.WebApi.retrieveRecord(
+                APPLICATION_TABLE,
+                applicationId,
+
+                "?$select=" +
+                    EFFECTIVE_DATE_FIELD
+            );
+
+
+        var effectiveDateValue =
+            applicationRecord[
+                EFFECTIVE_DATE_FIELD
+            ];
+
+
+        // ====================================================================
+        // USE PARENT ENROLLMENT EFFECTIVE DATE
+        // ====================================================================
+
+        if (
+            effectiveDateValue !==
+                null &&
+
+            effectiveDateValue !==
+                undefined &&
+
+            String(
+                effectiveDateValue
+            ).trim() !==
+                ""
+        ) {
+
+            var effectiveDate =
+                convertDataverseDateToLocalDate(
+                    effectiveDateValue
+                );
+
+
+            if (
+                effectiveDate
+            ) {
+
+                beginDateAttribute.setValue(
+                    effectiveDate
+                );
+
+                return;
+            }
+        }
+
+
+        // ====================================================================
+        // PARENT EFFECTIVE DATE BLANK
+        //
+        // Use current date.
+        // ====================================================================
+
+        beginDateAttribute.setValue(
+            defaultBeginDate
+        );
+    }
+
+    catch (error) {
+
+        // ====================================================================
+        // IF PARENT RETRIEVAL FAILS
+        //
+        // Still use current date.
+        // ====================================================================
+
+        if (
+            beginDateAttribute.getValue() ===
+            null
+        ) {
+
+            beginDateAttribute.setValue(
+                defaultBeginDate
+            );
+        }
+    }
+}
+
+
+// ============================================================================
+// CONVERT DATAVERSE DATE TO LOCAL JAVASCRIPT DATE
+//
+// Supports:
+// 2026-09-08
+// 2026-09-08T00:00:00Z
+//
+// This avoids Date Only values shifting one day because of timezone handling.
+// ============================================================================
+
+function convertDataverseDateToLocalDate(
+    value
+) {
+
+    if (!value) {
+
+        return null;
+    }
+
+
+    var dateString =
+        String(
+            value
+        ).substring(
+            0,
+            10
+        );
+
+
+    var parts =
+        dateString.split(
+            "-"
+        );
+
+
+    if (
+        parts.length !==
+        3
+    ) {
+
+        return null;
+    }
+
+
+    var year =
+        parseInt(
+            parts[0],
+            10
+        );
+
+
+    var month =
+        parseInt(
+            parts[1],
+            10
+        );
+
+
+    var day =
+        parseInt(
+            parts[2],
+            10
+        );
+
+
+    if (
+        isNaN(year) ||
+        isNaN(month) ||
+        isNaN(day)
+    ) {
+
+        return null;
+    }
+
+
+    return new Date(
+        year,
+        month - 1,
+        day,
+        12,
+        0,
+        0
+    );
+}

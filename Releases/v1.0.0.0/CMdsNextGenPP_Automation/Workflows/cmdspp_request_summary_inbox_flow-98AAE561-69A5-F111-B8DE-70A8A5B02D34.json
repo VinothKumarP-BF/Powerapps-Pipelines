@@ -1,0 +1,264 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps_1": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "cmdspp_CR_Dataverse_Core_DEV"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      },
+      "shared_office365": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "cmdspp_CR_Outlook_Core_DEV"
+        },
+        "api": {
+          "name": "shared_office365"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "When_a_row_is_added,_modified_or_deleted": {
+          "metadata": {
+            "operationMetadataId": "5934aca5-a139-47b1-a549-cccca413dbf6"
+          },
+          "type": "OpenApiConnectionWebhook",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps_1",
+              "operationId": "SubscribeWebhookTrigger",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "subscriptionRequest/message": 4,
+              "subscriptionRequest/entityname": "cmdspp_p_req_doc_tb",
+              "subscriptionRequest/scope": 4
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        }
+      },
+      "actions": {
+        "Get_a_row_by_ID": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "f17ccd8d-898e-4c42-bd38-92e279fe0e23"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps_1",
+              "operationId": "GetItem",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "cmdspp_p_req_doc_tbs",
+              "recordId": "@triggerOutputs()?['body/cmdspp_p_req_doc_tbid']"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Run_a_Child_Flow": {
+          "runAfter": {
+            "Send_an_email_(V2)": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "a2d16d5b-3f78-4e2c-a937-a6021d13c73b"
+          },
+          "type": "Workflow",
+          "inputs": {
+            "host": {
+              "workflowReferenceName": "27b723b9-2c90-f111-8076-70a8a5b02d34"
+            },
+            "body": {
+              "text": "@string(outputs('Compose_Payload'))"
+            }
+          }
+        },
+        "Compose_Payload": {
+          "runAfter": {
+            "Compose_Email_Body": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "d51716d7-1c88-4e40-adbd-f5e219d67cf2"
+          },
+          "type": "Compose",
+          "inputs": {
+            "userId": "@first(body('List_rows')?['value'])?['_cmdspp_p_createdby_user_id_value']",
+            "userEmail": "@first(body('List_rows')?['value'])?['cmdspp_p_createdby_user_id']?['cmdspp_g_email']",
+            "emailBody": "@outputs('Compose_Email_Body')",
+            "emailSubject": "Information Requested",
+            "providerType": "@first(body('List_rows')?['value'])?['_cmdspp_p_pvd_typ_lkp_value@OData.Community.Display.V1.FormattedValue']",
+            "senderEmail": "@outputs('Get_a_row_by_ID_2')?['body/internalemailaddress']",
+            "senderId": "",
+            "messageType": "request"
+          }
+        },
+        "List_rows": {
+          "runAfter": {
+            "Get_a_row_by_ID": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "4b702db9-3b2f-4633-ac81-03f6079cf72d"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps_1",
+              "operationId": "ListRecords",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "cmdspp_p_idt_inf_dtls",
+              "$filter": "_cmdspp_p_app_id_lkp_value eq @{outputs('Get_a_row_by_ID')?['body/_cmdspp_p_recvd_by_value']}",
+              "$expand": "cmdspp_p_createdby_user_id($select = cmdspp_g_email)"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Compose_Email_Body": {
+          "runAfter": {
+            "Compose": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "2a4bf65a-5567-4d07-a4a1-b29d3ce1a581"
+          },
+          "type": "Compose",
+          "inputs": "Hi @{first(body('List_rows')?['value'])?['cmdspp_p_fst_nam']} ,\n\nTo continue processing your enrollment application, please provide the following information:\n\n• @{triggerOutputs()?['body/cmdspp_p_req_desc']}\n\nThank you for your prompt response.\n\nBest regards,\nCMDS Next Gen Provider Portal Support Team"
+        },
+        "List_rows_G_User": {
+          "runAfter": {
+            "Get_a_row_by_ID_2": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "d865ed10-59dd-459b-a6c6-19152e5795b8"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps_1",
+              "operationId": "ListRecords",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "cmdspp_g_usr_dtls_tbs",
+              "$filter": "cmdspp_g_usr_sk eq @{first(body('List_rows')?['value'])?['_cmdspp_p_createdby_user_id_value']}"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Compose": {
+          "runAfter": {
+            "List_rows_G_User": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "fdb6f4ee-d54e-42f1-ab9d-7a333141ee43"
+          },
+          "type": "Compose",
+          "inputs": "@outputs('List_rows')?['body/value']"
+        },
+        "Get_a_row_by_ID_2": {
+          "runAfter": {
+            "List_rows": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "b0d92283-7062-41bc-bedb-f273adce33ac"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps_1",
+              "operationId": "GetItem",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "systemusers",
+              "recordId": "@triggerOutputs()?['body/cmdspp_loggeduser']"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Send_an_email_(V2)": {
+          "runAfter": {
+            "Compose_Payload": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "0cb157b5-08e9-484a-85b5-14c25dfe1d19"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_office365",
+              "operationId": "SendEmailV2",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_office365"
+            },
+            "parameters": {
+              "emailMessage/To": "@first(body('List_rows')?['value'])?['cmdspp_p_createdby_user_id']?['cmdspp_g_email']",
+              "emailMessage/Subject": "New Secure Message Available",
+              "emailMessage/Body": "<div style=\"margin:0;padding:0;background-color:#ffffff;font-family:Segoe UI, Arial, sans-serif;\">\n\n    <table role=\"presentation\"\n           cellpadding=\"0\"\n           cellspacing=\"0\"\n           border=\"0\"\n           width=\"100%\"\n           style=\"background-color:#ffffff;\">\n\n        <tr>\n            <td align=\"center\">\n\n                <!-- Main Container -->\n                <table role=\"presentation\"\n                       cellpadding=\"0\"\n                       cellspacing=\"0\"\n                       border=\"0\"\n                       width=\"866\"\n                       style=\"background:#ffffff;\">\n\n                    <!-- Header -->\n                    <tr>\n                        <td align=\"center\"\n                            style=\"background:#263B68;\n                                   padding:34px 20px;\n                                   color:#FFFFFF;\n                                   font-size:28px;\n                                   font-weight:400;\n                                   line-height:1.2;\">\n\n                            CMdS NextGen Provider Portal\n                            <br>\n                            – New Secure Message Available\n\n                        </td>\n                    </tr>\n\n                    <!-- Body -->\n                    <tr>\n                        <td style=\"padding:55px 58px 30px 58px;\n                                   color:#2C3E50;\n                                   font-size:20px;\n                                   line-height:1.7;\">\n\n                            <p style=\"margin:0 0 35px 0;\">\n                                Hi @{first(body('List_rows')?['value'])?['cmdspp_p_fst_nam']},\n                            </p>\n\n                            <p style=\"margin:0 0 10px 0;\">\n                                You have a new secure message regarding your Provider Enrollment.\n                            </p>\n\n                            <p style=\"margin:0 0 45px 0;\">\n                                Please log in to the Provider Portal to view your message.\n                            </p>\n\n                            <p style=\"margin:0 0 5px 0;color:#6B7A90;\">\n                                Thank you,\n                            </p>\n\n                            <p style=\"margin:0;color:#344B70;\">\n                                CMDS Next Gen Provider Portal Support Team\n                            </p>\n\n                        </td>\n                    </tr>\n\n                    <!-- Footer -->\n                    <tr>\n                        <td style=\"background:#F5F7FA;\n                                   padding:32px 40px;\n                                   text-align:center;\n                                   color:#8A9AB0;\n                                   font-size:14px;\n                                   line-height:1.6;\">\n\n                            <div>\n                                This is an automated message from the CMDS Next Gen Provider Portal.\n                                Please do not reply directly to this email.\n                            </div>\n\n                            <div style=\"margin-top:12px;\">\n                                © @{formatDateTime(utcNow(),'yyyy')} CMDS Next Gen Provider Portal · All rights reserved\n                            </div>\n\n                        </td>\n                    </tr>\n\n                </table>\n\n            </td>\n        </tr>\n\n    </table>\n\n</div>",
+              "emailMessage/Importance": "Normal"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Run_a_Child_Flow_2": {
+          "runAfter": {
+            "Run_a_Child_Flow": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "117fb8e3-afb4-4fa1-bfa6-5fec60786e96"
+          },
+          "type": "Workflow",
+          "inputs": {
+            "host": {
+              "workflowReferenceName": "0fbc6b50-1fa8-f111-b8de-70a8a5b02d34"
+            },
+            "body": {
+              "text": "create",
+              "text_1": "@concat('/cmdspp_p_dtl_tbs(',triggerBody()?['_cmdspp_p_req_by_value'],')')",
+              "text_2": "RFI sent by @{first(body('List_rows')?['value'])?['cmdspp_p_fst_nam']}",
+              "text_3": "RFI sent to Provider",
+              "text_4": "@first(body('List_rows')?['value'])?['cmdspp_p_fst_nam']"
+            }
+          }
+        }
+      }
+    },
+    "templateName": ""
+  },
+  "schemaVersion": "1.0.0.0"
+}

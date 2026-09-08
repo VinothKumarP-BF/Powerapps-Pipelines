@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>0</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>1</isdefault>
+    <savedqueryid>{64aecd35-84a6-4e5b-ac64-30cec562fc3d}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="cr834_validationcode1" select="1" icon="1" preview="1">
+        <row name="result" id="cr834_r_vv_tbid">
+          <cell name="cr834_validationcode1" width="300" />
+          <cell name="cr834_domainname" width="150" />
+          <cell name="cr834_voiddate" width="150" />
+          <cell name="cr834_shortdescription" width="150" />
+          <cell name="cr834_longdescription" width="150" />
+          <cell name="cr834_hibernateversionnumber" width="150" />
+          <cell name="cr834_audituserid" width="150" />
+          <cell name="cr834_audittimestamp" width="150" />
+          <cell name="cr834_auditadduserid" width="150" />
+          <cell name="cr834_auditaddtimestamp" width="150" />
+          <cell name="cr834_constanttext" width="150" />
+          <cell name="cr834_usedinapplicationindicator" width="150" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>0</querytype>
+    <fetchxml>
+      <fetch version="1.0" mapping="logical">
+        <entity name="cr834_r_vv_tb">
+          <attribute name="cr834_r_vv_tbid" />
+          <attribute name="cr834_validationcode1" />
+          <attribute name="createdon" />
+          <order attribute="cr834_validationcode1" descending="false" />
+          <filter type="and">
+            <condition attribute="statecode" operator="eq" value="0" />
+          </filter>
+          <attribute name="cr834_domainname" />
+          <attribute name="cr834_voiddate" />
+          <attribute name="cr834_shortdescription" />
+          <attribute name="cr834_longdescription" />
+          <attribute name="cr834_hibernateversionnumber" />
+          <attribute name="cr834_audituserid" />
+          <attribute name="cr834_audittimestamp" />
+          <attribute name="cr834_auditadduserid" />
+          <attribute name="cr834_auditaddtimestamp" />
+          <attribute name="cr834_constanttext" />
+          <attribute name="cr834_usedinapplicationindicator" />
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.0</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Active R_VV_TBS" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>

@@ -1,0 +1,309 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps_1": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "cmdspp_CR_Dataverse_Core_DEV"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "undefined",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "manual": {
+          "metadata": {
+            "operationMetadataId": "ffd833ec-716a-49a8-910c-94a40f65c06c"
+          },
+          "type": "Request",
+          "kind": "Http",
+          "inputs": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "firstName": {
+                  "type": "string"
+                },
+                "lastName": {
+                  "type": "string"
+                },
+                "email": {
+                  "type": "string"
+                },
+                "phoneNumber": {
+                  "type": "string"
+                },
+                "organizationName": {
+                  "type": "string"
+                },
+                "termsAccepted": {
+                  "type": "boolean"
+                },
+                "transType": {
+                  "type": "string"
+                }
+              }
+            },
+            "triggerAuthenticationType": "All"
+          }
+        }
+      },
+      "actions": {
+        "Switch": {
+          "runAfter": {},
+          "cases": {
+            "Case": {
+              "case": "validateuserEmail",
+              "actions": {
+                "List_rows_user": {
+                  "runAfter": {},
+                  "metadata": {
+                    "operationMetadataId": "b14ffe88-a93a-4625-aec8-a15d1c7a3f65"
+                  },
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "host": {
+                      "connectionName": "shared_commondataserviceforapps_1",
+                      "operationId": "ListRecords",
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                    },
+                    "parameters": {
+                      "entityName": "cmdspp_g_usr_dtls_tbs",
+                      "$filter": "cmdspp_g_email eq '@{triggerBody()?['email']}'",
+                      "$top": 1
+                    },
+                    "authentication": "@parameters('$authentication')"
+                  }
+                },
+                "Condition": {
+                  "actions": {
+                    "Response": {
+                      "runAfter": {},
+                      "metadata": {
+                        "operationMetadataId": "01aacacb-3e33-49b8-91be-7c2d2f9e6d29"
+                      },
+                      "type": "Response",
+                      "kind": "Http",
+                      "inputs": {
+                        "statusCode": 200,
+                        "body": {
+                          "exists": true,
+                          "recordId": "@{first(body('List_rows_user')?['value'])?['cmdspp_g_usr_dtls_tbid']}"
+                        }
+                      }
+                    }
+                  },
+                  "runAfter": {
+                    "List_rows_user": [
+                      "Succeeded"
+                    ]
+                  },
+                  "else": {
+                    "actions": {
+                      "Response_1": {
+                        "runAfter": {},
+                        "metadata": {
+                          "operationMetadataId": "87805c07-c988-43cf-a74f-e3fb8566e4d9"
+                        },
+                        "type": "Response",
+                        "kind": "Http",
+                        "inputs": {
+                          "statusCode": 200,
+                          "body": {
+                            "exists": false,
+                            "recordId": null
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "expression": {
+                    "and": [
+                      {
+                        "greater": [
+                          "@length(body('List_rows_user')?['value'])",
+                          0
+                        ]
+                      }
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "66d2a802-b010-47c9-89d8-d28b0f1dabc4"
+                  },
+                  "type": "If"
+                }
+              }
+            },
+            "Case_3": {
+              "case": "registerUser2",
+              "actions": {
+                "List_rows_Phone": {
+                  "runAfter": {},
+                  "metadata": {
+                    "operationMetadataId": "0257e86d-b5af-4935-9385-262d8d84898d"
+                  },
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "host": {
+                      "connectionName": "shared_commondataserviceforapps_1",
+                      "operationId": "ListRecords",
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                    },
+                    "parameters": {
+                      "entityName": "cmdspp_g_usr_dtls_tbs",
+                      "$select": "cmdspp_g_phn_num",
+                      "$filter": "cmdspp_g_phn_num eq '@{triggerBody()?['phoneNumber']}'",
+                      "$top": 1
+                    },
+                    "authentication": "@parameters('$authentication')"
+                  }
+                },
+                "List_rows_Email": {
+                  "runAfter": {
+                    "List_rows_Phone": [
+                      "Succeeded"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "d303f529-ef49-49c4-8d30-e71f43df468c"
+                  },
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "host": {
+                      "connectionName": "shared_commondataserviceforapps_1",
+                      "operationId": "ListRecords",
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                    },
+                    "parameters": {
+                      "entityName": "cmdspp_g_usr_dtls_tbs",
+                      "$select": "cmdspp_g_email",
+                      "$filter": "cmdspp_g_email eq '@{triggerBody()?['email']}'",
+                      "$top": 1
+                    },
+                    "authentication": "@parameters('$authentication')"
+                  }
+                },
+                "Condition_2": {
+                  "actions": {
+                    "Response_3": {
+                      "runAfter": {},
+                      "metadata": {
+                        "operationMetadataId": "658853e5-95a5-491c-8e0c-1e6ccb44f9b1"
+                      },
+                      "type": "Response",
+                      "kind": "Http",
+                      "inputs": {
+                        "statusCode": 200,
+                        "body": {
+                          "success": false,
+                          "error": "@if(\r\n  greater(length(coalesce(outputs('List_rows_Email')?['body/value'], createArray())), 0),\r\n  'DuplicateEmail',\r\n  if(\r\n    greater(length(coalesce(outputs('List_rows_Phone')?['body/value'], createArray())), 0),\r\n    'DuplicatePhone',\r\n    'None'\r\n  )\r\n)"
+                        }
+                      }
+                    }
+                  },
+                  "runAfter": {
+                    "List_rows_Email": [
+                      "Succeeded"
+                    ]
+                  },
+                  "else": {
+                    "actions": {
+                      "Add_a_new_row_2": {
+                        "runAfter": {},
+                        "metadata": {
+                          "operationMetadataId": "e1a6bb01-224b-42e3-abab-532042956ad6"
+                        },
+                        "type": "OpenApiConnection",
+                        "inputs": {
+                          "host": {
+                            "connectionName": "shared_commondataserviceforapps_1",
+                            "operationId": "CreateRecord",
+                            "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                          },
+                          "parameters": {
+                            "entityName": "cmdspp_g_usr_dtls_tbs",
+                            "item/cmdspp_g_acct_sts": 1,
+                            "item/cmdspp_g_email": "@triggerBody()?['email']",
+                            "item/cmdspp_g_fst_nam": "@triggerBody()?['firstName']",
+                            "item/cmdspp_g_lst_nam": "@triggerBody()?['lastName']",
+                            "item/cmdspp_g_phn_num": "@triggerBody()?['phoneNumber']",
+                            "item/cmdspp_g_tms_n_condtns": true,
+                            "item/cmdspp_g_org_nam": "@triggerBody()?['organizationName']"
+                          },
+                          "authentication": "@parameters('$authentication')"
+                        }
+                      },
+                      "Response_4": {
+                        "runAfter": {
+                          "Add_a_new_row_2": [
+                            "Succeeded"
+                          ]
+                        },
+                        "metadata": {
+                          "operationMetadataId": "65f2f839-d575-4d83-b44b-f7b17df157f0"
+                        },
+                        "type": "Response",
+                        "kind": "Http",
+                        "inputs": {
+                          "statusCode": 200,
+                          "body": {
+                            "success": true,
+                            "recordId": "@outputs('Add_a_new_row_2')?['body/cmdspp_g_usr_dtls_tbid']"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "expression": {
+                    "or": [
+                      {
+                        "greater": [
+                          "@length(outputs('List_rows_Email')?['body/value'])",
+                          0
+                        ]
+                      },
+                      {
+                        "greater": [
+                          "@length(outputs('List_rows_Phone')?['body/value'])",
+                          0
+                        ]
+                      }
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "263d76b4-f07b-4a77-b1b9-857b734dd85d"
+                  },
+                  "type": "If"
+                }
+              }
+            }
+          },
+          "default": {
+            "actions": {}
+          },
+          "expression": "@triggerBody()?['transType']",
+          "metadata": {
+            "operationMetadataId": "5227a1d3-4b2e-4c68-abe8-60fd58cada2b"
+          },
+          "type": "Switch"
+        }
+      }
+    },
+    "templateName": ""
+  },
+  "schemaVersion": "1.0.0.0"
+}

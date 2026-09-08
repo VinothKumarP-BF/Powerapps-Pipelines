@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>0</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>1</isdefault>
+    <savedqueryid>{d13b61b7-65c8-4fdf-a178-f5b5cff58b8b}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="cmdspp_p_pin_oth_smpi_dtl_sk" select="1" icon="1" preview="1">
+        <row name="result" id="cmdspp_p_pin_oth_smpi_dtlid">
+          <cell name="cmdspp_p_pin_oth_smpi_dtl_sk" width="159" />
+          <cell name="cmdspp_p_is_mdcd_prv_oth_st" width="141" />
+          <cell name="cmdspp_p_is_reval_5yr" width="124" />
+          <cell name="cmdspp_p_is_app_fee_paid" width="146" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>0</querytype>
+    <fetchxml>
+      <fetch version="1.0" mapping="logical">
+        <entity name="cmdspp_p_pin_oth_smpi_dtl">
+          <attribute name="cmdspp_p_pin_oth_smpi_dtlid" />
+          <attribute name="cmdspp_p_pin_oth_smpi_dtl_sk" />
+          <order attribute="cmdspp_p_pin_oth_smpi_dtl_sk" descending="false" />
+          <filter type="and">
+            <condition attribute="statecode" operator="eq" value="0" />
+          </filter>
+          <attribute name="cmdspp_p_is_mdcd_prv_oth_st" />
+          <attribute name="cmdspp_p_is_reval_5yr" />
+          <attribute name="cmdspp_p_is_app_fee_paid" />
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.0</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Active P_PIN_OTH_SMPI_DTLS" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>

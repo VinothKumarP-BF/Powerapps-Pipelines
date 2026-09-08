@@ -1,0 +1,29 @@
+<powerpagecomponent powerpagecomponentid="1fda772f-af21-499d-9114-c3af90ec0554">
+  <content>{
+  "lcid": 1033,
+  "entityname": "cmdspp_pc_pvd_typ_tb",
+  "formname": "Add_ProviderType",
+  "mode": 100000000,
+  "onsuccess": 756150001,
+  "hideformonsuccess": true,
+  "redirectwebpage": "7c549f07-2591-ce5c-f47e-907b7509b099",
+  "redirecturl": null,
+  "captcharequired": false,
+  "showcaptchaforauthenticatedusers": false,
+  "entitypermissionsenabled": false,
+  "attachfilestoragelocation": 756150000,
+  "attachfilemaxsize": null,
+  "maximumnooffiles": 5,
+  "entitysourcetype": null,
+  "recordidquerystringparametername": null,
+  "geolocation_maptype": 756150000
+}</content>
+  <iscustomizable>1</iscustomizable>
+  <name>Add_ProviderType</name>
+  <powerpagecomponenttype>15</powerpagecomponenttype>
+  <powerpagesiteid>
+    <powerpagesiteid>abccaafd-73d6-47dd-bb55-b09b911f0d43</powerpagesiteid>
+  </powerpagesiteid>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</powerpagecomponent>

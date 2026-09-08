@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>0</CanBeDeleted>
+    <isquickfindquery>1</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>1</isdefault>
+    <savedqueryid>{0028ce1c-a605-4447-9e94-b6ec5f31fcc1}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="cmdspp_enroll_page_json_sk" select="1" icon="1" preview="1">
+        <row name="result" id="cmdspp_pc_enrol_page_jsonid">
+          <cell name="cmdspp_enroll_page_json_sk" width="300" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>4</querytype>
+    <fetchxml>
+      <fetch version="1.0" mapping="logical">
+        <entity name="cmdspp_pc_enrol_page_json">
+          <attribute name="cmdspp_pc_enrol_page_jsonid" />
+          <attribute name="cmdspp_enroll_page_json_sk" />
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.0</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Quick Find Active PC_ENROL_PAGE_JSONS" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>

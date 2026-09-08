@@ -1,0 +1,450 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<forms xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <systemform>
+    <formid>{e3d9c2ea-40a8-f111-b8de-70a8a5b02d34}</formid>
+    <IntroducedVersion>2.0.3.0</IntroducedVersion>
+    <FormPresentation>1</FormPresentation>
+    <FormActivationState>1</FormActivationState>
+    <form headerdensity="HighReadOnlyValues" shownavigationbar="false">
+      <tabs>
+        <tab verticallayout="true" id="{037d8186-2376-4e5e-9704-f0f4d26449c7}" IsUserDefined="1" visible="false" labelid="{615bc475-98b8-475a-b4ff-9bfba468f63d}">
+          <labels>
+            <label description="General" languagecode="1033" />
+          </labels>
+          <columns>
+            <column width="100%">
+              <sections>
+                <section showlabel="false" showbar="false" IsUserDefined="0" id="{2ed3c53e-778d-4855-98f3-e71fda97be78}" labelid="{994a0071-78fc-4821-847d-7902f06a7acf}">
+                  <labels>
+                    <label description="General" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{72ba6262-4ca0-4f63-8d3f-f2e113cc0a6a}" labelid="{825235a8-aa2b-444c-b7cb-c670e0a3a246}">
+                        <labels>
+                          <label description="ID" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_p_idt_inf_dtl_sk" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="cmdspp_p_idt_inf_dtl_sk" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{2177a27b-8abd-4ffa-a591-8e53981c40e1}" labelid="{190a2b2e-83e1-4ed7-98cd-be0d4dd9cb03}">
+                        <labels>
+                          <label description="Owner" languagecode="1033" />
+                        </labels>
+                        <control id="ownerid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="ownerid" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{e1cd891d-ad21-4b25-8665-93b48352ab6c}" locklevel="0" colspan="1" rowspan="1" labelid="{ab378965-0102-4397-a4cd-265d5b6ffe4b}">
+                        <labels>
+                          <label description="Provider Type" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_p_pvd_typ_lkp" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="cmdspp_p_pvd_typ_lkp" disabled="false" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+          </columns>
+        </tab>
+        <tab name="EFT_Information" id="a14b7cfe-7f52-4bd4-88af-eb4444b74005" IsUserDefined="0" locklevel="0" showlabel="true" labelid="{43728166-3a2b-4658-a142-4f9f6d389a7a}">
+          <labels>
+            <label description="EFT Information" languagecode="1033" />
+          </labels>
+          <columns>
+            <column width="100%">
+              <sections>
+                <section name="tab_2_section_1" id="d2af9bb7-0716-4d98-8f1a-5b4a8d4d95a7" IsUserDefined="0" locklevel="0" showlabel="false" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Top" columns="11" labelwidth="115" labelid="{bb72ef03-93b2-42cd-a478-2f026e0247d9}" availableforphone="false" visible="false">
+                  <labels>
+                    <label description="Provider Type" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell locklevel="0" id="{35b08dea-6fed-4e1c-bf6a-0311932b4d88}" labelid="{fee3a14f-53f7-4aa9-b895-e1250a59283e}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                      <cell locklevel="0" id="{de81615b-9850-4c1e-a821-98fccce6b3c8}" labelid="{a8ba42cc-6a0d-4ed5-a3c4-2a9007431aa2}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{e7a100fc-c03a-4cc7-bd0f-f9537f9bc14e}" locklevel="0" colspan="1" rowspan="1" labelid="{d24b9df9-4eeb-4138-9da3-022180271099}">
+                        <labels>
+                          <label description="Provider Type" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_p_pvd_typ_lkp" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="cmdspp_p_pvd_typ_lkp" disabled="false">
+                          <parameters>
+                            <DefaultViewId>{2739E9B1-B114-4096-A2E1-68FE9E4B4D6E}</DefaultViewId>
+                            <AvailableViewIds>{2739E9B1-B114-4096-A2E1-68FE9E4B4D6E},{46060A37-99FF-4CD1-8A69-E52F5E4A3BF9}</AvailableViewIds>
+                            <DisableViewPicker>true</DisableViewPicker>
+                          </parameters>
+                        </control>
+                      </cell>
+                      <cell locklevel="0" id="{29f0116d-6251-4530-9275-146663fe8d82}" labelid="{e14cd716-4d26-4cdd-8aa2-537a5a0ffefb}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{2af0955f-f06e-4d61-8517-d8060b5a3ff5}" userspacer="true" showlabel="false" colspan="1" rowspan="1" labelid="{e75f7cf4-6c1e-4316-913a-a865d7a678cb}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                      <cell locklevel="0" id="{f0b366e9-5028-4a50-a930-a053fb2d67da}" labelid="{6b06d966-5862-4fcc-9bb8-65141d203db1}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+                <section name="npi" id="0169124c-b15b-4b7f-85e2-b9358c411e32" IsUserDefined="0" locklevel="0" showlabel="false" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Top" columns="11" labelwidth="115" labelid="{27591243-8fc8-4259-8eb3-7bfb40420a2d}" availableforphone="false" visible="false">
+                  <labels>
+                    <label description="NPI" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell locklevel="0" id="{61de2156-8194-4611-a95e-4400de6c981a}" labelid="{32e78a19-7861-4589-8426-9180a3977b08}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                      <cell locklevel="0" id="{70ea6b07-4b10-482e-b407-50cf56d83718}" labelid="{6b55a50b-c8a2-4837-8d7b-e3d3b140184a}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{ce5723a3-b7fb-45a2-a96a-28e2e27803a2}" locklevel="0" colspan="1" rowspan="1" labelid="{196532ab-1e12-48a5-9988-7463499f1067}">
+                        <labels>
+                          <label description="NPI" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_p_npi_id" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="cmdspp_p_npi_id" disabled="false" />
+                      </cell>
+                      <cell locklevel="0" id="{2d397036-b419-4dea-b083-87362a59fa7c}" labelid="{985e9c12-6904-4474-80fc-f6fe3a6ba792}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{79682c2f-4d98-45ee-9973-8d6413688dd9}" userspacer="true" showlabel="false" colspan="1" rowspan="1" labelid="{cafff9e2-adaf-44d5-8224-9f24b0b4d746}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                      <cell locklevel="0" id="{c275d821-096e-4c05-a69f-c802a8dd36c1}" labelid="{a99cef96-3bb8-4eb3-aeae-d1e53d30db8d}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+                <section name="identity_Information_section_4" id="b4355a22-67b8-4078-8298-34eba0e202d0" IsUserDefined="0" locklevel="0" showlabel="false" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Top" columns="11" labelwidth="115" labelid="{f1acd448-ee98-4c9b-a654-770dca0c324d}" availableforphone="false" visible="false">
+                  <labels>
+                    <label description="Identity" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{d8588d88-0e75-4bee-be4c-46f670d98333}" locklevel="0" colspan="1" rowspan="1" labelid="{b68ae1c4-d8d7-4786-8634-c2788ea14944}">
+                        <labels>
+                          <label description="Last Name" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_p_lst_nam" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="cmdspp_p_lst_nam" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{95644ede-368a-4645-987c-403673c49230}" locklevel="0" colspan="1" rowspan="1" labelid="{ad277994-45ab-4705-8b64-fb1061d6eee6}">
+                        <labels>
+                          <label description="MI" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_p_mid_in" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="cmdspp_p_mid_in" disabled="false" />
+                      </cell>
+                      <cell id="{35db6364-a1f2-45f3-8678-9001c7580af5}" locklevel="0" colspan="1" rowspan="1" labelid="{68af92b6-cde0-4d9a-8fdf-3818524787f5}">
+                        <labels>
+                          <label description="First Name" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_p_fst_nam" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="cmdspp_p_fst_nam" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{bf8eef5d-b730-4145-afd8-460e275c7923}" locklevel="0" colspan="1" rowspan="1" labelid="{95746b3c-365c-4f93-9006-9e43b9d74b9b}">
+                        <labels>
+                          <label description="Title" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_p_titl_lkp" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="cmdspp_p_titl_lkp" disabled="false">
+                          <parameters>
+                            <DefaultViewId>{4756C924-D9A2-F111-B8DE-70A8A5B02D28}</DefaultViewId>
+                            <AvailableViewIds>{7735878B-98D0-4EC9-A90A-D903327DC996},{64CA6896-0E0F-4900-898D-71C6B40C7F12},{9968C64F-1697-F111-8075-70A8A5B028CC},{CA553ED7-1697-F111-8075-70A8A5B02D34},{3C37C7FA-D8A2-F111-B8DE-70A8A5B02D28},{4756C924-D9A2-F111-B8DE-70A8A5B02D28}</AvailableViewIds>
+                            <DisableViewPicker>true</DisableViewPicker>
+                          </parameters>
+                        </control>
+                      </cell>
+                      <cell locklevel="0" id="{24edb764-28f1-4a59-aef9-4cebde5fd450}" labelid="{393606c7-b808-410c-b193-7f9a0516de2e}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                    </row>
+                    <row>
+                      <cell locklevel="0" id="{b025f52f-fcbc-4eb3-845c-57e5b57fdd82}" labelid="{38bb2488-aa00-4c25-8374-4443605c49d0}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                      <cell id="{0f777825-72c2-4712-b14c-a758dd1acef3}" locklevel="0" colspan="1" rowspan="1" labelid="{c1a510e4-da2d-4064-9a9f-e5655ce1e425}">
+                        <labels>
+                          <label description="Suffix" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_p_sfx_lkp" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="cmdspp_p_sfx_lkp" disabled="false">
+                          <parameters>
+                            <DefaultViewId>{3C37C7FA-D8A2-F111-B8DE-70A8A5B02D28}</DefaultViewId>
+                            <AvailableViewIds>{7735878B-98D0-4EC9-A90A-D903327DC996},{64CA6896-0E0F-4900-898D-71C6B40C7F12},{9968C64F-1697-F111-8075-70A8A5B028CC},{CA553ED7-1697-F111-8075-70A8A5B02D34},{3C37C7FA-D8A2-F111-B8DE-70A8A5B02D28},{4756C924-D9A2-F111-B8DE-70A8A5B02D28}</AvailableViewIds>
+                            <DisableViewPicker>true</DisableViewPicker>
+                          </parameters>
+                        </control>
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{3e777179-4d77-45e2-892f-cf60878c3b14}" locklevel="0" colspan="1" rowspan="1" labelid="{adb7ad10-36b5-4b4c-8e02-a2db7e0e0eed}">
+                        <labels>
+                          <label description="DBA Name" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_p_dba_nam" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="cmdspp_p_dba_nam" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{468748ae-4385-4bb9-a015-21d8e5c3856f}" locklevel="0" colspan="1" rowspan="1" labelid="{43f9d4d2-c58a-4e8c-b81c-036e7688cf06}">
+                        <labels>
+                          <label description="May gender information be shared with members?" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_p_gndr_shr_ind" classid="{3EF39988-22BB-4F0B-BBBE-64B5A3748AEE}" datafieldname="cmdspp_p_gndr_shr_ind" disabled="false" />
+                      </cell>
+                      <cell id="{24f75100-4dad-47a2-be17-aeaccf353064}" locklevel="0" colspan="1" rowspan="1" labelid="{bb2e66af-2110-4f6e-b799-b8bf9a9a5fbf}">
+                        <labels>
+                          <label description="Date of Birth" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_p_dob" classid="{5B773807-9FB2-42DB-97C3-7A91EFF8ADFF}" datafieldname="cmdspp_p_dob" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{79cb45b0-f42e-42d9-80d1-a2877db4eb9f}" userspacer="true" showlabel="false" colspan="1" rowspan="1" labelid="{9f724589-e01c-426f-aabb-20bc6475b2a4}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                      <cell id="{2230dcab-dd6b-461e-9e94-8ccf09171df9}" locklevel="0" colspan="1" rowspan="1" labelid="{e97a367b-c911-4808-9fea-f370a62bb1d2}">
+                        <labels>
+                          <label description="Gender" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_p_gndr" classid="{3EF39988-22BB-4F0B-BBBE-64B5A3748AEE}" datafieldname="cmdspp_p_gndr" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell locklevel="0" id="{0efaed76-7d1b-4212-889b-4023971a8ec3}" labelid="{0a5af5b3-1924-4fee-b418-3abd1b9f8448}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                      <cell id="{b40ce4a7-6c70-4a7b-9249-68807e1f38a1}" locklevel="0" colspan="1" rowspan="1" labelid="{2bf6926a-401b-489d-9c61-335c865106c0}">
+                        <labels>
+                          <label description="SSN" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_p_ssn" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="cmdspp_p_ssn" disabled="false" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+                <section name="identity_Information_section_5" id="a162c53b-7ca3-452f-b919-366ee28b6716" IsUserDefined="0" locklevel="0" showlabel="false" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Top" columns="11" labelwidth="115" labelid="{79edc4ac-39d3-4a69-abbd-543aac4f3362}" availableforphone="false" visible="false">
+                  <labels>
+                    <label description="Previous Medicaid provider Information" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell locklevel="0" id="{3f50e2db-0763-45f5-8542-963fe874cbae}" labelid="{3e1db489-93ae-40c5-ab00-44f984c03b80}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                      <cell locklevel="0" id="{180d619b-c780-40d8-85f7-0cb7db6ddcda}" labelid="{be3f5188-be4c-4905-8cef-d907b4a4a9b9}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{9e6e09b6-443a-4b54-b9bc-ac148bf8ecf7}" locklevel="0" colspan="1" rowspan="1" labelid="{7937ab6b-3f88-4e97-8865-36830556dcec}">
+                        <labels>
+                          <label description="Were you previously enrolled as a Medicaid Provider in NH?" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_p_prv_mdcaid_pvd_ind" classid="{F9A8A302-114E-466A-B582-6771B2AE0D92}" datafieldname="cmdspp_p_prv_mdcaid_pvd_ind" disabled="false" uniqueid="{d0510c7e-e1f0-4933-b1f8-8dec42bbb33e}" />
+                      </cell>
+                      <cell id="{5f7e4ced-637d-47f5-a5bd-e3b3902e53d1}" locklevel="0" colspan="1" rowspan="1" labelid="{7d25f66e-1aac-44bc-ad4b-4bb91cad3392}">
+                        <labels>
+                          <label description="State Medicaid Provider #" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_p_mdcaid_pvd" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="cmdspp_p_mdcaid_pvd" disabled="false" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+                <section name="eft_section_o" id="a807b9ac-c7ea-421d-852e-5e34e032ed13" IsUserDefined="0" locklevel="0" showlabel="false" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Top" columns="11" labelwidth="115">
+                  <labels>
+                    <label description="EFT" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell locklevel="0" id="{4035c91c-dbfb-41ae-9ded-b792b344cb2a}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                      <cell locklevel="0" id="{1d2ad566-0e45-4e44-be54-740ebe260325}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{22c3f8c4-3e66-4940-ac31-f26fdbd59ed5}" locklevel="0" colspan="2" rowspan="1">
+                        <labels>
+                          <label description="Do you wish to participate in Electronic Funds Transfer Payments?" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_p_eft_ind" classid="{F9A8A302-114E-466A-B582-6771B2AE0D92}" datafieldname="cmdspp_p_eft_ind" disabled="true" uniqueid="{a0c72950-8b7a-40eb-ab9f-fa0d8a0f33b0}" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+          </columns>
+        </tab>
+      </tabs>
+      <header id="{7579e79c-a96d-423d-a262-e0af4825ae05}" celllabelposition="Top" columns="111" labelwidth="115" celllabelalignment="Left">
+        <rows>
+          <row>
+            <cell id="{9fcd6b2c-a2e6-4050-8f8e-585ffd96306f}" showlabel="false" labelid="{ab79b3e4-cfae-4ffe-a143-0541ad10a6dd}">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{186cdeca-4b7f-4a31-acd9-f3a0898a3762}" showlabel="false" labelid="{37040ba8-48df-424c-83d5-fb7774f87ab4}">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{c0a569f8-c858-4eaa-8b78-26de24052bc3}" showlabel="false" labelid="{17789616-0e03-49ee-9802-b3d02c0c9f61}">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+          </row>
+        </rows>
+      </header>
+      <footer id="{12566d88-4e18-42bb-bab4-8399adf58f79}" celllabelposition="Top" columns="111" labelwidth="115" celllabelalignment="Left">
+        <rows>
+          <row>
+            <cell id="{ec609a81-5487-4057-a082-81fa7bc33885}" showlabel="false" labelid="{9c3a4dc0-94ce-462a-a668-3b2435a130fc}">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{79bb0a31-2f07-4023-b8e7-68442c8f3c0f}" showlabel="false" labelid="{96209744-8c01-4a8b-bd6d-b1ca478c0124}">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{73be6916-1dff-4dcc-871d-fc66b91f07f2}" showlabel="false" labelid="{992a1b0d-96a3-4dae-a970-29e49f822cd5}">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+          </row>
+        </rows>
+      </footer>
+      <DisplayConditions Order="1" FallbackForm="true">
+        <Role Id="{627090ff-40a3-4053-8790-584edc5be201}" />
+        <Role Id="{119f245c-3cc8-4b62-b31c-d1a046ced15d}" />
+      </DisplayConditions>
+      <formLibraries>
+        <Library name="cmdspp_screening_web_res" libraryUniqueId="{0e42a9c2-b875-4a5e-b6e2-a980ad3bf75b}" />
+      </formLibraries>
+      <controlDescriptions>
+        <controlDescription forControl="{d0510c7e-e1f0-4933-b1f8-8dec42bbb33e}">
+          <customControl id="{67FAC785-CD58-4F9F-ABB3-4B7DDC6ED5ED}">
+            <parameters>
+              <datafieldname>cmdspp_p_prv_mdcaid_pvd_ind</datafieldname>
+            </parameters>
+          </customControl>
+          <customControl formFactor="0" name="MscrmControls.FieldControls.ToggleControl">
+            <parameters>
+              <value type="TwoOptions">cmdspp_p_prv_mdcaid_pvd_ind</value>
+            </parameters>
+          </customControl>
+          <customControl formFactor="2" name="MscrmControls.FieldControls.ToggleControl">
+            <parameters>
+              <value type="TwoOptions">cmdspp_p_prv_mdcaid_pvd_ind</value>
+            </parameters>
+          </customControl>
+          <customControl formFactor="1" name="MscrmControls.FieldControls.ToggleControl">
+            <parameters>
+              <value type="TwoOptions">cmdspp_p_prv_mdcaid_pvd_ind</value>
+            </parameters>
+          </customControl>
+        </controlDescription>
+        <controlDescription forControl="{a0c72950-8b7a-40eb-ab9f-fa0d8a0f33b0}">
+          <customControl id="{67FAC785-CD58-4F9F-ABB3-4B7DDC6ED5ED}">
+            <parameters>
+              <datafieldname>cmdspp_p_eft_ind</datafieldname>
+            </parameters>
+          </customControl>
+          <customControl formFactor="0" name="MscrmControls.FieldControls.ToggleControl">
+            <parameters>
+              <value type="TwoOptions">cmdspp_p_eft_ind</value>
+            </parameters>
+          </customControl>
+          <customControl formFactor="2" name="MscrmControls.FieldControls.ToggleControl">
+            <parameters>
+              <value type="TwoOptions">cmdspp_p_eft_ind</value>
+            </parameters>
+          </customControl>
+          <customControl formFactor="1" name="MscrmControls.FieldControls.ToggleControl">
+            <parameters>
+              <value type="TwoOptions">cmdspp_p_eft_ind</value>
+            </parameters>
+          </customControl>
+        </controlDescription>
+      </controlDescriptions>
+      <events>
+        <event name="onchange" application="false" active="false" attribute="cmdspp_p_dob">
+          <Handlers>
+            <Handler functionName="validateField" libraryName="cmdspp_screening_web_res" handlerUniqueId="{c67f6938-691b-4b3b-ab79-87fb0cd9e3e2}" enabled="true" parameters="&quot;cmdspp_p_dob&quot;,&quot;notFutureDate&quot;,&quot;null&quot;,&quot;Future dates are not allowed.&quot;," passExecutionContext="true" />
+          </Handlers>
+        </event>
+        <event name="onchange" application="false" active="false" attribute="cmdspp_p_npi_id">
+          <Handlers>
+            <Handler functionName="onNpiChge" libraryName="cmdspp_screening_web_res" handlerUniqueId="{abfea6e0-f7ab-48ce-aa25-1a4560c40fd0}" enabled="true" parameters="" passExecutionContext="true" />
+          </Handlers>
+        </event>
+      </events>
+    </form>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <LocalizedNames>
+      <LocalizedName description="EFTForm" languagecode="1033" />
+    </LocalizedNames>
+    <Descriptions>
+      <Description description="A form for this entity." languagecode="1033" />
+    </Descriptions>
+  </systemform>
+</forms>

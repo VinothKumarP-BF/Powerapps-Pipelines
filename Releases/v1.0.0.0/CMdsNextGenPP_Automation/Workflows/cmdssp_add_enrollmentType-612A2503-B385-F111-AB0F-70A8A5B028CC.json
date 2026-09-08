@@ -1,0 +1,193 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps_1": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "cmdspp_CR_Dataverse_Core_DEV"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "manual": {
+          "metadata": {
+            "operationMetadataId": "39c7fd74-ca83-4f29-90bb-52be350ef6bb"
+          },
+          "type": "Request",
+          "kind": "Http",
+          "inputs": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "action": {
+                  "type": "string"
+                },
+                "payload": {
+                  "type": "object",
+                  "properties": {
+                    "enrollmentName": {
+                      "type": "string"
+                    },
+                    "subText": {
+                      "type": "string"
+                    },
+                    "toolTip": {
+                      "type": "string"
+                    },
+                    "formData": {
+                      "type": "string"
+                    },
+                    "providerCode": {
+                      "type": "string"
+                    },
+                    "providerDesc": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            },
+            "triggerAuthenticationType": "All"
+          }
+        }
+      },
+      "actions": {
+        "Switch": {
+          "runAfter": {},
+          "cases": {
+            "Case": {
+              "case": "addEnroll",
+              "actions": {
+                "Add_a_new_row": {
+                  "runAfter": {},
+                  "metadata": {
+                    "operationMetadataId": "2903ae99-1d05-44c5-af60-48340a01e639"
+                  },
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "host": {
+                      "connectionName": "shared_commondataserviceforapps_1",
+                      "operationId": "CreateRecord",
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                    },
+                    "parameters": {
+                      "entityName": "cmdspp_pc_enrol_typ_tbs",
+                      "x-ms-odata-metadata-full": true,
+                      "item/cmdspp_p_enrol_descr": "@triggerBody()?['payload']?['subText']",
+                      "item/cmdspp_p_enrol_tooltip": "@triggerBody()?['payload']?['toolTip']",
+                      "item/cmdspp_p_enrol_typ_nam": "@triggerBody()?['payload']?['enrollmentName']"
+                    },
+                    "authentication": "@parameters('$authentication')"
+                  }
+                },
+                "Response": {
+                  "runAfter": {
+                    "Upload_a_file_or_an_image": [
+                      "Succeeded"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "62a98936-7be0-4add-8d40-e7b00b39e945"
+                  },
+                  "type": "Response",
+                  "kind": "Http",
+                  "inputs": {
+                    "statusCode": 200
+                  }
+                },
+                "Upload_a_file_or_an_image": {
+                  "runAfter": {
+                    "Add_a_new_row": [
+                      "Succeeded"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "b944dc8f-356c-417a-be19-180a6658b585"
+                  },
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "host": {
+                      "connectionName": "shared_commondataserviceforapps_1",
+                      "operationId": "UpdateEntityFileImageFieldContent",
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                    },
+                    "parameters": {
+                      "entityName": "cmdspp_pc_enrol_typ_tbs",
+                      "recordId": "@outputs('Add_a_new_row')?['body/cmdspp_pc_enrol_typ_tbid']",
+                      "fileImageFieldName": "cmdspp_p_file",
+                      "item": "@base64ToBinary(triggerBody()?['payload']?['formData'])",
+                      "x-ms-file-name": "Untitled"
+                    },
+                    "authentication": "@parameters('$authentication')"
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "actions": {
+              "Add_a_new_row_2": {
+                "runAfter": {},
+                "metadata": {
+                  "operationMetadataId": "f832af26-7076-488d-8603-ec2ab835aa7d"
+                },
+                "type": "OpenApiConnection",
+                "inputs": {
+                  "host": {
+                    "connectionName": "shared_commondataserviceforapps_1",
+                    "operationId": "CreateRecord",
+                    "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                  },
+                  "parameters": {
+                    "entityName": "cmdspp_pc_pvd_typ_tbs",
+                    "item/cmdspp_p_pvd_typ": "@triggerBody()?['payload']?['providerCode']",
+                    "item/cmdspp_p_pvd_typ_nam": "@triggerBody()?['payload']?['providerDesc']"
+                  },
+                  "authentication": "@parameters('$authentication')"
+                }
+              },
+              "Response_2": {
+                "runAfter": {
+                  "Add_a_new_row_2": [
+                    "Succeeded"
+                  ]
+                },
+                "metadata": {
+                  "operationMetadataId": "fe4e8fc2-c9b1-4a12-8408-f87c10874048"
+                },
+                "type": "Response",
+                "kind": "Http",
+                "inputs": {
+                  "statusCode": 200
+                }
+              }
+            }
+          },
+          "expression": "@triggerBody()?['action']",
+          "metadata": {
+            "operationMetadataId": "70472ad0-1a19-45d6-8059-b06c7f43f76c"
+          },
+          "type": "Switch"
+        }
+      }
+    },
+    "templateName": ""
+  },
+  "schemaVersion": "1.0.0.0"
+}

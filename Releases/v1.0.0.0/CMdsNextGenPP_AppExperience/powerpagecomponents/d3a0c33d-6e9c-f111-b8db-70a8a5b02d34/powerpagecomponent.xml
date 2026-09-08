@@ -1,0 +1,14 @@
+<powerpagecomponent powerpagecomponentid="d3a0c33d-6e9c-f111-b8db-70a8a5b02d34">
+  <content>{
+  "value": "cmdspp_p_bu_s_address,cmdspp_p_city,_cmdspp_p_city_value,cmdspp_p_country,_cmdspp_p_country_value,cmdspp_p_ext,cmdspp_p_ph_address,cmdspp_p_s_as_s_location,cmdspp_p_ser_ma_inf_tbid,cmdspp_p_state,_cmdspp_p_state_value,cmdspp_p_zip,cmdspp_created_by_user,_cmdspp_created_by_user_value,cmdspp_p_sys_id,_cmdspp_p_sys_id_value,cmdspp_modified_by_user,_cmdspp_modified_by_user_value,statecode",
+  "source": 0
+}</content>
+  <iscustomizable>1</iscustomizable>
+  <name>Webapi/cmdspp_p_ser_ma_inf_tb/fields</name>
+  <powerpagecomponenttype>9</powerpagecomponenttype>
+  <powerpagesiteid>
+    <powerpagesiteid>abccaafd-73d6-47dd-bb55-b09b911f0d43</powerpagesiteid>
+  </powerpagesiteid>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</powerpagecomponent>

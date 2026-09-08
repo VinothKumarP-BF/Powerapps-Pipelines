@@ -1,0 +1,14 @@
+<powerpagecomponent powerpagecomponentid="fa0406d2-b29b-f111-b8db-70a8a5b02d34">
+  <content>{
+  "value": "statecode,cmdspp_p_primary_website,cmdspp_p_other_language2,cmdspp_p_ser_sev_inf_tbid,cmdspp_p_ser_sev_inf_tb_sk,cmdspp_p_tdd_tty_choice,cmdspp_p_ttd_tty_phone,cmdspp_p_primary_website_choice,cmdspp_p_new_schip,cmdspp_p_location_wheelchair,cmdspp_p_location_provide_emergency,cmdspp_p_location_offers_service,cmdspp_p_after_hours_phone,cmdspp_p_accepting_medicaid,cmdspp_p_age_range_serviced,_cmdspp_p_age_range_serviced_value,cmdspp_p_gender_serviced,_cmdspp_p_gender_serviced_value,cmdspp_p_languages_supported,_cmdspp_p_languages_supported_value,cmdspp_created_by_user,_cmdspp_created_by_user_value,cmdspp_p_sys_id,_cmdspp_p_sys_id_value,cmdspp_modified_by_user,_cmdspp_modified_by_user_value",
+  "source": 0
+}</content>
+  <iscustomizable>1</iscustomizable>
+  <name>Webapi/cmdspp_p_ser_sev_inf_tb/fields</name>
+  <powerpagecomponenttype>9</powerpagecomponenttype>
+  <powerpagesiteid>
+    <powerpagesiteid>abccaafd-73d6-47dd-bb55-b09b911f0d43</powerpagesiteid>
+  </powerpagesiteid>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</powerpagecomponent>

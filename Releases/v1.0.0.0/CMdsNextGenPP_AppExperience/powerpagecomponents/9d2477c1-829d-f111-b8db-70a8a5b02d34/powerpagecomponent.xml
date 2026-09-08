@@ -1,0 +1,45 @@
+<powerpagecomponent powerpagecomponentid="9d2477c1-829d-f111-b8db-70a8a5b02d34">
+  <content>{
+  "entityname": "cmdspp_p_dtl_tb",
+  "referenceentityshowreadonlyform": false,
+  "referencequerystringisprimarykey": true,
+  "populatereferenceentitylookupfield": false,
+  "setentityreference": false,
+  "geolocation_displaymap": false,
+  "geolocation_enabled": false,
+  "attachfilerestrictaccept": false,
+  "attachfilerequired": false,
+  "attachfileallowmultiple": false,
+  "attachfile": false,
+  "portaluserlookupattributeisactivityparty": false,
+  "associatecurrentportaluser": false,
+  "redirecturlappendentityidquerystring": false,
+  "appendquerystring": false,
+  "hideformonsuccess": true,
+  "onsuccess": 756150000,
+  "validationsummarylinksenabled": true,
+  "forceallfieldsrequired": false,
+  "recommendedfieldsrequired": false,
+  "showunsupportedfields": false,
+  "showownerfields": false,
+  "tooltipenabled": false,
+  "renderwebresourcesinline": false,
+  "autogeneratesteps": false,
+  "showcaptchaforauthenticatedusers": false,
+  "captcharequired": false,
+  "recordsourceallowcreateonnull": false,
+  "entitypermissionsenabled": true,
+  "mode": 100000001,
+  "geolocation_maptype": 756150000,
+  "recordidquerystringparametername": "id",
+  "entitysourcetype": 756150001
+}</content>
+  <iscustomizable>1</iscustomizable>
+  <name>Exclusion_Form</name>
+  <powerpagecomponenttype>15</powerpagecomponenttype>
+  <powerpagesiteid>
+    <powerpagesiteid>abccaafd-73d6-47dd-bb55-b09b911f0d43</powerpagesiteid>
+  </powerpagesiteid>
+  <statecode>1</statecode>
+  <statuscode>2</statuscode>
+</powerpagecomponent>

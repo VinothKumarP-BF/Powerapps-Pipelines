@@ -1,0 +1,432 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps_1": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "cmdspp_CR_Dataverse_Core_DEV"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      },
+      "shared_sharepointonline_1": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "cmdspp_CR_SharePoint_Core_DEV"
+        },
+        "api": {
+          "name": "shared_sharepointonline"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "When_a_row_is_added,_modified_or_deleted": {
+          "metadata": {
+            "operationMetadataId": "fd0df6a1-c12e-4eaf-9b57-6f80c8d6621e"
+          },
+          "type": "OpenApiConnectionWebhook",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps_1",
+              "operationId": "SubscribeWebhookTrigger",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "subscriptionRequest/message": 3,
+              "subscriptionRequest/entityname": "cmdspp_p_documents_tb",
+              "subscriptionRequest/scope": 4,
+              "subscriptionRequest/filteringattributes": "cmdspp_p_document_type,cmdspp_p_docu_nam,cmdspp_p_file,cmdspp_p_file_nam",
+              "subscriptionRequest/filterexpression": "cmdspp_differentiation eq 'ReviewDocument' and cmdspp_p_sharepoint_path eq null"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        }
+      },
+      "actions": {
+        "List_rows": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "227b5923-dcde-4e68-92ac-e1f7370203bd"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps_1",
+              "operationId": "ListRecords",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "environmentvariabledefinitions",
+              "$filter": "schemaname eq 'cmdspp_ENV_DocInt_endPointSettings' or schemaname eq 'cmdspp_ENV_SharePointPath_Config'"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Filter_array_-_SharePoint_Definition_Id": {
+          "runAfter": {
+            "List_rows": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "a482da10-4478-4d80-a3ea-386b66f171ba"
+          },
+          "type": "Query",
+          "inputs": {
+            "from": "@outputs('List_rows')?['body/value']",
+            "where": "@equals(item()?['schemaname'], 'cmdspp_ENV_SharePointPath_Config')"
+          }
+        },
+        "Compose_-_SharePoint_Definition_Id": {
+          "runAfter": {
+            "Filter_array_-_SharePoint_Definition_Id": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "32b95ab1-8e3a-4444-9027-302af4d2efde"
+          },
+          "type": "Compose",
+          "inputs": "@first(body('Filter_array_-_SharePoint_Definition_Id'))?['environmentvariabledefinitionid']"
+        },
+        "List_rows_-_Env_Values": {
+          "runAfter": {
+            "Compose_-_SharePoint_Definition_Id": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "eb6fbb27-8e99-4b8f-8c4d-2233cfa57421"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps_1",
+              "operationId": "ListRecords",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "environmentvariablevalues",
+              "$filter": "_environmentvariabledefinitionid_value eq @{outputs('Compose_-_SharePoint_Definition_Id')}"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Filter_array_-_SharePoint_Value": {
+          "runAfter": {
+            "List_rows_-_Env_Values": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "81e10f01-68b3-4cf9-8640-a820c2ef0a43"
+          },
+          "type": "Query",
+          "inputs": {
+            "from": "@outputs('List_rows_-_Env_Values')?['body/value']",
+            "where": "@equals(item()?['_environmentvariabledefinitionid_value'], outputs('Compose_-_SharePoint_Definition_Id'))"
+          }
+        },
+        "Compose_-_SharePoint_Config_Raw": {
+          "runAfter": {
+            "Filter_array_-_SharePoint_Value": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "5d55c741-bfb8-448e-8360-16afe2f507d2"
+          },
+          "type": "Compose",
+          "inputs": "@if(\r\n  empty(body('Filter_array_-_SharePoint_Value')),\r\n  first(body('Filter_array_-_SharePoint_Definition_Id'))?['defaultvalue'],\r\n  first(body('Filter_array_-_SharePoint_Value'))?['value']\r\n)"
+        },
+        "Parse_JSON_-_SharePoint_Config": {
+          "runAfter": {
+            "Compose_-_SharePoint_Config_Raw": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "cf49642f-a5d9-456c-8004-309a2d9dbaca"
+          },
+          "type": "ParseJson",
+          "inputs": {
+            "content": "@outputs('Compose_-_SharePoint_Config_Raw')",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "siteAddress": {
+                  "type": "string"
+                },
+                "libraryName": {
+                  "type": "string"
+                },
+                "folderPath": {
+                  "type": "string"
+                },
+                "configFolderPath": {
+                  "type": "string"
+                },
+                "screeningFolderPath": {
+                  "type": "string"
+                },
+                "parametersPath": {
+                  "type": "string"
+                },
+                "parametersConfigPath": {
+                  "type": "string"
+                },
+                "parametersScreeningPath": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        },
+        "Download_a_file_or_an_image": {
+          "runAfter": {
+            "Parse_JSON_-_SharePoint_Config": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "2c28244f-b3c9-4ca3-9720-4b25b686f710"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps_1",
+              "operationId": "GetEntityFileImageFieldContent",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "cmdspp_p_documents_tbs",
+              "recordId": "@triggerOutputs()?['body/cmdspp_p_documents_tbid']",
+              "fileImageFieldName": "cmdspp_p_file"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Compose_file_content": {
+          "runAfter": {
+            "Download_a_file_or_an_image": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "9e25c181-f29f-43c7-8f9a-f29a2964490a"
+          },
+          "type": "Compose",
+          "inputs": "@body('Download_a_file_or_an_image')"
+        },
+        "Compose_Dynamic_Folder": {
+          "runAfter": {
+            "Compose_file_content": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "a9c5b173-75c8-4bbe-9401-379b2920453c"
+          },
+          "type": "Compose",
+          "inputs": "@ concat(\r\nbody('Parse_JSON_-_SharePoint_Config')?['reviewDocumentsFolderPath'],\r\ntriggerOutputs()?['body/cmdspp_p_enrol_id'])  "
+        },
+        "Scope_Check_Folder": {
+          "actions": {
+            "Get_folder_metadata": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "77b0f30c-f9b2-401d-8f2b-8531cd969c87"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_sharepointonline_1",
+                  "operationId": "GetFolderMetadata",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline"
+                },
+                "parameters": {
+                  "dataset": "@body('Parse_JSON_-_SharePoint_Config')?['siteAddress']",
+                  "id": "@concat(body('Parse_JSON_-_SharePoint_Config')?['reviewDocumentsFolderPath'])"
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            }
+          },
+          "runAfter": {
+            "Compose_Dynamic_Folder": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "3ba78a8f-f2e3-49e7-8907-79ff027538f1"
+          },
+          "type": "Scope"
+        },
+        "Scope_Create_Folder_If_Missing": {
+          "actions": {
+            "Create_new_folder": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "86793934-4149-4e30-a86b-53376bcb5822"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_sharepointonline_1",
+                  "operationId": "CreateNewFolder",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline"
+                },
+                "parameters": {
+                  "dataset": "@body('Parse_JSON_-_SharePoint_Config')?['siteAddress']",
+                  "table": "@body('Parse_JSON_-_SharePoint_Config')?['libraryName']",
+                  "parameters/path": "@concat(\r\nbody('Parse_JSON_-_SharePoint_Config')?['reviewDocumentsFolderPath'],\r\ntriggerOutputs()?['body/cmdspp_p_enrol_id']\r\n)"
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            }
+          },
+          "runAfter": {
+            "Scope_Check_Folder": [
+              "Failed"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "65dfbba0-763b-4e38-8a12-895f6c7a6db5"
+          },
+          "type": "Scope"
+        },
+        "Update_a_row": {
+          "runAfter": {
+            "Get_file_properties": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "94254dfe-161b-4070-8e9c-5a2035778bd3"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps_1",
+              "operationId": "UpdateOnlyRecord",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "cmdspp_p_documents_tbs",
+              "recordId": "@triggerOutputs()?['body/cmdspp_p_documents_tbid']",
+              "item/cmdspp_p_sharepoint_path": "@concat(outputs('Get_file_properties')?['body/{Link}'],'?web=1')"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Scope_Create_File": {
+          "actions": {
+            "Create_file": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "6ce7cb95-00ee-47aa-982e-415bdb1981bd"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_sharepointonline_1",
+                  "operationId": "CreateFile",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline"
+                },
+                "parameters": {
+                  "dataset": "@body('Parse_JSON_-_SharePoint_Config')?['siteAddress']",
+                  "folderPath": "@outputs('Compose_Dynamic_Folder')",
+                  "name": "@triggerOutputs()?['body/cmdspp_p_file_nam']",
+                  "body": "@body('Download_a_file_or_an_image')"
+                },
+                "authentication": "@parameters('$authentication')"
+              },
+              "runtimeConfiguration": {
+                "contentTransfer": {
+                  "transferMode": "Chunked"
+                }
+              }
+            }
+          },
+          "runAfter": {
+            "Scope_Create_Folder_If_Missing": [
+              "Succeeded",
+              "Skipped"
+            ],
+            "Scope_Check_Folder": [
+              "Succeeded",
+              "Failed"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "20c554db-317b-4da5-968f-422bc6fa5fcd"
+          },
+          "type": "Scope"
+        },
+        "Perform_an_unbound_action": {
+          "runAfter": {
+            "Update_a_row": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "42b2698d-e569-40e7-b2f6-37023cc0f7c8"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps_1",
+              "operationId": "PerformUnboundAction",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "actionName": "DeleteFile",
+              "item/FileId": "@outputs('Update_a_row')?['body/cmdspp_p_file']"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Get_file_properties": {
+          "runAfter": {
+            "Scope_Create_File": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "f2fe0a4a-6fd1-4196-b531-a62e37177bec"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_sharepointonline_1",
+              "operationId": "GetFileItem",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline"
+            },
+            "parameters": {
+              "dataset": "@body('Parse_JSON_-_SharePoint_Config')?['siteAddress']",
+              "table": "@body('Parse_JSON_-_SharePoint_Config')?['libraryName']",
+              "id": "@outputs('Create_file')?['body/ItemId']"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        }
+      }
+    },
+    "templateName": ""
+  },
+  "schemaVersion": "1.0.0.0"
+}

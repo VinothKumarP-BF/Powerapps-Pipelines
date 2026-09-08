@@ -1,0 +1,22 @@
+<powerpagecomponent powerpagecomponentid="590e9443-2e5c-c1cf-c4b5-146d439ff6b2">
+  <content>{
+  "displayorder": 24,
+  "parentweblinkid": "9bcba9fb-ba33-f44d-3157-4eab4b2152ad",
+  "weblinksetid": "aba765dd-0f02-4f05-ae0f-a524623441a0",
+  "pageid": "4089ff1e-4025-857f-10f5-cfa749036165",
+  "publishingstateid": "c7294317-419f-4724-8068-a91d5da8d92c",
+  "displaypagevalidation": false,
+  "displayimageonly": false,
+  "displaypagechildlinks": false,
+  "openinnewwindow": false,
+  "robotsfollowlink": true
+}</content>
+  <iscustomizable>1</iscustomizable>
+  <name>Service-Loc-ERA</name>
+  <powerpagecomponenttype>5</powerpagecomponenttype>
+  <powerpagesiteid>
+    <powerpagesiteid>abccaafd-73d6-47dd-bb55-b09b911f0d43</powerpagesiteid>
+  </powerpagesiteid>
+  <statecode>1</statecode>
+  <statuscode>2</statuscode>
+</powerpagecomponent>

@@ -1,0 +1,14 @@
+<powerpagecomponent powerpagecomponentid="b8db8be3-e497-f111-8075-70a8a5b02d28">
+  <content>{
+  "value": "cmdspp_p_ecs_transaction_tbid, cmdspp_p_ecs_transaction_tb, cmdspp_p_agenthousename, cmdspp_p_all, cmdspp_p_billingagent, cmdspp_p_city, cmdspp_p_contactphone, cmdspp_p_contractfname, cmdspp_p_contractlname, cmdspp_p_extension, cmdspp_p_mmis_sys_web_portal, cmdspp_p_protocol, _cmdspp_p_protocol_value, cmdspp_p_softwarename, cmdspp_p_softwarevendorname, cmdspp_p_state, _cmdspp_p_state_value, cmdspp_p_streetaddress, cmdspp_p_streetaddress2, cmdspp_p_sys_id, _cmdspp_p_sys_id_value, cmdspp_p_vendorsoftware, cmdspp_p_version, cmdspp_p_zipcode, statecode, statuscode,cmdspp_p_softwarervendorname,cmdspp_p_sub_trans,cmdspp_p_rec_trans",
+  "source": 0
+}</content>
+  <iscustomizable>1</iscustomizable>
+  <name>Webapi/cmdspp_p_ecs_transaction_tb/fields</name>
+  <powerpagecomponenttype>9</powerpagecomponenttype>
+  <powerpagesiteid>
+    <powerpagesiteid>abccaafd-73d6-47dd-bb55-b09b911f0d43</powerpagesiteid>
+  </powerpagesiteid>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</powerpagecomponent>

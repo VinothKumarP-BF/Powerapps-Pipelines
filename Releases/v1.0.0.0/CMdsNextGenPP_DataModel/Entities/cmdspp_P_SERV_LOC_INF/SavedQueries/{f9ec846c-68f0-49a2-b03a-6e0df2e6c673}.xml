@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>0</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>1</isdefault>
+    <savedqueryid>{f9ec846c-68f0-49a2-b03a-6e0df2e6c673}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="cmdspp_p_seq_num" select="1" icon="1" preview="1">
+        <row name="result" id="cmdspp_p_serv_loc_infid">
+          <cell name="cmdspp_p_sl_cont_pers_last_nam" width="141" />
+          <cell name="cmdspp_p_sl_cont_pers_first_nam" width="149" />
+          <cell name="cmdspp_p_sl_cont_pers_mi" width="87" />
+          <cell name="cmdspp_p_sl_cont_pers_phone" width="128" />
+          <cell name="cmdspp_p_sl_cont_pers_ext" width="149" />
+          <cell name="cmdspp_p_sl_cont_pers_fax" width="113" />
+          <cell name="cmdspp_p_sl_cont_pers_email" width="163" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>0</querytype>
+    <fetchxml>
+      <fetch version="1.0" mapping="logical">
+        <entity name="cmdspp_p_serv_loc_inf">
+          <attribute name="cmdspp_p_serv_loc_infid" />
+          <attribute name="createdon" />
+          <filter type="and">
+            <condition attribute="statecode" operator="eq" value="0" />
+          </filter>
+          <attribute name="cmdspp_p_sl_cont_pers_last_nam" />
+          <attribute name="cmdspp_p_sl_cont_pers_first_nam" />
+          <attribute name="cmdspp_p_sl_cont_pers_mi" />
+          <attribute name="cmdspp_p_sl_cont_pers_phone" />
+          <attribute name="cmdspp_p_sl_cont_pers_ext" />
+          <attribute name="cmdspp_p_sl_cont_pers_fax" />
+          <attribute name="cmdspp_p_sl_cont_pers_email" />
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.0</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Active P_SERV_LOC_INFS" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>

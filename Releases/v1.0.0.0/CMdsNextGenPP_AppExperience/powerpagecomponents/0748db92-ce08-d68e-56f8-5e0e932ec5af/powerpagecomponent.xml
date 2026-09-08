@@ -1,0 +1,18 @@
+<powerpagecomponent powerpagecomponentid="0748db92-ce08-d68e-56f8-5e0e932ec5af">
+  <content>{
+  "webpageid": "51d44b41-26bf-6d84-f130-1b2b46867671",
+  "right": 2,
+  "scope": 1,
+  "adx_webpageaccesscontrolrule_webrole": [
+    "3e0eed5c-e2e0-46fa-a82c-1f6c985badca"
+  ]
+}</content>
+  <iscustomizable>1</iscustomizable>
+  <name>Restrict Read on Enrollment-PP</name>
+  <powerpagecomponenttype>10</powerpagecomponenttype>
+  <powerpagesiteid>
+    <powerpagesiteid>abccaafd-73d6-47dd-bb55-b09b911f0d43</powerpagesiteid>
+  </powerpagesiteid>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</powerpagecomponent>

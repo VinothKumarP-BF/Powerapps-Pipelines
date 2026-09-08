@@ -1,0 +1,259 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps_1": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "cmdspp_CR_Dataverse_Core_DEV"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        },
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        }
+      },
+      "triggers": {
+        "manual": {
+          "metadata": {
+            "operationMetadataId": "8786e04d-b5ec-4bef-a174-3568897467a2"
+          },
+          "type": "Request",
+          "kind": "Http",
+          "inputs": {
+            "triggerAuthenticationType": "All",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "transType": {
+                  "type": "string"
+                },
+                "fieldOptName": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      },
+      "actions": {
+        "Switch": {
+          "runAfter": {
+            "Initialize_variable": [
+              "Succeeded"
+            ]
+          },
+          "cases": {
+            "Case_2": {
+              "case": "Options",
+              "actions": {
+                "List_rows_4": {
+                  "metadata": {
+                    "operationMetadataId": "2d44d604-cad9-41ac-923c-8dd3c9c8285c"
+                  },
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "parameters": {
+                      "entityName": "cmdspp_r_vv_tbs",
+                      "$filter": "cmdspp_r_vv_domain_nam eq '@{triggerBody()?['fieldOptName']}'"
+                    },
+                    "host": {
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps",
+                      "operationId": "ListRecords",
+                      "connectionName": "shared_commondataserviceforapps_1"
+                    }
+                  }
+                },
+                "Response": {
+                  "runAfter": {
+                    "Select_3": [
+                      "Succeeded"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "94a4ea76-66a1-4710-b2b3-d0521ee7b5e5"
+                  },
+                  "type": "Response",
+                  "kind": "Http",
+                  "inputs": {
+                    "statusCode": 200,
+                    "body": "@body('Select_3')"
+                  }
+                },
+                "Select_3": {
+                  "runAfter": {
+                    "List_rows_4": [
+                      "Succeeded"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "5c5f70e5-cbc2-4324-bddd-618e673a0191"
+                  },
+                  "type": "Select",
+                  "inputs": {
+                    "from": "@outputs('List_rows_4')?['body/value']",
+                    "select": {
+                      "value": "@item()?['cmdspp_r_vv_tbid']",
+                      "code": "@item()?['cmdspp_r_vv_sk']",
+                      "label": "@item()?['cmdspp_r_vv_short_desc']",
+                      "longDesc": "@item()?['cmdspp_r_vv_long_desc']"
+                    }
+                  }
+                }
+              }
+            },
+            "Case_3": {
+              "case": "Fields",
+              "actions": {
+                "List_rows_2": {
+                  "metadata": {
+                    "operationMetadataId": "0aa7f0fc-cb00-44af-9215-8d560203eccd"
+                  },
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "parameters": {
+                      "entityName": "cmdspp_pc_ctrl_tbs",
+                      "$expand": "cmdspp_p_ctrl_to_section_fk($select=cmdspp_p_section_nam)"
+                    },
+                    "host": {
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps",
+                      "operationId": "ListRecords",
+                      "connectionName": "shared_commondataserviceforapps_1"
+                    }
+                  }
+                },
+                "Select_2": {
+                  "runAfter": {
+                    "List_rows_2": [
+                      "Succeeded"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "3f26cdb0-01b8-4c5b-b509-3cd2f3c34f21"
+                  },
+                  "type": "Select",
+                  "inputs": {
+                    "from": "@outputs('List_rows_2')?['body/value']",
+                    "select": {
+                      "value": "@item()?['cmdspp_pc_ctrl_tbid']",
+                      "type": "@item()?['cmdspp_p_ctrl_typ']",
+                      "name": "@item()?['cmdspp_p_ctrl_nam']",
+                      "optionClm": "@item()?['cmdspp_p_options_clm']",
+                      "secName": "@item()?['cmdspp_p_ctrl_to_section_fk/cmdspp_p_section_nam']",
+                      "label": "@concat(item()?['cmdspp_p_ctrl_to_section_fk/cmdspp_p_section_nam'],'-',item()?['cmdspp_p_ctrl_nam'])"
+                    }
+                  }
+                },
+                "Response_4": {
+                  "runAfter": {
+                    "Select_2": [
+                      "Succeeded"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "71ba2958-edd7-4797-aa04-6776c468ceb8"
+                  },
+                  "type": "Response",
+                  "kind": "Http",
+                  "inputs": {
+                    "statusCode": 200,
+                    "body": "@body('Select_2')"
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "actions": {
+              "List_rows": {
+                "metadata": {
+                  "operationMetadataId": "f3ca32b6-8259-4946-8e07-f80e721062bb"
+                },
+                "type": "OpenApiConnection",
+                "inputs": {
+                  "parameters": {
+                    "entityName": "cmdspp_pc_docu_typ_tbs"
+                  },
+                  "host": {
+                    "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps",
+                    "operationId": "ListRecords",
+                    "connectionName": "shared_commondataserviceforapps_1"
+                  }
+                }
+              },
+              "Select": {
+                "runAfter": {
+                  "List_rows": [
+                    "Succeeded"
+                  ]
+                },
+                "metadata": {
+                  "operationMetadataId": "4ee60320-732e-436d-a18d-1ecf00aa82d5"
+                },
+                "type": "Select",
+                "inputs": {
+                  "from": "@outputs('List_rows')?['body/value']",
+                  "select": {
+                    "value": "@item()?['cmdspp_pc_docu_typ_tbid']",
+                    "code": "@item()?['cmdspp_p_docu_typ_sk']",
+                    "label": "@item()?['cmdspp_p_docu_type_nam']"
+                  }
+                }
+              },
+              "Response_3": {
+                "runAfter": {
+                  "Select": [
+                    "Succeeded"
+                  ]
+                },
+                "metadata": {
+                  "operationMetadataId": "c78bf227-fcdc-46f4-8a56-9f842463b548"
+                },
+                "type": "Response",
+                "kind": "Http",
+                "inputs": {
+                  "statusCode": 200,
+                  "body": "@body('Select')"
+                }
+              }
+            }
+          },
+          "expression": "@triggerBody()?['transType']",
+          "metadata": {
+            "operationMetadataId": "ecafb8ff-9619-4e0a-8546-f657d4aeebb7"
+          },
+          "type": "Switch"
+        },
+        "Initialize_variable": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "f7fedc0d-2e42-4c61-af74-18ccd1a24552"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "Fields",
+                "type": "array",
+                "value": []
+              }
+            ]
+          }
+        }
+      }
+    },
+    "templateName": null
+  },
+  "schemaVersion": "1.0.0.0"
+}

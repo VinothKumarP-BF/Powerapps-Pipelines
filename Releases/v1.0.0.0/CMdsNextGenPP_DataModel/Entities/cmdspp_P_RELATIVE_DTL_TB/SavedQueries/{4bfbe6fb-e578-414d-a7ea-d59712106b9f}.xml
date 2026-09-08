@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>0</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>1</isdefault>
+    <savedqueryid>{4bfbe6fb-e578-414d-a7ea-d59712106b9f}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="cmdspp_p_relative_dtl_sk" select="1" icon="1" preview="1">
+        <row name="result" id="cmdspp_p_relative_dtl_tbid">
+          <cell name="cmdspp_p_relative_ind" width="100" />
+          <cell name="cmdspp_p_last_name" width="111" />
+          <cell name="cmdspp_p_first_name" width="114" />
+          <cell name="cmdspp_p_mi" width="100" />
+          <cell name="cmdspp_p_relationship_cd" width="111" />
+          <cell name="cmdspp_p_subcontractor_name" width="168" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>0</querytype>
+    <fetchxml>
+      <fetch version="1.0" mapping="logical">
+        <entity name="cmdspp_p_relative_dtl_tb">
+          <attribute name="cmdspp_p_relative_dtl_tbid" />
+          <filter type="and">
+            <condition attribute="statecode" operator="eq" value="0" />
+          </filter>
+          <attribute name="cmdspp_p_last_name" />
+          <attribute name="cmdspp_p_first_name" />
+          <attribute name="cmdspp_p_mi" />
+          <attribute name="cmdspp_p_subcontractor_name" />
+          <attribute name="cmdspp_p_relationship_cd" />
+          <attribute name="cmdspp_p_relative_ind" />
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.0</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Active P_RELATIVE_DTL_TBS" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>

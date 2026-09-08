@@ -1,0 +1,21 @@
+{
+  "defaultSupportedProps": {
+    "toolbar": []
+  },
+  "readOnlySettings": {
+    "showFullScreenExpander": true
+  },
+  "sanitizerAllowlist": {
+    "attributes": [],
+    "cssProperties": [],
+    "domains": [],
+    "protocols": [],
+    "tags": []
+  },
+  "disableContentSanitization": true,
+  "disableOnLoadEditModeSanitization": true,
+  "disableDefaultImageProcessing": false,
+  "showFullScreenExpander": false,
+  "showAsTabControl": false,
+  "showHtml": false
+}

@@ -1,0 +1,228 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps_1": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "cmdspp_CR_Dataverse_Core_DEV"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "manual": {
+          "metadata": {
+            "operationMetadataId": "284c7fb2-206e-4b16-a717-e5fa6a982c7b"
+          },
+          "type": "Request",
+          "kind": "Http",
+          "inputs": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "enrollId": {
+                  "type": "string"
+                },
+                "mappedProviders": {
+                  "type": "array"
+                },
+                "documentListUpdate": {
+                  "type": "array"
+                },
+                "unMappedProviders": {
+                  "type": "array"
+                },
+                "transType": {
+                  "type": "string"
+                },
+                "documentData": {
+                  "type": "object",
+                  "properties": {
+                    "documentId": {
+                      "type": "string"
+                    },
+                    "documentName": {
+                      "type": "string"
+                    },
+                    "esignature": {
+                      "type": "boolean"
+                    },
+                    "conditional": {
+                      "type": "boolean"
+                    },
+                    "fieldName": {
+                      "type": "string"
+                    },
+                    "value": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            },
+            "triggerAuthenticationType": "All"
+          }
+        }
+      },
+      "actions": {
+        "Switch": {
+          "runAfter": {},
+          "cases": {
+            "Case": {
+              "case": "AddDocument",
+              "actions": {
+                "Add_a_new_row_2": {
+                  "runAfter": {},
+                  "metadata": {
+                    "operationMetadataId": "fb128763-8f3a-421b-ad32-329e07207dfb"
+                  },
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "host": {
+                      "connectionName": "shared_commondataserviceforapps_1",
+                      "operationId": "CreateRecord",
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                    },
+                    "parameters": {
+                      "entityName": "cmdspp_pc_enrol_docu_tbs",
+                      "item/cmdspp_p_docu_id_sk": "1",
+                      "item/cmdspp_p_cond": "@triggerBody()?['documentData']?['conditional']",
+                      "item/cmdspp_p_docu_list_fk@odata.bind": "/cmdspp_pc_docu_typ_tbs(@{triggerBody()?['documentData']?['documentId']})",
+                      "item/cmdspp_p_e_signature": "@triggerBody()?['documentData']?['esignature']",
+                      "item/cmdspp_p_enter_docu_nam": "@triggerBody()?['documentData']?['documentName']",
+                      "item/cmdspp_p_fld_nam": "@triggerBody()?['documentData']?['fieldName']",
+                      "item/cmdspp_p_fld_to_enrol_fk@odata.bind": "/cmdspp_pc_enrol_typ_tbs(@{triggerBody()?['enrollId']})",
+                      "item/cmdspp_p_operator": "@triggerBody()?['documentData']?['operator']",
+                      "item/cmdspp_p_value": "@triggerBody()?['documentData']?['value']"
+                    },
+                    "authentication": "@parameters('$authentication')"
+                  }
+                },
+                "Response_2": {
+                  "runAfter": {
+                    "Add_a_new_row_2": [
+                      "Succeeded"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "7277c5ee-62a9-4b3c-9a77-09f661e35e5e"
+                  },
+                  "type": "Response",
+                  "kind": "Http",
+                  "inputs": {
+                    "statusCode": 200
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "actions": {
+              "Apply_to_each": {
+                "foreach": "@triggerBody()?['mappedProviders']",
+                "actions": {
+                  "Add_a_new_row": {
+                    "runAfter": {},
+                    "metadata": {
+                      "operationMetadataId": "5415c758-7c32-4b8f-b5df-79486357611d"
+                    },
+                    "type": "OpenApiConnection",
+                    "inputs": {
+                      "host": {
+                        "connectionName": "shared_commondataserviceforapps_1",
+                        "operationId": "CreateRecord",
+                        "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                      },
+                      "parameters": {
+                        "entityName": "cmdspp_pc_pvd_enrol_map_tbs",
+                        "item/cmdspp_p_enrol_fk_id@odata.bind": "/cmdspp_pc_enrol_typ_tbs(@{triggerBody()?['enrollId']})",
+                        "item/cmdspp_p_pvd_fk_id@odata.bind": "/cmdspp_pc_pvd_typ_tbs(@{items('Apply_to_each')?['id']})"
+                      },
+                      "authentication": "@parameters('$authentication')"
+                    }
+                  }
+                },
+                "runAfter": {},
+                "metadata": {
+                  "operationMetadataId": "d42365fd-111a-47e8-9ea2-6dbf388ef1a3"
+                },
+                "type": "Foreach"
+              },
+              "Apply_to_each_2": {
+                "foreach": "@triggerBody()?['unMappedProviders']",
+                "actions": {
+                  "Update_a_row": {
+                    "runAfter": {},
+                    "metadata": {
+                      "operationMetadataId": "9602a4a0-83bf-4f98-ae59-aa394c1ebec3"
+                    },
+                    "type": "OpenApiConnection",
+                    "inputs": {
+                      "host": {
+                        "connectionName": "shared_commondataserviceforapps_1",
+                        "operationId": "UpdateOnlyRecord",
+                        "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                      },
+                      "parameters": {
+                        "entityName": "cmdspp_pc_pvd_enrol_map_tbs",
+                        "recordId": "@item()?['id']",
+                        "item/statecode": 1
+                      },
+                      "authentication": "@parameters('$authentication')"
+                    }
+                  }
+                },
+                "runAfter": {
+                  "Apply_to_each": [
+                    "Succeeded"
+                  ]
+                },
+                "metadata": {
+                  "operationMetadataId": "8f177957-6e64-4a54-9f2b-39256d8183b4"
+                },
+                "type": "Foreach"
+              },
+              "Response": {
+                "runAfter": {
+                  "Apply_to_each_2": [
+                    "Succeeded"
+                  ]
+                },
+                "metadata": {
+                  "operationMetadataId": "6a79c354-5ee8-425f-8cb6-20284a8a4051"
+                },
+                "type": "Response",
+                "kind": "Http",
+                "inputs": {
+                  "statusCode": 200
+                }
+              }
+            }
+          },
+          "expression": "@triggerBody()?['transType']",
+          "metadata": {
+            "operationMetadataId": "dc0696ab-02b5-46a9-b3c1-183e496a72a9"
+          },
+          "type": "Switch"
+        }
+      }
+    },
+    "templateName": ""
+  },
+  "schemaVersion": "1.0.0.0"
+}

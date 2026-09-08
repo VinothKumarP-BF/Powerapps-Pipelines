@@ -1,0 +1,109 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<forms xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <systemform>
+    <formid>{cb59ea65-cb85-f111-ab0f-70a8a5b02d34}</formid>
+    <IntroducedVersion>1.0.0.0</IntroducedVersion>
+    <FormPresentation>1</FormPresentation>
+    <FormActivationState>1</FormActivationState>
+    <form headerdensity="HighWithControls" shownavigationbar="false">
+      <tabs>
+        <tab verticallayout="true" id="{c5bcc2f0-4a66-469d-9ca1-59b083a140cc}" IsUserDefined="1" labelid="{898bee38-08d3-461a-b99e-0f212663ed56}">
+          <labels>
+            <label description="General" languagecode="1033" />
+          </labels>
+          <columns>
+            <column width="100%">
+              <sections>
+                <section showlabel="false" showbar="false" IsUserDefined="0" id="{a3688ebf-5bf1-44a7-98b2-37a6da7afbb1}" name="providerType" labelid="{981a3e10-e5c6-44e2-a9d5-09e1a6fed44a}" celllabelposition="Top">
+                  <labels>
+                    <label description="Add Provider Type" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{13b5811c-b9ed-41e9-a5d3-30d60d78f57b}" locklevel="0" colspan="1" rowspan="1" visible="false">
+                        <labels>
+                          <label description="Provider Code" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_p_pvd_typ" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="cmdspp_p_pvd_typ" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{163c703c-c2aa-4b52-83cb-69c9c8e25740}" locklevel="0" colspan="1" rowspan="1" labelid="{bd247de5-e5b8-4b9e-bc2e-9841b4351ee2}">
+                        <labels>
+                          <label description="Description" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_p_pvd_typ_nam" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="cmdspp_p_pvd_typ_nam" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{198bf767-dae0-4662-a391-5037ff2893a6}" labelid="{d4f90555-4daf-4b39-b22d-58e6d57980f8}" visible="false">
+                        <labels>
+                          <label description="Owner" languagecode="1033" />
+                        </labels>
+                        <control id="ownerid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="ownerid" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+          </columns>
+        </tab>
+      </tabs>
+      <header id="{4d90a13e-cea6-4a6a-bba2-7cd6cf4ad037}" celllabelposition="Top" columns="111" labelwidth="115" celllabelalignment="Left">
+        <rows>
+          <row>
+            <cell id="{9ecd43d1-345a-48b9-b34c-f3b002ee51fc}" showlabel="false" labelid="{9372cb43-5924-4adb-9580-2902ee3e2e4e}">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{3feedb55-d7a9-4318-b64d-0da920a3ee5c}" showlabel="false" labelid="{3fc25d4f-ce2e-461b-8c75-45eb5a83fd30}">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{03cf611d-081f-44e7-bd1f-480cce310a45}" showlabel="false" labelid="{2377a6bb-df7a-4414-8d32-ac7121ea93bb}">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+          </row>
+        </rows>
+      </header>
+      <footer id="{5612ce5c-a8b5-4653-923f-8193c8fdbcc4}" celllabelposition="Top" columns="111" labelwidth="115" celllabelalignment="Left">
+        <rows>
+          <row>
+            <cell id="{37450b30-49b8-49fc-83e7-a60720f44952}" showlabel="false" labelid="{847a7311-9f6b-4a6f-b764-580be2f46888}">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{941cbb62-f8fa-4916-bef7-959640439868}" showlabel="false" labelid="{b5e3073f-af25-4e5d-b07e-121d3b137c62}">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{8b4a396e-15c4-4c18-8f9d-bcfea7591637}" showlabel="false" labelid="{4a122295-caa8-4530-bfa7-6b45291522c3}">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+          </row>
+        </rows>
+      </footer>
+      <DisplayConditions Order="1" FallbackForm="true">
+        <Role Id="{627090ff-40a3-4053-8790-584edc5be201}" />
+        <Role Id="{119f245c-3cc8-4b62-b31c-d1a046ced15d}" />
+      </DisplayConditions>
+    </form>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <LocalizedNames>
+      <LocalizedName description="Add_ProviderType" languagecode="1033" />
+    </LocalizedNames>
+    <Descriptions>
+      <Description description="A form for this entity." languagecode="1033" />
+    </Descriptions>
+  </systemform>
+</forms>

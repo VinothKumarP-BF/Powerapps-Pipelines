@@ -1,0 +1,649 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps_1": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "cmdspp_CR_Dataverse_Core_DEV"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "manual": {
+          "metadata": {
+            "operationMetadataId": "c3dc1577-ed45-4ebe-96b7-72d652a164b2"
+          },
+          "type": "Request",
+          "kind": "Http",
+          "inputs": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "transType": {
+                  "type": "string"
+                },
+                "specialtyObj": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "string"
+                    },
+                    "description": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "providerTypeID": {
+                  "type": "string"
+                },
+                "specialtyID": {
+                  "type": "string"
+                },
+                "catalogArray": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "specialty": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "code": {
+                            "type": "string"
+                          },
+                          "description": {
+                            "type": "string"
+                          },
+                          "active": {
+                            "type": "boolean"
+                          },
+                          "taxonomyActiveList": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "id": {
+                                  "type": "string"
+                                },
+                                "code": {
+                                  "type": "string"
+                                },
+                                "description": {
+                                  "type": "string"
+                                },
+                                "active": {
+                                  "type": "boolean"
+                                }
+                              },
+                              "required": [
+                                "id",
+                                "code",
+                                "description",
+                                "active"
+                              ]
+                            }
+                          }
+                        }
+                      },
+                      "taxonomyObject": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "code": {
+                            "type": "string"
+                          },
+                          "description": {
+                            "type": "string"
+                          },
+                          "active": {
+                            "type": "boolean"
+                          }
+                        }
+                      },
+                      "status": {
+                        "type": "integer"
+                      },
+                      "transtype": {
+                        "type": "string"
+                      },
+                      "recordID": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "triggerAuthenticationType": "All"
+          }
+        }
+      },
+      "actions": {
+        "Response": {
+          "runAfter": {
+            "Switch": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "9e96b6c0-9e20-4a58-b45a-7753e14a38da"
+          },
+          "type": "Response",
+          "kind": "Http",
+          "inputs": {
+            "statusCode": 200,
+            "body": "@variables('Response object')"
+          }
+        },
+        "Switch": {
+          "runAfter": {
+            "Initialize_variable": [
+              "Succeeded"
+            ]
+          },
+          "cases": {
+            "Case": {
+              "case": "fetchSpecialty",
+              "actions": {
+                "List_rows_2": {
+                  "runAfter": {},
+                  "metadata": {
+                    "operationMetadataId": "ce1d1fc9-c195-40c7-91bd-f6d9045cb93c"
+                  },
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "host": {
+                      "connectionName": "shared_commondataserviceforapps_1",
+                      "operationId": "ListRecords",
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                    },
+                    "parameters": {
+                      "entityName": "cmdspp_pc_specl_pvdty_maps",
+                      "$filter": "_cmdspp_pc_specl_to_pvd_typ_fk_value eq @{triggerBody()?['providerTypeID']}"
+                    },
+                    "authentication": "@parameters('$authentication')"
+                  }
+                },
+                "Select_2": {
+                  "runAfter": {
+                    "List_rows_2": [
+                      "Succeeded"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "20178776-c3e2-4676-be30-1d632e3d397b"
+                  },
+                  "type": "Select",
+                  "inputs": {
+                    "from": "@outputs('List_rows_2')?['body/value']",
+                    "select": {
+                      "id": "@item()?['cmdspp_pc_specl_pvdty_mapid']",
+                      "code": "@item()?['cmdspp_pc_specl_cd']",
+                      "description": "@item()?['cmdspp_pc_specl_desc']"
+                    }
+                  }
+                },
+                "Set_variable": {
+                  "runAfter": {
+                    "Select_3": [
+                      "Succeeded"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "cd6e214e-5d9e-4e82-a5f8-7b8c42fd3ff1"
+                  },
+                  "type": "SetVariable",
+                  "inputs": {
+                    "name": "Response object",
+                    "value": {
+                      "data": "@body('Select_2')",
+                      "status": "Success",
+                      "activeList": "@body('Select_3')"
+                    }
+                  }
+                },
+                "List_rows_3": {
+                  "runAfter": {
+                    "Select_2": [
+                      "Succeeded"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "492c469a-4fe3-4d86-94d4-1c85370516c6"
+                  },
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "host": {
+                      "connectionName": "shared_commondataserviceforapps_1",
+                      "operationId": "ListRecords",
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                    },
+                    "parameters": {
+                      "entityName": "cmdspp_pc_pvdty_specl_txnmy_map_tbs",
+                      "$filter": "(statecode eq 0) and (_cmdspp_p_pvd_type_fkid_value eq @{triggerBody()?['providerTypeID']})",
+                      "$expand": "cmdspp_p_specl_pvdty_fkid($select=cmdspp_pc_specl_cd,cmdspp_pc_specl_desc),cmdspp_p_txnmy_fkid($select=cmdspp_p_txnmy_cd,cmdspp_p_txnmy_desc)"
+                    },
+                    "authentication": "@parameters('$authentication')"
+                  }
+                },
+                "Select_3": {
+                  "runAfter": {
+                    "List_rows_3": [
+                      "Succeeded"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "e236b277-0459-4e61-93f6-913adf8a360a"
+                  },
+                  "type": "Select",
+                  "inputs": {
+                    "from": "@outputs('List_rows_3')?['body/value']",
+                    "select": {
+                      "specialty": "@json(\r\n  concat(\r\n    '{',\r\n'\"id\":\"', item()?['cmdspp_p_specl_pvdty_fkid/cmdspp_pc_specl_pvdty_mapid'], '\",',\r\n      '\"code\":\"', item()?['cmdspp_p_specl_pvdty_fkid/cmdspp_pc_specl_cd'],\r\n'\",',\r\n      '\"description\":\"', item()?['cmdspp_p_specl_pvdty_fkid/cmdspp_pc_specl_desc'], '\"',\r\n    '}'\r\n  )\r\n)",
+                      "taxonomyObject": "@json(\r\n  concat(\r\n    '{',\r\n      '\"id\":\"', item()?['_cmdspp_p_txnmy_fkid_value'] , '\",',\r\n      '\"code\":\"', item()?['cmdspp_p_txnmy_fkid/cmdspp_p_txnmy_cd']               , '\",',\r\n      '\"description\":\"',  item()?['cmdspp_p_txnmy_fkid/cmdspp_p_txnmy_desc'], '\"',\r\n    '}'\r\n  )\r\n)",
+                      "recordID": "@item()?['cmdspp_pc_pvdty_specl_txnmy_map_tbid']"
+                    }
+                  }
+                }
+              }
+            },
+            "Case_2": {
+              "case": "fetchTaxonomy",
+              "actions": {
+                "List_rows": {
+                  "runAfter": {},
+                  "metadata": {
+                    "operationMetadataId": "cf007b49-f2ee-4780-88e1-cb3a6e307ace"
+                  },
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "host": {
+                      "connectionName": "shared_commondataserviceforapps_1",
+                      "operationId": "ListRecords",
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                    },
+                    "parameters": {
+                      "entityName": "cmdspp_pc_txnmy_codes_tbs",
+                      "$filter": "statecode eq 0"
+                    },
+                    "authentication": "@parameters('$authentication')"
+                  }
+                },
+                "Select": {
+                  "runAfter": {
+                    "List_rows": [
+                      "Succeeded"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "8d2b7a2a-1272-4225-91ad-3d4e05acaebf"
+                  },
+                  "type": "Select",
+                  "inputs": {
+                    "from": "@outputs('List_rows')?['body/value']",
+                    "select": {
+                      "id": "@item()?['cmdspp_pc_txnmy_codes_tbid']",
+                      "code": "@item()?['cmdspp_p_txnmy_cd']",
+                      "description": "@item()?['cmdspp_p_txnmy_desc']"
+                    }
+                  }
+                },
+                "Set_variable_2": {
+                  "runAfter": {
+                    "Select": [
+                      "Succeeded"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "9d97a47f-6e35-4594-b4e4-453424b6e2d9"
+                  },
+                  "type": "SetVariable",
+                  "inputs": {
+                    "name": "Response object",
+                    "value": {
+                      "data": "@body('Select')",
+                      "status": "Success"
+                    }
+                  }
+                }
+              }
+            },
+            "Case_3": {
+              "case": "saveCatalog",
+              "actions": {
+                "Apply_to_each": {
+                  "foreach": "@triggerBody()?['catalogArray']",
+                  "actions": {
+                    "Condition": {
+                      "actions": {
+                        "Update_a_row": {
+                          "runAfter": {},
+                          "metadata": {
+                            "operationMetadataId": "0fd44c02-a6c3-40dd-9e57-9f7ec76d9405"
+                          },
+                          "type": "OpenApiConnection",
+                          "inputs": {
+                            "host": {
+                              "connectionName": "shared_commondataserviceforapps_1",
+                              "operationId": "UpdateOnlyRecord",
+                              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                            },
+                            "parameters": {
+                              "entityName": "cmdspp_pc_pvdty_specl_txnmy_map_tbs",
+                              "recordId": "@items('Apply_to_each')?['recordID']",
+                              "item/statecode": 1
+                            },
+                            "authentication": "@parameters('$authentication')"
+                          }
+                        }
+                      },
+                      "runAfter": {},
+                      "else": {
+                        "actions": {
+                          "Add_a_new_row": {
+                            "runAfter": {},
+                            "metadata": {
+                              "operationMetadataId": "f77a1485-eb5c-4e55-b94c-02304e4480a3"
+                            },
+                            "type": "OpenApiConnection",
+                            "inputs": {
+                              "host": {
+                                "connectionName": "shared_commondataserviceforapps_1",
+                                "operationId": "CreateRecord",
+                                "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                              },
+                              "parameters": {
+                                "entityName": "cmdspp_pc_pvdty_specl_txnmy_map_tbs",
+                                "item/cmdspp_p_pvd_type_fkid@odata.bind": "/cmdspp_pc_pvd_typ_tbs(@{triggerBody()?['providerTypeID']})",
+                                "item/cmdspp_p_specl_pvdty_fkid@odata.bind": "/cmdspp_pc_specl_pvdty_maps(@{items('Apply_to_each')?['specialty']?['id']})",
+                                "item/cmdspp_p_txnmy_fkid@odata.bind": "/cmdspp_pc_txnmy_codes_tbs(@{items('Apply_to_each')?['taxonomyObject']?['id']})"
+                              },
+                              "authentication": "@parameters('$authentication')"
+                            }
+                          }
+                        }
+                      },
+                      "expression": {
+                        "equals": [
+                          "@items('Apply_to_each')?['transtype']",
+                          "update"
+                        ]
+                      },
+                      "metadata": {
+                        "operationMetadataId": "d4fb48eb-6882-41a1-b4ba-b45388806401"
+                      },
+                      "type": "If"
+                    }
+                  },
+                  "runAfter": {},
+                  "metadata": {
+                    "operationMetadataId": "f10cb776-04d0-42a5-80b2-fa4b0ac4586c"
+                  },
+                  "type": "Foreach"
+                },
+                "Set_variable_3": {
+                  "runAfter": {
+                    "Apply_to_each": [
+                      "Succeeded"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "2173adb4-4868-44cd-bd6a-5eb2e28c6d64"
+                  },
+                  "type": "SetVariable",
+                  "inputs": {
+                    "name": "Response object",
+                    "value": {
+                      "status": "Success"
+                    }
+                  }
+                }
+              }
+            },
+            "Case_4": {
+              "case": "saveSpecialty",
+              "actions": {
+                "List_rows_4": {
+                  "runAfter": {},
+                  "metadata": {
+                    "operationMetadataId": "824eb580-c771-40dc-b03c-c7c9b106c0b9"
+                  },
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "host": {
+                      "connectionName": "shared_commondataserviceforapps_1",
+                      "operationId": "ListRecords",
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                    },
+                    "parameters": {
+                      "entityName": "cmdspp_pc_specl_pvdty_maps",
+                      "$filter": "(_cmdspp_pc_specl_to_pvd_typ_fk_value eq @{triggerBody()?['providerTypeID']}) and (cmdspp_pc_specl_cd eq  '@{string(triggerBody()?['specialtyObj']?['code'])}')"
+                    },
+                    "authentication": "@parameters('$authentication')"
+                  }
+                },
+                "Condition_2": {
+                  "actions": {
+                    "Set_variable_6": {
+                      "runAfter": {},
+                      "metadata": {
+                        "operationMetadataId": "67aeff21-6333-48b4-8a0d-633bc5c4bc73"
+                      },
+                      "type": "SetVariable",
+                      "inputs": {
+                        "name": "Response object",
+                        "value": {
+                          "status": "Duplicate record"
+                        }
+                      }
+                    }
+                  },
+                  "runAfter": {
+                    "List_rows_4": [
+                      "Succeeded"
+                    ]
+                  },
+                  "else": {
+                    "actions": {
+                      "Add_a_new_row_2": {
+                        "runAfter": {},
+                        "metadata": {
+                          "operationMetadataId": "cca1e257-452a-47fe-afe2-640c1d19534d"
+                        },
+                        "type": "OpenApiConnection",
+                        "inputs": {
+                          "host": {
+                            "connectionName": "shared_commondataserviceforapps_1",
+                            "operationId": "CreateRecord",
+                            "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                          },
+                          "parameters": {
+                            "entityName": "cmdspp_pc_specl_pvdty_maps",
+                            "item/cmdspp_pc_specl_cd": "@triggerBody()?['specialtyObj']?['code']",
+                            "item/cmdspp_pc_specl_desc": "@triggerBody()?['specialtyObj']?['description']",
+                            "item/cmdspp_pc_specl_to_pvd_typ_fk@odata.bind": "/cmdspp_pc_specl_pvdty_maps(@{triggerBody()?['providerTypeID']})"
+                          },
+                          "authentication": "@parameters('$authentication')"
+                        }
+                      },
+                      "Set_variable_4": {
+                        "runAfter": {
+                          "Add_a_new_row_2": [
+                            "Succeeded"
+                          ]
+                        },
+                        "metadata": {
+                          "operationMetadataId": "4c526cb0-c956-490b-a315-02bad090e94a"
+                        },
+                        "type": "SetVariable",
+                        "inputs": {
+                          "name": "Response object",
+                          "value": {
+                            "status": "Success"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "expression": {
+                    "greater": [
+                      "@length(outputs('List_rows_4')?['body/value'])",
+                      0
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "6e31334d-0f19-4679-b30e-63af8f1f0e65"
+                  },
+                  "type": "If"
+                }
+              }
+            },
+            "Case_5": {
+              "case": "saveTaxonomy",
+              "actions": {
+                "List_rows_5": {
+                  "runAfter": {},
+                  "metadata": {
+                    "operationMetadataId": "6b0215cb-d334-4b34-8f64-8457129457c2"
+                  },
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "host": {
+                      "connectionName": "shared_commondataserviceforapps_1",
+                      "operationId": "ListRecords",
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                    },
+                    "parameters": {
+                      "entityName": "cmdspp_pc_txnmy_codes_tbs",
+                      "$filter": "cmdspp_p_txnmy_cd eq '@{triggerBody()?['specialtyObj']?['code']}'"
+                    },
+                    "authentication": "@parameters('$authentication')"
+                  }
+                },
+                "Condition_3": {
+                  "actions": {
+                    "Set_variable_7": {
+                      "runAfter": {},
+                      "metadata": {
+                        "operationMetadataId": "51e88ae6-6bca-4ebe-af22-b805ece8f3f3"
+                      },
+                      "type": "SetVariable",
+                      "inputs": {
+                        "name": "Response object",
+                        "value": {
+                          "status": "Duplicate record"
+                        }
+                      }
+                    }
+                  },
+                  "runAfter": {
+                    "List_rows_5": [
+                      "Succeeded"
+                    ]
+                  },
+                  "else": {
+                    "actions": {
+                      "Add_a_new_row_3": {
+                        "runAfter": {},
+                        "metadata": {
+                          "operationMetadataId": "7f1a4abc-ddc1-4602-8a8a-42a76a04b99e"
+                        },
+                        "type": "OpenApiConnection",
+                        "inputs": {
+                          "host": {
+                            "connectionName": "shared_commondataserviceforapps_1",
+                            "operationId": "CreateRecord",
+                            "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                          },
+                          "parameters": {
+                            "entityName": "cmdspp_pc_txnmy_codes_tbs",
+                            "item/cmdspp_p_txnmy_cd": "@triggerBody()?['specialtyObj']?['code']",
+                            "item/cmdspp_p_txnmy_desc": "@triggerBody()?['specialtyObj']?['description']"
+                          },
+                          "authentication": "@parameters('$authentication')"
+                        }
+                      },
+                      "Set_variable_5": {
+                        "runAfter": {
+                          "Add_a_new_row_3": [
+                            "Succeeded"
+                          ]
+                        },
+                        "metadata": {
+                          "operationMetadataId": "e883060d-b7b9-4c7b-8797-365cf8be1e8e"
+                        },
+                        "type": "SetVariable",
+                        "inputs": {
+                          "name": "Response object",
+                          "value": {
+                            "status": "Success"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "expression": {
+                    "greater": [
+                      "@length(outputs('List_rows_5')?['body/value'])",
+                      0
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "84388541-2aa0-415e-bef2-d34903223530"
+                  },
+                  "type": "If"
+                }
+              }
+            }
+          },
+          "default": {
+            "actions": {}
+          },
+          "expression": "@triggerBody()?['transType']",
+          "metadata": {
+            "operationMetadataId": "83340b14-4de1-4097-a994-0ac1b9bb7e78"
+          },
+          "type": "Switch"
+        },
+        "Initialize_variable": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "3e2fa188-e731-4f66-aa20-42413a11a776"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "Response object",
+                "type": "object",
+                "value": {}
+              }
+            ]
+          }
+        }
+      }
+    },
+    "templateName": ""
+  },
+  "schemaVersion": "1.0.0.0"
+}

@@ -1,0 +1,14 @@
+<powerpagecomponent powerpagecomponentid="cac32ae9-4495-f111-8075-70a8a5b028cc">
+  <content>{
+  "value": "cmdspp_p_pin_oth_smpi_lkp,cmdspp_p_sys_id,cmdspp_p_pg_num,modifiedon,cmdspp_p_sermainf_lkup,cmdspp_p_billing_address_tb_lkp,cmdspp_p_page_nam,cmdspp_p_ownershipcertification,cmdspp_p_section_num,cmdspp_p_envelope_id,cmdspp_p_appln_status,cmdspp_p_first_nam,cmdspp_p_provider_ty_lkpid,cmdspp_p_appln_email,cmdspp_created_by_user,_cmdspp_created_by_user_value,cmdspp_p_dtl_tbid,cmdspp_p_enrollment_id,_cmdspp_p_enrollment_id_value,cmdspp_p_enrolment_type,cmdspp_p_last_nam,statecode,cmdspp_p_idtinf_lkup,cmdspp_p_ecs_tran_lkup,cmdspp_p_elrn_fund_pmt_tb_lkup,cmdspp_p_eft_sign_tb_lkup,cmdspp_p_ser_era_sub_inf_tb_lkup,cmdspp_p_ser_loc_inf_lkp,cmdspp_p_ser_sev_inf_lkp,cmdspp_p_ser_sa_inf_tb_lkup,cmdspp_p_ser_isa_inf_tb_lkup,cmdspp_p_ser_bilagt_inf_tb_lkp,cmdspp_p_ser_ra_inf_tb_lkp",
+  "source": 0
+}</content>
+  <iscustomizable>1</iscustomizable>
+  <name>Webapi/cmdspp_p_dtl_tb/fields</name>
+  <powerpagecomponenttype>9</powerpagecomponenttype>
+  <powerpagesiteid>
+    <powerpagesiteid>abccaafd-73d6-47dd-bb55-b09b911f0d43</powerpagesiteid>
+  </powerpagesiteid>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</powerpagecomponent>

@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>0</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>1</isdefault>
+    <savedqueryid>{2dc495e6-51ed-49f6-8b89-beb1a1d61d7c}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="cmdspp_p_inquriy_sk" select="1" icon="1" preview="1">
+        <row name="result" id="cmdspp_p_enrol_status_inquiry_tbid">
+          <cell name="cmdspp_p_inquiry_status" width="187" />
+          <cell name="cmdspp_p_inquiry_desc" width="274" />
+          <cell name="cmdspp_loggeduser" width="212" />
+          <cell name="createdon" width="125" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>0</querytype>
+    <fetchxml>
+      <fetch version="1.0" mapping="logical">
+        <entity name="cmdspp_p_enrol_status_inquiry_tb">
+          <attribute name="cmdspp_p_enrol_status_inquiry_tbid" />
+          <attribute name="createdon" />
+          <filter type="and">
+            <condition attribute="statecode" operator="eq" value="0" />
+          </filter>
+          <attribute name="cmdspp_p_inquiry_desc" />
+          <attribute name="cmdspp_p_inquiry_status" />
+          <attribute name="cmdspp_loggeduser" />
+          <order attribute="createdon" descending="true" />
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.0</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Active P_ENROL_STATUS_INQUIRY_TBS" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>

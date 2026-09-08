@@ -1,0 +1,31 @@
+<powerpagecomponent powerpagecomponentid="6a7d94b7-3cc6-4179-a5c6-f35c6edab5b7">
+  <content>{
+  "filecontent": null,
+  "entityname": "cmdspp_P_GRP_AFFL_DTL",
+  "entitylogicalname": "cmdspp_p_grp_affl_dtl",
+  "scope": 756150000,
+  "append": true,
+  "appendto": true,
+  "delete": true,
+  "read": true,
+  "create": true,
+  "write": true,
+  "parentrelationship": null,
+  "parententitypermission": null,
+  "contactrelationship": null,
+  "accountrelationship": null,
+  "childTablePermissions": [],
+  "adx_entitypermission_webrole": [
+    "3e0eed5c-e2e0-46fa-a82c-1f6c985badca"
+  ],
+  "permissionfetchxml": null
+}</content>
+  <iscustomizable>1</iscustomizable>
+  <name>cmdspp_P_GRP_AFFL_DTL</name>
+  <powerpagecomponenttype>18</powerpagecomponenttype>
+  <powerpagesiteid>
+    <powerpagesiteid>abccaafd-73d6-47dd-bb55-b09b911f0d43</powerpagesiteid>
+  </powerpagesiteid>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</powerpagecomponent>
