@@ -101,24 +101,24 @@ jobs:
       # 3. CMdsNextGenPP_Automation
       ####################################################
 
-      - name: Pack CMdsNextGenPP_Automation
-        run: |
-          export PATH="$PATH:$HOME/.dotnet/tools"
+      # - name: Pack CMdsNextGenPP_Automation
+      #   run: |
+      #     export PATH="$PATH:$HOME/.dotnet/tools"
 
-          pac solution pack \
-            --folder "$RELEASE_FOLDER/CMdsNextGenPP_Automation" \
-            --zipfile /tmp/CMdsNextGenPP_Automation.zip \
-            --packagetype Managed
+      #     pac solution pack \
+      #       --folder "$RELEASE_FOLDER/CMdsNextGenPP_Automation" \
+      #       --zipfile /tmp/CMdsNextGenPP_Automation.zip \
+      #       --packagetype Managed
 
-      - name: Import CMdsNextGenPP_Automation
-        run: |
-          export PATH="$PATH:$HOME/.dotnet/tools"
+      # - name: Import CMdsNextGenPP_Automation
+      #   run: |
+      #     export PATH="$PATH:$HOME/.dotnet/tools"
 
-          pac solution import \
-            --path /tmp/CMdsNextGenPP_Automation.zip \
-            --settings-file "$GITHUB_WORKSPACE/yaml-config/deployment-settings/dev2.deploymentSettings.json" \
-            --async \
-            --max-async-wait-time 60
+      #     pac solution import \
+      #       --path /tmp/CMdsNextGenPP_Automation.zip \
+      #       --settings-file "$GITHUB_WORKSPACE/yaml-config/deployment-settings/dev2.deploymentSettings.json" \
+      #       --async \
+      #       --max-async-wait-time 60
 
       ###################################################
       # 4. CMdsNextGenPP_ModelApp
@@ -146,23 +146,23 @@ jobs:
       # 5. CMdsNextGenPP_AppExperience
       ####################################################
 
-      - name: Pack CMdsNextGenPP_AppExperience
-        run: |
-          export PATH="$PATH:$HOME/.dotnet/tools"
+      # - name: Pack CMdsNextGenPP_AppExperience
+      #   run: |
+      #     export PATH="$PATH:$HOME/.dotnet/tools"
 
-          pac solution pack \
-            --folder "$RELEASE_FOLDER/CMdsNextGenPP_AppExperience" \
-            --zipfile /tmp/CMdsNextGenPP_AppExperience.zip \
-            --packagetype Managed
+      #     pac solution pack \
+      #       --folder "$RELEASE_FOLDER/CMdsNextGenPP_AppExperience" \
+      #       --zipfile /tmp/CMdsNextGenPP_AppExperience.zip \
+      #       --packagetype Managed
 
-      - name: Import CMdsNextGenPP_AppExperience
-        run: |
-          export PATH="$PATH:$HOME/.dotnet/tools"
+      # - name: Import CMdsNextGenPP_AppExperience
+      #   run: |
+      #     export PATH="$PATH:$HOME/.dotnet/tools"
 
-          pac solution import \
-            --path /tmp/CMdsNextGenPP_AppExperience.zip \
-            --async \
-            --max-async-wait-time 60
+      #     pac solution import \
+      #       --path /tmp/CMdsNextGenPP_AppExperience.zip \
+      #       --async \
+      #       --max-async-wait-time 60
 
       - name: Deployment Complete
         run: |
