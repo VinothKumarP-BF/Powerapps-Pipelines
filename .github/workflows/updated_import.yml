@@ -162,7 +162,7 @@ jobs:
       #     pac solution import \
       #       --path /tmp/CMdsNextGenPP_AppExperience.zip \
       #       --async \
-      #       --max-async-wait-time 60
+      #       --max-async-wait-time 120
 
       - name: Deployment Complete
         run: |
