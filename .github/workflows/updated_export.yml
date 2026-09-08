@@ -11,7 +11,7 @@ on:
 env:
   TARGET_BRANCH: Managed_Solutions
   PAC_CLI_VERSION: "2.10.1"
-  SOLUTIONS: "DependencyLabCore DepedencyLabAutomation"
+  SOLUTIONS: "CMdsNextGenPP_Core CMdsNextGenPP_DataModel CMdsNextGenPP_Automation CMdsNextGenPP_ModelApp CMdsNextGenPP_AppExperience"
 
 jobs:
   export:
