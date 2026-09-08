@@ -70,7 +70,7 @@ jobs:
           export PATH="$PATH:$HOME/.dotnet/tools"
 
           pac solution import \
-            --path $RELEASE_FOLDER/CMdsNextGenPP_Core.zip \
+            --path /tmp/CMdsNextGenPP_Core.zip \
             --settings-file "$GITHUB_WORKSPACE/yaml-config/deployment-settings/dev2.deploymentSettings.json" \
             --async \
             --max-async-wait-time 60
