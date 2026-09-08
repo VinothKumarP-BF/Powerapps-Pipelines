@@ -56,46 +56,46 @@ jobs:
       # 1. CMdsNextGenPP_Core
       ####################################################
 
-      - name: Pack CMdsNextGenPP_Core
-        run: |
-          export PATH="$PATH:$HOME/.dotnet/tools"
+      # - name: Pack CMdsNextGenPP_Core
+      #   run: |
+      #     export PATH="$PATH:$HOME/.dotnet/tools"
 
-          pac solution pack \
-            --folder $RELEASE_FOLDER/CMdsNextGenPP_Core \
-            --zipfile /tmp/CMdsNextGenPP_Core.zip \
-            --packagetype Managed
+      #     pac solution pack \
+      #       --folder $RELEASE_FOLDER/CMdsNextGenPP_Core \
+      #       --zipfile /tmp/CMdsNextGenPP_Core.zip \
+      #       --packagetype Managed
 
-      - name: Import CMdsNextGenPP_Core
-        run: |
-          export PATH="$PATH:$HOME/.dotnet/tools"
+      # - name: Import CMdsNextGenPP_Core
+      #   run: |
+      #     export PATH="$PATH:$HOME/.dotnet/tools"
 
-          pac solution import \
-            --path /tmp/CMdsNextGenPP_Core.zip \
-            --settings-file "$GITHUB_WORKSPACE/yaml-config/deployment-settings/dev2.deploymentSettings.json" \
-            --async \
-            --max-async-wait-time 60
+      #     pac solution import \
+      #       --path /tmp/CMdsNextGenPP_Core.zip \
+      #       --settings-file "$GITHUB_WORKSPACE/yaml-config/deployment-settings/dev2.deploymentSettings.json" \
+      #       --async \
+      #       --max-async-wait-time 60
             
       ###################################################
       # 2. CMdsNextGenPP_DataModel
       ####################################################
 
-      - name: Pack CMdsNextGenPP_DataModel
-        run: |
-          export PATH="$PATH:$HOME/.dotnet/tools"
+      # - name: Pack CMdsNextGenPP_DataModel
+      #   run: |
+      #     export PATH="$PATH:$HOME/.dotnet/tools"
 
-          pac solution pack \
-            --folder "$RELEASE_FOLDER/CMdsNextGenPP_DataModel" \
-            --zipfile /tmp/CMdsNextGenPP_DataModel.zip \
-            --packagetype Managed
+      #     pac solution pack \
+      #       --folder "$RELEASE_FOLDER/CMdsNextGenPP_DataModel" \
+      #       --zipfile /tmp/CMdsNextGenPP_DataModel.zip \
+      #       --packagetype Managed
 
-      - name: Import CMdsNextGenPP_DataModel
-        run: |
-          export PATH="$PATH:$HOME/.dotnet/tools"
+      # - name: Import CMdsNextGenPP_DataModel
+      #   run: |
+      #     export PATH="$PATH:$HOME/.dotnet/tools"
 
-          pac solution import \
-            --path /tmp/CMdsNextGenPP_DataModel.zip \
-            --async \
-            --max-async-wait-time 60
+      #     pac solution import \
+      #       --path /tmp/CMdsNextGenPP_DataModel.zip \
+      #       --async \
+      #       --max-async-wait-time 60
 
       ###################################################
       # 3. CMdsNextGenPP_Automation
@@ -115,7 +115,7 @@ jobs:
           export PATH="$PATH:$HOME/.dotnet/tools"
 
           pac solution import \
-            --path /tmp/CMdsNextGenPP_Automation.zip
+            --path /tmp/CMdsNextGenPP_Automation.zip \
             --settings-file "$GITHUB_WORKSPACE/yaml-config/deployment-settings/dev2.deploymentSettings.json" \
             --async \
             --max-async-wait-time 60
@@ -138,7 +138,7 @@ jobs:
           export PATH="$PATH:$HOME/.dotnet/tools"
 
           pac solution import \
-            --path /tmp/CMdsNextGenPP_ModelApp.zip
+            --path /tmp/CMdsNextGenPP_ModelApp.zip \
             --async \
             --max-async-wait-time 60
         
@@ -160,7 +160,7 @@ jobs:
           export PATH="$PATH:$HOME/.dotnet/tools"
 
           pac solution import \
-            --path /tmp/CMdsNextGenPP_AppExperience.zip
+            --path /tmp/CMdsNextGenPP_AppExperience.zip \
             --async \
             --max-async-wait-time 60
 
