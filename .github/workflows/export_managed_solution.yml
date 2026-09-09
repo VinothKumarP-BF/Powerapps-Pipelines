@@ -39,7 +39,7 @@ jobs:
         shell: bash
         run: |
           pac auth create \
-            --url "${{ secrets.DEV_ENV_URL }}" \
+            --url "${{ secrets.DEV2_ENV_URL }}" \
             --applicationId "${{ secrets.CLIENT_ID }}" \
             --clientSecret "${{ secrets.CLIENT_SECRET }}" \
             --tenant "${{ secrets.TENANT_ID }}"
@@ -78,7 +78,7 @@ jobs:
           RELEASE_FOLDER="Releases/v${{ github.event.inputs.release_version }}"
 
           echo "Running prefix validation..."
-          python scripts/validator.py "$RELEASE_FOLDER"
+          python ./scripts/validator.py "$RELEASE_FOLDER"
 
       - name: Commit Release
         shell: bash
