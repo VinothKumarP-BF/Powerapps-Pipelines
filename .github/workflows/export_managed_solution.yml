@@ -1,52 +1,94 @@
-name: Export Managed Solution
+name: Export Managed Solutions
 
 on:
   workflow_dispatch:
+    inputs:
+      release_version:
+        required: true
+        type: string
+        default: "8.17.1"
+
+env:
+  TARGET_BRANCH: Managed_Solutions
+  PAC_CLI_VERSION: "2.10.1"
+  SOLUTIONS: "CMdsNextGenPP_ModelApp"
 
 jobs:
   export:
-    runs-on: ubuntu-latest
-
-    env:
-      SOLUTION_NAME: Devops_POC
-      TARGET_BRANCH: Managed_Solutions
+    runs-on: windows-latest
 
     steps:
+      - name: Checkout Managed Solutions Branch
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ env.TARGET_BRANCH }}
+          fetch-depth: 0
 
-    - name: Checkout Target Branch
-      uses: actions/checkout@v4
-      with:
-        ref: ${{ env.TARGET_BRANCH }}
-        fetch-depth: 0
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
 
-    - name: Install Power Platform CLI
-      uses: microsoft/powerplatform-actions/actions-install@v1
+      - name: Install PAC CLI
+        shell: powershell
+        run: |
+          dotnet tool install --global Microsoft.PowerApps.CLI.Tool --version $env:PAC_CLI_VERSION
+          echo "$env:USERPROFILE\.dotnet\tools" | Out-File -FilePath $env:GITHUB_PATH -Append
 
-    - name: Export Managed Solution
-      uses: microsoft/powerplatform-actions/export-solution@v1
-      with:
-        environment-url: ${{ secrets.DEV_ENV_URL }}
-        tenant-id: ${{ secrets.TENANT_ID }}
-        app-id: ${{ secrets.CLIENT_ID }}
-        client-secret: ${{ secrets.CLIENT_SECRET }}
-        solution-name: ${{ env.SOLUTION_NAME }}
-        solution-output-file: managed.zip
-        managed: true
+      - name: Authenticate DEV
+        shell: bash
+        run: |
+          pac auth create \
+            --url "${{ secrets.DEV_ENV_URL }}" \
+            --applicationId "${{ secrets.CLIENT_ID }}" \
+            --clientSecret "${{ secrets.CLIENT_SECRET }}" \
+            --tenant "${{ secrets.TENANT_ID }}"
 
-    - name: Unpack Managed Solution
-      uses: microsoft/powerplatform-actions/unpack-solution@v1
-      with:
-        solution-file: managed.zip
-        solution-folder: solutions/${{ env.SOLUTION_NAME }}
-        solution-type: Managed
+      - name: Export Managed Solutions
+        shell: bash
+        run: |
+          RELEASE_FOLDER="Releases/v${{ github.event.inputs.release_version }}"
 
-    - name: Commit Managed Solution Source
-      run: |
-        git config user.name "github-actions"
-        git config user.email "actions@github.com"
+          if [ ! -d "$RELEASE_FOLDER" ]; then
+            mkdir -p "$RELEASE_FOLDER"
+            echo "Created release folder: $RELEASE_FOLDER"
+          fi
 
-        git add solutions/
+          for SOLUTION in $SOLUTIONS; do
 
-        git commit -m "Managed export - ${{ env.SOLUTION_NAME }}" || echo "No changes"
+            echo "Processing $SOLUTION"
 
-        git push origin $TARGET_BRANCH
+            ZIP_FILE="/tmp/${SOLUTION}.zip"
+
+            pac solution export \
+              --name "$SOLUTION" \
+              --path "$ZIP_FILE" \
+              --managed
+
+            pac solution unpack \
+              --zipfile "$ZIP_FILE" \
+              --folder "$RELEASE_FOLDER/$SOLUTION" \
+              --packagetype Managed
+
+          done
+
+      - name: Validate Publisher Prefix
+        shell: bash
+        run: |
+          RELEASE_FOLDER="Releases/v${{ github.event.inputs.release_version }}"
+
+          echo "Running prefix validation..."
+          python scripts/validator.py "$RELEASE_FOLDER"
+
+      - name: Commit Release
+        shell: bash
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+
+          git add Releases/
+
+          git diff --cached --quiet && echo "No changes to commit" && exit 0
+
+          git commit -m "Release v${{ github.event.inputs.release_version }}"
+          git push origin "${TARGET_BRANCH}"
