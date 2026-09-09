@@ -39,7 +39,7 @@ jobs:
         shell: bash
         run: |
           pac auth create \
-            --url "${{ secrets.DEV2_ENV_URL }}" \
+            --url "${{ secrets.DEV_ENV_URL }}" \
             --applicationId "${{ secrets.CLIENT_ID }}" \
             --clientSecret "${{ secrets.CLIENT_SECRET }}" \
             --tenant "${{ secrets.TENANT_ID }}"
