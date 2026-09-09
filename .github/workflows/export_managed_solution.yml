@@ -1,4 +1,4 @@
-name: Updated Export Managed Solutions
+name: Export Managed Solutions
 
 on:
   workflow_dispatch:
