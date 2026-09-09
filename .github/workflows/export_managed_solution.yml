@@ -12,7 +12,7 @@ env:
   TARGET_BRANCH: Managed_Solutions
   WORKFLOW_BRANCH: yaml
   PAC_CLI_VERSION: "2.10.1"
-  SOLUTIONS: "CMdsNextGenPP_ModelApp"
+  SOLUTIONS: "CMdsNextGenPP_Core"
 
 jobs:
   export:
