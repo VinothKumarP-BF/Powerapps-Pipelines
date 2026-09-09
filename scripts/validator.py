@@ -47,18 +47,18 @@ invalid_objects = sorted(set(invalid_objects))
 
 if invalid_objects:
 
-    print("\n❌ PREFIX VALIDATION FAILED")
+    print("\n PREFIX VALIDATION FAILED")
     print(f"Expected prefix: {REQUIRED_PREFIX}\n")
 
     for name, file_path in invalid_objects:
-        print(f"  ❌ {name}")
-        print(f"     {file_path}")
+        print(f"{name}")
+        print(f" {file_path}")
 
     print(f"\nFound {len(invalid_objects)} invalid object(s).")
     sys.exit(1)
 
 else:
 
-    print("\n✅ PREFIX VALIDATION PASSED")
+    print("\nPREFIX VALIDATION PASSED")
     print(f"All detected objects use the '{REQUIRED_PREFIX}' prefix.")
     sys.exit(0)
