@@ -146,23 +146,23 @@ jobs:
       # 5. CMdsNextGenPP_AppExperience
       ####################################################
 
-      # - name: Pack CMdsNextGenPP_AppExperience
-      #   run: |
-      #     export PATH="$PATH:$HOME/.dotnet/tools"
+      - name: Pack CMdsNextGenPP_AppExperience
+        run: |
+          export PATH="$PATH:$HOME/.dotnet/tools"
 
-      #     pac solution pack \
-      #       --folder "$RELEASE_FOLDER/CMdsNextGenPP_AppExperience" \
-      #       --zipfile /tmp/CMdsNextGenPP_AppExperience.zip \
-      #       --packagetype Managed
+          pac solution pack \
+            --folder "$RELEASE_FOLDER/Appexpe_test" \
+            --zipfile /tmp/Appexpe_test.zip \
+            --packagetype Managed
 
-      # - name: Import CMdsNextGenPP_AppExperience
-      #   run: |
-      #     export PATH="$PATH:$HOME/.dotnet/tools"
+      - name: Import CMdsNextGenPP_AppExperience
+        run: |
+          export PATH="$PATH:$HOME/.dotnet/tools"
 
-      #     pac solution import \
-      #       --path /tmp/CMdsNextGenPP_AppExperience.zip \
-      #       --async \
-      #       --max-async-wait-time 120
+          pac solution import \
+            --path /tmp/Appexpe_test.zip \
+            --async \
+            --max-async-wait-time 120
 
       - name: Deployment Complete
         run: |
