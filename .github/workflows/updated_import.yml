@@ -124,23 +124,23 @@ jobs:
       # 4. CMdsNextGenPP_ModelApp
       ####################################################
 
-      - name: Pack CMdsNextGenPP_ModelApp
-        run: |
-          export PATH="$PATH:$HOME/.dotnet/tools"
+      # - name: Pack CMdsNextGenPP_ModelApp
+      #   run: |
+      #     export PATH="$PATH:$HOME/.dotnet/tools"
 
-          pac solution pack \
-            --folder "$RELEASE_FOLDER/CMdsNextGenPP_ModelApp" \
-            --zipfile /tmp/CMdsNextGenPP_ModelApp.zip \
-            --packagetype Managed
+      #     pac solution pack \
+      #       --folder "$RELEASE_FOLDER/CMdsNextGenPP_ModelApp" \
+      #       --zipfile /tmp/CMdsNextGenPP_ModelApp.zip \
+      #       --packagetype Managed
 
-      - name: Import CMdsNextGenPP_ModelApp
-        run: |
-          export PATH="$PATH:$HOME/.dotnet/tools"
+      # - name: Import CMdsNextGenPP_ModelApp
+      #   run: |
+      #     export PATH="$PATH:$HOME/.dotnet/tools"
 
-          pac solution import \
-            --path /tmp/CMdsNextGenPP_ModelApp.zip \
-            --async \
-            --max-async-wait-time 60
+      #     pac solution import \
+      #       --path /tmp/CMdsNextGenPP_ModelApp.zip \
+      #       --async \
+      #       --max-async-wait-time 60
         
       ###################################################
       # 5. CMdsNextGenPP_AppExperience
