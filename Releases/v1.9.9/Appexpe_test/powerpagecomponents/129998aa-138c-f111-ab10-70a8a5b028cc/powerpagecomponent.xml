@@ -1,0 +1,24 @@
+<powerpagecomponent powerpagecomponentid="129998aa-138c-f111-ab10-70a8a5b028cc">
+  <content>{
+  "scope": 756150000,
+  "entitylogicalname": "cmdspp_pc_specl_pvdty_map",
+  "entityname": "Add_Specialty",
+  "appendto": false,
+  "append": true,
+  "delete": true,
+  "create": true,
+  "write": true,
+  "read": true,
+  "adx_entitypermission_webrole": [
+    "3e0eed5c-e2e0-46fa-a82c-1f6c985badca"
+  ]
+}</content>
+  <iscustomizable>1</iscustomizable>
+  <name>Add_Specialty</name>
+  <powerpagecomponenttype>18</powerpagecomponenttype>
+  <powerpagesiteid>
+    <powerpagesiteid>abccaafd-73d6-47dd-bb55-b09b911f0d43</powerpagesiteid>
+  </powerpagesiteid>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</powerpagecomponent>

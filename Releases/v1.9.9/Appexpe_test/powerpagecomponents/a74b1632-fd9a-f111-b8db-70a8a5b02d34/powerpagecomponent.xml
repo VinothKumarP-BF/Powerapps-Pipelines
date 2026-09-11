@@ -1,0 +1,13 @@
+<powerpagecomponent powerpagecomponentid="a74b1632-fd9a-f111-b8db-70a8a5b02d34">
+  <content>{
+  "source": "{% fetchxml sectionJsonSchema %}\r\n&lt;fetch&gt;\r\n  &lt;entity name=\"cmdspp_pc_enrol_page_json_tb\"&gt;\r\n    &lt;attribute name=\"cmdspp_p_jsontxt\" /&gt;\r\n    &lt;attribute name=\"cmdspp_p_table_nam\" /&gt;\r\n    &lt;attribute name=\"cmdspp_p_page_nam\" /&gt;\r\n    &lt;filter&gt;\r\n      &lt;condition attribute=\"cmdspp_p_page_nam\" operator=\"eq\" value=\"service_location\" /&gt;\r\n    &lt;/filter&gt;\r\n  &lt;/entity&gt;\r\n&lt;/fetch&gt;\r\n{% endfetchxml %}\r\n&lt;script id=\"wizardSchemaData\" type=\"application/json\"&gt;\r\n[\r\n{% for rec in sectionJsonSchema.results.entities %}\r\n    {{ rec.cmdspp_p_jsontxt }}{% unless forloop.last %},{% endunless %}\r\n{% endfor %}\r\n]\r\n&lt;/script&gt;\r\n\r\n{% include 'common_page_template' %}"
+}</content>
+  <iscustomizable>1</iscustomizable>
+  <name>Service-Location</name>
+  <powerpagecomponenttype>8</powerpagecomponenttype>
+  <powerpagesiteid>
+    <powerpagesiteid>abccaafd-73d6-47dd-bb55-b09b911f0d43</powerpagesiteid>
+  </powerpagesiteid>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</powerpagecomponent>

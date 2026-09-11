@@ -1,0 +1,18 @@
+<powerpagecomponent powerpagecomponentid="7e4c304e-7564-2221-77bc-1de5a09f42ab">
+  <content>{
+  "webpageid": "fe2df42c-5b5e-1061-99cf-1330156d33e2",
+  "right": 2,
+  "scope": 1,
+  "adx_webpageaccesscontrolrule_webrole": [
+    "3e0eed5c-e2e0-46fa-a82c-1f6c985badca"
+  ]
+}</content>
+  <iscustomizable>1</iscustomizable>
+  <name>Restrict Read on Group Affiliation</name>
+  <powerpagecomponenttype>10</powerpagecomponenttype>
+  <powerpagesiteid>
+    <powerpagesiteid>abccaafd-73d6-47dd-bb55-b09b911f0d43</powerpagesiteid>
+  </powerpagesiteid>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</powerpagecomponent>

@@ -1,0 +1,13 @@
+<powerpagecomponent powerpagecomponentid="ee413dbf-1597-f111-8075-70a8a5b028cc">
+  <content>{
+  "source": "{% block main %}\r\n\r\n{% assign appId = request.params['record'] | default: request.params['id'] %}\r\n{% assign pageName = 'group_affiliation' %}\r\n\r\n{% fetchxml schema_fetch %}\r\n&lt;fetch version=\"1.0\" output-format=\"xml-platform\" mapping=\"logical\" top=\"1\"&gt;\r\n    &lt;entity name=\"cmdspp_pc_enrol_page_json_tb\"&gt;\r\n        &lt;attribute name=\"cmdspp_p_jsontxt\" /&gt;\r\n        &lt;filter type=\"and\"&gt;\r\n            &lt;condition attribute=\"cmdspp_p_page_nam\"\r\n                       operator=\"eq\"\r\n                       value=\"{{ pageName }}\" /&gt;\r\n        &lt;/filter&gt;\r\n    &lt;/entity&gt;\r\n&lt;/fetch&gt;\r\n{% endfetchxml %}\r\n\r\n{% assign serverPageSchema = \"\" %}\r\n\r\n{% if schema_fetch.results.entities.size &gt; 0 %}\r\n    {% assign serverPageSchema = schema_fetch.results.entities[0].cmdspp_p_jsontxt %}\r\n{% endif %}\r\n\r\n&lt;script id=\"wizardSchemaData\" type=\"application/json\"&gt;\r\n[\r\n{{ serverPageSchema }}\r\n]\r\n&lt;/script&gt;\r\n\r\n&lt;script&gt;\r\n(function () {\r\n\r\n    var schemaElement =\r\n        document.getElementById(\"wizardSchemaData\");\r\n\r\n    if (!schemaElement) {\r\n\r\n        console.error(\r\n            \"wizardSchemaData element not found.\"\r\n        );\r\n\r\n        return;\r\n    }\r\n\r\n    var wizardSchema = JSON.parse(\r\n        schemaElement.textContent || \"[]\"\r\n    );\r\n\r\n    wizardSchema.sort(function (a, b) {\r\n\r\n        var prefixA = String(\r\n            a.headerPrefix || \"\"\r\n        ).trim();\r\n\r\n        var prefixB = String(\r\n            b.headerPrefix || \"\"\r\n        ).trim();\r\n\r\n        return prefixA.localeCompare(\r\n            prefixB,\r\n            undefined,\r\n            {\r\n                numeric: true,\r\n                sensitivity: \"base\"\r\n            }\r\n        );\r\n    });\r\n\r\n    window.wizardSchema = wizardSchema;\r\n\r\n    console.log(\r\n        \"Group Affiliation Schema:\",\r\n        wizardSchema\r\n    );\r\n\r\n})();\r\n&lt;/script&gt;\r\n\r\n{% include 'common_page_template' %}\r\n\r\n{% endblock %}"
+}</content>
+  <iscustomizable>1</iscustomizable>
+  <name>cmdspp_groupAffiliation_template</name>
+  <powerpagecomponenttype>8</powerpagecomponenttype>
+  <powerpagesiteid>
+    <powerpagesiteid>abccaafd-73d6-47dd-bb55-b09b911f0d43</powerpagesiteid>
+  </powerpagesiteid>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</powerpagecomponent>

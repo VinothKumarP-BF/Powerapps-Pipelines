@@ -1,0 +1,13 @@
+<powerpagecomponent powerpagecomponentid="c80d5621-ce80-f111-ab0e-70a8a5b02d28">
+  <content>{
+  "source": "&lt;script src=\"{{ '/dynamicform.js' | webfileurl }}\"&gt;&lt;/script&gt;"
+}</content>
+  <iscustomizable>1</iscustomizable>
+  <name>form renderer</name>
+  <powerpagecomponenttype>8</powerpagecomponenttype>
+  <powerpagesiteid>
+    <powerpagesiteid>abccaafd-73d6-47dd-bb55-b09b911f0d43</powerpagesiteid>
+  </powerpagesiteid>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</powerpagecomponent>

@@ -1,0 +1,14 @@
+<powerpagecomponent powerpagecomponentid="3651930b-2197-f111-8075-70a8a5b028cc">
+  <content>{
+  "value": "cmdspp_effectivedateofaffiliation,cmdspp_p_grp_affl_dtlid,cmdspp_p_grp_affl_dtl_sk,cmdspp_p_grp_affl_dtl_sk,cmdspp_p_sys_id,statecode,statuscode,cmdspp_titlexixprovider,cmdspp_nameofgrouppractice,_cmdspp_p_sys_id_value,cmdspp_created_by_user,_cmdspp_created_by_user_value",
+  "source": 0
+}</content>
+  <iscustomizable>1</iscustomizable>
+  <name>Webapi/cmdspp_p_grp_affl_dtl/fields</name>
+  <powerpagecomponenttype>9</powerpagecomponenttype>
+  <powerpagesiteid>
+    <powerpagesiteid>abccaafd-73d6-47dd-bb55-b09b911f0d43</powerpagesiteid>
+  </powerpagesiteid>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</powerpagecomponent>

@@ -1,0 +1,13 @@
+<powerpagecomponent powerpagecomponentid="3ba9fb23-1c97-f111-8075-70a8a5b02d34">
+  <content>{
+  "source": "{% fetchxml sectionJsonSchema %}\r\n&lt;fetch&gt;\r\n  &lt;entity name=\"cmdspp_pc_enrol_page_json_tb\"&gt;\r\n    &lt;attribute name=\"cmdspp_p_jsontxt\" /&gt;\r\n    &lt;attribute name=\"cmdspp_p_table_nam\" /&gt;\r\n    &lt;attribute name=\"cmdspp_p_page_nam\" /&gt;\r\n    &lt;filter&gt;\r\n      &lt;condition attribute=\"cmdspp_p_page_nam\" operator=\"eq\" value=\"exclusion_sanction\" /&gt;\r\n    &lt;/filter&gt;\r\n  &lt;/entity&gt;\r\n&lt;/fetch&gt;\r\n{% endfetchxml %}\r\n&lt;script id=\"wizardSchemaData\" type=\"application/json\"&gt;\r\n[\r\n{% for rec in sectionJsonSchema.results.entities %}\r\n    {{ rec.cmdspp_p_jsontxt }}{% unless forloop.last %},{% endunless %}\r\n{% endfor %}\r\n]\r\n\r\n&lt;/script&gt;\r\n&lt;script&gt;\r\n  var schemaElement = document.getElementById(\"wizardSchemaData\");\r\n\r\nvar wizardSchema = JSON.parse(\r\n    schemaElement.textContent\r\n);\r\n\r\nwizardSchema.sort(function (a, b) {\r\n\r\n    var prefixA = String(a.headerPrefix || \"\").trim();\r\n    var prefixB = String(b.headerPrefix || \"\").trim();\r\n\r\n    return prefixA.localeCompare(\r\n        prefixB,\r\n        undefined,\r\n        {\r\n            numeric: true,\r\n            sensitivity: \"base\"\r\n        }\r\n    );\r\n});\r\n\r\nconsole.log(\"Sorted schema:\", wizardSchema);\r\n&lt;/script&gt;\r\n{% include 'common_page_template' %}"
+}</content>
+  <iscustomizable>1</iscustomizable>
+  <name>cmdspp_Exclusion_Sanction</name>
+  <powerpagecomponenttype>8</powerpagecomponenttype>
+  <powerpagesiteid>
+    <powerpagesiteid>abccaafd-73d6-47dd-bb55-b09b911f0d43</powerpagesiteid>
+  </powerpagesiteid>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</powerpagecomponent>

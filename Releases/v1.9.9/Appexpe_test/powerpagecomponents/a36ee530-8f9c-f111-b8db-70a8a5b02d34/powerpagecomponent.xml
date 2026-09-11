@@ -1,0 +1,14 @@
+<powerpagecomponent powerpagecomponentid="a36ee530-8f9c-f111-b8db-70a8a5b02d34">
+  <content>{
+  "value": "statecode,cmdspp_p_close_time,_cmdspp_p_close_time_value,cmdspp_p_days_of_week,_cmdspp_p_days_of_week_value,cmdspp_p_open_closed_cd,_cmdspp_p_open_closed_cd_value,cmdspp_p_open_time,_cmdspp_p_open_time_value,cmdspp_p_ser_hof_inf_tbid,cmdspp_p_ser_hof_inf_tb_sk,cmdspp_created_by_user,_cmdspp_created_by_user_value,cmdspp_p_sys_id,_cmdspp_p_sys_id_value,cmdspp_modified_by_user,_cmdspp_modified_by_user_value",
+  "source": 0
+}</content>
+  <iscustomizable>1</iscustomizable>
+  <name>Webapi/cmdspp_p_ser_hof_inf_tb/fields</name>
+  <powerpagecomponenttype>9</powerpagecomponenttype>
+  <powerpagesiteid>
+    <powerpagesiteid>abccaafd-73d6-47dd-bb55-b09b911f0d43</powerpagesiteid>
+  </powerpagesiteid>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</powerpagecomponent>

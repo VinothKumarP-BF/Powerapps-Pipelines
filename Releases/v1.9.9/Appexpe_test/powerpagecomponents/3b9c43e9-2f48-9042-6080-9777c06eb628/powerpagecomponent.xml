@@ -1,0 +1,23 @@
+<powerpagecomponent powerpagecomponentid="3b9c43e9-2f48-9042-6080-9777c06eb628">
+  <content>{
+  "filecontent": null,
+  "displayorder": 10,
+  "parentweblinkid": "9bcba9fb-ba33-f44d-3157-4eab4b2152ad",
+  "weblinksetid": "aba765dd-0f02-4f05-ae0f-a524623441a0",
+  "pageid": "1d725ec3-a9ee-fbab-45d6-fe9f5775d220",
+  "publishingstateid": "c7294317-419f-4724-8068-a91d5da8d92c",
+  "displaypagevalidation": false,
+  "displayimageonly": false,
+  "displaypagechildlinks": false,
+  "openinnewwindow": false,
+  "robotsfollowlink": true
+}</content>
+  <iscustomizable>1</iscustomizable>
+  <name>Electronic Claims Submission</name>
+  <powerpagecomponenttype>5</powerpagecomponenttype>
+  <powerpagesiteid>
+    <powerpagesiteid>abccaafd-73d6-47dd-bb55-b09b911f0d43</powerpagesiteid>
+  </powerpagesiteid>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</powerpagecomponent>

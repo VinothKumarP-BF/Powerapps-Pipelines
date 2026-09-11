@@ -1,0 +1,14 @@
+<powerpagecomponent powerpagecomponentid="33268c5e-3597-f111-8075-70a8a5b02d34">
+  <content>{
+  "source": 0,
+  "value": "cmdspp_p_lic_cert_tbid,cmdspp_created_by_user,_cmdspp_created_by_user_value,cmdspp_p_lic_cert_agcy_cdid,_cmdspp_p_lic_cert_agcy_cdid_value,cmdspp_p_lic_cert_agcy_code,_cmdspp_p_lic_cert_agcy_code_value,cmdspp_p_lic_cert_beg_dt,cmdspp_p_lic_cert_end_dt,cmdspp_p_lic_cert_ind_code,cmdspp_p_lic_cert_num,cmdspp_p_lic_cert_state_cd,_cmdspp_p_lic_cert_state_cd_value,cmdspp_p_sys_id,_cmdspp_p_sys_id_value,statecode,cmdspp_cmdspp_p_lic_cert_ind_code3"
+}</content>
+  <iscustomizable>1</iscustomizable>
+  <name>Webapi/cmdspp_p_lic_cert_tb/fields</name>
+  <powerpagecomponenttype>9</powerpagecomponenttype>
+  <powerpagesiteid>
+    <powerpagesiteid>abccaafd-73d6-47dd-bb55-b09b911f0d43</powerpagesiteid>
+  </powerpagesiteid>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</powerpagecomponent>

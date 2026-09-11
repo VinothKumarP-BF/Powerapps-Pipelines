@@ -1,0 +1,23 @@
+<powerpagecomponent powerpagecomponentid="1e5cb5aa-14b0-be07-2c4b-597347044970">
+  <content>{
+  "filecontent": null,
+  "displayorder": 22,
+  "parentweblinkid": "9bcba9fb-ba33-f44d-3157-4eab4b2152ad",
+  "weblinksetid": "aba765dd-0f02-4f05-ae0f-a524623441a0",
+  "pageid": "dda55d3d-0d97-f111-8075-70a8a5b02d34",
+  "publishingstateid": "c7294317-419f-4724-8068-a91d5da8d92c",
+  "displaypagevalidation": false,
+  "displayimageonly": false,
+  "displaypagechildlinks": false,
+  "openinnewwindow": false,
+  "robotsfollowlink": true
+}</content>
+  <iscustomizable>1</iscustomizable>
+  <name>Exclusion-Sanction</name>
+  <powerpagecomponenttype>5</powerpagecomponenttype>
+  <powerpagesiteid>
+    <powerpagesiteid>abccaafd-73d6-47dd-bb55-b09b911f0d43</powerpagesiteid>
+  </powerpagesiteid>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</powerpagecomponent>

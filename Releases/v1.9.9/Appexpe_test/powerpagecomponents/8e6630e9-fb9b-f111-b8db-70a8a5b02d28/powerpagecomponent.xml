@@ -1,0 +1,91 @@
+<powerpagecomponent powerpagecomponentid="8e6630e9-fb9b-f111-b8db-70a8a5b02d28">
+  <content>{
+  "partialurl": "Service-Loc-EFT",
+  "feedbackpolicy": 756150000,
+  "excludefromsearch": false,
+  "hiddenfromsitemap": false,
+  "enablerating": false,
+  "isroot": false,
+  "sharedpageconfiguration": true,
+  "publishingstateid": "c7294317-419f-4724-8068-a91d5da8d92c",
+  "pagetemplateid": "718ed8c8-9407-4620-adf3-832ec188887d",
+  "parentpageid": "51d44b41-26bf-6d84-f130-1b2b46867671",
+  "isofflinecached": false,
+  "rootwebpageid": "5d4620e3-fb9b-f111-b8db-70a8a5b02d28",
+  "copy": "{% include 'cmdspp_Enrollment_Form_Header' %}\r\n\r\n&lt;div class=\"cmdspp-form-body\"&gt;\r\n\r\n    &lt;div id=\"identity-form-container\"&gt;\r\n        {% include 'cmdspp_service_Loc_EFT' %}\r\n    &lt;/div&gt;\r\n\r\n\r\n&lt;/div&gt;\r\n\r\n\r\n&lt;style&gt;\r\n\r\n#sectionFContainer .col-md-12.mb-3{\r\n      width: 100% !important;\r\n\r\n}\r\n  \r\n#sectionFContainer .col-md-12.mb-3 .field-card-container .row{\r\n    width: 100% !important;\r\n    padding: 0px;\r\n}\r\n#sectionFContainer .col-md-12.mb-3 .field-card-container .row .col-md-6.checkboxgroup.mb-3{\r\n    width: 100%;\r\n    padding: 0px !important;\r\n    border: none;\r\n}\r\n#sectionFContainer .cmdspp-form-card .checkboxgroup &gt; .form-label{\r\n  display: none;\r\n}\r\n\r\n#sectionFContainer .cmdspp-form-card .checkboxgroup .form-check{\r\n   width: calc(50% - 5px);\r\n}\r\n\r\n\r\n\r\n\r\n\r\n#sectionGContainer .col-md-12.mb-3{\r\n      width: 100% !important;\r\n\r\n}\r\n  \r\n#sectionGContainer .col-md-12.mb-3 .field-card-container .row{\r\n    width: 100% !important;\r\n    padding: 0px;\r\n}\r\n#sectionGContainer .col-md-12.mb-3 .field-card-container .row .col-md-6.checkboxgroup.mb-3{\r\n    width: 100%;\r\n    padding: 0px !important;\r\n    border: none;\r\n}\r\n#sectionGContainer .cmdspp-form-card .checkboxgroup &gt; .form-label{\r\n  display: none;\r\n}\r\n\r\n#sectionGContainer .cmdspp-form-card .checkboxgroup .form-check{\r\n   width: calc(50% - 5px);\r\n}\r\n    &lt;/style&gt;",
+  "summary": "{% fetchxml sectionJsonSchema %}\r\n&lt;fetch&gt;\r\n  &lt;entity name=\"cmdspp_pc_enrol_page_json_tb\"&gt;\r\n    &lt;attribute name=\"cmdspp_p_jsontxt\" /&gt;\r\n    &lt;attribute name=\"cmdspp_p_table_nam\" /&gt;\r\n    &lt;attribute name=\"cmdspp_p_page_nam\" /&gt;\r\n    &lt;filter&gt;\r\n      &lt;condition attribute=\"cmdspp_p_page_nam\" operator=\"eq\" value=\"service_location_eft\" /&gt;\r\n    &lt;/filter&gt;\r\n  &lt;/entity&gt;\r\n&lt;/fetch&gt;\r\n{% endfetchxml %}\r\n&lt;script id=\"wizardSchemaData\" type=\"application/json\"&gt;\r\n[\r\n{% for rec in sectionJsonSchema.results.entities %}\r\n    {{ rec.cmdspp_p_jsontxt }}{% unless forloop.last %},{% endunless %}\r\n{% endfor %}\r\n]\r\n&lt;/script&gt;\r\n\r\n{% include 'common_page_template' %}"
+}</content>
+  <iscustomizable>1</iscustomizable>
+  <name>Service-Loc-EFT</name>
+  <powerpagecomponenttype>2</powerpagecomponenttype>
+  <powerpagesiteid>
+    <powerpagesiteid>abccaafd-73d6-47dd-bb55-b09b911f0d43</powerpagesiteid>
+  </powerpagesiteid>
+  <powerpagesitelanguageid>
+    <powerpagesitelanguageid>7b340d7a-188d-4ed8-b16c-cc6e959fb5c2</powerpagesitelanguageid>
+  </powerpagesitelanguageid>
+  <searchcontent>{% include 'cmdspp_Enrollment_Form_Header' %}
+
+&lt;div class="cmdspp-form-body"&gt;
+
+    &lt;div id="identity-form-container"&gt;
+        {% include 'cmdspp_service_Loc_EFT' %}
+    &lt;/div&gt;
+
+
+&lt;/div&gt;
+
+
+&lt;style&gt;
+
+#sectionFContainer .col-md-12.mb-3{
+      width: 100% !important;
+
+}
+  
+#sectionFContainer .col-md-12.mb-3 .field-card-container .row{
+    width: 100% !important;
+    padding: 0px;
+}
+#sectionFContainer .col-md-12.mb-3 .field-card-container .row .col-md-6.checkboxgroup.mb-3{
+    width: 100%;
+    padding: 0px !important;
+    border: none;
+}
+#sectionFContainer .cmdspp-form-card .checkboxgroup &gt; .form-label{
+  display: none;
+}
+
+#sectionFContainer .cmdspp-form-card .checkboxgroup .form-check{
+   width: calc(50% - 5px);
+}
+
+
+
+
+
+#sectionGContainer .col-md-12.mb-3{
+      width: 100% !important;
+
+}
+  
+#sectionGContainer .col-md-12.mb-3 .field-card-container .row{
+    width: 100% !important;
+    padding: 0px;
+}
+#sectionGContainer .col-md-12.mb-3 .field-card-container .row .col-md-6.checkboxgroup.mb-3{
+    width: 100%;
+    padding: 0px !important;
+    border: none;
+}
+#sectionGContainer .cmdspp-form-card .checkboxgroup &gt; .form-label{
+  display: none;
+}
+
+#sectionGContainer .cmdspp-form-card .checkboxgroup .form-check{
+   width: calc(50% - 5px);
+}
+    &lt;/style&gt;Service-Loc-EFT</searchcontent>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</powerpagecomponent>

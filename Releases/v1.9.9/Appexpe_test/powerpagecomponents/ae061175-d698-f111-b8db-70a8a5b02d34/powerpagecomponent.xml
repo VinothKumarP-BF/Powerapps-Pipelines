@@ -1,0 +1,14 @@
+<powerpagecomponent powerpagecomponentid="ae061175-d698-f111-b8db-70a8a5b02d34">
+  <content>{
+  "value": "cmdspp_p_qstnr_disposition,cmdspp_p_qstnr_fed_prog_nam,cmdspp_p_qstnr_first_nam,cmdspp_p_qstnr_last_nam,cmdspp_p_qstnr_mi_nam, cmdspp_p_qstnr_ovr_pmt_q1,cmdspp_p_qstnr_ovr_pmt_tbid,cmdspp_p_qstnr_ovr_pymt_amt,cmdspp_p_qstnr_seq_num,cmdspp_p_qstnr_sfx_nam, cmdspp_p_qstnr_ty_cd,cmdspp_p_sys_id,statecode,statuscode,_cmdspp_p_sys_id_value",
+  "source": 0
+}</content>
+  <iscustomizable>1</iscustomizable>
+  <name>Webapi/cmdspp_p_qstnr_ovr_pmt_tb/fields</name>
+  <powerpagecomponenttype>9</powerpagecomponenttype>
+  <powerpagesiteid>
+    <powerpagesiteid>abccaafd-73d6-47dd-bb55-b09b911f0d43</powerpagesiteid>
+  </powerpagesiteid>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</powerpagecomponent>

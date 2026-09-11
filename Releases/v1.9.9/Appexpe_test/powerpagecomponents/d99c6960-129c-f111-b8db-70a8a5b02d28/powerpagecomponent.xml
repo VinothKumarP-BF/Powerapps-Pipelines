@@ -1,0 +1,13 @@
+<powerpagecomponent powerpagecomponentid="d99c6960-129c-f111-b8db-70a8a5b02d28">
+  <content>{
+  "source": "{% fetchxml sectionJsonSchema %}\r\n&lt;fetch&gt;\r\n  &lt;entity name=\"cmdspp_pc_enrol_page_json_tb\"&gt;\r\n    &lt;attribute name=\"cmdspp_p_jsontxt\" /&gt;\r\n    &lt;attribute name=\"cmdspp_p_table_nam\" /&gt;\r\n    &lt;attribute name=\"cmdspp_p_page_nam\" /&gt;\r\n    &lt;filter&gt;\r\n      &lt;condition attribute=\"cmdspp_p_page_nam\" operator=\"eq\" value=\"service_location_eft\" /&gt;\r\n    &lt;/filter&gt;\r\n  &lt;/entity&gt;\r\n&lt;/fetch&gt;\r\n{% endfetchxml %}\r\n&lt;script id=\"wizardSchemaData\" type=\"application/json\"&gt;\r\n[{% for rec in sectionJsonSchema.results.entities %}\r\n    {{ rec.cmdspp_p_jsontxt }}\r\n    {% unless forloop.last %},{% endunless %}\r\n{% endfor %}]\r\n&lt;/script&gt;\r\n\r\n\r\n&lt;div class=\"EFTInstuction\"&gt;\r\n  &lt;label class=\"form-check-label\"&gt;\r\n    For Instructions related to EFT Enrollment\r\n    &lt;a href=\"https://mmis.nd.gov/portals/wps/wcm/connect/383c6fe5-cbd2-4b85-9233-0b6fae6062d7/EFT+enrollment+form+fields+and+descriptions+v1.0.pdf?MOD=AJPERES&amp;CVID=lNviGpG\"\r\n       target=\"_blank\"\r\n       rel=\"noopener noreferrer\"\r\n       class=\"href-link\"&gt;\r\n       click here\r\n    &lt;/a&gt;.\r\n  &lt;/label&gt;\r\n&lt;/div&gt;\r\n{% include 'common_page_template' %}\r\n&lt;style&gt;\r\n.EFTInstuction label{\r\n      font-weight: 400;\r\n    font-size: 14px;\r\n    line-height: 16.5px;\r\n    letter-spacing: 0px;  \r\n    color: #274463;\r\n    margin-bottom: 12px;\r\n}\r\n.EFTInstuction a{\r\n        color: #0196F3;\r\n    text-decoration-line: underline;\r\n}\r\n  &lt;/style&gt;"
+}</content>
+  <iscustomizable>1</iscustomizable>
+  <name>cmdspp_service_Loc_EFT</name>
+  <powerpagecomponenttype>8</powerpagecomponenttype>
+  <powerpagesiteid>
+    <powerpagesiteid>abccaafd-73d6-47dd-bb55-b09b911f0d43</powerpagesiteid>
+  </powerpagesiteid>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</powerpagecomponent>

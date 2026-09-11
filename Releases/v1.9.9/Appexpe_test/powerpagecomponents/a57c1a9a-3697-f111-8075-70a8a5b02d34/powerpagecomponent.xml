@@ -1,0 +1,14 @@
+<powerpagecomponent powerpagecomponentid="a57c1a9a-3697-f111-8075-70a8a5b02d34">
+  <content>{
+  "source": 0,
+  "value": "cmdspp_p_state_cdid,_cmdspp_p_state_cdid_value,cmdspp_p_specl_cdid,_cmdspp_p_specl_cdid_value,cmdspp_p_specl_cert_board_cdid,_cmdspp_p_specl_cert_board_cdid_value,cmdspp_p_specl_cert_num,cmdspp_p_specl_tbid,cmdspp_p_sys_id,_cmdspp_p_sys_id_value,cmdspp_created_by_user,_cmdspp_created_by_user_value,statecode"
+}</content>
+  <iscustomizable>1</iscustomizable>
+  <name>Webapi/cmdspp_p_specl_tb/fields</name>
+  <powerpagecomponenttype>9</powerpagecomponenttype>
+  <powerpagesiteid>
+    <powerpagesiteid>abccaafd-73d6-47dd-bb55-b09b911f0d43</powerpagesiteid>
+  </powerpagesiteid>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</powerpagecomponent>

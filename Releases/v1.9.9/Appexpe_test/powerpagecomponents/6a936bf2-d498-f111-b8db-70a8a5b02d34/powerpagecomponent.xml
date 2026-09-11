@@ -1,0 +1,14 @@
+<powerpagecomponent powerpagecomponentid="6a936bf2-d498-f111-b8db-70a8a5b02d34">
+  <content>{
+  "value": "cmdspp_p_qstnr_conviction_b_tbid,cmdspp_p_qstnr_conviction_city,cmdspp_p_qstnr_conviction_dt,cmdspp_p_qstnr_conviction_state_cd, cmdspp_p_qstnr_conviction_type,cmdspp_p_qstnr_first_nam,cmdspp_p_qstnr_last_nam,cmdspp_p_qstnr_mi_nam,cmdspp_p_qstnr_pgm_ty,cmdspp_p_qstnr_rel_cd, cmdspp_p_qstnr_relatv_q1,cmdspp_p_sys_id,statecode,statuscode,_cmdspp_p_qstnr_rel_cd_value,_cmdspp_p_qstnr_conviction_state_cd_value,_cmdspp_p_sys_id_value",
+  "source": 0
+}</content>
+  <iscustomizable>1</iscustomizable>
+  <name>Webapi/cmdspp_p_qstnr_conviction_b_tb/fields</name>
+  <powerpagecomponenttype>9</powerpagecomponenttype>
+  <powerpagesiteid>
+    <powerpagesiteid>abccaafd-73d6-47dd-bb55-b09b911f0d43</powerpagesiteid>
+  </powerpagesiteid>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</powerpagecomponent>

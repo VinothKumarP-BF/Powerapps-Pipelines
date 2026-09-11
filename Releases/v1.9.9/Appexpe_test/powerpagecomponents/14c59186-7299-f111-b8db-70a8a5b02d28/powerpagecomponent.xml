@@ -1,0 +1,14 @@
+<powerpagecomponent powerpagecomponentid="14c59186-7299-f111-b8db-70a8a5b02d28">
+  <content>{
+  "value": "cmdspp_p_ecs_all_transactions_tbid, cmdspp_p_ecs_all_transactions_tb, cmdspp_p_sys_id, _cmdspp_p_sys_id_value, cmdspp_p_transaction_name, _cmdspp_p_transaction_name_value, cmdspp_p_transaction_type, cmdspp_created_by_user, _cmdspp_created_by_user_value, cmdspp_modified_by_user, _cmdspp_modified_by_user_value, statecode, statuscode",
+  "source": 0
+}</content>
+  <iscustomizable>1</iscustomizable>
+  <name>Webapi/cmdspp_p_ecs_all_transactions_tb/fields</name>
+  <powerpagecomponenttype>9</powerpagecomponenttype>
+  <powerpagesiteid>
+    <powerpagesiteid>abccaafd-73d6-47dd-bb55-b09b911f0d43</powerpagesiteid>
+  </powerpagesiteid>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</powerpagecomponent>

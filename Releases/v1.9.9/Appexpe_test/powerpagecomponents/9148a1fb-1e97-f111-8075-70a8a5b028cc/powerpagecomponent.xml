@@ -1,0 +1,14 @@
+<powerpagecomponent powerpagecomponentid="9148a1fb-1e97-f111-8075-70a8a5b028cc">
+  <content>{
+  "value": "cmdspp_p_pvd_typ_desc,_cmdspp_p_createdby_user_id_value,cmdspp_p_createdby_user_id,_cmdspp_p_app_id_lkp_value,cmdspp_p_app_id_lkp,_cmdspp_p_pvd_typ_lkp_value,cmdspp_p_pvd_typ_lkp,cmdspp_p_npi_id,cmdspp_p_lst_nam,cmdspp_p_fst_nam,cmdspp_p_mid_in,_cmdspp_p_sfx_lkp_value,cmdspp_p_sfx_lkp,_cmdspp_p_titl_lkp_value,cmdspp_p_titl_lkp,cmdspp_p_dob,cmdspp_p_dba_nam,cmdspp_p_gndr,cmdspp_p_gndr_shr_ind,cmdspp_p_ssn,cmdspp_p_prv_mdcaid_pvd_ind,cmdspp_p_mdcaid_pvd,_cmdspp_p_prv_st_cd_value,cmdspp_p_prv_st_cd,cmdspp_p_prv_street,cmdspp_p_prv_city,cmdspp_p_prv_fax,cmdspp_p_prv_tel_num,cmdspp_p_prv_zip_code,cmdspp_p_idt_inf_dtlid,cmdspp_p_eft_ind,statecode,cmdspp_p_prv_tel_num_ext,cmdspp_p_prv_email",
+  "source": 0
+}</content>
+  <iscustomizable>1</iscustomizable>
+  <name>Webapi/cmdspp_p_idt_inf_dtl/fields</name>
+  <powerpagecomponenttype>9</powerpagecomponenttype>
+  <powerpagesiteid>
+    <powerpagesiteid>abccaafd-73d6-47dd-bb55-b09b911f0d43</powerpagesiteid>
+  </powerpagesiteid>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</powerpagecomponent>

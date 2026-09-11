@@ -1,0 +1,14 @@
+<powerpagecomponent powerpagecomponentid="115eb4ee-8a99-f111-b8db-70a8a5b02d28">
+  <content>{
+  "value": "cmdspp_created_by_user,_cmdspp_created_by_user_value,statecode,cmdspp_p_sys_id,_cmdspp_p_sys_id_value,cmdspp_p_txnmy_beg_dt,cmdspp_p_txnmy_cd,_cmdspp_p_txnmy_cd_value,cmdspp_p_txnmy_end_dt,cmdspp_p_txnmy_tbid,statecode",
+  "source": 0
+}</content>
+  <iscustomizable>1</iscustomizable>
+  <name>Webapi/cmdspp_p_txnmy_tb/fields</name>
+  <powerpagecomponenttype>9</powerpagecomponenttype>
+  <powerpagesiteid>
+    <powerpagesiteid>abccaafd-73d6-47dd-bb55-b09b911f0d43</powerpagesiteid>
+  </powerpagesiteid>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</powerpagecomponent>

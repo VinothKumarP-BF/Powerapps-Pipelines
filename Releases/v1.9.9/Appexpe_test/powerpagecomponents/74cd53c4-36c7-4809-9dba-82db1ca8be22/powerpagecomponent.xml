@@ -1,0 +1,30 @@
+<powerpagecomponent powerpagecomponentid="74cd53c4-36c7-4809-9dba-82db1ca8be22">
+  <content>{
+  "entityname": "cmdspp_p_ser_loc_inf_tb",
+  "entitylogicalname": "cmdspp_p_ser_loc_inf_tb",
+  "scope": 756150000,
+  "append": true,
+  "appendto": true,
+  "delete": false,
+  "read": true,
+  "create": true,
+  "write": true,
+  "parentrelationship": null,
+  "parententitypermission": null,
+  "contactrelationship": null,
+  "accountrelationship": null,
+  "childTablePermissions": [],
+  "adx_entitypermission_webrole": [
+    "3e0eed5c-e2e0-46fa-a82c-1f6c985badca"
+  ],
+  "permissionfetchxml": null
+}</content>
+  <iscustomizable>1</iscustomizable>
+  <name>cmdspp_p_ser_loc_inf_tb</name>
+  <powerpagecomponenttype>18</powerpagecomponenttype>
+  <powerpagesiteid>
+    <powerpagesiteid>abccaafd-73d6-47dd-bb55-b09b911f0d43</powerpagesiteid>
+  </powerpagesiteid>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</powerpagecomponent>

@@ -1,0 +1,14 @@
+<powerpagecomponent powerpagecomponentid="6fadbe4b-2d9a-f111-b8db-70a8a5b02d28">
+  <content>{
+  "envvar_schema": "cmdspp_ENV_Attachment_Urls",
+  "source": 1
+}</content>
+  <iscustomizable>1</iscustomizable>
+  <name>cmdspp_ENV_Attachment_Urls</name>
+  <powerpagecomponenttype>9</powerpagecomponenttype>
+  <powerpagesiteid>
+    <powerpagesiteid>abccaafd-73d6-47dd-bb55-b09b911f0d43</powerpagesiteid>
+  </powerpagesiteid>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</powerpagecomponent>

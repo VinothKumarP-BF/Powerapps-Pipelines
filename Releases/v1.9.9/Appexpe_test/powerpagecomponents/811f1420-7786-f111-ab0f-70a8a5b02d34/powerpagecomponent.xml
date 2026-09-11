@@ -1,0 +1,13 @@
+<powerpagecomponent powerpagecomponentid="811f1420-7786-f111-ab0f-70a8a5b02d34">
+  <content>{
+  "source": "&lt;div id=\"cmdspp-tooltip\" class=\"cmdspp-tooltip\"&gt;&lt;/div&gt;\r\n\r\n&lt;style&gt;\r\n.cmdspp-tooltip {\r\n    display: none;\r\n    border-radius: 5px;\r\n    padding: 10px;\r\n    gap: 10px;\r\n    opacity: 1;\r\n    background: rgb(255, 255, 255);\r\n    border: 1px solid rgb(194, 194, 194);\r\n    box-shadow: rgba(0, 0, 0, 0.12) 0px 4px 4px 0px;\r\n    font-family: FontAwesome;\r\n    font-weight: 400;\r\n    font-size: 12px;\r\n    line-height: 17px;\r\n    letter-spacing: 0px;\r\n    color: rgb(39, 68, 99);\r\n    top: 404px;\r\n    left: 974px;\r\n}\r\n&lt;/style&gt;\r\n\r\n&lt;script&gt;\r\n$(document).on(\"mouseenter\", \"[data-tooltip]\", function (e) {\r\n\r\n    const tooltipText = $(this).data(\"tooltip\");\r\n\r\n    if (!tooltipText) return;\r\n\r\n    $(\"#cmdspp-tooltip\")\r\n        .text(tooltipText)\r\n        .css({\r\n            display: \"block\",\r\n            left: e.pageX + 12,\r\n            top: e.pageY + 12\r\n        });\r\n});\r\n\r\n$(document).on(\"mousemove\", \"[data-tooltip]\", function (e) {\r\n\r\n    $(\"#cmdspp-tooltip\").css({\r\n        left: e.pageX + 12,\r\n        top: e.pageY + 12\r\n    });\r\n});\r\n\r\n$(document).on(\"mouseleave\", \"[data-tooltip]\", function () {\r\n\r\n    $(\"#cmdspp-tooltip\").hide();\r\n});\r\n&lt;/script&gt;"
+}</content>
+  <iscustomizable>1</iscustomizable>
+  <name>cmdspp_tooltip</name>
+  <powerpagecomponenttype>8</powerpagecomponenttype>
+  <powerpagesiteid>
+    <powerpagesiteid>abccaafd-73d6-47dd-bb55-b09b911f0d43</powerpagesiteid>
+  </powerpagesiteid>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</powerpagecomponent>

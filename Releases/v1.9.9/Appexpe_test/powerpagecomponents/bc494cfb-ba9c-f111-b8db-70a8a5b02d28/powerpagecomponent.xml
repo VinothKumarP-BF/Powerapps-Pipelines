@@ -1,0 +1,14 @@
+<powerpagecomponent powerpagecomponentid="bc494cfb-ba9c-f111-b8db-70a8a5b02d28">
+  <content>{
+  "source": 0,
+  "value": "cmdspp_p_ba_building,cmdspp_p_ba_city_cd,_cmdspp_p_ba_city_cd_value,cmdspp_p_ba_country_cd,_cmdspp_p_ba_country_cd_value,cmdspp_p_ba_extension,cmdspp_p_ba_ma_ind,cmdspp_p_ba_sl_ind,cmdspp_p_ba_state_cd,_cmdspp_p_ba_state_cd_value,cmdspp_p_ba_street_address,cmdspp_p_ba_zipcode,cmdspp_p_billing_address_tbid,cmdspp_p_sys_id,_cmdspp_p_sys_id_value,statecode"
+}</content>
+  <iscustomizable>1</iscustomizable>
+  <name>Webapi/cmdspp_p_billing_address_tb/fields</name>
+  <powerpagecomponenttype>9</powerpagecomponenttype>
+  <powerpagesiteid>
+    <powerpagesiteid>abccaafd-73d6-47dd-bb55-b09b911f0d43</powerpagesiteid>
+  </powerpagesiteid>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</powerpagecomponent>

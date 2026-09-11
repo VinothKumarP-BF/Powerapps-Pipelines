@@ -1,0 +1,14 @@
+<powerpagecomponent powerpagecomponentid="b2d2f7db-ef80-f111-ab0e-70a8a5b02d28">
+  <content>{
+  "value": "cmdspp_p_alow_format,cmdspp_p_ctrl_dtl,cmdspp_p_ctrl_dtl_clm,cmdspp_p_ctrl_id_sk,cmdspp_p_ctrl_nam,cmdspp_p_ctrl_place_hldr, cmdspp_p_ctrl_to_section_fk,cmdspp_p_ctrl_typ,cmdspp_p_dependent_field,cmdspp_p_dum_fk,cmdspp_p_options_clm, cmdspp_p_options_tb_list,cmdspp_p_options_vv_cd,cmdspp_p_uniq_field_code,cmdspp_p_use_help_txt,cmdspp_p_valid_rule, cmdspp_pc_ctrl_tbid,statecode,statuscode",
+  "source": 0
+}</content>
+  <iscustomizable>1</iscustomizable>
+  <name>Webapi/cmdspp_pc_ctrl_tb/fields</name>
+  <powerpagecomponenttype>9</powerpagecomponenttype>
+  <powerpagesiteid>
+    <powerpagesiteid>abccaafd-73d6-47dd-bb55-b09b911f0d43</powerpagesiteid>
+  </powerpagesiteid>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</powerpagecomponent>

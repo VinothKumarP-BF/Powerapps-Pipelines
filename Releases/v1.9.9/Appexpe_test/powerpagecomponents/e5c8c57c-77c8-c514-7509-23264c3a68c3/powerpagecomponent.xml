@@ -1,0 +1,23 @@
+<powerpagecomponent powerpagecomponentid="e5c8c57c-77c8-c514-7509-23264c3a68c3">
+  <content>{"displayorder":24,"pagetemplateid":"718ed8c8-9407-4620-adf3-832ec188887d","parentpageid":"551cf2a7-4cb2-4424-8af7-3422ddbd968e","partialurl":"exclusion_page","isroot":false,"rootwebpageid":"1a07aac3-ca40-1007-13a8-80ed2fd01c14","title":"exclusion_page","summary":"&lt;p&gt;This is a sample landing page designed to be a starting point for your website&lt;/p&gt;","copy":"&lt;div class=\"row sectionBlockLayout text-start\" style=\"min-height: auto; padding: 8px;\"&gt;\n    &lt;div class=\"container\" style=\"display: flex; flex-wrap: wrap;\"&gt;\n      &lt;div class=\"col-lg-12 columnBlockLayout\" style=\"padding: 16px; margin: 60px 0px; min-height: 200px;\"&gt;\n\n        {% entityform name: 'Exclusion_Form' %}\n      &lt;/div&gt;\n    &lt;/div&gt;\n  &lt;/div&gt;\n  ","publishingstateid":"c7294317-419f-4724-8068-a91d5da8d92c","enablerating":false,"enabletracking":false,"excludefromsearch":false,"hiddenfromsitemap":true,"sharedpageconfiguration":false,"feedbackpolicy":756150000}</content>
+  <iscustomizable>1</iscustomizable>
+  <name>exclusion_page</name>
+  <powerpagecomponenttype>2</powerpagecomponenttype>
+  <powerpagesiteid>
+    <powerpagesiteid>abccaafd-73d6-47dd-bb55-b09b911f0d43</powerpagesiteid>
+  </powerpagesiteid>
+  <powerpagesitelanguageid>
+    <powerpagesitelanguageid>7b340d7a-188d-4ed8-b16c-cc6e959fb5c2</powerpagesitelanguageid>
+  </powerpagesitelanguageid>
+  <searchcontent>exclusion_page&lt;div class="row sectionBlockLayout text-start" style="min-height: auto; padding: 8px;"&gt;
+    &lt;div class="container" style="display: flex; flex-wrap: wrap;"&gt;
+      &lt;div class="col-lg-12 columnBlockLayout" style="padding: 16px; margin: 60px 0px; min-height: 200px;"&gt;
+
+        {% entityform name: 'Exclusion_Form' %}
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  exclusion_page</searchcontent>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</powerpagecomponent>
