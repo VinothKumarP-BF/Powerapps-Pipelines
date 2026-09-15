@@ -1,0 +1,29 @@
+<appaction uniquename="cmdspp__ReviewDocuments!7de86c3940464dcfaca15c7f28002278!cmdspp_p_scrn_sum!0">
+  <buttonlabeltext default="Review Documents">
+    <label description="Review Documents" languagecode="1033" />
+  </buttonlabeltext>
+  <context>1</context>
+  <contextentity>
+    <logicalname>cmdspp_p_scrn_sum</logicalname>
+  </contextentity>
+  <contextvalue>cmdspp_p_scrn_sum</contextvalue>
+  <fonticon>$clientsvg:ActivateOrders</fonticon>
+  <hidden>0</hidden>
+  <iscustomizable>1</iscustomizable>
+  <isdisabled>0</isdisabled>
+  <isgrouptitlehidden>0</isgrouptitlehidden>
+  <location>0</location>
+  <name>ReviewDocuments!7de86c3940464dcfaca15c7f28002278</name>
+  <onclickeventjavascriptfunctionname>reviewDoc</onclickeventjavascriptfunctionname>
+  <onclickeventjavascriptparameters>[]</onclickeventjavascriptparameters>
+  <onclickeventjavascriptwebresourceid>
+    <webresourceid>63bfbf17-aab8-e911-a98a-000d3af475aa</webresourceid>
+  </onclickeventjavascriptwebresourceid>
+  <onclickeventtype>2</onclickeventtype>
+  <origin>0</origin>
+  <sequence>75075007.5000000000</sequence>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+  <type>0</type>
+  <visibilitytype>0</visibilitytype>
+</appaction>

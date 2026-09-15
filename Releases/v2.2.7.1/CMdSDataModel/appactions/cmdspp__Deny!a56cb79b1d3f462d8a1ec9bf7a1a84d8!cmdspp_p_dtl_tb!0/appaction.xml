@@ -1,0 +1,29 @@
+<appaction uniquename="cmdspp__Deny!a56cb79b1d3f462d8a1ec9bf7a1a84d8!cmdspp_p_dtl_tb!0">
+  <buttonlabeltext default="Deny">
+    <label description="Deny" languagecode="1033" />
+  </buttonlabeltext>
+  <context>1</context>
+  <contextentity>
+    <logicalname>cmdspp_p_dtl_tb</logicalname>
+  </contextentity>
+  <contextvalue>cmdspp_p_dtl_tb</contextvalue>
+  <fonticon>$clientsvg:Blocked</fonticon>
+  <hidden>0</hidden>
+  <iscustomizable>1</iscustomizable>
+  <isdisabled>0</isdisabled>
+  <isgrouptitlehidden>0</isgrouptitlehidden>
+  <location>0</location>
+  <name>Deny!a56cb79b1d3f462d8a1ec9bf7a1a84d8</name>
+  <onclickeventjavascriptfunctionname>openDenyEnrollment</onclickeventjavascriptfunctionname>
+  <onclickeventjavascriptparameters>[{"type":5}]</onclickeventjavascriptparameters>
+  <onclickeventjavascriptwebresourceid>
+    <webresourceid>b1b02a53-25a5-f111-b8de-70a8a5b02d34</webresourceid>
+  </onclickeventjavascriptwebresourceid>
+  <onclickeventtype>2</onclickeventtype>
+  <origin>0</origin>
+  <sequence>100100025.0000000000</sequence>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+  <type>0</type>
+  <visibilitytype>0</visibilitytype>
+</appaction>

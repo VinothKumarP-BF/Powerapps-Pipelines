@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Workflow WorkflowId="{f073e977-bc84-f111-ab0f-70a8a5b02d28}" Name="Email_required" Description="this rule will ensure email cant be null" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <XamlFileName>/Workflows/Email_required-F073E977-BC84-F111-AB0F-70A8A5B02D28.xaml</XamlFileName>
+  <Type>1</Type>
+  <Subprocess>0</Subprocess>
+  <Category>2</Category>
+  <Mode>1</Mode>
+  <Scope>4</Scope>
+  <OnDemand>0</OnDemand>
+  <TriggerOnCreate>0</TriggerOnCreate>
+  <TriggerOnDelete>0</TriggerOnDelete>
+  <AsyncAutodelete>0</AsyncAutodelete>
+  <SyncWorkflowLogOnFailure>0</SyncWorkflowLogOnFailure>
+  <StateCode>1</StateCode>
+  <StatusCode>2</StatusCode>
+  <RunAs>1</RunAs>
+  <IsTransacted>1</IsTransacted>
+  <IntroducedVersion>1.0.0.0</IntroducedVersion>
+  <IsCustomizable>1</IsCustomizable>
+  <BusinessProcessType>0</BusinessProcessType>
+  <IsCustomProcessingStepAllowedForOtherPublishers>1</IsCustomProcessingStepAllowedForOtherPublishers>
+  <ProcessTriggerScope>1</ProcessTriggerScope>
+  <ModernFlowType>0</ModernFlowType>
+  <PrimaryEntity>cmdspp_G_USR_DTLS_TB</PrimaryEntity>
+  <LocalizedNames>
+    <LocalizedName languagecode="1033" description="Email_required" />
+  </LocalizedNames>
+  <Descriptions>
+    <Description languagecode="1033" description="this rule will ensure email cant be null" />
+  </Descriptions>
+  <labels>
+    <steplabels id="{f525bb45-244b-442a-850d-91d47592a95c}">
+      <label languagecode="1033" description="Email address is required" />
+    </steplabels>
+  </labels>
+</Workflow>

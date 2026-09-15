@@ -1,0 +1,29 @@
+<appaction uniquename="cmdspp__ViewAuditHistory!d2132385ff304720912addc05a1571fc!cmdspp_p_lic_cert_tb!0">
+  <buttonlabeltext default="View Audit History">
+    <label description="View Audit History" languagecode="1033" />
+  </buttonlabeltext>
+  <context>1</context>
+  <contextentity>
+    <logicalname>cmdspp_p_lic_cert_tb</logicalname>
+  </contextentity>
+  <contextvalue>cmdspp_p_lic_cert_tb</contextvalue>
+  <fonticon>View</fonticon>
+  <hidden>0</hidden>
+  <iscustomizable>1</iscustomizable>
+  <isdisabled>0</isdisabled>
+  <isgrouptitlehidden>0</isgrouptitlehidden>
+  <location>0</location>
+  <name>ViewAuditHistory!d2132385ff304720912addc05a1571fc</name>
+  <onclickeventjavascriptfunctionname>openAuditInSidePane</onclickeventjavascriptfunctionname>
+  <onclickeventjavascriptparameters>[{"type":5}]</onclickeventjavascriptparameters>
+  <onclickeventjavascriptwebresourceid>
+    <webresourceid>6f3936e7-32a8-f111-b8de-70a8a5b02d28</webresourceid>
+  </onclickeventjavascriptwebresourceid>
+  <onclickeventtype>2</onclickeventtype>
+  <origin>0</origin>
+  <sequence>62562511.8750000000</sequence>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+  <type>0</type>
+  <visibilitytype>0</visibilitytype>
+</appaction>
