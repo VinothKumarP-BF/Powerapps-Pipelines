@@ -7,46 +7,47 @@ on:
         required: true
         type: string
         default: "0.0.0.0"
- 
+
 env:
   PAC_CLI_VERSION: "2.10.1"
   SOURCE_BRANCH: Managed_Solutions
- 
+
 permissions:
   contents: read
- 
+
 jobs:
   import-solutions:
-    runs-on: windows-latest
-    environment: DEV2
+    runs-on: ubuntu-latest
+
     steps:
       - name: Checkout Managed Solutions Branch
         uses: actions/checkout@v4
         with:
           ref: ${{ env.SOURCE_BRANCH }}
- 
+
       - name: Checkout YAML Branch
         uses: actions/checkout@v4
         with:
           ref: yaml
           path: yaml-config
- 
+
       - name: Install PAC CLI
         run: |
           dotnet tool update --global Microsoft.PowerApps.CLI.Tool --version $PAC_CLI_VERSION || \
           dotnet tool install --global Microsoft.PowerApps.CLI.Tool --version $PAC_CLI_VERSION
-          echo "$HOME/.dotnet/tools" >> $GITHUB_PATH
  
-      - name: Authenticate Test
+          echo "$HOME/.dotnet/tools" >> $GITHUB_PATH
+
+      - name: Authenticate Dev2
         run: |
           export PATH="$PATH:$HOME/.dotnet/tools"
- 
+
           pac auth create \
             --url "${{ secrets.DEV2_ENV_URL }}" \
             --applicationId "${{ secrets.CLIENT_ID }}" \
             --clientSecret "${{ secrets.CLIENT_SECRET }}" \
             --tenant "${{ secrets.TENANT_ID }}"
- 
+
       - name: Set Release Folder
         run: |
           echo "RELEASE_FOLDER=Releases/v${{ github.event.inputs.release_version }}" >> $GITHUB_ENV
