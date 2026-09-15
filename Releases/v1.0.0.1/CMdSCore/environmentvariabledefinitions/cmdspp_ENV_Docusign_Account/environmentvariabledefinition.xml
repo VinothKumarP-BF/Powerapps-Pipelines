@@ -1,0 +1,11 @@
+<environmentvariabledefinition schemaname="cmdspp_ENV_Docusign_Account">
+  <defaultvalue>{"accountId":"49475051"}</defaultvalue>
+  <displayname default="ENV_Docusign_Account">
+    <label description="ENV_Docusign_Account" languagecode="1033" />
+  </displayname>
+  <introducedversion>1.8.8.1</introducedversion>
+  <iscustomizable>1</iscustomizable>
+  <isrequired>0</isrequired>
+  <secretstore>0</secretstore>
+  <type>100000003</type>
+</environmentvariabledefinition>

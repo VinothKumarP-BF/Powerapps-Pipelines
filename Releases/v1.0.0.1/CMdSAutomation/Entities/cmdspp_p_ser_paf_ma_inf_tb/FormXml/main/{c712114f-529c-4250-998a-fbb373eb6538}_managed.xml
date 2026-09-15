@@ -1,0 +1,139 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<forms xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <systemform>
+    <formid>{c712114f-529c-4250-998a-fbb373eb6538}</formid>
+    <IntroducedVersion>1.0</IntroducedVersion>
+    <FormPresentation>1</FormPresentation>
+    <FormActivationState>1</FormActivationState>
+    <form headerdensity="HighWithControls">
+      <tabs>
+        <tab verticallayout="true" id="{d036e73c-30fb-4e83-bca0-1f20b462f03f}" IsUserDefined="1" name="general">
+          <labels>
+            <label description="General" languagecode="1033" />
+          </labels>
+          <columns>
+            <column width="100%">
+              <sections>
+                <section showlabel="false" showbar="false" IsUserDefined="0" id="{9f967cc7-ae90-4d29-88bf-c4918d5abe6c}" columns="11" celllabelposition="Top" name="genaral">
+                  <labels>
+                    <label description="General" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{f4366bb1-1503-495c-95fd-152c12f0a638}" showlabel="false" availableforphone="false" visible="false" locklevel="1">
+                        <labels>
+                          <label description="ID" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_p_ser_paf_ma_inf_tb_sk" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="cmdspp_p_ser_paf_ma_inf_tb_sk" />
+                      </cell>
+                      <cell id="{ee6e0ad3-a600-41d4-8f27-2a143c6e377d}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Fax" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_p_ser_fax" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="cmdspp_p_ser_fax" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{098151ee-5ab8-496c-bc80-804925ffa93f}" showlabel="false" availableforphone="false" visible="false" locklevel="1">
+                        <labels>
+                          <label description="Owner" languagecode="1033" />
+                        </labels>
+                        <control id="ownerid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="ownerid" />
+                      </cell>
+                      <cell locklevel="0" id="{ae28d388-9444-4550-87fd-eb85e55c59c3}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{9aaed6cc-8492-43b6-84a1-fb50d0b8fa30}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Phone" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_p_ser_phone" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="cmdspp_p_ser_phone" disabled="false" />
+                      </cell>
+                      <cell locklevel="0" id="{87a2cf73-a0e2-463d-911b-6f1714184c94}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+          </columns>
+        </tab>
+      </tabs>
+      <header id="{0095a9c7-e921-43b1-9111-51a65bf9696c}" celllabelposition="Top" columns="111" labelwidth="115" celllabelalignment="Left">
+        <rows>
+          <row>
+            <cell id="{6fd9d434-a392-482c-8ec6-9746145c85cb}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{c0b7cce2-087f-41c4-be3a-6252ce4ef77c}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{186f0183-3303-4e4b-9bb0-2ad4688721a5}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+          </row>
+        </rows>
+      </header>
+      <footer id="{ad9ae60b-5b89-4250-b52c-55ad0226a950}" celllabelposition="Top" columns="111" labelwidth="115" celllabelalignment="Left">
+        <rows>
+          <row>
+            <cell id="{3a1125e1-620a-46f8-87d5-c720f06de31c}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{ac98bbc8-5720-4c5d-a5c1-0779d5b611b8}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{d66987c1-4187-4cb0-8623-7ca991f39560}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+          </row>
+        </rows>
+      </footer>
+      <DisplayConditions Order="0" FallbackForm="true">
+        <Everyone />
+      </DisplayConditions>
+      <formLibraries>
+        <Library name="cmdspp_screening_web_res" libraryUniqueId="{e5a32fdb-0a50-4689-9e98-50832f38925a}" />
+      </formLibraries>
+      <events>
+        <event name="onchange" application="false" active="false" attribute="cmdspp_p_ser_phone">
+          <Handlers>
+            <Handler functionName="validateField" libraryName="cmdspp_screening_web_res" handlerUniqueId="{3436ed36-51cd-4e31-8850-5a725e09553c}" enabled="true" parameters="&quot;cmdspp_p_ser_phone&quot;, &quot;pattern&quot;, &quot;^[0-9]{10}$&quot;, &quot;Please enter a valid 10-digit phone number.&quot;" passExecutionContext="true" />
+          </Handlers>
+        </event>
+        <event name="onchange" application="false" active="false" attribute="cmdspp_p_ser_fax">
+          <Handlers>
+            <Handler functionName="validateField" libraryName="cmdspp_screening_web_res" handlerUniqueId="{b120b6e7-f91e-46a9-9eba-aad99208dcea}" enabled="true" parameters="&quot;cmdspp_p_ser_fax&quot;, &quot;pattern&quot;, &quot;^[0-9]{10}$&quot;, &quot;Please enter a valid 10-digit fax number.&quot;" passExecutionContext="true" />
+          </Handlers>
+        </event>
+      </events>
+    </form>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <LocalizedNames>
+      <LocalizedName description="Information" languagecode="1033" />
+    </LocalizedNames>
+    <Descriptions>
+      <Description description="A form for this entity." languagecode="1033" />
+    </Descriptions>
+  </systemform>
+</forms>

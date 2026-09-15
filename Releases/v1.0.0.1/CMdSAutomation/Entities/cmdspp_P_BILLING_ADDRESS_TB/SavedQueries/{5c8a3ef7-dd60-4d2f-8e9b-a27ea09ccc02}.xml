@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>0</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>1</isdefault>
+    <savedqueryid>{5c8a3ef7-dd60-4d2f-8e9b-a27ea09ccc02}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="cmdspp_newcolumn" select="1" icon="1" preview="1">
+        <row name="result" id="cmdspp_p_billing_address_tbid">
+          <cell name="cmdspp_p_ba_building" width="121" />
+          <cell name="cmdspp_p_ba_state_cd" width="121" />
+          <cell name="cmdspp_p_ba_street_address" width="154" />
+          <cell name="cmdspp_p_ba_city_cd" width="116" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>0</querytype>
+    <fetchxml>
+      <fetch version="1.0" mapping="logical">
+        <entity name="cmdspp_p_billing_address_tb">
+          <attribute name="cmdspp_p_billing_address_tbid" />
+          <attribute name="createdon" />
+          <filter type="and">
+            <condition attribute="statecode" operator="eq" value="0" />
+          </filter>
+          <attribute name="cmdspp_p_ba_building" />
+          <attribute name="cmdspp_p_ba_state_cd" />
+          <attribute name="cmdspp_p_ba_street_address" />
+          <attribute name="cmdspp_p_ba_city_cd" />
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.0</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Active P_BILLING_ADDRESS_TBS" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>

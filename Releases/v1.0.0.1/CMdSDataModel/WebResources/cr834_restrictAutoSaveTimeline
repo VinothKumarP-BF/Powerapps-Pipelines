@@ -1,0 +1,11 @@
+var CaseNoteForm = {};
+
+alert("Library Loaded");
+
+window.addEventListener("beforeunload", function (e) {
+    e.preventDefault();
+    e.returnValue = "";
+});
+CaseNoteForm.preventNavigationSave = function (executionContext) {
+    alert("OnSave Fired");
+};

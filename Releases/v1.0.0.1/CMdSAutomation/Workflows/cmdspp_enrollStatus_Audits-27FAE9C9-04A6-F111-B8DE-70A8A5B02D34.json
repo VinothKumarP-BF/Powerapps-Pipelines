@@ -1,0 +1,126 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps_1": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "cmdspp_CR_Dataverse_Core_DEV"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "manual": {
+          "metadata": {
+            "operationMetadataId": "e9faf413-48ef-4130-b4af-d94fb21c5783"
+          },
+          "type": "Request",
+          "kind": "Http",
+          "inputs": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "action": {
+                  "type": "string"
+                },
+                "auditList": {
+                  "type": "object",
+                  "properties": {
+                    "sysid": {
+                      "type": "string"
+                    },
+                    "inquiry_desc": {
+                      "type": "string"
+                    },
+                    "inquiry_status": {
+                      "type": "string"
+                    },
+                    "modifiedBy": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            },
+            "triggerAuthenticationType": "All"
+          }
+        }
+      },
+      "actions": {
+        "Switch": {
+          "runAfter": {},
+          "cases": {
+            "Case": {
+              "case": "create",
+              "actions": {
+                "Add_a_new_row": {
+                  "runAfter": {},
+                  "metadata": {
+                    "operationMetadataId": "3e685945-0d6f-41e3-b8a1-87492bb1cb20"
+                  },
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "host": {
+                      "connectionName": "shared_commondataserviceforapps_1",
+                      "operationId": "CreateRecord",
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                    },
+                    "parameters": {
+                      "entityName": "cmdspp_p_enrol_status_inquiry_tbs",
+                      "item/cmdspp_modified_by_user@odata.bind": "/cmdspp_g_usr_dtls_tbs@{triggerBody()?['auditList']?['modifiedBy']}",
+                      "item/cmdspp_p_inquiry_desc": "@triggerBody()?['auditList']?['inquiry_desc']",
+                      "item/cmdspp_p_inquiry_status": "@triggerBody()?['auditList']?['inquiry_status']",
+                      "item/cmdspp_p_sys_id_fk@odata.bind": "/cmdspp_p_dtl_tbs@{triggerBody()?['auditList']?['sysid']}"
+                    },
+                    "authentication": "@parameters('$authentication')"
+                  }
+                },
+                "Response": {
+                  "runAfter": {
+                    "Add_a_new_row": [
+                      "Succeeded"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "87d52bc4-4694-43a3-bfc8-21570bc378d4"
+                  },
+                  "type": "Response",
+                  "kind": "Http",
+                  "inputs": {
+                    "statusCode": 200
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "actions": {}
+          },
+          "expression": "@triggerBody()?['action']",
+          "metadata": {
+            "operationMetadataId": "e4c78109-c169-4757-9cea-aeca288c2458"
+          },
+          "type": "Switch"
+        }
+      },
+      "outputs": {}
+    },
+    "templateName": ""
+  },
+  "schemaVersion": "1.0.0.0"
+}

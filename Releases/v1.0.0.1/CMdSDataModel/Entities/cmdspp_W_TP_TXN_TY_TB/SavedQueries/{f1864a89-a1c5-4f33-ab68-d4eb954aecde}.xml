@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>0</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>1</isdefault>
+    <savedqueryid>{f1864a89-a1c5-4f33-ab68-d4eb954aecde}</savedqueryid>
+    <layoutxml>
+      <grid name="cmdspp_w_tp_txn_ty_tbs" jump="cmdspp_w_tp_txn_ty_seq_num" select="1" icon="1" preview="1">
+        <row name="cmdspp_w_tp_txn_ty_tb" id="cmdspp_w_tp_txn_ty_tbid">
+          <cell name="cmdspp_w_tp_txn_ty_seq_num" width="300" />
+          <cell name="createdon" width="125" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>2</querytype>
+    <fetchxml>
+      <fetch version="1.0" mapping="logical">
+        <entity name="cmdspp_w_tp_txn_ty_tb">
+          <attribute name="cmdspp_w_tp_txn_ty_tbid" />
+          <attribute name="cmdspp_w_tp_txn_ty_seq_num" />
+          <attribute name="createdon" />
+          <order attribute="cmdspp_w_tp_txn_ty_seq_num" descending="false" />
+          <filter type="and">
+            <condition attribute="statecode" operator="eq" value="0" />
+          </filter>
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.0</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="W_TP_TXN_TY_TB Associated View" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>

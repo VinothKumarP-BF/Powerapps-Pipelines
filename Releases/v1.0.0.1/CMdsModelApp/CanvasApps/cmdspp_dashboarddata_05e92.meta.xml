@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CanvasApp xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Name>cmdspp_dashboarddata_05e92</Name>
+  <AppVersion>2026-09-08T06:04:41Z</AppVersion>
+  <Status>Ready</Status>
+  <CreatedByClientVersion>3.26083.7.0</CreatedByClientVersion>
+  <MinClientVersion>3.26083.7.0</MinClientVersion>
+  <Tags>{"primaryDeviceWidth":"1431","primaryDeviceHeight":"665","supportsPortrait":"true","supportsLandscape":"true","primaryFormFactor":"Tablet","showStatusBar":"false","publisherVersion":"3.26083.7","minimumRequiredApiVersion":"2.2.0","hasComponent":"false","hasUnlockedComponent":"false","isUnifiedRootApp":"false","m365CopilotSettingValue":"0","sienaVersion":"20260904T120823Z-3.26083.7.0"}</Tags>
+  <IsCdsUpgraded>0</IsCdsUpgraded>
+  <GalleryItemId xsi:nil="true"></GalleryItemId>
+  <BackgroundColor>RGBA(0,176,240,1)</BackgroundColor>
+  <DisplayName>Dashboarddata</DisplayName>
+  <Description>Updated with mobile resposive</Description>
+  <CommitMessage></CommitMessage>
+  <Publisher></Publisher>
+  <AuthorizationReferences>[]</AuthorizationReferences>
+  <ConnectionReferences>{}</ConnectionReferences>
+  <DatabaseReferences>{"default.cds":{"databaseDetails":{"referenceType":"Environmental","environmentName":"default.cds","overrideValues":{"status":"NotSpecified","environmentVariableName":""}},"dataSources":{"P_DTL_TBS":{"entitySetName":"cmdspp_p_dtl_tbs","logicalName":"cmdspp_p_dtl_tb"},"pc_dashboard_cards":{"entitySetName":"cmdspp_pc_dashboard_cardses","logicalName":"cmdspp_pc_dashboard_cards"},"P_IDT_INF_DTLS":{"entitySetName":"cmdspp_p_idt_inf_dtls","logicalName":"cmdspp_p_idt_inf_dtl"},"P_APPL_SCENARIO_TBS":{"entitySetName":"cmdspp_p_appl_scenario_tbs","logicalName":"cmdspp_p_appl_scenario_tb"},"P_REQ_DOC_TBS":{"entitySetName":"cmdspp_p_req_doc_tbs","logicalName":"cmdspp_p_req_doc_tb"},"PC_PVD_TYP_TBS":{"entitySetName":"cmdspp_pc_pvd_typ_tbs","logicalName":"cmdspp_pc_pvd_typ_tb"},"PC_ENROL_TYP_TBS":{"entitySetName":"cmdspp_pc_enrol_typ_tbs","logicalName":"cmdspp_pc_enrol_typ_tb"}}}}</DatabaseReferences>
+  <AppComponents>[]</AppComponents>
+  <AppComponentDependencies>[]</AppComponentDependencies>
+  <CanConsumeAppPass>1</CanConsumeAppPass>
+  <CanvasAppType>2</CanvasAppType>
+  <BypassConsent>0</BypassConsent>
+  <EmbeddedApp xsi:nil="true"></EmbeddedApp>
+  <IntroducedVersion>1.0</IntroducedVersion>
+  <CdsDependencies>{"cdsdependencies":[{"componenttype":1,"logicalname":"cmdspp_p_dtl_tb"},{"componenttype":1,"logicalname":"cmdspp_pc_dashboard_cards"},{"componenttype":1,"logicalname":"cmdspp_p_idt_inf_dtl"},{"componenttype":1,"logicalname":"cmdspp_p_appl_scenario_tb"},{"componenttype":1,"logicalname":"cmdspp_p_req_doc_tb"},{"componenttype":1,"logicalname":"cmdspp_pc_pvd_typ_tb"},{"componenttype":1,"logicalname":"cmdspp_pc_enrol_typ_tb"}]}</CdsDependencies>
+  <IsCustomizable>1</IsCustomizable>
+  <BackgroundImageUri>/CanvasApps/cmdspp_dashboarddata_05e92_BackgroundImageUri</BackgroundImageUri>
+  <DocumentUri>/CanvasApps/cmdspp_dashboarddata_05e92_DocumentUri.msapp</DocumentUri>
+  <AdditionalUris>
+    <AdditionalUri>/CanvasApps/cmdspp_dashboarddata_05e92_AdditionalUris0_identity.json</AdditionalUri>
+  </AdditionalUris>
+</CanvasApp>

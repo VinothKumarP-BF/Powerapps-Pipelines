@@ -1,0 +1,352 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps_1": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "cmdspp_CR_Dataverse_Core_DEV"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "manual": {
+          "metadata": {
+            "operationMetadataId": "27a47008-39c1-4224-a766-7b722761d23d"
+          },
+          "type": "Request",
+          "kind": "Button",
+          "inputs": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "text": {
+                  "title": "ApplicationId",
+                  "type": "string",
+                  "x-ms-dynamically-added": true,
+                  "description": "Please enter your input",
+                  "x-ms-content-hint": "TEXT"
+                }
+              },
+              "required": [
+                "text"
+              ]
+            }
+          }
+        }
+      },
+      "actions": {
+        "List_rows": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "fe575a6d-0d5e-4f1d-91e1-3c919d133e2a"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps_1",
+              "operationId": "ListRecords",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "cmdspp_p_appl_scenario_tbs",
+              "$filter": "_cmdspp_p_appl_id_fk_value eq @{triggerBody()['text']}",
+              "$top": 1
+            },
+            "authentication": {
+              "type": "Raw",
+              "value": "@json(decodeBase64(triggerOutputs().headers['X-MS-APIM-Tokens']))['$ConnectionKey']"
+            }
+          }
+        },
+        "ScenarioRecord": {
+          "runAfter": {
+            "List_rows": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "84a5d8bf-a209-4074-a5a2-b148dd073e27"
+          },
+          "type": "Compose",
+          "inputs": "@first(outputs('List_rows')?['body/value'])"
+        },
+        "IsPendingExternalVerification": {
+          "runAfter": {
+            "ScenarioRecord": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "6d7f0840-4828-46bf-a52e-0b9993028141"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "IsPendingExternalVerification",
+                "type": "boolean",
+                "value": "@and(\r\n    not(\r\n        equals(\r\n            outputs('ScenarioRecord')?['cmdspp_overallscreeningstatus'],\r\n            'Completed'\r\n        )\r\n    ),\r\n    or(\r\n        not(equals(outputs('ScenarioRecord')?['cmdspp_oigleiestatus'],'Completed')),\r\n        not(equals(outputs('ScenarioRecord')?['cmdspp_samexclusionsstatus'],'Completed')),\r\n        not(equals(outputs('ScenarioRecord')?['cmdspp_nppesstatus'],'Completed')),\r\n        not(equals(outputs('ScenarioRecord')?['cmdspp_irstinmatchstatus'],'Completed')),\r\n        not(equals(outputs('ScenarioRecord')?['cmdspp_deastatus'],'Completed')),\r\n        not(equals(outputs('ScenarioRecord')?['cmdspp_cliastatus'],'Completed')),\r\n        not(equals(outputs('ScenarioRecord')?['cmdspp_statelicensingstatus'],'Completed')),\r\n        not(equals(outputs('ScenarioRecord')?['cmdspp_pecosstatus'],'Completed'))\r\n    )\r\n)"
+              }
+            ]
+          }
+        },
+        "IsScreeningException": {
+          "runAfter": {
+            "IsPendingExternalVerification": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "3ab256b8-4e65-4cb4-b701-7638741c887c"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "IsScreeningException",
+                "type": "boolean",
+                "value": "@or(\r\n    equals(\r\n        outputs('ScenarioRecord')?['cmdspp_nppestaxonomymatchflag'],\r\n        'FALSE'\r\n    ),\r\n    equals(\r\n        outputs('ScenarioRecord')?['cmdspp_irstinmatchflag'],\r\n        'FALSE'\r\n    ),\r\n    equals(\r\n        outputs('ScenarioRecord')?['cmdspp_irstinmatchnameflag'],\r\n        'FALSE'\r\n    ),\r\n    equals(\r\n        outputs('ScenarioRecord')?['cmdspp_statelicensingdisciplinaryaction'],\r\n        'TRUE'\r\n    ),\r\n    equals(\r\n        outputs('ScenarioRecord')?['cmdspp_dearegistrationstatus'],\r\n        'Invalid'\r\n    ),\r\n    equals(\r\n        outputs('ScenarioRecord')?['cmdspp_cliacertificationstatus'],\r\n        'Expired'\r\n    ),\r\n    equals(\r\n        outputs('ScenarioRecord')?['cmdspp_cliacertificationstatus'],\r\n        'Invalid'\r\n    )\r\n)"
+              }
+            ]
+          }
+        },
+        "IsProgramIntegrity": {
+          "runAfter": {
+            "IsScreeningException": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "1a2134aa-6b9c-44c1-8733-8877d3eb96a8"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "IsProgramIntegrity",
+                "type": "boolean",
+                "value": "@or(\r\n    equals(\r\n        outputs('ScenarioRecord')?['cmdspp_oigleiematchflag'],\r\n        'TRUE'\r\n    ),\r\n    equals(\r\n        outputs('ScenarioRecord')?['cmdspp_samexclusionsmatchflag'],\r\n        'TRUE'\r\n    ),\r\n    equals(\r\n        outputs('ScenarioRecord')?['cmdspp_vendorsanctionmatchflag'],\r\n        'TRUE'\r\n    ),\r\n    equals(\r\n        outputs('ScenarioRecord')?['cmdspp_vendorwatchlistflag'],\r\n        'TRUE'\r\n    ),\r\n    equals(\r\n        outputs('ScenarioRecord')?['cmdspp_vendoradversemediaflag'],\r\n        'TRUE'\r\n    ),\r\n    equals(\r\n        outputs('ScenarioRecord')?['cmdspp_criminaldisclosureflag'],\r\n        'TRUE'\r\n    ),\r\n    equals(\r\n        outputs('ScenarioRecord')?['cmdspp_sharedownershipnetworkflag'],\r\n        'TRUE'\r\n    ),\r\n    equals(\r\n        outputs('ScenarioRecord')?['cmdspp_complexownershipflag'],\r\n        'TRUE'\r\n    ),\r\n    equals(\r\n        outputs('ScenarioRecord')?['cmdspp_ownershipriskflag'],\r\n        'TRUE'\r\n    )\r\n)"
+              }
+            ]
+          }
+        },
+        "IsSupervisorReview": {
+          "runAfter": {
+            "IsProgramIntegrity": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "7e6988e8-f646-42bb-a11e-0f32fe73c1a8"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "IsSupervisorReview",
+                "type": "boolean",
+                "value": "@or(\r\n    equals(\r\n        outputs('ScenarioRecord')?['cmdspp_riskcategory'],\r\n        'Critical'\r\n    ),\r\n    equals(\r\n        outputs('ScenarioRecord')?['cmdspp_recommendation'],\r\n        'Manual Review'\r\n    ),\r\n    equals(\r\n        outputs('ScenarioRecord')?['cmdspp_p_override'],\r\n        true\r\n    )\r\n)\r\n"
+              }
+            ]
+          }
+        },
+        "Compose": {
+          "runAfter": {
+            "IsSupervisorReview": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "9363d660-1f28-4573-9b2e-b82860e0e4ee"
+          },
+          "type": "Compose",
+          "inputs": "@if(\r\n    variables('IsPendingExternalVerification'),\r\n    'Pending External Verification',\r\n    if(\r\n        variables('IsScreeningException'),\r\n        'Screening Exceptions',\r\n        if(\r\n            variables('IsProgramIntegrity'),\r\n            'Program Integrity',\r\n            if(\r\n                variables('IsSupervisorReview'),\r\n                'Supervisor Review',\r\n                ''\r\n            )\r\n        )\r\n    )\r\n)"
+        },
+        "FinalQueueStatus": {
+          "runAfter": {
+            "Compose": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "90dbf6cd-0816-4020-b6f7-e9aeb85ea807"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "FinalQueueStatus",
+                "type": "string"
+              }
+            ]
+          }
+        },
+        "Set_variable": {
+          "runAfter": {
+            "FinalQueueStatus": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "5bd0cb17-f48c-4f9a-8e60-2aa7d1e98a12"
+          },
+          "type": "SetVariable",
+          "inputs": {
+            "name": "FinalQueueStatus",
+            "value": "@{if(\r\n    variables('IsPendingExternalVerification'),\r\n    'Pending External Verification',\r\n    if(\r\n        variables('IsScreeningException'),\r\n        'Screening Exceptions',\r\n        if(\r\n            variables('IsProgramIntegrity'),\r\n            'Program Integrity',\r\n            if(\r\n                variables('IsSupervisorReview'),\r\n                'Supervisor Review',\r\n                ''\r\n            )\r\n        )\r\n    )\r\n)}"
+          }
+        },
+        "Condition": {
+          "actions": {
+            "Update_a_row": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "8e3b7099-f8ad-41d3-8ea4-d1494f39da46"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps_1",
+                  "operationId": "UpdateOnlyRecord",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "cmdspp_p_dtl_tbs",
+                  "recordId": "@triggerBody()['text']",
+                  "item/cmdspp_p_queue_status": "@variables('FinalQueueStatus')"
+                },
+                "authentication": {
+                  "type": "Raw",
+                  "value": "@json(decodeBase64(triggerOutputs().headers['X-MS-APIM-Tokens']))['$ConnectionKey']"
+                }
+              }
+            },
+            "Select": {
+              "runAfter": {
+                "Update_a_row": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "b07474f5-1b0d-4565-8a74-79b27f4d4a6a"
+              },
+              "type": "Select",
+              "inputs": {
+                "from": "@outputs('List_rows')?['body/value']",
+                "select": {
+                  "cmdspp_p_clia_screening_status": "@item()?['cmdspp_p_clia_screening_status']",
+                  "cmdspp_p_dea_screening_status": "@item()?['cmdspp_p_dea_screening_status']",
+                  "cmdspp_p_license_screening_status": "@item()?['cmdspp_p_license_screening_status']",
+                  "cmdspp_p_oigleie_screening_status": "@item()?['cmdspp_p_oigleie_screening_status']",
+                  "cmdspp_p_nppes_screening_status": "@item()?['cmdspp_p_nppes_screening_status']",
+                  "cmdspp_p_onership_screening_status": "@item()?['cmdspp_p_onership_screening_status']",
+                  "cmdspp_p_pecos_screening_status": "@item()?['cmdspp_p_pecos_screening_status']",
+                  "cmdspp_p_sam_exclu_screening_status": "@item()?['cmdspp_p_sam_exclu_screening_status']",
+                  "cmdspp_p_tin_screening_status": "@item()?['cmdspp_p_tin_screening_status']",
+                  "cmdspp_riskcategory": "@item()?['cmdspp_riskcategory']",
+                  "cmdspp_confidencescore": "@item()?['cmdspp_confidencescore']"
+                }
+              }
+            },
+            "Compose_3": {
+              "runAfter": {
+                "Select": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "f79cc2af-3e87-40cc-a300-5e1685f2e53e"
+              },
+              "type": "Compose",
+              "inputs": "@body('Select')"
+            },
+            "Run_a_Child_Flow": {
+              "runAfter": {
+                "Compose_3": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "773becca-f972-439a-b23f-67f97e042805"
+              },
+              "type": "Workflow",
+              "inputs": {
+                "host": {
+                  "workflowReferenceName": "0fbc6b50-1fa8-f111-b8de-70a8a5b02d34"
+                },
+                "body": {
+                  "text": "create",
+                  "text_1": "@concat('/cmdspp_p_dtl_tbs(',triggerBody()?['text'],')')",
+                  "text_2": "@concat(\r\n  'Confidence score - ',\r\n  string(outputs('Select')?['body'][0]?['cmdspp_confidencescore']),\r\n  ' with ',\r\n  outputs('Select')?['body'][0]?['cmdspp_riskcategory'],\r\n  ' Risk.',\r\n  if(\r\n    greater(\r\n      length(\r\n        trim(\r\n          concat(\r\n            if(not(equals(outputs('Select')?['body'][0]?['cmdspp_p_oigleie_screening_status'], 'No Federal Exclusions Found')), 'OIG/LEIE, ', ''),\r\n            if(not(equals(outputs('Select')?['body'][0]?['cmdspp_p_sam_exclu_screening_status'], 'No Active Exclusion Found')), 'SAM, ', ''),\r\n            if(not(equals(outputs('Select')?['body'][0]?['cmdspp_p_tin_screening_status'], 'Legal Name and TIN/SSN Matched')), 'IRS/TIN, ', ''),\r\n            if(not(equals(outputs('Select')?['body'][0]?['cmdspp_p_nppes_screening_status'], 'NPI Active')), 'NPI / Taxonomy, ', ''),\r\n            if(not(equals(outputs('Select')?['body'][0]?['cmdspp_p_pecos_screening_status'], 'Medicare Enrollment Approved')), 'PECOS, ', ''),\r\n            if(not(startsWith(coalesce(outputs('Select')?['body'][0]?['cmdspp_p_clia_screening_status'], ''), 'Certificate Active')), 'CLIA, ', ''),\r\n            if(not(startsWith(coalesce(outputs('Select')?['body'][0]?['cmdspp_p_dea_screening_status'], ''), 'Registration Valid')), 'DEA, ', ''),\r\n            if(not(startsWith(coalesce(outputs('Select')?['body'][0]?['cmdspp_p_license_screening_status'], ''), 'License Active')), 'State License, ', ''),\r\n            if(not(equals(outputs('Select')?['body'][0]?['cmdspp_p_onership_screening_status'], 'Ownership valid')), 'Ownership, ', '')\r\n          )\r\n        )\r\n      ),\r\n      0\r\n    ),\r\n    concat(\r\n      ' Screening Exceptions Found for ',\r\n      substring(\r\n        trim(\r\n          concat(\r\n            if(not(equals(outputs('Select')?['body'][0]?['cmdspp_p_oigleie_screening_status'], 'No Federal Exclusions Found')), 'OIG/LEIE, ', ''),\r\n            if(not(equals(outputs('Select')?['body'][0]?['cmdspp_p_sam_exclu_screening_status'], 'No Active Exclusion Found')), 'SAM, ', ''),\r\n            if(not(equals(outputs('Select')?['body'][0]?['cmdspp_p_tin_screening_status'], 'Legal Name and TIN/SSN Matched')), 'IRS/TIN, ', ''),\r\n            if(not(equals(outputs('Select')?['body'][0]?['cmdspp_p_nppes_screening_status'], 'NPI Active')), 'NPI / Taxonomy, ', ''),\r\n            if(not(equals(outputs('Select')?['body'][0]?['cmdspp_p_pecos_screening_status'], 'Medicare Enrollment Approved')), 'PECOS, ', ''),\r\n            if(not(startsWith(coalesce(outputs('Select')?['body'][0]?['cmdspp_p_clia_screening_status'], ''), 'Certificate Active')), 'CLIA, ', ''),\r\n            if(not(startsWith(coalesce(outputs('Select')?['body'][0]?['cmdspp_p_dea_screening_status'], ''), 'Registration Valid')), 'DEA, ', ''),\r\n            if(not(startsWith(coalesce(outputs('Select')?['body'][0]?['cmdspp_p_license_screening_status'], ''), 'License Active')), 'State License, ', ''),\r\n            if(not(equals(outputs('Select')?['body'][0]?['cmdspp_p_onership_screening_status'], 'Ownership valid')), 'Ownership, ', '')\r\n          )\r\n        ),\r\n        0,\r\n        sub(\r\n          length(\r\n            trim(\r\n              concat(\r\n                if(not(equals(outputs('Select')?['body'][0]?['cmdspp_p_oigleie_screening_status'], 'No Federal Exclusions Found')), 'OIG/LEIE, ', ''),\r\n                if(not(equals(outputs('Select')?['body'][0]?['cmdspp_p_sam_exclu_screening_status'], 'No Active Exclusion Found')), 'SAM, ', ''),\r\n                if(not(equals(outputs('Select')?['body'][0]?['cmdspp_p_tin_screening_status'], 'Legal Name and TIN/SSN Matched')), 'IRS/TIN, ', ''),\r\n                if(not(equals(outputs('Select')?['body'][0]?['cmdspp_p_nppes_screening_status'], 'NPI Active')), 'NPI / Taxonomy, ', ''),\r\n                if(not(equals(outputs('Select')?['body'][0]?['cmdspp_p_pecos_screening_status'], 'Medicare Enrollment Approved')), 'PECOS, ', ''),\r\n                if(not(startsWith(coalesce(outputs('Select')?['body'][0]?['cmdspp_p_clia_screening_status'], ''), 'Certificate Active')), 'CLIA, ', ''),\r\n                if(not(startsWith(coalesce(outputs('Select')?['body'][0]?['cmdspp_p_dea_screening_status'], ''), 'Registration Valid')), 'DEA, ', ''),\r\n                if(not(startsWith(coalesce(outputs('Select')?['body'][0]?['cmdspp_p_license_screening_status'], ''), 'License Active')), 'State License, ', ''),\r\n                if(not(equals(outputs('Select')?['body'][0]?['cmdspp_p_onership_screening_status'], 'Ownership valid')), 'Ownership, ', '')\r\n              )\r\n            )\r\n          ),\r\n          1\r\n        )\r\n      ),\r\n      '.'\r\n    ),\r\n    ''\r\n  )\r\n)",
+                  "text_3": "Mannual Review Recommended\n ",
+                  "text_4": "@outputs('Update_a_row')?['body/cmdspp_p_first_nam']"
+                }
+              }
+            }
+          },
+          "runAfter": {
+            "Set_variable": [
+              "Succeeded"
+            ]
+          },
+          "expression": {
+            "equals": [
+              "@not(empty(variables('FinalQueueStatus')))",
+              true
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "03af3894-83aa-49b7-b6cb-0250dbb6d61c"
+          },
+          "type": "If"
+        },
+        "Respond_to_a_Power_App_or_flow": {
+          "runAfter": {
+            "Condition": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "7c08d6cf-3661-4591-8051-9e31f43d6c75"
+          },
+          "type": "Response",
+          "kind": "PowerApp",
+          "inputs": {
+            "statusCode": 200,
+            "body": {
+              "message": "success"
+            },
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "title": "message",
+                  "x-ms-dynamically-added": true,
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "templateName": ""
+  },
+  "schemaVersion": "1.0.0.0"
+}

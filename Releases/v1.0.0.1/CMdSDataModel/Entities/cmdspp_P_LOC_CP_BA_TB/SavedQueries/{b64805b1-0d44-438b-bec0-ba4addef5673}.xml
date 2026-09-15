@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>0</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>1</isdefault>
+    <savedqueryid>{b64805b1-0d44-438b-bec0-ba4addef5673}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="cmdspp_newcolumn" select="1" icon="1" preview="1">
+        <row name="result" id="cmdspp_p_loc_cp_ba_tbid">
+          <cell name="cmdspp_p_cp_ba_last_name" width="152" />
+          <cell name="cmdspp_p_cp_ba_first_name" width="155" />
+          <cell name="cmdspp_p_cp_ba_middle_name" width="98" />
+          <cell name="cmdspp_p_cp_ba_phone" width="129" />
+          <cell name="cmdspp_p_cp_ba_extension" width="118" />
+          <cell name="cmdspp_p_cp_ba_fax" width="113" />
+          <cell name="cmdspp_p_cp_ba_email" width="126" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>0</querytype>
+    <fetchxml>
+      <fetch version="1.0" mapping="logical">
+        <entity name="cmdspp_p_loc_cp_ba_tb">
+          <attribute name="cmdspp_p_loc_cp_ba_tbid" />
+          <attribute name="createdon" />
+          <filter type="and">
+            <condition attribute="statecode" operator="eq" value="0" />
+          </filter>
+          <attribute name="cmdspp_p_cp_ba_last_name" />
+          <attribute name="cmdspp_p_cp_ba_first_name" />
+          <attribute name="cmdspp_p_cp_ba_middle_name" />
+          <attribute name="cmdspp_p_cp_ba_phone" />
+          <attribute name="cmdspp_p_cp_ba_extension" />
+          <attribute name="cmdspp_p_cp_ba_fax" />
+          <attribute name="cmdspp_p_cp_ba_email" />
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.0</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Active P_LOC_CP_BA_TBS" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>

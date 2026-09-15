@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>0</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>1</isdefault>
+    <savedqueryid>{dccc3dfc-3cf3-4af4-9a6e-51aab1270a41}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="cmdspp_pownershipdtlsk" select="1" icon="1" preview="1">
+        <row name="result" id="cmdspp_p_ownership_dtl_tbid">
+          <cell name="cmdspp_p_is_managing_ind" width="151" />
+          <cell name="cmdspp_p_owner_org_legal_name" width="186" />
+          <cell name="cmdspp_p_owner_effective_dt" width="163" />
+          <cell name="cmdspp_p_owner_end_dt" width="135" />
+          <cell name="cmdspp_p_owner_add" width="117" />
+          <cell name="cmdspp_p_owner_city" width="117" />
+          <cell name="cmdspp_p_owner_occ_st_cd" width="152" />
+          <cell name="cmdspp_p_owner_zip_cd" width="134" />
+          <cell name="cmdspp_p_owner_fein" width="118" />
+          <cell name="cmdspp_cmdspp_p_owner_participation_type" width="252" />
+          <cell name="cmdspp_p_owner_current_medicaid_id" width="212" />
+          <cell name="cmdspp_p_owner_current_medicare_id" width="212" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>0</querytype>
+    <fetchxml>
+      <fetch version="1.0" mapping="logical" distinct="true">
+        <entity name="cmdspp_p_ownership_dtl_tb">
+          <attribute name="cmdspp_p_ownership_dtl_tbid" />
+          <attribute name="cmdspp_p_is_managing_ind" />
+          <attribute name="cmdspp_p_owner_org_legal_name" />
+          <attribute name="cmdspp_p_owner_effective_dt" />
+          <attribute name="cmdspp_p_owner_end_dt" />
+          <attribute name="cmdspp_p_owner_add" />
+          <attribute name="cmdspp_p_owner_city" />
+          <attribute name="cmdspp_p_owner_occ_st_cd" />
+          <attribute name="cmdspp_p_owner_fein" />
+          <attribute name="cmdspp_cmdspp_p_owner_participation_type" />
+          <attribute name="cmdspp_p_owner_current_medicaid_id" />
+          <attribute name="cmdspp_p_owner_current_medicare_id" />
+          <attribute name="cmdspp_p_owner_zip_cd" />
+          <filter type="and">
+            <condition attribute="statecode" operator="eq" value="0" />
+            <condition attribute="cmdspp_hadownershipind" operator="not-null" />
+            <condition attribute="cmdspp_p_is_managing_ind" operator="eq" value="0" />
+          </filter>
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.0</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Active P_OWNERSHIP_DTL_TBS" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>

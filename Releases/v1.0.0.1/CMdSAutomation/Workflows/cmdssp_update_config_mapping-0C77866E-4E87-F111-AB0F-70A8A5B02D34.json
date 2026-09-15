@@ -1,0 +1,122 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps_1": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "cmdspp_CR_Dataverse_Core_DEV"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "manual": {
+          "metadata": {
+            "operationMetadataId": "a9c1bbd1-a273-461c-b34f-3b94cedd7c6b"
+          },
+          "type": "Request",
+          "kind": "Http",
+          "inputs": {
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string"
+                  },
+                  "required": {
+                    "type": "string"
+                  },
+                  "validate": {
+                    "type": "string"
+                  },
+                  "visible": {
+                    "type": "boolean"
+                  },
+                  "name": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "id",
+                  "required",
+                  "validate",
+                  "visible",
+                  "name"
+                ]
+              }
+            },
+            "triggerAuthenticationType": "All"
+          }
+        }
+      },
+      "actions": {
+        "Response": {
+          "runAfter": {
+            "Apply_to_each": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "7eab200f-b40e-487a-959a-727709c31351"
+          },
+          "type": "Response",
+          "kind": "Http",
+          "inputs": {
+            "statusCode": 200
+          }
+        },
+        "Apply_to_each": {
+          "foreach": "@triggerBody()",
+          "actions": {
+            "Update_a_row_2": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "5b947147-d969-4487-8bf1-1f383d1d2cc2"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps_1",
+                  "operationId": "UpdateOnlyRecord",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "cmdspp_pc_enrol_typ_maps",
+                  "recordId": "@items('Apply_to_each')['id']",
+                  "item/cmdspp_p_req_ind": "@items('Apply_to_each')['required']",
+                  "item/cmdspp_p_validated_ind": "@items('Apply_to_each')['validate']",
+                  "item/cmdspp_p_visible": "@items('Apply_to_each')['visible']"
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            }
+          },
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "5ee58dce-db81-48e5-89e7-3bab6629ae36"
+          },
+          "type": "Foreach"
+        }
+      }
+    },
+    "templateName": ""
+  },
+  "schemaVersion": "1.0.0.0"
+}

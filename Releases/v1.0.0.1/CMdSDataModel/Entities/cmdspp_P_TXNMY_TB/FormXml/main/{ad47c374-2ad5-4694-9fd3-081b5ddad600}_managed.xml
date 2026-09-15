@@ -1,0 +1,152 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<forms xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <systemform>
+    <formid>{ad47c374-2ad5-4694-9fd3-081b5ddad600}</formid>
+    <IntroducedVersion>1.0</IntroducedVersion>
+    <FormPresentation>1</FormPresentation>
+    <FormActivationState>1</FormActivationState>
+    <form headerdensity="HighReadOnlyValues" shownavigationbar="false">
+      <tabs>
+        <tab verticallayout="true" id="{36d6ba6d-929c-4d6e-a37b-36d685849629}" IsUserDefined="1">
+          <labels>
+            <label description="General" languagecode="1033" />
+          </labels>
+          <columns>
+            <column width="100%">
+              <sections>
+                <section showlabel="false" showbar="false" IsUserDefined="0" id="{a942ad54-7b71-44bc-8400-0358570687c9}" visible="false">
+                  <labels>
+                    <label description="General" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{f3a878d5-e510-45bf-a6f4-d5be27a19572}">
+                        <labels>
+                          <label description="ID" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_p_txnmy_sk" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="cmdspp_p_txnmy_sk" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{06c19b0c-7b3b-4157-b156-fbfdec11a1fd}">
+                        <labels>
+                          <label description="Owner" languagecode="1033" />
+                        </labels>
+                        <control id="ownerid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="ownerid" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+                <section name="null_section_3" id="bd9f82ff-dd57-47ad-8340-b698a988b436" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Top" columns="11" labelwidth="115">
+                  <labels>
+                    <label description="Taxonomy" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell locklevel="0" id="{7653b0f6-7f9f-4398-8dc1-f698941f7b75}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                      <cell locklevel="0" id="{33129460-2055-49af-9380-13850a62db91}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{c2248bb9-cc45-47fc-bb1e-3a6ff9b84fdc}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Taxonomy" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_p_txnmy_cd" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="cmdspp_p_txnmy_cd" disabled="false">
+                          <parameters>
+                            <DefaultViewId>{A27791CC-37B2-4C38-AF2C-C3CD652C910C}</DefaultViewId>
+                            <AvailableViewIds>{A27791CC-37B2-4C38-AF2C-C3CD652C910C},{28BF0665-B4EC-4CC6-954E-A481A2C2455A},{DE4336EF-DE0D-4A33-BC9A-CA689D6655E2}</AvailableViewIds>
+                            <DisableViewPicker>true</DisableViewPicker>
+                          </parameters>
+                        </control>
+                      </cell>
+                      <cell id="{1f93ae85-bc64-485c-80cb-b39ea14c646e}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Begin Date" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_p_txnmy_beg_dt" classid="{5B773807-9FB2-42DB-97C3-7A91EFF8ADFF}" datafieldname="cmdspp_p_txnmy_beg_dt" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{dec64ea5-e890-4296-8d24-d688d850f4c6}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="End Date" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_p_txnmy_end_dt" classid="{5B773807-9FB2-42DB-97C3-7A91EFF8ADFF}" datafieldname="cmdspp_p_txnmy_end_dt" disabled="false" />
+                      </cell>
+                      <cell locklevel="0" id="{cfc6659a-dd84-4d77-84f0-70caa33f39fc}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+          </columns>
+        </tab>
+      </tabs>
+      <header id="{8701af81-6236-43e6-9b8f-281c8ddf09a6}" celllabelposition="Top" columns="111" labelwidth="115" celllabelalignment="Left">
+        <rows>
+          <row>
+            <cell id="{5c95e325-bd9e-44c9-aedf-06d22b79ea95}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{4445e80d-5473-4651-a976-4dce7ed71a82}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{ae60e0e9-9d9f-4442-af79-d734201dd9d3}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+          </row>
+        </rows>
+      </header>
+      <footer id="{354cd02a-ab3a-489b-a65d-2c29d8e94555}" celllabelposition="Top" columns="111" labelwidth="115" celllabelalignment="Left">
+        <rows>
+          <row>
+            <cell id="{0ea884d5-3b02-4d08-9eca-6497e8e65ab3}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{d403284c-3235-4503-97dc-ff3d10752ad2}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{1896d730-e86e-414a-a2af-d2b91301aa46}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+          </row>
+        </rows>
+      </footer>
+      <DisplayConditions Order="0" FallbackForm="true">
+        <Everyone />
+      </DisplayConditions>
+    </form>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <LocalizedNames>
+      <LocalizedName description="Information" languagecode="1033" />
+    </LocalizedNames>
+    <Descriptions>
+      <Description description="A form for this entity." languagecode="1033" />
+    </Descriptions>
+  </systemform>
+</forms>

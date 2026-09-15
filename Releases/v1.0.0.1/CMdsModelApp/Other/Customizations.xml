@@ -1,0 +1,176 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ImportExportXml xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" OrganizationVersion="9.2.26082.162" OrganizationSchemaType="Standard" CRMServerServiceabilityVersion="9.2.26082.00162">
+  <Entities />
+  <Roles />
+  <Workflows />
+  <FieldSecurityProfiles />
+  <Templates />
+  <EntityImageConfigs>
+    <EntityImageConfig>
+      <parententitylogicalname>cmdspp_pc_enrol_typ_tb</parententitylogicalname>
+      <primaryimageattribute>cmdspp_p_file</primaryimageattribute>
+    </EntityImageConfig>
+  </EntityImageConfigs>
+  <AttributeImageConfigs>
+    <AttributeImageConfig>
+      <attributelogicalname>cmdspp_p_icon_fld</attributelogicalname>
+      <parententitylogicalname>cmdspp_pc_enrol_typ_tb</parententitylogicalname>
+      <canstorefullimage>1</canstorefullimage>
+    </AttributeImageConfig>
+    <AttributeImageConfig>
+      <attributelogicalname>cmdspp_p_file</attributelogicalname>
+      <parententitylogicalname>cmdspp_pc_enrol_typ_tb</parententitylogicalname>
+      <canstorefullimage>1</canstorefullimage>
+    </AttributeImageConfig>
+  </AttributeImageConfigs>
+  <EntityMaps />
+  <EntityRelationships />
+  <OrganizationSettings />
+  <optionsets />
+  <WebResources />
+  <CustomControls />
+  <AppModuleSiteMaps />
+  <AppModules />
+  <EntityDataProviders />
+  <CanvasApps />
+  <appaction_appactionrule_classicrulesset>
+    <appaction_appactionrule_classicrules appactionid.uniquename="cmdspp__Mscrm.SubGrid.{!EntityLogicalName}.Activate!cmdspp_CMdSModalApp!cmdspp_p_dtl_tb!2" appactionruleid.uniquename="msdyn_Mscrm.CanWriteSelected!1">
+      <iscustomizable>1</iscustomizable>
+    </appaction_appactionrule_classicrules>
+    <appaction_appactionrule_classicrules appactionid.uniquename="cmdspp__Mscrm.SubGrid.{!EntityLogicalName}.Activate!cmdspp_CMdSModalApp!cmdspp_p_dtl_tb!2" appactionruleid.uniquename="msdyn_Mscrm.SelectedEntityHasStatecode!1">
+      <iscustomizable>1</iscustomizable>
+    </appaction_appactionrule_classicrules>
+    <appaction_appactionrule_classicrules appactionid.uniquename="cmdspp__Mscrm.SubGrid.{!EntityLogicalName}.Activate!cmdspp_CMdSModalApp!cmdspp_p_dtl_tb!2" appactionruleid.uniquename="msdyn_Mscrm.SelectionCountAtLeastOne!0">
+      <iscustomizable>1</iscustomizable>
+    </appaction_appactionrule_classicrules>
+    <appaction_appactionrule_classicrules appactionid.uniquename="cmdspp__Mscrm.SubGrid.{!EntityLogicalName}.Activate!cmdspp_CMdSModalApp!cmdspp_p_dtl_tb!2" appactionruleid.uniquename="msdyn_Mscrm.VisualizationPaneNotMaximized!0">
+      <iscustomizable>1</iscustomizable>
+    </appaction_appactionrule_classicrules>
+    <appaction_appactionrule_classicrules appactionid.uniquename="cmdspp__Mscrm.SubGrid.{!EntityLogicalName}.AddExistingStandard!cmdspp_CMdSModalApp!cmdspp_p_dtl_tb!2" appactionruleid.uniquename="msdyn_Mscrm.AddExisting!1">
+      <iscustomizable>1</iscustomizable>
+    </appaction_appactionrule_classicrules>
+    <appaction_appactionrule_classicrules appactionid.uniquename="cmdspp__Mscrm.SubGrid.{!EntityLogicalName}.AddExistingStandard!cmdspp_CMdSModalApp!cmdspp_p_dtl_tb!2" appactionruleid.uniquename="msdyn_Mscrm.AppendSelected!1">
+      <iscustomizable>1</iscustomizable>
+    </appaction_appactionrule_classicrules>
+    <appaction_appactionrule_classicrules appactionid.uniquename="cmdspp__Mscrm.SubGrid.{!EntityLogicalName}.AddExistingStandard!cmdspp_CMdSModalApp!cmdspp_p_dtl_tb!2" appactionruleid.uniquename="msdyn_Mscrm.AppendToPrimary!0">
+      <iscustomizable>1</iscustomizable>
+    </appaction_appactionrule_classicrules>
+    <appaction_appactionrule_classicrules appactionid.uniquename="cmdspp__Mscrm.SubGrid.{!EntityLogicalName}.AddExistingStandard!cmdspp_CMdSModalApp!cmdspp_p_dtl_tb!2" appactionruleid.uniquename="msdyn_Mscrm.AppendToPrimary!1">
+      <iscustomizable>1</iscustomizable>
+    </appaction_appactionrule_classicrules>
+    <appaction_appactionrule_classicrules appactionid.uniquename="cmdspp__Mscrm.SubGrid.{!EntityLogicalName}.AddExistingStandard!cmdspp_CMdSModalApp!cmdspp_p_dtl_tb!2" appactionruleid.uniquename="msdyn_Mscrm.CanWriteSelected!1">
+      <iscustomizable>1</iscustomizable>
+    </appaction_appactionrule_classicrules>
+    <appaction_appactionrule_classicrules appactionid.uniquename="cmdspp__Mscrm.SubGrid.{!EntityLogicalName}.AddExistingStandard!cmdspp_CMdSModalApp!cmdspp_p_dtl_tb!2" appactionruleid.uniquename="msdyn_Mscrm.EntityFormIsEnabled!0">
+      <iscustomizable>1</iscustomizable>
+    </appaction_appactionrule_classicrules>
+    <appaction_appactionrule_classicrules appactionid.uniquename="cmdspp__Mscrm.SubGrid.{!EntityLogicalName}.AddExistingStandard!cmdspp_CMdSModalApp!cmdspp_p_dtl_tb!2" appactionruleid.uniquename="msdyn_Mscrm.IsEntityAvailableForUserInMocaOffline!0">
+      <iscustomizable>1</iscustomizable>
+    </appaction_appactionrule_classicrules>
+    <appaction_appactionrule_classicrules appactionid.uniquename="cmdspp__Mscrm.SubGrid.{!EntityLogicalName}.AddExistingStandard!cmdspp_CMdSModalApp!cmdspp_p_dtl_tb!2" appactionruleid.uniquename="msdyn_Mscrm.IsRelationshipEnabledInMocaOffline!0">
+      <iscustomizable>1</iscustomizable>
+    </appaction_appactionrule_classicrules>
+    <appaction_appactionrule_classicrules appactionid.uniquename="cmdspp__Mscrm.SubGrid.{!EntityLogicalName}.AddExistingStandard!cmdspp_CMdSModalApp!cmdspp_p_dtl_tb!2" appactionruleid.uniquename="msdyn_Mscrm.ShowForOneToManyGrids!1">
+      <iscustomizable>1</iscustomizable>
+    </appaction_appactionrule_classicrules>
+    <appaction_appactionrule_classicrules appactionid.uniquename="cmdspp__Mscrm.SubGrid.{!EntityLogicalName}.AddNewStandard!cmdspp_CMdSModalApp!cmdspp_p_dtl_tb!2" appactionruleid.uniquename="msdyn_Mscrm.AppendSelected!1">
+      <iscustomizable>1</iscustomizable>
+    </appaction_appactionrule_classicrules>
+    <appaction_appactionrule_classicrules appactionid.uniquename="cmdspp__Mscrm.SubGrid.{!EntityLogicalName}.AddNewStandard!cmdspp_CMdSModalApp!cmdspp_p_dtl_tb!2" appactionruleid.uniquename="msdyn_Mscrm.AppendToPrimary!0">
+      <iscustomizable>1</iscustomizable>
+    </appaction_appactionrule_classicrules>
+    <appaction_appactionrule_classicrules appactionid.uniquename="cmdspp__Mscrm.SubGrid.{!EntityLogicalName}.AddNewStandard!cmdspp_CMdSModalApp!cmdspp_p_dtl_tb!2" appactionruleid.uniquename="msdyn_Mscrm.AppendToPrimary!1">
+      <iscustomizable>1</iscustomizable>
+    </appaction_appactionrule_classicrules>
+    <appaction_appactionrule_classicrules appactionid.uniquename="cmdspp__Mscrm.SubGrid.{!EntityLogicalName}.AddNewStandard!cmdspp_CMdSModalApp!cmdspp_p_dtl_tb!2" appactionruleid.uniquename="msdyn_Mscrm.CreateSelectedEntityPermission!1">
+      <iscustomizable>1</iscustomizable>
+    </appaction_appactionrule_classicrules>
+    <appaction_appactionrule_classicrules appactionid.uniquename="cmdspp__Mscrm.SubGrid.{!EntityLogicalName}.AddNewStandard!cmdspp_CMdSModalApp!cmdspp_p_dtl_tb!2" appactionruleid.uniquename="msdyn_Mscrm.EntityFormIsEnabled!0">
+      <iscustomizable>1</iscustomizable>
+    </appaction_appactionrule_classicrules>
+    <appaction_appactionrule_classicrules appactionid.uniquename="cmdspp__Mscrm.SubGrid.{!EntityLogicalName}.AddNewStandard!cmdspp_CMdSModalApp!cmdspp_p_dtl_tb!2" appactionruleid.uniquename="msdyn_Mscrm.HideAddNewForChildEntities!1">
+      <iscustomizable>1</iscustomizable>
+    </appaction_appactionrule_classicrules>
+    <appaction_appactionrule_classicrules appactionid.uniquename="cmdspp__Mscrm.SubGrid.{!EntityLogicalName}.AddNewStandard!cmdspp_CMdSModalApp!cmdspp_p_dtl_tb!2" appactionruleid.uniquename="msdyn_Mscrm.IsEntityAvailableForUserInMocaOffline!0">
+      <iscustomizable>1</iscustomizable>
+    </appaction_appactionrule_classicrules>
+    <appaction_appactionrule_classicrules appactionid.uniquename="cmdspp__Mscrm.SubGrid.{!EntityLogicalName}.AddNewStandard!cmdspp_CMdSModalApp!cmdspp_p_dtl_tb!2" appactionruleid.uniquename="msdyn_Mscrm.ShowForOneToManyGrids!1">
+      <iscustomizable>1</iscustomizable>
+    </appaction_appactionrule_classicrules>
+    <appaction_appactionrule_classicrules appactionid.uniquename="cmdspp__Mscrm.SubGrid.{!EntityLogicalName}.Deactivate!cmdspp_CMdSModalApp!cmdspp_p_dtl_tb!2" appactionruleid.uniquename="msdyn_Mscrm.CanWriteSelected!1">
+      <iscustomizable>1</iscustomizable>
+    </appaction_appactionrule_classicrules>
+    <appaction_appactionrule_classicrules appactionid.uniquename="cmdspp__Mscrm.SubGrid.{!EntityLogicalName}.Deactivate!cmdspp_CMdSModalApp!cmdspp_p_dtl_tb!2" appactionruleid.uniquename="msdyn_Mscrm.SelectedEntityHasStatecode!1">
+      <iscustomizable>1</iscustomizable>
+    </appaction_appactionrule_classicrules>
+    <appaction_appactionrule_classicrules appactionid.uniquename="cmdspp__Mscrm.SubGrid.{!EntityLogicalName}.Deactivate!cmdspp_CMdSModalApp!cmdspp_p_dtl_tb!2" appactionruleid.uniquename="msdyn_Mscrm.SelectionCountAtLeastOne!0">
+      <iscustomizable>1</iscustomizable>
+    </appaction_appactionrule_classicrules>
+    <appaction_appactionrule_classicrules appactionid.uniquename="cmdspp__Mscrm.SubGrid.{!EntityLogicalName}.Deactivate!cmdspp_CMdSModalApp!cmdspp_p_dtl_tb!2" appactionruleid.uniquename="msdyn_Mscrm.VisualizationPaneNotMaximized!0">
+      <iscustomizable>1</iscustomizable>
+    </appaction_appactionrule_classicrules>
+    <appaction_appactionrule_classicrules appactionid.uniquename="cmdspp__Mscrm.SubGrid.{!EntityLogicalName}.Delete!cmdspp_CMdSModalApp!cmdspp_p_dtl_tb!2" appactionruleid.uniquename="msdyn_Mscrm.DeleteSelectedEntityPermission!1">
+      <iscustomizable>1</iscustomizable>
+    </appaction_appactionrule_classicrules>
+    <appaction_appactionrule_classicrules appactionid.uniquename="cmdspp__Mscrm.SubGrid.{!EntityLogicalName}.Delete!cmdspp_CMdSModalApp!cmdspp_p_dtl_tb!2" appactionruleid.uniquename="msdyn_Mscrm.IsEntityAvailableForUserInMocaOffline!0">
+      <iscustomizable>1</iscustomizable>
+    </appaction_appactionrule_classicrules>
+    <appaction_appactionrule_classicrules appactionid.uniquename="cmdspp__Mscrm.SubGrid.{!EntityLogicalName}.Delete!cmdspp_CMdSModalApp!cmdspp_p_dtl_tb!2" appactionruleid.uniquename="msdyn_Mscrm.NotShowForManyToManyGrids!1">
+      <iscustomizable>1</iscustomizable>
+    </appaction_appactionrule_classicrules>
+    <appaction_appactionrule_classicrules appactionid.uniquename="cmdspp__Mscrm.SubGrid.{!EntityLogicalName}.Delete!cmdspp_CMdSModalApp!cmdspp_p_dtl_tb!2" appactionruleid.uniquename="msdyn_Mscrm.SelectionCountAtLeastOne!0">
+      <iscustomizable>1</iscustomizable>
+    </appaction_appactionrule_classicrules>
+    <appaction_appactionrule_classicrules appactionid.uniquename="cmdspp__Mscrm.SubGrid.{!EntityLogicalName}.Delete!cmdspp_CMdSModalApp!cmdspp_p_dtl_tb!2" appactionruleid.uniquename="msdyn_Mscrm.VisualizationPaneNotMaximized!0">
+      <iscustomizable>1</iscustomizable>
+    </appaction_appactionrule_classicrules>
+    <appaction_appactionrule_classicrules appactionid.uniquename="cmdspp__Mscrm.SubGrid.{!EntityLogicalName}.NewRecord!cmdspp_CMdSModalApp!cmdspp_p_dtl_tb!2" appactionruleid.uniquename="msdyn_Mscrm.CreateSelectedEntityPermission!1">
+      <iscustomizable>1</iscustomizable>
+    </appaction_appactionrule_classicrules>
+    <appaction_appactionrule_classicrules appactionid.uniquename="cmdspp__Mscrm.SubGrid.{!EntityLogicalName}.NewRecord!cmdspp_CMdSModalApp!cmdspp_p_dtl_tb!2" appactionruleid.uniquename="msdyn_Mscrm.HideAddressEntities!1">
+      <iscustomizable>1</iscustomizable>
+    </appaction_appactionrule_classicrules>
+    <appaction_appactionrule_classicrules appactionid.uniquename="cmdspp__Mscrm.SubGrid.{!EntityLogicalName}.NewRecord!cmdspp_CMdSModalApp!cmdspp_p_dtl_tb!2" appactionruleid.uniquename="msdyn_Mscrm.HideNewForChildEntities!1">
+      <iscustomizable>1</iscustomizable>
+    </appaction_appactionrule_classicrules>
+    <appaction_appactionrule_classicrules appactionid.uniquename="cmdspp__Mscrm.SubGrid.{!EntityLogicalName}.NewRecord!cmdspp_CMdSModalApp!cmdspp_p_dtl_tb!2" appactionruleid.uniquename="msdyn_Mscrm.IsEntityAvailableForUserInMocaOffline!0">
+      <iscustomizable>1</iscustomizable>
+    </appaction_appactionrule_classicrules>
+    <appaction_appactionrule_classicrules appactionid.uniquename="cmdspp__Mscrm.SubGrid.{!EntityLogicalName}.NewRecord!cmdspp_CMdSModalApp!cmdspp_p_dtl_tb!2" appactionruleid.uniquename="msdyn_Mscrm.IsNotActivityPointer!1">
+      <iscustomizable>1</iscustomizable>
+    </appaction_appactionrule_classicrules>
+    <appaction_appactionrule_classicrules appactionid.uniquename="cmdspp__Mscrm.SubGrid.{!EntityLogicalName}.NewRecord!cmdspp_CMdSModalApp!cmdspp_p_dtl_tb!2" appactionruleid.uniquename="msdyn_Mscrm.IsValidForHierarchyPageInUC!0">
+      <iscustomizable>1</iscustomizable>
+    </appaction_appactionrule_classicrules>
+    <appaction_appactionrule_classicrules appactionid.uniquename="cmdspp__Mscrm.SubGrid.{!EntityLogicalName}.NewRecord!cmdspp_CMdSModalApp!cmdspp_p_dtl_tb!2" appactionruleid.uniquename="msdyn_Mscrm.IsValidForHierarchyView!0">
+      <iscustomizable>1</iscustomizable>
+    </appaction_appactionrule_classicrules>
+    <appaction_appactionrule_classicrules appactionid.uniquename="cmdspp__Mscrm.SubGrid.{!EntityLogicalName}.NewRecord!cmdspp_CMdSModalApp!cmdspp_p_dtl_tb!2" appactionruleid.uniquename="msdyn_Mscrm.PrimaryIsNotActivityHomePageGrid!0">
+      <iscustomizable>1</iscustomizable>
+    </appaction_appactionrule_classicrules>
+    <appaction_appactionrule_classicrules appactionid.uniquename="cmdspp__Mscrm.SubGrid.{!EntityLogicalName}.NewRecord!cmdspp_CMdSModalApp!cmdspp_p_dtl_tb!2" appactionruleid.uniquename="msdyn_Mscrm.SelectedEntityIsNotBPFEntity!1">
+      <iscustomizable>1</iscustomizable>
+    </appaction_appactionrule_classicrules>
+    <appaction_appactionrule_classicrules appactionid.uniquename="cmdspp__Mscrm.SubGrid.{!EntityLogicalName}.NewRecord!cmdspp_CMdSModalApp!cmdspp_p_dtl_tb!2" appactionruleid.uniquename="msdyn_Mscrm.ShowForNonRelationshipBoundGrids!1">
+      <iscustomizable>1</iscustomizable>
+    </appaction_appactionrule_classicrules>
+    <appaction_appactionrule_classicrules appactionid.uniquename="cmdspp__Mscrm.SubGrid.{!EntityLogicalName}.Remove!cmdspp_CMdSModalApp!cmdspp_p_dtl_tb!2" appactionruleid.uniquename="msdyn_Mscrm.AppendToPrimary!0">
+      <iscustomizable>1</iscustomizable>
+    </appaction_appactionrule_classicrules>
+    <appaction_appactionrule_classicrules appactionid.uniquename="cmdspp__Mscrm.SubGrid.{!EntityLogicalName}.Remove!cmdspp_CMdSModalApp!cmdspp_p_dtl_tb!2" appactionruleid.uniquename="msdyn_Mscrm.AppendToPrimary!1">
+      <iscustomizable>1</iscustomizable>
+    </appaction_appactionrule_classicrules>
+    <appaction_appactionrule_classicrules appactionid.uniquename="cmdspp__Mscrm.SubGrid.{!EntityLogicalName}.Remove!cmdspp_CMdSModalApp!cmdspp_p_dtl_tb!2" appactionruleid.uniquename="msdyn_Mscrm.SelectionCountAtLeastOne!0">
+      <iscustomizable>1</iscustomizable>
+    </appaction_appactionrule_classicrules>
+    <appaction_appactionrule_classicrules appactionid.uniquename="cmdspp__Mscrm.SubGrid.{!EntityLogicalName}.Remove!cmdspp_CMdSModalApp!cmdspp_p_dtl_tb!2" appactionruleid.uniquename="msdyn_Mscrm.ShowForManyToManyGrids!1">
+      <iscustomizable>1</iscustomizable>
+    </appaction_appactionrule_classicrules>
+    <appaction_appactionrule_classicrules appactionid.uniquename="cmdspp__Mscrm.SubGrid.{!EntityLogicalName}.Remove!cmdspp_CMdSModalApp!cmdspp_p_dtl_tb!2" appactionruleid.uniquename="msdyn_Mscrm.VisualizationPaneNotMaximized!0">
+      <iscustomizable>1</iscustomizable>
+    </appaction_appactionrule_classicrules>
+  </appaction_appactionrule_classicrulesset>
+  <Languages>
+    <Language>1033</Language>
+  </Languages>
+</ImportExportXml>

@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>0</isdefault>
+    <savedqueryid>{500c30fe-00a5-f111-b8de-70a8a5b02328}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="cmdspp_p_idt_inf_dtl_sk" select="1" icon="1" preview="1">
+        <row name="result" id="cmdspp_p_idt_inf_dtlid">
+          <cell name="cmdspp_p_app_id_lkp" width="117" />
+          <cell name="cmdspp_p_pvd_typ_desc" width="132" />
+          <cell name="a_8bc5d41ce08c4d298cac78226be19f75.cmdspp_p_enrolment_type" width="232" />
+          <cell name="a_8bc5d41ce08c4d298cac78226be19f75.cmdspp_p_appln_status" width="234" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>0</querytype>
+    <fetchxml>
+      <fetch version="1.0" output-format="xml-platform" mapping="logical">
+        <entity name="cmdspp_p_idt_inf_dtl">
+          <attribute name="cmdspp_p_idt_inf_dtlid" />
+          <attribute name="cmdspp_p_app_id_lkp" />
+          <link-entity alias="a_8bc5d41ce08c4d298cac78226be19f75" name="cmdspp_p_dtl_tb" to="cmdspp_p_app_id_lkp" from="cmdspp_p_dtl_tbid" link-type="inner">
+            <attribute name="cmdspp_p_appln_status" />
+            <attribute name="cmdspp_p_enrolment_type" />
+            <filter type="and">
+              <condition attribute="cmdspp_p_appln_status" operator="ne" value="1" />
+            </filter>
+          </link-entity>
+          <attribute name="cmdspp_p_pvd_typ_desc" />
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.8.26.1</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Dashboard View " languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>

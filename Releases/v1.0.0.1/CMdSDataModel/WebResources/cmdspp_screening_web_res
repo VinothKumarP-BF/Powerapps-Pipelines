@@ -1,0 +1,1229 @@
+function overrideOnChange(executionContext) {
+    var formContext = executionContext.getFormContext();
+
+    var configs = [
+        {
+            override: "cmdspp_p_oigleie_ovrd",
+            reason: "cmdspp_p_oigleie_ovrd_reason",
+            file: "cmdspp_p_oigleie_ovrd_file",
+            filepath: "cmdspp_p_oigleie_ovrd_filepath"
+        },
+        {
+            override: "cmdspp_p_sam_exclu_ovrd",
+            reason: "cmdspp_p_sam_exclu_ovrd_reason",
+            file: "cmdspp_p_sam_exclu_ovrd_file",
+            filepath: "cmdspp_p_sam_exclu_ovrd_filepath"
+        },
+        {
+            override: "cmdspp_p_nppes_ovrd",
+            reason: "cmdspp_p_nppes_ovrd_reason",
+            file: "cmdspp_p_nppes_ovrd_file",
+            filepath: "cmdspp_p_nppes_ovrd_filepath"
+        },
+        {
+            override: "cmdspp_p_dea_ovrd",
+            reason: "cmdspp_p_dea_ovrd_reason",
+            file: "cmdspp_p_dea_ovrd_file",
+            filepath: "cmdspp_p_dea_ovrd_filepath"
+        },
+        {
+            override: "cmdspp_p_license_ovrd",
+            reason: "cmdspp_p_license_ovrd_reason",
+            file: "cmdspp_p_license_ovrd_file",
+            filepath: "cmdspp_p_license_ovrd_filepath"
+        },
+        {
+            override: "cmdspp_p_tin_ovrd",
+            reason: "cmdspp_p_tin_ovrd_reason",
+            file: "cmdspp_p_tin_ovrd_file",
+            filepath: "cmdspp_p_tin_ovrd_filepath"
+        },
+        {
+            override: "cmdspp_p_pecos_ovrd",
+            reason: "cmdspp_p_pecos_ovrd_reason",
+            file: "cmdspp_p_pecos_ovrd_file",
+            filepath: "cmdspp_p_pecos_ovrd_filepath"
+        },
+        {
+            override: "cmdspp_p_ownership_ovrd",
+            reason: "cmdspp_p_ownership_ovrd_reason",
+            file: "cmdspp_p_ownership_ovrd_file",
+            filepath: "cmdspp_p_ownership_ovrd_filepath"
+        },
+        {
+            override: "cmdspp_p_clia_ovrd",
+            reason: "cmdspp_p_clia_ovrd_reason",
+            file: "cmdspp_p_clia_ovrd_file",
+            filepath: "cmdspp_p_clia_ovrd_filepath"
+        }
+    ];
+
+   
+
+    configs.forEach(function (item) {
+        var overrideValue = formContext.getAttribute(item.override)?.getValue();
+        var filepathValue = formContext.getAttribute(item.filepath)?.getValue();
+
+        var reasonCtrl = formContext.getControl(item.reason);
+        var fileCtrl = formContext.getControl(item.file);
+        var filepathCtrl = formContext.getControl(item.filepath);
+
+        var show = overrideValue === true;
+        var hasFilePath = !!filepathValue;
+
+        if (reasonCtrl) {
+            reasonCtrl.setVisible(show);
+        }
+
+        if (fileCtrl) {
+            fileCtrl.setVisible(show && !hasFilePath);
+        }
+
+        if (filepathCtrl) {
+            filepathCtrl.setVisible(show && hasFilePath);
+        }
+    });
+}
+
+function extractFileName(executionContext) {
+    var formContext = executionContext.getFormContext();
+      var configs = [
+        {
+            file: "cmdspp_p_oigleie_ovrd_file",
+            filename: "cmdspp_p_oigleie_ovrd_filename"
+        },
+        {
+            file: "cmdspp_p_sam_exclu_ovrd_file",
+            filename: "cmdspp_p_sam_exclu_ovrd_filename"
+        },
+        {
+            file: "cmdspp_p_nppes_ovrd_file",
+            filename: "cmdspp_p_nppes_ovrd_filename"
+        },
+        {
+            file: "cmdspp_p_dea_ovrd_file",
+            filename: "cmdspp_p_dea_ovrd_filename"
+        },
+        {
+            file: "cmdspp_p_tin_ovrd_file",
+            filename: "cmdspp_p_tin_ovrd_filename"
+        },
+        {
+            file: "cmdspp_p_license_ovrd_file",
+            filename: "cmdspp_p_license_ovrd_filename"
+        },
+        {
+            file: "cmdspp_p_clia_ovrd_file",
+            filename: "cmdspp_p_clia_ovrd_filename"
+        },
+        {
+            file: "cmdspp_p_ownership_ovrd_file",
+            filename: "cmdspp_p_ownership_ovrd_filename"
+        },
+        {
+            file: "cmdspp_p_pecos_ovrd_file",
+            filename: "cmdspp_p_pecos_ovrd_filename"
+        }
+    ];
+
+    configs.forEach(function (item) {
+        var fileAttr = formContext.getAttribute(item.file);
+        var fileNameAttr = formContext.getAttribute(item.filename);
+
+        if (!fileNameAttr) return;
+
+        var fileVal = fileAttr ? fileAttr.getValue() : null;
+
+        if (fileVal && fileVal.fileName) {
+            fileNameAttr.setValue(fileVal.fileName);
+        } else {
+            fileNameAttr.setValue(null);
+        }
+    });
+}
+function fieldDisable(executionContext) {
+    var formContext = executionContext.getFormContext();
+     var configs = [
+        {
+            override: "cmdspp_p_oigleie_ovrd",
+            reason: "cmdspp_p_oigleie_ovrd_reason"
+        },
+        {
+            override: "cmdspp_p_sam_exclu_ovrd",
+            reason: "cmdspp_p_sam_exclu_ovrd_reason"
+        },
+        {
+            override: "cmdspp_p_nppes_ovrd",
+            reason: "cmdspp_p_nppes_ovrd_reason"
+        },
+        {
+            override: "cmdspp_p_dea_ovrd",
+            reason: "cmdspp_p_dea_ovrd_reason"
+        },
+        {
+            override: "cmdspp_p_license_ovrd",
+            reason: "cmdspp_p_license_ovrd_reason"
+        },
+        {
+            override: "cmdspp_p_tin_ovrd",
+            reason: "cmdspp_p_tin_ovrd_reason"
+        },
+        {
+            override: "cmdspp_p_pecos_ovrd",
+            reason: "cmdspp_p_pecos_ovrd_reason"
+        },
+        {
+            override: "cmdspp_p_ownership_ovrd",
+            reason: "cmdspp_p_ownership_ovrd_reason"
+        },
+        {
+            override: "cmdspp_p_clia_ovrd",
+            reason: "cmdspp_p_clia_ovrd_reason"
+        }
+    ];
+
+    configs.forEach(function (item) {
+        var overrideValue = formContext.getAttribute(item.override)?.getValue();
+
+        var reasonCtrl = formContext.getControl(item.reason);
+        var ovrCtrl = formContext.getControl(item.override);
+
+        if (reasonCtrl) {
+            reasonCtrl.setDisabled(overrideValue === true);
+        }
+
+        if (ovrCtrl) {
+            ovrCtrl.setDisabled(overrideValue === true);
+        }
+    });
+
+}
+
+function extractFileNameDoc(executionContext) {
+    var formContext = executionContext.getFormContext();
+    var fileControl = formContext.getAttribute("cmdspp_p_file"); // The actual file control
+    if (fileControl && fileControl.getValue()) {
+        var fileVal = fileControl.getValue();
+
+ 
+        if (fileVal && fileVal.fileName) {
+            formContext.getAttribute("cmdspp_p_file_nam")?.setValue(fileVal.fileName); // filename control
+        }
+    } else {   
+        formContext.getAttribute("cmdspp_p_file_nam")?.setValue(null);
+    }
+}
+
+
+function setStatusOptions(executionContext) {
+
+    var formContext = executionContext.getFormContext();
+
+    var statusControl =
+        formContext.getControl("cmdspp_p_req_doc_status");
+
+    var statusAttribute =
+        formContext.getAttribute("cmdspp_p_req_doc_status");
+
+    if (!statusControl || !statusAttribute) {
+        return;
+    }
+
+    if (formContext.ui.getFormType() === 1) {
+
+        if (statusAttribute.getValue() === null) {
+            statusAttribute.setValue(1);
+        }
+
+        statusControl.removeOption(2);
+
+        getLoggedInUserId(executionContext);
+    }
+}
+
+
+function getLoggedInUserId(executionContext) {
+
+    var formContext = executionContext.getFormContext();
+
+    var userId = Xrm.Utility.getGlobalContext().userSettings.userId;
+
+    if (userId) {
+
+        userId = userId.replace(/[{}]/g, "");
+
+        var loggedUserAttribute =
+            formContext.getAttribute("cmdspp_loggeduser");
+
+        if (loggedUserAttribute) {
+            loggedUserAttribute.setValue(userId);
+        }
+
+        return userId;
+    }
+
+    return null;
+}
+
+function getLoggedInUserName(executionContext) {
+    var formContext = executionContext.getFormContext();
+
+    var userName = Xrm.Utility.getGlobalContext().userSettings.userName;
+
+    if (userName) {
+        // Remove (External)
+        userName = userName.replace(/\s*\(.*?\)\s*/g, "");
+
+        // Remove #
+        userName = userName.replace(/#/g, "").trim();
+
+        var loggedUserAttribute = formContext.getAttribute("cmdspp_loggeduser");
+
+
+        return userName;
+    }
+
+    return null;
+}
+
+
+
+function setPIsReval5yrMultiselectVisibility(executionContext) { 
+    var formContext = executionContext.getFormContext();
+    var revalValue = formContext.getAttribute("cmdspp_p_is_reval_5yr").getValue();
+    var control = formContext.getControl("cmdspp_p_pin_reval_st_op2"); 
+    if (control) { 
+        control.setVisible(revalValue === true || revalValue === "Yes"); 
+        if(!revalValue) {
+            control.clearNotification();
+        }
+    } 
+}
+
+function setPIsMdcdOthStPrvMultiselectVisibility(executionContext) { 
+    var formContext = executionContext.getFormContext();
+    var revalValue = formContext.getAttribute("cmdspp_p_is_mdcd_prv_oth_st").getValue();
+    var control = formContext.getControl("cmdspp_p_curr_mdcd_prv_st_op2"); 
+    if (control) { 
+        control.setVisible(revalValue === true || revalValue === "Yes"); 
+        if(!revalValue) {
+            control.clearNotification();
+        }
+    } 
+}
+
+function validateField(executionContext, fieldName, validationType, validationParam, errorMessage) {
+    var formContext = executionContext.getFormContext();
+    var attribute = formContext.getAttribute(fieldName);
+
+    if (!attribute) {
+        console.warn("validateField: attribute not found -> " + fieldName);
+        return;
+    }
+
+    var control = attribute.controls.get(0);
+    var value = attribute.getValue();
+    var isValid = true;
+
+    if (value) {
+        switch (validationType) {
+            case "pattern":
+                var pattern = new RegExp(validationParam);
+                isValid = pattern.test(value);
+                break;
+
+            case "notFutureDate":
+                var today = new Date();
+                today.setHours(0, 0, 0, 0);
+                var inputDate = new Date(value);
+                inputDate.setHours(0, 0, 0, 0);
+                isValid = inputDate <= today;
+                break;
+
+            default:
+                console.warn("validateField: unknown validationType -> " + validationType);
+                isValid = true; // don't block on a misconfigured call
+        }
+    }
+
+    if (!isValid) {
+        control.setNotification(errorMessage);
+    } else {
+        control.clearNotification();
+    }
+}
+
+async function getEnvironmentVariable(envVarSchemaName) {
+    const result = await Xrm.WebApi.online.execute({
+        getMetadata: function () {
+            return {
+                boundParameter: null,
+                operationType: 1,
+                operationName: "RetrieveEnvironmentVariableValue",
+                parameterTypes: {
+                    DefinitionSchemaName: {
+                        typeName: "Edm.String",
+                        structuralProperty: 1
+                    }
+                }
+            };
+        },
+        DefinitionSchemaName: envVarSchemaName
+    });
+
+    const data = await result.json();
+    return data.Value;
+}
+
+async function getFlowURl(executionContext) {
+    var auditFlowUrl = await getEnvironmentVariable("cmdspp_ENV_Automate_Flow_Url_2");
+    return auditFlowUrl
+}
+async function onNpiChge(executionContext) {
+
+
+    var formContext = executionContext.getFormContext();
+    var npi = formContext.getAttribute("cmdspp_p_npi_id")?.getValue();
+    var control = formContext.getAttribute("cmdspp_p_npi_id").controls.get(0)
+
+
+    if (!npi) {
+        return;
+    }
+    try {
+       const envFlow = await getFlowURl()
+       const envFlowObj = JSON.parse(envFlow);
+
+       const flowUrl = envFlowObj['cmdspp_Verify_NPI_Number'];
+       //"https://68800e766659e6b2b28f47b46ad295.0f.environment.api.powerplatform.com:443/powerautomate/automations/direct/cu/00/workflows/8afee1c0c50a4df2b8e9c052bbf2a34d/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=-M6XAJQVT5SEOShLFYkZ2LERT7fXggILJOZFAD5RLso"
+        
+        const response = await fetch(flowUrl, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                npi_number: npi
+            })
+        });
+
+        const mainResult = await response.json();
+
+
+        if (mainResult.isValid) {
+             control.clearNotification();
+            const parsed = typeof mainResult.data === "string"
+                ? JSON.parse(mainResult.data)
+                : mainResult.data;
+
+            const result = parsed?.results?.[0];
+
+            if (!result) {
+                console.log("No results returned");
+                return;
+            }
+
+            const basic = result.basic || {};
+            const addressData = result.addresses?.[0] || {};
+
+            if (basic.first_name || basic.authorized_official_first_name) {
+                formContext.getAttribute("cmdspp_p_fst_nam")?.setValue(
+                    basic.first_name || basic.authorized_official_first_name
+                );
+            }
+
+            if (basic.last_name || basic.authorized_official_last_name) {
+                formContext.getAttribute("cmdspp_p_lst_nam")?.setValue(
+                    basic.last_name || basic.authorized_official_last_name
+                );
+            }
+
+
+        } else {
+            console.log("NPI not valid", npi);
+            if(control) control.setNotification("The entered NPI number is invalid or could not be verified.", "ERROR", "npi_validation");
+        }
+
+    } catch (e) {
+        console.error("npi onNpiChge error", e);
+      if(control) control.setNotification("The entered NPI number is invalid or could not be verified.", "ERROR", "npi_validation"); 
+    }
+}
+
+
+function toggleParticipationFields(
+    executionContext,
+    questionFieldName,
+    participationFieldName,
+    medicareFieldName,
+    medicaidFieldName
+) {
+    var formContext = executionContext.getFormContext();
+
+    var questionAttribute =
+        formContext.getAttribute(questionFieldName);
+
+    var participationAttribute =
+        formContext.getAttribute(participationFieldName);
+
+    var participationControl =
+        formContext.getControl(participationFieldName);
+
+    var medicareControl =
+        formContext.getControl(medicareFieldName);
+
+    var medicaidControl =
+        formContext.getControl(medicaidFieldName);
+
+    if (!questionAttribute || !participationAttribute) {
+        return;
+    }
+
+    var questionValue = questionAttribute.getValue();
+    var isYes = questionValue === true || questionValue === 1;
+
+    if (participationControl) {
+        participationControl.setVisible(isYes);
+    }
+
+    if (!isYes) {
+        if (medicareControl) {
+            medicareControl.setVisible(false);
+        }
+
+        if (medicaidControl) {
+            medicaidControl.setVisible(false);
+        }
+
+        return;
+    }
+
+    var selectedValues = participationAttribute.getValue() || [];
+
+    var showMedicare =
+        selectedValues.indexOf(908820000) !== -1;
+
+    var showMedicaid =
+        selectedValues.indexOf(908820001) !== -1;
+
+    if (medicareControl) {
+        medicareControl.setVisible(showMedicare);
+    }
+
+    if (medicaidControl) {
+        medicaidControl.setVisible(showMedicaid);
+    }
+}
+
+function lockFileIfSharePointPathExists(executionContext) {
+    var formContext = executionContext.getFormContext();
+
+    var sharePointPath = formContext.getAttribute("cmdspp_p_sharepoint_path");
+    var fileControl = formContext.getControl("cmdspp_p_file");
+
+    if (!sharePointPath) {
+        return;
+    }
+
+    if (!fileControl) {
+        return;
+    }
+
+    if (sharePointPath.getValue()) {
+        fileControl.setDisabled(true);
+    } else {
+        fileControl.setDisabled(false);
+    }
+}
+
+function validateDocumentFile(executionContext) {
+
+    var formContext = executionContext.getFormContext();
+
+    var fileAttribute =
+        formContext.getAttribute("cmdspp_p_file");
+
+    if (!fileAttribute) {
+        return;
+    }
+
+    // Clear previous error
+    formContext.ui.clearFormNotification("fileValidation");
+
+    var file = fileAttribute.getValue();
+
+    if (!file) {
+        return;
+    }
+
+    var allowedExtensions = [
+        ".jpeg",
+        ".jpg",
+        ".png",
+        ".pdf",
+        ".tiff"
+    ];
+
+    var maxFileSizeBytes =
+        10 * 1024 * 1024;
+
+    // =====================================================
+    // 1. FILE SIZE
+    // =====================================================
+
+    var fileSizeBytes =
+        Number(file.fileSize);
+
+    if (fileSizeBytes > maxFileSizeBytes) {
+
+        formContext.ui.setFormNotification(
+            "File size exceeds the maximum allowed limit of 10 MB.",
+            "ERROR",
+            "fileValidation"
+        );
+
+        return;
+    }
+
+    // =====================================================
+    // 2. FILE FORMAT
+    // =====================================================
+
+    var fileName =
+        file.fileName || "";
+
+    var lastDotIndex =
+        fileName.lastIndexOf(".");
+
+    var extension = "";
+
+    if (lastDotIndex !== -1) {
+
+        extension =
+            fileName
+                .substring(lastDotIndex)
+                .toLowerCase();
+    }
+
+    if (allowedExtensions.indexOf(extension) === -1) {
+
+        formContext.ui.setFormNotification(
+            "Invalid file format. Only supported document types can be uploaded.",
+            "ERROR",
+            "fileValidation"
+        );
+
+        return;
+    }
+
+    // Valid file
+    formContext.ui.clearFormNotification(
+        "fileValidation"
+    );
+}
+
+function validateDocumentFileOnSave(executionContext) {
+
+    var formContext = executionContext.getFormContext();
+
+    var eventArgs =
+        executionContext.getEventArgs();
+
+    var fileAttribute =
+        formContext.getAttribute("cmdspp_p_file");
+
+    if (!fileAttribute) {
+        return;
+    }
+
+    var file =
+        fileAttribute.getValue();
+
+    if (!file) {
+        return;
+    }
+
+    var allowedExtensions = [
+        ".jpeg",
+        ".jpg",
+        ".png",
+        ".pdf",
+        ".tiff"
+    ];
+
+    var maxFileSizeBytes =
+        10 * 1024 * 1024;
+
+
+    var fileSizeBytes =
+        Number(file.fileSize);
+
+    if (fileSizeBytes > maxFileSizeBytes) {
+
+        eventArgs.preventDefault();
+
+        formContext.ui.setFormNotification(
+            "File size exceeds the maximum allowed limit of 10 MB.",
+            "ERROR",
+            "fileValidation"
+        );
+
+        return;
+    }
+
+
+    var fileName =
+        file.fileName || "";
+
+    var lastDotIndex =
+        fileName.lastIndexOf(".");
+
+    var extension = "";
+
+    if (lastDotIndex !== -1) {
+
+        extension =
+            fileName
+                .substring(lastDotIndex)
+                .toLowerCase();
+    }
+
+    if (allowedExtensions.indexOf(extension) === -1) {
+
+        eventArgs.preventDefault();
+
+        formContext.ui.setFormNotification(
+            "Invalid file format. Only supported document types can be uploaded.",
+            "ERROR",
+            "fileValidation"
+        );
+
+        return;
+    }
+
+    // Valid
+    formContext.ui.clearFormNotification(
+        "fileValidation"
+    );
+}
+ 
+function setTransactionFieldsVisibility(executionContext) {
+    var formContext = executionContext.getFormContext();
+
+    var allValue = formContext.getAttribute("cmdspp_p_all")?.getValue();
+
+    var subTransCtrl = formContext.getControl("cmdspp_p_sub_trans");
+    var recTransCtrl = formContext.getControl("cmdspp_p_rec_trans");
+
+    var showFields = (allValue === true);
+
+    if (subTransCtrl) {
+        subTransCtrl.setVisible(showFields);
+    }
+
+    if (recTransCtrl) {
+        recTransCtrl.setVisible(showFields);
+    }
+}
+
+async function createInquiryOnSave(executionContext) {
+
+    var formContext = executionContext.getFormContext();
+
+    var recordId = formContext.data.entity.getId();
+
+    if (!recordId) {
+        console.log("Record not saved yet.");
+        return;
+    }
+
+    recordId = recordId.replace(/[{}]/g, "");
+
+    var configs = [
+        { override: "cmdspp_p_oigleie_ovrd", reason: "cmdspp_p_oigleie_ovrd_reason", riskType: "OIG/LEIE" },
+        { override: "cmdspp_p_sam_exclu_ovrd", reason: "cmdspp_p_sam_exclu_ovrd_reason", riskType: "SAM" },
+        { override: "cmdspp_p_nppes_ovrd", reason: "cmdspp_p_nppes_ovrd_reason", riskType: "NPPES" },
+        { override: "cmdspp_p_dea_ovrd", reason: "cmdspp_p_dea_ovrd_reason", riskType: "DEA" },
+        { override: "cmdspp_p_license_ovrd", reason: "cmdspp_p_license_ovrd_reason", riskType: "License" },
+        { override: "cmdspp_p_tin_ovrd", reason: "cmdspp_p_tin_ovrd_reason", riskType: "TIN" },
+        { override: "cmdspp_p_pecos_ovrd", reason: "cmdspp_p_pecos_ovrd_reason", riskType: "PECOS" },
+        { override: "cmdspp_p_ownership_ovrd", reason: "cmdspp_p_ownership_ovrd_reason", riskType: "Ownership" },
+        { override: "cmdspp_p_clia_ovrd", reason: "cmdspp_p_clia_ovrd_reason", riskType: "CLIA" }
+    ];
+
+    // Build the $select list dynamically: every override field, every reason field,
+    // plus the lookup field's raw guid value
+    var selectFields = [];
+    configs.forEach(function (item) {
+        selectFields.push(item.override);
+        selectFields.push(item.reason);
+    });
+    selectFields.push("_cmdspp_p_appl_id_fk_value");
+
+    var PARENT_LOGICAL_NAME = "cmdspp_p_appl_scenario_tb";
+
+    var record;
+    try {
+        record = await Xrm.WebApi.retrieveRecord(
+            PARENT_LOGICAL_NAME,
+            recordId,
+            "?$select=" + selectFields.join(",")
+        );
+    } catch (e) {
+        console.error("Failed to fetch record " + recordId, e);
+        return;
+    }
+
+    var parentId = record["_cmdspp_p_appl_id_fk_value"];
+
+    if (!parentId) {
+        console.log("cmdspp_p_appl_id_fk is empty on this record. Cannot create inquiry.");
+        return;
+    }
+
+    
+
+    configs.forEach(function (item) {
+
+        var overrideValue = record[item.override];
+        
+
+        // Value currently on the form (live, in-memory)
+        var formOverrideValue =
+            formContext.getAttribute(item.override)?.getValue();
+       
+        // Already inserted previously
+            if (overrideValue === true) {
+                return;
+            }
+
+            // Current override not selected
+            if (!formOverrideValue) {
+                return;
+            }
+         var LoggedInUserName = getLoggedInUserName(executionContext);
+         console.log("Logged in user name: " + LoggedInUserName);
+        var reason = record[item.reason] || "";
+
+        var inquiryDesc = item.riskType + " Risk overridden by " + LoggedInUserName + " with " + reason;
+
+        var data = {
+            "cmdspp_p_inquiry_desc": inquiryDesc,
+            "cmdspp_p_event_dt": new Date(),
+            "cmdspp_p_inquiry_status": item.riskType + " Risk overridden",
+            "cmdspp_p_sys_id_fk@odata.bind":"/cmdspp_p_dtl_tbs(" + record._cmdspp_p_appl_id_fk_value + ")",
+            "cmdspp_loggeduser": LoggedInUserName
+        };
+
+        Xrm.WebApi.createRecord(
+            "cmdspp_p_enrol_status_inquiry_tb",
+            data
+        ).then(
+            function (createResult) {
+                console.log(item.riskType + " inquiry created: " + createResult.id);
+            },
+            function (error) {
+                console.error("Create Error: " + error.message);
+            }
+        );
+
+    });
+}
+
+async function createInquiry(
+    executionContext,
+    sourceTableName,        // Fetch table
+    sourceRecordId,         // Record Id
+    sourceFields,            // Array of fields to fetch, e.g. ["_cmdspp_p_doc_to_p_dtl_fk_value", "cmdspp_p_docu_nam"]
+    placeholderNames,        // Array matching sourceFields, e.g. ["sysId", "documentName"]
+    inquiryTableName,       // Insert table
+    descriptionTemplate,    // e.g. "Document {documentName} Attached by {userName}"
+    status,
+    inquiryDescField,
+    inquiryStatusField,
+    inquirySysIdField,
+    inquiryUserField,
+    documentName
+) {
+    try {
+
+        var LoggedInUserName = getLoggedInUserName(executionContext);
+
+        var record = await Xrm.WebApi.retrieveRecord(
+            sourceTableName,
+            sourceRecordId.replace(/[{}]/g, ""),
+            "?$select=" + sourceFields.join(",")
+        );
+
+        // Build a values object dynamically: { sysId: ..., documentName: ... }
+        var values = {};
+        for (var i = 0; i < sourceFields.length; i++) {
+            values[placeholderNames[i]] = record[sourceFields[i]];
+        }
+        values["userName"] = LoggedInUserName;
+        values["documentName"] = documentName;
+        var sysId = values["sysId"];
+
+        if (!sysId) {
+            console.log("Sys Id not found.");
+            return;
+        }
+
+        // Replace every {placeholder} in the template dynamically
+        var description = descriptionTemplate;
+        for (var key in values) {
+            description = description.replace("{" + key + "}", values[key]);
+        }
+
+        var data = {};
+
+        data[inquiryDescField] = description;
+        data[inquiryStatusField] = status;
+        data[inquiryUserField] = LoggedInUserName;
+        data["cmdspp_p_event_dt"] = new Date();
+
+        data[inquirySysIdField + "@odata.bind"] =
+            "/cmdspp_p_dtl_tbs(" + sysId + ")";
+
+        return await Xrm.WebApi.createRecord(
+            inquiryTableName,
+            data
+        );
+
+    } catch (error) {
+        console.error("Error: " + error.message);
+    }
+}
+
+
+async function createDocumentInquiry(executionContext) {
+    var formContext = executionContext.getFormContext();
+    var fileNameAttr = formContext.getAttribute("cmdspp_p_file_nam");
+    var documentName = fileNameAttr ? fileNameAttr.getValue() : null;
+    await createInquiry(
+        executionContext,
+        "cmdspp_p_documents_tb",
+        formContext.data.entity.getId(),
+        ["_cmdspp_p_doc_to_p_dtl_fk_value"],   // fields to fetch
+        ["sysId", "documentName"],                                    // matching placeholder names
+        "cmdspp_p_enrol_status_inquiry_tb",
+        "Document {documentName} Attached by {userName}",
+        "New Document Attached",
+        "cmdspp_p_inquiry_desc",
+        "cmdspp_p_inquiry_status",
+        "cmdspp_p_sys_id_fk",
+        "cmdspp_loggeduser",
+        documentName   
+    );
+}
+
+async function createRFIInquiry(executionContext) {
+    var formContext = executionContext.getFormContext();
+    var fileNameAttr = formContext.getAttribute("cmdspp_p_req_doc_status");
+    var statuscheck = fileNameAttr ? fileNameAttr.getValue() : null;
+    console.log("RFI Status: " + statuscheck);
+    var documentName = "";
+    if (statuscheck === 2) {
+        await createInquiry(
+            executionContext,
+            "cmdspp_p_req_doc_tb",
+            formContext.data.entity.getId(),
+            ["_cmdspp_p_prnt_dtl_fk_value"],   // fields to fetch
+            ["sysId"],                                    // matching placeholder names
+            "cmdspp_p_enrol_status_inquiry_tb",
+            "RFI marked as closed by {userName}",
+            "RFI Closed",
+            "cmdspp_p_inquiry_desc",
+            "cmdspp_p_inquiry_status",
+            "cmdspp_p_sys_id_fk",
+            "cmdspp_loggeduser",
+            documentName   
+        );
+    }
+}
+function validateDateField(
+    executionContext,
+    fieldName,
+    compareFieldName,
+    validationType,
+    operator,
+    errorMessage
+) {
+    var formContext = executionContext.getFormContext();
+
+    var fieldAttribute = formContext.getAttribute(fieldName);
+    var compareAttribute = formContext.getAttribute(compareFieldName);
+    var fieldControl = formContext.getControl(fieldName);
+
+    if (!fieldAttribute || !compareAttribute || !fieldControl) {
+        console.warn(
+            "Date validation field not found: " +
+            fieldName +
+            " or " +
+            compareFieldName
+        );
+        return;
+    }
+
+    var notificationId =
+        "date_validation_" + fieldName;
+
+    fieldControl.clearNotification(notificationId);
+
+    var fieldValue = fieldAttribute.getValue();
+    var compareValue = compareAttribute.getValue();
+
+    // Compare only when both dates have values
+    if (!fieldValue || !compareValue) {
+        return;
+    }
+
+    var currentDate = new Date(fieldValue);
+    var comparisonDate = new Date(compareValue);
+
+    currentDate.setHours(0, 0, 0, 0);
+    comparisonDate.setHours(0, 0, 0, 0);
+
+    var isValid = true;
+
+    if (validationType === "dateComparison") {
+        switch (operator) {
+            case "lessThanOrEqual":
+                isValid = currentDate <= comparisonDate;
+                break;
+
+            case "greaterThanOrEqual":
+                isValid = currentDate >= comparisonDate;
+                break;
+
+            case "lessThan":
+                isValid = currentDate < comparisonDate;
+                break;
+
+            case "greaterThan":
+                isValid = currentDate > comparisonDate;
+                break;
+
+            case "equal":
+                isValid =
+                    currentDate.getTime() ===
+                    comparisonDate.getTime();
+                break;
+
+            default:
+                console.warn(
+                    "Unsupported date comparison operator: " +
+                    operator
+                );
+                return;
+        }
+    }
+
+    if (!isValid) {
+        fieldControl.setNotification(
+            errorMessage,
+            notificationId
+        );
+    }
+}
+
+function toggleEFTSection(executionContext) {
+ 
+  var formContext = executionContext.getFormContext();
+ 
+  
+  var eftLookup = formContext.getAttribute("cmdspp_p_idtinf_lkup")?.getValue();
+  var eraLookup = formContext.getAttribute("cmdspp_p_ser_ra_inf_tb_lkp")?.getValue();
+  var tab = formContext.ui.tabs.get("tab_10");
+if (eftLookup && eftLookup.length > 0) {
+    var eftId = eftLookup[0].id.replace(/[{}]/g, "");
+    Xrm.WebApi.retrieveRecord("cmdspp_p_idt_inf_dtl",eftId,"?$select=cmdspp_p_eft_ind").then(
+        function (result) {
+            var eftInd = result.cmdspp_p_eft_ind;
+            console.log("EFT:", eftInd);
+            tab.sections.get("tab_10_section_8")?.setVisible(eftInd === true);
+            tab.sections.get("tab_10_section_10")?.setVisible(eftInd === true);
+        }
+    );
+}
+if (eraLookup && eftLookup.length > 0) {
+    var eraId = eraLookup[0].id.replace(/[{}]/g, "");
+    Xrm.WebApi.retrieveRecord("cmdspp_p_ser_ra_inf_tb",eraId,"?$select=cmdspp_p_rmt_advice_types").then(
+        function (result) {
+            var eraVal = result.cmdspp_p_rmt_advice_types;
+            console.log("EFT:", typeof eraVal);
+            tab.sections.get("tab_10_section_9")?.setVisible(eraVal.includes(1));
+        }
+    );
+}
+}
+
+function toggleEFTSectionOld(executionContext) {
+   var formContext = executionContext.getFormContext();
+    
+    var eftInd = formContext.getAttribute("cmdspp_p_eft_ind")?.getValue();
+    var eraVal = formContext.getAttribute("cmdspp_p_rmt_advice_types")?.getValue();
+
+    console.log("EFT Attribute:",
+    formContext.getAttribute("cmdspp_p_eft_ind"));
+
+console.log("EFT Value:",
+    formContext.getAttribute("cmdspp_p_eft_ind")?.getValue());
+ 
+  var tab = formContext.ui.tabs.get("tab_10");
+
+    tab.sections.forEach(function(section) {
+         console.log(
+            "Section Name:", section.getName(),
+            "Label:", section.getLabel()
+        );
+         section.controls.forEach(function (control) {
+
+        var attribute = control.getAttribute();
+
+        if (attribute) {
+            console.log(
+                "Field Logical Name:", attribute.getName(),
+                "Value:", attribute.getValue()
+            );
+        }
+    });
+        if(section.getName()==="tab_10_section_8"){
+             section.setVisible(eftInd===true);
+        }if(section.getName()==="tab_10_section_10"){
+             section.setVisible(eftInd===true);
+        }if(section.getName()==="tab_10_section_9"){
+             section.setVisible(eraVal===true);
+        }
+       
+    });
+
+
+}
+
+function disableAllLookupNavigation(executionContext) {
+    var formContext = executionContext.getFormContext();
+
+    formContext.ui.controls.forEach(function (control) {
+        if (control.getControlType && control.getControlType() === "lookup") {
+            control.addOnLookupTagClick(function (lookupTagClickContext) {
+                lookupTagClickContext.getEventArgs().preventDefault();
+            });
+        }
+    });
+}
+
+
+
+
+function getLookupTimeText(attribute) {
+    if (!attribute) {
+        return null;
+    }
+
+    var value = attribute.getValue();
+
+    if (!value || !value[0] || !value[0].name) {
+        return null;
+    }
+
+    return value[0].name; // e.g. "9:00 PM"
+}
+
+function parseTimeToMinutes(timeText) {
+    if (!timeText) {
+        return null;
+    }
+
+    var match = timeText.trim().match(/^(\d{1,2}):(\d{2})\s*(AM|PM)$/i);
+
+    if (!match) {
+        console.warn("parseTimeToMinutes: could not parse time -> " + timeText);
+        return null;
+    }
+
+    var hours = parseInt(match[1], 10);
+    var minutes = parseInt(match[2], 10);
+    var period = match[3].toUpperCase();
+
+    if (period === "PM" && hours !== 12) {
+        hours += 12;
+    }
+    if (period === "AM" && hours === 12) {
+        hours = 0;
+    }
+
+    return hours * 60 + minutes;
+}
+
+function validateTimeField(
+    executionContext,
+    fieldName,
+    compareFieldName,
+    validationType,
+    operator,
+    errorMessage
+) {
+    var formContext = executionContext.getFormContext();
+
+    var fieldAttribute = formContext.getAttribute(fieldName);
+    var compareAttribute = formContext.getAttribute(compareFieldName);
+    var fieldControl = formContext.getControl(fieldName);
+
+    if (!fieldAttribute || !compareAttribute || !fieldControl) {
+        console.warn(
+            "validateTimeField: attribute/control not found -> " +
+            fieldName + " or " + compareFieldName
+        );
+        return;
+    }
+
+    var notificationId = "time_validation_" + fieldName;
+    fieldControl.clearNotification(notificationId);
+
+    if (validationType !== "timeComparison") {
+        console.warn("validateTimeField: unsupported validationType -> " + validationType);
+        return;
+    }
+
+    var currentText = getLookupTimeText(fieldAttribute);
+    var comparisonText = getLookupTimeText(compareAttribute);
+
+    if (!currentText || !comparisonText) {
+        return;
+    }
+
+    var currentMinutes = parseTimeToMinutes(currentText);
+    var comparisonMinutes = parseTimeToMinutes(comparisonText);
+
+    if (currentMinutes === null || comparisonMinutes === null) {
+        return;
+    }
+
+    var isValid = true;
+
+    switch (operator) {
+        case "lessThan":
+            isValid = currentMinutes < comparisonMinutes;
+            break;
+        case "greaterThan":
+            isValid = currentMinutes > comparisonMinutes;
+            break;
+        case "lessThanOrEqual":
+            isValid = currentMinutes <= comparisonMinutes;
+            break;
+        case "greaterThanOrEqual":
+            isValid = currentMinutes >= comparisonMinutes;
+            break;
+        case "equal":
+            isValid = currentMinutes === comparisonMinutes;
+            break;
+        default:
+            console.warn("validateTimeField: unsupported operator -> " + operator);
+            return;
+    }
+
+    if (!isValid) {
+        fieldControl.setNotification(errorMessage, notificationId);
+    }
+}

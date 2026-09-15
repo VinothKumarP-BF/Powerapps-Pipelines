@@ -1,0 +1,545 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps_1": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "cmdspp_CR_Dataverse_Core_DEV"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      },
+      "shared_docusigndemo_1": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "cmdspp_CR_DocusignDemo_Core_DEV"
+        },
+        "api": {
+          "name": "shared_docusigndemo"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "manual": {
+          "metadata": {
+            "operationMetadataId": "6ffe3046-0306-409b-8bff-b474fad77288"
+          },
+          "type": "Request",
+          "kind": "Http",
+          "inputs": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "action": {
+                  "type": "string"
+                },
+                "ApplicationID": {
+                  "type": "string"
+                },
+                "envelopeID": {
+                  "type": "string"
+                },
+                "signerName": {
+                  "type": "string"
+                },
+                "signerEmail": {
+                  "type": "string"
+                }
+              }
+            },
+            "triggerAuthenticationType": "All"
+          }
+        }
+      },
+      "actions": {
+        "Switch": {
+          "runAfter": {
+            "Initialize_variable": [
+              "Succeeded"
+            ]
+          },
+          "cases": {
+            "Case": {
+              "case": "GetEnrollmentData",
+              "actions": {
+                "Get_a_row_by_ID": {
+                  "runAfter": {},
+                  "metadata": {
+                    "operationMetadataId": "812defaf-f07c-4dba-98b0-3f1008684b27"
+                  },
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "host": {
+                      "connectionName": "shared_commondataserviceforapps_1",
+                      "operationId": "GetItem",
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                    },
+                    "parameters": {
+                      "entityName": "cmdspp_p_dtl_tbs",
+                      "recordId": "@triggerBody()?['ApplicationID']",
+                      "$select": "cmdspp_p_envelope_id,cmdspp_p_first_nam,cmdspp_p_last_nam,cmdspp_p_mid_nam,cmdspp_p_appln_email"
+                    },
+                    "authentication": "@parameters('$authentication')"
+                  }
+                },
+                "Set_variable": {
+                  "runAfter": {
+                    "Compose": [
+                      "Succeeded"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "629bd449-f577-48ce-873d-e92e957a1b3b"
+                  },
+                  "type": "SetVariable",
+                  "inputs": {
+                    "name": "Response",
+                    "value": {
+                      "status": "success",
+                      "data": "@outputs('Compose')"
+                    }
+                  }
+                },
+                "Compose": {
+                  "runAfter": {
+                    "Get_a_row_by_ID": [
+                      "Succeeded"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "bdeb521f-c705-4240-b0c9-28da96b446a6"
+                  },
+                  "type": "Compose",
+                  "inputs": {
+                    "userEmail": "@outputs('Get_a_row_by_ID')?['body/cmdspp_p_appln_email']",
+                    "envelopeID": "@outputs('Get_a_row_by_ID')?['body/cmdspp_p_envelope_id']",
+                    "firstName": "@outputs('Get_a_row_by_ID')?['body/cmdspp_p_first_nam']",
+                    "middleName": "@outputs('Get_a_row_by_ID')?['body/cmdspp_p_mid_nam']",
+                    "lastName": "@outputs('Get_a_row_by_ID')?['body/cmdspp_p_last_nam']"
+                  }
+                }
+              }
+            },
+            "Case_2": {
+              "case": "getDocusignUrl",
+              "actions": {
+                "Set_variable_2": {
+                  "runAfter": {
+                    "Generate_Embedded_Signing_URL_(V2)": [
+                      "Succeeded"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "11e335be-84e6-4f8d-972b-049f70d03cc2"
+                  },
+                  "type": "SetVariable",
+                  "inputs": {
+                    "name": "Response",
+                    "value": {
+                      "status": "Success",
+                      "embeddedUrl": {
+                        "url": "@outputs('Generate_Embedded_Signing_URL_(V2)')?['body/url']"
+                      }
+                    }
+                  }
+                },
+                "List_rows_2": {
+                  "runAfter": {},
+                  "metadata": {
+                    "operationMetadataId": "993003e9-2fd4-497f-b350-4115e3b2b9e8"
+                  },
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "host": {
+                      "connectionName": "shared_commondataserviceforapps_1",
+                      "operationId": "ListRecords",
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                    },
+                    "parameters": {
+                      "entityName": "environmentvariabledefinitions",
+                      "$filter": "schemaname eq 'cmdspp_ENV_Docusign_Account'"
+                    },
+                    "authentication": "@parameters('$authentication')"
+                  }
+                },
+                "Compose_2": {
+                  "runAfter": {
+                    "List_rows_2": [
+                      "Succeeded"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "4d7f746d-b5dc-4a4f-95ac-4de975aa55dc"
+                  },
+                  "type": "Compose",
+                  "inputs": "@first(outputs('List_rows_2')?['body/value'])?['environmentvariabledefinitionid']"
+                },
+                "List_rows_3": {
+                  "runAfter": {
+                    "Compose_2": [
+                      "Succeeded"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "453ecfdb-0431-43f7-b197-62c1159bbf95"
+                  },
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "host": {
+                      "connectionName": "shared_commondataserviceforapps_1",
+                      "operationId": "ListRecords",
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                    },
+                    "parameters": {
+                      "entityName": "environmentvariablevalues",
+                      "$filter": "_environmentvariabledefinitionid_value eq @{outputs('Compose_2')}"
+                    },
+                    "authentication": "@parameters('$authentication')"
+                  }
+                },
+                "Compose_3": {
+                  "runAfter": {
+                    "List_rows_3": [
+                      "Succeeded"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "6047b352-04f9-45c0-b1be-5521f8adb551"
+                  },
+                  "type": "Compose",
+                  "inputs": "@if(\r\n  empty(outputs('List_rows_3')?['body/value']),\r\n  first(outputs('List_rows_2')?['body/value'])?['defaultvalue'],\r\n  first(outputs('List_rows_3')?['body/value'])?['value']\r\n)"
+                },
+                "Parse_JSON": {
+                  "runAfter": {
+                    "Compose_3": [
+                      "Succeeded"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "e6bf471c-08ae-4d91-8334-fe56ac3085d6"
+                  },
+                  "type": "ParseJson",
+                  "inputs": {
+                    "content": "@outputs('Compose_3')",
+                    "schema": {
+                      "type": "object",
+                      "properties": {
+                        "accountId": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                },
+                "Compose_4": {
+                  "runAfter": {
+                    "Parse_JSON": [
+                      "Succeeded"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "11253379-32f3-4655-8886-821d7554a4b1"
+                  },
+                  "type": "Compose",
+                  "inputs": "@body('Parse_JSON')?['accountId']"
+                },
+                "Generate_Embedded_Signing_URL_(V2)": {
+                  "runAfter": {
+                    "Compose_6": [
+                      "Succeeded"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "cd8640dc-cc50-431d-a473-8291273f58e6"
+                  },
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "host": {
+                      "connectionName": "shared_docusigndemo_1",
+                      "operationId": "GenerateEmbeddedSigningURLV2",
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_docusigndemo"
+                    },
+                    "parameters": {
+                      "accountId": "@outputs('Compose_4')",
+                      "envelopeId": "@triggerBody()?['envelopeID']",
+                      "isInPersonSigner": "No",
+                      "authenticationMethod": "None",
+                      "returnUrl": "Add a different URL",
+                      "additionalURL/userName": "@triggerBody()?['signerName']",
+                      "additionalURL/email": "@triggerBody()?['signerEmail']",
+                      "additionalURL/clientUserId": "@triggerBody()?['ApplicationID']",
+                      "additionalURL/returnURL": "@{outputs('Compose_6')}/Attestationcompleted"
+                    },
+                    "authentication": "@parameters('$authentication')"
+                  }
+                },
+                "List_rows_4": {
+                  "runAfter": {
+                    "Compose_4": [
+                      "Succeeded"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "1f8a2f47-038b-4acc-9215-90bcea730488"
+                  },
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "host": {
+                      "connectionName": "shared_commondataserviceforapps_1",
+                      "operationId": "ListRecords",
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                    },
+                    "parameters": {
+                      "entityName": "environmentvariabledefinitions",
+                      "$filter": "schemaname eq 'cmdspp_ENV_App_Base_Url'"
+                    },
+                    "authentication": "@parameters('$authentication')"
+                  }
+                },
+                "Compose_5": {
+                  "runAfter": {
+                    "List_rows_4": [
+                      "Succeeded"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "a02f9643-8ae4-467a-9753-1a71fba0545e"
+                  },
+                  "type": "Compose",
+                  "inputs": "@first(outputs('List_rows_4')?['body/value'])?['environmentvariabledefinitionid']"
+                },
+                "List_rows_5": {
+                  "runAfter": {
+                    "Compose_5": [
+                      "Succeeded"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "dec9139e-302f-47df-a56b-01967a1690eb"
+                  },
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "host": {
+                      "connectionName": "shared_commondataserviceforapps_1",
+                      "operationId": "ListRecords",
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                    },
+                    "parameters": {
+                      "entityName": "environmentvariablevalues",
+                      "$filter": "_environmentvariabledefinitionid_value eq @{outputs('Compose_5')}"
+                    },
+                    "authentication": "@parameters('$authentication')"
+                  }
+                },
+                "Compose_6": {
+                  "runAfter": {
+                    "List_rows_5": [
+                      "Succeeded"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "8a3cc553-5027-444a-9929-e2e1b1741cc1"
+                  },
+                  "type": "Compose",
+                  "inputs": "@if(\r\n  empty(outputs('List_rows_5')?['body/value']),\r\n  first(outputs('List_rows_4')?['body/value'])?['defaultvalue'],\r\n  first(outputs('List_rows_5')?['body/value'])?['value']\r\n)"
+                }
+              }
+            },
+            "Case_3": {
+              "case": "getCompletedDocuments",
+              "actions": {
+                "List_rows": {
+                  "runAfter": {},
+                  "metadata": {
+                    "operationMetadataId": "305d57ed-4f97-4dcc-b549-e6f61122e17b"
+                  },
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "host": {
+                      "connectionName": "shared_commondataserviceforapps_1",
+                      "operationId": "ListRecords",
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                    },
+                    "parameters": {
+                      "entityName": "cmdspp_p_documents_tbs",
+                      "$filter": "_cmdspp_p_doc_to_p_dtl_fk_value eq @{triggerBody()?['ApplicationID']}"
+                    },
+                    "authentication": "@parameters('$authentication')"
+                  }
+                },
+                "Select": {
+                  "runAfter": {
+                    "List_rows": [
+                      "Succeeded"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "9d25e41a-4b92-4430-90d1-b57e1a1edd19"
+                  },
+                  "type": "Select",
+                  "inputs": {
+                    "from": "@outputs('List_rows')?['body/value']",
+                    "select": {
+                      "documentName": "@item()?['cmdspp_p_file_nam']",
+                      "Signature": "@item()?['cmdspp_p_sign_status']",
+                      "envelopeID": "@item()?['cmdspp_p_envlop_id']",
+                      "sumittedOn": "@item()?['createdon']"
+                    }
+                  }
+                },
+                "Set_variable_3": {
+                  "runAfter": {
+                    "Get_a_row_by_ID_2": [
+                      "Succeeded"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "2b8ddec6-d92e-4d66-b4bb-600abda18116"
+                  },
+                  "type": "SetVariable",
+                  "inputs": {
+                    "name": "Response",
+                    "value": {
+                      "status": "Success",
+                      "data": "@body('Select')",
+                      "applicationDetails": {
+                        "status": "@outputs('Get_a_row_by_ID_2')?['body/cmdspp_p_appln_status']",
+                        "firstName": "@outputs('Get_a_row_by_ID_2')?['body/cmdspp_p_first_nam']",
+                        "email": "@outputs('Get_a_row_by_ID_2')?['body/cmdspp_p_appln_email']",
+                        "providerType": "@outputs('Get_a_row_by_ID_2')?['body/cmdspp_p_provider_ty_lkpid/cmdspp_p_pvd_typ_nam']",
+                        "enrollmentId": "@outputs('Get_a_row_by_ID_2')?['body/cmdspp_p_sys_id']",
+                        "userGUID": "@outputs('Get_a_row_by_ID_2')?['body/_cmdspp_created_by_user_value']"
+                      }
+                    }
+                  }
+                },
+                "Get_a_row_by_ID_2": {
+                  "runAfter": {
+                    "Select": [
+                      "Succeeded"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "a5539e85-0274-46c2-a847-3316ba48b574"
+                  },
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "host": {
+                      "connectionName": "shared_commondataserviceforapps_1",
+                      "operationId": "GetItem",
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                    },
+                    "parameters": {
+                      "entityName": "cmdspp_p_dtl_tbs",
+                      "recordId": "@triggerBody()?['ApplicationID']",
+                      "$expand": "cmdspp_p_provider_ty_lkpid($select=cmdspp_p_pvd_typ_nam)"
+                    },
+                    "authentication": "@parameters('$authentication')"
+                  }
+                }
+              }
+            },
+            "Case_4": {
+              "case": "getApplnStatus",
+              "actions": {
+                "Get_a_row_by_ID_3": {
+                  "runAfter": {},
+                  "metadata": {
+                    "operationMetadataId": "c5fd34d4-af42-47d3-a6f0-1b15bbe62401"
+                  },
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "host": {
+                      "connectionName": "shared_commondataserviceforapps_1",
+                      "operationId": "GetItem",
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                    },
+                    "parameters": {
+                      "entityName": "cmdspp_p_dtl_tbs",
+                      "recordId": "@triggerBody()?['ApplicationID']"
+                    },
+                    "authentication": "@parameters('$authentication')"
+                  }
+                },
+                "Set_variable_4": {
+                  "runAfter": {
+                    "Get_a_row_by_ID_3": [
+                      "Succeeded"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "5cdaae54-d1d6-45a6-8675-e21d9687978e"
+                  },
+                  "type": "SetVariable",
+                  "inputs": {
+                    "name": "Response",
+                    "value": {
+                      "status": "Success",
+                      "applicationStatus": "@outputs('Get_a_row_by_ID_3')?['body/cmdspp_p_appln_status']"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "actions": {}
+          },
+          "expression": "@triggerBody()?['action']",
+          "metadata": {
+            "operationMetadataId": "36342967-90ea-4838-adce-ffa96fb6f2e6"
+          },
+          "type": "Switch"
+        },
+        "Initialize_variable": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "6384556b-7536-431e-980c-698e3cf4fbab"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "Response",
+                "type": "object",
+                "value": {}
+              }
+            ]
+          }
+        },
+        "Response": {
+          "runAfter": {
+            "Switch": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "98610632-223e-404f-9d3c-4a1d618beec5"
+          },
+          "type": "Response",
+          "kind": "Http",
+          "inputs": {
+            "statusCode": 200,
+            "body": "@variables('Response')"
+          }
+        }
+      }
+    },
+    "templateName": ""
+  },
+  "schemaVersion": "1.0.0.0"
+}

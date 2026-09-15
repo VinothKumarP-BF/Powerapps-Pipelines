@@ -1,0 +1,117 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps_1": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "cmdspp_CR_Dataverse_Core_DEV"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "manual": {
+          "metadata": {
+            "operationMetadataId": "a63a28d1-edf2-498e-9609-56f4e85961fc"
+          },
+          "type": "Request",
+          "kind": "Http",
+          "inputs": {
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "fieldId": {
+                    "type": "string"
+                  },
+                  "secId": {
+                    "type": "string"
+                  },
+                  "pageId": {
+                    "type": "string"
+                  },
+                  "enrollId": {
+                    "type": "string"
+                  },
+                  "visible": {
+                    "type": "boolean"
+                  },
+                  "required": {
+                    "type": "boolean"
+                  },
+                  "validate": {
+                    "type": "boolean"
+                  }
+                },
+                "required": [
+                  "fieldId",
+                  "secId",
+                  "pageId",
+                  "enrollId"
+                ]
+              }
+            },
+            "triggerAuthenticationType": "All"
+          }
+        }
+      },
+      "actions": {
+        "Apply_to_each": {
+          "foreach": "@triggerBody()",
+          "actions": {
+            "Add_a_new_row": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "e44d8357-b08a-4c26-81fe-be3b6ae48735"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps_1",
+                  "operationId": "CreateRecord",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "cmdspp_pc_enrol_typ_maps",
+                  "x-ms-odata-metadata-full": true,
+                  "item/cmdspp_p_map_id_sk": "1",
+                  "item/cmdspp_p_enrol_map_to_ctrl_fk@odata.bind": "/cmdspp_pc_ctrl_tbs(@{items('Apply_to_each')['fieldId']})",
+                  "item/cmdspp_p_enrol_map_to_enrol_fk@odata.bind": "/cmdspp_pc_enrol_typ_tbs(@{items('Apply_to_each')['enrollId']})",
+                  "item/cmdspp_p_enrol_map_to_pg_fk@odata.bind": "/cmdspp_pc_pg_tbs(@{items('Apply_to_each')['pageId']})",
+                  "item/cmdspp_p_enrol_map_to_section_fk@odata.bind": "/cmdspp_pc_section_tbs(@{items('Apply_to_each')['secId']})",
+                  "item/cmdspp_p_req_ind": "@items('Apply_to_each')?['required']",
+                  "item/cmdspp_p_validated_ind": "@items('Apply_to_each')?['required']",
+                  "item/cmdspp_p_visible": "@items('Apply_to_each')?['visible']"
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            }
+          },
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "8d902fe3-2544-4082-93aa-22888211aa97"
+          },
+          "type": "Foreach"
+        }
+      }
+    },
+    "templateName": ""
+  },
+  "schemaVersion": "1.0.0.0"
+}

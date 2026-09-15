@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>0</CanBeDeleted>
+    <isquickfindquery>1</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>1</isdefault>
+    <savedqueryid>{b52aa92b-a50e-4e1f-8f7e-24580b0bd760}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="cmdspp_p_inquriy_sk" select="1" icon="1" preview="1">
+        <row name="result" id="cmdspp_p_enrol_status_inquiry_tbid">
+          <cell name="cmdspp_p_inquriy_sk" width="300" />
+          <cell name="createdon" width="125" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>4</querytype>
+    <fetchxml>
+      <fetch version="1.0" mapping="logical">
+        <entity name="cmdspp_p_enrol_status_inquiry_tb">
+          <attribute name="cmdspp_p_enrol_status_inquiry_tbid" />
+          <attribute name="cmdspp_p_inquriy_sk" />
+          <attribute name="createdon" />
+          <order attribute="cmdspp_p_inquriy_sk" descending="false" />
+          <filter type="and">
+            <condition attribute="statecode" operator="eq" value="0" />
+          </filter>
+          <filter type="or" isquickfindfields="1">
+            <condition attribute="cmdspp_p_inquriy_sk" operator="like" value="{0}" />
+          </filter>
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.0</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Quick Find Active P_ENROL_STATUS_INQUIRY_TBS" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>

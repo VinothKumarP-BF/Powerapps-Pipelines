@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>0</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>1</isdefault>
+    <savedqueryid>{2739e9b1-b114-4096-a2e1-68fe9e4b4d6e}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="cmdspp_p_code_sk" select="1" icon="1" preview="1">
+        <row name="result" id="cmdspp_pc_pvd_typ_tbid">
+          <cell name="cmdspp_p_pvd_typ_nam" width="209" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>0</querytype>
+    <fetchxml>
+      <fetch version="1.0" mapping="logical">
+        <entity name="cmdspp_pc_pvd_typ_tb">
+          <attribute name="cmdspp_pc_pvd_typ_tbid" />
+          <filter type="and">
+            <condition attribute="statecode" operator="eq" value="0" />
+          </filter>
+          <attribute name="cmdspp_p_pvd_typ_nam" />
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.0</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Active PC_PVD_TYP_TBS" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>

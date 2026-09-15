@@ -1,0 +1,108 @@
+{
+  "properties": {
+    "connectionReferences": {},
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "manual": {
+          "metadata": {
+            "operationMetadataId": "881d53ba-17b6-4baa-9d62-d1f45a9c328d"
+          },
+          "type": "Request",
+          "kind": "Http",
+          "inputs": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "npi_number": {
+                  "type": "string"
+                }
+              }
+            },
+            "triggerAuthenticationType": "All"
+          }
+        }
+      },
+      "actions": {
+        "HTTP": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "00f2696f-5ea2-459c-8b37-f02e0989a83a"
+          },
+          "type": "Http",
+          "inputs": {
+            "method": "GET",
+            "uri": "https://npiregistry.cms.hhs.gov/api/?number=@{triggerBody()?['npi_number']}&version=2.1"
+          }
+        },
+        "Condition": {
+          "actions": {
+            "Response": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "79723a10-93c0-4bd2-b42e-6b76e11016e8"
+              },
+              "type": "Response",
+              "kind": "Http",
+              "inputs": {
+                "statusCode": 200,
+                "headers": {
+                  "Access-Control-Allow-Origin": "*"
+                },
+                "body": {
+                  "isValid": true,
+                  "data": "@{body('HTTP')}"
+                }
+              }
+            }
+          },
+          "runAfter": {
+            "HTTP": [
+              "Succeeded"
+            ]
+          },
+          "else": {
+            "actions": {
+              "Response_2": {
+                "runAfter": {},
+                "metadata": {
+                  "operationMetadataId": "26781c1b-cf53-4eb4-b781-22b53581a75f"
+                },
+                "type": "Response",
+                "kind": "Http",
+                "inputs": {
+                  "statusCode": 200,
+                  "headers": {
+                    "Access-Control-Allow-Origin": "*"
+                  },
+                  "body": {
+                    "isValid": false
+                  }
+                }
+              }
+            }
+          },
+          "expression": {
+            "greater": [
+              "@body('HTTP')?['result_count']",
+              0
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "2520461d-34fd-4471-a35b-dbff2f13b425"
+          },
+          "type": "If"
+        }
+      }
+    },
+    "templateName": ""
+  },
+  "schemaVersion": "1.0.0.0"
+}

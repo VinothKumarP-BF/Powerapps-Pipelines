@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>0</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>1</isdefault>
+    <savedqueryid>{f052664f-4f07-45a4-88cd-74b56da2b644}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="cmdspp_p_ser_ma_inf_tb_sk" select="1" icon="1" preview="1">
+        <row name="result" id="cmdspp_p_ser_ma_inf_tbid">
+          <cell name="cmdspp_p_ser_ma_inf_tb_sk" width="300" />
+          <cell name="cmdspp_p_s_as_s_location" width="143" />
+          <cell name="cmdspp_p_bu_s_address" width="130" />
+          <cell name="cmdspp_p_ph_address" width="117" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>0</querytype>
+    <fetchxml>
+      <fetch version="1.0" mapping="logical">
+        <entity name="cmdspp_p_ser_ma_inf_tb">
+          <attribute name="cmdspp_p_ser_ma_inf_tbid" />
+          <attribute name="cmdspp_p_ser_ma_inf_tb_sk" />
+          <order attribute="cmdspp_p_ser_ma_inf_tb_sk" descending="false" />
+          <filter type="and">
+            <condition attribute="statecode" operator="eq" value="0" />
+          </filter>
+          <attribute name="cmdspp_p_bu_s_address" />
+          <attribute name="cmdspp_p_ph_address" />
+          <attribute name="cmdspp_p_s_as_s_location" />
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.0</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Active P_SER_MA_INF_TBS" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>

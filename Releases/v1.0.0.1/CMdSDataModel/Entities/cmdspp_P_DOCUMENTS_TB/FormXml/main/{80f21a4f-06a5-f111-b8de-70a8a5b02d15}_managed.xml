@@ -1,0 +1,164 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<forms xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <systemform>
+    <formid>{80f21a4f-06a5-f111-b8de-70a8a5b02d15}</formid>
+    <IntroducedVersion>1.8.26.1</IntroducedVersion>
+    <FormPresentation>1</FormPresentation>
+    <FormActivationState>1</FormActivationState>
+    <form headerdensity="HighWithControls" shownavigationbar="false">
+      <tabs>
+        <tab verticallayout="true" id="{9fb8e669-a809-4833-a366-3023136d9952}" IsUserDefined="1" labelid="{7ded79ae-711b-4071-aed4-9851fbf39475}">
+          <labels>
+            <label description="General" languagecode="1033" />
+          </labels>
+          <columns>
+            <column width="100%">
+              <sections>
+                <section showlabel="false" showbar="false" IsUserDefined="0" id="{1cc9dc00-7e3b-4851-bb9a-5a9b808ce3cb}" labelid="{209e0128-93e8-4b88-8086-9e7f95c73e2f}" celllabelposition="Top">
+                  <labels>
+                    <label description="General" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{fedb1eff-c667-4b3a-9720-e8bc47d1bda2}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Type" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_p_document_type" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="cmdspp_p_document_type" disabled="true" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{7dc2f057-895f-4b0c-af13-acd750f91c1c}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Document Name" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_p_docu_nam" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="cmdspp_p_docu_nam" disabled="true" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{4bbefa29-9161-468c-99b7-b4dde31d65a4}" locklevel="0" colspan="1" rowspan="1" visible="false">
+                        <labels>
+                          <label description="Sharepoint Path" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_p_sharepoint_path" classid="{71716B6C-711E-476C-8AB8-5D11542BFB47}" datafieldname="cmdspp_p_sharepoint_path" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{d8a121cb-2fb7-48af-b8d1-8e9e7bb015a9}" locklevel="0" colspan="1" rowspan="1" labelid="{8d067f36-a2e2-4e71-8cac-b817c3c83d9d}">
+                        <labels>
+                          <label description="Upload Document" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_p_file" classid="{0A7FF475-B016-4687-9CE5-042BFDBD6519}" datafieldname="cmdspp_p_file" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{32d5a6f0-8deb-4e7f-9667-89cb895fbe82}" locklevel="0" colspan="1" rowspan="1" visible="false">
+                        <labels>
+                          <label description="File Name" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_p_file_nam" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="cmdspp_p_file_nam" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{fdbd43a8-6baf-4472-bb7e-04f3fff0c5b6}" visible="false" labelid="{70c07be3-7857-44d6-8b2d-623cb21a253b}">
+                        <labels>
+                          <label description="Owner" languagecode="1033" />
+                        </labels>
+                        <control id="ownerid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="ownerid" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{b23ac68c-d3a8-472b-bb2e-98a867ee0b33}" locklevel="0" colspan="1" rowspan="1" visible="false">
+                        <labels>
+                          <label description="Document Source" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_differentiation" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="cmdspp_differentiation" disabled="false" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+          </columns>
+        </tab>
+      </tabs>
+      <header id="{f0eb6c4a-0096-4e54-b6bd-f0142035f912}" celllabelposition="Top" columns="111" labelwidth="115" celllabelalignment="Left">
+        <rows>
+          <row>
+            <cell id="{24de5e62-ad44-4d56-8566-241de19475e1}" showlabel="false" labelid="{10736021-14a2-4913-b400-415d4140b25d}">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{e34b3653-29c7-4a37-811b-cca3eaee3259}" showlabel="false" labelid="{3e8d1c55-fbe8-4936-8ace-69976eabf85f}">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{45994aad-7432-4b4b-9132-67e05a67d64d}" showlabel="false" labelid="{823808f3-8ae2-4721-8445-bce8e5a4509d}">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+          </row>
+        </rows>
+      </header>
+      <footer id="{39c76d1b-4201-498a-94dd-21018fab4646}" celllabelposition="Top" columns="111" labelwidth="115" celllabelalignment="Left">
+        <rows>
+          <row>
+            <cell id="{a1c8acfd-dc79-4896-b7c7-bce777e4b18f}" showlabel="false" labelid="{5d415219-d168-4979-afb7-f3e7306059c4}">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{18a644f6-4b97-4805-8f68-bf82d8b536e9}" showlabel="false" labelid="{7808fcc4-9ba8-49a0-b4f9-3a563071b333}">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{cf853e67-efc2-400e-8abd-f9b502bbf1ba}" showlabel="false" labelid="{668419b1-e7f3-42b9-bc52-7ff7d6f2245b}">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+          </row>
+        </rows>
+      </footer>
+      <DisplayConditions Order="1" FallbackForm="true">
+        <Role Id="{627090ff-40a3-4053-8790-584edc5be201}" />
+        <Role Id="{119f245c-3cc8-4b62-b31c-d1a046ced15d}" />
+      </DisplayConditions>
+      <formLibraries>
+        <Library name="cmdspp_screening_web_res" libraryUniqueId="{94898fe4-9f05-446d-804c-032c35a305a4}" />
+      </formLibraries>
+      <events>
+        <event name="onchange" application="false" active="false" attribute="cmdspp_p_file">
+          <Handlers>
+            <Handler functionName="extractFileNameDoc" libraryName="cmdspp_screening_web_res" handlerUniqueId="{282b48af-b6fb-4ce1-97b7-50e2f635c895}" enabled="true" parameters="" passExecutionContext="true" />
+            <Handler functionName="validateDocumentFile" libraryName="cmdspp_screening_web_res" handlerUniqueId="{a07023ed-4b57-4af0-9cb6-868efa21aa17}" enabled="true" parameters="" passExecutionContext="true" />
+          </Handlers>
+        </event>
+        <event name="onsave" application="false" active="false">
+          <Handlers>
+            <Handler functionName="extractFileNameDoc" libraryName="cmdspp_screening_web_res" handlerUniqueId="{6f5d5eab-96f3-4ee8-b7f0-08270fcb8965}" enabled="true" parameters="" passExecutionContext="true" />
+            <Handler functionName="validateDocumentFileOnSave" libraryName="cmdspp_screening_web_res" handlerUniqueId="{bb217690-4951-4b28-a9a4-7de565c1d094}" enabled="true" parameters="" passExecutionContext="true" />
+            <Handler functionName="createDocumentInquiry" libraryName="cmdspp_screening_web_res" handlerUniqueId="{2225ed22-b0c2-4ad5-8902-cd023433a96c}" enabled="true" parameters="" passExecutionContext="true" />
+          </Handlers>
+        </event>
+        <event name="onload" application="false" active="false">
+          <Handlers>
+            <Handler functionName="lockFileIfSharePointPathExists" libraryName="cmdspp_screening_web_res" handlerUniqueId="{ecafc990-1606-44b1-abe9-17804ccc86cf}" enabled="true" parameters="" passExecutionContext="true" />
+          </Handlers>
+        </event>
+      </events>
+    </form>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <LocalizedNames>
+      <LocalizedName description="Upload Document" languagecode="1033" />
+    </LocalizedNames>
+    <Descriptions>
+      <Description description="A form for this entity." languagecode="1033" />
+    </Descriptions>
+  </systemform>
+</forms>

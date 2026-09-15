@@ -1,0 +1,21 @@
+function collapseSections(executionContext) {
+    var formContext = executionContext.getFormContext();
+    console.log(formContext.ui.tabs.get("tab_3"));
+    // Replace 'Licensure_and_Certification' with your section's unique Name
+    var section1 = formContext.ui.tabs.get("tab_3").sections.get("tab_3_section_3");
+    if (section1) {
+        section1.setCollapsed(true);
+    }
+
+    // Replace 'Speciality' with your section's unique Name
+    var section2 = formContext.ui.tabs.get("tab_3").sections.get("tab_3_section_1");
+    if (section2) {
+        section2.setCollapsed(true);
+    }
+
+     var section3 = formContext.ui.tabs.get("tab_3").sections.get("tab_3_section_4");
+    if (section3) {
+        section3.setCollapsed(true);
+    }
+
+}

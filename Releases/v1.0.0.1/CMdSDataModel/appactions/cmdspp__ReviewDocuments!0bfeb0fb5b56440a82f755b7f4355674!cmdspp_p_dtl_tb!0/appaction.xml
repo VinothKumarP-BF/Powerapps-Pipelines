@@ -1,0 +1,29 @@
+<appaction uniquename="cmdspp__ReviewDocuments!0bfeb0fb5b56440a82f755b7f4355674!cmdspp_p_dtl_tb!0">
+  <buttonlabeltext default="Review Documents">
+    <label description="Review Documents" languagecode="1033" />
+  </buttonlabeltext>
+  <context>1</context>
+  <contextentity>
+    <logicalname>cmdspp_p_dtl_tb</logicalname>
+  </contextentity>
+  <contextvalue>cmdspp_p_dtl_tb</contextvalue>
+  <fonticon>$clientsvg:OpenEnrollment</fonticon>
+  <hidden>0</hidden>
+  <iscustomizable>1</iscustomizable>
+  <isdisabled>0</isdisabled>
+  <isgrouptitlehidden>0</isgrouptitlehidden>
+  <location>0</location>
+  <name>ReviewDocuments!0bfeb0fb5b56440a82f755b7f4355674</name>
+  <onclickeventjavascriptfunctionname>openAddReviewDocuments</onclickeventjavascriptfunctionname>
+  <onclickeventjavascriptparameters>[{"type":5}]</onclickeventjavascriptparameters>
+  <onclickeventjavascriptwebresourceid>
+    <webresourceid>398246d9-bea5-f111-b8de-70a8a5b02d28</webresourceid>
+  </onclickeventjavascriptwebresourceid>
+  <onclickeventtype>2</onclickeventtype>
+  <origin>0</origin>
+  <sequence>100100016.2500000000</sequence>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+  <type>0</type>
+  <visibilitytype>0</visibilitytype>
+</appaction>

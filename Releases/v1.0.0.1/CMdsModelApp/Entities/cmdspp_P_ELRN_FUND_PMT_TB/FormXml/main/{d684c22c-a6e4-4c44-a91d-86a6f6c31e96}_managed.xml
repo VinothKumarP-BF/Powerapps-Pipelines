@@ -1,0 +1,192 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<forms xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <systemform>
+    <formid>{d684c22c-a6e4-4c44-a91d-86a6f6c31e96}</formid>
+    <IntroducedVersion>1.0</IntroducedVersion>
+    <FormPresentation>1</FormPresentation>
+    <FormActivationState>1</FormActivationState>
+    <form headerdensity="HighWithControls" shownavigationbar="false">
+      <tabs>
+        <tab verticallayout="true" id="{965B6868-387E-42AA-B774-682A62BB1107}" IsUserDefined="1" name="tab_general_finc">
+          <labels>
+            <label description="General" languagecode="1033" />
+          </labels>
+          <columns>
+            <column width="100%">
+              <sections>
+                <section showlabel="false" showbar="false" IsUserDefined="0" id="{9228E05E-DE21-41A0-8411-57ADB1FC9070}" columns="11" celllabelposition="Top" name="eft_finc_inf">
+                  <labels>
+                    <label description="General" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{EA11A9CF-3A8F-4A45-86BC-9EE57877B592}" visible="false" showlabel="false" availableforphone="false">
+                        <labels>
+                          <label description="p_seq_num" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_p_seq_num" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="cmdspp_p_seq_num" />
+                      </cell>
+                      <cell id="{91B3EFF5-438C-40D5-B761-575EEFB87279}" showlabel="false" availableforphone="false" visible="false" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Owner" languagecode="1033" />
+                        </labels>
+                        <control id="ownerid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="ownerid" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{d5baae24-7095-473a-baee-4aaad4ae0800}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Financial Institution Name " languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_p_finc_instit_nam" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="cmdspp_p_finc_instit_nam" disabled="true" />
+                      </cell>
+                      <cell id="{4e6fb8b2-32b6-47ea-9cb7-fa8d2d885c1e}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Street" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_p_finc_street" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="cmdspp_p_finc_street" disabled="true" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{1d3f2eba-9747-4308-ae63-a3e547465c81}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="City" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_p_finc_city" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="cmdspp_p_finc_city" disabled="true" />
+                      </cell>
+                      <cell id="{03554c2c-13ff-424b-8f84-eb57e2f15819}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="State/Province" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_p_finc_state_cd" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="cmdspp_p_finc_state_cd" disabled="true">
+                          <parameters>
+                            <DefaultViewId>{CA553ED7-1697-F111-8075-70A8A5B02D34}</DefaultViewId>
+                            <AvailableViewIds>{7735878B-98D0-4EC9-A90A-D903327DC996},{64CA6896-0E0F-4900-898D-71C6B40C7F12},{87D73E27-A5A7-F111-B8DE-70A8A5B02D34},{58733369-BBA6-F111-B8DE-70A8A5B02D34},{3BD4E7E6-BDA6-F111-B8DE-70A8A5B02D34},{03228501-A5A7-F111-B8DE-70A8A5B02D34},{7FC31845-A5A7-F111-B8DE-70A8A5B02D28},{20DE6FBF-02A5-F111-B8DE-70A8A5B02328},{97D45F28-11A5-F111-B8DE-70A8A5B02684},{D6A067F3-8EA7-F111-B8DD-70A8A5B028CC},{9968C64F-1697-F111-8075-70A8A5B028CC},{018D2F0F-F1A5-F111-B8DE-70A8A5B02D28},{D448848C-DBA6-F111-B8DD-70A8A5B028CC},{67C2D717-02A5-F111-B8DE-70A8A5B02328},{CA553ED7-1697-F111-8075-70A8A5B02D34},{3C37C7FA-D8A2-F111-B8DE-70A8A5B02D28},{4756C924-D9A2-F111-B8DE-70A8A5B02D28}</AvailableViewIds>
+                            <DisableViewPicker>true</DisableViewPicker>
+                          </parameters>
+                        </control>
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{400ee8fa-fe6e-4e45-8371-706e8a597d07}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Zip Code/Postal Code" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_p_finc_zip_code" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="cmdspp_p_finc_zip_code" disabled="true" />
+                      </cell>
+                      <cell id="{1f405be8-3b35-473f-82a3-597e94d6c9ad}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Financial Institution Telephone Number " languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_p_finc_phone_number" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="cmdspp_p_finc_phone_number" disabled="true" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell locklevel="0" id="{11a0178e-9180-4468-b1ee-cb2b196f1a3e}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                      <cell id="{7bb93b15-e767-4678-b83b-798acc0a2d76}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Type of Account at Financial Institution *" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_p_finc_acc_ty" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="cmdspp_p_finc_acc_ty" disabled="true">
+                          <parameters>
+                            <DefaultViewId>{F12353B5-57A8-F111-B8DE-70A8A5B02328}</DefaultViewId>
+                            <AvailableViewIds>{7735878B-98D0-4EC9-A90A-D903327DC996},{64CA6896-0E0F-4900-898D-71C6B40C7F12},{F12353B5-57A8-F111-B8DE-70A8A5B02328},{87D73E27-A5A7-F111-B8DE-70A8A5B02D34},{58733369-BBA6-F111-B8DE-70A8A5B02D34},{3BD4E7E6-BDA6-F111-B8DE-70A8A5B02D34},{03228501-A5A7-F111-B8DE-70A8A5B02D34},{7FC31845-A5A7-F111-B8DE-70A8A5B02D28},{20DE6FBF-02A5-F111-B8DE-70A8A5B02328},{97D45F28-11A5-F111-B8DE-70A8A5B02684},{D6A067F3-8EA7-F111-B8DD-70A8A5B028CC},{9968C64F-1697-F111-8075-70A8A5B028CC},{018D2F0F-F1A5-F111-B8DE-70A8A5B02D28},{D448848C-DBA6-F111-B8DD-70A8A5B028CC},{67C2D717-02A5-F111-B8DE-70A8A5B02328},{CA553ED7-1697-F111-8075-70A8A5B02D34},{3C37C7FA-D8A2-F111-B8DE-70A8A5B02D28},{4756C924-D9A2-F111-B8DE-70A8A5B02D28}</AvailableViewIds>
+                            <DisableViewPicker>true</DisableViewPicker>
+                          </parameters>
+                        </control>
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{76f5477d-89e8-45d9-a232-f487a56ac772}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Financial Institution Routing Number *" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_p_finc_rout_num" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="cmdspp_p_finc_rout_num" disabled="true" />
+                      </cell>
+                      <cell id="{b91f97e8-8fc6-43e7-a929-48c525a7495a}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Account Number Linkage to Provider Identifier" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_p_finc_prv_id_num" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="cmdspp_p_finc_prv_id_num" disabled="true" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{6bc1830d-d96a-4d7e-ab71-87e025cac52a}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Provider’s Account Number with Financial Institution *" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_p_finc_prv_acc_num" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="cmdspp_p_finc_prv_acc_num" disabled="true" />
+                      </cell>
+                      <cell locklevel="0" id="{fc88a101-fd05-4380-bd22-aeb968eaecba}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+          </columns>
+        </tab>
+      </tabs>
+      <header id="{b6e05b88-9866-4fe7-b531-88e6b71dea78}" celllabelposition="Top" columns="111" labelwidth="115" celllabelalignment="Left">
+        <rows>
+          <row>
+            <cell id="{27084424-5130-4c23-b5c3-4807be6a82db}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{ec983215-5c64-4e1d-aad0-0eb1613ab98b}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{7e279e0d-0b4c-4e5d-b375-b31d47b6310b}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+          </row>
+        </rows>
+      </header>
+      <footer id="{5cf9c646-352a-4ecb-ac07-3e4a5e8b5004}" celllabelposition="Top" columns="111" labelwidth="115" celllabelalignment="Left">
+        <rows>
+          <row>
+            <cell id="{98b98361-e1fc-468e-9f3a-e8b195aa58fb}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{00521cc8-6a37-4274-957f-b09ad1b019d5}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{7f4898ed-07eb-4f8c-8740-bbeb88c4b970}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+          </row>
+        </rows>
+      </footer>
+      <DisplayConditions Order="0" FallbackForm="true">
+        <Everyone />
+      </DisplayConditions>
+    </form>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <LocalizedNames>
+      <LocalizedName description="Information" languagecode="1033" />
+    </LocalizedNames>
+    <Descriptions>
+      <Description description="A form for this entity." languagecode="1033" />
+    </Descriptions>
+  </systemform>
+</forms>

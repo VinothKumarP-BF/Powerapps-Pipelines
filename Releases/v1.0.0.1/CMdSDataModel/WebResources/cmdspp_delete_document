@@ -1,0 +1,90 @@
+function deleteReviewDocuments(primaryControl) {
+
+    var gridContext = primaryControl;
+
+    if (!gridContext) {
+        return;
+    }
+
+    var selectedRows = gridContext.getGrid().getSelectedRows();
+
+    if (!selectedRows || selectedRows.getLength() === 0) {
+        return;
+    }
+
+    var promises = [];
+    var invalidRecordFound = false;
+
+    selectedRows.forEach(function (row) {
+
+        var recordId = row.getData()
+            .getEntity()
+            .getId()
+            .replace(/[{}]/g, "");
+
+        var promise = Xrm.WebApi.retrieveRecord(
+            "cmdspp_p_documents_tb",
+            recordId,
+            "?$select=cmdspp_differentiation"
+        ).then(function (result) {
+
+            if (result.cmdspp_differentiation !== "ReviewDocument") {
+                invalidRecordFound = true;
+            }
+
+        });
+
+        promises.push(promise);
+    });
+
+    Promise.all(promises).then(function () {
+
+        if (invalidRecordFound) {
+
+            Xrm.Navigation.openAlertDialog({
+                text: "Only documents with Document Resource = ReviewDocument can be deleted."
+            });
+
+            return;
+        }
+
+        Xrm.Navigation.openConfirmDialog({
+            title: "Delete",
+            text: "Are you sure you want to delete the selected document(s)?",
+            confirmButtonLabel: "Delete",
+            cancelButtonLabel: "Cancel"
+
+        }).then(function (result) {
+
+            if (!result.confirmed) {
+                return;
+            }
+
+            var deletePromises = [];
+
+            selectedRows.forEach(function (row) {
+
+                var recordId = row.getData()
+                    .getEntity()
+                    .getId()
+                    .replace(/[{}]/g, "");
+
+                deletePromises.push(
+                    Xrm.WebApi.deleteRecord(
+                        "cmdspp_p_documents_tb",
+                        recordId
+                    )
+                );
+
+            });
+
+            Promise.all(deletePromises).then(function () {
+
+                gridContext.refresh();
+
+            });
+
+        });
+
+    });
+}

@@ -1,0 +1,143 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<forms xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <systemform>
+    <formid>{674c358d-2197-f111-8075-70a8a5b028cc}</formid>
+    <IntroducedVersion>1.0.0.0</IntroducedVersion>
+    <FormPresentation>1</FormPresentation>
+    <FormActivationState>1</FormActivationState>
+    <form headerdensity="HighReadOnlyValues" shownavigationbar="false" showImage="true">
+      <tabs>
+        <tab verticallayout="true" id="{7ae4471f-13f8-4c5f-9dbb-3f00f71219dd}" IsUserDefined="1" labelid="{baa98e49-9fc0-41cb-84db-72e376f07c21}">
+          <labels>
+            <label description="General" languagecode="1033" />
+          </labels>
+          <columns>
+            <column width="100%">
+              <sections>
+                <section showlabel="false" showbar="false" IsUserDefined="0" id="{48625fa1-cf37-4787-a95d-f6c732fca250}" visible="false" labelid="{cae22ad9-4ee0-4257-b2f3-adc5abdf99c6}">
+                  <labels>
+                    <label description="General" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{d01420fe-747c-43e9-a143-a7049b18d6a2}" showlabel="false" visible="false" labelid="{86a7b9a1-bf00-48d4-a633-a036d8f16f8a}">
+                        <labels>
+                          <label description="p_pin_dea_dtl_sk" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_p_pin_dea_dtl_sk" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="cmdspp_p_pin_dea_dtl_sk" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{48e6b87f-0399-4309-b55d-cd04a25a5517}" visible="false" labelid="{7f5416ee-47fa-4a27-bdf5-f2b57619b9e3}">
+                        <labels>
+                          <label description="Owner" languagecode="1033" />
+                        </labels>
+                        <control id="ownerid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="ownerid" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+                <section name="null_section_3" id="8f974ed4-2461-4a0c-9b2c-f767b0c24dcb" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Top" columns="11" labelwidth="115" labelid="{64d5c6c1-7801-429b-a593-f174d55470c1}">
+                  <labels>
+                    <label description="DEA" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell locklevel="0" id="{564aef8e-a948-4edd-aeb5-fd7310bc6bb9}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                      <cell locklevel="0" id="{b59c27a9-2bd5-4ff9-9037-2158e50a85b7}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{c79d9f3d-9d48-4658-b653-b7468148e222}" locklevel="0" colspan="1" rowspan="1" labelid="{e065f072-2a59-4202-b811-0ee9a594ee91}">
+                        <labels>
+                          <label description="Drug Enforcement Administration (DEA) " languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_p_dea" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="cmdspp_p_dea" disabled="false" />
+                      </cell>
+                      <cell locklevel="0" id="{8a10d9f8-9707-4dc5-90a9-51c824f27151}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+          </columns>
+        </tab>
+      </tabs>
+      <header id="{d656885c-1ac8-40b1-a102-305eb532a265}" celllabelposition="Top" columns="111" labelwidth="115" celllabelalignment="Left">
+        <rows>
+          <row>
+            <cell id="{f8a385ab-c89c-459d-802e-b5f7e58b6d53}" showlabel="false" labelid="{6cbfca55-bb3c-49d0-a37a-be162d683327}">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{cb59d450-f2c7-4453-b802-69ac387f58f4}" showlabel="false" labelid="{7e8db3b1-c14c-4dc4-8e40-e243df26770e}">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{37613830-6536-4542-bcdf-7d24b908bc23}" showlabel="false" labelid="{72b4de86-87f6-4625-9009-ebdbef70ae44}">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+          </row>
+        </rows>
+      </header>
+      <footer id="{36fead6a-4502-4e4c-b3e0-271e87fedea7}" celllabelposition="Top" columns="111" labelwidth="115" celllabelalignment="Left">
+        <rows>
+          <row>
+            <cell id="{cbf74c1e-1515-4798-b9af-a09582508212}" showlabel="false" labelid="{abe03ec7-ae6e-4736-9bc1-08c855ac8a38}">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{0d619fea-b06a-4653-8e00-63fb0b72e12f}" showlabel="false" labelid="{4c35a283-d11f-4f14-8c7a-600b561a1995}">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{01360867-d8e9-4e26-ab61-6b02919a9266}" showlabel="false" labelid="{89d76bd2-3a48-4502-b78b-22965065935a}">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+          </row>
+        </rows>
+      </footer>
+      <DisplayConditions Order="1" FallbackForm="true">
+        <Role Id="{627090ff-40a3-4053-8790-584edc5be201}" />
+        <Role Id="{119f245c-3cc8-4b62-b31c-d1a046ced15d}" />
+      </DisplayConditions>
+      <formLibraries>
+        <Library name="cmdspp_screening_web_res" libraryUniqueId="{0e7094aa-0aeb-4d0e-9b0b-f50b2cb0b8ce}" />
+      </formLibraries>
+      <events>
+        <event name="onchange" application="false" active="false" attribute="cmdspp_p_dea">
+          <Handlers>
+            <Handler functionName="validateField" libraryName="cmdspp_screening_web_res" handlerUniqueId="{e14b69fb-a647-4a15-bf74-83ca1ebb31d7}" enabled="true" parameters="&quot;cmdspp_p_dea&quot;,&quot;pattern&quot;,&quot;^[A-Za-z]{2}[0-9]{7}$&quot;,&quot;DEA Number is invalid. DEA Number should be 2 alphas followed by 7 numeric digits.&quot;" passExecutionContext="true" />
+          </Handlers>
+        </event>
+      </events>
+    </form>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <LocalizedNames>
+      <LocalizedName description="Information" languagecode="1033" />
+    </LocalizedNames>
+    <Descriptions>
+      <Description description="A form for this entity." languagecode="1033" />
+    </Descriptions>
+  </systemform>
+</forms>

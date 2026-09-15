@@ -1,0 +1,1801 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps_1": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "cmdspp_CR_Dataverse_Core_DEV"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      },
+      "shared_sharepointonline": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "cmdspp_CR_SharePoint_Core_DEV"
+        },
+        "api": {
+          "name": "shared_sharepointonline"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "manual": {
+          "metadata": {
+            "operationMetadataId": "5195c74c-11ce-485c-94c3-4350a3a25540"
+          },
+          "type": "Request",
+          "kind": "Http",
+          "inputs": {
+            "schema": {
+              "action": "",
+              "recordId": "",
+              "fileName": "",
+              "fileContent": "",
+              "enrollmentId": "",
+              "ApplicationId": "",
+              "documentType": "",
+              "documentName": "",
+              "userId": ""
+            },
+            "triggerAuthenticationType": "All"
+          }
+        }
+      },
+      "actions": {
+        "Switch": {
+          "runAfter": {
+            "Compose_-_Document_Intelligence_URL": [
+              "Succeeded"
+            ]
+          },
+          "cases": {
+            "Case": {
+              "case": "Upload",
+              "actions": {
+                "Condition": {
+                  "actions": {
+                    "HTTP_-_analyze_document": {
+                      "runAfter": {},
+                      "metadata": {
+                        "operationMetadataId": "0e0ec841-71fd-4949-93bb-d65b3ccfb8ad"
+                      },
+                      "type": "Http",
+                      "inputs": {
+                        "method": "POST",
+                        "uri": "@outputs('Compose_-_Document_Intelligence_URL')",
+                        "headers": {
+                          "Ocp-Apim-Subscription-Key": "@{body('Parse_JSON_-_Doc_Intel_Config')?['Ocp-Apim-Subscription-Key']}",
+                          "Content-type": "application/json"
+                        },
+                        "body": {
+                          "base64Source": "@{outputs('Compose_-_Request')?['file']?['base64']}"
+                        }
+                      },
+                      "runtimeConfiguration": {
+                        "contentTransfer": {
+                          "transferMode": "Chunked"
+                        }
+                      }
+                    },
+                    "Do_until": {
+                      "actions": {
+                        "HTTP_-_Get_Analyze_Result": {
+                          "runAfter": {
+                            "Delay": [
+                              "Succeeded"
+                            ]
+                          },
+                          "metadata": {
+                            "operationMetadataId": "5a007965-8dae-460a-8879-60f42eed97d9"
+                          },
+                          "type": "Http",
+                          "inputs": {
+                            "method": "GET",
+                            "uri": "@outputs('HTTP_-_Analyze_Document')?['headers']?['Operation-Location']",
+                            "headers": {
+                              "Ocp-Apim-Subscription-Key": "@{body('Parse_JSON_-_Doc_Intel_Config')?['Ocp-Apim-Subscription-Key']}"
+                            }
+                          },
+                          "runtimeConfiguration": {
+                            "contentTransfer": {
+                              "transferMode": "Chunked"
+                            }
+                          }
+                        },
+                        "Set_variable": {
+                          "runAfter": {
+                            "HTTP_-_Get_Analyze_Result": [
+                              "Succeeded"
+                            ]
+                          },
+                          "metadata": {
+                            "operationMetadataId": "38d0c301-8657-417b-83cb-aeb220e819bb"
+                          },
+                          "type": "SetVariable",
+                          "inputs": {
+                            "name": "varAnalyzeStatus",
+                            "value": "@body('HTTP_-_Get_Analyze_Result')?['status']"
+                          }
+                        },
+                        "Delay": {
+                          "runAfter": {},
+                          "metadata": {
+                            "operationMetadataId": "2a3f283d-7112-4f31-b776-a9f9efc81416"
+                          },
+                          "type": "Wait",
+                          "inputs": {
+                            "interval": {
+                              "count": 5,
+                              "unit": "Second"
+                            }
+                          }
+                        }
+                      },
+                      "runAfter": {
+                        "HTTP_-_analyze_document": [
+                          "Succeeded"
+                        ]
+                      },
+                      "expression": "@or(equals(variables('varAnalyzeStatus'), 'succeeded'),  equals(variables('varAnalyzeStatus'), 'failed'))",
+                      "limit": {
+                        "count": 5,
+                        "timeout": "PT1H"
+                      },
+                      "metadata": {
+                        "operationMetadataId": "f735f984-a636-427b-92df-ccb926ca99bf"
+                      },
+                      "type": "Until"
+                    },
+                    "Condition_1": {
+                      "actions": {
+                        "Compose_-_Raw_OCR_Text": {
+                          "runAfter": {},
+                          "metadata": {
+                            "operationMetadataId": "2ebcd887-1715-424f-bad5-c16fe06951f9"
+                          },
+                          "type": "Compose",
+                          "inputs": "@body('HTTP_-_Get_Analyze_Result')?['analyzeResult']?['content']"
+                        },
+                        "Compose_-_Raw_Key_Value_Pairs": {
+                          "runAfter": {
+                            "Compose_-_Raw_OCR_Text": [
+                              "Succeeded"
+                            ]
+                          },
+                          "metadata": {
+                            "operationMetadataId": "262f25e4-863b-4e54-a83b-f042922cd1e8"
+                          },
+                          "type": "Compose",
+                          "inputs": "@body('HTTP_-_Get_Analyze_Result')?['analyzeResult']?['keyValuePairs']"
+                        },
+                        "Compose_-_Raw_Tables": {
+                          "runAfter": {
+                            "Compose_-_Raw_Key_Value_Pairs": [
+                              "Succeeded"
+                            ]
+                          },
+                          "metadata": {
+                            "operationMetadataId": "2d45ae03-414f-4be3-998e-de5f79aac3d6"
+                          },
+                          "type": "Compose",
+                          "inputs": "@body('HTTP_-_Get_Analyze_Result')?['analyzeResult']?['tables']"
+                        },
+                        "Select_-_Normalized_Key_Value_Pairs": {
+                          "runAfter": {
+                            "Compose_-_Raw_Tables": [
+                              "Succeeded"
+                            ]
+                          },
+                          "metadata": {
+                            "operationMetadataId": "7d3ca550-6489-49af-84d8-1b875aa0c863"
+                          },
+                          "type": "Select",
+                          "inputs": {
+                            "from": "@body('HTTP_-_Get_Analyze_Result')?['analyzeResult']?['keyValuePairs']",
+                            "select": {
+                              "Key": "@toLower(trim(replace(replace(coalesce(item()?['key']?['content'], ''), ':', ''), '#', '')))",
+                              "originalKey": "@trim(coalesce(item()?['key']?['content'], ''))",
+                              "value": "@trim(coalesce(item()?['value']?['content'], ''))",
+                              "confidence": "@coalesce(item()?['confidence'], 0)"
+                            }
+                          }
+                        },
+                        "Compose_-_Tables_JSON": {
+                          "runAfter": {
+                            "Select_-_Normalized_Key_Value_Pairs": [
+                              "Succeeded"
+                            ]
+                          },
+                          "metadata": {
+                            "operationMetadataId": "c2a5e9d1-76af-45f0-8516-a99f67b5f546"
+                          },
+                          "type": "Compose",
+                          "inputs": "@string(body('HTTP_-_Get_Analyze_Result')?['analyzeResult']?['tables'])"
+                        },
+                        "Response_-_DocInt_Data": {
+                          "runAfter": {
+                            "Compose_-_Tables_JSON": [
+                              "Succeeded"
+                            ]
+                          },
+                          "metadata": {
+                            "operationMetadataId": "0da8ecc9-3ab9-4f24-96c9-e6a876175257"
+                          },
+                          "type": "Response",
+                          "kind": "Http",
+                          "inputs": {
+                            "statusCode": 200,
+                            "headers": {
+                              "content-type": "application/json"
+                            },
+                            "body": {
+                              "data": "@body('Select_-_Normalized_Key_Value_Pairs')",
+                              "type": "Doc_Int",
+                              "status": "Success",
+                              "fileName": "@{outputs('Create_file_2')?['body/Name']}",
+                              "documentId": "@{outputs('Create_file_2')?['body/ItemId']}",
+                              "recordId": "@{outputs('Add_a_new_row_2')?['body/cmdspp_p_documents_tbid']}"
+                            }
+                          }
+                        },
+                        "Filter_array": {
+                          "runAfter": {
+                            "Response_-_DocInt_Data": [
+                              "Succeeded"
+                            ]
+                          },
+                          "metadata": {
+                            "operationMetadataId": "8b046153-f77f-4fd2-9b17-1306d17a03fd"
+                          },
+                          "type": "Query",
+                          "inputs": {
+                            "from": "@body('Response_-_DocInt_Data')?['data']",
+                            "where": "@or(\n  equals(item()?['Key'], 'dea registration number'),\n  equals(item()?['Key'], 'clia id number'),\n  equals(item()?['Key'], 'effective date'),\n  equals(item()?['Key'], 'expiration date')\n)"
+                          }
+                        },
+                        "Condition_4": {
+                          "actions": {
+                            "Add_a_new_row": {
+                              "runAfter": {},
+                              "metadata": {
+                                "operationMetadataId": "81ecf6de-0931-4ca1-82b0-4a02c293dc84"
+                              },
+                              "type": "OpenApiConnection",
+                              "inputs": {
+                                "host": {
+                                  "connectionName": "shared_commondataserviceforapps_1",
+                                  "operationId": "CreateRecord",
+                                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                                },
+                                "parameters": {
+                                  "entityName": "cmdspp_p_pin_dea_dtls",
+                                  "item/cmdspp_p_dea": "@variables('extractedData')?['dea registration number']",
+                                  "item/cmdspp_created_by_user@odata.bind": "@concat(\r\n\r\n'/cmdspp_g_usr_dtls_tbs(',\r\n\r\ntriggerBody()?['userId'],\r\n\r\n')'\r\n\r\n)",
+                                  "item/cmdspp_p_sys_id@odata.bind": "@concat(\r\n\r\n'/cmdspp_p_dtl_tbs(',\r\n\r\ntriggerBody()?['ApplicationId'],\r\n\r\n')'\r\n\r\n)"
+                                },
+                                "authentication": "@parameters('$authentication')"
+                              }
+                            }
+                          },
+                          "runAfter": {
+                            "Apply_to_each": [
+                              "Succeeded"
+                            ]
+                          },
+                          "else": {
+                            "actions": {
+                              "Add_a_new_row_4": {
+                                "runAfter": {},
+                                "metadata": {
+                                  "operationMetadataId": "27d50666-7f88-4589-80ac-bc2d4c490b26"
+                                },
+                                "type": "OpenApiConnection",
+                                "inputs": {
+                                  "host": {
+                                    "connectionName": "shared_commondataserviceforapps_1",
+                                    "operationId": "CreateRecord",
+                                    "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                                  },
+                                  "parameters": {
+                                    "entityName": "cmdspp_p_cln_lab_imp_clias",
+                                    "item/cmdspp_created_by_user@odata.bind": "@concat(\r\n\r\n'/cmdspp_g_usr_dtls_tbs(',\r\n\r\ntriggerBody()?['userId'],\r\n\r\n')'\r\n\r\n)",
+                                    "item/cmdspp_p_clia_eff_dt": "@variables('extractedData')?['effective date']",
+                                    "item/cmdspp_p_clia_exp_dt": "@variables('extractedData')?['expiration date']",
+                                    "item/cmdspp_p_clia_num": "@variables('extractedData')?['clia id number']",
+                                    "item/cmdspp_p_sys_id@odata.bind": "@concat(\r\n\r\n'/cmdspp_p_dtl_tbs(',\r\n\r\ntriggerBody()?['ApplicationId'],\r\n\r\n')'\r\n\r\n)"
+                                  },
+                                  "authentication": "@parameters('$authentication')"
+                                }
+                              }
+                            }
+                          },
+                          "expression": {
+                            "equals": [
+                              "@first(body('Filter_array'))?['Key']",
+                              "dea registration number"
+                            ]
+                          },
+                          "metadata": {
+                            "operationMetadataId": "9d3b6ee4-2d3c-40b7-b6ef-8d2069b2d9d9"
+                          },
+                          "type": "If"
+                        },
+                        "Select_3": {
+                          "runAfter": {
+                            "Filter_array": [
+                              "Succeeded"
+                            ]
+                          },
+                          "metadata": {
+                            "operationMetadataId": "7ba49802-ea9a-41be-b739-3ffda29be2a0"
+                          },
+                          "type": "Select",
+                          "inputs": {
+                            "from": "@body('Filter_array')",
+                            "select": {
+                              "key": "@item()?['Key']",
+                              "value": "@item()?['value']"
+                            }
+                          }
+                        },
+                        "Apply_to_each": {
+                          "foreach": "@body('Select_3')",
+                          "actions": {
+                            "Condition_6": {
+                              "actions": {
+                                "Build_extractedData": {
+                                  "runAfter": {},
+                                  "metadata": {
+                                    "operationMetadataId": "4b2533df-3ca0-4d2f-b23b-6a2d94b77ec1"
+                                  },
+                                  "type": "Compose",
+                                  "inputs": "@setProperty(\r\n  variables('extractedData'),\r\n  item()?['Key'],\r\n  item()?['Value']\r\n)"
+                                },
+                                "extractedData": {
+                                  "runAfter": {
+                                    "Build_extractedData": [
+                                      "Succeeded"
+                                    ]
+                                  },
+                                  "metadata": {
+                                    "operationMetadataId": "588f08f6-83ab-4a0d-84be-773793dc0a98"
+                                  },
+                                  "type": "SetVariable",
+                                  "inputs": {
+                                    "name": "extractedData",
+                                    "value": "@outputs('Build_extractedData')"
+                                  }
+                                }
+                              },
+                              "runAfter": {},
+                              "expression": {
+                                "equals": [
+                                  "@not(contains(variables('extractedData'), item()?['Key']))",
+                                  true
+                                ]
+                              },
+                              "metadata": {
+                                "operationMetadataId": "f48c4ba6-acc0-4f8d-b1ff-ca51367c2387"
+                              },
+                              "type": "If"
+                            }
+                          },
+                          "runAfter": {
+                            "Select_3": [
+                              "Succeeded"
+                            ]
+                          },
+                          "metadata": {
+                            "operationMetadataId": "8ecee4c5-1d55-4caf-8898-302ae258c086"
+                          },
+                          "type": "Foreach"
+                        }
+                      },
+                      "runAfter": {
+                        "Do_until": [
+                          "Succeeded"
+                        ]
+                      },
+                      "else": {
+                        "actions": {
+                          "Response_-_Failed": {
+                            "runAfter": {},
+                            "metadata": {
+                              "operationMetadataId": "1bc3c523-365e-42e1-91d4-b4dcfcd1fc6f"
+                            },
+                            "type": "Response",
+                            "kind": "Http",
+                            "inputs": {
+                              "statusCode": 200,
+                              "body": {
+                                "status": "Failed"
+                              }
+                            }
+                          }
+                        }
+                      },
+                      "expression": {
+                        "and": [
+                          {
+                            "equals": [
+                              "@body('HTTP_-_Get_Analyze_Result')?['status']",
+                              "succeeded"
+                            ]
+                          }
+                        ]
+                      },
+                      "metadata": {
+                        "operationMetadataId": "912ec5c0-ec34-41c2-b448-b2a953368c06"
+                      },
+                      "type": "If"
+                    }
+                  },
+                  "runAfter": {
+                    "Add_a_new_row_2": [
+                      "Succeeded"
+                    ]
+                  },
+                  "else": {
+                    "actions": {
+                      "Response_4": {
+                        "runAfter": {},
+                        "metadata": {
+                          "operationMetadataId": "af504375-47ba-43dc-8788-abf7261054b8"
+                        },
+                        "type": "Response",
+                        "kind": "Http",
+                        "inputs": {
+                          "statusCode": 200,
+                          "body": {
+                            "status": "Success",
+                            "fileName": "@{outputs('Create_file_2')?['body/Name']}",
+                            "documentId": "@{outputs('Create_file_2')?['body/ItemId']}",
+                            "recordId": "@{outputs('Add_a_new_row_2')?['body/cmdspp_p_documents_tbid']}"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "expression": {
+                    "or": [
+                      {
+                        "contains": [
+                          "@triggerBody()?['fileName']",
+                          "DEA"
+                        ]
+                      },
+                      {
+                        "contains": [
+                          "@triggerBody()?['fileName']",
+                          "CLIA"
+                        ]
+                      }
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "9dbdbe3c-4c2b-4b39-818a-4b6ecb7bd8e8"
+                  },
+                  "type": "If"
+                },
+                "Add_a_new_row_2": {
+                  "runAfter": {
+                    "Get_file_properties": [
+                      "Succeeded"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "6b4694e7-4761-4ac7-9d59-93a08db7a972"
+                  },
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "host": {
+                      "connectionName": "shared_commondataserviceforapps_1",
+                      "operationId": "CreateRecord",
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                    },
+                    "parameters": {
+                      "entityName": "cmdspp_p_documents_tbs",
+                      "item/cmdspp_p_doc_to_p_dtl_fk@odata.bind": "@concat(\r\n'/cmdspp_p_dtl_tbs(',\r\ntriggerBody()?['ApplicationId'],\r\n')'\r\n)",
+                      "item/cmdspp_p_docu_nam": "@triggerBody()?['documentName']",
+                      "item/cmdspp_p_document_type": "@triggerBody()?['documentType']",
+                      "item/cmdspp_p_enrol_id": "@triggerBody()?['enrollmentId']",
+                      "item/cmdspp_p_file_nam": "@triggerBody()?['fileName']",
+                      "item/cmdspp_p_sharepoint_file_id": "@outputs('Create_file_2')?['body/Id']",
+                      "item/cmdspp_p_sharepoint_path": "@concat(outputs('Get_file_properties')?['body/{Link}'],'?web=1')"
+                    },
+                    "authentication": "@parameters('$authentication')"
+                  }
+                },
+                "Compose_Enrollment_Id": {
+                  "runAfter": {},
+                  "metadata": {
+                    "operationMetadataId": "51c407a4-b9f7-47fe-9bba-62c2dee80a70"
+                  },
+                  "type": "Compose",
+                  "inputs": "@triggerBody()?['enrollmentId']"
+                },
+                "Compose_Parent_Folder_Path": {
+                  "runAfter": {
+                    "Compose_Document_Type": [
+                      "Succeeded"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "370e6d94-7cf6-4619-a232-0b0b6babe814"
+                  },
+                  "type": "Compose",
+                  "inputs": "@body('Parse_JSON_-_SharePoint_Config')?['folderPath']"
+                },
+                "Compose_Dynamic_Folder": {
+                  "runAfter": {
+                    "Compose_-_Dynamic_Parameter_Path": [
+                      "Succeeded"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "b45bdd29-5f54-49b8-a130-2cbc060d08b7"
+                  },
+                  "type": "Compose",
+                  "inputs": "@ concat(\r\n    outputs('Compose_Parent_Folder_Path'),\r\n    outputs('Compose_Enrollment_Id'),\r\n    '/',\r\n    outputs('Compose_Document_Type')\r\n)"
+                },
+                "Scope_CheckFolder": {
+                  "actions": {
+                    "Get_folder_metadata_using_path": {
+                      "runAfter": {},
+                      "metadata": {
+                        "operationMetadataId": "20badd5d-a8bd-488b-b922-9d7946eb45e8"
+                      },
+                      "type": "OpenApiConnection",
+                      "inputs": {
+                        "host": {
+                          "connectionName": "shared_sharepointonline",
+                          "operationId": "GetFolderMetadataByPath",
+                          "apiId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline"
+                        },
+                        "parameters": {
+                          "dataset": "@body('Parse_JSON_-_SharePoint_Config')?['siteAddress']",
+                          "path": "@concat(body('Parse_JSON_-_SharePoint_Config')?['folderPath'],triggerBody()?['enrollmentId'])"
+                        },
+                        "authentication": "@parameters('$authentication')"
+                      }
+                    }
+                  },
+                  "runAfter": {
+                    "Compose_Dynamic_Folder": [
+                      "Succeeded"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "e2f73c52-96ef-4f3a-8da3-772fcbc2d071"
+                  },
+                  "type": "Scope"
+                },
+                "Scope_CreateFolderIfMissing": {
+                  "actions": {
+                    "SharePoint_Create_New_Folder": {
+                      "runAfter": {},
+                      "metadata": {
+                        "operationMetadataId": "68439cbf-3af4-4d3d-8f95-f302c5d1c9f6"
+                      },
+                      "type": "OpenApiConnection",
+                      "inputs": {
+                        "host": {
+                          "connectionName": "shared_sharepointonline",
+                          "operationId": "CreateNewFolder",
+                          "apiId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline"
+                        },
+                        "parameters": {
+                          "dataset": "@body('Parse_JSON_-_SharePoint_Config')?['siteAddress']",
+                          "table": "@body('Parse_JSON_-_SharePoint_Config')['libraryName']",
+                          "parameters/path": "@outputs('Compose_-_Dynamic_Parameter_Path')"
+                        },
+                        "authentication": "@parameters('$authentication')"
+                      }
+                    }
+                  },
+                  "runAfter": {
+                    "Scope_CheckFolder": [
+                      "Failed"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "5d85c7bd-3fac-47ec-862c-57a9781924d3"
+                  },
+                  "type": "Scope"
+                },
+                "Scope_CreateFile": {
+                  "actions": {
+                    "Create_file_2": {
+                      "runAfter": {},
+                      "metadata": {
+                        "operationMetadataId": "14294c9d-e7f7-4a86-85af-2bc4a53d4741"
+                      },
+                      "type": "OpenApiConnection",
+                      "inputs": {
+                        "host": {
+                          "connectionName": "shared_sharepointonline",
+                          "operationId": "CreateFile",
+                          "apiId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline"
+                        },
+                        "parameters": {
+                          "dataset": "@body('Parse_JSON_-_SharePoint_Config')?['siteAddress']",
+                          "folderPath": "@concat(\r\nbody('Parse_JSON_-_SharePoint_Config')?['folderPath'],\r\ntriggerBody()?['enrollmentId'],\r\n'/',\r\nif(\r\n    equals(triggerBody()?['documentType'],'required'),\r\n    'Required',\r\n    'Other'\r\n)\r\n)",
+                          "name": "@triggerBody()?['fileName']",
+                          "body": "@base64ToBinary(triggerBody()?['fileContent'])"
+                        },
+                        "authentication": "@parameters('$authentication')"
+                      },
+                      "runtimeConfiguration": {
+                        "contentTransfer": {
+                          "transferMode": "Chunked"
+                        }
+                      }
+                    }
+                  },
+                  "runAfter": {
+                    "Scope_CreateFolderIfMissing": [
+                      "Skipped",
+                      "Succeeded"
+                    ],
+                    "Scope_CheckFolder": [
+                      "Succeeded",
+                      "Failed"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "21cae939-38f4-4908-bf28-c44fe88915b0"
+                  },
+                  "type": "Scope"
+                },
+                "Get_file_properties": {
+                  "runAfter": {
+                    "Scope_CreateFile": [
+                      "Succeeded"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "9f37101f-0e23-42c2-947d-c3d1b7e85ccc"
+                  },
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "host": {
+                      "connectionName": "shared_sharepointonline",
+                      "operationId": "GetFileItem",
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline"
+                    },
+                    "parameters": {
+                      "dataset": "@body('Parse_JSON_-_SharePoint_Config')?['siteAddress']",
+                      "table": "@body('Parse_JSON_-_SharePoint_Config')?['libraryName']",
+                      "id": "@outputs('Create_file_2')?['body/ItemId']"
+                    },
+                    "authentication": "@parameters('$authentication')"
+                  }
+                },
+                "Compose_Document_Type": {
+                  "runAfter": {
+                    "Compose_Enrollment_Id": [
+                      "Succeeded"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "f7ab3ccb-29ab-4c86-a39f-babe260fbde8"
+                  },
+                  "type": "Compose",
+                  "inputs": "@if(\r\n    equals(triggerBody()?['documentType'],'required'),\r\n    'Required',\r\n    'Other'\r\n)"
+                },
+                "Compose_-_Dynamic_Parameter_Path": {
+                  "runAfter": {
+                    "Compose_Parent_Folder_Path": [
+                      "Succeeded"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "6d3fd214-46b7-4074-8b27-c0893a8ff215"
+                  },
+                  "type": "Compose",
+                  "inputs": "@concat(body('Parse_JSON_-_SharePoint_Config')['parametersPath'],outputs('Compose_Enrollment_Id'),'/',outputs('Compose_Document_Type'))"
+                }
+              }
+            },
+            "Case_2": {
+              "case": "View",
+              "actions": {
+                "Get_a_row_by_ID": {
+                  "runAfter": {},
+                  "metadata": {
+                    "operationMetadataId": "cce396d7-6c1c-4b35-bbb2-7f481b513f67"
+                  },
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "host": {
+                      "connectionName": "shared_commondataserviceforapps_1",
+                      "operationId": "GetItem",
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                    },
+                    "parameters": {
+                      "entityName": "cmdspp_p_documents_tbs",
+                      "recordId": "@triggerBody()?['recordId']"
+                    },
+                    "authentication": "@parameters('$authentication')"
+                  }
+                },
+                "Response": {
+                  "runAfter": {
+                    "Get_file_content_2": [
+                      "Succeeded"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "a66bbf2a-f994-4e8b-947a-80d8c54ad680"
+                  },
+                  "type": "Response",
+                  "kind": "Http",
+                  "inputs": {
+                    "statusCode": 200,
+                    "body": {
+                      "status": "Success",
+                      "fileContent": "@concat(  'data:',  body('Get_file_content_2')?['$content-type'],  ';base64,',  body('Get_file_content_2')?['$content'])",
+                      "fileName": "@outputs('Get_a_row_by_ID')?['body/cmdspp_p_file_nam']"
+                    }
+                  }
+                },
+                "Get_file_content_2": {
+                  "runAfter": {
+                    "Get_a_row_by_ID": [
+                      "Succeeded"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "60fac18b-51df-4b6e-8bde-0096fb27f0d5"
+                  },
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "host": {
+                      "connectionName": "shared_sharepointonline",
+                      "operationId": "GetFileContent",
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline"
+                    },
+                    "parameters": {
+                      "dataset": "@body('Parse_JSON_-_SharePoint_Config')?['siteAddress']",
+                      "id": "@outputs('Get_a_row_by_ID')?['body/cmdspp_p_sharepoint_file_id']",
+                      "inferContentType": true
+                    },
+                    "authentication": "@parameters('$authentication')"
+                  }
+                }
+              }
+            },
+            "Case_3": {
+              "case": "Replace",
+              "actions": {
+                "Get_a_row_by_ID_2": {
+                  "runAfter": {},
+                  "metadata": {
+                    "operationMetadataId": "7cd7c0c9-c2da-40b6-ba44-41f30dcecf67"
+                  },
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "host": {
+                      "connectionName": "shared_commondataserviceforapps_1",
+                      "operationId": "GetItem",
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                    },
+                    "parameters": {
+                      "entityName": "cmdspp_p_documents_tbs",
+                      "recordId": "@triggerBody()?['recordId']"
+                    },
+                    "authentication": "@parameters('$authentication')"
+                  }
+                },
+                "Update_a_row_3": {
+                  "runAfter": {
+                    "Create_file": [
+                      "Succeeded"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "b92ef90b-1144-4d7e-be08-c5ee9dbbbd6a"
+                  },
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "host": {
+                      "connectionName": "shared_commondataserviceforapps_1",
+                      "operationId": "UpdateOnlyRecord",
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                    },
+                    "parameters": {
+                      "entityName": "cmdspp_p_documents_tbs",
+                      "recordId": "@outputs('Get_a_row_by_ID_2')?['body/cmdspp_p_documents_tbid']",
+                      "item/cmdspp_p_doc_to_p_dtl_fk@odata.bind": "@concat(\r\n'/cmdspp_p_dtl_tbs(',\r\ntriggerBody()?['ApplicationId'],\r\n')'\r\n)",
+                      "item/cmdspp_p_document_type": "@triggerBody()?['documentType']",
+                      "item/cmdspp_p_enrol_id": "@triggerBody()?['enrollmentId']",
+                      "item/cmdspp_p_file_nam": "@triggerBody()?['fileName']",
+                      "item/cmdspp_p_file_status": 3,
+                      "item/cmdspp_p_sharepoint_file_id": "@outputs('Create_file')?['body/Id']",
+                      "item/cmdspp_p_sharepoint_path": "@concat(\r\n'https://conduent.sharepoint.com/teams/CMdSNextGenProviderModule/Shared Documents/SharePoint for DEV & QA Vendors/Infinite/uploadedDocuments/',\r\ntriggerBody()?['enrollmentId'],\r\n'/',\r\ntriggerBody()?['fileName']\r\n)",
+                      "item/statecode": 0
+                    },
+                    "authentication": "@parameters('$authentication')"
+                  }
+                },
+                "Delete_file_2": {
+                  "runAfter": {
+                    "Get_a_row_by_ID_2": [
+                      "Succeeded"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "62e88ca9-f341-4772-97cf-f57b9ddc88ce"
+                  },
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "host": {
+                      "connectionName": "shared_sharepointonline",
+                      "operationId": "DeleteFile",
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline"
+                    },
+                    "parameters": {
+                      "dataset": "@body('Parse_JSON_-_SharePoint_Config')?['siteAddress']",
+                      "id": "@outputs('Get_a_row_by_ID_2')?['body/cmdspp_p_sharepoint_file_id']"
+                    },
+                    "authentication": "@parameters('$authentication')"
+                  }
+                },
+                "Create_file": {
+                  "runAfter": {
+                    "Delete_file_2": [
+                      "Succeeded"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "65bac744-7500-4659-bfcd-c72d505d40da"
+                  },
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "host": {
+                      "connectionName": "shared_sharepointonline",
+                      "operationId": "CreateFile",
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline"
+                    },
+                    "parameters": {
+                      "dataset": "@body('Parse_JSON_-_SharePoint_Config')?['siteAddress']",
+                      "folderPath": "@concat(\r\nbody('Parse_JSON_-_SharePoint_Config')?['folderPath'],\r\ntriggerBody()?['enrollmentId'],\r\n'/',\r\nif(\r\n    equals(triggerBody()?['documentType'],'required'),\r\n    'Required',\r\n    'Other'\r\n)\r\n)",
+                      "name": "@triggerBody()?['fileName']",
+                      "body": "@base64ToBinary(triggerBody()?['fileContent'])"
+                    },
+                    "authentication": "@parameters('$authentication')"
+                  },
+                  "runtimeConfiguration": {
+                    "contentTransfer": {
+                      "transferMode": "Chunked"
+                    }
+                  }
+                },
+                "Condition_2": {
+                  "actions": {
+                    "HTTP": {
+                      "runAfter": {},
+                      "metadata": {
+                        "operationMetadataId": "8754fcfd-3153-4a7e-8a12-bfa48469f428"
+                      },
+                      "type": "Http",
+                      "inputs": {
+                        "method": "POST",
+                        "uri": " @{outputs('Compose_-_Document_Intelligence_URL')}",
+                        "headers": {
+                          "Ocp-Apim-Subscription-Key": "@{body('Parse_JSON_-_Doc_Intel_Config')?['Ocp-Apim-Subscription-Key']}",
+                          "Content-type": "application/json"
+                        },
+                        "body": {
+                          "base64Source": "@{outputs('Compose_-_Request')?['file']?['base64']}"
+                        }
+                      }
+                    },
+                    "Do_until_2": {
+                      "actions": {
+                        "Delay_2": {
+                          "runAfter": {},
+                          "metadata": {
+                            "operationMetadataId": "b674a137-3460-4614-bff0-cb23753cb708"
+                          },
+                          "type": "Wait",
+                          "inputs": {
+                            "interval": {
+                              "count": 5,
+                              "unit": "Second"
+                            }
+                          }
+                        },
+                        "HTTP_2": {
+                          "runAfter": {
+                            "Delay_2": [
+                              "Succeeded"
+                            ]
+                          },
+                          "metadata": {
+                            "operationMetadataId": "3e644cb0-f5f6-4106-bc30-6115c9c5e9ad"
+                          },
+                          "type": "Http",
+                          "inputs": {
+                            "method": "GET",
+                            "uri": "@{outputs('HTTP')?['headers']?['Operation-Location']}",
+                            "headers": {
+                              "Ocp-Apim-Subscription-Key": "@{body('Parse_JSON_-_Doc_Intel_Config')['Ocp-Apim-Subscription-Key']}"
+                            }
+                          }
+                        },
+                        "Set_variable_2": {
+                          "runAfter": {
+                            "HTTP_2": [
+                              "Succeeded"
+                            ]
+                          },
+                          "metadata": {
+                            "operationMetadataId": "3203f7cb-1355-4ae8-880a-8c23a7436f7b"
+                          },
+                          "type": "SetVariable",
+                          "inputs": {
+                            "name": "varAnalyzeStatus",
+                            "value": "@{body('HTTP_2')?['status']}"
+                          }
+                        }
+                      },
+                      "runAfter": {
+                        "HTTP": [
+                          "Succeeded"
+                        ]
+                      },
+                      "expression": "@or(equals(variables('varAnalyzeStatus'), 'succeeded'),  equals(variables('varAnalyzeStatus'), 'failed'))",
+                      "limit": {
+                        "count": 60,
+                        "timeout": "PT1H"
+                      },
+                      "metadata": {
+                        "operationMetadataId": "8e63553f-7e2c-4d4c-b72a-8d222c2b06d9"
+                      },
+                      "type": "Until"
+                    },
+                    "Condition_3": {
+                      "actions": {
+                        "Compose": {
+                          "runAfter": {},
+                          "metadata": {
+                            "operationMetadataId": "a519a116-ae16-4334-a35c-3b40a37612b2"
+                          },
+                          "type": "Compose",
+                          "inputs": "@body('HTTP_2')?['analyzeResult']?['status']"
+                        },
+                        "Compose_2": {
+                          "runAfter": {
+                            "Compose": [
+                              "Succeeded"
+                            ]
+                          },
+                          "metadata": {
+                            "operationMetadataId": "5f92afa0-cd27-4ba5-84eb-24a54d973037"
+                          },
+                          "type": "Compose",
+                          "inputs": "@body('HTTP_2')?['analyzeResult']?['keyValuePairs']"
+                        },
+                        "Compose_3": {
+                          "runAfter": {
+                            "Compose_2": [
+                              "Succeeded"
+                            ]
+                          },
+                          "metadata": {
+                            "operationMetadataId": "6ce9c9b9-a50d-4bf2-a937-e3e0c6a99c60"
+                          },
+                          "type": "Compose",
+                          "inputs": "@body('HTTP_2')?['analyzeResult']?['tables']"
+                        },
+                        "Select": {
+                          "runAfter": {
+                            "Compose_3": [
+                              "Succeeded"
+                            ]
+                          },
+                          "metadata": {
+                            "operationMetadataId": "6a6ea256-94f7-49df-946a-e620da420531"
+                          },
+                          "type": "Select",
+                          "inputs": {
+                            "from": "@body('HTTP_2')?['analyzeResult']?['keyValuePairs']",
+                            "select": {
+                              "Key": "@toLower(trim(replace(replace(coalesce(item()?['key']?['content'], ''), ':', ''), '#', '')))",
+                              "originalKey": "@trim(coalesce(item()?['key']?['content'], ''))",
+                              "value": "@trim(coalesce(item()?['value']?['content'], ''))",
+                              "confidence": "@coalesce(item()?['confidence'], 0)"
+                            }
+                          }
+                        },
+                        "Compose_4": {
+                          "runAfter": {
+                            "Select": [
+                              "Succeeded"
+                            ]
+                          },
+                          "metadata": {
+                            "operationMetadataId": "f74c380b-0840-4004-8bdf-3c0d82ed36c7"
+                          },
+                          "type": "Compose",
+                          "inputs": "@string(body('HTTP_2')?['analyzeResult']?['tables'])"
+                        },
+                        "Response_7": {
+                          "runAfter": {
+                            "Compose_4": [
+                              "Succeeded"
+                            ]
+                          },
+                          "metadata": {
+                            "operationMetadataId": "de259daf-161a-478e-aefb-c416e6d81040"
+                          },
+                          "type": "Response",
+                          "kind": "Http",
+                          "inputs": {
+                            "statusCode": 200,
+                            "headers": {
+                              "content-type": "application/json"
+                            },
+                            "body": {
+                              "data": "@body('Select')",
+                              "type": "Doc_Int",
+                              "status": "Success",
+                              "fileName": "@{outputs('Create_file')?['body/Name']}",
+                              "documentId": "@{outputs('Create_file')?['body/ItemId']}",
+                              "recordId": "@{outputs('Update_a_row_3')?['body/cmdspp_p_documents_tbid']}"
+                            }
+                          }
+                        },
+                        "Filter_array_2": {
+                          "runAfter": {
+                            "Response_7": [
+                              "Succeeded"
+                            ]
+                          },
+                          "metadata": {
+                            "operationMetadataId": "714815c8-0e5b-42ec-8ad2-b312c778b7dc"
+                          },
+                          "type": "Query",
+                          "inputs": {
+                            "from": "@body('Response_7')?['data']",
+                            "where": "@or(\n  equals(item()?['Key'], 'dea registration number'),\n  equals(item()?['Key'], 'clia id number'),\n  equals(item()?['Key'], 'effective date'),\n  equals(item()?['Key'], 'expiration date')\n)"
+                          }
+                        },
+                        "Condition_5": {
+                          "actions": {
+                            "Add_a_new_row_3": {
+                              "runAfter": {},
+                              "metadata": {
+                                "operationMetadataId": "4efd4b32-ad1b-426e-9c3f-2d180e7a9c3c"
+                              },
+                              "type": "OpenApiConnection",
+                              "inputs": {
+                                "host": {
+                                  "connectionName": "shared_commondataserviceforapps_1",
+                                  "operationId": "CreateRecord",
+                                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                                },
+                                "parameters": {
+                                  "entityName": "cmdspp_p_pin_dea_dtls",
+                                  "item/cmdspp_p_dea": "@variables('extractedData')?['dea registration number']",
+                                  "item/cmdspp_created_by_user@odata.bind": "@concat(\r\n\r\n'/cmdspp_g_usr_dtls_tbs(',\r\n\r\ntriggerBody()?['userId'],\r\n\r\n')'\r\n\r\n)",
+                                  "item/cmdspp_p_sys_id@odata.bind": "@concat(\r\n\r\n'/cmdspp_p_dtl_tbs(',\r\n\r\ntriggerBody()?['ApplicationId'],\r\n\r\n')'\r\n\r\n)"
+                                },
+                                "authentication": "@parameters('$authentication')"
+                              }
+                            }
+                          },
+                          "runAfter": {
+                            "Apply_to_each_2": [
+                              "Succeeded"
+                            ]
+                          },
+                          "else": {
+                            "actions": {
+                              "Add_a_new_row_5": {
+                                "runAfter": {},
+                                "metadata": {
+                                  "operationMetadataId": "72e2d44b-dc3b-4e5e-bbe6-6681cb445854"
+                                },
+                                "type": "OpenApiConnection",
+                                "inputs": {
+                                  "host": {
+                                    "connectionName": "shared_commondataserviceforapps_1",
+                                    "operationId": "CreateRecord",
+                                    "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                                  },
+                                  "parameters": {
+                                    "entityName": "cmdspp_p_cln_lab_imp_clias",
+                                    "item/cmdspp_created_by_user@odata.bind": "@concat(\r\n\r\n'/cmdspp_g_usr_dtls_tbs(',\r\n\r\ntriggerBody()?['userId'],\r\n\r\n')'\r\n\r\n)",
+                                    "item/cmdspp_p_clia_eff_dt": "@variables('extractedData')?['effective date']",
+                                    "item/cmdspp_p_clia_exp_dt": "@variables('extractedData')?['expiration date']",
+                                    "item/cmdspp_p_clia_num": "@variables('extractedData')?['clia id number']",
+                                    "item/cmdspp_p_sys_id@odata.bind": "@concat(\r\n\r\n'/cmdspp_p_dtl_tbs(',\r\n\r\ntriggerBody()?['ApplicationId'],\r\n\r\n')'\r\n\r\n)"
+                                  },
+                                  "authentication": "@parameters('$authentication')"
+                                }
+                              }
+                            }
+                          },
+                          "expression": {
+                            "equals": [
+                              "@first(body('Filter_array_2'))?['Key']",
+                              "dea registration number"
+                            ]
+                          },
+                          "metadata": {
+                            "operationMetadataId": "133d2af7-833e-4f4c-82f1-a75757265629"
+                          },
+                          "type": "If"
+                        },
+                        "Select_4": {
+                          "runAfter": {
+                            "Filter_array_2": [
+                              "Succeeded"
+                            ]
+                          },
+                          "metadata": {
+                            "operationMetadataId": "d91ee26b-fd7c-4207-b7f1-b6798037aa51"
+                          },
+                          "type": "Select",
+                          "inputs": {
+                            "from": "@body('Filter_array_2')",
+                            "select": {
+                              "key": "@item()?['Key']",
+                              "value": "@item()?['value']"
+                            }
+                          }
+                        },
+                        "Apply_to_each_2": {
+                          "foreach": "@body('Select_4')",
+                          "actions": {
+                            "Condition_7": {
+                              "actions": {
+                                "Compose_6": {
+                                  "runAfter": {},
+                                  "metadata": {
+                                    "operationMetadataId": "e4d3d253-585c-4bab-8866-c30639250c92"
+                                  },
+                                  "type": "Compose",
+                                  "inputs": "@setProperty(\r\n  variables('extractedData'),\r\n  item()?['Key'],\r\n  item()?['Value']\r\n)"
+                                },
+                                "Set_variable_3": {
+                                  "runAfter": {
+                                    "Compose_6": [
+                                      "Succeeded"
+                                    ]
+                                  },
+                                  "metadata": {
+                                    "operationMetadataId": "46e84b85-3cef-43b5-a759-cd3da14cbd54"
+                                  },
+                                  "type": "SetVariable",
+                                  "inputs": {
+                                    "name": "extractedData",
+                                    "value": "@outputs('Compose_6')"
+                                  }
+                                }
+                              },
+                              "runAfter": {},
+                              "expression": {
+                                "equals": [
+                                  "@not(contains(variables('extractedData'), item()?['Key']))",
+                                  true
+                                ]
+                              },
+                              "metadata": {
+                                "operationMetadataId": "0ac7266d-396c-4c43-a045-288c17a900cf"
+                              },
+                              "type": "If"
+                            }
+                          },
+                          "runAfter": {
+                            "Select_4": [
+                              "Succeeded"
+                            ]
+                          },
+                          "metadata": {
+                            "operationMetadataId": "ebd370fa-6ffd-410b-a870-e38dc1e66c0f"
+                          },
+                          "type": "Foreach"
+                        }
+                      },
+                      "runAfter": {
+                        "Do_until_2": [
+                          "Succeeded"
+                        ]
+                      },
+                      "else": {
+                        "actions": {
+                          "Response_6": {
+                            "runAfter": {},
+                            "metadata": {
+                              "operationMetadataId": "66c93c90-1db5-4b75-ab94-a8cc195d2006"
+                            },
+                            "type": "Response",
+                            "kind": "Http",
+                            "inputs": {
+                              "statusCode": 200,
+                              "body": {
+                                "status": "Failed"
+                              }
+                            }
+                          }
+                        }
+                      },
+                      "expression": {
+                        "and": [
+                          {
+                            "equals": [
+                              "@body('HTTP_2')?['status']",
+                              "succeeded"
+                            ]
+                          },
+                          {
+                            "equals": [
+                              "",
+                              ""
+                            ]
+                          }
+                        ]
+                      },
+                      "metadata": {
+                        "operationMetadataId": "4340138e-bc82-407b-b5ff-61c181c1cfa9"
+                      },
+                      "type": "If"
+                    }
+                  },
+                  "runAfter": {
+                    "Update_a_row_3": [
+                      "Succeeded"
+                    ]
+                  },
+                  "else": {
+                    "actions": {
+                      "Response_5": {
+                        "runAfter": {},
+                        "metadata": {
+                          "operationMetadataId": "891ef808-6e73-48b2-ac54-1947c3ac1abc"
+                        },
+                        "type": "Response",
+                        "kind": "Http",
+                        "inputs": {
+                          "statusCode": 200,
+                          "body": {
+                            "status": "Success",
+                            "fileName": "@{outputs('Create_file')?['body/Name']}",
+                            "documentId": "@{outputs('Create_file')?['body/ItemId']}",
+                            "recordId": "@{outputs('Update_a_row_3')?['body/cmdspp_p_documents_tbid']}"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "expression": {
+                    "or": [
+                      {
+                        "contains": [
+                          "@triggerBody()?['fileName']",
+                          "DEA"
+                        ]
+                      },
+                      {
+                        "contains": [
+                          "@triggerBody()?['fileName']",
+                          "CLIA"
+                        ]
+                      }
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "17f7700a-4d77-4f92-9a6d-46444a71932e"
+                  },
+                  "type": "If"
+                }
+              }
+            },
+            "Case_4": {
+              "case": "Detach",
+              "actions": {
+                "Response_2": {
+                  "runAfter": {
+                    "Delete_a_row": [
+                      "Succeeded"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "45b3403e-fd6e-42ce-9c01-6ef906910ba8"
+                  },
+                  "type": "Response",
+                  "kind": "Http",
+                  "inputs": {
+                    "statusCode": 200,
+                    "body": {
+                      "status": "Success"
+                    }
+                  }
+                },
+                "Get_a_row_by_ID_3": {
+                  "runAfter": {},
+                  "metadata": {
+                    "operationMetadataId": "ef8d81b2-606e-466c-888d-b5763c274729"
+                  },
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "host": {
+                      "connectionName": "shared_commondataserviceforapps_1",
+                      "operationId": "GetItem",
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                    },
+                    "parameters": {
+                      "entityName": "cmdspp_p_documents_tbs",
+                      "recordId": "@triggerBody()?['recordId']"
+                    },
+                    "authentication": "@parameters('$authentication')"
+                  }
+                },
+                "Delete_file_3": {
+                  "runAfter": {
+                    "Get_a_row_by_ID_3": [
+                      "Succeeded"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "9608be78-fb38-4858-95cb-c5d6c89db06e"
+                  },
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "host": {
+                      "connectionName": "shared_sharepointonline",
+                      "operationId": "DeleteFile",
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline"
+                    },
+                    "parameters": {
+                      "dataset": "@body('Parse_JSON_-_SharePoint_Config')?['siteAddress']",
+                      "id": "@outputs('Get_a_row_by_ID_3')?['body/cmdspp_p_sharepoint_file_id']"
+                    },
+                    "authentication": "@parameters('$authentication')"
+                  }
+                },
+                "Delete_a_row": {
+                  "runAfter": {
+                    "Delete_file_3": [
+                      "Succeeded"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "011e2a43-005e-444b-a5d5-46d9a302b98e"
+                  },
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "host": {
+                      "connectionName": "shared_commondataserviceforapps_1",
+                      "operationId": "DeleteRecord",
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                    },
+                    "parameters": {
+                      "entityName": "cmdspp_p_documents_tbs",
+                      "recordId": "@triggerBody()?['recordId']"
+                    },
+                    "authentication": "@parameters('$authentication')"
+                  }
+                }
+              }
+            },
+            "Case_5": {
+              "case": "Fetch",
+              "actions": {
+                "Compose_5": {
+                  "runAfter": {},
+                  "metadata": {
+                    "operationMetadataId": "431127e9-6874-48f9-b245-c354c533adaf"
+                  },
+                  "type": "Compose",
+                  "inputs": "@triggerBody()?['ApplicationId']"
+                },
+                "List_rows": {
+                  "runAfter": {
+                    "Compose_5": [
+                      "Succeeded"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "7731579d-d4d5-423b-8a70-1de6b1add6a9"
+                  },
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "host": {
+                      "connectionName": "shared_commondataserviceforapps_1",
+                      "operationId": "ListRecords",
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                    },
+                    "parameters": {
+                      "entityName": "cmdspp_p_documents_tbs",
+                      "$filter": "@concat('_cmdspp_p_doc_to_p_dtl_fk_value eq ''', outputs('Compose_5'), '''')"
+                    },
+                    "authentication": "@parameters('$authentication')"
+                  }
+                },
+                "Select_2": {
+                  "runAfter": {
+                    "List_rows": [
+                      "Succeeded"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "5df1e193-10b4-41ee-be2e-e61f9c21cab7"
+                  },
+                  "type": "Select",
+                  "inputs": {
+                    "from": "@outputs('List_rows')?['body/value']",
+                    "select": {
+                      "fileName": "@item()?['cmdspp_p_file_nam']",
+                      "documentId": "@item()?['cmdspp_p_document_id']",
+                      "recordId": "@item()?['cmdspp_p_documents_tbid']",
+                      "documentType": "@item()?['cmdspp_p_document_type']",
+                      "documentName": "@item()?['cmdspp_p_docu_nam']"
+                    }
+                  }
+                },
+                "Response_3": {
+                  "runAfter": {
+                    "Select_2": [
+                      "Succeeded"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "3d397e05-7c89-4260-8e05-9f8de35b5de0"
+                  },
+                  "type": "Response",
+                  "kind": "Http",
+                  "inputs": {
+                    "statusCode": 200,
+                    "body": "@body('Select_2')"
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "actions": {}
+          },
+          "expression": "@triggerBody()?['action']",
+          "metadata": {
+            "operationMetadataId": "87e20b75-53a9-42c2-8b5f-d010b7ad5cb5"
+          },
+          "type": "Switch"
+        },
+        "Compose_-_Request": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "450ebf4a-b72d-4fb9-bb40-b4a9b4709f79"
+          },
+          "type": "Compose",
+          "inputs": {
+            "source": "PowerPages",
+            "requestId": "@{guid()}",
+            "requestTimestamp": "@{utcNow()}",
+            "file": {
+              "name": "@{triggerBody()?['fileName']}",
+              "base64": "@{triggerBody()?['fileContent']}"
+            },
+            "documentIntelligence": {
+              "modelId": "prebuilt-layout",
+              "apiVersion": "2024-11-30",
+              "features": "keyValuePairs"
+            },
+            "business": {
+              "documentCategory": "CLIA&DEACertificates"
+            }
+          }
+        },
+        "Initialize_variable": {
+          "runAfter": {
+            "Compose_-_Request": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "ff4fee9c-57dd-4a5d-b885-e8c5c3887184"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "varAnalyzeStatus",
+                "type": "string",
+                "value": "Running"
+              }
+            ]
+          }
+        },
+        "List_rows_-_Env_Definition": {
+          "runAfter": {
+            "Initialize_variable_2": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "43a8719a-34e6-4f7d-be74-96445ca1d7a3"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps_1",
+              "operationId": "ListRecords",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "environmentvariabledefinitions",
+              "$filter": "schemaname eq 'cmdspp_ENV_DocInt_endPointSettings' or schemaname eq 'cmdspp_ENV_SharePointPath_Config'",
+              "$top": 2
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Compose_-_Doc_Intel_Definition_Id": {
+          "runAfter": {
+            "Filter_array_-_Doc_Intel_Definition": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "e8f2ed9b-3ccf-4b08-b5c2-fb0c27a2fa6a"
+          },
+          "type": "Compose",
+          "inputs": "@first(body('Filter_array_-_Doc_Intel_Definition'))?['environmentvariabledefinitionid']"
+        },
+        "List_rows_-_Env_Values": {
+          "runAfter": {
+            "Compose_-_SharePoint_Definition_Id": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "ec41d427-bc3e-4141-a4b2-8a0cc60d0cb7"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps_1",
+              "operationId": "ListRecords",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "environmentvariablevalues",
+              "$filter": "_environmentvariabledefinitionid_value eq @{outputs('Compose_-_Doc_Intel_Definition_Id')} or _environmentvariabledefinitionid_value eq @{outputs('Compose_-_SharePoint_Definition_Id')}",
+              "$top": 2
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Compose_-_Doc_Intel_Config_Raw": {
+          "runAfter": {
+            "Filter_array_-_Doc_Intel_Value": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "bab94c95-36b2-49c3-bac6-fd6f76aacb7a"
+          },
+          "type": "Compose",
+          "inputs": "@if(\r\n  empty(body('Filter_array_-_Doc_Intel_Value')),\r\n  first(body('Filter_array_-_Doc_Intel_Definition'))?['defaultvalue'],\r\n  first(body('Filter_array_-_Doc_Intel_Value'))?['value']\r\n)"
+        },
+        "Parse_JSON_-_Doc_Intel_Config": {
+          "runAfter": {
+            "Compose_-_SharePoint_Config_Raw": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "6cb66cfa-889e-40d1-b78d-d1ff0f5b79e0"
+          },
+          "type": "ParseJson",
+          "inputs": {
+            "content": "@outputs('Compose_-_Doc_Intel_Config_Raw')",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "endpoint": {
+                  "type": "string"
+                },
+                "modelId": {
+                  "type": "string"
+                },
+                "apiVersion": {
+                  "type": "string"
+                },
+                "features": {
+                  "type": "string"
+                },
+                "Ocp-Apim-Subscription-Key": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "endpoint",
+                "modelId",
+                "apiVersion",
+                "Ocp-Apim-Subscription-Key"
+              ]
+            }
+          }
+        },
+        "Compose_-_Document_Intelligence_URL": {
+          "runAfter": {
+            "Parse_JSON_-_SharePoint_Config": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "e73d3389-191d-4b10-9363-172c057a7214"
+          },
+          "type": "Compose",
+          "inputs": "@concat(\r\n  body('Parse_JSON_-_Doc_Intel_Config')?['endpoint'],\r\n  body('Parse_JSON_-_Doc_Intel_Config')?['modelId'],\r\n  ':analyze?api-version=',\r\n  body('Parse_JSON_-_Doc_Intel_Config')?['apiVersion'],\r\n  '&features=',\r\n  body('Parse_JSON_-_Doc_Intel_Config')?['features']\r\n)"
+        },
+        "Filter_array_-_Doc_Intel_Definition": {
+          "runAfter": {
+            "List_rows_-_Env_Definition": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "183219ac-87a8-44ff-b448-9b0d626e696a"
+          },
+          "type": "Query",
+          "inputs": {
+            "from": "@body('List_rows_-_Env_Definition')?['value']",
+            "where": "@equals(item()?['schemaname'], 'cmdspp_ENV_DocInt_endPointSettings')"
+          }
+        },
+        "Filter_array_-_SharePoint_Definition_Id": {
+          "runAfter": {
+            "Compose_-_Doc_Intel_Definition_Id": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "0b4a1034-06f6-41c6-8029-6ee25107b7d7"
+          },
+          "type": "Query",
+          "inputs": {
+            "from": "@body('List_rows_-_Env_Definition')?['value']",
+            "where": "@equals(item()?['schemaname'], 'cmdspp_ENV_SharePointPath_Config')"
+          }
+        },
+        "Compose_-_SharePoint_Definition_Id": {
+          "runAfter": {
+            "Filter_array_-_SharePoint_Definition_Id": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "055f3349-df79-4115-9e36-026db4636ef8"
+          },
+          "type": "Compose",
+          "inputs": "@first(body('Filter_array_-_SharePoint_Definition_Id'))?['environmentvariabledefinitionid']"
+        },
+        "Filter_array_-_Doc_Intel_Value": {
+          "runAfter": {
+            "List_rows_-_Env_Values": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "21607fee-b561-4c18-8f54-36bd18e84fdb"
+          },
+          "type": "Query",
+          "inputs": {
+            "from": "@body('List_rows_-_Env_Values')?['value']",
+            "where": "@equals(item()?['_environmentvariabledefinitionid_value'], outputs('Compose_-_Doc_Intel_Definition_Id'))"
+          }
+        },
+        "Filter_array_-_SharePoint_Value": {
+          "runAfter": {
+            "Compose_-_Doc_Intel_Config_Raw": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "948b037a-b814-40aa-afaf-30c648cf4b53"
+          },
+          "type": "Query",
+          "inputs": {
+            "from": "@body('List_rows_-_Env_Values')?['value']",
+            "where": "@equals(item()?['_environmentvariabledefinitionid_value'], outputs('Compose_-_SharePoint_Definition_Id'))"
+          }
+        },
+        "Compose_-_SharePoint_Config_Raw": {
+          "runAfter": {
+            "Filter_array_-_SharePoint_Value": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "4fb94443-fd25-41cf-8657-92b2731ec1b4"
+          },
+          "type": "Compose",
+          "inputs": "@if(\r\n  empty(body('Filter_array_-_SharePoint_Value')),\r\n  first(body('Filter_array_-_SharePoint_Definition_Id'))?['defaultvalue'],\r\n  first(body('Filter_array_-_SharePoint_Value'))?['value']\r\n)"
+        },
+        "Parse_JSON_-_SharePoint_Config": {
+          "runAfter": {
+            "Parse_JSON_-_Doc_Intel_Config": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "ed7a35ac-9974-464c-bc2a-dfc9ad11b91a"
+          },
+          "type": "ParseJson",
+          "inputs": {
+            "content": "@outputs('Compose_-_SharePoint_Config_Raw')",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "siteAddress": {
+                  "type": "string"
+                },
+                "libraryName": {
+                  "type": "string"
+                },
+                "folderPath": {
+                  "type": "string"
+                },
+                "configFolderPath": {
+                  "type": "string"
+                },
+                "parametersPath": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "siteAddress",
+                "libraryName",
+                "folderPath",
+                "configFolderPath",
+                "parametersPath"
+              ]
+            }
+          }
+        },
+        "Initialize_variable_2": {
+          "runAfter": {
+            "Initialize_variable": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "4e941ff7-8d8b-424a-b9b9-8e6a3a2206f0"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "extractedData",
+                "type": "object",
+                "value": {}
+              }
+            ]
+          }
+        }
+      }
+    },
+    "templateName": ""
+  },
+  "schemaVersion": "1.0.0.0"
+}

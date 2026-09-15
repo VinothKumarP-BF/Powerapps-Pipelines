@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>0</isdefault>
+    <savedqueryid>{d0139c3b-daa1-f111-b8dc-70a8a5b02d74}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="cmdspp_p_sys_id" select="1" icon="1" preview="1">
+        <row name="result" id="cmdspp_p_dtl_tbid">
+          <cell name="cmdspp_p_first_nam" width="200" />
+          <cell name="cmdspp_p_last_nam" width="200" />
+          <cell name="cmdspp_p_dob_dt" width="200" />
+          <cell name="cmdspp_p_appln_status" width="200" />
+          <cell name="cmdspp_p_appln_email" width="200" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>0</querytype>
+    <fetchxml>
+      <fetch version="1.0" output-format="xml-platform" mapping="logical">
+        <entity name="cmdspp_p_dtl_tb">&lt;attribute name="cmdspp_p_first_nam" /&gt;&lt;attribute name="cmdspp_p_last_nam" /&gt;&lt;attribute name="cmdspp_p_dob_dt" /&gt;&lt;attribute name="cmdspp_p_appln_status" /&gt;&lt;attribute name="cmdspp_p_appln_email" /&gt;<attribute name="cmdspp_p_first_nam" /><attribute name="cmdspp_p_last_nam" /><attribute name="cmdspp_p_dob_dt" /><attribute name="cmdspp_p_appln_status" /><attribute name="cmdspp_p_appln_email" /><attribute name="cmdspp_p_dtl_tbid" /></entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.0.0.0</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="test note" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>

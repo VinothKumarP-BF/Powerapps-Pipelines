@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>0</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>1</isdefault>
+    <savedqueryid>{f4e1632b-2f9d-437a-b354-c8c36a6002e4}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="cmdspp_p_pin_mcp_on_dtl_sk" select="1" icon="1" preview="1">
+        <row name="result" id="cmdspp_p_pin_mcp_on_dtlid">
+          <cell name="cmdspp_p_othr_mcare" width="158" />
+          <cell name="cmdspp_p_othr_mcare_cn" width="188" />
+          <cell name="cmdspp_p_othr_mcare_parts_cd" width="125" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>0</querytype>
+    <fetchxml>
+      <fetch version="1.0" mapping="logical">
+        <entity name="cmdspp_p_pin_mcp_on_dtl">
+          <attribute name="cmdspp_p_pin_mcp_on_dtlid" />
+          <filter type="and">
+            <condition attribute="statecode" operator="eq" value="0" />
+          </filter>
+          <attribute name="cmdspp_p_othr_mcare" />
+          <attribute name="cmdspp_p_othr_mcare_cn" />
+          <attribute name="cmdspp_p_othr_mcare_parts_cd" />
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.0</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Active P_PIN_MCP_ON_DTLS" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>

@@ -1,0 +1,37 @@
+<appaction uniquename="cmdspp__Approve!d9bc2b66da71416aa8c87a996da1d07c!cmdspp_CMdSModalApp!cmdspp_p_dtl_tb!0">
+  <appmoduleid>
+    <uniquename>cmdspp_CMdSModalApp</uniquename>
+  </appmoduleid>
+  <buttonlabeltext default="Approve">
+    <label description="Approve" languagecode="1033" />
+  </buttonlabeltext>
+  <context>1</context>
+  <contextentity>
+    <logicalname>cmdspp_p_dtl_tb</logicalname>
+  </contextentity>
+  <contextvalue>cmdspp_p_dtl_tb</contextvalue>
+  <fonticon>$clientsvg:Accept</fonticon>
+  <hidden>0</hidden>
+  <iscustomizable>1</iscustomizable>
+  <isdisabled>0</isdisabled>
+  <isgrouptitlehidden>0</isgrouptitlehidden>
+  <location>0</location>
+  <name>Approve!d9bc2b66da71416aa8c87a996da1d07c</name>
+  <onclickeventjavascriptfunctionname>openApproveEnrollment</onclickeventjavascriptfunctionname>
+  <onclickeventjavascriptparameters>[{"type":5}]</onclickeventjavascriptparameters>
+  <onclickeventjavascriptwebresourceid>
+    <webresourceid>b1b02a53-25a5-f111-b8de-70a8a5b02d34</webresourceid>
+  </onclickeventjavascriptwebresourceid>
+  <onclickeventtype>2</onclickeventtype>
+  <origin>0</origin>
+  <sequence>50050007.5000000000</sequence>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+  <type>0</type>
+  <visibilityformulacomponentlibraryid>
+    <name>cmdspp_cmdsmodalappdefaultcommandlibrary_44d2e</name>
+  </visibilityformulacomponentlibraryid>
+  <visibilityformulacomponentname>66e0bbaa6ee9479dbc07e3e7bcc8731c</visibilityformulacomponentname>
+  <visibilityformulafunctionname>Visible</visibilityformulafunctionname>
+  <visibilitytype>1</visibilitytype>
+</appaction>

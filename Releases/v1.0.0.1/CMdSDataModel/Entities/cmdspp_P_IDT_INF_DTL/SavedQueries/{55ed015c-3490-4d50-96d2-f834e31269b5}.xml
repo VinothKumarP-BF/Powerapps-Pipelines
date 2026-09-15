@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>0</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>1</isdefault>
+    <savedqueryid>{55ed015c-3490-4d50-96d2-f834e31269b5}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="cmdspp_p_idt_inf_dtl_sk" select="1" icon="1" preview="1">
+        <row name="result" id="cmdspp_p_idt_inf_dtlid">
+          <cell name="cmdspp_p_idt_inf_dtl_sk" width="167" />
+          <cell name="a_2e51662b640e4f02818ab55e466de074.cmdspp_p_pvd_typ" width="193" />
+          <cell name="cmdspp_p_fst_nam" width="100" />
+          <cell name="cmdspp_p_lst_nam" width="100" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>0</querytype>
+    <fetchxml>
+      <fetch version="1.0" mapping="logical">
+        <entity name="cmdspp_p_idt_inf_dtl">
+          <attribute name="cmdspp_p_idt_inf_dtlid" />
+          <filter type="and">
+            <condition attribute="statecode" operator="eq" value="0" />
+          </filter>
+          <attribute name="cmdspp_p_idt_inf_dtl_sk" />
+          <attribute name="cmdspp_p_fst_nam" />
+          <attribute name="cmdspp_p_lst_nam" />
+          <link-entity alias="a_2e51662b640e4f02818ab55e466de074" name="cmdspp_pc_pvd_typ_tb" to="cmdspp_p_pvd_typ_lkp" from="cmdspp_pc_pvd_typ_tbid" link-type="outer" visible="false">
+            <attribute name="cmdspp_p_pvd_typ" />
+          </link-entity>
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.0</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Identity Information Details" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>

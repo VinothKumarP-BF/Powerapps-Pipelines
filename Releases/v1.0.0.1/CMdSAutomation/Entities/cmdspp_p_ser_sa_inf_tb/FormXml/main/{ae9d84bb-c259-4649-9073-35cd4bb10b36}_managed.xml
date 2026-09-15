@@ -1,0 +1,132 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<forms xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <systemform>
+    <formid>{ae9d84bb-c259-4649-9073-35cd4bb10b36}</formid>
+    <IntroducedVersion>1.0</IntroducedVersion>
+    <FormPresentation>1</FormPresentation>
+    <FormActivationState>1</FormActivationState>
+    <form headerdensity="HighWithControls" shownavigationbar="false">
+      <tabs>
+        <tab verticallayout="true" id="{32fa0044-e672-453e-a248-8d929a888573}" IsUserDefined="1">
+          <labels>
+            <label description="Special Accommodation" languagecode="1033" />
+          </labels>
+          <columns>
+            <column width="100%">
+              <sections>
+                <section showlabel="false" showbar="false" IsUserDefined="0" id="{6298d3f5-d01c-47ea-9c56-c439e96d3686}" celllabelposition="Top">
+                  <labels>
+                    <label description="General" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{4ebd6d72-98dc-4e0d-8ecb-728ba530e477}" visible="false">
+                        <labels>
+                          <label description="p_ser_sa_inf_tb_Sk" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_p_ser_sa_inf_tb_sk" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="cmdspp_p_ser_sa_inf_tb_sk" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{d333c28d-e78b-4434-8071-02538b283f47}" visible="false">
+                        <labels>
+                          <label description="Owner" languagecode="1033" />
+                        </labels>
+                        <control id="ownerid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="ownerid" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{4e203dc9-a923-49ed-b4c0-8c58e5d2160b}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Special Accommodation" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_p_spl_acc_types" classid="{F9A8A302-114E-466A-B582-6771B2AE0D92}" datafieldname="cmdspp_p_spl_acc_types" disabled="false" uniqueid="{6e4f3869-5a80-488b-9527-62adad855572}" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+          </columns>
+        </tab>
+      </tabs>
+      <header id="{8211194c-11ab-4203-89d4-588ed84d19ae}" celllabelposition="Top" columns="111" labelwidth="115" celllabelalignment="Left">
+        <rows>
+          <row>
+            <cell id="{6eeb0161-cacf-4b0c-969d-94a5a7a90f34}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{4162d2ce-6c11-4193-bf5c-75d1a2858d9c}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{3316dee3-19e0-4d2a-af5d-2fc23fef6617}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+          </row>
+        </rows>
+      </header>
+      <footer id="{93833d75-cae9-4a4a-841a-6861a491b5da}" celllabelposition="Top" columns="111" labelwidth="115" celllabelalignment="Left">
+        <rows>
+          <row>
+            <cell id="{6de9eb44-78b8-47b9-966b-b48a64314afe}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{689a5d64-b3cc-4a65-9342-62d40503ea3a}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{2b30c7f2-1674-480a-af0e-528fd3625c86}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+          </row>
+        </rows>
+      </footer>
+      <DisplayConditions Order="0" FallbackForm="true">
+        <Everyone />
+      </DisplayConditions>
+      <controlDescriptions>
+        <controlDescription forControl="{6e4f3869-5a80-488b-9527-62adad855572}">
+          <customControl id="{4AA28AB7-9C13-4F57-A73D-AD894D048B5F}">
+            <parameters>
+              <datafieldname>cmdspp_p_spl_acc_types</datafieldname>
+            </parameters>
+          </customControl>
+          <customControl formFactor="0" name="MscrmControls.MultiSelectPicklist.ModernMSPicklistControl">
+            <parameters>
+              <value type="MultiSelectOptionSet">cmdspp_p_spl_acc_types</value>
+            </parameters>
+          </customControl>
+          <customControl formFactor="2" name="MscrmControls.MultiSelectPicklist.ModernMSPicklistControl">
+            <parameters>
+              <value type="MultiSelectOptionSet">cmdspp_p_spl_acc_types</value>
+            </parameters>
+          </customControl>
+          <customControl formFactor="1" name="MscrmControls.MultiSelectPicklist.ModernMSPicklistControl">
+            <parameters>
+              <value type="MultiSelectOptionSet">cmdspp_p_spl_acc_types</value>
+            </parameters>
+          </customControl>
+        </controlDescription>
+      </controlDescriptions>
+    </form>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <LocalizedNames>
+      <LocalizedName description="Information" languagecode="1033" />
+    </LocalizedNames>
+    <Descriptions>
+      <Description description="A form for this entity." languagecode="1033" />
+    </Descriptions>
+  </systemform>
+</forms>

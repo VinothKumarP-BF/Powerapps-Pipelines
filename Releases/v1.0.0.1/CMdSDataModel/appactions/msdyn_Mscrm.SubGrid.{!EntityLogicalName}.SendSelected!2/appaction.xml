@@ -1,0 +1,34 @@
+<appaction uniquename="msdyn_Mscrm.SubGrid.{!EntityLogicalName}.SendSelected!2">
+  <buttonaccessibilitytext default="Email a Link">
+    <label description="Email a Link" languagecode="1033" />
+  </buttonaccessibilitytext>
+  <buttonlabeltext default="Email a Link">
+    <label description="Email a Link" languagecode="1033" />
+  </buttonlabeltext>
+  <buttontooltipdescription default="Send links to the selected records in an email message. &lt;br&gt;&lt;br&gt;The information in these records may change, or may not be available to the recipients because of a lack of permissions.">
+    <label description="Send links to the selected records in an email message. &lt;br&gt;&lt;br&gt;The information in these records may change, or may not be available to the recipients because of a lack of permissions." languagecode="1033" />
+  </buttontooltipdescription>
+  <buttontooltiptitle default="Email a Link">
+    <label description="Email a Link" languagecode="1033" />
+  </buttontooltiptitle>
+  <context>0</context>
+  <fonticon>$clientsvg:MailLink</fonticon>
+  <hidden>1</hidden>
+  <iscustomizable>1</iscustomizable>
+  <isdisabled>0</isdisabled>
+  <isgrouptitlehidden>0</isgrouptitlehidden>
+  <location>2</location>
+  <name>Mscrm.SubGrid.{!EntityLogicalName}.SendSelected</name>
+  <onclickeventjavascriptfunctionname>XrmCore.Commands.EmailCopyLink.emailCopyLinkRecords</onclickeventjavascriptfunctionname>
+  <onclickeventjavascriptparameters>[{"type":18,"value":true},{"type":24,"value":null},{"type":8,"value":null}]</onclickeventjavascriptparameters>
+  <onclickeventjavascriptwebresourceid>
+    <webresourceid>adea1aea-b2aa-e611-80d6-00155d88c343</webresourceid>
+  </onclickeventjavascriptwebresourceid>
+  <onclickeventtype>2</onclickeventtype>
+  <origin>1</origin>
+  <sequence>100300080.0000000000</sequence>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+  <type>0</type>
+  <visibilitytype>2</visibilitytype>
+</appaction>

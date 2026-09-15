@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<WebResource xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <WebResourceId>{591bfebe-6aa8-f111-b8de-70a8a5b02d28}</WebResourceId>
+  <Name>cmdspp_Electronic_Claims_Sub_Instructions</Name>
+  <DisplayName>cmdspp_Electronic_Claims_Sub_Instructions</DisplayName>
+  <LanguageCode>0</LanguageCode>
+  <WebResourceType>1</WebResourceType>
+  <IntroducedVersion>2.0.3.0</IntroducedVersion>
+  <IsEnabledForMobileClient>1</IsEnabledForMobileClient>
+  <IsAvailableForMobileOffline>0</IsAvailableForMobileOffline>
+  <IsCustomizable>1</IsCustomizable>
+  <CanBeDeleted>1</CanBeDeleted>
+  <IsHidden>0</IsHidden>
+  <FileName>/WebResources/cmdspp_Electronic_Claims_Sub_Instructions591BFEBE-6AA8-F111-B8DE-70A8A5B02D28</FileName>
+</WebResource>

@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<WebResource xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <WebResourceId>{a9eb80ff-8aaa-f111-aaac-70a8a5b0287d}</WebResourceId>
+  <Name>cmdspp_delete_document</Name>
+  <DisplayName>Delete Document</DisplayName>
+  <WebResourceType>3</WebResourceType>
+  <IntroducedVersion>2.0.3.0</IntroducedVersion>
+  <IsEnabledForMobileClient>0</IsEnabledForMobileClient>
+  <IsAvailableForMobileOffline>0</IsAvailableForMobileOffline>
+  <IsCustomizable>1</IsCustomizable>
+  <CanBeDeleted>1</CanBeDeleted>
+  <IsHidden>0</IsHidden>
+  <FileName>/WebResources/cmdspp_delete_documentA9EB80FF-8AAA-F111-AAAC-70A8A5B0287D</FileName>
+</WebResource>

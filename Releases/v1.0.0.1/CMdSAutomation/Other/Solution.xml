@@ -1,0 +1,656 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ImportExportXml version="9.2.26082.162" SolutionPackageVersion="9.2" languagecode="1033" generatedBy="CrmLive" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" OrganizationVersion="9.2.26082.162" OrganizationSchemaType="Standard" CRMServerServiceabilityVersion="9.2.26082.00162">
+  <SolutionManifest>
+    <UniqueName>CMdSAutomation</UniqueName>
+    <LocalizedNames>
+      <LocalizedName description="CMdS_NxtGenPE_Automation" languagecode="1033" />
+    </LocalizedNames>
+    <Descriptions />
+    <Version>2.2.7.0</Version>
+    <Managed>1</Managed>
+    <Publisher>
+      <UniqueName>Conduent</UniqueName>
+      <LocalizedNames>
+        <LocalizedName description="CMdSNxtGenPP" languagecode="1033" />
+      </LocalizedNames>
+      <Descriptions>
+        <Description description="Conduent" languagecode="1033" />
+      </Descriptions>
+      <EMailAddress xsi:nil="true"></EMailAddress>
+      <SupportingWebsiteUrl xsi:nil="true"></SupportingWebsiteUrl>
+      <CustomizationPrefix>cmdspp</CustomizationPrefix>
+      <CustomizationOptionValuePrefix>90882</CustomizationOptionValuePrefix>
+      <Addresses>
+        <Address>
+          <AddressNumber>1</AddressNumber>
+          <AddressTypeCode>1</AddressTypeCode>
+          <City xsi:nil="true"></City>
+          <County xsi:nil="true"></County>
+          <Country xsi:nil="true"></Country>
+          <Fax xsi:nil="true"></Fax>
+          <FreightTermsCode xsi:nil="true"></FreightTermsCode>
+          <ImportSequenceNumber xsi:nil="true"></ImportSequenceNumber>
+          <Latitude xsi:nil="true"></Latitude>
+          <Line1 xsi:nil="true"></Line1>
+          <Line2 xsi:nil="true"></Line2>
+          <Line3 xsi:nil="true"></Line3>
+          <Longitude xsi:nil="true"></Longitude>
+          <Name xsi:nil="true"></Name>
+          <PostalCode xsi:nil="true"></PostalCode>
+          <PostOfficeBox xsi:nil="true"></PostOfficeBox>
+          <PrimaryContactName xsi:nil="true"></PrimaryContactName>
+          <ShippingMethodCode>1</ShippingMethodCode>
+          <StateOrProvince xsi:nil="true"></StateOrProvince>
+          <Telephone1 xsi:nil="true"></Telephone1>
+          <Telephone2 xsi:nil="true"></Telephone2>
+          <Telephone3 xsi:nil="true"></Telephone3>
+          <TimeZoneRuleVersionNumber xsi:nil="true"></TimeZoneRuleVersionNumber>
+          <UPSZone xsi:nil="true"></UPSZone>
+          <UTCOffset xsi:nil="true"></UTCOffset>
+          <UTCConversionTimeZoneCode xsi:nil="true"></UTCConversionTimeZoneCode>
+        </Address>
+        <Address>
+          <AddressNumber>2</AddressNumber>
+          <AddressTypeCode>1</AddressTypeCode>
+          <City xsi:nil="true"></City>
+          <County xsi:nil="true"></County>
+          <Country xsi:nil="true"></Country>
+          <Fax xsi:nil="true"></Fax>
+          <FreightTermsCode xsi:nil="true"></FreightTermsCode>
+          <ImportSequenceNumber xsi:nil="true"></ImportSequenceNumber>
+          <Latitude xsi:nil="true"></Latitude>
+          <Line1 xsi:nil="true"></Line1>
+          <Line2 xsi:nil="true"></Line2>
+          <Line3 xsi:nil="true"></Line3>
+          <Longitude xsi:nil="true"></Longitude>
+          <Name xsi:nil="true"></Name>
+          <PostalCode xsi:nil="true"></PostalCode>
+          <PostOfficeBox xsi:nil="true"></PostOfficeBox>
+          <PrimaryContactName xsi:nil="true"></PrimaryContactName>
+          <ShippingMethodCode>1</ShippingMethodCode>
+          <StateOrProvince xsi:nil="true"></StateOrProvince>
+          <Telephone1 xsi:nil="true"></Telephone1>
+          <Telephone2 xsi:nil="true"></Telephone2>
+          <Telephone3 xsi:nil="true"></Telephone3>
+          <TimeZoneRuleVersionNumber xsi:nil="true"></TimeZoneRuleVersionNumber>
+          <UPSZone xsi:nil="true"></UPSZone>
+          <UTCOffset xsi:nil="true"></UTCOffset>
+          <UTCConversionTimeZoneCode xsi:nil="true"></UTCConversionTimeZoneCode>
+        </Address>
+      </Addresses>
+    </Publisher>
+    <RootComponents>
+      <RootComponent type="1" schemaName="cmdspp_g_usr_dtls_tb" behavior="0" />
+      <RootComponent type="1" schemaName="cmdspp_g_usr_inbox_tb" behavior="0" />
+      <RootComponent type="1" schemaName="cmdspp_g_usr_inbox_thread" behavior="0" />
+      <RootComponent type="1" schemaName="cmdspp_p_appl_scenario_tb" behavior="0" />
+      <RootComponent type="1" schemaName="cmdspp_p_billing_address_tb" behavior="0" />
+      <RootComponent type="1" schemaName="cmdspp_p_cln_lab_imp_clia" behavior="0" />
+      <RootComponent type="1" schemaName="cmdspp_p_documents_tb" behavior="0" />
+      <RootComponent type="1" schemaName="cmdspp_p_dtl_tb" behavior="0" />
+      <RootComponent type="1" schemaName="cmdspp_p_ecs_all_transactions_tb" behavior="0" />
+      <RootComponent type="1" schemaName="cmdspp_p_ecs_transaction_tb" behavior="0" />
+      <RootComponent type="1" schemaName="cmdspp_p_eft_sign_tb" behavior="0" />
+      <RootComponent type="1" schemaName="cmdspp_p_elrn_fund_pmt_tb" behavior="0" />
+      <RootComponent type="1" schemaName="cmdspp_p_enrol_alt_id_tb" behavior="0" />
+      <RootComponent type="1" schemaName="cmdspp_p_enrol_dyn_fld" behavior="0" />
+      <RootComponent type="1" schemaName="cmdspp_p_enrol_status_inquiry_tb" behavior="0" />
+      <RootComponent type="1" schemaName="cmdspp_p_grp_affl_dtl" behavior="0" />
+      <RootComponent type="1" schemaName="cmdspp_p_idt_inf_dtl" behavior="0" />
+      <RootComponent type="1" schemaName="cmdspp_p_lic_cert_tb" behavior="0" />
+      <RootComponent type="1" schemaName="cmdspp_p_loc_cp_ba_tb" behavior="0" />
+      <RootComponent type="1" schemaName="cmdspp_p_loc_cp_mailing_address" behavior="0" />
+      <RootComponent type="1" schemaName="cmdspp_p_netw_enrl_tb" behavior="0" />
+      <RootComponent type="1" schemaName="cmdspp_p_npi_scenario_tb" behavior="0" />
+      <RootComponent type="1" schemaName="cmdspp_p_ownership_dtl_tb" behavior="0" />
+      <RootComponent type="1" schemaName="cmdspp_p_phn_fax_tb" behavior="0" />
+      <RootComponent type="1" schemaName="cmdspp_p_phone_fax_ba_tb" behavior="0" />
+      <RootComponent type="1" schemaName="cmdspp_p_pin_dea_dtl" behavior="0" />
+      <RootComponent type="1" schemaName="cmdspp_p_pin_mcp_dtl" behavior="0" />
+      <RootComponent type="1" schemaName="cmdspp_p_pin_mcp_on_dtl" behavior="0" />
+      <RootComponent type="1" schemaName="cmdspp_p_pin_oth_smpi_dtl" behavior="0" />
+      <RootComponent type="1" schemaName="cmdspp_p_pin_reval_st" behavior="0" />
+      <RootComponent type="1" schemaName="cmdspp_p_prev_mcaid_tb" behavior="0" />
+      <RootComponent type="1" schemaName="cmdspp_p_qstnr_addtnl_act" behavior="0" />
+      <RootComponent type="1" schemaName="cmdspp_p_qstnr_conviction_b_tb" behavior="0" />
+      <RootComponent type="1" schemaName="cmdspp_p_qstnr_conviction_tb" behavior="0" />
+      <RootComponent type="1" schemaName="cmdspp_p_qstnr_exclns_tb" behavior="0" />
+      <RootComponent type="1" schemaName="cmdspp_p_qstnr_litign_tb" behavior="0" />
+      <RootComponent type="1" schemaName="cmdspp_p_qstnr_other_state_tb" behavior="0" />
+      <RootComponent type="1" schemaName="cmdspp_p_qstnr_ovr_pmt_tb" behavior="0" />
+      <RootComponent type="1" schemaName="cmdspp_p_qstnr_pend_actn_tb" behavior="0" />
+      <RootComponent type="1" schemaName="cmdspp_p_qstnr_pmt_suspn_tb" behavior="0" />
+      <RootComponent type="1" schemaName="cmdspp_p_qstnr_restitution_tb" behavior="0" />
+      <RootComponent type="1" schemaName="cmdspp_p_qstnr_sanction_tb" behavior="0" />
+      <RootComponent type="1" schemaName="cmdspp_p_qstnr_tb" behavior="0" />
+      <RootComponent type="1" schemaName="cmdspp_p_relative_dtl_tb" behavior="0" />
+      <RootComponent type="1" schemaName="cmdspp_p_req_doc_tb" behavior="0" />
+      <RootComponent type="1" schemaName="cmdspp_p_scrn_sum" behavior="0" />
+      <RootComponent type="1" schemaName="cmdspp_p_ser_bilagt_inf_tb" behavior="0" />
+      <RootComponent type="1" schemaName="cmdspp_p_ser_era_sub_inf_tb" behavior="0" />
+      <RootComponent type="1" schemaName="cmdspp_p_ser_hof_inf_tb" behavior="0" />
+      <RootComponent type="1" schemaName="cmdspp_p_ser_isa_inf_tb" behavior="0" />
+      <RootComponent type="1" schemaName="cmdspp_p_ser_loc_inf_tb" behavior="0" />
+      <RootComponent type="1" schemaName="cmdspp_p_ser_ma_inf_tb" behavior="0" />
+      <RootComponent type="1" schemaName="cmdspp_p_ser_paf_ma_inf_tb" behavior="0" />
+      <RootComponent type="1" schemaName="cmdspp_p_ser_ra_inf_tb" behavior="0" />
+      <RootComponent type="1" schemaName="cmdspp_p_ser_sa_inf_tb" behavior="0" />
+      <RootComponent type="1" schemaName="cmdspp_p_ser_sev_inf_tb" behavior="0" />
+      <RootComponent type="1" schemaName="cmdspp_p_ser_si_inf_tb" behavior="0" />
+      <RootComponent type="1" schemaName="cmdspp_p_serv_loc_inf" behavior="0" />
+      <RootComponent type="1" schemaName="cmdspp_p_specl_need_tb" behavior="0" />
+      <RootComponent type="1" schemaName="cmdspp_p_specl_tb" behavior="0" />
+      <RootComponent type="1" schemaName="cmdspp_p_subcontractor_dtl_tb" behavior="0" />
+      <RootComponent type="1" schemaName="cmdspp_p_svc_ty_cd_tb" behavior="0" />
+      <RootComponent type="1" schemaName="cmdspp_p_txnmy_tb" behavior="0" />
+      <RootComponent type="1" schemaName="cmdspp_pc_audits" behavior="0" />
+      <RootComponent type="1" schemaName="cmdspp_pc_ctrl_tb" behavior="0" />
+      <RootComponent type="1" schemaName="cmdspp_pc_docu_typ_tb" behavior="0" />
+      <RootComponent type="1" schemaName="cmdspp_pc_enrol_docu_tb" behavior="0" />
+      <RootComponent type="1" schemaName="cmdspp_pc_enrol_typ_map" behavior="0" />
+      <RootComponent type="1" schemaName="cmdspp_pc_enrol_typ_tb" behavior="0" />
+      <RootComponent type="1" schemaName="cmdspp_pc_pg_tb" behavior="0" />
+      <RootComponent type="1" schemaName="cmdspp_pc_pvd_enrol_map_tb" behavior="0" />
+      <RootComponent type="1" schemaName="cmdspp_pc_pvd_typ_tb" behavior="0" />
+      <RootComponent type="1" schemaName="cmdspp_pc_pvdty_specl_txnmy_map_tb" behavior="0" />
+      <RootComponent type="1" schemaName="cmdspp_pc_scenario_data_tb" behavior="0" />
+      <RootComponent type="1" schemaName="cmdspp_pc_section_tb" behavior="0" />
+      <RootComponent type="1" schemaName="cmdspp_pc_specl_pvdty_map" behavior="0" />
+      <RootComponent type="1" schemaName="cmdspp_pc_txnmy_codes_tb" behavior="0" />
+      <RootComponent type="1" schemaName="cmdspp_r_vv_tb" behavior="0" />
+      <RootComponent type="1" schemaName="cmdspp_w_tp_prov_xref_tb" behavior="0" />
+      <RootComponent type="1" schemaName="cmdspp_w_tp_tb" behavior="0" />
+      <RootComponent type="1" schemaName="cmdspp_w_tp_txn_ty_tb" behavior="0" />
+      <RootComponent type="29" id="{056cb6b7-568f-f111-8076-70a8a5b02d28}" behavior="0" />
+      <RootComponent type="29" id="{099fbb1c-d484-f111-ab0f-70a8a5b028cc}" behavior="0" />
+      <RootComponent type="29" id="{0c77866e-4e87-f111-ab0f-70a8a5b02d34}" behavior="0" />
+      <RootComponent type="29" id="{0fbc6b50-1fa8-f111-b8de-70a8a5b02d34}" behavior="0" />
+      <RootComponent type="29" id="{20821573-ea89-f111-ab0f-70a8a5b02d34}" behavior="0" />
+      <RootComponent type="29" id="{2456589b-b28c-f111-ab0f-70a8a5b02d74}" behavior="0" />
+      <RootComponent type="29" id="{27b723b9-2c90-f111-8076-70a8a5b02d34}" behavior="0" />
+      <RootComponent type="29" id="{27fae9c9-04a6-f111-b8de-70a8a5b02d34}" behavior="0" />
+      <RootComponent type="29" id="{2b6ea056-9f89-f111-ab0f-70a8a5b02d34}" behavior="0" />
+      <RootComponent type="29" id="{2ffe6088-fb84-f111-ab0f-70a8a5b02d34}" behavior="0" />
+      <RootComponent type="29" id="{31fd17d0-2d87-f111-ab0f-70a8a5b02328}" behavior="0" />
+      <RootComponent type="29" id="{3ad60f1a-f085-f111-ab0f-70a8a5b028cc}" behavior="0" />
+      <RootComponent type="29" id="{432092db-d2a5-f111-b8de-70a8a5b02d74}" behavior="0" />
+      <RootComponent type="29" id="{47d52600-b385-f111-ab0f-70a8a5b02d28}" behavior="0" />
+      <RootComponent type="29" id="{4bf93210-96a7-f111-b8de-70a8a5b02d28}" behavior="0" />
+      <RootComponent type="29" id="{4d138735-eaa2-f111-b8de-70a8a5b02d34}" behavior="0" />
+      <RootComponent type="29" id="{4ee9c994-9089-f111-ab0f-70a8a5b02d34}" behavior="0" />
+      <RootComponent type="29" id="{527d21be-ff88-f111-ab10-70a8a5b028cc}" behavior="0" />
+      <RootComponent type="29" id="{5527ffbb-6186-f111-ab0f-70a8a5b028cc}" behavior="0" />
+      <RootComponent type="29" id="{58571170-e28b-f111-ab10-70a8a5b02c6e}" behavior="0" />
+      <RootComponent type="29" id="{5f9a9652-9e85-f111-ab0f-70a8a5b02d28}" behavior="0" />
+      <RootComponent type="29" id="{5fcf232f-f1a2-f111-b8de-70a8a5b02d28}" behavior="0" />
+      <RootComponent type="29" id="{612a2503-b385-f111-ab0f-70a8a5b028cc}" behavior="0" />
+      <RootComponent type="29" id="{636c414d-f284-f111-ab0f-70a8a5b028cc}" behavior="0" />
+      <RootComponent type="29" id="{66a874db-48a2-f111-b8dc-70a8a5b02d28}" behavior="0" />
+      <RootComponent type="29" id="{6710cd56-eb8b-f111-ab0f-70a8a5b02d28}" behavior="0" />
+      <RootComponent type="29" id="{6c53dde2-2c87-f111-ab0f-70a8a5b028cc}" behavior="0" />
+      <RootComponent type="29" id="{78d81391-308b-f111-ab0f-70a8a5b02d34}" behavior="0" />
+      <RootComponent type="29" id="{8d60997e-2887-f111-ab0f-70a8a5b02c6e}" behavior="0" />
+      <RootComponent type="29" id="{945967e7-8287-f111-ab0f-70a8a5b028cc}" behavior="0" />
+      <RootComponent type="29" id="{98aae561-69a5-f111-b8de-70a8a5b02d34}" behavior="0" />
+      <RootComponent type="29" id="{9a0a2d7f-5f86-f111-ab0f-70a8a5b02d34}" behavior="0" />
+      <RootComponent type="29" id="{b87660b3-298b-f111-ab0f-70a8a5b02d28}" behavior="0" />
+      <RootComponent type="29" id="{b87abd4f-ae89-f111-ab0f-70a8a5b02d28}" behavior="0" />
+      <RootComponent type="29" id="{bdb37d17-438c-f111-ab0f-70a8a5b02d34}" behavior="0" />
+      <RootComponent type="29" id="{c0b26d04-b694-f111-8075-70a8a5b02d28}" behavior="0" />
+      <RootComponent type="29" id="{cb2f23c6-6386-f111-ab0f-70a8a5b02d34}" behavior="0" />
+      <RootComponent type="29" id="{cf2b6aaf-9a89-f111-ab0f-70a8a5b02d34}" behavior="0" />
+      <RootComponent type="29" id="{d6911a84-a48e-f111-8076-70a8a5b028cc}" behavior="0" />
+      <RootComponent type="29" id="{d9a44983-f385-f111-ab0f-70a8a5b028cc}" behavior="0" />
+      <RootComponent type="29" id="{dd586f62-03a6-f111-b8de-70a8a5b02d28}" behavior="0" />
+      <RootComponent type="29" id="{e58babad-9c86-f111-ab0f-70a8a5b02d34}" behavior="0" />
+      <RootComponent type="29" id="{f6c5b349-038c-f111-ab0f-70a8a5b02d34}" behavior="0" />
+      <RootComponent type="61" schemaName="cmdspp_cmdspp_group_provider_instructions" behavior="0" />
+      <RootComponent type="61" schemaName="cmdspp_collapsesection" behavior="0" />
+      <RootComponent type="61" schemaName="cmdspp_Electronic_Claims_Sub_Instructions" behavior="0" />
+      <RootComponent type="61" schemaName="cmdspp_Enrollment_actions_resource" behavior="0" />
+      <RootComponent type="61" schemaName="cmdspp_filename_extraction" behavior="0" />
+      <RootComponent type="61" schemaName="cmdspp_remittance_advice_instructions" behavior="0" />
+      <RootComponent type="61" schemaName="cmdspp_screening_web_res" behavior="0" />
+      <RootComponent type="61" schemaName="cmdspp_subgridshow" behavior="0" />
+      <RootComponent type="61" schemaName="cr834_addCaseNotes_form" behavior="0" />
+      <RootComponent type="61" schemaName="cr834_exlusion_form" behavior="0" />
+      <RootComponent type="61" schemaName="cr834_formroute_appwiz" behavior="0" />
+      <RootComponent type="61" schemaName="cr834_formroute_enrform" behavior="0" />
+      <RootComponent type="61" schemaName="cr834_gridHdlr" behavior="0" />
+      <RootComponent type="61" schemaName="cr834_notesEditor" behavior="0" />
+      <RootComponent type="61" schemaName="cr834_Request_Summary" behavior="0" />
+      <RootComponent type="61" schemaName="cr834_ReviewDocuments_form" behavior="0" />
+      <RootComponent type="61" schemaName="new_enrform_dynamic" behavior="0" />
+      <RootComponent type="9" schemaName="cmdspp_applicationstatus" behavior="0" />
+      <RootComponent type="9" schemaName="cmdspp_cancellationreason" behavior="0" />
+      <RootComponent type="9" schemaName="cmdspp_deliverymediaforremittanceadvices" behavior="0" />
+      <RootComponent type="9" schemaName="cmdspp_denialreasons" behavior="0" />
+      <RootComponent type="9" schemaName="cmdspp_g_user_role" behavior="0" />
+      <RootComponent type="9" schemaName="cmdspp_interpretiveservices" behavior="0" />
+      <RootComponent type="9" schemaName="cmdspp_network_names" behavior="0" />
+      <RootComponent type="9" schemaName="cmdspp_p_gnr_typ" behavior="0" />
+      <RootComponent type="9" schemaName="cmdspp_p_operator_list" behavior="0" />
+      <RootComponent type="9" schemaName="cmdspp_receivetransactionglobalchoice" behavior="0" />
+      <RootComponent type="9" schemaName="cmdspp_req_doc_status_choice" behavior="0" />
+      <RootComponent type="9" schemaName="cmdspp_specialaccommodation" behavior="0" />
+      <RootComponent type="9" schemaName="cmdspp_statesglobalchoice" behavior="0" />
+      <RootComponent type="9" schemaName="cmdspp_submittransactionglobalchoice" behavior="0" />
+    </RootComponents>
+    <MissingDependencies>
+      <MissingDependency>
+        <Required type="1" schemaName="adx_invitation" displayName="Invitation" solution="PowerPages_RuntimeCore (1.0.2509.1)">
+          <package appName="Power Pages Core Package" version="1.1.2605.269">PowerPages_Core (1.1.2605.269)</package>
+        </Required>
+        <Dependent type="29" displayName="cmdspp_createValidatePinForUser" id="{2ffe6088-fb84-f111-ab0f-70a8a5b02d34}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="adx_invitation" displayName="Invitation" solution="PowerPages_RuntimeCore (1.0.2509.1)">
+          <package appName="Power Pages Core Package" version="1.1.2605.269">PowerPages_Core (1.1.2605.269)</package>
+        </Required>
+        <Dependent type="29" displayName="cmdspp_createContactAndInvitation" id="{c0b26d04-b694-f111-8075-70a8a5b02d28}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="cmdspp_p_manage_ownership_dtl_tb" displayName="Managing or Directing Organization Details" solution="Active" />
+        <Dependent type="1" schemaName="cmdspp_p_dtl_tb" displayName="Provider Detail" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="cmdspp_p_manage_ownership_dtl_tb" displayName="Managing or Directing Organization Details" solution="Active" />
+        <Dependent type="1" schemaName="cmdspp_r_vv_tb" displayName="References" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="cmdspp_p_manage_ownership_dtl_tb" displayName="Managing or Directing Organization Details" solution="Active" />
+        <Dependent type="60" displayName="View Enrollment Application" parentDisplayName="Provider Detail" id="{be9b2b39-fd34-4d9e-8d85-74758d8f8133}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="environmentvariabledefinition" displayName="Environment Variable Definition" solution="EnvironmentVariables (1.0.2406.4)">
+          <package appName="EnvironmentVariables" version="1.0.2406.4">EnvironmentVariablesSolutionAnchor (1.0.2406.4)</package>
+        </Required>
+        <Dependent type="29" displayName="CMDSPP_Create_Docusign_Envelope" id="{47d52600-b385-f111-ab0f-70a8a5b02d28}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="environmentvariabledefinition" displayName="Environment Variable Definition" solution="EnvironmentVariables (1.0.2406.4)">
+          <package appName="EnvironmentVariables" version="1.0.2406.4">EnvironmentVariablesSolutionAnchor (1.0.2406.4)</package>
+        </Required>
+        <Dependent type="29" displayName="cmdspp_application_status_changes" id="{4bf93210-96a7-f111-b8de-70a8a5b02d28}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="environmentvariabledefinition" displayName="Environment Variable Definition" solution="EnvironmentVariables (1.0.2406.4)">
+          <package appName="EnvironmentVariables" version="1.0.2406.4">EnvironmentVariablesSolutionAnchor (1.0.2406.4)</package>
+        </Required>
+        <Dependent type="29" displayName="cmdspp_screening_file_upload" id="{4d138735-eaa2-f111-b8de-70a8a5b02d34}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="environmentvariabledefinition" displayName="Environment Variable Definition" solution="EnvironmentVariables (1.0.2406.4)">
+          <package appName="EnvironmentVariables" version="1.0.2406.4">EnvironmentVariablesSolutionAnchor (1.0.2406.4)</package>
+        </Required>
+        <Dependent type="29" displayName="cmdspp_document_management_flow" id="{5f9a9652-9e85-f111-ab0f-70a8a5b02d28}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="environmentvariabledefinition" displayName="Environment Variable Definition" solution="EnvironmentVariables (1.0.2406.4)">
+          <package appName="EnvironmentVariables" version="1.0.2406.4">EnvironmentVariablesSolutionAnchor (1.0.2406.4)</package>
+        </Required>
+        <Dependent type="29" displayName="cmdspp_update_Screening_Scenario" id="{5fcf232f-f1a2-f111-b8de-70a8a5b02d28}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="environmentvariabledefinition" displayName="Environment Variable Definition" solution="EnvironmentVariables (1.0.2406.4)">
+          <package appName="EnvironmentVariables" version="1.0.2406.4">EnvironmentVariablesSolutionAnchor (1.0.2406.4)</package>
+        </Required>
+        <Dependent type="29" displayName="cmdspp_config_req_document" id="{6710cd56-eb8b-f111-ab0f-70a8a5b02d28}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="environmentvariabledefinition" displayName="Environment Variable Definition" solution="EnvironmentVariables (1.0.2406.4)">
+          <package appName="EnvironmentVariables" version="1.0.2406.4">EnvironmentVariablesSolutionAnchor (1.0.2406.4)</package>
+        </Required>
+        <Dependent type="29" displayName="cmdspp_E-signature_Status" id="{cf2b6aaf-9a89-f111-ab0f-70a8a5b02d34}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="environmentvariabledefinition" displayName="Environment Variable Definition" solution="EnvironmentVariables (1.0.2406.4)">
+          <package appName="EnvironmentVariables" version="1.0.2406.4">EnvironmentVariablesSolutionAnchor (1.0.2406.4)</package>
+        </Required>
+        <Dependent type="29" displayName="cmdspp_Signature_Updates" id="{d6911a84-a48e-f111-8076-70a8a5b028cc}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="environmentvariabledefinition" displayName="Environment Variable Definition" solution="EnvironmentVariables (1.0.2406.4)">
+          <package appName="EnvironmentVariables" version="1.0.2406.4">EnvironmentVariablesSolutionAnchor (1.0.2406.4)</package>
+        </Required>
+        <Dependent type="29" displayName="cmdspp_review_document_add_flow" id="{dd586f62-03a6-f111-b8de-70a8a5b02d28}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="environmentvariablevalue" displayName="Environment Variable Value" solution="EnvironmentVariables (1.0.2406.4)">
+          <package appName="EnvironmentVariables" version="1.0.2406.4">EnvironmentVariablesSolutionAnchor (1.0.2406.4)</package>
+        </Required>
+        <Dependent type="29" displayName="cmdspp_createValidatePinForUser" id="{2ffe6088-fb84-f111-ab0f-70a8a5b02d34}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="environmentvariablevalue" displayName="Environment Variable Value" solution="EnvironmentVariables (1.0.2406.4)">
+          <package appName="EnvironmentVariables" version="1.0.2406.4">EnvironmentVariablesSolutionAnchor (1.0.2406.4)</package>
+        </Required>
+        <Dependent type="29" displayName="CMDSPP_Create_Docusign_Envelope" id="{47d52600-b385-f111-ab0f-70a8a5b02d28}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="environmentvariablevalue" displayName="Environment Variable Value" solution="EnvironmentVariables (1.0.2406.4)">
+          <package appName="EnvironmentVariables" version="1.0.2406.4">EnvironmentVariablesSolutionAnchor (1.0.2406.4)</package>
+        </Required>
+        <Dependent type="29" displayName="cmdspp_application_status_changes" id="{4bf93210-96a7-f111-b8de-70a8a5b02d28}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="environmentvariablevalue" displayName="Environment Variable Value" solution="EnvironmentVariables (1.0.2406.4)">
+          <package appName="EnvironmentVariables" version="1.0.2406.4">EnvironmentVariablesSolutionAnchor (1.0.2406.4)</package>
+        </Required>
+        <Dependent type="29" displayName="cmdspp_screening_file_upload" id="{4d138735-eaa2-f111-b8de-70a8a5b02d34}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="environmentvariablevalue" displayName="Environment Variable Value" solution="EnvironmentVariables (1.0.2406.4)">
+          <package appName="EnvironmentVariables" version="1.0.2406.4">EnvironmentVariablesSolutionAnchor (1.0.2406.4)</package>
+        </Required>
+        <Dependent type="29" displayName="cmdspp_document_management_flow" id="{5f9a9652-9e85-f111-ab0f-70a8a5b02d28}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="environmentvariablevalue" displayName="Environment Variable Value" solution="EnvironmentVariables (1.0.2406.4)">
+          <package appName="EnvironmentVariables" version="1.0.2406.4">EnvironmentVariablesSolutionAnchor (1.0.2406.4)</package>
+        </Required>
+        <Dependent type="29" displayName="cmdspp_update_Screening_Scenario" id="{5fcf232f-f1a2-f111-b8de-70a8a5b02d28}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="environmentvariablevalue" displayName="Environment Variable Value" solution="EnvironmentVariables (1.0.2406.4)">
+          <package appName="EnvironmentVariables" version="1.0.2406.4">EnvironmentVariablesSolutionAnchor (1.0.2406.4)</package>
+        </Required>
+        <Dependent type="29" displayName="cmdspp_config_req_document" id="{6710cd56-eb8b-f111-ab0f-70a8a5b02d28}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="environmentvariablevalue" displayName="Environment Variable Value" solution="EnvironmentVariables (1.0.2406.4)">
+          <package appName="EnvironmentVariables" version="1.0.2406.4">EnvironmentVariablesSolutionAnchor (1.0.2406.4)</package>
+        </Required>
+        <Dependent type="29" displayName="cmdspp_createContactAndInvitation" id="{c0b26d04-b694-f111-8075-70a8a5b02d28}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="environmentvariablevalue" displayName="Environment Variable Value" solution="EnvironmentVariables (1.0.2406.4)">
+          <package appName="EnvironmentVariables" version="1.0.2406.4">EnvironmentVariablesSolutionAnchor (1.0.2406.4)</package>
+        </Required>
+        <Dependent type="29" displayName="cmdspp_E-signature_Status" id="{cf2b6aaf-9a89-f111-ab0f-70a8a5b02d34}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="environmentvariablevalue" displayName="Environment Variable Value" solution="EnvironmentVariables (1.0.2406.4)">
+          <package appName="EnvironmentVariables" version="1.0.2406.4">EnvironmentVariablesSolutionAnchor (1.0.2406.4)</package>
+        </Required>
+        <Dependent type="29" displayName="cmdspp_Signature_Updates" id="{d6911a84-a48e-f111-8076-70a8a5b028cc}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="environmentvariablevalue" displayName="Environment Variable Value" solution="EnvironmentVariables (1.0.2406.4)">
+          <package appName="EnvironmentVariables" version="1.0.2406.4">EnvironmentVariablesSolutionAnchor (1.0.2406.4)</package>
+        </Required>
+        <Dependent type="29" displayName="cmdspp_review_document_add_flow" id="{dd586f62-03a6-f111-b8de-70a8a5b02d28}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="10" schemaName="cmdspp_p_manage_ownership_dtl_tb_p_sys_id_cmdspp_p_dtl_tb" displayName="cmdspp_p_manage_ownership_dtl_tb_p_sys_id_cmdspp_p_dtl_tb" parentSchemaName="cmdspp_p_dtl_tb" parentDisplayName="Provider Detail" solution="Active" />
+        <Dependent type="60" displayName="View Enrollment Application" parentDisplayName="Provider Detail" id="{be9b2b39-fd34-4d9e-8d85-74758d8f8133}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="181" schemaName="NonRelational Data Provider" displayName="NonRelational Data Provider" solution="NonRelationalDataProvider (9.1.0.469)" id="{1d9bde74-9ebd-4da9-8ff5-aa74945b9f74}">
+          <package appName="NonRelational Data Provider Package" version="9.1.0.469">NonRelationalCustomActions (9.1.0.469)</package>
+        </Required>
+        <Dependent type="1" schemaName="cmdspp_g_usr_inbox_tb" displayName="G_USR_INBOX_TB" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="183" schemaName="NonRelational Data Provider" displayName="NonRelational Data Provider" solution="NonRelationalDataProvider (9.1.0.469)" id="{19897b6e-b2c2-461c-8f32-5a2413028030}">
+          <package appName="NonRelational Data Provider Package" version="9.1.0.469">NonRelationalCustomActions (9.1.0.469)</package>
+        </Required>
+        <Dependent type="1" schemaName="cmdspp_g_usr_inbox_tb" displayName="G_USR_INBOX_TB" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="20" displayName="Enrollment Supervisor" solution="Active" id="{537fe0f4-c7a5-f111-b8de-70a8a5b02d74}" />
+        <Dependent type="60" displayName="Request Summary" parentDisplayName="Provider Detail" id="{465d0208-bea2-f111-b8de-70a8a5b02d28}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="20" displayName="Enrollment Supervisor" solution="Active" id="{537fe0f4-c7a5-f111-b8de-70a8a5b02d74}" />
+        <Dependent type="60" displayName="Denial" parentDisplayName="Provider Detail" id="{510774b2-14a8-f111-b8de-70a8a5b02d28}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="20" displayName="Enrollment Supervisor" solution="Active" id="{537fe0f4-c7a5-f111-b8de-70a8a5b02d74}" />
+        <Dependent type="60" displayName="Enrollment Timeline" parentDisplayName="Provider Detail" id="{6772902c-6ba5-f111-b8de-70a8a5b02d28}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="20" displayName="Enrollment Supervisor" solution="Active" id="{537fe0f4-c7a5-f111-b8de-70a8a5b02d74}" />
+        <Dependent type="60" displayName="Approval" parentDisplayName="Provider Detail" id="{906232c3-45a7-f111-b8de-70a8a5b02d28}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="20" displayName="Enrollment Supervisor" solution="Active" id="{537fe0f4-c7a5-f111-b8de-70a8a5b02d74}" />
+        <Dependent type="60" displayName="AI Screening" parentDisplayName="Provider Detail" id="{a0ff9656-e8a2-f111-b8db-70a8a5b028cc}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="20" displayName="Enrollment Supervisor" solution="Active" id="{537fe0f4-c7a5-f111-b8de-70a8a5b02d74}" />
+        <Dependent type="60" displayName="Review Documents" parentDisplayName="Provider Detail" id="{b2f5597a-17a2-f111-b8dc-70a8a5b02d28}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="20" displayName="Enrollment Specialist" solution="Active" id="{66852b38-e6a5-f111-b8de-70a8a5b02d28}" />
+        <Dependent type="60" displayName="Request Summary" parentDisplayName="Provider Detail" id="{465d0208-bea2-f111-b8de-70a8a5b02d28}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="20" displayName="Enrollment Specialist" solution="Active" id="{66852b38-e6a5-f111-b8de-70a8a5b02d28}" />
+        <Dependent type="60" displayName="Denial" parentDisplayName="Provider Detail" id="{510774b2-14a8-f111-b8de-70a8a5b02d28}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="20" displayName="Enrollment Specialist" solution="Active" id="{66852b38-e6a5-f111-b8de-70a8a5b02d28}" />
+        <Dependent type="60" displayName="Enrollment Timeline" parentDisplayName="Provider Detail" id="{6772902c-6ba5-f111-b8de-70a8a5b02d28}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="20" displayName="Enrollment Specialist" solution="Active" id="{66852b38-e6a5-f111-b8de-70a8a5b02d28}" />
+        <Dependent type="60" displayName="Approval" parentDisplayName="Provider Detail" id="{906232c3-45a7-f111-b8de-70a8a5b02d28}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="20" displayName="Enrollment Specialist" solution="Active" id="{66852b38-e6a5-f111-b8de-70a8a5b02d28}" />
+        <Dependent type="60" displayName="AI Screening" parentDisplayName="Provider Detail" id="{a0ff9656-e8a2-f111-b8db-70a8a5b028cc}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="20" displayName="Enrollment Specialist" solution="Active" id="{66852b38-e6a5-f111-b8de-70a8a5b02d28}" />
+        <Dependent type="60" displayName="Review Documents" parentDisplayName="Provider Detail" id="{b2f5597a-17a2-f111-b8dc-70a8a5b02d28}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="26" schemaName="Active p_manage_ownership_dtl_tbs" displayName="Active p_manage_ownership_dtl_tbs" parentSchemaName="cmdspp_p_manage_ownership_dtl_tb" parentDisplayName="Managing or Directing Organization Details" solution="Active" id="{e9c498a8-a166-47d1-b73e-acb1ba358083}" />
+        <Dependent type="60" displayName="View Enrollment Application" parentDisplayName="Provider Detail" id="{be9b2b39-fd34-4d9e-8d85-74758d8f8133}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="66" schemaName="Microsoft.PowerApps.PowerAppsOneGrid" displayName="Microsoft.PowerApps.PowerAppsOneGrid" solution="BaseCustomControlsCore (9.0.2608.2010)">
+          <package appName="Base Custom Controls" version="9.0.2608.2010">BaseCustomControlsCore (9.0.2608.2010)</package>
+        </Required>
+        <Dependent type="60" displayName="View Enrollment Application" parentDisplayName="Provider Detail" id="{be9b2b39-fd34-4d9e-8d85-74758d8f8133}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="66" schemaName="MscrmControls.FieldControls.CheckboxControl" displayName="MscrmControls.FieldControls.CheckboxControl" solution="BaseCustomControlsCore (9.0.2608.2010)">
+          <package appName="Base Custom Controls" version="9.0.2608.2010">BaseCustomControlsCore (9.0.2608.2010)</package>
+        </Required>
+        <Dependent type="60" displayName="Information" parentDisplayName="Electronic Claims Submission" id="{7a6f6a8b-3d70-4ff6-b959-391836597394}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="66" schemaName="MscrmControls.FieldControls.ToggleControl" displayName="MscrmControls.FieldControls.ToggleControl" solution="BaseCustomControlsCore (9.0.2608.2010)">
+          <package appName="Base Custom Controls" version="9.0.2608.2010">BaseCustomControlsCore (9.0.2608.2010)</package>
+        </Required>
+        <Dependent type="60" displayName="Information" parentDisplayName="Sanction Information" id="{10251452-13b9-4fce-8dac-330450e9b551}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="66" schemaName="MscrmControls.FieldControls.ToggleControl" displayName="MscrmControls.FieldControls.ToggleControl" solution="BaseCustomControlsCore (9.0.2608.2010)">
+          <package appName="Base Custom Controls" version="9.0.2608.2010">BaseCustomControlsCore (9.0.2608.2010)</package>
+        </Required>
+        <Dependent type="60" displayName="Information" parentDisplayName="Pending Actions Information" id="{19fef112-f890-4e3f-bde5-cf03e9081359}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="66" schemaName="MscrmControls.FieldControls.ToggleControl" displayName="MscrmControls.FieldControls.ToggleControl" solution="BaseCustomControlsCore (9.0.2608.2010)">
+          <package appName="Base Custom Controls" version="9.0.2608.2010">BaseCustomControlsCore (9.0.2608.2010)</package>
+        </Required>
+        <Dependent type="60" displayName="Information" parentDisplayName="Subcontractor Details" id="{4d65402c-6f16-4f8c-b930-e29f9a3b8576}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="66" schemaName="MscrmControls.FieldControls.ToggleControl" displayName="MscrmControls.FieldControls.ToggleControl" solution="BaseCustomControlsCore (9.0.2608.2010)">
+          <package appName="Base Custom Controls" version="9.0.2608.2010">BaseCustomControlsCore (9.0.2608.2010)</package>
+        </Required>
+        <Dependent type="60" displayName="Information" parentDisplayName="Ownership Details" id="{50375f32-5a07-4196-9b6c-7e322f016278}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="66" schemaName="MscrmControls.FieldControls.ToggleControl" displayName="MscrmControls.FieldControls.ToggleControl" solution="BaseCustomControlsCore (9.0.2608.2010)">
+          <package appName="Base Custom Controls" version="9.0.2608.2010">BaseCustomControlsCore (9.0.2608.2010)</package>
+        </Required>
+        <Dependent type="60" displayName="Information" parentDisplayName="Relative Details" id="{5274972d-5832-46e7-8317-4dfbf0af7d6e}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="66" schemaName="MscrmControls.FieldControls.ToggleControl" displayName="MscrmControls.FieldControls.ToggleControl" solution="BaseCustomControlsCore (9.0.2608.2010)">
+          <package appName="Base Custom Controls" version="9.0.2608.2010">BaseCustomControlsCore (9.0.2608.2010)</package>
+        </Required>
+        <Dependent type="60" displayName="Information" parentDisplayName="P_SER_SEV_INF_TB" id="{5dec3005-3dc3-4355-8ba0-9d3b5f449c19}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="66" schemaName="MscrmControls.FieldControls.ToggleControl" displayName="MscrmControls.FieldControls.ToggleControl" solution="BaseCustomControlsCore (9.0.2608.2010)">
+          <package appName="Base Custom Controls" version="9.0.2608.2010">BaseCustomControlsCore (9.0.2608.2010)</package>
+        </Required>
+        <Dependent type="60" displayName="Information" parentDisplayName="Exclusion Information" id="{71544f2d-e8c1-4b16-a47b-2e234527d6c3}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="66" schemaName="MscrmControls.FieldControls.ToggleControl" displayName="MscrmControls.FieldControls.ToggleControl" solution="BaseCustomControlsCore (9.0.2608.2010)">
+          <package appName="Base Custom Controls" version="9.0.2608.2010">BaseCustomControlsCore (9.0.2608.2010)</package>
+        </Required>
+        <Dependent type="60" displayName="Information" parentDisplayName="Overpayment Information" id="{7da2eb98-7933-40f2-9980-4719bafbcc28}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="66" schemaName="MscrmControls.FieldControls.ToggleControl" displayName="MscrmControls.FieldControls.ToggleControl" solution="BaseCustomControlsCore (9.0.2608.2010)">
+          <package appName="Base Custom Controls" version="9.0.2608.2010">BaseCustomControlsCore (9.0.2608.2010)</package>
+        </Required>
+        <Dependent type="60" displayName="Information" parentDisplayName="Conviction Information - 1" id="{82eca8c5-f459-4b31-a669-3449abcb20bb}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="66" schemaName="MscrmControls.FieldControls.ToggleControl" displayName="MscrmControls.FieldControls.ToggleControl" solution="BaseCustomControlsCore (9.0.2608.2010)">
+          <package appName="Base Custom Controls" version="9.0.2608.2010">BaseCustomControlsCore (9.0.2608.2010)</package>
+        </Required>
+        <Dependent type="60" displayName="Information" parentDisplayName="Litigation Information" id="{859d50f1-c222-47af-a681-82c8081c9101}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="66" schemaName="MscrmControls.FieldControls.ToggleControl" displayName="MscrmControls.FieldControls.ToggleControl" solution="BaseCustomControlsCore (9.0.2608.2010)">
+          <package appName="Base Custom Controls" version="9.0.2608.2010">BaseCustomControlsCore (9.0.2608.2010)</package>
+        </Required>
+        <Dependent type="60" displayName="Information" parentDisplayName="Service Mailing Address Information" id="{8881ae1d-635d-4cf1-965b-841c38faad10}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="66" schemaName="MscrmControls.FieldControls.ToggleControl" displayName="MscrmControls.FieldControls.ToggleControl" solution="BaseCustomControlsCore (9.0.2608.2010)">
+          <package appName="Base Custom Controls" version="9.0.2608.2010">BaseCustomControlsCore (9.0.2608.2010)</package>
+        </Required>
+        <Dependent type="60" displayName="Information" parentDisplayName="Detailed Information" id="{8a7f5706-91d5-4105-a411-6a204f227ef8}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="66" schemaName="MscrmControls.FieldControls.ToggleControl" displayName="MscrmControls.FieldControls.ToggleControl" solution="BaseCustomControlsCore (9.0.2608.2010)">
+          <package appName="Base Custom Controls" version="9.0.2608.2010">BaseCustomControlsCore (9.0.2608.2010)</package>
+        </Required>
+        <Dependent type="60" displayName="Approval" parentDisplayName="Provider Detail" id="{906232c3-45a7-f111-b8de-70a8a5b02d28}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="66" schemaName="MscrmControls.FieldControls.ToggleControl" displayName="MscrmControls.FieldControls.ToggleControl" solution="BaseCustomControlsCore (9.0.2608.2010)">
+          <package appName="Base Custom Controls" version="9.0.2608.2010">BaseCustomControlsCore (9.0.2608.2010)</package>
+        </Required>
+        <Dependent type="60" displayName="Information" parentDisplayName="P_SER_BILAGT_INF_TB" id="{ab5a4f8f-f6f2-4bf3-83ec-4b065e315e56}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="66" schemaName="MscrmControls.FieldControls.ToggleControl" displayName="MscrmControls.FieldControls.ToggleControl" solution="BaseCustomControlsCore (9.0.2608.2010)">
+          <package appName="Base Custom Controls" version="9.0.2608.2010">BaseCustomControlsCore (9.0.2608.2010)</package>
+        </Required>
+        <Dependent type="60" displayName="Information" parentDisplayName="P_PIN_OTH_SMPI_DTL" id="{b587fc22-e1a3-4a1d-801f-a37c1f69518c}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="66" schemaName="MscrmControls.FieldControls.ToggleControl" displayName="MscrmControls.FieldControls.ToggleControl" solution="BaseCustomControlsCore (9.0.2608.2010)">
+          <package appName="Base Custom Controls" version="9.0.2608.2010">BaseCustomControlsCore (9.0.2608.2010)</package>
+        </Required>
+        <Dependent type="60" displayName="Information" parentDisplayName="P_IDT_INF_DTL" id="{c9859129-44ca-42ff-91f0-8e33534ffaf9}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="66" schemaName="MscrmControls.FieldControls.ToggleControl" displayName="MscrmControls.FieldControls.ToggleControl" solution="BaseCustomControlsCore (9.0.2608.2010)">
+          <package appName="Base Custom Controls" version="9.0.2608.2010">BaseCustomControlsCore (9.0.2608.2010)</package>
+        </Required>
+        <Dependent type="60" displayName="Information" parentDisplayName="Conviction Information - 2" id="{ce037703-90e9-4d92-a90a-27668e497120}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="66" schemaName="MscrmControls.FieldControls.ToggleControl" displayName="MscrmControls.FieldControls.ToggleControl" solution="BaseCustomControlsCore (9.0.2608.2010)">
+          <package appName="Base Custom Controls" version="9.0.2608.2010">BaseCustomControlsCore (9.0.2608.2010)</package>
+        </Required>
+        <Dependent type="60" displayName="EFTForm" parentDisplayName="P_IDT_INF_DTL" id="{e3d9c2ea-40a8-f111-b8de-70a8a5b02d34}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="66" schemaName="MscrmControls.FieldControls.ToggleControl" displayName="MscrmControls.FieldControls.ToggleControl" solution="BaseCustomControlsCore (9.0.2608.2010)">
+          <package appName="Base Custom Controls" version="9.0.2608.2010">BaseCustomControlsCore (9.0.2608.2010)</package>
+        </Required>
+        <Dependent type="60" displayName="Information" parentDisplayName="Restitution Information" id="{e75097bf-738f-4c0f-a0f4-827aff390b13}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="66" schemaName="MscrmControls.FieldControls.ToggleControl" displayName="MscrmControls.FieldControls.ToggleControl" solution="BaseCustomControlsCore (9.0.2608.2010)">
+          <package appName="Base Custom Controls" version="9.0.2608.2010">BaseCustomControlsCore (9.0.2608.2010)</package>
+        </Required>
+        <Dependent type="60" displayName="Information" parentDisplayName="Payment Suspension Information" id="{e8df654c-e6bd-40e8-81a6-7b7c186395d2}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="66" schemaName="MscrmControls.FieldControls.ToggleControl" displayName="MscrmControls.FieldControls.ToggleControl" solution="BaseCustomControlsCore (9.0.2608.2010)">
+          <package appName="Base Custom Controls" version="9.0.2608.2010">BaseCustomControlsCore (9.0.2608.2010)</package>
+        </Required>
+        <Dependent type="60" displayName="Information" parentDisplayName="P_BILLING_ADDRESS_TB" id="{f198e5d5-822c-417a-820f-c5fe6fab8953}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="66" schemaName="MscrmControls.ModelForm.ModelFormControl" displayName="MscrmControls.ModelForm.ModelFormControl" solution="BaseCustomControlsCore (9.0.2608.2010)">
+          <package appName="Base Custom Controls" version="9.0.2608.2010">BaseCustomControlsCore (9.0.2608.2010)</package>
+        </Required>
+        <Dependent type="60" displayName="AI Screening" parentDisplayName="Provider Detail" id="{a0ff9656-e8a2-f111-b8db-70a8a5b028cc}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="66" schemaName="MscrmControls.ModelForm.ModelFormControl" displayName="MscrmControls.ModelForm.ModelFormControl" solution="BaseCustomControlsCore (9.0.2608.2010)">
+          <package appName="Base Custom Controls" version="9.0.2608.2010">BaseCustomControlsCore (9.0.2608.2010)</package>
+        </Required>
+        <Dependent type="60" displayName="View Enrollment Application" parentDisplayName="Provider Detail" id="{be9b2b39-fd34-4d9e-8d85-74758d8f8133}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="66" schemaName="MscrmControls.MultiSelectPicklist.ModernMSPicklistControl" displayName="MscrmControls.MultiSelectPicklist.ModernMSPicklistControl" solution="BaseCustomControlsCore (9.0.2608.2010)">
+          <package appName="Base Custom Controls" version="9.0.2608.2010">BaseCustomControlsCore (9.0.2608.2010)</package>
+        </Required>
+        <Dependent type="60" displayName="Information" parentDisplayName="Remittance Advice" id="{27488a7d-e727-4cca-a0e1-b8c9196a3046}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="66" schemaName="MscrmControls.MultiSelectPicklist.ModernMSPicklistControl" displayName="MscrmControls.MultiSelectPicklist.ModernMSPicklistControl" solution="BaseCustomControlsCore (9.0.2608.2010)">
+          <package appName="Base Custom Controls" version="9.0.2608.2010">BaseCustomControlsCore (9.0.2608.2010)</package>
+        </Required>
+        <Dependent type="60" displayName="Information" parentDisplayName="Electronic Claims Submission" id="{7a6f6a8b-3d70-4ff6-b959-391836597394}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="66" schemaName="MscrmControls.MultiSelectPicklist.ModernMSPicklistControl" displayName="MscrmControls.MultiSelectPicklist.ModernMSPicklistControl" solution="BaseCustomControlsCore (9.0.2608.2010)">
+          <package appName="Base Custom Controls" version="9.0.2608.2010">BaseCustomControlsCore (9.0.2608.2010)</package>
+        </Required>
+        <Dependent type="60" displayName="Information" parentDisplayName="Interpretive Services" id="{95e16a10-4ba2-4d3b-a6c4-665839908092}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="66" schemaName="MscrmControls.MultiSelectPicklist.ModernMSPicklistControl" displayName="MscrmControls.MultiSelectPicklist.ModernMSPicklistControl" solution="BaseCustomControlsCore (9.0.2608.2010)">
+          <package appName="Base Custom Controls" version="9.0.2608.2010">BaseCustomControlsCore (9.0.2608.2010)</package>
+        </Required>
+        <Dependent type="60" displayName="Information" parentDisplayName="Special Accommodation" id="{ae9d84bb-c259-4649-9073-35cd4bb10b36}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="66" schemaName="MscrmControls.MultiSelectPicklist.ModernMSPicklistControl" displayName="MscrmControls.MultiSelectPicklist.ModernMSPicklistControl" solution="BaseCustomControlsCore (9.0.2608.2010)">
+          <package appName="Base Custom Controls" version="9.0.2608.2010">BaseCustomControlsCore (9.0.2608.2010)</package>
+        </Required>
+        <Dependent type="60" displayName="Information" parentDisplayName="P_PIN_OTH_SMPI_DTL" id="{b587fc22-e1a3-4a1d-801f-a37c1f69518c}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="66" schemaName="PowerApps.CoreControls.Checkbox" displayName="PowerApps.CoreControls.Checkbox" solution="BaseCustomControlsCore (9.0.2608.2010)">
+          <package appName="Base Custom Controls" version="9.0.2608.2010">BaseCustomControlsCore (9.0.2608.2010)</package>
+        </Required>
+        <Dependent type="60" displayName="AI Screening" parentDisplayName="P_APPL_SCENARIO_TB" id="{1d514618-e7a2-f111-b8de-70a8a5b02d34}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="66" schemaName="PowerApps.CoreControls.Checkbox" displayName="PowerApps.CoreControls.Checkbox" solution="BaseCustomControlsCore (9.0.2608.2010)">
+          <package appName="Base Custom Controls" version="9.0.2608.2010">BaseCustomControlsCore (9.0.2608.2010)</package>
+        </Required>
+        <Dependent type="60" displayName="View Enrollment Application" parentDisplayName="Provider Detail" id="{be9b2b39-fd34-4d9e-8d85-74758d8f8133}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="66" schemaName="PowerApps.CoreControls.MultiSelectOptionSet" displayName="PowerApps.CoreControls.MultiSelectOptionSet" solution="BaseCustomControlsCore (9.0.2608.2010)">
+          <package appName="Base Custom Controls" version="9.0.2608.2010">BaseCustomControlsCore (9.0.2608.2010)</package>
+        </Required>
+        <Dependent type="60" displayName="Information" parentDisplayName="Ownership Details" id="{50375f32-5a07-4196-9b6c-7e322f016278}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="EnvironmentVariableDefinition" displayName="cmdspp_ENV_Automate_Flow_Url_2" solution="Active" id.schemaname="cmdspp_ENV_Automate_Flow_Url_2" />
+        <Dependent type="29" displayName="cmdspp_fetch_configAudits" id="{b87abd4f-ae89-f111-ab0f-70a8a5b02d28}" />
+      </MissingDependency>
+    </MissingDependencies>
+  </SolutionManifest>
+</ImportExportXml>

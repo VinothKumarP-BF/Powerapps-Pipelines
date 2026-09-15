@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>0</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>1</isdefault>
+    <savedqueryid>{3233ce40-8ea3-4e05-9f09-7fc23c519018}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="cmdspp_newcolumn" select="1" icon="1" preview="1">
+        <row name="result" id="cmdspp_p_loc_cp_mailing_addressid">
+          <cell name="cmdspp_p_last_name" width="102" />
+          <cell name="cmdspp_p_first_name" width="103" />
+          <cell name="cmdspp_p_middle_name" width="100" />
+          <cell name="cmdspp_p_phone_number" width="138" />
+          <cell name="cmdspp_p_extension" width="100" />
+          <cell name="cmdspp_p_fax" width="100" />
+          <cell name="cmdspp_p_email" width="100" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>0</querytype>
+    <fetchxml>
+      <fetch version="1.0" mapping="logical">
+        <entity name="cmdspp_p_loc_cp_mailing_address">
+          <attribute name="cmdspp_p_loc_cp_mailing_addressid" />
+          <attribute name="createdon" />
+          <filter type="and">
+            <condition attribute="statecode" operator="eq" value="0" />
+          </filter>
+          <attribute name="cmdspp_p_last_name" />
+          <attribute name="cmdspp_p_first_name" />
+          <attribute name="cmdspp_p_middle_name" />
+          <attribute name="cmdspp_p_phone_number" />
+          <attribute name="cmdspp_p_extension" />
+          <attribute name="cmdspp_p_fax" />
+          <attribute name="cmdspp_p_email" />
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.0</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Active p_loc_cp_mailing_addresses" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>

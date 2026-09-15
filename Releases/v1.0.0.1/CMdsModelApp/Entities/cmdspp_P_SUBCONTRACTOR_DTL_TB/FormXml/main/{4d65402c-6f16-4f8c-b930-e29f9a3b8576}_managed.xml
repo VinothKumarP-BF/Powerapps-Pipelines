@@ -1,0 +1,206 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<forms xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <systemform>
+    <formid>{4d65402c-6f16-4f8c-b930-e29f9a3b8576}</formid>
+    <IntroducedVersion>1.0</IntroducedVersion>
+    <FormPresentation>1</FormPresentation>
+    <FormActivationState>1</FormActivationState>
+    <form headerdensity="HighWithControls">
+      <tabs>
+        <tab verticallayout="true" id="{fcc055d9-fad6-4c79-9da1-46853ca2d508}" IsUserDefined="1" expanded="true">
+          <labels>
+            <label description="General" languagecode="1033" />
+          </labels>
+          <columns>
+            <column width="100%">
+              <sections>
+                <section showlabel="false" showbar="false" IsUserDefined="0" id="{0f6cf467-ad0d-449e-a863-0487a178aeec}" visible="false" name="general" availableforphone="false" locklevel="1">
+                  <labels>
+                    <label description="General" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{ccca34de-59df-4434-ab30-be5b0bf5ca39}" visible="false" locklevel="1" availableforphone="false" showlabel="false">
+                        <labels>
+                          <label description="p subcontractor dtl sk" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_psubcontractordtlsk" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="cmdspp_psubcontractordtlsk" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{2fbbe464-dca4-4a31-b03a-d4394d826382}" visible="false" showlabel="false" availableforphone="false" locklevel="1">
+                        <labels>
+                          <label description="Owner" languagecode="1033" />
+                        </labels>
+                        <control id="ownerid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="ownerid" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+                <section name="null_section_3" id="0b373ab1-55af-4261-86c7-03e123d52b1e" IsUserDefined="0" locklevel="0" showlabel="false" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Top" columns="11" labelwidth="115">
+                  <labels>
+                    <label description="New Section" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row />
+                    <row>
+                      <cell id="{ffd06bae-4a9e-4e4e-9e59-fe583b15961f}" locklevel="0" colspan="2" rowspan="1">
+                        <labels>
+                          <label description="Do you have an ownership interest of 5% or greater in a subcontractor for your business or practice?" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_p_subcontractor_ind" classid="{F9A8A302-114E-466A-B582-6771B2AE0D92}" datafieldname="cmdspp_p_subcontractor_ind" disabled="false" uniqueid="{a16883b3-c4bd-417d-857d-686f3c483df0}" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{a7ba5997-f3ac-4af7-8e83-176042ad12c8}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Subcontractor Name" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_p_subcontractor_name" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="cmdspp_p_subcontractor_name" disabled="false" />
+                      </cell>
+                      <cell id="{6e8946e7-f0e2-41b2-9aa5-781accdc7513}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Address" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_p_subcontractor_add" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="cmdspp_p_subcontractor_add" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{bc5361f9-c3a8-4117-9cb7-7a9892494cc0}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="City" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_p_subcontractor_city" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="cmdspp_p_subcontractor_city" disabled="false" />
+                      </cell>
+                      <cell id="{e453ea98-d71f-4e48-8191-42026a55b231}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="State" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_p_subcontractor_occ_st_cd" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="cmdspp_p_subcontractor_occ_st_cd" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{cdf84be1-d7cb-435d-a56d-d7a11133d78b}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Zip" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_p_subcontractor_zip_cd" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="cmdspp_p_subcontractor_zip_cd" disabled="false" />
+                      </cell>
+                      <cell locklevel="0" id="{a1e42c1b-a801-43e2-bd90-cd080bde5f5a}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+          </columns>
+        </tab>
+      </tabs>
+      <header id="{f729ca4d-8d25-4e35-86d5-fae26091f378}" celllabelposition="Top" columns="111" labelwidth="115" celllabelalignment="Left">
+        <rows>
+          <row>
+            <cell id="{927ad056-0937-418d-8865-c9bb3ccab7e7}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{3aee3e00-4470-4d67-837f-cde8423fbb99}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{2c828d40-d087-4702-9149-2ebe0ab69c72}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+          </row>
+        </rows>
+      </header>
+      <footer id="{d857d8a7-92fd-49fc-b013-91073a053cda}" celllabelposition="Top" columns="111" labelwidth="115" celllabelalignment="Left">
+        <rows>
+          <row>
+            <cell id="{b23857f3-2542-445e-ad28-df1c66172ec6}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{5273efc9-80f5-4d10-8327-ae6281070d76}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{7eef4367-c581-49dd-84e2-dc275bcc9486}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+          </row>
+        </rows>
+      </footer>
+      <DisplayConditions Order="0" FallbackForm="true">
+        <Everyone />
+      </DisplayConditions>
+      <controlDescriptions>
+        <controlDescription forControl="{a16883b3-c4bd-417d-857d-686f3c483df0}">
+          <customControl id="{67FAC785-CD58-4F9F-ABB3-4B7DDC6ED5ED}">
+            <parameters>
+              <datafieldname>cmdspp_p_subcontractor_ind</datafieldname>
+            </parameters>
+          </customControl>
+          <customControl id="{67FAC785-CD58-4F9F-ABB3-4B7DDC6ED5ED}">
+            <parameters>
+              <datafieldname>cmdspp_p_subcontractor_ind</datafieldname>
+            </parameters>
+          </customControl>
+          <customControl formFactor="2" name="MscrmControls.FieldControls.ToggleControl">
+            <parameters>
+              <value type="TwoOptions">cmdspp_p_subcontractor_ind</value>
+            </parameters>
+          </customControl>
+          <customControl formFactor="0" name="MscrmControls.FieldControls.ToggleControl">
+            <parameters>
+              <value type="TwoOptions">cmdspp_p_subcontractor_ind</value>
+            </parameters>
+          </customControl>
+          <customControl formFactor="1" name="MscrmControls.FieldControls.ToggleControl">
+            <parameters>
+              <value type="TwoOptions">cmdspp_p_subcontractor_ind</value>
+            </parameters>
+          </customControl>
+        </controlDescription>
+      </controlDescriptions>
+      <formLibraries>
+        <Library name="cmdspp_screening_web_res" libraryUniqueId="{96fc844c-b07a-41f8-a138-679b0686f690}" />
+      </formLibraries>
+      <events>
+        <event name="onchange" application="false" active="false" attribute="cmdspp_p_subcontractor_name">
+          <Handlers>
+            <Handler functionName="validateField" libraryName="cmdspp_screening_web_res" handlerUniqueId="{24a75766-17be-4c57-b815-6e1a1a4d6385}" enabled="true" parameters="&quot;cmdspp_p_subcontractor_name&quot;, &quot;pattern&quot;, &quot;^[A-Za-z '-]+$&quot;, &quot;Only alphabets, spaces, apostrophes, and hyphens are allowed.&quot;" passExecutionContext="true" />
+          </Handlers>
+        </event>
+        <event name="onchange" application="false" active="false" attribute="cmdspp_p_subcontractor_city">
+          <Handlers>
+            <Handler functionName="validateField" libraryName="cmdspp_screening_web_res" handlerUniqueId="{43a6a610-edbc-4163-bde9-16cefb435ffa}" enabled="true" parameters="&quot;cmdspp_p_subcontractor_city&quot;, &quot;pattern&quot;, &quot;^[A-Za-z .'-]+$&quot;, &quot;Invalid city name.&quot;" passExecutionContext="true" />
+          </Handlers>
+        </event>
+        <event name="onchange" application="false" active="false" attribute="cmdspp_p_subcontractor_zip_cd">
+          <Handlers>
+            <Handler functionName="validateField" libraryName="cmdspp_screening_web_res" handlerUniqueId="{5b979e75-9e80-48ab-b3d0-9629a9be0ecc}" enabled="true" parameters="&quot;cmdspp_p_subcontractor_zip_cd&quot;, &quot;pattern&quot;, &quot;^[0-9]{5}(-[0-9]{4})?$&quot;, &quot;Enter a valid ZIP code.&quot;" passExecutionContext="true" />
+          </Handlers>
+        </event>
+      </events>
+    </form>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <LocalizedNames>
+      <LocalizedName description="Information" languagecode="1033" />
+    </LocalizedNames>
+    <Descriptions>
+      <Description description="A form for this entity." languagecode="1033" />
+    </Descriptions>
+  </systemform>
+</forms>

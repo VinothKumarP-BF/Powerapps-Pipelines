@@ -1,0 +1,225 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<forms xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <systemform>
+    <formid>{608aac4d-daa1-f111-b8dc-70a8a5b028cc}</formid>
+    <IntroducedVersion>1.0.0.0</IntroducedVersion>
+    <FormPresentation>1</FormPresentation>
+    <FormActivationState>1</FormActivationState>
+    <form headerdensity="HighWithControls" shownavigationbar="false">
+      <tabs>
+        <tab verticallayout="true" id="{c688f110-b61a-4e0e-a1e7-0c32e1f97e20}" IsUserDefined="1" visible="false" labelid="{2a2c7ff2-0cd2-4e9e-81a5-45b0d8385401}">
+          <labels>
+            <label description="General" languagecode="1033" />
+          </labels>
+          <columns>
+            <column width="100%">
+              <sections>
+                <section showlabel="false" showbar="false" IsUserDefined="0" id="{178e24fe-4860-40e7-a726-2f2e58392624}" labelid="{24f8289b-ccd5-4ee5-8b5c-2a3cb1a8d6a2}">
+                  <labels>
+                    <label description="General" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{6394244e-84a0-48af-ba14-11d7fdc2f84f}" labelid="{ebd3b8c8-19f0-4637-b0bd-a4ab067bcfc5}">
+                        <labels>
+                          <label description="Application ID" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_p_sys_id" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="cmdspp_p_sys_id" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{169b29c2-0a2b-4f3c-88ed-b1c08d45b7c9}" labelid="{6b0e3d5e-9f4c-4cb0-8461-56631af1b93d}">
+                        <labels>
+                          <label description="Owner" languagecode="1033" />
+                        </labels>
+                        <control id="ownerid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="ownerid" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell locklevel="0" id="{50014cf1-baef-4047-abcc-1ea1c23de32c}" rowspan="15" colspan="1">
+                        <labels>
+                          <label description="Note Text" languagecode="1033" />
+                        </labels>
+                        <control id="notescontrol" classid="{06375649-C143-495E-A496-C962E5B4488E}" disabled="false" />
+                      </cell>
+                    </row>
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row>
+                      <cell locklevel="0" id="{1a966235-4cf1-4898-8285-bd9686be9970}" rowspan="15" colspan="1">
+                        <labels>
+                          <label description="Note Text" languagecode="1033" />
+                        </labels>
+                        <control id="notescontrol" classid="{06375649-C143-495E-A496-C962E5B4488E}" disabled="false" />
+                      </cell>
+                    </row>
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row>
+                      <cell locklevel="0" id="{4fcb688a-bab0-42e1-adf2-b264036963c2}" rowspan="15" colspan="1">
+                        <labels>
+                          <label description="Note Text" languagecode="1033" />
+                        </labels>
+                        <control id="notescontrol" classid="{06375649-C143-495E-A496-C962E5B4488E}" disabled="false" />
+                      </cell>
+                    </row>
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                  </rows>
+                </section>
+              </sections>
+            </column>
+          </columns>
+        </tab>
+        <tab name="tab_2" id="d6a9526d-dbbe-46cf-8ade-b44f77e1ee0d" IsUserDefined="0" locklevel="0" showlabel="true" labelid="{2d02e521-d9e5-40a8-94b9-0693ba813511}">
+          <labels>
+            <label description="Add Case Notes" languagecode="1033" />
+          </labels>
+          <columns>
+            <column width="100%">
+              <sections>
+                <section name="tab_2_section_3" id="38e91b3c-f4e9-4101-9f19-ac2e503b82f1" IsUserDefined="0" locklevel="0" showlabel="false" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115" labelid="{a1f04b1c-0775-47d7-a324-18491fc17330}">
+                  <labels>
+                    <label description="New Section" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row />
+                    <row>
+                      <cell locklevel="0" id="{5b4fd930-e3f1-48f1-8a59-a549d17a3a1f}" rowspan="15" colspan="1">
+                        <labels>
+                          <label description="Note Text" languagecode="1033" />
+                        </labels>
+                        <control id="notescontrol" classid="{06375649-C143-495E-A496-C962E5B4488E}" disabled="false">
+                          <parameters>
+                            <UClientNotesConfigurationJSON>{"alwaysAuthorNotes":false,"hideNoteTitleForAuthoringMode":true,"commandsConfig":{"order":[{"id":"Pin","isVisible":false},{"id":"Delete","isVisible":false},{"id":"Edit","isVisible":false},{"id":"CopyToClipboard","isVisible":false}]},"sortNotesByValue":"createdon","fieldsConfig":{"labelOverride":true,"header":{"labelOption":"Show","displayOption":"AlwaysShow","dataFieldName":"createdby"},"body":[{"labelOption":"Hide","displayOption":"AlwaysShow"},{"labelOption":"Hide","displayOption":"AlwaysShow"}],"footer":{"labelOption":"Hide","displayOption":"Hide"}},"richTextEditorConfigUrl":"/WebResources/cr834_notesEditor"}</UClientNotesConfigurationJSON>
+                            <UClientShowFilterPane>false</UClientShowFilterPane>
+                            <UClientExpandFilterPane>false</UClientExpandFilterPane>
+                            <UClientEnableWhatsChangedModern>false</UClientEnableWhatsChangedModern>
+                            <UClientEnableAttachmentPreview>false</UClientEnableAttachmentPreview>
+                            <UClientTimelineCopilot>true</UClientTimelineCopilot>
+                            <UClientShowTimelineLabel>false</UClientShowTimelineLabel>
+                            <UClientDefaultFilterJSON>{"module":{"enabled":false,"value":[]},"modifiedDate":{"enabled":false,"value":[]}}</UClientDefaultFilterJSON>
+                            <UClientEnableSearch>false</UClientEnableSearch>
+                          </parameters>
+                        </control>
+                      </cell>
+                    </row>
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                  </rows>
+                </section>
+              </sections>
+            </column>
+          </columns>
+        </tab>
+      </tabs>
+      <header id="{2ba47678-7dca-4e17-954e-de9cc534cea0}" celllabelposition="Top" columns="111" labelwidth="115" celllabelalignment="Left">
+        <rows>
+          <row>
+            <cell id="{d319d527-5b63-4b9a-ae55-a98169ad8e2c}" showlabel="false" labelid="{2f87dd68-284c-4de7-8fdb-1dca514de81c}">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{9fa26ca8-1a07-43ac-b4bf-4346b408263a}" showlabel="false" labelid="{8e8b94f6-e89b-4405-b793-643b4d02942a}">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{a2db268d-66f2-4a5e-ac4a-a579f67eb200}" showlabel="false" labelid="{f71193fd-850f-477e-8ca0-c3f6a5480347}">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+          </row>
+        </rows>
+      </header>
+      <footer id="{e528c933-eab8-4abf-a339-acd6f3156d6d}" celllabelposition="Top" columns="111" labelwidth="115" celllabelalignment="Left">
+        <rows>
+          <row>
+            <cell id="{b7a4be13-94c0-4466-84a2-8e4ee072c62b}" showlabel="false" labelid="{603e5f31-fe95-4a00-aa3f-9764397fb07a}">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{3ac71d4b-c9e7-4685-983a-c36d1481b917}" showlabel="false" labelid="{2c8e7472-b7f4-48bf-9134-e21e16170946}">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{892c594e-4e8b-4f9b-9966-1cf4972446f3}" showlabel="false" labelid="{3a016fc7-fba3-403d-83bd-52bab566ba8f}">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+          </row>
+        </rows>
+      </footer>
+      <DisplayConditions Order="5" FallbackForm="false">
+        <Everyone />
+      </DisplayConditions>
+      <controlDescriptions />
+      <formLibraries>
+        <Library name="cr834_formroute_enrform" libraryUniqueId="{d8ef0fbc-7b25-4bed-acee-110bb5237564}" />
+        <Library name="cr834_addCaseNotes_form" libraryUniqueId="{cdcb5b6a-b460-40f5-9c1a-5deccfc1966d}" />
+        <Library name="cr834_notesEditor" libraryUniqueId="{f55ba374-e63a-4657-885b-8b622f80b24e}" />
+      </formLibraries>
+    </form>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <LocalizedNames>
+      <LocalizedName description="Add Case Notes" languagecode="1033" />
+    </LocalizedNames>
+    <Descriptions>
+      <Description description="A form for this entity." languagecode="1033" />
+    </Descriptions>
+  </systemform>
+</forms>

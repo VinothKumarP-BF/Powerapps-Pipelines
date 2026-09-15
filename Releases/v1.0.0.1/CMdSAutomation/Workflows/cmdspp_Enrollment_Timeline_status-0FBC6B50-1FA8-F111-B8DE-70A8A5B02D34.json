@@ -1,0 +1,140 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps_1": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "cmdspp_CR_Dataverse_Core_DEV"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "manual": {
+          "metadata": {
+            "operationMetadataId": "eebf968d-dfad-406a-a534-1d5471b8213c"
+          },
+          "type": "Request",
+          "kind": "Button",
+          "inputs": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "text": {
+                  "title": "action",
+                  "type": "string",
+                  "x-ms-dynamically-added": true,
+                  "description": "action",
+                  "x-ms-content-hint": "TEXT"
+                },
+                "text_1": {
+                  "title": "sysid",
+                  "type": "string",
+                  "x-ms-dynamically-added": true,
+                  "description": "sysid",
+                  "x-ms-content-hint": "TEXT"
+                },
+                "text_2": {
+                  "title": "description",
+                  "type": "string",
+                  "x-ms-dynamically-added": true,
+                  "description": "description",
+                  "x-ms-content-hint": "TEXT"
+                },
+                "text_3": {
+                  "title": "status",
+                  "type": "string",
+                  "x-ms-dynamically-added": true,
+                  "description": "status",
+                  "x-ms-content-hint": "TEXT"
+                },
+                "text_4": {
+                  "title": "Createdby",
+                  "type": "string",
+                  "x-ms-dynamically-added": true,
+                  "description": "Createdby",
+                  "x-ms-content-hint": "TEXT"
+                }
+              },
+              "required": [
+                "text",
+                "text_1",
+                "text_2",
+                "text_3",
+                "text_4"
+              ]
+            }
+          }
+        }
+      },
+      "actions": {
+        "Add_a_new_row": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "1f7117b8-f3c6-44fd-a563-e21ffdb2ff5c"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps_1",
+              "operationId": "CreateRecord",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "cmdspp_p_enrol_status_inquiry_tbs"
+            },
+            "authentication": {
+              "type": "Raw",
+              "value": "@json(decodeBase64(triggerOutputs().headers['X-MS-APIM-Tokens']))['$ConnectionKey']"
+            }
+          }
+        },
+        "Respond_to_a_Power_App_or_flow": {
+          "runAfter": {
+            "Add_a_new_row": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "a42d33c5-0be4-4414-878e-374e2095d26b"
+          },
+          "type": "Response",
+          "kind": "PowerApp",
+          "inputs": {
+            "statusCode": 200,
+            "body": {
+              "message": "Success"
+            },
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "title": "message",
+                  "x-ms-dynamically-added": true,
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "templateName": ""
+  },
+  "schemaVersion": "1.0.0.0"
+}

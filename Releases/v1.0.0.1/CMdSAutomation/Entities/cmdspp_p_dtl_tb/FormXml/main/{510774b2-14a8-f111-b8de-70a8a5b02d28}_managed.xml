@@ -1,0 +1,219 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<forms xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <systemform>
+    <formid>{510774b2-14a8-f111-b8de-70a8a5b02d28}</formid>
+    <IntroducedVersion>2.0.3.0</IntroducedVersion>
+    <FormPresentation>1</FormPresentation>
+    <FormActivationState>1</FormActivationState>
+    <form headerdensity="HighWithControls" shownavigationbar="false">
+      <tabs>
+        <tab verticallayout="true" id="{c688f110-b61a-4e0e-a1e7-0c32e1f97e20}" IsUserDefined="1" visible="false" labelid="{4e139786-9f49-4bfc-8ad1-bb6dede11bb2}">
+          <labels>
+            <label description="General" languagecode="1033" />
+          </labels>
+          <columns>
+            <column width="100%">
+              <sections>
+                <section showlabel="false" showbar="false" IsUserDefined="0" id="{178e24fe-4860-40e7-a726-2f2e58392624}" labelid="{fd4c4b5f-f513-410b-a612-83d695cf906c}">
+                  <labels>
+                    <label description="General" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{6394244e-84a0-48af-ba14-11d7fdc2f84f}" labelid="{f1db7b30-f698-4d23-b590-40c724d1e9ef}">
+                        <labels>
+                          <label description="Application ID" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_p_sys_id" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="cmdspp_p_sys_id" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{169b29c2-0a2b-4f3c-88ed-b1c08d45b7c9}" labelid="{e874fc85-4713-4565-a6de-c1b08b949464}">
+                        <labels>
+                          <label description="Owner" languagecode="1033" />
+                        </labels>
+                        <control id="ownerid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="ownerid" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell locklevel="0" id="{851789ae-7f9a-45a9-8516-79b6782a9077}" rowspan="4" colspan="1" auto="false" labelid="{5bb44cb7-08b7-42e2-9288-26955af93ce2}">
+                        <labels>
+                          <label description="New SG control 1788258617914" languagecode="1033" />
+                        </labels>
+                        <control indicationOfSubgrid="true" id="Subgrid_new_14" classid="{E7A81278-8635-4D9E-8D4D-59480B391C5B}">
+                          <parameters>
+                            <RecordsPerPage>4</RecordsPerPage>
+                            <AutoExpand>Fixed</AutoExpand>
+                            <EnableQuickFind>false</EnableQuickFind>
+                            <EnableViewPicker>false</EnableViewPicker>
+                            <EnableChartPicker>true</EnableChartPicker>
+                            <ChartGridMode>All</ChartGridMode>
+                            <RelationshipName>cmdspp_p_relative_dtl_tb_p_sys_id_cmdspp_p_dtl_tb</RelationshipName>
+                            <TargetEntityType>cmdspp_p_relative_dtl_tb</TargetEntityType>
+                            <ViewId>{4BFBE6FB-E578-414D-A7EA-D59712106B9F}</ViewId>
+                            <ViewIds>{4BFBE6FB-E578-414D-A7EA-D59712106B9F}</ViewIds>
+                          </parameters>
+                        </control>
+                      </cell>
+                    </row>
+                    <row />
+                    <row />
+                    <row />
+                  </rows>
+                </section>
+              </sections>
+            </column>
+          </columns>
+        </tab>
+        <tab name="tab_2" id="8831a9c6-0c77-467c-b863-32c094f67c78" IsUserDefined="0" locklevel="0" showlabel="true" labelid="{10ebff96-939b-4227-9b4f-f0d8ae5be1da}">
+          <labels>
+            <label description="Denial" languagecode="1033" />
+          </labels>
+          <columns>
+            <column width="100%">
+              <sections>
+                <section name="tab_2_section_5" id="21a3f77c-d8de-4d4d-9f52-9d20ffe0ae36" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Top" columns="11" labelwidth="115" labelid="{27f18957-835f-44cc-9f13-f63d7cae92f3}">
+                  <labels>
+                    <label description="Deny Provider Enrollment" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell locklevel="0" id="{ecc5f8c1-408e-4ddf-9abb-a65d6754bee8}" labelid="{bea26a07-ae15-4125-96b2-fb1a9915844b}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                      <cell locklevel="0" id="{d588485f-7ba0-4837-aaa1-3c607293d4d5}" labelid="{a631cc9d-cf3a-41c8-a493-d3208c96215f}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{29b00409-2822-44cd-97d6-819b00e92cd2}" locklevel="0" colspan="1" rowspan="1" labelid="{0212aee9-f333-48eb-ac74-01d45efba0f5}">
+                        <labels>
+                          <label description="Application Received Date" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_p_appln_recieved_dt" classid="{5B773807-9FB2-42DB-97C3-7A91EFF8ADFF}" datafieldname="cmdspp_p_appln_recieved_dt" disabled="true" />
+                      </cell>
+                      <cell id="{b455f7d6-eccf-4364-8779-8c3eb0070af5}" locklevel="0" colspan="1" rowspan="1" labelid="{c6556292-982c-4920-9728-72e85f9169c9}">
+                        <labels>
+                          <label description="Application Completed Date" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_p_submission_date" classid="{5B773807-9FB2-42DB-97C3-7A91EFF8ADFF}" datafieldname="cmdspp_p_submission_date" disabled="true" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{d0137c65-80e9-43ce-92a1-95543ef32929}" locklevel="0" colspan="2" rowspan="1" labelid="{2453f003-2ab2-4ac9-bd1b-de8c4762f777}">
+                        <labels>
+                          <label description="Denial Reasons" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_p_appln_denial_reasons" classid="{3EF39988-22BB-4F0B-BBBE-64B5A3748AEE}" datafieldname="cmdspp_p_appln_denial_reasons" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{08ab697c-9bcc-4362-a630-f9b5acd8d0fd}" locklevel="0" colspan="2" rowspan="1" labelid="{33ec25ac-2b07-4af9-8504-5fbc6e541165}">
+                        <labels>
+                          <label description="Explanation" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_p_appln_denial_expln" classid="{E0DECE4B-6FC8-4A8F-A065-082708572369}" datafieldname="cmdspp_p_appln_denial_expln" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{b36732c9-e9de-4d6c-8e64-428bc1a57b61}" locklevel="0" colspan="1" rowspan="1" visible="false">
+                        <labels>
+                          <label description="Application Status" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_p_appln_status" classid="{3EF39988-22BB-4F0B-BBBE-64B5A3748AEE}" datafieldname="cmdspp_p_appln_status" disabled="false" />
+                      </cell>
+                      <cell id="{0cf68e5d-d845-4677-a863-bd97a21bd3e7}" locklevel="0" colspan="1" rowspan="1" visible="false">
+                        <labels>
+                          <label description="Logged User" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_loggeduser" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="cmdspp_loggeduser" disabled="false" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+          </columns>
+        </tab>
+      </tabs>
+      <header id="{2ba47678-7dca-4e17-954e-de9cc534cea0}" celllabelposition="Top" columns="111" labelwidth="115" celllabelalignment="Left">
+        <rows>
+          <row>
+            <cell id="{d319d527-5b63-4b9a-ae55-a98169ad8e2c}" showlabel="false" labelid="{05d52f08-c52e-4776-a62d-5ba6b3d6d15f}">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{9fa26ca8-1a07-43ac-b4bf-4346b408263a}" showlabel="false" labelid="{e42f5caa-aa83-4b9b-8493-cbdc8b6a2bc8}">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{a2db268d-66f2-4a5e-ac4a-a579f67eb200}" showlabel="false" labelid="{334fecd1-f66b-438e-bcdc-a85010509b7f}">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+          </row>
+        </rows>
+      </header>
+      <footer id="{e528c933-eab8-4abf-a339-acd6f3156d6d}" celllabelposition="Top" columns="111" labelwidth="115" celllabelalignment="Left">
+        <rows>
+          <row>
+            <cell id="{b7a4be13-94c0-4466-84a2-8e4ee072c62b}" showlabel="false" labelid="{16c8075d-74b5-422b-8156-34feac47dc74}">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{3ac71d4b-c9e7-4685-983a-c36d1481b917}" showlabel="false" labelid="{7f5b40f4-614c-42d6-bf3f-5f06e8815fab}">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{892c594e-4e8b-4f9b-9966-1cf4972446f3}" showlabel="false" labelid="{2d09c76e-49c1-4f09-834a-f42bbc3298b6}">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+          </row>
+        </rows>
+      </footer>
+      <DisplayConditions Order="12" FallbackForm="true">
+        <Role Id="{66852B38-E6A5-F111-B8DE-70A8A5B02D28}" />
+        <Role Id="{537FE0F4-C7A5-F111-B8DE-70A8A5B02D74}" />
+        <Role Id="{627090ff-40a3-4053-8790-584edc5be201}" />
+        <Role Id="{119f245c-3cc8-4b62-b31c-d1a046ced15d}" />
+      </DisplayConditions>
+      <controlDescriptions />
+      <formLibraries>
+        <Library name="cr834_formroute_enrform" libraryUniqueId="{d8ef0fbc-7b25-4bed-acee-110bb5237564}" />
+        <Library name="cmdspp_Enrollment_actions_resource" libraryUniqueId="{cbd6b959-8d7e-4c10-9520-c41e4f92fa21}" />
+        <Library name="cmdspp_screening_web_res" libraryUniqueId="{5af6c98e-3d67-4e82-a90a-d0fcee1f5c74}" />
+      </formLibraries>
+      <events>
+        <event name="onsave" application="false" active="false">
+          <Handlers>
+            <Handler functionName="EnrollmentActionValidation.onSaveDenial" libraryName="cmdspp_Enrollment_actions_resource" handlerUniqueId="{b33628a2-1545-4efb-bcb8-6562df25b762}" enabled="true" parameters="" passExecutionContext="true" />
+          </Handlers>
+        </event>
+        <event name="onload" application="false" active="false">
+          <Handlers>
+            <Handler functionName="getLoggedInUserId" libraryName="cmdspp_screening_web_res" handlerUniqueId="{d5e3669b-e0a1-448b-a831-b839321d4838}" enabled="true" parameters="" passExecutionContext="true" />
+          </Handlers>
+        </event>
+      </events>
+    </form>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <LocalizedNames>
+      <LocalizedName description="Denial" languagecode="1033" />
+    </LocalizedNames>
+    <Descriptions>
+      <Description description="Deny the Provider enrollment " languagecode="1033" />
+    </Descriptions>
+  </systemform>
+</forms>

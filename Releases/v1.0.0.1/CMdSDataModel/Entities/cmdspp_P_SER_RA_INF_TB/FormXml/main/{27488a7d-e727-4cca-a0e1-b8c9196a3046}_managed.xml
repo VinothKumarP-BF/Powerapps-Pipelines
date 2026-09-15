@@ -1,0 +1,159 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<forms xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <systemform>
+    <formid>{27488a7d-e727-4cca-a0e1-b8c9196a3046}</formid>
+    <IntroducedVersion>1.0</IntroducedVersion>
+    <FormPresentation>1</FormPresentation>
+    <FormActivationState>1</FormActivationState>
+    <form headerdensity="HighWithControls" shownavigationbar="false">
+      <tabs>
+        <tab verticallayout="true" id="{740f8440-ddda-4eae-8c87-c339c6129b64}" IsUserDefined="1">
+          <labels>
+            <label description="General" languagecode="1033" />
+          </labels>
+          <columns>
+            <column width="100%">
+              <sections>
+                <section showlabel="false" showbar="false" IsUserDefined="0" id="{497928e7-9f9b-4436-81f5-ec8e1e10a87f}" columns="11" celllabelposition="Top">
+                  <labels>
+                    <label description="General" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{25dc169b-31ca-4964-88bd-ebd427c98145}" showlabel="false" availableforphone="false" visible="false">
+                        <labels>
+                          <label description="p_ser_ra_inf_tb_sk" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_p_ser_ra_inf_tb_sk" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="cmdspp_p_ser_ra_inf_tb_sk" />
+                      </cell>
+                      <cell id="{229cc37f-dd59-4af6-9794-1d21c87424a7}" colspan="1" rowspan="1" availableforphone="false" visible="false" showlabel="false">
+                        <labels>
+                          <label description="Owner" languagecode="1033" />
+                        </labels>
+                        <control id="ownerid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="ownerid" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{e2a453f6-4c50-473e-9066-2ca82a520476}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Remittance Advice" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_p_rmt_advice_types" classid="{F9A8A302-114E-466A-B582-6771B2AE0D92}" datafieldname="cmdspp_p_rmt_advice_types" disabled="true" uniqueid="{bf20285f-a9df-44a6-a23d-4d64a5abbb75}" />
+                      </cell>
+                      <cell locklevel="0" id="{20601643-8dda-4a6e-99db-b8c8837cccd2}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                    </row>
+                    <row>
+                      <cell rowspan="3" id="{a021dd68-7cd7-490d-80e4-3853ad7ac671}" showlabel="false" colspan="2" auto="true">
+                        <labels>
+                          <label description="undefined" languagecode="1033" />
+                        </labels>
+                        <control id="WebResource_new_1" classid="{9FDF5F91-88B1-47F4-AD53-C11EFC01A01D}">
+                          <parameters>
+                            <Url>cmdspp_remittance_advice_instructions</Url>
+                            <PassParameters>false</PassParameters>
+                            <Security>false</Security>
+                            <Scrolling>auto</Scrolling>
+                            <Border>false</Border>
+                            <ShowOnMobileClient>false</ShowOnMobileClient>
+                            <WebResourceId>{410befb0-a1aa-f111-aaac-70a8a5b02d34}</WebResourceId>
+                          </parameters>
+                        </control>
+                        <events>
+                          <event name="onload" application="false" active="false" />
+                        </events>
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+          </columns>
+        </tab>
+      </tabs>
+      <header id="{d7203d3b-e605-4659-b6dd-824a29f9fc27}" celllabelposition="Top" columns="111" labelwidth="115" celllabelalignment="Left">
+        <rows>
+          <row>
+            <cell id="{afbe95b9-cefa-4c5d-bed1-f33f33273845}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{7ab227fc-292c-4085-90a7-cabbd4d453b4}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{aa8dacde-7875-49ee-be5f-902a3c41e7f6}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+          </row>
+        </rows>
+      </header>
+      <footer id="{2687eb63-3598-4153-a7d8-5402c33bafe2}" celllabelposition="Top" columns="111" labelwidth="115" celllabelalignment="Left">
+        <rows>
+          <row>
+            <cell id="{7adf0190-eb82-4a55-905c-677e80276ded}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{5dc1e216-0033-4ca1-a55b-6904cbf078d3}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{620a24eb-b255-4408-b1c6-3a6dcf75e24b}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+          </row>
+        </rows>
+      </footer>
+      <DisplayConditions Order="0" FallbackForm="true">
+        <Everyone />
+      </DisplayConditions>
+      <formLibraries>
+        <Library name="cmdspp_screening_web_res" libraryUniqueId="{17ec0b5c-2f12-410b-8140-39d8a5df1244}" />
+      </formLibraries>
+      <controlDescriptions>
+        <controlDescription forControl="{bf20285f-a9df-44a6-a23d-4d64a5abbb75}">
+          <customControl id="{4AA28AB7-9C13-4F57-A73D-AD894D048B5F}">
+            <parameters>
+              <datafieldname>cmdspp_p_rmt_advice_types</datafieldname>
+            </parameters>
+          </customControl>
+          <customControl formFactor="0" name="MscrmControls.MultiSelectPicklist.ModernMSPicklistControl">
+            <parameters>
+              <value type="MultiSelectOptionSet">cmdspp_p_rmt_advice_types</value>
+            </parameters>
+          </customControl>
+          <customControl formFactor="2" name="MscrmControls.MultiSelectPicklist.ModernMSPicklistControl">
+            <parameters>
+              <value type="MultiSelectOptionSet">cmdspp_p_rmt_advice_types</value>
+            </parameters>
+          </customControl>
+          <customControl formFactor="1" name="MscrmControls.MultiSelectPicklist.ModernMSPicklistControl">
+            <parameters>
+              <value type="MultiSelectOptionSet">cmdspp_p_rmt_advice_types</value>
+            </parameters>
+          </customControl>
+        </controlDescription>
+      </controlDescriptions>
+    </form>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <LocalizedNames>
+      <LocalizedName description="Information" languagecode="1033" />
+    </LocalizedNames>
+    <Descriptions>
+      <Description description="A form for this entity." languagecode="1033" />
+    </Descriptions>
+  </systemform>
+</forms>

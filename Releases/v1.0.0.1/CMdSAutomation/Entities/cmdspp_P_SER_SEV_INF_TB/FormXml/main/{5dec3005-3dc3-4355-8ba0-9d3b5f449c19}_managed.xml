@@ -1,0 +1,391 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<forms xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <systemform>
+    <formid>{5dec3005-3dc3-4355-8ba0-9d3b5f449c19}</formid>
+    <IntroducedVersion>1.0</IntroducedVersion>
+    <FormPresentation>1</FormPresentation>
+    <FormActivationState>1</FormActivationState>
+    <form headerdensity="HighWithControls" shownavigationbar="false">
+      <tabs>
+        <tab verticallayout="true" id="{79e37726-0c7a-4e3d-8c82-ade462f2d8f5}" IsUserDefined="1">
+          <labels>
+            <label description="General" languagecode="1033" />
+          </labels>
+          <columns>
+            <column width="100%">
+              <sections>
+                <section showlabel="false" showbar="false" IsUserDefined="0" id="{c4ec42bc-cb5f-457b-ac8c-46d0d097da25}" visible="false">
+                  <labels>
+                    <label description="General" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{255c7a9f-48dc-4204-8e63-8b8e78ab163f}">
+                        <labels>
+                          <label description="p_ser_sev_inf_tb_sk" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_p_ser_sev_inf_tb_sk" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="cmdspp_p_ser_sev_inf_tb_sk" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{2fd226ba-4248-4fb2-855e-9467ea75cfff}">
+                        <labels>
+                          <label description="Owner" languagecode="1033" />
+                        </labels>
+                        <control id="ownerid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="ownerid" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+                <section name="null_section_3" id="a7cce7e1-1982-40ed-961c-ab0e9455c290" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Top" columns="11" labelwidth="115">
+                  <labels>
+                    <label description="Service" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell locklevel="0" id="{f7794529-e016-4e2b-b127-6e718e0d0292}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                      <cell locklevel="0" id="{78e891b4-8074-413c-8616-7d5679607dce}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{a3f4dc82-cefa-4723-bb8b-972947eaff75}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Gender Serviced" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_p_gender_serviced" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="cmdspp_p_gender_serviced" disabled="false">
+                          <parameters>
+                            <DefaultViewId>{03228501-A5A7-F111-B8DE-70A8A5B02D34}</DefaultViewId>
+                            <AvailableViewIds>{7735878B-98D0-4EC9-A90A-D903327DC996},{64CA6896-0E0F-4900-898D-71C6B40C7F12},{87D73E27-A5A7-F111-B8DE-70A8A5B02D34},{58733369-BBA6-F111-B8DE-70A8A5B02D34},{3BD4E7E6-BDA6-F111-B8DE-70A8A5B02D34},{03228501-A5A7-F111-B8DE-70A8A5B02D34},{7FC31845-A5A7-F111-B8DE-70A8A5B02D28},{20DE6FBF-02A5-F111-B8DE-70A8A5B02328},{97D45F28-11A5-F111-B8DE-70A8A5B02684},{D6A067F3-8EA7-F111-B8DD-70A8A5B028CC},{9968C64F-1697-F111-8075-70A8A5B028CC},{018D2F0F-F1A5-F111-B8DE-70A8A5B02D28},{D448848C-DBA6-F111-B8DD-70A8A5B028CC},{67C2D717-02A5-F111-B8DE-70A8A5B02328},{CA553ED7-1697-F111-8075-70A8A5B02D34},{3C37C7FA-D8A2-F111-B8DE-70A8A5B02D28},{4756C924-D9A2-F111-B8DE-70A8A5B02D28}</AvailableViewIds>
+                            <DisableViewPicker>true</DisableViewPicker>
+                          </parameters>
+                        </control>
+                      </cell>
+                      <cell id="{98fad279-433a-4ff5-9364-0165f75d3850}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Age Range Serviced" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_p_age_range_serviced" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="cmdspp_p_age_range_serviced" disabled="false">
+                          <parameters>
+                            <DefaultViewId>{87D73E27-A5A7-F111-B8DE-70A8A5B02D34}</DefaultViewId>
+                            <AvailableViewIds>{7735878B-98D0-4EC9-A90A-D903327DC996},{64CA6896-0E0F-4900-898D-71C6B40C7F12},{87D73E27-A5A7-F111-B8DE-70A8A5B02D34},{58733369-BBA6-F111-B8DE-70A8A5B02D34},{3BD4E7E6-BDA6-F111-B8DE-70A8A5B02D34},{03228501-A5A7-F111-B8DE-70A8A5B02D34},{7FC31845-A5A7-F111-B8DE-70A8A5B02D28},{20DE6FBF-02A5-F111-B8DE-70A8A5B02328},{97D45F28-11A5-F111-B8DE-70A8A5B02684},{D6A067F3-8EA7-F111-B8DD-70A8A5B028CC},{9968C64F-1697-F111-8075-70A8A5B028CC},{018D2F0F-F1A5-F111-B8DE-70A8A5B02D28},{D448848C-DBA6-F111-B8DD-70A8A5B028CC},{67C2D717-02A5-F111-B8DE-70A8A5B02328},{CA553ED7-1697-F111-8075-70A8A5B02D34},{3C37C7FA-D8A2-F111-B8DE-70A8A5B02D28},{4756C924-D9A2-F111-B8DE-70A8A5B02D28}</AvailableViewIds>
+                            <DisableViewPicker>true</DisableViewPicker>
+                          </parameters>
+                        </control>
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{bb4fa7b2-e3b5-4a3b-9389-b0c52a4113c4}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Languages Supported" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_p_languages_supported" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="cmdspp_p_languages_supported" disabled="false">
+                          <parameters>
+                            <DefaultViewId>{7FC31845-A5A7-F111-B8DE-70A8A5B02D28}</DefaultViewId>
+                            <AvailableViewIds>{7735878B-98D0-4EC9-A90A-D903327DC996},{64CA6896-0E0F-4900-898D-71C6B40C7F12},{87D73E27-A5A7-F111-B8DE-70A8A5B02D34},{58733369-BBA6-F111-B8DE-70A8A5B02D34},{3BD4E7E6-BDA6-F111-B8DE-70A8A5B02D34},{03228501-A5A7-F111-B8DE-70A8A5B02D34},{7FC31845-A5A7-F111-B8DE-70A8A5B02D28},{20DE6FBF-02A5-F111-B8DE-70A8A5B02328},{97D45F28-11A5-F111-B8DE-70A8A5B02684},{D6A067F3-8EA7-F111-B8DD-70A8A5B028CC},{9968C64F-1697-F111-8075-70A8A5B028CC},{018D2F0F-F1A5-F111-B8DE-70A8A5B02D28},{D448848C-DBA6-F111-B8DD-70A8A5B028CC},{67C2D717-02A5-F111-B8DE-70A8A5B02328},{CA553ED7-1697-F111-8075-70A8A5B02D34},{3C37C7FA-D8A2-F111-B8DE-70A8A5B02D28},{4756C924-D9A2-F111-B8DE-70A8A5B02D28}</AvailableViewIds>
+                            <DisableViewPicker>true</DisableViewPicker>
+                          </parameters>
+                        </control>
+                      </cell>
+                      <cell id="{7fb430ca-150d-4ede-a92f-6925d72473e8}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Other Language" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_p_other_language2" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="cmdspp_p_other_language2" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{61351b26-1dcd-4d48-ad29-ec4dcf402fd0}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Does this location have a primary website?" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_p_primary_website_choice" classid="{F9A8A302-114E-466A-B582-6771B2AE0D92}" datafieldname="cmdspp_p_primary_website_choice" disabled="false" uniqueid="{b190f096-10bc-4426-a5ce-78e4b7dee76c}" />
+                      </cell>
+                      <cell id="{d5414cdf-9603-4446-bc7f-48199bae2bd3}" locklevel="0" colspan="1" rowspan="1" visible="true">
+                        <labels>
+                          <label description="Primary Website" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_p_primary_website" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="cmdspp_p_primary_website" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{b4352069-b8d1-471e-a7e5-cd08c36a1862}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Does this location offers service via Telehealth?" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_p_location_offers_service" classid="{F9A8A302-114E-466A-B582-6771B2AE0D92}" datafieldname="cmdspp_p_location_offers_service" disabled="false" uniqueid="{72d6527d-bae0-4435-9817-dcaf12bd8e36}" />
+                      </cell>
+                      <cell id="{1f5077d0-2051-4f7e-9bd9-965b30529a7d}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Is this location wheelchair accessible?" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_p_location_wheelchair" classid="{F9A8A302-114E-466A-B582-6771B2AE0D92}" datafieldname="cmdspp_p_location_wheelchair" disabled="false" uniqueid="{e9576a39-68c2-4d22-802c-b49b95bba331}" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{b4cd141e-59c7-45b2-ba1d-1dc6aa776ad4}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Is this location accepting Medicaid patients?" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_p_accepting_medicaid" classid="{F9A8A302-114E-466A-B582-6771B2AE0D92}" datafieldname="cmdspp_p_accepting_medicaid" disabled="false" uniqueid="{38b69ac7-db34-47c7-93a6-66b65a114ee4}" />
+                      </cell>
+                      <cell id="{1c7f8f70-d292-4b29-be9a-24542e7e834c}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Is this location accepting new S-CHIP patient?" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_p_new_schip" classid="{F9A8A302-114E-466A-B582-6771B2AE0D92}" datafieldname="cmdspp_p_new_schip" disabled="false" uniqueid="{3ba52648-bbe0-4da5-a1fc-f411292bcc5a}" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{85f00ece-4d7f-4e38-86aa-180737b81620}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Is this location TDD/TTY equipped for receiving calls for hearing impaired?" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_p_tdd_tty_choice" classid="{F9A8A302-114E-466A-B582-6771B2AE0D92}" datafieldname="cmdspp_p_tdd_tty_choice" disabled="false" uniqueid="{ee6d5f0c-6088-4f40-a9b1-ba7cd43b5053}" />
+                      </cell>
+                      <cell id="{e22d8c5d-a151-4dc5-9d4c-f9dee89b490e}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="TDD/TTY Phone" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_p_ttd_tty_phone" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="cmdspp_p_ttd_tty_phone" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{21db7004-9f50-423a-8624-7ea2bc7f2150}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Does this location provide emergency services after standard business hours?" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_p_location_provide_emergency" classid="{F9A8A302-114E-466A-B582-6771B2AE0D92}" datafieldname="cmdspp_p_location_provide_emergency" disabled="false" uniqueid="{9d71fdb6-cc52-4e16-9c91-7e131bbd6b90}" />
+                      </cell>
+                      <cell id="{28ca4fa9-41e8-45d4-8e5c-0acad3ef7707}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="After Hours Contact Phone" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_p_after_hours_phone" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="cmdspp_p_after_hours_phone" disabled="false" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+          </columns>
+        </tab>
+      </tabs>
+      <header id="{40b70d47-628f-49d5-abfe-7f8dd0fac2c3}" celllabelposition="Top" columns="111" labelwidth="115" celllabelalignment="Left">
+        <rows>
+          <row>
+            <cell id="{b600094a-639d-464f-9055-9cdbc16fd109}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{a03dd64b-e717-413d-b1dc-f1035d39e4d0}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{79ca2380-551f-4cab-867a-667da1175da0}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+          </row>
+        </rows>
+      </header>
+      <footer id="{a7a9c7fe-2f92-442b-98e1-7f188f7be09a}" celllabelposition="Top" columns="111" labelwidth="115" celllabelalignment="Left">
+        <rows>
+          <row>
+            <cell id="{82e6f45e-6e69-40fa-923d-89dd47e60087}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{08beb981-a062-42e7-98bb-235e95f5df2d}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{fdb53311-a245-4c2a-8052-1aa541607eb9}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+          </row>
+        </rows>
+      </footer>
+      <DisplayConditions Order="0" FallbackForm="true">
+        <Everyone />
+      </DisplayConditions>
+      <controlDescriptions>
+        <controlDescription forControl="{b190f096-10bc-4426-a5ce-78e4b7dee76c}">
+          <customControl id="{67FAC785-CD58-4F9F-ABB3-4B7DDC6ED5ED}">
+            <parameters>
+              <datafieldname>cmdspp_p_primary_website_choice</datafieldname>
+            </parameters>
+          </customControl>
+          <customControl formFactor="0" name="MscrmControls.FieldControls.ToggleControl">
+            <parameters>
+              <value type="TwoOptions">cmdspp_p_primary_website_choice</value>
+            </parameters>
+          </customControl>
+          <customControl formFactor="2" name="MscrmControls.FieldControls.ToggleControl">
+            <parameters>
+              <value type="TwoOptions">cmdspp_p_primary_website_choice</value>
+            </parameters>
+          </customControl>
+          <customControl formFactor="1" name="MscrmControls.FieldControls.ToggleControl">
+            <parameters>
+              <value type="TwoOptions">cmdspp_p_primary_website_choice</value>
+            </parameters>
+          </customControl>
+        </controlDescription>
+        <controlDescription forControl="{e9576a39-68c2-4d22-802c-b49b95bba331}">
+          <customControl id="{67FAC785-CD58-4F9F-ABB3-4B7DDC6ED5ED}">
+            <parameters>
+              <datafieldname>cmdspp_p_location_wheelchair</datafieldname>
+            </parameters>
+          </customControl>
+          <customControl formFactor="0" name="MscrmControls.FieldControls.ToggleControl">
+            <parameters>
+              <value type="TwoOptions">cmdspp_p_location_wheelchair</value>
+            </parameters>
+          </customControl>
+          <customControl formFactor="2" name="MscrmControls.FieldControls.ToggleControl">
+            <parameters>
+              <value type="TwoOptions">cmdspp_p_location_wheelchair</value>
+            </parameters>
+          </customControl>
+          <customControl formFactor="1" name="MscrmControls.FieldControls.ToggleControl">
+            <parameters>
+              <value type="TwoOptions">cmdspp_p_location_wheelchair</value>
+            </parameters>
+          </customControl>
+        </controlDescription>
+        <controlDescription forControl="{38b69ac7-db34-47c7-93a6-66b65a114ee4}">
+          <customControl id="{67FAC785-CD58-4F9F-ABB3-4B7DDC6ED5ED}">
+            <parameters>
+              <datafieldname>cmdspp_p_accepting_medicaid</datafieldname>
+            </parameters>
+          </customControl>
+          <customControl formFactor="0" name="MscrmControls.FieldControls.ToggleControl">
+            <parameters>
+              <value type="TwoOptions">cmdspp_p_accepting_medicaid</value>
+            </parameters>
+          </customControl>
+          <customControl formFactor="2" name="MscrmControls.FieldControls.ToggleControl">
+            <parameters>
+              <value type="TwoOptions">cmdspp_p_accepting_medicaid</value>
+            </parameters>
+          </customControl>
+          <customControl formFactor="1" name="MscrmControls.FieldControls.ToggleControl">
+            <parameters>
+              <value type="TwoOptions">cmdspp_p_accepting_medicaid</value>
+            </parameters>
+          </customControl>
+        </controlDescription>
+        <controlDescription forControl="{3ba52648-bbe0-4da5-a1fc-f411292bcc5a}">
+          <customControl id="{67FAC785-CD58-4F9F-ABB3-4B7DDC6ED5ED}">
+            <parameters>
+              <datafieldname>cmdspp_p_new_schip</datafieldname>
+            </parameters>
+          </customControl>
+          <customControl formFactor="0" name="MscrmControls.FieldControls.ToggleControl">
+            <parameters>
+              <value type="TwoOptions">cmdspp_p_new_schip</value>
+            </parameters>
+          </customControl>
+          <customControl formFactor="2" name="MscrmControls.FieldControls.ToggleControl">
+            <parameters>
+              <value type="TwoOptions">cmdspp_p_new_schip</value>
+            </parameters>
+          </customControl>
+          <customControl formFactor="1" name="MscrmControls.FieldControls.ToggleControl">
+            <parameters>
+              <value type="TwoOptions">cmdspp_p_new_schip</value>
+            </parameters>
+          </customControl>
+        </controlDescription>
+        <controlDescription forControl="{72d6527d-bae0-4435-9817-dcaf12bd8e36}">
+          <customControl id="{67FAC785-CD58-4F9F-ABB3-4B7DDC6ED5ED}">
+            <parameters>
+              <datafieldname>cmdspp_p_location_offers_service</datafieldname>
+            </parameters>
+          </customControl>
+          <customControl formFactor="0" name="MscrmControls.FieldControls.ToggleControl">
+            <parameters>
+              <value type="TwoOptions">cmdspp_p_location_offers_service</value>
+            </parameters>
+          </customControl>
+          <customControl formFactor="2" name="MscrmControls.FieldControls.ToggleControl">
+            <parameters>
+              <value type="TwoOptions">cmdspp_p_location_offers_service</value>
+            </parameters>
+          </customControl>
+          <customControl formFactor="1" name="MscrmControls.FieldControls.ToggleControl">
+            <parameters>
+              <value type="TwoOptions">cmdspp_p_location_offers_service</value>
+            </parameters>
+          </customControl>
+        </controlDescription>
+        <controlDescription forControl="{ee6d5f0c-6088-4f40-a9b1-ba7cd43b5053}">
+          <customControl id="{67FAC785-CD58-4F9F-ABB3-4B7DDC6ED5ED}">
+            <parameters>
+              <datafieldname>cmdspp_p_tdd_tty_choice</datafieldname>
+            </parameters>
+          </customControl>
+          <customControl formFactor="0" name="MscrmControls.FieldControls.ToggleControl">
+            <parameters>
+              <value type="TwoOptions">cmdspp_p_tdd_tty_choice</value>
+            </parameters>
+          </customControl>
+          <customControl formFactor="2" name="MscrmControls.FieldControls.ToggleControl">
+            <parameters>
+              <value type="TwoOptions">cmdspp_p_tdd_tty_choice</value>
+            </parameters>
+          </customControl>
+          <customControl formFactor="1" name="MscrmControls.FieldControls.ToggleControl">
+            <parameters>
+              <value type="TwoOptions">cmdspp_p_tdd_tty_choice</value>
+            </parameters>
+          </customControl>
+        </controlDescription>
+        <controlDescription forControl="{9d71fdb6-cc52-4e16-9c91-7e131bbd6b90}">
+          <customControl id="{67FAC785-CD58-4F9F-ABB3-4B7DDC6ED5ED}">
+            <parameters>
+              <datafieldname>cmdspp_p_location_provide_emergency</datafieldname>
+            </parameters>
+          </customControl>
+          <customControl formFactor="0" name="MscrmControls.FieldControls.ToggleControl">
+            <parameters>
+              <value type="TwoOptions">cmdspp_p_location_provide_emergency</value>
+            </parameters>
+          </customControl>
+          <customControl formFactor="2" name="MscrmControls.FieldControls.ToggleControl">
+            <parameters>
+              <value type="TwoOptions">cmdspp_p_location_provide_emergency</value>
+            </parameters>
+          </customControl>
+          <customControl formFactor="1" name="MscrmControls.FieldControls.ToggleControl">
+            <parameters>
+              <value type="TwoOptions">cmdspp_p_location_provide_emergency</value>
+            </parameters>
+          </customControl>
+        </controlDescription>
+      </controlDescriptions>
+    </form>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <LocalizedNames>
+      <LocalizedName description="Information" languagecode="1033" />
+    </LocalizedNames>
+    <Descriptions>
+      <Description description="A form for this entity." languagecode="1033" />
+    </Descriptions>
+  </systemform>
+</forms>

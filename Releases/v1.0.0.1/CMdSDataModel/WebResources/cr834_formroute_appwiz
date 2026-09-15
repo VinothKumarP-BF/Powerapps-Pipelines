@@ -1,0 +1,27 @@
+function routeFormByView(executionContext) {
+    var formContext = executionContext.getFormContext();
+    
+    // Get parameters passed to the form
+    var formParameters = executionContext.getContext().getQueryStringParameters();
+    
+    // Get the GUID of the view the record was opened from
+    var viewId = formParameters["viewid"]; 
+    
+    // Define target View GUIDs and Form GUIDs
+    var TARGET_VIEW_A = "11a37074-529d-f111-b8db-70a8a5b028cc";
+    var TARGET_FORM_B = "9a03ff15-539d-f111-b8db-70a8a5b028cc?";
+    // 1. Get the current active form's GUID
+    var currentFormId = formContext.ui.formSelector.getCurrentItem().getId();
+console.log(currentFormId);
+    // 2. ONLY navigate if we are NOT already on Target Form A
+    if (currentFormId.toLowerCase() !== TARGET_FORM_B.toLowerCase()) {
+        
+        // Ensure the target form actually exists in the user's form selector
+        var targetForm = formContext.ui.formSelector.items.get(TARGET_FORM_B);
+        if (targetForm) {
+            targetForm.navigate();
+        }
+    }
+
+    
+}

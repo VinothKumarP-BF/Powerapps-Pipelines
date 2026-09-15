@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>0</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>1</isdefault>
+    <savedqueryid>{3436b7c5-a88d-407a-aadd-f8eaa5e5d0ee}</savedqueryid>
+    <layoutxml>
+      <grid name="cmdspp_p_billing_address_tbs" jump="cmdspp_newcolumn" select="1" icon="1" preview="1">
+        <row name="cmdspp_p_billing_address_tb" id="cmdspp_p_billing_address_tbid">
+          <cell name="cmdspp_newcolumn" width="300" />
+          <cell name="createdon" width="125" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>2</querytype>
+    <fetchxml>
+      <fetch version="1.0" mapping="logical">
+        <entity name="cmdspp_p_billing_address_tb">
+          <attribute name="cmdspp_p_billing_address_tbid" />
+          <attribute name="cmdspp_newcolumn" />
+          <attribute name="createdon" />
+          <order attribute="cmdspp_newcolumn" descending="false" />
+          <filter type="and">
+            <condition attribute="statecode" operator="eq" value="0" />
+          </filter>
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.0</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="P_BILLING_ADDRESS_TB Associated View" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>

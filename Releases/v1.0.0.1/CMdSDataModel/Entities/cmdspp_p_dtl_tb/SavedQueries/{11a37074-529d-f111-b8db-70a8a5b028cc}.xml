@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>0</isdefault>
+    <savedqueryid>{11a37074-529d-f111-b8db-70a8a5b028cc}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="cmdspp_p_sys_id" select="1" icon="1" preview="1">
+        <row name="result" id="cmdspp_p_dtl_tbid">
+          <cell name="cmdspp_p_sys_id" width="200" />
+          <cell name="cmdspp_p_appln_status" width="124" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>0</querytype>
+    <fetchxml>
+      <fetch version="1.0" output-format="xml-platform" mapping="logical">
+        <entity name="cmdspp_p_dtl_tb">
+          <attribute name="cmdspp_p_sys_id" />
+          <attribute name="cmdspp_p_dtl_tbid" />
+          <attribute name="cmdspp_p_appln_status" />
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.0.0.0</IntroducedVersion>
+    <roledisplayconditionsxml>
+      <DisplayConditions>
+        <Everyone />
+      </DisplayConditions>
+    </roledisplayconditionsxml>
+    <LocalizedNames>
+      <LocalizedName description="Application Details" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>

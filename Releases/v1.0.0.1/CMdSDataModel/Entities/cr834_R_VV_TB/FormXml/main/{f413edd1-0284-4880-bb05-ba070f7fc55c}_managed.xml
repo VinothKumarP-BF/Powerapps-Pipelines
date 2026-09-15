@@ -1,0 +1,143 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<forms xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <systemform>
+    <formid>{f413edd1-0284-4880-bb05-ba070f7fc55c}</formid>
+    <IntroducedVersion>1.0</IntroducedVersion>
+    <FormPresentation>1</FormPresentation>
+    <FormActivationState>1</FormActivationState>
+    <form>
+      <tabs>
+        <tab verticallayout="true" id="{4972461B-5EFC-4EE8-B093-F546457985D7}" IsUserDefined="1">
+          <labels>
+            <label description="General" languagecode="1033" />
+          </labels>
+          <columns>
+            <column width="100%">
+              <sections>
+                <section showlabel="false" showbar="false" IsUserDefined="0" id="{3C49AA1E-6261-4399-835A-BF6476946FCB}">
+                  <labels>
+                    <label description="General" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{32AE482F-2447-4188-B079-D5B3284E45C7}">
+                        <labels>
+                          <label description="R_VV_CD" languagecode="1033" />
+                        </labels>
+                        <control id="cr834_validationcode1" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="cr834_validationcode1" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{B640791C-87CF-4B76-9352-E7D26A851589}">
+                        <labels>
+                          <label description="Owner" languagecode="1033" />
+                        </labels>
+                        <control id="ownerid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="ownerid" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{35b9404f-6216-4c42-b366-ecba26a2c2b1}">
+                        <labels>
+                          <label description="R_VV_DOMAIN_NAM" languagecode="1033" />
+                        </labels>
+                        <control id="cr834_domainname" classid="{4273edbd-ac1d-40d3-9fb2-095c621b552d}" datafieldname="cr834_domainname" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{33ce414b-f0a6-48f0-b1ca-9a4183d74275}">
+                        <labels>
+                          <label description="R_VOID_DT" languagecode="1033" />
+                        </labels>
+                        <control id="cr834_voiddate" classid="{5b773807-9fb2-42db-97c3-7a91eff8adff}" datafieldname="cr834_voiddate" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{c0e9d18e-c289-4854-8d0c-486978a83e9b}">
+                        <labels>
+                          <label description="R_VV_SHORT_DESC" languagecode="1033" />
+                        </labels>
+                        <control id="cr834_shortdescription" classid="{4273edbd-ac1d-40d3-9fb2-095c621b552d}" datafieldname="cr834_shortdescription" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{075a90e9-47bc-4114-bdf6-e88e854fa985}">
+                        <labels>
+                          <label description="R_VV_LONG_DESC" languagecode="1033" />
+                        </labels>
+                        <control id="cr834_longdescription" classid="{4273edbd-ac1d-40d3-9fb2-095c621b552d}" datafieldname="cr834_longdescription" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{557e9910-4125-457b-8cb3-25f1de45768a}">
+                        <labels>
+                          <label description="L_HIBERNATE_VER_NUM" languagecode="1033" />
+                        </labels>
+                        <control id="cr834_hibernateversionnumber" classid="{c6d124ca-7eda-4a60-aea9-7fb8d318b68f}" datafieldname="cr834_hibernateversionnumber" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{130c9526-4bbd-4691-98f5-ba97323230c0}">
+                        <labels>
+                          <label description="G_AUD_USER_ID" languagecode="1033" />
+                        </labels>
+                        <control id="cr834_audituserid" classid="{4273edbd-ac1d-40d3-9fb2-095c621b552d}" datafieldname="cr834_audituserid" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{3b476cf4-acfe-4af1-8a2d-1a225286365c}">
+                        <labels>
+                          <label description="G_AUD_TS" languagecode="1033" />
+                        </labels>
+                        <control id="cr834_audittimestamp" classid="{4273edbd-ac1d-40d3-9fb2-095c621b552d}" datafieldname="cr834_audittimestamp" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{073fddca-1129-435f-9e09-95c8b5ebc75f}">
+                        <labels>
+                          <label description="G_AUD_ADD_USER_ID" languagecode="1033" />
+                        </labels>
+                        <control id="cr834_auditadduserid" classid="{4273edbd-ac1d-40d3-9fb2-095c621b552d}" datafieldname="cr834_auditadduserid" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{7a3b8c22-3d36-4149-a3e0-b6b3138addcf}">
+                        <labels>
+                          <label description="G_AUD_ADD_TS" languagecode="1033" />
+                        </labels>
+                        <control id="cr834_auditaddtimestamp" classid="{4273edbd-ac1d-40d3-9fb2-095c621b552d}" datafieldname="cr834_auditaddtimestamp" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{c1806b93-17ed-4801-81b2-e14023a28f3f}">
+                        <labels>
+                          <label description="R_CNSTNT_TEXT" languagecode="1033" />
+                        </labels>
+                        <control id="cr834_constanttext" classid="{4273edbd-ac1d-40d3-9fb2-095c621b552d}" datafieldname="cr834_constanttext" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{bad2746c-e4db-4f82-aafe-7015e47e82d8}">
+                        <labels>
+                          <label description="R_USED_IN_APPL_IND" languagecode="1033" />
+                        </labels>
+                        <control id="cr834_usedinapplicationindicator" classid="{3ef39988-22bb-4f0b-bbbe-64b5a3748aee}" datafieldname="cr834_usedinapplicationindicator" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+          </columns>
+        </tab>
+      </tabs>
+    </form>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <LocalizedNames>
+      <LocalizedName description="Information" languagecode="1033" />
+    </LocalizedNames>
+    <Descriptions>
+      <Description description="A form for this entity." languagecode="1033" />
+    </Descriptions>
+  </systemform>
+</forms>

@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>0</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>1</isdefault>
+    <savedqueryid>{2b8a2886-46a6-43bb-a985-cb56362171d2}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="cmdspp_recordid" select="1" icon="1" preview="1">
+        <row name="result" id="cmdspp_p_appl_scenario_tbid">
+          <cell name="cmdspp_recordid" width="100" />
+          <cell name="cmdspp_p_appl_id_fk" width="115" />
+          <cell name="cmdspp_riskcategory" width="165" />
+          <cell name="cmdspp_confidencescore" width="191" />
+          <cell name="createdon" width="125" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>0</querytype>
+    <fetchxml>
+      <fetch version="1.0" mapping="logical">
+        <entity name="cmdspp_p_appl_scenario_tb">
+          <attribute name="cmdspp_p_appl_scenario_tbid" />
+          <attribute name="createdon" />
+          <filter type="and">
+            <condition attribute="statecode" operator="eq" value="0" />
+          </filter>
+          <attribute name="cmdspp_confidencescore" />
+          <attribute name="cmdspp_riskcategory" />
+          <attribute name="cmdspp_p_appl_id_fk" />
+          <attribute name="cmdspp_recordid" />
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.0</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Active P_APPL_SCENARIO_TBS" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>

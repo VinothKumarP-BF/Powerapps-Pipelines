@@ -1,0 +1,29 @@
+<appaction uniquename="cmdspp__Approve!c4c487bdd93c42ad87a4b33f9fb3674b!cmdspp_p_scrn_sum!0">
+  <buttonlabeltext default="Approve">
+    <label description="Approve" languagecode="1033" />
+  </buttonlabeltext>
+  <context>1</context>
+  <contextentity>
+    <logicalname>cmdspp_p_scrn_sum</logicalname>
+  </contextentity>
+  <contextvalue>cmdspp_p_scrn_sum</contextvalue>
+  <fonticon>$clientsvg:Accept</fonticon>
+  <hidden>0</hidden>
+  <iscustomizable>1</iscustomizable>
+  <isdisabled>0</isdisabled>
+  <isgrouptitlehidden>0</isgrouptitlehidden>
+  <location>0</location>
+  <name>Approve!c4c487bdd93c42ad87a4b33f9fb3674b</name>
+  <onclickeventjavascriptfunctionname>approveEnrollment</onclickeventjavascriptfunctionname>
+  <onclickeventjavascriptparameters>[]</onclickeventjavascriptparameters>
+  <onclickeventjavascriptwebresourceid>
+    <webresourceid>63bfbf17-aab8-e911-a98a-000d3af475aa</webresourceid>
+  </onclickeventjavascriptwebresourceid>
+  <onclickeventtype>2</onclickeventtype>
+  <origin>0</origin>
+  <sequence>50050005.0000000000</sequence>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+  <type>0</type>
+  <visibilitytype>0</visibilitytype>
+</appaction>

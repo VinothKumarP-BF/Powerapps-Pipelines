@@ -1,0 +1,92 @@
+{
+  "properties": {
+    "connectionReferences": {},
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "manual": {
+          "metadata": {
+            "operationMetadataId": "3d305efc-1e47-470d-92fe-70867bdb430f"
+          },
+          "type": "Request",
+          "kind": "Http",
+          "inputs": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "fileName": {
+                  "type": "string"
+                },
+                "mimeType": {
+                  "type": "string"
+                },
+                "fileSize": {
+                  "type": "integer"
+                },
+                "fileContentBase64": {
+                  "type": "string"
+                },
+                "parentRecordId": {
+                  "type": "string"
+                },
+                "sourcePageUrl": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "fileName",
+                "mimeType",
+                "fileContentBase64"
+              ]
+            },
+            "method": "POST",
+            "triggerAuthenticationType": "All"
+          }
+        }
+      },
+      "actions": {
+        "Compose": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "e41f6214-7a26-4683-bd02-b15100602483"
+          },
+          "type": "Compose",
+          "inputs": {
+            "source": "PowerPages",
+            "requestId": "@{guid()}",
+            "requestTimestamp": "@{utcNow()}",
+            "file": {
+              "name": "@{triggerBody()?['fileName']}",
+              "mimeType": "@{triggerBody()?['mimeType']}",
+              "size": "@{triggerBody()?['fileSize']}",
+              "base64": "@{triggerBody()?['fileContentBase64']}"
+            },
+            "portal": {
+              "sourcePageUrl": "@{triggerBody()?['sourcePageUrl']}"
+            },
+            "dataverse": {
+              "parentRecordId": "@{triggerBody()?['parentRecordId']}"
+            },
+            "documentIntelligence": {
+              "modelId": "prebuilt-layout",
+              "apiVersion": "2024-11-30",
+              "features": "keyValuePairs"
+            },
+            "business": {
+              "documentCategory": "ControlledSubstanceRegistration"
+            }
+          }
+        }
+      }
+    },
+    "templateName": null
+  },
+  "schemaVersion": "1.0.0.0"
+}

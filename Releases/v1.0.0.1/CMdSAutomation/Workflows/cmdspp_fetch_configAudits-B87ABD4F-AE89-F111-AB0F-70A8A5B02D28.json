@@ -1,0 +1,503 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps_1": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "cmdspp_CR_Dataverse_Core_DEV"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      },
+      "shared_webcontents_1": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "cmdspp_CR_HttpEntra_Core_DEV"
+        },
+        "api": {
+          "name": "shared_webcontents"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        },
+        "ENV_Automate_Flow_Url_2 (cmdspp_ENV_Automate_Flow_Url_2)": {
+          "defaultValue": {
+            "cmdspp_inboxActionGateway": "https://68800e766659e6b2b28f47b46ad295.0f.environment.api.powerplatform.com:443/powerautomate/automations/direct/cu/18/workflows/283fa8c28d5143c893ca353a17597a31/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=bTZEpG-FoRVUMIGdZvFtGJjVTeHdCmD_Koem8WSJfw8",
+            "cmdspp_fetch_configAudits": "https://68800e766659e6b2b28f47b46ad295.0f.environment.api.powerplatform.com:443/powerautomate/automations/direct/cu/12/workflows/4711b936ea4546f590bd45203fd48cfc/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=N93Sd-Vv6KEW_mrk7h3VI_FmjIkmar7mMmjig6bvEsU",
+            "cmdspp_ENV_URL": "https://org1e455edb.crm.dynamics.com",
+            "CMDSPP_GetApplicationDashboard": "https://68800e766659e6b2b28f47b46ad295.0f.environment.api.powerplatform.com/powerautomate/automations/direct/cu/01/workflows/a51584a6a57644128200645fce645c1e/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=ft1-hopmU2x7Bl2J-JvFLWnkKcha632ALTbr0GubDlw",
+            "cmdspp_document_management_flow": "https://68800e766659e6b2b28f47b46ad295.0f.environment.api.powerplatform.com:443/powerautomate/automations/direct/cu/31/workflows/ee864a1582e04d99af3f606b3487084a/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=1By1TuugiA_h3mw_8a2CvUFXMYiKnY6gwySKD5nOP-E"
+          },
+          "type": "Object",
+          "metadata": {
+            "schemaName": "cmdspp_ENV_Automate_Flow_Url_2"
+          }
+        }
+      },
+      "triggers": {
+        "manual": {
+          "metadata": {
+            "operationMetadataId": "431c18a2-08af-469c-aeba-cd49094043ee"
+          },
+          "type": "Request",
+          "kind": "Http",
+          "inputs": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "action": {
+                  "type": "string"
+                },
+                "searchTerm": {
+                  "type": "string"
+                },
+                "searchDateStartUtc": {
+                  "type": "string"
+                },
+                "searchDateEndUtc": {
+                  "type": "string"
+                },
+                "nextLink": {
+                  "type": "string"
+                },
+                "auditList": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "oldValue": {
+                        "type": "string"
+                      },
+                      "newValue": {
+                        "type": "string"
+                      },
+                      "fieldName": {
+                        "type": "string"
+                      },
+                      "operationType": {
+                        "type": "string"
+                      },
+                      "modifiedBy": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "triggerAuthenticationType": "All"
+          }
+        }
+      },
+      "actions": {
+        "Switch": {
+          "runAfter": {},
+          "cases": {
+            "Case": {
+              "case": "Create",
+              "actions": {
+                "Apply_to_each": {
+                  "foreach": "@triggerBody()?['auditList']",
+                  "actions": {
+                    "Add_a_new_row": {
+                      "runAfter": {},
+                      "metadata": {
+                        "operationMetadataId": "963734cd-ef7f-445b-9188-9e6378d16c17"
+                      },
+                      "type": "OpenApiConnection",
+                      "inputs": {
+                        "host": {
+                          "connectionName": "shared_commondataserviceforapps_1",
+                          "operationId": "CreateRecord",
+                          "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                        },
+                        "parameters": {
+                          "entityName": "cmdspp_pc_auditses",
+                          "item/cmdspp_p_field_name": "@items('Apply_to_each')?['fieldName']",
+                          "item/cmdspp_p_modified_by_user@odata.bind": "/cmdspp_g_usr_dtls_tbs(@{items('Apply_to_each')?['modifiedBy']})",
+                          "item/cmdspp_p_newvalue": "@items('Apply_to_each')?['newValue']",
+                          "item/cmdspp_p_oldvalue": "@items('Apply_to_each')?['oldValue']",
+                          "item/cmdspp_p_operation_type": "@items('Apply_to_each')?['operationType']"
+                        },
+                        "authentication": "@parameters('$authentication')"
+                      }
+                    }
+                  },
+                  "runAfter": {},
+                  "metadata": {
+                    "operationMetadataId": "490d6ef3-bf7e-48a8-84e9-6b8d5352f050"
+                  },
+                  "type": "Foreach"
+                },
+                "Response_3": {
+                  "runAfter": {
+                    "Apply_to_each": [
+                      "Succeeded"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "fbc81dff-5210-4473-8ba1-c72005ffb8ae"
+                  },
+                  "type": "Response",
+                  "kind": "Http",
+                  "inputs": {
+                    "statusCode": 200
+                  }
+                }
+              }
+            },
+            "Case_2": {
+              "case": "fetch",
+              "actions": {
+                "Select_2": {
+                  "runAfter": {
+                    "List_rows": [
+                      "Succeeded"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "2f3d73b6-c11b-4f5e-9fa2-7745afd25218"
+                  },
+                  "type": "Select",
+                  "inputs": {
+                    "from": "@outputs('List_rows')?['body/value']",
+                    "select": {
+                      "fieldName": "@if(empty(item()?['cmdspp_p_field_name']), '-', item()?['cmdspp_p_field_name'])",
+                      "operationType": "@if(empty(item()?['cmdspp_p_operation_type']), '-', item()?['cmdspp_p_operation_type'])",
+                      "newValue": "@if(empty(item()?['cmdspp_p_newvalue']), '-', item()?['cmdspp_p_newvalue'])",
+                      "oldValue": "@if(empty(item()?['cmdspp_p_oldvalue']), '-', item()?['cmdspp_p_oldvalue'])",
+                      "mofifiedBy": "@if(empty(item()?['cmdspp_p_modified_by_user']?['cmdspp_g_fst_nam']), '-', item()?['cmdspp_p_modified_by_user']?['cmdspp_g_fst_nam'])",
+                      "modifiedOn": "@if(empty(item()?['modifiedon']), '-', item()?['modifiedon'])"
+                    }
+                  }
+                },
+                "Response_2": {
+                  "runAfter": {
+                    "Select_2": [
+                      "Succeeded"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "8cfda1b9-6a47-4500-b065-c641570eb87e"
+                  },
+                  "type": "Response",
+                  "kind": "Http",
+                  "inputs": {
+                    "statusCode": 200,
+                    "headers": {
+                      "Content-Type": "application/json"
+                    },
+                    "body": {
+                      "auditinfo": "@body('Select_2')",
+                      "nextLink": "@{outputs('List_rows')?['body/@odata']?['nextLink']}",
+                      "totalCount": "@coalesce(outputs('List_rows')?['body/@odata.count'], length(outputs('List_rows')?['body/value']))"
+                    }
+                  }
+                },
+                "Condition_2": {
+                  "actions": {
+                    "Scope_2": {
+                      "actions": {
+                        "List_Users_2": {
+                          "runAfter": {},
+                          "metadata": {
+                            "operationMetadataId": "9085643c-63f6-4821-a77a-40a1e886be97"
+                          },
+                          "type": "OpenApiConnection",
+                          "inputs": {
+                            "host": {
+                              "connectionName": "shared_commondataserviceforapps_1",
+                              "operationId": "ListRecords",
+                              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                            },
+                            "parameters": {
+                              "entityName": "cmdspp_g_usr_dtls_tbs",
+                              "$select": "cmdspp_g_usr_dtls_tbid",
+                              "$filter": "@if(empty(triggerBody()?['searchTerm']), 'cmdspp_g_usr_dtls_tbid eq null', concat('contains(cmdspp_g_fst_nam, ''', triggerBody()?['searchTerm'], ''')'))"
+                            },
+                            "authentication": "@parameters('$authentication')"
+                          }
+                        },
+                        "Map_GUID_Filter_2": {
+                          "runAfter": {
+                            "List_Users_2": [
+                              "Succeeded"
+                            ]
+                          },
+                          "metadata": {
+                            "operationMetadataId": "b8d106b6-4afa-4bb7-a01e-eef594c7e283"
+                          },
+                          "type": "Select",
+                          "inputs": {
+                            "from": "@outputs('List_Users_2')?['body/value']",
+                            "select": "@concat('_cmdspp_p_modified_by_user_value eq ''', item()?['cmdspp_g_usr_dtls_tbid'], '''')"
+                          }
+                        }
+                      },
+                      "runAfter": {},
+                      "metadata": {
+                        "operationMetadataId": "58efb09c-dadf-41c6-b8de-7779fc6ffffc"
+                      },
+                      "type": "Scope"
+                    }
+                  },
+                  "runAfter": {},
+                  "expression": {
+                    "not": {
+                      "equals": [
+                        "@triggerBody()?['searchTerm']",
+                        ""
+                      ]
+                    }
+                  },
+                  "metadata": {
+                    "operationMetadataId": "42af38d4-1a9b-45f7-8712-a6a884253870"
+                  },
+                  "type": "If"
+                },
+                "List_rows": {
+                  "runAfter": {
+                    "User_Filter_String_2": [
+                      "Succeeded"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "ef3528e3-b784-4cee-b83a-8ef30824037b"
+                  },
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "host": {
+                      "connectionName": "shared_commondataserviceforapps_1",
+                      "operationId": "ListRecords",
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                    },
+                    "parameters": {
+                      "entityName": "cmdspp_pc_auditses",
+                      "$select": "cmdspp_p_field_name,cmdspp_p_operation_type,cmdspp_p_newvalue,cmdspp_p_oldvalue,modifiedon",
+                      "$filter": "@outputs('User_Filter_String_2')",
+                      "$orderby": "modifiedon desc",
+                      "x-ms-odata-metadata-full": true,
+                      "$expand": "cmdspp_p_modified_by_user($select=cmdspp_g_fst_nam)",
+                      "$skiptoken": "@triggerBody()?['nextLink']"
+                    },
+                    "authentication": "@parameters('$authentication')"
+                  }
+                },
+                "User_Filter_String_2": {
+                  "runAfter": {
+                    "Condition_2": [
+                      "Succeeded"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "68e4a4b9-6c21-4153-a815-0594f9aa163b"
+                  },
+                  "type": "Compose",
+                  "inputs": "@\r\nif(\r\n  empty(triggerBody()?['searchTerm']),\r\n  'cmdspp_p_field_name ne null',\r\n  concat(\r\n    '(',\r\n    if(\r\n      empty(body('Map_GUID_Filter_2')),\r\n      '_cmdspp_p_modified_by_user_value eq null',\r\n      join(body('Map_GUID_Filter_2'), ' or ')\r\n    ),\r\n    ' or contains(cmdspp_p_field_name, ''', triggerBody()?['searchTerm'], ''')',\r\n    ' or contains(cmdspp_p_operation_type, ''', triggerBody()?['searchTerm'], ''')',\r\n    ' or contains(cmdspp_p_newvalue, ''', triggerBody()?['searchTerm'], ''')',\r\n    ' or contains(cmdspp_p_oldvalue, ''', triggerBody()?['searchTerm'], ''')',\r\n    if(\r\n      or(\r\n        empty(triggerBody()?['searchDateStartUtc']),\r\n        less(triggerBody()?['searchDateStartUtc'], '1753-01-01T00:00:00Z')\r\n      ),\r\n      '',\r\n      concat(\r\n        ' or (modifiedon ge ',\r\n        triggerBody()?['searchDateStartUtc'],\r\n        ' and modifiedon le ',\r\n        triggerBody()?['searchDateEndUtc'],\r\n        ')'\r\n      )\r\n    ),\r\n    ')'\r\n  )\r\n)"
+                }
+              }
+            }
+          },
+          "default": {
+            "actions": {
+              "Condition": {
+                "actions": {
+                  "Scope": {
+                    "actions": {
+                      "List_Users": {
+                        "runAfter": {},
+                        "metadata": {
+                          "operationMetadataId": "7f8a1832-6a74-409a-b7c1-e4f7db7ede0d"
+                        },
+                        "type": "OpenApiConnection",
+                        "inputs": {
+                          "host": {
+                            "connectionName": "shared_commondataserviceforapps_1",
+                            "operationId": "ListRecords",
+                            "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                          },
+                          "parameters": {
+                            "entityName": "systemusers",
+                            "$select": "systemuserid",
+                            "$filter": "@if(empty(triggerBody()?['searchTerm']), 'systemuserid eq null', concat('contains(fullname, ''', triggerBody()?['searchTerm'], ''')'))"
+                          },
+                          "authentication": "@parameters('$authentication')"
+                        }
+                      },
+                      "Map_GUID_Filter": {
+                        "runAfter": {
+                          "List_Users": [
+                            "Succeeded"
+                          ]
+                        },
+                        "metadata": {
+                          "operationMetadataId": "06ccfbcd-486e-48c4-bbb2-609cee3a8389"
+                        },
+                        "type": "Select",
+                        "inputs": {
+                          "from": "@outputs('List_Users')?['body/value']",
+                          "select": "@concat('_userid_value eq ''', item()?['systemuserid'], '''')"
+                        }
+                      }
+                    },
+                    "runAfter": {},
+                    "metadata": {
+                      "operationMetadataId": "b61a440b-9167-48f8-905d-28c1f635eabd"
+                    },
+                    "type": "Scope"
+                  }
+                },
+                "runAfter": {},
+                "expression": {
+                  "not": {
+                    "equals": [
+                      "@triggerBody()?['searchTerm']",
+                      ""
+                    ]
+                  }
+                },
+                "metadata": {
+                  "operationMetadataId": "2e655bb9-b951-43c5-b298-1b5ab8b7f136"
+                },
+                "type": "If"
+              },
+              "User_Filter_String": {
+                "runAfter": {
+                  "Condition": [
+                    "Succeeded"
+                  ]
+                },
+                "metadata": {
+                  "operationMetadataId": "6ece7b22-de8e-47b6-b4df-61d9874efab9"
+                },
+                "type": "Compose",
+                "inputs": "@if(\r\n  empty(triggerBody()?['searchTerm']),\r\n  '',\r\n  concat(\r\n    ' and (',\r\n    if(\r\n      empty(body('Map_GUID_Filter')),\r\n      '_userid_value eq null',\r\n      join(body('Map_GUID_Filter'), ' or ')\r\n    ),\r\n    if(contains('update', toLower(trim(triggerBody()?['searchTerm']))), ' or action eq 2', ''),\r\n    if(contains('create', toLower(trim(triggerBody()?['searchTerm']))), ' or action eq 1', ''),\r\n    if(contains('delete', toLower(trim(triggerBody()?['searchTerm']))), ' or action eq 3', ''),\r\n    if(\r\n      and(\r\n        greater(indexOf(triggerBody()?['searchTerm'], '/'), -1),\r\n        greater(length(trim(triggerBody()?['searchTerm'])), 7)\r\n      ),\r\n      if(\r\n        greater(indexOf(trim(triggerBody()?['searchTerm']), ' '), -1),\r\n        concat(\r\n          ' or (createdon ge ',\r\n          formatDateTime(trim(triggerBody()?['searchTerm']), 'yyyy-MM-ddTHH:mm:00Z'),\r\n          ' and createdon le ',\r\n          formatDateTime(trim(triggerBody()?['searchTerm']), 'yyyy-MM-ddTHH:mm:59Z'),\r\n          ')'\r\n        ),\r\n        concat(\r\n          ' or (createdon ge ',\r\n          formatDateTime(trim(triggerBody()?['searchTerm']), 'yyyy-MM-ddT00:00:00Z'),\r\n          ' and createdon le ',\r\n          formatDateTime(trim(triggerBody()?['searchTerm']), 'yyyy-MM-ddT23:59:59Z'),\r\n          ')'\r\n        )\r\n      ),\r\n      ''\r\n    ),\r\n    ')'\r\n  )\r\n)\r\n "
+              },
+              "Compose": {
+                "runAfter": {
+                  "User_Filter_String": [
+                    "Succeeded"
+                  ]
+                },
+                "metadata": {
+                  "operationMetadataId": "9848fa79-3ea7-4445-a64f-2202eac45fbf"
+                },
+                "type": "Compose",
+                "inputs": "@concat(\r\n    parameters('ENV_Automate_Flow_Url_2 (cmdspp_ENV_Automate_Flow_Url_2)')?['cmdspp_ENV_URL'],\r\n    '/api/data/v9.2/audits?$select=auditid,createdon,_userid_value,action,operation,objecttypecode,changedata',\r\n    '&$filter=(objecttypecode eq ''cmdspp_pc_pg_tb'' or objecttypecode eq ''cmdspp_pc_section_tb'' or objecttypecode eq ''cmdspp_pc_ctrl_tb'' or objecttypecode eq ''cmdspp_pc_enrol_typ_tb'' or objecttypecode eq ''cmdspp_pc_enrol_typ_map'' or objecttypecode eq ''cmdspp_pc_pvd_enrol_map_tb'' or objecttypecode eq ''cmdspp_pc_pvd_typ_tb'' or objecttypecode eq ''cmdspp_pc_docu_typ_tb'' or objecttypecode eq ''cmdspp_pc_enrol_docu_tb'' or objecttypecode eq ''cmdspp_pc_specl_pvdty_map''  or objecttypecode eq ''cmdspp_pc_txnmy_codes_tb'' ) and (action eq 1 or action eq 2 or action eq 3)',\r\n    outputs('User_Filter_String'),\r\n    '&$count=true&$orderby=createdon desc'\r\n)"
+              },
+              "Base_Audit_Url": {
+                "runAfter": {
+                  "Compose": [
+                    "Succeeded"
+                  ]
+                },
+                "metadata": {
+                  "operationMetadataId": "ab794497-7d84-4e82-a52e-85c038b6055d"
+                },
+                "type": "Compose",
+                "inputs": "@outputs('Compose')"
+              },
+              "Invoke_an_HTTP_request": {
+                "runAfter": {
+                  "Base_Audit_Url": [
+                    "Succeeded"
+                  ]
+                },
+                "metadata": {
+                  "operationMetadataId": "499ecd8e-556f-43b9-b0e1-8562c7c329ba"
+                },
+                "type": "OpenApiConnection",
+                "inputs": {
+                  "host": {
+                    "connectionName": "shared_webcontents_1",
+                    "operationId": "InvokeHttp",
+                    "apiId": "/providers/Microsoft.PowerApps/apis/shared_webcontents"
+                  },
+                  "parameters": {
+                    "request/method": "GET",
+                    "request/url": "@if(empty(triggerBody()?['nextLink']), outputs('Base_Audit_Url'), triggerBody()?['nextLink'])",
+                    "request/headers": {
+                      "Prefer": "odata.include-annotations=\"*\",odata.include-annotations=\"OData.Community.Display.V1.FormattedValue\""
+                    }
+                  },
+                  "authentication": "@parameters('$authentication')"
+                }
+              },
+              "Select": {
+                "runAfter": {
+                  "Invoke_an_HTTP_request": [
+                    "Succeeded"
+                  ]
+                },
+                "metadata": {
+                  "operationMetadataId": "dca95d66-463f-4523-a582-0744e2551510"
+                },
+                "type": "Select",
+                "inputs": {
+                  "from": "@coalesce(body('Invoke_an_HTTP_request')?['value'], json('[]'))",
+                  "select": {
+                    "Operation Type": "@if(equals(item()?['action'], 1), 'Create', if(equals(item()?['action'], 2), 'Update', if(equals(item()?['action'], 3), 'Delete', 'Other')))",
+                    "Who Modified It": "@coalesce(item()?['_userid_value@OData.Community.Display.V1.FormattedValue'], item()?['_createdby_value@OData.Community.Display.V1.FormattedValue'], item()?['_userid_value'], 'System')",
+                    "When Modified Date": "@item()?['createdon@OData.Community.Display.V1.FormattedValue']",
+                    "RecordsChangeValue": "@if(or(empty(item()?['changedata']), equals(item()?['changedata'], false), equals(item()?['changedata'], 'False')), json('[]'), json(item()?['changedata'])?['changedAttributes'])"
+                  }
+                }
+              },
+              "Compose_2": {
+                "runAfter": {
+                  "Select": [
+                    "Succeeded"
+                  ]
+                },
+                "metadata": {
+                  "operationMetadataId": "f7b3cc6d-eb80-401f-a9d0-8637727d851e"
+                },
+                "type": "Compose",
+                "inputs": "@body('Select')"
+              },
+              "Response": {
+                "runAfter": {
+                  "Compose_2": [
+                    "Succeeded"
+                  ]
+                },
+                "metadata": {
+                  "operationMetadataId": "fcada706-f62a-4930-81aa-6ae5a831db5c"
+                },
+                "type": "Response",
+                "kind": "Http",
+                "inputs": {
+                  "statusCode": 200,
+                  "body": {
+                    "auditinfo": "@body('Select')",
+                    "nextLink": "@body('Invoke_an_HTTP_request')?['@odata.nextLink']",
+                    "totalCount": "@if(empty(triggerBody()?['nextLink']), outputs('Invoke_an_HTTP_request')?['body/@odata.count'], null)"
+                  }
+                }
+              }
+            }
+          },
+          "expression": "@triggerBody()?['action']",
+          "metadata": {
+            "operationMetadataId": "599bb043-e563-4dea-9f3a-e5e4934f88d9"
+          },
+          "type": "Switch"
+        }
+      }
+    },
+    "templateName": ""
+  },
+  "schemaVersion": "1.0.0.0"
+}

@@ -1,0 +1,141 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps_1": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "cmdspp_CR_Dataverse_Core_DEV"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "manual": {
+          "metadata": {
+            "operationMetadataId": "6007ab59-5066-4643-8028-2788e8764d07"
+          },
+          "type": "Request",
+          "kind": "Http",
+          "inputs": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "pageId": {
+                  "type": "string"
+                }
+              }
+            },
+            "triggerAuthenticationType": "All"
+          }
+        }
+      },
+      "actions": {
+        "List_rows_sections": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "12517c91-9915-4cb5-8817-e971d6d0833d"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps_1",
+              "operationId": "ListRecords",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "cmdspp_pc_section_tbs",
+              "$filter": "_cmdspp_p_section_to_pg_fk_value eq @{triggerBody()?['pageId']}"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Apply_to_each": {
+          "foreach": "@outputs('List_rows_sections')?['body/value']",
+          "actions": {
+            "Append_to_array_variable": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "a8fb4b31-73f2-464f-ab7e-8f3d5eceae16"
+              },
+              "type": "AppendToArrayVariable",
+              "inputs": {
+                "name": "Sections",
+                "value": {
+                  "id": "@items('Apply_to_each')?['cmdspp_pc_section_tbid']",
+                  "name": "@items('Apply_to_each')?['cmdspp_p_section_nam']",
+                  "code": "@items('Apply_to_each')?['cmdspp_p_section_id_sk']",
+                  "pageId": "@items('Apply_to_each')?['_cmdspp_p_section_to_pg_fk_value']",
+                  "fields": []
+                }
+              }
+            }
+          },
+          "runAfter": {
+            "Initialize_variable": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "98dcffb2-5852-404e-869a-6d4708fea08f"
+          },
+          "type": "Foreach"
+        },
+        "Initialize_variable": {
+          "runAfter": {
+            "List_rows_sections": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "9bb7d1a5-d16f-4f3e-a903-1b5f7ab2be56"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "Sections",
+                "type": "array",
+                "value": []
+              }
+            ]
+          }
+        },
+        "Response": {
+          "runAfter": {
+            "Apply_to_each": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "4f133f06-6af3-44e1-8bc4-d1d3dbe04f75"
+          },
+          "type": "Response",
+          "kind": "Http",
+          "inputs": {
+            "statusCode": 200,
+            "body": {
+              "sections": "@variables('Sections')"
+            }
+          }
+        }
+      }
+    },
+    "templateName": ""
+  },
+  "schemaVersion": "1.0.0.0"
+}

@@ -1,0 +1,10 @@
+<environmentvariabledefinition schemaname="cmdspp_ENV_DocInt_endPointSettings">
+  <displayname default="ENV_DocInt_endPointSettings">
+    <label description="ENV_DocInt_endPointSettings" languagecode="1033" />
+  </displayname>
+  <introducedversion>1.8.4.1</introducedversion>
+  <iscustomizable>1</iscustomizable>
+  <isrequired>0</isrequired>
+  <secretstore>0</secretstore>
+  <type>100000003</type>
+</environmentvariabledefinition>

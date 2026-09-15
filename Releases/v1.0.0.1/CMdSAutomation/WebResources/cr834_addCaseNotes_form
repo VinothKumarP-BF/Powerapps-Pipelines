@@ -1,0 +1,115 @@
+function openAddCaseNotes(primaryControl) {
+    var targetFormName = "Add Case Notes";
+    var currentForm = primaryControl.ui.formSelector.getCurrentItem();
+
+    if (currentForm && currentForm.getLabel() !== targetFormName) {
+        primaryControl.ui.formSelector.items.forEach(function (item) {
+            if (item.getLabel() === targetFormName) {
+                item.navigate();
+            }
+        });
+    }
+}
+
+function EnrollmentTimelinestatus(primaryControl) {
+    var targetFormName = "Enrollment Timeline";
+    var currentForm = primaryControl.ui.formSelector.getCurrentItem();
+
+    if (currentForm && currentForm.getLabel() !== targetFormName) {
+        primaryControl.ui.formSelector.items.forEach(function (item) {
+            if (item.getLabel() === targetFormName) {
+                item.navigate();
+            }
+        });
+    }
+}
+
+function openViewEnrollment(primaryControl) {
+    var targetFormName = "View Enrollment Application";
+    var currentForm = primaryControl.ui.formSelector.getCurrentItem();
+
+    if (currentForm && currentForm.getLabel() !== targetFormName) {
+        primaryControl.ui.formSelector.items.forEach(function (item) {
+            if (item.getLabel() === targetFormName) {
+                item.navigate();
+            }
+        });
+    }
+}
+function openApproveEnrollment(primaryControl) {
+    var targetFormName = "Approval";
+    var currentForm = primaryControl.ui.formSelector.getCurrentItem();
+
+    if (currentForm && currentForm.getLabel() !== targetFormName) {
+        primaryControl.ui.formSelector.items.forEach(function (item) {
+            if (item.getLabel() === targetFormName) {
+                item.navigate();
+            }
+        });
+    }
+}
+function openCancelEnrollment(primaryControl) {
+    var targetFormName = "Cancel";
+    var currentForm = primaryControl.ui.formSelector.getCurrentItem();
+
+    if (currentForm && currentForm.getLabel() !== targetFormName) {
+        primaryControl.ui.formSelector.items.forEach(function (item) {
+            if (item.getLabel() === targetFormName) {
+                item.navigate();
+            }
+        });
+    }
+}
+function openDenyEnrollment(primaryControl) {
+    var targetFormName = "Denial";
+    var currentForm = primaryControl.ui.formSelector.getCurrentItem();
+
+    if (currentForm && currentForm.getLabel() !== targetFormName) {
+        primaryControl.ui.formSelector.items.forEach(function (item) {
+            if (item.getLabel() === targetFormName) {
+                item.navigate();
+            }
+        });
+    }
+}
+
+async function viewScreeningReport(primaryControl) {
+    console.log("viewScreeningReport called");
+
+    const newTab = window.open('', '_blank');
+
+    if (!newTab) {
+        alert('Please allow pop-ups for this site.');
+        return;
+    }
+
+    try {
+        const recordId = primaryControl.data.entity
+            .getId()
+            .replace(/[{}]/g, '');
+
+        const result = await Xrm.WebApi.retrieveRecord(
+            'cmdspp_p_dtl_tb',
+            recordId,
+            '?$select=cmdspp_p_screening_report_path'
+        );
+
+        const fileUrl = result.cmdspp_p_screening_report_path;
+
+        if (!fileUrl) {
+            newTab.close();
+            alert('Screening report is not available.');
+            return;
+        }
+
+        newTab.location.href = fileUrl;
+
+    } catch (error) {
+        if (newTab && !newTab.closed) {
+            newTab.close();
+        }
+
+        console.error(error);
+        alert(error.message);
+    }
+}

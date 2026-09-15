@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>0</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>1</isdefault>
+    <savedqueryid>{d4cb6dec-7d89-4d0c-9538-91d005869a0f}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="cmdspp_p_ser_paf_ma_inf_tb_sk" select="1" icon="1" preview="1">
+        <row name="result" id="cmdspp_p_ser_paf_ma_inf_tbid">
+          <cell name="cmdspp_p_ser_phone" width="112" />
+          <cell name="cmdspp_p_ser_fax" width="100" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>0</querytype>
+    <fetchxml>
+      <fetch version="1.0" mapping="logical">
+        <entity name="cmdspp_p_ser_paf_ma_inf_tb">
+          <attribute name="cmdspp_p_ser_paf_ma_inf_tbid" />
+          <filter type="and">
+            <condition attribute="statecode" operator="eq" value="0" />
+          </filter>
+          <attribute name="cmdspp_p_ser_phone" />
+          <attribute name="cmdspp_p_ser_fax" />
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.0</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Active P_SER_PAF_MA_INF_TBS" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>

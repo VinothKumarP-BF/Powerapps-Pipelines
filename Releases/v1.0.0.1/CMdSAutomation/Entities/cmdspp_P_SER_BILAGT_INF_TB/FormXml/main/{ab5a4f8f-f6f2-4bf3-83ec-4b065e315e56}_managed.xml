@@ -1,0 +1,162 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<forms xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <systemform>
+    <formid>{ab5a4f8f-f6f2-4bf3-83ec-4b065e315e56}</formid>
+    <IntroducedVersion>1.0</IntroducedVersion>
+    <FormPresentation>1</FormPresentation>
+    <FormActivationState>1</FormActivationState>
+    <form headerdensity="HighWithControls">
+      <tabs>
+        <tab verticallayout="true" id="{9a02c7d3-940a-46bb-a231-cc550e23b78e}" IsUserDefined="1">
+          <labels>
+            <label description="General" languagecode="1033" />
+          </labels>
+          <columns>
+            <column width="100%">
+              <sections>
+                <section showlabel="false" showbar="false" IsUserDefined="0" id="{6f0413c6-1607-41d9-95b9-7d855bc02f01}" visible="true" celllabelposition="Top">
+                  <labels>
+                    <label description="General" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{8a7409db-b86d-45bd-a902-2035776a72da}" visible="false" availableforphone="false" showlabel="false">
+                        <labels>
+                          <label description="p_ser_bilagt_inf_tb_sk" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_p_ser_bilagt_inf_tb_sk" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="cmdspp_p_ser_bilagt_inf_tb_sk" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{ea1b6a39-71c6-49f6-98d3-19d4df99de51}" visible="false" showlabel="false" availableforphone="false">
+                        <labels>
+                          <label description="Owner" languagecode="1033" />
+                        </labels>
+                        <control id="ownerid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="ownerid" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{8ae7a771-4e7e-41dd-93fa-fdcc387398da}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Dose a third party billing agent submit your claims? " languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_p_thirdparty_claim_sub" classid="{F9A8A302-114E-466A-B582-6771B2AE0D92}" datafieldname="cmdspp_p_thirdparty_claim_sub" disabled="false" uniqueid="{3b40b99c-a041-471a-93c8-344f2227f11b}" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{cfc6a117-b998-49d6-b3a5-68d71f2355bf}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Dose this Billing Agent have access to make inquiries on your behalf? " languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_p_access_inquire_behalf" classid="{F9A8A302-114E-466A-B582-6771B2AE0D92}" datafieldname="cmdspp_p_access_inquire_behalf" disabled="false" uniqueid="{81c1e373-7649-471e-b4f5-09d055a1f7e0}" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+          </columns>
+        </tab>
+      </tabs>
+      <header id="{2313292c-b80d-408b-966e-dd127833c684}" celllabelposition="Top" columns="111" labelwidth="115" celllabelalignment="Left">
+        <rows>
+          <row>
+            <cell id="{991cf43e-dfc4-4ae1-8daa-bd4bf5914f5b}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{83542d1e-a024-4608-bf42-9803cf5e2dff}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{174e1ea3-fbdb-4855-b366-4a73f89247f7}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+          </row>
+        </rows>
+      </header>
+      <footer id="{4d194277-a059-4aa1-952a-6d6b45577930}" celllabelposition="Top" columns="111" labelwidth="115" celllabelalignment="Left">
+        <rows>
+          <row>
+            <cell id="{f4642ac4-c97b-4833-adfb-f3db63cee563}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{64ec849e-cf9a-45e6-94b2-07f2a5c96cc9}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{fac35ed3-67f2-4229-b4a0-d02ec9e846ee}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+          </row>
+        </rows>
+      </footer>
+      <DisplayConditions Order="0" FallbackForm="true">
+        <Everyone />
+      </DisplayConditions>
+      <controlDescriptions>
+        <controlDescription forControl="{3b40b99c-a041-471a-93c8-344f2227f11b}">
+          <customControl id="{67FAC785-CD58-4F9F-ABB3-4B7DDC6ED5ED}">
+            <parameters>
+              <datafieldname>cmdspp_p_thirdparty_claim_sub</datafieldname>
+            </parameters>
+          </customControl>
+          <customControl formFactor="0" name="MscrmControls.FieldControls.ToggleControl">
+            <parameters>
+              <value type="TwoOptions">cmdspp_p_thirdparty_claim_sub</value>
+            </parameters>
+          </customControl>
+          <customControl formFactor="2" name="MscrmControls.FieldControls.ToggleControl">
+            <parameters>
+              <value type="TwoOptions">cmdspp_p_thirdparty_claim_sub</value>
+            </parameters>
+          </customControl>
+          <customControl formFactor="1" name="MscrmControls.FieldControls.ToggleControl">
+            <parameters>
+              <value type="TwoOptions">cmdspp_p_thirdparty_claim_sub</value>
+            </parameters>
+          </customControl>
+        </controlDescription>
+        <controlDescription forControl="{81c1e373-7649-471e-b4f5-09d055a1f7e0}">
+          <customControl id="{67FAC785-CD58-4F9F-ABB3-4B7DDC6ED5ED}">
+            <parameters>
+              <datafieldname>cmdspp_p_access_inquire_behalf</datafieldname>
+            </parameters>
+          </customControl>
+          <customControl formFactor="0" name="MscrmControls.FieldControls.ToggleControl">
+            <parameters>
+              <value type="TwoOptions">cmdspp_p_access_inquire_behalf</value>
+            </parameters>
+          </customControl>
+          <customControl formFactor="2" name="MscrmControls.FieldControls.ToggleControl">
+            <parameters>
+              <value type="TwoOptions">cmdspp_p_access_inquire_behalf</value>
+            </parameters>
+          </customControl>
+          <customControl formFactor="1" name="MscrmControls.FieldControls.ToggleControl">
+            <parameters>
+              <value type="TwoOptions">cmdspp_p_access_inquire_behalf</value>
+            </parameters>
+          </customControl>
+        </controlDescription>
+      </controlDescriptions>
+    </form>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <LocalizedNames>
+      <LocalizedName description="Information" languagecode="1033" />
+    </LocalizedNames>
+    <Descriptions>
+      <Description description="A form for this entity." languagecode="1033" />
+    </Descriptions>
+  </systemform>
+</forms>

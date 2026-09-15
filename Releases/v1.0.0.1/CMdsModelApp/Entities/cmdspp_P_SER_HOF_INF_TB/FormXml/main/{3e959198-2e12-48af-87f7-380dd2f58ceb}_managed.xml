@@ -1,0 +1,160 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<forms xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <systemform>
+    <formid>{3e959198-2e12-48af-87f7-380dd2f58ceb}</formid>
+    <IntroducedVersion>1.0</IntroducedVersion>
+    <FormPresentation>1</FormPresentation>
+    <FormActivationState>1</FormActivationState>
+    <form headerdensity="HighWithControls">
+      <tabs>
+        <tab verticallayout="true" id="{ab595169-e328-46db-a863-6aa742a67066}" IsUserDefined="1">
+          <labels>
+            <label description="General" languagecode="1033" />
+          </labels>
+          <columns>
+            <column width="100%">
+              <sections>
+                <section showlabel="false" showbar="false" IsUserDefined="0" id="{d46f5aaa-35e8-4a7d-bb0f-ccc36f32834c}" celllabelposition="Top" columns="11">
+                  <labels>
+                    <label description="General" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{e99cfa12-37f7-4980-8e03-e1f866ac8f30}" visible="false">
+                        <labels>
+                          <label description="Owner" languagecode="1033" />
+                        </labels>
+                        <control id="ownerid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="ownerid" />
+                      </cell>
+                      <cell id="{55f6d7da-b9a1-4d4b-8558-06330fe0dc28}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Type Of Operation" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_p_open_closed_cd" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="cmdspp_p_open_closed_cd" disabled="false">
+                          <parameters>
+                            <DefaultViewId>{6EBF90A5-59A8-F111-B8DE-70A8A5B02D34}</DefaultViewId>
+                            <AvailableViewIds>{7735878B-98D0-4EC9-A90A-D903327DC996},{64CA6896-0E0F-4900-898D-71C6B40C7F12},{F12353B5-57A8-F111-B8DE-70A8A5B02328},{87D73E27-A5A7-F111-B8DE-70A8A5B02D34},{58733369-BBA6-F111-B8DE-70A8A5B02D34},{3BD4E7E6-BDA6-F111-B8DE-70A8A5B02D34},{6E89000C-59A8-F111-B8DE-70A8A5B02D34},{03228501-A5A7-F111-B8DE-70A8A5B02D34},{299E1019-5AA8-F111-B8DE-70A8A5B02D74},{FD514600-58A8-F111-B8DE-70A8A5B02D28},{BDC47EDD-59A8-F111-B8DE-70A8A5B02D28},{6EBF90A5-59A8-F111-B8DE-70A8A5B02D34},{7FC31845-A5A7-F111-B8DE-70A8A5B02D28},{20DE6FBF-02A5-F111-B8DE-70A8A5B02328},{97D45F28-11A5-F111-B8DE-70A8A5B02684},{D6A067F3-8EA7-F111-B8DD-70A8A5B028CC},{9968C64F-1697-F111-8075-70A8A5B028CC},{018D2F0F-F1A5-F111-B8DE-70A8A5B02D28},{D448848C-DBA6-F111-B8DD-70A8A5B028CC},{67C2D717-02A5-F111-B8DE-70A8A5B02328},{CA553ED7-1697-F111-8075-70A8A5B02D34},{3C37C7FA-D8A2-F111-B8DE-70A8A5B02D28},{4756C924-D9A2-F111-B8DE-70A8A5B02D28}</AvailableViewIds>
+                          </parameters>
+                        </control>
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{f4e0cdd1-16ae-456c-ad2a-84e6588dfe1b}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Days of Week" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_p_days_of_week" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="cmdspp_p_days_of_week" disabled="false">
+                          <parameters>
+                            <DefaultViewId>{FD514600-58A8-F111-B8DE-70A8A5B02D28}</DefaultViewId>
+                            <AvailableViewIds>{7735878B-98D0-4EC9-A90A-D903327DC996},{64CA6896-0E0F-4900-898D-71C6B40C7F12},{F12353B5-57A8-F111-B8DE-70A8A5B02328},{87D73E27-A5A7-F111-B8DE-70A8A5B02D34},{58733369-BBA6-F111-B8DE-70A8A5B02D34},{3BD4E7E6-BDA6-F111-B8DE-70A8A5B02D34},{03228501-A5A7-F111-B8DE-70A8A5B02D34},{FD514600-58A8-F111-B8DE-70A8A5B02D28},{7FC31845-A5A7-F111-B8DE-70A8A5B02D28},{20DE6FBF-02A5-F111-B8DE-70A8A5B02328},{97D45F28-11A5-F111-B8DE-70A8A5B02684},{D6A067F3-8EA7-F111-B8DD-70A8A5B028CC},{9968C64F-1697-F111-8075-70A8A5B028CC},{018D2F0F-F1A5-F111-B8DE-70A8A5B02D28},{D448848C-DBA6-F111-B8DD-70A8A5B028CC},{67C2D717-02A5-F111-B8DE-70A8A5B02328},{CA553ED7-1697-F111-8075-70A8A5B02D34},{3C37C7FA-D8A2-F111-B8DE-70A8A5B02D28},{4756C924-D9A2-F111-B8DE-70A8A5B02D28}</AvailableViewIds>
+                          </parameters>
+                        </control>
+                      </cell>
+                      <cell id="{8c07f818-bedb-4965-9045-097a9bf050a7}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Close" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_p_close_time" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="cmdspp_p_close_time" disabled="false">
+                          <parameters>
+                            <DefaultViewId>{299E1019-5AA8-F111-B8DE-70A8A5B02D74}</DefaultViewId>
+                            <AvailableViewIds>{7735878B-98D0-4EC9-A90A-D903327DC996},{64CA6896-0E0F-4900-898D-71C6B40C7F12},{F12353B5-57A8-F111-B8DE-70A8A5B02328},{87D73E27-A5A7-F111-B8DE-70A8A5B02D34},{58733369-BBA6-F111-B8DE-70A8A5B02D34},{3BD4E7E6-BDA6-F111-B8DE-70A8A5B02D34},{6E89000C-59A8-F111-B8DE-70A8A5B02D34},{03228501-A5A7-F111-B8DE-70A8A5B02D34},{299E1019-5AA8-F111-B8DE-70A8A5B02D74},{FD514600-58A8-F111-B8DE-70A8A5B02D28},{BDC47EDD-59A8-F111-B8DE-70A8A5B02D28},{6EBF90A5-59A8-F111-B8DE-70A8A5B02D34},{7FC31845-A5A7-F111-B8DE-70A8A5B02D28},{20DE6FBF-02A5-F111-B8DE-70A8A5B02328},{97D45F28-11A5-F111-B8DE-70A8A5B02684},{D6A067F3-8EA7-F111-B8DD-70A8A5B028CC},{9968C64F-1697-F111-8075-70A8A5B028CC},{018D2F0F-F1A5-F111-B8DE-70A8A5B02D28},{D448848C-DBA6-F111-B8DD-70A8A5B028CC},{67C2D717-02A5-F111-B8DE-70A8A5B02328},{CA553ED7-1697-F111-8075-70A8A5B02D34},{3C37C7FA-D8A2-F111-B8DE-70A8A5B02D28},{4756C924-D9A2-F111-B8DE-70A8A5B02D28}</AvailableViewIds>
+                          </parameters>
+                        </control>
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{0daf0d58-9a85-45c8-be39-e4777b2c6219}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Open" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_p_open_time" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="cmdspp_p_open_time" disabled="false">
+                          <parameters>
+                            <DefaultViewId>{BDC47EDD-59A8-F111-B8DE-70A8A5B02D28}</DefaultViewId>
+                            <AvailableViewIds>{7735878B-98D0-4EC9-A90A-D903327DC996},{64CA6896-0E0F-4900-898D-71C6B40C7F12},{F12353B5-57A8-F111-B8DE-70A8A5B02328},{87D73E27-A5A7-F111-B8DE-70A8A5B02D34},{58733369-BBA6-F111-B8DE-70A8A5B02D34},{3BD4E7E6-BDA6-F111-B8DE-70A8A5B02D34},{6E89000C-59A8-F111-B8DE-70A8A5B02D34},{03228501-A5A7-F111-B8DE-70A8A5B02D34},{299E1019-5AA8-F111-B8DE-70A8A5B02D74},{FD514600-58A8-F111-B8DE-70A8A5B02D28},{BDC47EDD-59A8-F111-B8DE-70A8A5B02D28},{6EBF90A5-59A8-F111-B8DE-70A8A5B02D34},{7FC31845-A5A7-F111-B8DE-70A8A5B02D28},{20DE6FBF-02A5-F111-B8DE-70A8A5B02328},{97D45F28-11A5-F111-B8DE-70A8A5B02684},{D6A067F3-8EA7-F111-B8DD-70A8A5B028CC},{9968C64F-1697-F111-8075-70A8A5B028CC},{018D2F0F-F1A5-F111-B8DE-70A8A5B02D28},{D448848C-DBA6-F111-B8DD-70A8A5B028CC},{67C2D717-02A5-F111-B8DE-70A8A5B02328},{CA553ED7-1697-F111-8075-70A8A5B02D34},{3C37C7FA-D8A2-F111-B8DE-70A8A5B02D28},{4756C924-D9A2-F111-B8DE-70A8A5B02D28}</AvailableViewIds>
+                          </parameters>
+                        </control>
+                      </cell>
+                      <cell locklevel="0" id="{f30418ed-c182-4eb4-be3f-1b7513049b6a}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+          </columns>
+        </tab>
+      </tabs>
+      <header id="{22852bb3-730e-4cf8-af68-eb8da6500367}" celllabelposition="Top" columns="111" labelwidth="115" celllabelalignment="Left">
+        <rows>
+          <row>
+            <cell id="{c34aee84-10bf-4239-a5d5-b744e0460c92}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{1e930f99-b3f1-41dd-a7cc-18f1c04dba31}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{c9845a0e-f424-4c5b-a4ac-63c1bc429415}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+          </row>
+        </rows>
+      </header>
+      <footer id="{e1f1a466-c4f3-4918-aee8-8b2988f421b6}" celllabelposition="Top" columns="111" labelwidth="115" celllabelalignment="Left">
+        <rows>
+          <row>
+            <cell id="{d54d218c-7b9f-4ff8-82f4-4c43aa0ba533}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{3ebe1353-3190-4bf9-aa1e-010ccd6cbef3}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{18f1b497-970e-409d-a233-7105e11914d0}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+          </row>
+        </rows>
+      </footer>
+      <DisplayConditions Order="0" FallbackForm="true">
+        <Everyone />
+      </DisplayConditions>
+      <formLibraries>
+        <Library name="cmdspp_screening_web_res" libraryUniqueId="{336a00a2-af55-4214-871d-86e937d9b6e0}" />
+      </formLibraries>
+      <events>
+        <event name="onchange" application="false" active="false" attribute="cmdspp_p_close_time">
+          <Handlers>
+            <Handler functionName="validateTimeField" libraryName="cmdspp_screening_web_res" handlerUniqueId="{095d4f62-2da1-4afc-9781-88c44493cb84}" enabled="true" parameters="&quot;cmdspp_p_close_time&quot;,&quot;cmdspp_p_open_time&quot;,&quot;timeComparison&quot;,&quot;greaterThan&quot;,&quot;Close time must be later than Open time.&quot;" passExecutionContext="true" />
+          </Handlers>
+        </event>
+        <event name="onchange" application="false" active="false" attribute="cmdspp_p_open_time">
+          <Handlers>
+            <Handler functionName="validateTimeField" libraryName="cmdspp_screening_web_res" handlerUniqueId="{b28d0bbf-6249-4181-9701-f2b070f24e58}" enabled="true" parameters="&quot;cmdspp_p_open_time&quot;,&quot;cmdspp_p_close_time&quot;,&quot;timeComparison&quot;,&quot;lessThan&quot;,&quot;Open time must be earlier than Close time.&quot;" passExecutionContext="true" />
+          </Handlers>
+        </event>
+      </events>
+    </form>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <LocalizedNames>
+      <LocalizedName description="Information" languagecode="1033" />
+    </LocalizedNames>
+    <Descriptions>
+      <Description description="A form for this entity." languagecode="1033" />
+    </Descriptions>
+  </systemform>
+</forms>

@@ -1,0 +1,40 @@
+function getUploadedFileName(executionContext) {
+    console.log("File OnChange event fired!");
+
+    var formContext = executionContext.getFormContext();
+    var logicalName = "cmdspp_p_oigleie_ovrd_file";
+
+    // Method 1: Check attribute value
+    var fileAttr = formContext.getAttribute(logicalName);
+    var attrVal = fileAttr ? fileAttr.getValue() : null;
+
+    // Method 2: Check control value
+    var fileControl = formContext.getControl(logicalName);
+    var ctrlVal = fileControl ? fileControl.getValue() : null;
+
+    console.log("Attribute Value:", attrVal);
+    console.log("Control Value:", ctrlVal);
+
+    // Extract file name
+    var fileName = null;
+    if (attrVal && attrVal.fileName) {
+        fileName = attrVal.fileName;
+    } else if (ctrlVal && ctrlVal.fileName) {
+        fileName = ctrlVal.fileName;
+    } else if (typeof attrVal === "string") {
+        fileName = attrVal;
+    }
+
+    if (fileName) {
+        console.log("Extracted File Name:", fileName);
+
+        var targetAttribute = formContext.getAttribute("cmdspp_p_oigleie_ovrd_filename");
+
+        if (targetAttribute != null) {
+            targetAttribute.setValue(fileName);
+            console.log("Successfully set the file name to the target column.");
+        } else {
+            console.error("Error: Target attribute 'filename' is missing from the form.");
+        }
+    }
+}

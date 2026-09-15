@@ -1,0 +1,19 @@
+
+function openAddReviewDocuments(primaryControl) {
+
+    var targetFormName = "Review Documents";
+
+    var currentForm =
+        primaryControl.ui.formSelector.getCurrentItem();
+
+    if (currentForm &&
+        currentForm.getLabel() !== targetFormName) {
+
+        primaryControl.ui.formSelector.items.forEach(function (item) {
+
+            if (item.getLabel() === targetFormName) {
+                item.navigate();
+            }
+        });
+    }
+}
