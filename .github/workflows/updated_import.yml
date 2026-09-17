@@ -160,8 +160,7 @@ jobs:
           export PATH="$PATH:$HOME/.dotnet/tools"
 
           pac solution import \
-            --path /tmp/CMdsNextGenPP_AppExperience.zip \
-            --settings-file "$GITHUB_WORKSPACE/yaml-config/deployment-settings/dev2.deploymentSettings.json" \      
+            --path /tmp/CMdsNextGenPP_AppExperience.zip \  
             --async \
             --max-async-wait-time 120
 
