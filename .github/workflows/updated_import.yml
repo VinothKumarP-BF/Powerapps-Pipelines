@@ -51,7 +51,29 @@ jobs:
       - name: Set Release Folder
         run: |
           echo "RELEASE_FOLDER=Releases/v${{ github.event.inputs.release_version }}" >> $GITHUB_ENV
+          
+      ###################################################
+      # Devops_POC
+      ####################################################
 
+      # - name: Pack Devops_POC
+      #   run: |
+      #     export PATH="$PATH:$HOME/.dotnet/tools"
+
+      #     pac solution pack \
+      #       --folder $RELEASE_FOLDER/Devops_POC \
+      #       --zipfile /tmp/Devops_POC.zip \
+      #       --packagetype Managed
+
+      # - name: Import Devops_POC
+      #   run: |
+      #     export PATH="$PATH:$HOME/.dotnet/tools"
+
+      #     pac solution import \
+      #       --path /tmp/Devops_POC.zip \
+      #       --async \
+      #       --max-async-wait-time 60
+      
       ###################################################
       # 1. CMdsNextGenPP_Core
       ####################################################
