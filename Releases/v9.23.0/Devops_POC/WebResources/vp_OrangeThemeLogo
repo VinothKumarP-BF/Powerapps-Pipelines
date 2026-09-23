@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CustomTheme
+    basePaletteColor="#E65100"
+    logoWebResource="vp_ICS_logo"
+    logoTooltip="Company"
+>
+  <AppHeaderColors
+    background="#E65100"
+    foreground="#FFFFFF"
+    backgroundHover="#C2410C"
+    foregroundHover="#FFFFFF"
+    backgroundPressed="#9A3412"
+    foregroundPressed="#FFFFFF"
+    backgroundSelected="#C2410C"
+    foregroundSelected="#FFFFFF"
+  />
+</CustomTheme>
