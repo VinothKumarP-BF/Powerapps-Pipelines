@@ -1,0 +1,65 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: lat-long
+
+spec:
+  replicas: 1
+
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+
+  minReadySeconds: 30
+
+  selector:
+    matchLabels:
+      app: lat-long
+
+  template:
+    metadata:
+      labels:
+        app: lat-long
+
+    spec:
+
+      imagePullSecrets:
+      - name: bfpreprod
+
+      nodeSelector:
+        env: preprodblue
+
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 10001
+        runAsGroup: 10001
+
+      containers:
+      - name: lat-long
+
+        image: bfappacruat01.azurecr.io/lat-long-svc:kube0
+
+        imagePullPolicy: Always
+
+        ports:
+        - containerPort: 8000
+---
+apiVersion: v1
+kind: Service
+
+metadata:
+  name: lat-long-service
+
+spec:
+  type: LoadBalancer
+
+  selector:
+    app: lat-long
+
+  ports:
+  - name: http
+    protocol: TCP
+    port: 80
+    targetPort: 8000
