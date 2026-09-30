@@ -72,9 +72,6 @@ jobs:
           pac solution import \
             --path /tmp/Devops_POC.zip \
             --settings-file "$GITHUB_WORKSPACE/yaml-config/deployment-settings/powerbi.json" \
-            --stage-and-upgrade \
-            --force-overwrite \
-            --publish-changes \
             --async \
             --max-async-wait-time 60
       
