@@ -1,0 +1,9 @@
+{
+  "EnvironmentVariables": [
+    {
+      "SchemaName": "vp_SiteVisit",
+      "Value": "{\"group\":{\"id\":\"ff174004-b5c1-4f83-8735-3429b2e23d06\",\"name\":\"Test-Dev2-Env\"},\"component\":{\"id\":\"8d1a5dd9-1a74-49da-a3a6-8a309cf1a7a0\",\"name\":\"Test_Report\",\"type\":\"Report\",\"embedUrl\":\"https://app.powerbi.com/reportEmbed\"}}"
+    }
+  ],
+  "ConnectionReferences": []
+}
