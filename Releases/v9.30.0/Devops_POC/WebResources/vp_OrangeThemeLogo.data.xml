@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<WebResource xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <WebResourceId>{18f1734c-69a5-f111-b8de-002248084dbd}</WebResourceId>
+  <Name>vp_OrangeThemeLogo</Name>
+  <DisplayName>Orange theme with logo</DisplayName>
+  <WebResourceType>4</WebResourceType>
+  <IntroducedVersion>8.17.2</IntroducedVersion>
+  <IsEnabledForMobileClient>0</IsEnabledForMobileClient>
+  <IsAvailableForMobileOffline>0</IsAvailableForMobileOffline>
+  <IsCustomizable>1</IsCustomizable>
+  <CanBeDeleted>1</CanBeDeleted>
+  <IsHidden>0</IsHidden>
+  <FileName>/WebResources/vp_OrangeThemeLogo18F1734C-69A5-F111-B8DE-002248084DBD</FileName>
+</WebResource>
