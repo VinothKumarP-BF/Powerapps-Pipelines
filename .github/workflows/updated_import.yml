@@ -71,6 +71,9 @@ jobs:
 
           pac solution import \
             --path /tmp/Devops_POC.zip \
+            --stage-and-upgrade \
+            --force-overwrite \
+            --publish-changes \
             --async \
             --max-async-wait-time 60
       
