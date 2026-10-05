@@ -1,0 +1,8 @@
+<botcomponent_connectionreferenceset>
+  <botcomponent_connectionreference botcomponentid.schemaname="cr7a7_5545b9cb-fc06-4ec2-9556-64592bc88207.topic.CMdSNextGenProviderBFbotAzureAISearch_f7bh0KFhUd7p5" connectionreferenceid.connectionreferencelogicalname="cr7a7_5545b9cb-fc06-4ec2-9556-64592bc88207.cr.dw53vpT6">
+    <iscustomizable>1</iscustomizable>
+  </botcomponent_connectionreference>
+  <botcomponent_connectionreference botcomponentid.schemaname="cr7a7_5545b9cb-fc06-4ec2-9556-64592bc88207.topic.ThankYou" connectionreferenceid.connectionreferencelogicalname="cr7a7_5545b9cb-fc06-4ec2-9556-64592bc88207.shared_azureaisearch.19b72c8714934e6184b8ec265341d739">
+    <iscustomizable>1</iscustomizable>
+  </botcomponent_connectionreference>
+</botcomponent_connectionreferenceset>
