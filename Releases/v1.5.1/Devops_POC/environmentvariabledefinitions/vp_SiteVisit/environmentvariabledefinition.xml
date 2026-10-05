@@ -1,0 +1,14 @@
+<environmentvariabledefinition schemaname="vp_SiteVisit">
+  <defaultvalue>{"group":{"id":"98062220-4ee1-4428-aeee-5ac66697cd62","name":"Test-Dev-Env"},"component":{"id":"7b853e00-9bc5-4d0d-af57-5276aacf75e8","name":"Site Visit","type":"Report","embedUrl":"https://app.powerbi.com/reportEmbed"}}</defaultvalue>
+  <description default="SiteVisit">
+    <label description="SiteVisit" languagecode="1033" />
+  </description>
+  <displayname default="Site Visit">
+    <label description="Site Visit" languagecode="1033" />
+  </displayname>
+  <introducedversion>9.23.0</introducedversion>
+  <iscustomizable>1</iscustomizable>
+  <isrequired>0</isrequired>
+  <secretstore>0</secretstore>
+  <type>100000003</type>
+</environmentvariabledefinition>

@@ -1,0 +1,10 @@
+<botcomponent schemaname="mspp_eb360f59-66f0-4624-b905-25373b945114.topic.StartOver">
+  <componenttype>9</componenttype>
+  <iscustomizable>0</iscustomizable>
+  <name>Start Over</name>
+  <parentbotid>
+    <schemaname>mspp_eb360f59-66f0-4624-b905-25373b945114</schemaname>
+  </parentbotid>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</botcomponent>

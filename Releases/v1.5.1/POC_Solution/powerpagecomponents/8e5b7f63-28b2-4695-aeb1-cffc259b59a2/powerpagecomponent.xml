@@ -1,0 +1,14 @@
+<powerpagecomponent powerpagecomponentid="8e5b7f63-28b2-4695-aeb1-cffc259b59a2">
+  <content>{"display_name":"Search/Title","value":"&lt;span&gt;Search&lt;/span&gt;"}</content>
+  <iscustomizable>1</iscustomizable>
+  <name>Search/Title</name>
+  <powerpagecomponenttype>7</powerpagecomponenttype>
+  <powerpagesiteid>
+    <powerpagesiteid>a9b0a41b-5591-42f8-bdbc-5a64b2597cfa</powerpagesiteid>
+  </powerpagesiteid>
+  <powerpagesitelanguageid>
+    <powerpagesitelanguageid>5c7c0683-e4d6-4baa-ae97-71b9e6e5a1ab</powerpagesitelanguageid>
+  </powerpagesitelanguageid>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</powerpagecomponent>

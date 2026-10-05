@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>0</isdefault>
+    <savedqueryid>{6c562289-6a6e-f111-ab0d-000d3a3ac8b3}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="pes_transactionname" select="1" icon="1" preview="1">
+        <row name="result" id="pes_externaltransactionid">
+          <cell name="pes_transactionname" width="200" />
+          <cell name="pes_transactionstatus" width="200" />
+          <cell name="pes_errormessage" width="200" />
+          <cell name="pes_senton" width="200" />
+          <cell name="pes_providerapplicationid" width="200" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>0</querytype>
+    <fetchxml>
+      <fetch version="1.0" output-format="xml-platform" mapping="logical" distinct="true">
+        <entity name="pes_externaltransaction">&lt;attribute name="pes_transactionname" /&gt;&lt;attribute name="pes_transactionstatus" /&gt;&lt;attribute name="pes_errormessage" /&gt;&lt;attribute name="pes_senton" /&gt;&lt;attribute name="pes_providerapplicationid" /&gt;
+        <attribute name="pes_transactionname" /><attribute name="pes_transactionstatus" /><attribute name="pes_errormessage" /><attribute name="pes_senton" /><attribute name="pes_providerapplicationid" /><attribute name="pes_externaltransactionid" /><filter type="and"><condition attribute="pes_transactionstatus" operator="eq" value="1" /></filter><order attribute="pes_senton" descending="true" /></entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.0.0.0</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Pending External Transactions" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>

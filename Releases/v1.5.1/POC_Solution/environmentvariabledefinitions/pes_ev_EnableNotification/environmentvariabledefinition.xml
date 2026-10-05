@@ -1,0 +1,11 @@
+<environmentvariabledefinition schemaname="pes_ev_EnableNotification">
+  <defaultvalue>yes</defaultvalue>
+  <displayname default="PES_ev_EnableNotification">
+    <label description="PES_ev_EnableNotification" languagecode="1033" />
+  </displayname>
+  <introducedversion>1.0.0.0</introducedversion>
+  <iscustomizable>1</iscustomizable>
+  <isrequired>0</isrequired>
+  <secretstore>0</secretstore>
+  <type>100000002</type>
+</environmentvariabledefinition>

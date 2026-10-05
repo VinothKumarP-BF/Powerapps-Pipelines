@@ -1,0 +1,37 @@
+<powerpagecomponent powerpagecomponentid="f95efa79-77ed-4afe-bc5f-f94baaabc568">
+  <content>{
+  "filecontent": null,
+  "lcid": 1033,
+  "entityname": "pes_providerapplication",
+  "formname": "Provider Application - Portal Intake Form",
+  "mode": 100000000,
+  "onsuccess": "756150000",
+  "successmessage": "[{\"LCID\":1033,\"Value\":\"\"}]",
+  "hideformonsuccess": true,
+  "redirectwebpage": null,
+  "redirecturl": null,
+  "captcharequired": false,
+  "showcaptchaforauthenticatedusers": false,
+  "entitypermissionsenabled": true,
+  "attachfilelabel": "[{\"LCID\":1033,\"Value\":\"\"}]",
+  "attachfilestoragelocation": 756150000,
+  "attachfilemaxsize": null,
+  "maximumnooffiles": 5,
+  "containername": "",
+  "storageaccountname": "",
+  "entitysourcetype": null,
+  "recordidquerystringparametername": null,
+  "entityFormMetadatas": [
+    "4850b46d-c1f2-461d-88fc-5bb0040871e8",
+    "4850b46d-c1f2-461d-88fc-5bb0040871e8"
+  ]
+}</content>
+  <iscustomizable>1</iscustomizable>
+  <name>Provider Application - Portal Intake Form</name>
+  <powerpagecomponenttype>15</powerpagecomponenttype>
+  <powerpagesiteid>
+    <powerpagesiteid>a9b0a41b-5591-42f8-bdbc-5a64b2597cfa</powerpagesiteid>
+  </powerpagesiteid>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</powerpagecomponent>

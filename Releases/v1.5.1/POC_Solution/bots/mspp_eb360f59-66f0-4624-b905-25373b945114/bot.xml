@@ -1,0 +1,14 @@
+<bot schemaname="mspp_eb360f59-66f0-4624-b905-25373b945114">
+  <authenticationconfiguration>{
+  "$kind": "BotAuthenticationConfiguration",
+  "connectionName": "1f2ced79-95c5-41f2-a115-76a41391abb5"
+}</authenticationconfiguration>
+  <authenticationmode>4</authenticationmode>
+  <authenticationtrigger>1</authenticationtrigger>
+  <iscustomizable>1</iscustomizable>
+  <language>1033</language>
+  <name>Provider Registration bot</name>
+  <runtimeprovider>0</runtimeprovider>
+  <template>powerpages-1.0.0</template>
+  <timezoneruleversionnumber>4</timezoneruleversionnumber>
+</bot>

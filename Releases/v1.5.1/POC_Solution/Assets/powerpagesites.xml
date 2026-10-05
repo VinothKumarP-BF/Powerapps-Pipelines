@@ -1,0 +1,11 @@
+<powerpagesites>
+  <powerpagesite powerpagesiteid="a9b0a41b-5591-42f8-bdbc-5a64b2597cfa">
+    <content>{"defaultlanguage":"5c7c0683-e4d6-4baa-ae97-71b9e6e5a1ab","footerwebtemplateid":"968ac73f-caaa-4580-b9ed-9bc0b9b04a77","headerwebtemplateid":"ca1e0bac-f792-4e78-ba78-44f5144a8e0f","website_language":1033}</content>
+    <datamodelversion>2.0</datamodelversion>
+    <iscustomizable>1</iscustomizable>
+    <name>PES Provider Enrollment Portal - pes-dev-portal</name>
+    <primarydomainname>pes-dev-portal.powerappsportals.com</primarydomainname>
+    <statecode>0</statecode>
+    <statuscode>1</statuscode>
+  </powerpagesite>
+</powerpagesites>

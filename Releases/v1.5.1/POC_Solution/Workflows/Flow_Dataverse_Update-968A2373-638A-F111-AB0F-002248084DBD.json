@@ -1,0 +1,133 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_office365_1": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "cnt_CR_OUTLOOK_CORE"
+        },
+        "api": {
+          "name": "shared_office365"
+        }
+      },
+      "shared_sharepointonline": {
+        "runtimeSource": "invoker",
+        "connection": {
+          "connectionReferenceLogicalName": "cnt_CR_SHAREPOINT_CORE"
+        },
+        "api": {
+          "name": "shared_sharepointonline"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        },
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        }
+      },
+      "triggers": {
+        "manual": {
+          "metadata": {
+            "operationMetadataId": "3e174763-f33b-4b0f-9663-645af3069cd8"
+          },
+          "type": "Request",
+          "kind": "Button",
+          "inputs": {
+            "schema": {
+              "type": "object",
+              "properties": {},
+              "required": []
+            }
+          }
+        }
+      },
+      "actions": {
+        "Draft_an_email_message": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "a31b4652-2006-463b-a7e4-57ee432f7653"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "parameters": {
+              "draftMessage/To": "Vinothkumar.Prabakaran@barrelfuel.com",
+              "draftMessage/Subject": "Patching_inisde",
+              "draftMessage/Body": "<p>avafvae</p>",
+              "draftMessage/Importance": "Normal"
+            },
+            "host": {
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_office365",
+              "operationId": "DraftEmail",
+              "connectionName": "shared_office365_1"
+            }
+          }
+        },
+        "Apply_to_each": {
+          "foreach": "@outputs('Draft_an_email_message')?['body/InternetMessageHeaders']",
+          "actions": {
+            "List_folder": {
+              "metadata": {
+                "operationMetadataId": "855d023c-ae89-403e-846b-bac07e9b9be6"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "parameters": {
+                  "dataset": "kjsbdALVCIavfuiavciuaVcy",
+                  "id": "@items('Apply_to_each')?['Name']"
+                },
+                "host": {
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline",
+                  "operationId": "ListFolder",
+                  "connectionName": "shared_sharepointonline"
+                }
+              }
+            }
+          },
+          "runAfter": {
+            "Draft_an_email_message": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "c83fd0c4-9424-42a7-a37a-47741633eccb"
+          },
+          "type": "Foreach"
+        },
+        "Send_an_email_(V2)": {
+          "runAfter": {
+            "Apply_to_each": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "b37d3967-691e-4277-8f46-038d24047833"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "parameters": {
+              "emailMessage/To": "rahul.ram@conduent.com",
+              "emailMessage/Subject": "Test",
+              "emailMessage/Body": "<p>Hii</p>",
+              "emailMessage/Importance": "Normal"
+            },
+            "host": {
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_office365",
+              "operationId": "SendEmailV2",
+              "connectionName": "shared_office365_1"
+            }
+          }
+        }
+      }
+    },
+    "templateName": null
+  },
+  "schemaVersion": "1.0.0.0"
+}

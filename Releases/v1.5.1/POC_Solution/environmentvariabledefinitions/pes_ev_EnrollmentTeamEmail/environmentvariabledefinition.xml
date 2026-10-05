@@ -1,0 +1,11 @@
+<environmentvariabledefinition schemaname="pes_ev_EnrollmentTeamEmail">
+  <defaultvalue>sai@barrelfuel.com</defaultvalue>
+  <displayname default="PES_ev_EnrollmentTeamEmail">
+    <label description="PES_ev_EnrollmentTeamEmail" languagecode="1033" />
+  </displayname>
+  <introducedversion>1.0.0.0</introducedversion>
+  <iscustomizable>1</iscustomizable>
+  <isrequired>0</isrequired>
+  <secretstore>0</secretstore>
+  <type>100000000</type>
+</environmentvariabledefinition>
