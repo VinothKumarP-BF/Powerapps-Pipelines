@@ -1,0 +1,14 @@
+<bot schemaname="cr7a7_5545b9cb-fc06-4ec2-9556-64592bc88207">
+  <authenticationconfiguration>{
+  "$kind": "BotAuthenticationConfiguration",
+  "connectionName": "a9ca4b6b-7f6c-4587-b5e4-aae2e556c17b"
+}</authenticationconfiguration>
+  <authenticationmode>4</authenticationmode>
+  <authenticationtrigger>0</authenticationtrigger>
+  <iscustomizable>0</iscustomizable>
+  <language>1033</language>
+  <name>AI Assistant</name>
+  <runtimeprovider>0</runtimeprovider>
+  <template>powerpages-1.0.0</template>
+  <timezoneruleversionnumber>4</timezoneruleversionnumber>
+</bot>

@@ -1,0 +1,13 @@
+kind: KnowledgeSourceConfiguration
+source:
+  kind: AzureAISearchSource
+  triggerCondition: false
+  connectionReference: cr7a7_5545b9cb-fc06-4ec2-9556-64592bc88207.cr.SjkiX3jX
+  indexName: private-doc-index
+  selectFields:
+    - chunk_id
+    - parent_id
+    - chunk
+    - title
+    - text_vector
+  semanticConfigurationName: private-doc-index-semantic-configuration

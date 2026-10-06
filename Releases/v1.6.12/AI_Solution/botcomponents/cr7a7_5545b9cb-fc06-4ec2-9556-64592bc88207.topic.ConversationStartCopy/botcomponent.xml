@@ -1,0 +1,11 @@
+<botcomponent schemaname="cr7a7_5545b9cb-fc06-4ec2-9556-64592bc88207.topic.ConversationStartCopy">
+  <componenttype>9</componenttype>
+  <description>This system topic triggers when the agent receives an Activity indicating the beginning of a new conversation. If you do not want the agent to initiate the conversation, disable this topic.</description>
+  <iscustomizable>0</iscustomizable>
+  <name>Conversation Start (Copy)</name>
+  <parentbotid>
+    <schemaname>cr7a7_5545b9cb-fc06-4ec2-9556-64592bc88207</schemaname>
+  </parentbotid>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</botcomponent>
