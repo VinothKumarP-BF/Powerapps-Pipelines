@@ -43,7 +43,7 @@ jobs:
           export PATH="$PATH:$HOME/.dotnet/tools"
 
           pac auth create \
-            --url "${{ secrets.DEV2_ENV_URL }}" \
+            --url "${{ secrets.DEV_ENV_URL }}" \
             --applicationId "${{ secrets.CLIENT_ID }}" \
             --clientSecret "${{ secrets.CLIENT_SECRET }}" \
             --tenant "${{ secrets.TENANT_ID }}"
@@ -53,16 +53,16 @@ jobs:
           echo "RELEASE_FOLDER=Releases/v${{ github.event.inputs.release_version }}" >> $GITHUB_ENV
           
       ###################################################
-      # Devops_POC
+      # AI_Solution
       ####################################################
 
-      - name: Pack Devops_POC
+      - name: Pack AI_Solution
         run: |
           export PATH="$PATH:$HOME/.dotnet/tools"
 
           pac solution pack \
-            --folder $RELEASE_FOLDER/Devops_POC \
-            --zipfile /tmp/Devops_POC.zip \
+            --folder $RELEASE_FOLDER/AI_Solution \
+            --zipfile /tmp/AI_Solution.zip \
             --packagetype Managed
 
       - name: Import Devops_POC
@@ -70,8 +70,7 @@ jobs:
           export PATH="$PATH:$HOME/.dotnet/tools"
 
           pac solution import \
-            --path /tmp/Devops_POC.zip \
-            --settings-file "$GITHUB_WORKSPACE/yaml-config/deployment-settings/powerbi.json" \
+            --path /tmp/AI_Solution.zip \
             --async \
             --max-async-wait-time 60
       
