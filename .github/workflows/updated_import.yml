@@ -71,6 +71,7 @@ jobs:
 
           pac solution import \
             --path /tmp/AI_Solution.zip \
+            --settings-file "$GITHUB_WORKSPACE/yaml-config/deployment-settings/POC.json" \
             --async \
             --max-async-wait-time 60
       
