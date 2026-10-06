@@ -1,0 +1,6 @@
+kind: Variable
+name: NewVar
+scope: Conversation
+isExternalInitializationAllowed: true
+isOutputToExternalCallers: true
+initializationTimeoutInMilliseconds: 0

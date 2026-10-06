@@ -1,0 +1,29 @@
+kind: AdaptiveDialog
+beginDialog:
+  kind: OnRecognizedIntent
+  id: main
+  intent:
+    displayName: Thank you
+    includeInOnSelectIntent: false
+    triggerQueries:
+      - thanks
+      - thank you
+      - thanks so much
+      - ty
+
+  actions:
+    - kind: SendActivity
+      id: sendMessage_9iz6v7
+      activity: You're welcome.
+
+    - kind: InvokeConnectorAction
+      id: invokeConnectorAction_wW164I
+      output:
+        kind: SingleVariableOutputBinding
+        variable: Topic.KnowledgeAgentRetrieval
+
+      connectionReference: cr7a7_5545b9cb-fc06-4ec2-9556-64592bc88207.shared_azureaisearch.19b72c8714934e6184b8ec265341d739
+      connectionProperties:
+        mode: Maker
+
+      operationId: KnowledgeAgentRetrieval
