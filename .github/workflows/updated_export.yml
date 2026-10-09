@@ -79,11 +79,15 @@ jobs:
           git config user.name "github-actions"
           git config user.email "actions@github.com"
 
-          # "45821,45822,45830" -> "AB#45821 AB#45822 AB#45830" (links the commit to ADO work items)
-          AB_LINKS=$(echo "$WORK_ITEMS" | grep -oE '[0-9]+' | sed 's/^/AB#/' | tr '\n' ' ' || true)
+          COMMIT_MSG="Release v${{ github.event.inputs.release_version }} - ${WORK_ITEMS}"
+          echo "Commit message: $COMMIT_MSG"
 
           git add Releases/
 
-          git commit -m "Release v${{ github.event.inputs.release_version }} ${AB_LINKS}" || echo "No changes detected"
+          if git diff --cached --quiet; then
+            echo "No changes detected - nothing committed"
+          else
+            git commit -m "$COMMIT_MSG"
+          fi
 
           git push origin "${TARGET_BRANCH}"
