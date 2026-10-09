@@ -9,7 +9,7 @@ on:
         default: "8.17.1"
       work_items:
         description: "ADO work item IDs, comma separated. Example: 45821,45822,45830"
-        required: true
+        required: false
         type: string
 
 env:
@@ -22,6 +22,15 @@ jobs:
     runs-on: windows-latest
 
     steps:
+      - name: Validate Inputs
+        shell: bash
+        env:
+          RELEASE_VERSION: ${{ inputs.release_version }}
+          WORK_ITEMS: ${{ inputs.work_items }}
+        run: |
+          echo "release_version = '$RELEASE_VERSION'"
+          echo "work_items      = '$WORK_ITEMS'"
+          
       - name: Checkout Managed Solutions Branch
         uses: actions/checkout@v4
         with:
@@ -79,8 +88,10 @@ jobs:
           git config user.name "github-actions"
           git config user.email "actions@github.com"
 
-          COMMIT_MSG="Release v${{ github.event.inputs.release_version }} - ${WORK_ITEMS}"
-          echo "Commit message: $COMMIT_MSG"
+          COMMIT_MSG="Release v${RELEASE_VERSION}"
+          if [ -n "$WORK_ITEMS" ]; then
+            COMMIT_MSG="$COMMIT_MSG - $WORK_ITEMS"
+          fi
 
           git add Releases/
 
