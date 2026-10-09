@@ -15,6 +15,8 @@ on:
 env:
   TARGET_BRANCH: Managed_Solutions
   PAC_CLI_VERSION: "2.10.1"
+  RELEASE_VERSION: ${{ inputs.release_version }}
+  WORK_ITEMS: ${{ inputs.work_items }}
   SOLUTIONS: "AI_Solution"
 
 jobs:
@@ -22,15 +24,6 @@ jobs:
     runs-on: windows-latest
 
     steps:
-      - name: Validate Inputs
-        shell: bash
-        env:
-          RELEASE_VERSION: ${{ inputs.release_version }}
-          WORK_ITEMS: ${{ inputs.work_items }}
-        run: |
-          echo "release_version = '$RELEASE_VERSION'"
-          echo "work_items      = '$WORK_ITEMS'"
-          
       - name: Checkout Managed Solutions Branch
         uses: actions/checkout@v4
         with:
@@ -87,18 +80,19 @@ jobs:
         run: |
           git config user.name "github-actions"
           git config user.email "actions@github.com"
-
+          
           COMMIT_MSG="Release v${RELEASE_VERSION}"
           if [ -n "$WORK_ITEMS" ]; then
             COMMIT_MSG="$COMMIT_MSG - $WORK_ITEMS"
           fi
-
+          echo "Commit message: $COMMIT_MSG"
+          
+          # Always add a log line so every run produces a commit, even if the solutions did not change
+          echo "$(date -u '+%Y-%m-%d %H:%M:%S UTC') | v${RELEASE_VERSION} | ${WORK_ITEMS:-no user stories} | run ${GITHUB_RUN_ID}" \
+            >> "Releases/v${RELEASE_VERSION}/release-log.txt"
+          
           git add Releases/
-
-          if git diff --cached --quiet; then
-            echo "No changes detected - nothing committed"
-          else
-            git commit -m "$COMMIT_MSG"
-          fi
-
+          
+          git commit -m "$COMMIT_MSG"
+          
           git push origin "${TARGET_BRANCH}"
