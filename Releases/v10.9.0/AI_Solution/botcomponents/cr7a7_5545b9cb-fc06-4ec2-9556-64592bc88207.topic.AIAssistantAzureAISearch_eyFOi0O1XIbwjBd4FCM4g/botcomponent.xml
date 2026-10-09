@@ -1,0 +1,11 @@
+<botcomponent schemaname="cr7a7_5545b9cb-fc06-4ec2-9556-64592bc88207.topic.AIAssistantAzureAISearch_eyFOi0O1XIbwjBd4FCM4g">
+  <componenttype>16</componenttype>
+  <description>This knowledge source provides information about a pre-built Vector Index that can be used to improve agent response</description>
+  <iscustomizable>0</iscustomizable>
+  <name>Private-DOC</name>
+  <parentbotid>
+    <schemaname>cr7a7_5545b9cb-fc06-4ec2-9556-64592bc88207</schemaname>
+  </parentbotid>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</botcomponent>
