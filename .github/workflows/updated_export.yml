@@ -84,6 +84,6 @@ jobs:
 
           git add Releases/
 
-          git commit -m "Release v${{ github.event.inputs.release_version }}" || echo "No changes detected"
+          git commit -m "Release v${{ github.event.inputs.release_version }} ${AB_LINKS}" || echo "No changes detected"
 
           git push origin "${TARGET_BRANCH}"
