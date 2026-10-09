@@ -1,0 +1,26 @@
+kind: AdaptiveDialog
+beginDialog:
+  kind: OnRecognizedIntent
+  id: main
+  intent:
+    triggerQueries:
+      - test
+
+  actions:
+    - kind: ConditionGroup
+      id: conditionGroup_VJcLE1
+      conditions:
+        - id: conditionItem_thacNE
+          condition: =System.User.IsLoggedIn = true
+          actions:
+            - kind: SendActivity
+              id: sendActivity_fiCBUB
+              activity: logged in
+
+      elseActions:
+        - kind: SendActivity
+          id: sendActivity_hiZmkp
+          activity: not logged in
+
+inputType: {}
+outputType: {}

@@ -1,0 +1,25 @@
+kind: AdaptiveDialog
+beginDialog:
+  kind: OnConversationStart
+  id: main
+  actions:
+    - kind: SetVariable
+      id: setVariable_YAKeCH
+      variable: Global.Authenticated
+      value: =System.Activity.ChannelData.UserIsAuthenticated
+
+    - kind: SetVariable
+      id: setVariable_xwxqrI
+      variable: Global.DisplayName
+      value: =System.Activity.ChannelData.userFirstName
+
+    - kind: SetVariable
+      id: setVariable_EDzwQQ
+      variable: Global.Authenticated
+      value: =System.Activity.ChannelData.UserIsAuthenticated
+
+    - kind: ConditionGroup
+      id: conditionGroup_XcvNyN
+      conditions:
+        - id: conditionItem_w5Thaq
+          condition: =IsBlank(Global.Authenticated) && Global.DisplayName = Blank()
