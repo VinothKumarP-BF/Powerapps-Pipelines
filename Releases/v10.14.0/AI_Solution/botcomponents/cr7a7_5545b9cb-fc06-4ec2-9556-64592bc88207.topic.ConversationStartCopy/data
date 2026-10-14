@@ -1,0 +1,33 @@
+kind: AdaptiveDialog
+beginDialog:
+  kind: OnConversationStart
+  id: main
+  actions:
+    - kind: SetVariable
+      id: setVariable_JXdRWl
+      variable: Global.DisplayName
+      value: =System.Activity.ChannelData.UserDisplayName
+
+    - kind: SendActivity
+      id: sendActivity_zFCm6L
+      activity: Hi this is page  {Global.pageName}
+
+    - kind: ConditionGroup
+      id: conditionGroup_e1a4tF
+      conditions:
+        - id: conditionItem_VpCDbf
+          condition: =IsBlank(Global.DisplayName)
+          actions:
+            - kind: SendActivity
+              id: sendActivity_OBPxZv
+              activity: Hi, I'm {System.Bot.Name}! How can I help you today?
+
+      elseActions:
+        - kind: SendActivity
+          id: sendActivity_Vn7IMe
+          activity: Hi {Global.DisplayName} , I'm ! How can I help you oday?
+
+    - kind: SetVariable
+      id: setVariable_EDzwQQ
+      variable: Global.Authenticated
+      value: =System.Activity.ChannelData.UserIsAuthenticated

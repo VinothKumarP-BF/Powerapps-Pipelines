@@ -1,0 +1,189 @@
+kind: AdaptiveDialog
+beginDialog:
+  kind: OnUnknownIntent
+  id: main
+  priority: -1
+  actions:
+    - kind: SendActivity
+      id: sendActivity_63dwvq
+      activity: What do you want to know about{Global.NewVar}
+
+    - kind: SetVariable
+      id: setVariable_ZDbyjY
+      variable: Topic.auth1
+      value: |-
+        =Not(IsBlank(System.User.Id)) &&
+        System.User.Id <> "00000000-0000-0000-0000-000000000000"
+
+    - kind: ConditionGroup
+      id: conditionGroup_Od1IIK
+      conditions:
+        - id: conditionItem_BMpzb9
+          condition: =Topic.auth1 = true
+          actions:
+            - kind: SearchAndSummarizeContent
+              id: j7bONj
+              autoSend: false
+              variable: Topic.Bot_response
+              userInput: =System.Activity.Text
+              additionalInstructions: |-
+                Answer using only the provided search chunks.
+                Maximum 500 tokens (about 440-450 words).
+                Stop after that. No extra sections, no preamble.
+                If the chunks are not enough, say you do not have that in the public documents.
+                Do not use general knowledge.
+              fileSearchDataSource:
+                searchFilesMode:
+                  kind: DoNotSearchFiles
+
+              knowledgeSources:
+                kind: SearchSpecificKnowledgeSources
+                knowledgeSources:
+                  - cr7a7_5545b9cb-fc06-4ec2-9556-64592bc88207.topic.AIAssistantAzureAISearch_363hZD7iwXHST_ppe8nNM
+                  - cr7a7_5545b9cb-fc06-4ec2-9556-64592bc88207.topic.AIAssistantAzureAISearch_eyFOi0O1XIbwjBd4FCM4g
+
+            - kind: SetVariable
+              id: setVariable_ahMyK0
+              variable: Topic.CleanAns
+              value: |-
+                =With(
+                    {
+                        answerBody: First(
+                            Split(
+                                First(
+                                    Split(
+                                        Topic.Bot_response,
+                                        "[1]"
+                                    )
+                                ).Value,
+                                ": cite:"
+                            )
+                        ).Value
+                    },
+                    Trim(
+                        Substitute(
+                            Substitute(
+                                Substitute(
+                                    Substitute(
+                                        Substitute(
+                                            answerBody,
+                                            "[1]",
+                                            ""
+                                        ),
+                                        "[2]",
+                                        ""
+                                    ),
+                                    "[3]",
+                                    ""
+                                ),
+                                "[4]",
+                                ""
+                            ),
+                            "[5]",
+                            ""
+                        )
+                    )
+                )
+
+            - kind: ConditionGroup
+              id: conditionGroup_0X5jti
+              conditions:
+                - id: conditionItem_a93HYm
+                  condition: =IsBlank(Topic.Bot_response)
+                  actions:
+                    - kind: BeginDialog
+                      id: 0pITVg
+                      dialog: cr7a7_5545b9cb-fc06-4ec2-9556-64592bc88207.topic.Fallback
+
+                    - kind: BeginDialog
+                      id: ff88rB
+                      dialog: cr7a7_5545b9cb-fc06-4ec2-9556-64592bc88207.topic.Feedback
+
+              elseActions:
+                - kind: SendActivity
+                  id: sendActivity_EQ0nVb
+                  activity: "{Topic.CleanAns}"
+
+                - kind: BeginDialog
+                  id: 96ZFS0
+                  dialog: cr7a7_5545b9cb-fc06-4ec2-9556-64592bc88207.topic.Feedback
+
+      elseActions:
+        - kind: SearchAndSummarizeContent
+          id: Y3jqkf
+          autoSend: false
+          variable: Topic.Bot_response
+          userInput: =System.Activity.Text
+          additionalInstructions: |-
+            Answer using only the provided search chunks.
+            Maximum 200 tokens (about 140-150 words).
+            Stop after that. No extra sections, no preamble.
+            If the chunks are not enough, say you do not have that in the public documents.
+            Do not use general knowledge.
+          fileSearchDataSource:
+            searchFilesMode:
+              kind: DoNotSearchFiles
+
+          knowledgeSources:
+            kind: SearchSpecificKnowledgeSources
+            knowledgeSources:
+              - cr7a7_5545b9cb-fc06-4ec2-9556-64592bc88207.topic.AIAssistantAzureAISearch_363hZD7iwXHST_ppe8nNM
+
+        - kind: SetVariable
+          id: setVariable_4pAgs2
+          variable: Topic.CleanAns_pub
+          value: |-
+            =With(
+                {
+                    answerBody: First(
+                        Split(Topic.Bot_response, ": cite:")
+                    ).Value
+                },
+                Trim(
+                    Substitute(
+                        Substitute(
+                            Substitute(
+                                Substitute(
+                                    Substitute(
+                                        answerBody,
+                                        "[1]", ""
+                                    ),
+                                    "[2]", ""
+                                ),
+                                "[3]", ""
+                            ),
+                            "[4]", ""
+                        ),
+                        "[5]", ""
+                    )
+                )
+            )
+
+        - kind: ConditionGroup
+          id: conditionGroup_73OG0d
+          conditions:
+            - id: conditionItem_orS3fG
+              condition: =IsBlank(Topic.Bot_response)
+              actions:
+                - kind: BeginDialog
+                  id: UNhhVo
+                  dialog: cr7a7_5545b9cb-fc06-4ec2-9556-64592bc88207.topic.Fallback
+
+                - kind: BeginDialog
+                  id: MFTYGb
+                  dialog: cr7a7_5545b9cb-fc06-4ec2-9556-64592bc88207.topic.Feedback
+
+          elseActions:
+            - kind: SendActivity
+              id: sendActivity_Zb66ij
+              activity: "{Topic.CleanAns_pub}"
+
+            - kind: BeginDialog
+              id: ej8xZL
+              dialog: cr7a7_5545b9cb-fc06-4ec2-9556-64592bc88207.topic.Feedback
+
+    - kind: EndDialog
+      id: jGSaZp
+
+inputType: {}
+outputType: {}

@@ -1,0 +1,5 @@
+kind: Variable
+name: PageName
+scope: Conversation
+isExternalInitializationAllowed: true
+initializationTimeoutInMilliseconds: 100

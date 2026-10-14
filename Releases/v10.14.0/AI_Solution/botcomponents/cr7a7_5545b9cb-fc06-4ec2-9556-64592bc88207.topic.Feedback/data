@@ -1,0 +1,41 @@
+kind: AdaptiveDialog
+beginDialog:
+  kind: OnRecognizedIntent
+  id: main
+  intent: {}
+  actions:
+    - kind: SendActivity
+      id: sendActivity_PTsPgG
+      activity:
+        attachments:
+          - kind: AdaptiveCardTemplate
+            cardContent: |-
+              {
+                "type": "AdaptiveCard",
+                "$schema": "https://adaptivecards.io/schemas/adaptive-card.json",
+                "version": "1.5",
+                "body": [
+                  {
+                    "type": "TextBlock"
+                  }
+                ],
+                "actions": [
+                  {
+                    "type": "Action.Submit",
+                    "title": "👍 Helpful",
+                    "data": {
+                      "feedback": "positive"
+                    }
+                  },
+                  {
+                    "type": "Action.Submit",
+                    "title": "👎 Not Helpful",
+                    "data": {
+                      "feedback": "negative"
+                    }
+                  }
+                ]
+              }
+
+inputType: {}
+outputType: {}

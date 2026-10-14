@@ -1,0 +1,6 @@
+kind: Variable
+name: UserAuthDetails
+scope: User
+isExternalInitializationAllowed: false
+isOutputToExternalCallers: false
+initializationTimeoutInMilliseconds: 0

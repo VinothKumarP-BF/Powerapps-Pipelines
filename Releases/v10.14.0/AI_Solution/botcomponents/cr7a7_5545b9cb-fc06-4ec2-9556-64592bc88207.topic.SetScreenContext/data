@@ -1,0 +1,22 @@
+kind: AdaptiveDialog
+beginDialog:
+  kind: OnEventActivity
+  id: main
+  eventName: SetScreenContext
+  actions:
+    - kind: SetVariable
+      id: setVariable_1rDWvo
+      variable: Global.pageName
+      value: =Text(System.Activity.Value.pageName)
+
+    - kind: SetVariable
+      id: setVariable_F2GdcW
+      variable: Global.NewVar
+      value: =Global.pageName
+
+    - kind: SendActivity
+      id: sendActivity_yNd6q9
+      activity: The incoming page name i recieved is {Global.pageName}
+
+inputType: {}
+outputType: {}

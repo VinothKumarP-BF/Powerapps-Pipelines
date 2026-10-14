@@ -1,0 +1,10 @@
+<botcomponent schemaname="cr7a7_5545b9cb-fc06-4ec2-9556-64592bc88207.GlobalVariableComponent.UserDisplayName">
+  <componenttype>12</componenttype>
+  <iscustomizable>0</iscustomizable>
+  <name>UserDisplayName</name>
+  <parentbotid>
+    <schemaname>cr7a7_5545b9cb-fc06-4ec2-9556-64592bc88207</schemaname>
+  </parentbotid>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+</botcomponent>

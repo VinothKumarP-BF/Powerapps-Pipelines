@@ -1,0 +1,6 @@
+kind: Variable
+name: DisplayName
+scope: Conversation
+isExternalInitializationAllowed: true
+isOutputToExternalCallers: false
+initializationTimeoutInMilliseconds: 3000
