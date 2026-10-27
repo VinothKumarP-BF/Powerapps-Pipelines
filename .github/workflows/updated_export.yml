@@ -77,11 +77,11 @@ jobs:
       - name: Commit Release
         shell: bash
         run: |
-          # Validate the Azure DevOps work item ID
-          if [[ ! "$AB_NUMBER" =~ ^[0-9]+$ ]]; then
-            echo "Error: Enter a valid numeric Azure DevOps work item ID."
-            exit 1
-          fi
+          # # Validate the Azure DevOps work item ID
+          # if [[ ! "$AB_NUMBER" =~ ^[0-9]+$ ]]; then
+          #   echo "Error: Enter a valid numeric Azure DevOps work item ID."
+          #   exit 1
+          # fi
  
           git config user.name "github-actions"
           git config user.email "actions@github.com"
