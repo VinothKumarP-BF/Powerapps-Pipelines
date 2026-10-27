@@ -7,16 +7,15 @@ on:
         required: true
         type: string
         default: "8.17.1"
-      work_items:
-        description: "ADO work item IDs, comma separated. Example: 45821,45822,45830"
-        required: false
+      ab_number:
+        description: 'Enter Azure DevOps work item ID (numbers only)'
+        required: true
         type: string
-
 env:
   TARGET_BRANCH: Managed_Solutions
   PAC_CLI_VERSION: "2.10.1"
+  AB_NUMBER: ${{ inputs.ab_number }}
   RELEASE_VERSION: ${{ inputs.release_version }}
-  WORK_ITEMS: ${{ inputs.work_items }}
   SOLUTIONS: "AI_Solution"
 
 jobs:
@@ -78,21 +77,17 @@ jobs:
       - name: Commit Release
         shell: bash
         run: |
+          # Validate the Azure DevOps work item ID
+          if [[ ! "$AB_NUMBER" =~ ^[0-9]+$ ]]; then
+            echo "Error: Enter a valid numeric Azure DevOps work item ID."
+            exit 1
+          fi
+ 
           git config user.name "github-actions"
           git config user.email "actions@github.com"
-          
-          COMMIT_MSG="Release v${RELEASE_VERSION}"
-          if [ -n "$WORK_ITEMS" ]; then
-            COMMIT_MSG="$COMMIT_MSG - $WORK_ITEMS"
-          fi
-          echo "Commit message: $COMMIT_MSG"
-          
-          # Always add a log line so every run produces a commit, even if the solutions did not change
-          echo "$(date -u '+%Y-%m-%d %H:%M:%S UTC') | v${RELEASE_VERSION} | ${WORK_ITEMS:-no user stories} | run ${GITHUB_RUN_ID}" \
-            >> "Releases/v${RELEASE_VERSION}/release-log.txt"
-          
+ 
           git add Releases/
-          
-          git commit -m "$COMMIT_MSG"
-          
-          git push origin "${TARGET_BRANCH}"
+ 
+          git commit -m "AB#$AB_NUMBER Release v$RELEASE_VERSION" || echo "No changes detected"
+ 
+          git push origin "$TARGET_BRANCH"
