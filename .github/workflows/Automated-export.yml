@@ -54,7 +54,7 @@ jobs:
                 SOLUTIONS+=("$line")
                 ;;
             esac
-          done < .github/workflows/solutions.yml
+          done < yaml-config/.github/workflows/solutions.yml
           RELEASE_FOLDER="Releases/v${{ github.event.inputs.release_version }}"
           for SOLUTION in "${SOLUTIONS[@]}"; do
             rm -rf "$RELEASE_FOLDER/$SOLUTION"
