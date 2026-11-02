@@ -25,6 +25,12 @@ jobs:
         with:
           ref: ${{ env.TARGET_BRANCH }}
           fetch-depth: 0
+
+      - name: Checkout YAML
+        uses: actions/checkout@v4
+        with:
+          ref: yaml
+          path: yaml-config
  
       - name: Install PAC CLI
         run: |
