@@ -33,7 +33,7 @@ jobs:
  
       - name: Authenticate
         run: |
-          pac auth create --url ${{ secrets.CMDS_NEXTGENPEM_DEV_URL }} --applicationId ${{ vars.CMDS_NEXTGENPEM_DEV_PP_APPID }} --clientSecret ${{ secrets.CMDS_NEXTGENPEM_DEV_PP }} --tenant ${{ vars.CMDS_NEXTGENPEM_DEV_TENANTID }}
+          pac auth create --url ${{ secrets.DEV_ENV_URL }} --applicationId ${{ secrets.CLIENT_ID }} --clientSecret ${{ secrets.CLIENT_SECRET }} --tenant ${{ secrets.TENANT_ID }}
  
       - name: Export solutions
         shell: bash
