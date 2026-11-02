@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Group Provider Instructions</title>
+<style>
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: transparent;
+  }
+  body {
+    font-family: "Segoe UI", -apple-system, BlinkMacSystemFont, Arial, sans-serif;
+    font-size: 13px;
+    line-height: 1.5;
+    color: #1b1b1b;
+  }
+  .instructions-box {
+    padding: 16px 20px;
+    box-sizing: border-box;
+  }
+  .instructions-box h3 {
+    font-size: 13px;
+    font-weight: 600;
+    margin: 0 0 4px 0;
+  }
+  .instructions-box p {
+    margin: 0 0 12px 0;
+  }
+  .instructions-box p:last-child {
+    margin-bottom: 0;
+  }
+</style>
+</head>
+<body>
+  <div class="instructions-box">
+    <h3>Instructions:</h3>
+    <p>
+      List all active Title XIX Group Providers, and related information, on whose behalf you perform
+      services at the location identified in Section 4. This information will be cross referenced to
+      Affiliations identified by Group Providers to ensure consistency.
+    </p>
+    <p>If you do not perform services on behalf of any group practice, leave this section blank.</p>
+
+    <h3>Information Regarding Affiliations and Claims Processing:</h3>
+    <p>
+      Individual Providers may perform services on their own behalf and/or on behalf of a group
+      practice to which they are affiliated.
+    </p>
+    <p>
+      When performing services as a member of a group practice, the Individual Provider must be
+      identified as an affiliated provider by the enrolled Title XIX Group Provider and the Group
+      Provider must submit the claim. The Individual Provider is responsible for verifying with the
+      Group Provider that the affiliation has been indicated on the Group Provider's Title XIX provider
+      enrollment application. If the Group Provider has not identified the Individual Provider applicant,
+      claims submitted by the Group Provider for services performed by the Individual Provider will be
+      denied.
+    </p>
+    <p>
+      If a claim is submitted by an Individual Provider, the claim will be paid directly to the
+      Individual Provider regardless of any working relationship that Provider may have with a group
+      practice. The Individual Provider is then responsible for reporting payments as income for IRS
+      purposes.
+    </p>
+  </div>
+</body>
+</html>

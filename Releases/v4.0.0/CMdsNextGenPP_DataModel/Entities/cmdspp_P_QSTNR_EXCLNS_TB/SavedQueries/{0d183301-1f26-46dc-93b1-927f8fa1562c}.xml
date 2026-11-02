@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>0</CanBeDeleted>
+    <isquickfindquery>1</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>1</isdefault>
+    <savedqueryid>{0d183301-1f26-46dc-93b1-927f8fa1562c}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="cmdspp_p_qstnr_seq_num" select="1" icon="1" preview="1">
+        <row name="result" id="cmdspp_p_qstnr_exclns_tbid">
+          <cell name="cmdspp_p_qstnr_seq_num" width="300" />
+          <cell name="createdon" width="125" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>4</querytype>
+    <fetchxml>
+      <fetch version="1.0" mapping="logical">
+        <entity name="cmdspp_p_qstnr_exclns_tb">
+          <attribute name="cmdspp_p_qstnr_exclns_tbid" />
+          <attribute name="cmdspp_p_qstnr_seq_num" />
+          <attribute name="createdon" />
+          <order attribute="cmdspp_p_qstnr_seq_num" descending="false" />
+          <filter type="and">
+            <condition attribute="statecode" operator="eq" value="0" />
+          </filter>
+          <filter type="or" isquickfindfields="1">
+            <condition attribute="cmdspp_p_qstnr_seq_num" operator="like" value="{0}" />
+          </filter>
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.0</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Quick Find Active P_QSTNR_EXCLNS_TBS" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>

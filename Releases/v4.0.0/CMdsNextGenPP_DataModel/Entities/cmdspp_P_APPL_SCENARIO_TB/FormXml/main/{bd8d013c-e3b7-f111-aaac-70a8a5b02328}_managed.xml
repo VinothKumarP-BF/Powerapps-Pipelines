@@ -1,0 +1,354 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<forms xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <systemform>
+    <formid>{bd8d013c-e3b7-f111-aaac-70a8a5b02328}</formid>
+    <IntroducedVersion>3.1.0</IntroducedVersion>
+    <FormPresentation>1</FormPresentation>
+    <FormActivationState>1</FormActivationState>
+    <form headerdensity="HighWithControls" shownavigationbar="false">
+      <tabs>
+        <tab verticallayout="true" id="{2991AD5C-E92F-4FA2-BE4E-F3ADC7AF6869}" IsUserDefined="1" labelid="{07bd101b-09e6-45d2-8173-e1233f71dcca}">
+          <labels>
+            <label description="General" languagecode="1033" />
+          </labels>
+          <columns>
+            <column width="100%">
+              <sections>
+                <section showlabel="false" showbar="false" IsUserDefined="0" id="{28D2EEEB-7564-484B-BF48-31956199A598}" visible="false" labelid="{12d2ad3e-0cdb-4c56-b64b-297bdd55c4f2}">
+                  <labels>
+                    <label description="General" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{B0530117-F31E-4223-AC70-8D80FBA4D49D}" labelid="{a28e0b1f-b690-42ce-a348-d4f994c48db9}">
+                        <labels>
+                          <label description="id" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_recordid" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="cmdspp_recordid" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{3efa1329-42cc-460d-bdf8-82bbabba9473}" locklevel="0" colspan="1" rowspan="1" visible="false" labelid="{d483d828-6fbb-410d-81c1-b9a986feeb6f}">
+                        <labels>
+                          <label description="APP ID" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_p_appl_id_fk" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="cmdspp_p_appl_id_fk" disabled="true" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{0C8C9554-F136-496D-A7C5-4C9BBADF5B39}" labelid="{b444e629-41ab-4b9a-bce6-5324c6172a38}">
+                        <labels>
+                          <label description="Owner" languagecode="1033" />
+                        </labels>
+                        <control id="ownerid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="ownerid" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{2b82c964-a424-4639-8053-d0fa874266f5}" visible="true" labelid="{fd54c88d-a575-4cae-8010-475c073d8706}">
+                        <labels>
+                          <label description="scenario_type" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_scenariotype" classid="{4273edbd-ac1d-40d3-9fb2-095c621b552d}" datafieldname="cmdspp_scenariotype" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{7a980fa7-a41a-4685-a306-252bd97c6a30}" labelid="{0ef2f5aa-f6eb-4202-889e-368c0d2877dc}">
+                        <labels>
+                          <label description="scenario_sk" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_scenario_sk" classid="{c6d124ca-7eda-4a60-aea9-7fb8d318b68f}" datafieldname="cmdspp_scenario_sk" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+                <section name="null_section_13" id="d7db80a5-5253-4792-a70c-ce5ef6c54059" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="11" labelwidth="115" visible="false" labelid="{524763a1-41d5-472e-9d30-158535f3a448}">
+                  <labels>
+                    <label description="Site Visit Screening" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell locklevel="0" id="{168b564d-f705-45ac-9821-aaaf261b64df}" labelid="{18b9e896-e030-4aa9-ab23-3ec66098da7d}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                      <cell locklevel="0" id="{5278fbe5-645b-4b2c-b927-3d9bef311403}" labelid="{67b3949b-4199-4465-af34-99687e55e693}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{a50359dc-60fe-4e1b-af2e-8c76c7d08060}" locklevel="1" colspan="1" rowspan="1" labelid="{6d5d6b11-ac2d-4a61-b40b-2f8411804b5a}">
+                        <labels>
+                          <label description="Site Visit Required" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_site_visit_required" classid="{67FAC785-CD58-4F9F-ABB3-4B7DDC6ED5ED}" datafieldname="cmdspp_site_visit_required" disabled="true" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{0cc3937a-352c-42c8-b131-f832fa273f10}" locklevel="1" colspan="1" rowspan="1" labelid="{6290d0ed-591b-43ae-ba8d-d0921bced153}">
+                        <labels>
+                          <label description="Site Visit Task ID" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_sitevisit_taskid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="cmdspp_sitevisit_taskid" disabled="true" />
+                      </cell>
+                      <cell id="{67d8f82a-c499-4f35-967f-7e293e199b8b}" locklevel="1" colspan="1" rowspan="1" labelid="{e8ee4c72-37de-4af0-987c-18bb4b619515}">
+                        <labels>
+                          <label description="Screening Date" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_screening_date" classid="{5B773807-9FB2-42DB-97C3-7A91EFF8ADFF}" datafieldname="cmdspp_screening_date" disabled="true" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{0c8d3e9e-78e7-4c11-a7bb-0c2949a4eb6d}" locklevel="1" colspan="1" rowspan="1" labelid="{722c4d7c-a96d-47b2-bf99-73de197b747a}">
+                        <labels>
+                          <label description="Site Visit Outcome" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_sitevisit_outcome" classid="{3EF39988-22BB-4F0B-BBBE-64B5A3748AEE}" datafieldname="cmdspp_sitevisit_outcome" disabled="true" />
+                      </cell>
+                      <cell id="{5f90e435-053c-4032-82bb-31f821c89efc}" locklevel="1" colspan="1" rowspan="1" labelid="{42c0b149-7540-4c65-9fad-58dd92364a1a}">
+                        <labels>
+                          <label description="Site Visit Status" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_sitevisitstatus" classid="{3EF39988-22BB-4F0B-BBBE-64B5A3748AEE}" datafieldname="cmdspp_sitevisitstatus" disabled="true" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+                <section name="null_section_12" id="1500b318-c495-48ef-ae23-bd8eae6726db" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="11" labelwidth="115" visible="false" labelid="{ab897d07-84c7-4b4d-8826-db93ccfe6ab9}">
+                  <labels>
+                    <label description="Case Level" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell locklevel="0" id="{da94a29f-9cb5-4963-9c48-49eae02bcd39}" labelid="{901f5125-36cb-4cf2-bf7c-ee0f6d03e3fd}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                      <cell locklevel="0" id="{867424f1-a8f6-41fb-8317-857027ee738c}" labelid="{25ef771c-1ebf-4405-b913-3d612b8dbfbd}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{9d56ba06-1a01-45fd-873e-976bacf31eb3}" locklevel="0" colspan="1" rowspan="1" labelid="{192cac03-c889-4e7f-88db-e780697350b8}">
+                        <labels>
+                          <label description="Confidence Score" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_confidencescore" classid="{C6D124CA-7EDA-4A60-AEA9-7FB8D318B68F}" datafieldname="cmdspp_confidencescore" disabled="true" />
+                      </cell>
+                      <cell id="{9b803196-f3b7-47a4-a85e-7d615070ae70}" locklevel="0" colspan="1" rowspan="1" labelid="{da534494-4dec-46a3-94c5-9afcf9557913}">
+                        <labels>
+                          <label description="Decision Recommendation" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_recommendation" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="cmdspp_recommendation" disabled="true" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{3d6ae9d6-e4eb-4437-8c3f-0fdc826347e4}" locklevel="1" colspan="1" rowspan="1" labelid="{a2aeca32-6dd6-4e37-9ea8-59dd89b8e3db}">
+                        <labels>
+                          <label description="Feature" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_explanationfeatures" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="cmdspp_explanationfeatures" disabled="true" />
+                      </cell>
+                      <cell id="{389bb538-dcc0-4066-a0d0-f9eac03ab9bc}" locklevel="0" colspan="1" rowspan="1" labelid="{b566cd2d-1133-4cf0-a4bc-8cca769c2cd4}">
+                        <labels>
+                          <label description="Impact" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_explanationimportance" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="cmdspp_explanationimportance" disabled="true" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{cb956714-e9ea-476c-a125-997d97d419f9}" locklevel="0" colspan="1" rowspan="1" labelid="{f03ca87f-b31f-4b6b-bcef-7059d595084b}">
+                        <labels>
+                          <label description="Reason" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_explanationreason" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="cmdspp_explanationreason" disabled="true" />
+                      </cell>
+                      <cell id="{c43315bf-b8e2-4ca1-9928-83523b47c2ea}" locklevel="0" colspan="1" rowspan="1" labelid="{7a3fa331-7132-4725-93ed-83aa19391a56}">
+                        <labels>
+                          <label description="Risk category" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_riskcategory" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="cmdspp_riskcategory" disabled="true" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{15915e6d-42bf-45d7-9fb2-34e6b84c5e3a}" userspacer="true" showlabel="false" colspan="1" rowspan="1" labelid="{936084a1-c875-4f0c-b207-3935898e0236}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                      <cell locklevel="0" id="{9cf24f33-a3fb-4683-a599-3d9108e89dbc}" labelid="{6fe0954e-bcea-4002-9f12-bb8df8fef472}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+                <section name="OIG Approval section" id="a340781c-aa0b-4399-a8ad-052f795bc50a" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="11" labelwidth="115" labelid="{92b49e47-cc13-40b1-b07b-d91183dc2aaa}">
+                  <labels>
+                    <label description="OIG / LEIE Exclusion Screening" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{4a858eaa-337d-4ae9-83ee-4415ba9eafa3}" locklevel="0" colspan="1" rowspan="1" labelid="{5d1db489-5815-4044-ad00-fd1b93311a8a}">
+                        <labels>
+                          <label description="OIG Screening status" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_p_oigleie_screening_status" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="cmdspp_p_oigleie_screening_status" disabled="true" />
+                      </cell>
+                      <cell id="{fc42128e-110f-420d-a2c2-16a2ed5e49c3}" locklevel="0" colspan="1" rowspan="1" labelid="{6a70c4eb-9076-4234-9c99-03a8deb4a399}">
+                        <labels>
+                          <label description="Screening Time" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_oigleieverificationtimestamputc" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="cmdspp_oigleieverificationtimestamputc" disabled="true" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{7dfdb06a-d70d-4aad-bf4d-6ad2ec70701f}" locklevel="0" colspan="1" rowspan="1" labelid="{9438ad48-85ba-403c-a159-d3b0bb925684}">
+                        <labels>
+                          <label description="Exclusion Classification" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_oigleieexclusiontype" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="cmdspp_oigleieexclusiontype" disabled="true" />
+                      </cell>
+                      <cell id="{6f164df0-814e-4b51-8849-4d48e412f4e8}" locklevel="0" colspan="1" rowspan="1" labelid="{a8726c92-fd00-4438-98ce-a3500c5112eb}">
+                        <labels>
+                          <label description="Matched entity name" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_oigleiematchname" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="cmdspp_oigleiematchname" disabled="true" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{11080f30-1f30-444d-a258-f29bc63aa0da}" locklevel="0" colspan="1" rowspan="1" visible="true" labelid="{1911ae55-1d88-41eb-bc3e-010db1cd8bb8}">
+                        <labels>
+                          <label description="Approver" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_oigleieapprover" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="cmdspp_oigleieapprover" disabled="true" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{ecbbf10e-41c1-4496-85ce-bf39979adb04}" locklevel="0" colspan="2" rowspan="1" labelid="{83305877-3506-4eb9-a511-bfef62b16d28}" visible="true">
+                        <labels>
+                          <label description="Override Reason" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_p_oigleie_ovrd_reason" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="cmdspp_p_oigleie_ovrd_reason" disabled="true" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{1f21b4f3-96dd-4830-a184-7b982374305f}" locklevel="0" colspan="1" rowspan="1" labelid="{4b908c7e-6359-4007-bbef-6ade033ea0dd}">
+                        <labels>
+                          <label description="View File" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_p_oigleie_ovrd_filepath" classid="{71716B6C-711E-476C-8AB8-5D11542BFB47}" datafieldname="cmdspp_p_oigleie_ovrd_filepath" disabled="true" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{c6d66bd1-a6ee-469a-8287-f90d6322cd95}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Approve Override" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_p_oigleie_ovrd" classid="{67FAC785-CD58-4F9F-ABB3-4B7DDC6ED5ED}" datafieldname="cmdspp_p_oigleie_ovrd" disabled="false" />
+                      </cell>
+                      <cell id="{7f522b01-539b-49a4-9761-8b97e5872dde}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Approval Status" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_p_oigleie_ovrd_status" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="cmdspp_p_oigleie_ovrd_status" disabled="true" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{8583319e-02d6-4196-a6bd-96eab4fc35fa}" locklevel="0" colspan="2" rowspan="1" visible="true" labelid="{ba0cac15-66b1-4c63-a145-e434f8a4d0f3}">
+                        <labels>
+                          <label description="Approval Comment" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_oigleieapprovalreason" classid="{E0DECE4B-6FC8-4A8F-A065-082708572369}" datafieldname="cmdspp_oigleieapprovalreason" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{4ba28287-cc06-4af6-a5db-f752d5dd61be}" locklevel="0" colspan="1" rowspan="1" visible="false" labelid="{79b16680-cc60-4e6d-978b-9bb81c91784e}">
+                        <labels>
+                          <label description="esb_resp_oig_leie_mat" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_oigleiematchflag" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="cmdspp_oigleiematchflag" disabled="false" />
+                      </cell>
+                      <cell locklevel="0" id="{afb3ba9f-11a7-4ac2-b713-61371f3a8ca4}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+          </columns>
+        </tab>
+      </tabs>
+      <header id="{b49ff2b2-0dd2-4954-ae6a-f793db77b3ef}" celllabelposition="Top" columns="111" labelwidth="115" celllabelalignment="Left">
+        <rows>
+          <row>
+            <cell id="{f33dac7f-0242-4466-ab8e-bbdfc241be8e}" showlabel="false" labelid="{7fcbd68f-f36e-4ee8-908f-73f6aa1bdbe6}">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{165482db-78f6-47ee-934e-ae9185e5e4ae}" showlabel="false" labelid="{a3fb755a-39ea-4cca-bc2b-cd9669ea192d}">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{c243699c-6815-4da3-94a6-466ce65efdfe}" showlabel="false" labelid="{bee971f5-277a-4f1a-ab06-0662550a9939}">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+          </row>
+        </rows>
+      </header>
+      <footer id="{e35f1af7-cffd-4f2f-9e59-adab94faf86b}" celllabelposition="Top" columns="111" labelwidth="115" celllabelalignment="Left">
+        <rows>
+          <row>
+            <cell id="{b6ebdea2-71bc-46d0-8006-658e2a080820}" showlabel="false" labelid="{0ccfbf0f-a4f3-49f2-bfe9-6d31517fce7a}">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{2d516d34-1533-4e1d-8c82-58c85272e090}" showlabel="false" labelid="{b384b2a5-2ab2-4265-b104-560522b65533}">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{12a53b3b-7cf4-4501-b1ea-64c41734fe93}" showlabel="false" labelid="{96ed7857-c2ec-4ad4-8928-a25c51ed9bdd}">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+          </row>
+        </rows>
+      </footer>
+      <DisplayConditions Order="2" FallbackForm="true">
+        <Role Id="{66852B38-E6A5-F111-B8DE-70A8A5B02D28}" />
+        <Role Id="{537FE0F4-C7A5-F111-B8DE-70A8A5B02D74}" />
+        <Role Id="{627090ff-40a3-4053-8790-584edc5be201}" />
+        <Role Id="{119f245c-3cc8-4b62-b31c-d1a046ced15d}" />
+      </DisplayConditions>
+      <controlDescriptions />
+      <formLibraries>
+        <Library name="cmdspp_screening_web_res" libraryUniqueId="{35719350-f7e9-4fc1-98ad-e6b38b86f1cb}" />
+        <Library name="cmdspp_Enrollment_actions_resource" libraryUniqueId="{b4206d56-f2ed-4e1b-a17f-187b4b4348dc}" />
+      </formLibraries>
+    </form>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <LocalizedNames>
+      <LocalizedName description="OIG / LEIE Exclusion Screening" languagecode="1033" />
+    </LocalizedNames>
+    <Descriptions>
+      <Description description="A form for this entity." languagecode="1033" />
+    </Descriptions>
+  </systemform>
+</forms>

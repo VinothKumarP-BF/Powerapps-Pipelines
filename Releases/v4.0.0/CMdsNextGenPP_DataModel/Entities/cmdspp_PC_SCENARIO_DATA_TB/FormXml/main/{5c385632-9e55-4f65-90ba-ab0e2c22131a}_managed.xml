@@ -1,0 +1,503 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<forms xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <systemform>
+    <formid>{5c385632-9e55-4f65-90ba-ab0e2c22131a}</formid>
+    <IntroducedVersion>1.0</IntroducedVersion>
+    <FormPresentation>1</FormPresentation>
+    <FormActivationState>1</FormActivationState>
+    <form>
+      <tabs>
+        <tab verticallayout="true" id="{01ECD092-E20E-453D-9833-F22A5B7DD2DF}" IsUserDefined="1">
+          <labels>
+            <label description="General" languagecode="1033" />
+          </labels>
+          <columns>
+            <column width="100%">
+              <sections>
+                <section showlabel="false" showbar="false" IsUserDefined="0" id="{61F65F1A-DD57-444B-AB56-6E9782F6275D}">
+                  <labels>
+                    <label description="General" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{C8563E1E-209E-46BC-A6E9-3F386521DD49}">
+                        <labels>
+                          <label description="scenario_type" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_scenariotype" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="cmdspp_scenariotype" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{49EC49BC-4C0E-4109-A56F-BBF88BA1395D}">
+                        <labels>
+                          <label description="Owner" languagecode="1033" />
+                        </labels>
+                        <control id="ownerid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="ownerid" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{9e29011d-af9d-46a0-9860-93817f7a4efd}">
+                        <labels>
+                          <label description="id" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_record_id" classid="{c6d124ca-7eda-4a60-aea9-7fb8d318b68f}" datafieldname="cmdspp_record_id" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{50bb5b1d-e900-43c2-861f-b1a505714523}">
+                        <labels>
+                          <label description="esb_resp_overall_screening_stus" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_overallscreeningstatus" classid="{4273edbd-ac1d-40d3-9fb2-095c621b552d}" datafieldname="cmdspp_overallscreeningstatus" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{8869ec92-f371-46df-ac83-97035dcc9fb6}">
+                        <labels>
+                          <label description="esb_resp_ven_nam" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_vendorname" classid="{4273edbd-ac1d-40d3-9fb2-095c621b552d}" datafieldname="cmdspp_vendorname" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{300b5608-dd96-403d-9341-7ec09a1e3ae2}">
+                        <labels>
+                          <label description="esb_resp_ven_stus" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_vendorscreeningstatus" classid="{4273edbd-ac1d-40d3-9fb2-095c621b552d}" datafieldname="cmdspp_vendorscreeningstatus" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{ed899b92-ddd6-4a47-aaea-88cf127ba789}">
+                        <labels>
+                          <label description="esb_resp_ven_sanc_mat" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_vendorsanctionmatchflag" classid="{4273edbd-ac1d-40d3-9fb2-095c621b552d}" datafieldname="cmdspp_vendorsanctionmatchflag" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{9896025b-6689-4fd5-b4c4-d94599df12ac}">
+                        <labels>
+                          <label description="esb_resp_ven_adv_media_flg" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_vendoradversemediaflag" classid="{4273edbd-ac1d-40d3-9fb2-095c621b552d}" datafieldname="cmdspp_vendoradversemediaflag" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{e7182553-f634-4f20-b5a1-9ac7966d4bac}">
+                        <labels>
+                          <label description="esb_resp_ven_wtch_lst_flg" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_vendorwatchlistflag" classid="{4273edbd-ac1d-40d3-9fb2-095c621b552d}" datafieldname="cmdspp_vendorwatchlistflag" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{cef215c0-1da8-456f-8de5-3ed654b90cf0}">
+                        <labels>
+                          <label description="esb_resp_oig_leie_stus" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_oigleiescreeningstatus" classid="{4273edbd-ac1d-40d3-9fb2-095c621b552d}" datafieldname="cmdspp_oigleiescreeningstatus" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{7288a442-6e72-46a0-a906-e762b845137a}">
+                        <labels>
+                          <label description="esb_resp_oig_leie_mat" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_oigleiematchflag" classid="{4273edbd-ac1d-40d3-9fb2-095c621b552d}" datafieldname="cmdspp_oigleiematchflag" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{dc95cb4e-da2d-4e0d-96fc-d63ba783b836}">
+                        <labels>
+                          <label description="esb_resp_oig_leie_mat_nam" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_oigleiematchname" classid="{4273edbd-ac1d-40d3-9fb2-095c621b552d}" datafieldname="cmdspp_oigleiematchname" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{ebd63e66-554f-4439-8c58-e05b215b94fc}">
+                        <labels>
+                          <label description="esb_resp_oig_leie_excl_type" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_oigleieexclusiontype" classid="{4273edbd-ac1d-40d3-9fb2-095c621b552d}" datafieldname="cmdspp_oigleieexclusiontype" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{08fbee2b-0170-4fb1-9bf8-b2854a317b15}">
+                        <labels>
+                          <label description="esb_resp_oig_leie_ver_ts_utc" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_oigleieverificationtimestamputc" classid="{4273edbd-ac1d-40d3-9fb2-095c621b552d}" datafieldname="cmdspp_oigleieverificationtimestamputc" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{c34ed145-c2a6-4583-81cf-aef73870c252}">
+                        <labels>
+                          <label description="esb_resp_sam_exclusions_stus" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_samexclusionsstatus" classid="{4273edbd-ac1d-40d3-9fb2-095c621b552d}" datafieldname="cmdspp_samexclusionsstatus" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{69c4de15-e5d0-4348-8559-dbd88ab1499a}">
+                        <labels>
+                          <label description="esb_resp_sam_exclusions_mat" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_samexclusionsmatchflag" classid="{4273edbd-ac1d-40d3-9fb2-095c621b552d}" datafieldname="cmdspp_samexclusionsmatchflag" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{146f9585-f5e6-4181-a214-367533148f69}">
+                        <labels>
+                          <label description="esb_resp_nppes_stus" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_nppesstatus" classid="{4273edbd-ac1d-40d3-9fb2-095c621b552d}" datafieldname="cmdspp_nppesstatus" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{96f3bf70-ce89-4a9f-b5b9-9b53595c177c}">
+                        <labels>
+                          <label description="esb_resp_nppes_npi_stus" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_nppesnpistatus" classid="{4273edbd-ac1d-40d3-9fb2-095c621b552d}" datafieldname="cmdspp_nppesnpistatus" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{6eb1eb17-993b-4921-b616-70192e2b6edf}">
+                        <labels>
+                          <label description="esb_resp_nppes_taxonomy_mat" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_nppestaxonomymatchflag" classid="{4273edbd-ac1d-40d3-9fb2-095c621b552d}" datafieldname="cmdspp_nppestaxonomymatchflag" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{643e34e9-3b4e-4f08-a2b1-1a4eb8fe640d}">
+                        <labels>
+                          <label description="esb_resp_irs_tin_mat_stus" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_irstinmatchstatus" classid="{4273edbd-ac1d-40d3-9fb2-095c621b552d}" datafieldname="cmdspp_irstinmatchstatus" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{82631b6c-37c2-4f09-91c4-8a4a2b5083b6}">
+                        <labels>
+                          <label description="esb_resp_irs_tin_mat_tin_mat" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_irstinmatchflag" classid="{4273edbd-ac1d-40d3-9fb2-095c621b552d}" datafieldname="cmdspp_irstinmatchflag" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{64a73552-15c5-407a-bca4-7a963e02910e}">
+                        <labels>
+                          <label description="esb_resp_irs_tin_mat_nam_tin_mat" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_irstinmatchnameflag" classid="{4273edbd-ac1d-40d3-9fb2-095c621b552d}" datafieldname="cmdspp_irstinmatchnameflag" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{ce38eb69-1d18-406c-8275-2c0e517e6354}">
+                        <labels>
+                          <label description="esb_resp_pecos_stus" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_pecosstatus" classid="{4273edbd-ac1d-40d3-9fb2-095c621b552d}" datafieldname="cmdspp_pecosstatus" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{d796f766-78d8-4e24-b410-76c283e97543}">
+                        <labels>
+                          <label description="esb_resp_pecos_med_enrollment_stus" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_pecosmedicalenrollmentstatus" classid="{4273edbd-ac1d-40d3-9fb2-095c621b552d}" datafieldname="cmdspp_pecosmedicalenrollmentstatus" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{62fef543-4c76-4904-9703-882559e5bfc6}">
+                        <labels>
+                          <label description="esb_resp_pecos_reval_stus" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_pecosrevalidationstatus" classid="{4273edbd-ac1d-40d3-9fb2-095c621b552d}" datafieldname="cmdspp_pecosrevalidationstatus" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{7668c541-8315-420b-a876-a3d89bc66dc3}">
+                        <labels>
+                          <label description="esb_resp_clia_stus" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_cliastatus" classid="{4273edbd-ac1d-40d3-9fb2-095c621b552d}" datafieldname="cmdspp_cliastatus" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{1d229ba4-0433-43e3-9c37-3d58e9c40c74}">
+                        <labels>
+                          <label description="esb_resp_clia_cert_stus" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_cliacertificationstatus" classid="{4273edbd-ac1d-40d3-9fb2-095c621b552d}" datafieldname="cmdspp_cliacertificationstatus" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{d8ec004c-bebd-43c3-bcf9-eb42d6492c54}">
+                        <labels>
+                          <label description="esb_resp_clia_exp_date" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_cliaexpirationdate" classid="{4273edbd-ac1d-40d3-9fb2-095c621b552d}" datafieldname="cmdspp_cliaexpirationdate" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{75c01bcc-fcf9-4e12-8be6-acf850f6333a}">
+                        <labels>
+                          <label description="esb_resp_dea_stus" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_deastatus" classid="{4273edbd-ac1d-40d3-9fb2-095c621b552d}" datafieldname="cmdspp_deastatus" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{b125e1e8-1ab9-47a8-90c6-8c8259c0d76e}">
+                        <labels>
+                          <label description="esb_resp_dea_reg_stus" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_dearegistrationstatus" classid="{4273edbd-ac1d-40d3-9fb2-095c621b552d}" datafieldname="cmdspp_dearegistrationstatus" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{90bd4b58-9932-4e99-b037-f5d3ab43d1cb}">
+                        <labels>
+                          <label description="esb_resp_dea_exp_date" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_deaexpirationdate" classid="{4273edbd-ac1d-40d3-9fb2-095c621b552d}" datafieldname="cmdspp_deaexpirationdate" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{641911ad-2042-4760-9b1d-86801cbb8c48}">
+                        <labels>
+                          <label description="esb_resp_state_licensing_stus" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_statelicensingstatus" classid="{4273edbd-ac1d-40d3-9fb2-095c621b552d}" datafieldname="cmdspp_statelicensingstatus" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{b2a7377c-6ab4-4be7-8066-649ab1659ccf}">
+                        <labels>
+                          <label description="esb_resp_state_licensing_license_stus" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_statelicensinglicensestatus" classid="{4273edbd-ac1d-40d3-9fb2-095c621b552d}" datafieldname="cmdspp_statelicensinglicensestatus" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{5128d716-4e09-4977-b844-3d518b77616f}">
+                        <labels>
+                          <label description="esb_resp_state_licensing_disc_action_flg" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_statelicensingdisciplinaryaction" classid="{4273edbd-ac1d-40d3-9fb2-095c621b552d}" datafieldname="cmdspp_statelicensingdisciplinaryaction" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{ff7daf68-b00a-49e0-8cec-3a244f6037cf}">
+                        <labels>
+                          <label description="esb_resp_own_review_stus" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_ownershipreviewstatus" classid="{4273edbd-ac1d-40d3-9fb2-095c621b552d}" datafieldname="cmdspp_ownershipreviewstatus" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{d0219649-d62e-411e-84e6-3c72e9cee4a2}">
+                        <labels>
+                          <label description="esb_resp_own_review_own_layers" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_ownershipreviewlayers" classid="{c6d124ca-7eda-4a60-aea9-7fb8d318b68f}" datafieldname="cmdspp_ownershipreviewlayers" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{32be0108-7134-438e-9689-64a35fcf61d0}">
+                        <labels>
+                          <label description="esb_resp_own_review_cmplx_own_flg" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_complexownershipflag" classid="{4273edbd-ac1d-40d3-9fb2-095c621b552d}" datafieldname="cmdspp_complexownershipflag" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{163f56d1-c769-4dbb-a71a-123fe0fe6f3c}">
+                        <labels>
+                          <label description="esb_resp_own_review_crim_disclosure_flg" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_criminaldisclosureflag" classid="{4273edbd-ac1d-40d3-9fb2-095c621b552d}" datafieldname="cmdspp_criminaldisclosureflag" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{e00d1c18-add1-4e97-b222-1b85a30382c8}">
+                        <labels>
+                          <label description="esb_resp_own_review_shr_own_network_flg" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_sharedownershipnetworkflag" classid="{4273edbd-ac1d-40d3-9fb2-095c621b552d}" datafieldname="cmdspp_sharedownershipnetworkflag" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{48aac323-c863-4481-9a2c-7b150dc1ee77}">
+                        <labels>
+                          <label description="esb_resp_oig_leie_mat_2" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_oigleiematchflag2" classid="{4273edbd-ac1d-40d3-9fb2-095c621b552d}" datafieldname="cmdspp_oigleiematchflag2" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{498276f5-6110-4a3f-8e29-a16d8c8ce419}">
+                        <labels>
+                          <label description="esb_resp_sam_exclusions_mat_2" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_samexclusionsmatchflag2" classid="{4273edbd-ac1d-40d3-9fb2-095c621b552d}" datafieldname="cmdspp_samexclusionsmatchflag2" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{ec24bbcd-719f-4cc0-ac8c-d22ecd5f10dd}">
+                        <labels>
+                          <label description="esb_resp_nppes_taxonomy_mat_2" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_nppestaxonomymatchflag2" classid="{4273edbd-ac1d-40d3-9fb2-095c621b552d}" datafieldname="cmdspp_nppestaxonomymatchflag2" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{d578500f-299d-47a9-8ad0-12d94562d73e}">
+                        <labels>
+                          <label description="esb_resp_irs_tin_mat_tin_mat_2" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_irstinmatchflag2" classid="{4273edbd-ac1d-40d3-9fb2-095c621b552d}" datafieldname="cmdspp_irstinmatchflag2" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{045f4012-9d4d-46b1-968c-dcf38a7b0a1f}">
+                        <labels>
+                          <label description="ml_req_pecos_approved" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_pecosapprovedflag" classid="{4273edbd-ac1d-40d3-9fb2-095c621b552d}" datafieldname="cmdspp_pecosapprovedflag" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{5967a1a0-5073-4cb5-9246-3357a32e7076}">
+                        <labels>
+                          <label description="ml_req_clia_active" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_cliaactiveflag" classid="{4273edbd-ac1d-40d3-9fb2-095c621b552d}" datafieldname="cmdspp_cliaactiveflag" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{dba02855-0e33-467a-a541-6761c4de66d8}">
+                        <labels>
+                          <label description="ml_req_dea_valid" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_deavalidflag" classid="{4273edbd-ac1d-40d3-9fb2-095c621b552d}" datafieldname="cmdspp_deavalidflag" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{86a2406e-d7f5-4f67-8048-87397579d1f9}">
+                        <labels>
+                          <label description="ml_req_license_active" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_licenseactiveflag" classid="{4273edbd-ac1d-40d3-9fb2-095c621b552d}" datafieldname="cmdspp_licenseactiveflag" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{6795a24c-d561-4359-90b0-61603843996d}">
+                        <labels>
+                          <label description="ml_req_ownershiprisk_flg" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_ownershipriskflag" classid="{4273edbd-ac1d-40d3-9fb2-095c621b552d}" datafieldname="cmdspp_ownershipriskflag" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{45246728-6e41-4a56-9278-73528933ab8f}">
+                        <labels>
+                          <label description="esb_resp_own_review_own_layers_2" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_ownershipreviewlayers2" classid="{c6d124ca-7eda-4a60-aea9-7fb8d318b68f}" datafieldname="cmdspp_ownershipreviewlayers2" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{cb1ea97b-dc4d-4794-9a4a-dbf5e7f9a604}">
+                        <labels>
+                          <label description="esb_resp_pecos_med_enrollment_stus_2" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_pecosmedicalenrollmentstatus2" classid="{4273edbd-ac1d-40d3-9fb2-095c621b552d}" datafieldname="cmdspp_pecosmedicalenrollmentstatus2" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{22fdaee7-2fb2-4fbc-8b2c-843a438b2ad8}">
+                        <labels>
+                          <label description="esb_resp_state_licensing_license_stus_2" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_statelicensinglicensestatus2" classid="{4273edbd-ac1d-40d3-9fb2-095c621b552d}" datafieldname="cmdspp_statelicensinglicensestatus2" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{5bbd77d8-eede-403a-8b6b-22edc6a1bdab}">
+                        <labels>
+                          <label description="ml_resp_scoring_ts_utc" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_scoringtimestamputc" classid="{4273edbd-ac1d-40d3-9fb2-095c621b552d}" datafieldname="cmdspp_scoringtimestamputc" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{4d136369-5cd7-4b56-8f3b-428e36413a0c}">
+                        <labels>
+                          <label description="ml_resp_confidence_score" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_confidencescore" classid="{c6d124ca-7eda-4a60-aea9-7fb8d318b68f}" datafieldname="cmdspp_confidencescore" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{786e536a-b2b5-4bcd-9372-38a3d184e65c}">
+                        <labels>
+                          <label description="ml_resp_rsk_category" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_riskcategory" classid="{4273edbd-ac1d-40d3-9fb2-095c621b552d}" datafieldname="cmdspp_riskcategory" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{8efea4f8-d8fa-44e3-998b-737add749412}">
+                        <labels>
+                          <label description="ml_resp_recom" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_recommendation" classid="{4273edbd-ac1d-40d3-9fb2-095c621b552d}" datafieldname="cmdspp_recommendation" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{0c870bdb-e04c-4cec-8a3b-e2e8c994ea16}">
+                        <labels>
+                          <label description="ml_resp_expl_feat" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_explainedfeatures" classid="{4273edbd-ac1d-40d3-9fb2-095c621b552d}" datafieldname="cmdspp_explainedfeatures" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{92b00bda-e890-456d-9cde-427d71f1eee3}">
+                        <labels>
+                          <label description="ml_resp_expl_imp" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_explanationimportance" classid="{4273edbd-ac1d-40d3-9fb2-095c621b552d}" datafieldname="cmdspp_explanationimportance" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{070fafd7-8eae-4be6-bf72-fdc9e8859e94}">
+                        <labels>
+                          <label description="ml_resp_expl_rsn" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_explanationreason" classid="{4273edbd-ac1d-40d3-9fb2-095c621b552d}" datafieldname="cmdspp_explanationreason" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+          </columns>
+        </tab>
+      </tabs>
+    </form>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <LocalizedNames>
+      <LocalizedName description="Information" languagecode="1033" />
+    </LocalizedNames>
+    <Descriptions>
+      <Description description="A form for this entity." languagecode="1033" />
+    </Descriptions>
+  </systemform>
+</forms>

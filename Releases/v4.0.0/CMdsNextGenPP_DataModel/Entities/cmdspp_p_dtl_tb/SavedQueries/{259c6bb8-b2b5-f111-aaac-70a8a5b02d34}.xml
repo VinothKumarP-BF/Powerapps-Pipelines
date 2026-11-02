@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>1</isdefault>
+    <savedqueryid>{259c6bb8-b2b5-f111-aaac-70a8a5b02d34}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="cmdspp_p_sys_id" select="1" icon="1" preview="1">
+        <row name="result" id="cmdspp_p_dtl_tbid">
+          <cell name="cmdspp_p_sys_id" width="200" />
+          <cell name="a_2723818ac57d45e3812cc75e786e0b73.cmdspp_providerdetails" width="322" />
+          <cell name="a_2723818ac57d45e3812cc75e786e0b73.cmdspp_p_pvd_typ_lkp" width="307" />
+          <cell name="cmdspp_p_enrolment_type" width="131" />
+          <cell name="a_aa4e90d42f2e49579e89f510626b9486.cmdspp_riskcategory" width="268" />
+          <cell name="a_aa4e90d42f2e49579e89f510626b9486.cmdspp_sitevisit_taskid" width="290" />
+          <cell name="a_aa4e90d42f2e49579e89f510626b9486.cmdspp_sitevisitstatus" width="280" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>0</querytype>
+    <fetchxml>
+      <fetch version="1.0" output-format="xml-platform" mapping="logical">
+        <entity name="cmdspp_p_dtl_tb">
+          <attribute name="cmdspp_p_sys_id" />
+          <attribute name="cmdspp_p_dtl_tbid" />
+          <attribute name="cmdspp_p_enrolment_type" />
+          <link-entity alias="a_2723818ac57d45e3812cc75e786e0b73" name="cmdspp_p_idt_inf_dtl" to="cmdspp_p_idtinf_lkup" from="cmdspp_p_idt_inf_dtlid" link-type="outer" visible="false">
+            <attribute name="cmdspp_p_pvd_typ_lkp" />
+            <attribute name="cmdspp_providerdetails" />
+          </link-entity>
+          <link-entity alias="a_aa4e90d42f2e49579e89f510626b9486" name="cmdspp_p_appl_scenario_tb" to="cmdspp_p_application_scenario_id" from="cmdspp_p_appl_scenario_tbid" link-type="inner">
+            <attribute name="cmdspp_riskcategory" />
+            <attribute name="cmdspp_sitevisit_taskid" />
+            <attribute name="cmdspp_sitevisitstatus" />
+            <filter type="and">
+              <condition attribute="cmdspp_sitevisitstatus" operator="eq" value="5" />
+            </filter>
+          </link-entity>
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.0.0</IntroducedVersion>
+    <roledisplayconditionsxml>
+      <DisplayConditions>
+        <Role Id="{66852B38-E6A5-F111-B8DE-70A8A5B02D28}" />
+        <Role Id="{537FE0F4-C7A5-F111-B8DE-70A8A5B02D74}" />
+      </DisplayConditions>
+    </roledisplayconditionsxml>
+    <LocalizedNames>
+      <LocalizedName description="Site Visit Completed" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>
