@@ -1,0 +1,72 @@
+name: Export Automated Managed Solutions
+ 
+on:
+  workflow_dispatch:
+    inputs:
+      release_version:
+        description: Release version
+        required: true
+        default: "0.0.0.0"
+      ab_number:
+        description: AB number
+        required: true
+ 
+env:
+  TARGET_BRANCH: CMdS-DEV2
+  PAC_CLI_VERSION: 2.9.3
+ 
+jobs:
+  export:
+    runs-on: cmds-nextgenprv-lower-runner-ghhosted
+    environment: DEV
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ env.TARGET_BRANCH }}
+          fetch-depth: 0
+ 
+      - name: Install PAC CLI
+        run: |
+          dotnet tool update --global Microsoft.PowerApps.CLI.Tool --version ${{ env.PAC_CLI_VERSION }} || dotnet tool install --global Microsoft.PowerApps.CLI.Tool --version ${{ env.PAC_CLI_VERSION }}
+          echo "$HOME/.dotnet/tools" >> $GITHUB_PATH
+ 
+      - name: Authenticate
+        run: |
+          pac auth create --url ${{ secrets.CMDS_NEXTGENPEM_DEV_URL }} --applicationId ${{ vars.CMDS_NEXTGENPEM_DEV_PP_APPID }} --clientSecret ${{ secrets.CMDS_NEXTGENPEM_DEV_PP }} --tenant ${{ vars.CMDS_NEXTGENPEM_DEV_TENANTID }}
+ 
+      - name: Export solutions
+        shell: bash
+        run: |
+          SOLUTIONS=()
+          while IFS= read -r line; do
+            line="${line#"${line%%[![:space:]]*}"}"
+            case "$line" in
+              -*)
+                line="${line#-}"
+                line="${line#"${line%%[![:space:]]*}"}"
+                SOLUTIONS+=("$line")
+                ;;
+            esac
+          done < .github/power-platform/solutions.yml
+          RELEASE_FOLDER="Releases/v${{ github.event.inputs.release_version }}"
+          for SOLUTION in "${SOLUTIONS[@]}"; do
+            rm -rf "$RELEASE_FOLDER/$SOLUTION"
+            pac solution export --name "$SOLUTION" --path "/tmp/${SOLUTION}.zip" --managed --overwrite true
+            pac solution unpack --zipfile "/tmp/${SOLUTION}.zip" --folder "$RELEASE_FOLDER/$SOLUTION" --packagetype Managed
+          done
+ 
+      - name: Commit and push
+        shell: bash
+        run: |
+          AB_NUMBER="${{ github.event.inputs.ab_number }}"
+          RELEASE_VERSION="${{ github.event.inputs.release_version }}"
+          if [[ ! "$AB_NUMBER" =~ ^[0-9]+$ ]]; then
+            echo "ab_number must be digits only"
+            exit 1
+          fi
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add Releases/
+          git commit -m "AB#$AB_NUMBER Release v$RELEASE_VERSION" || echo "No changes detected"
+          git push origin $TARGET_BRANCH
