@@ -1,0 +1,141 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<forms xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <systemform>
+    <formid>{2f7ee117-adb9-f111-aaae-70a8a5b028cc}</formid>
+    <IntroducedVersion>3.1.1</IntroducedVersion>
+    <FormPresentation>1</FormPresentation>
+    <FormActivationState>1</FormActivationState>
+    <form headerdensity="HighWithControls">
+      <tabs>
+        <tab verticallayout="true" id="{d25b8567-1194-4084-8470-620de490fe06}" IsUserDefined="1" labelid="{4752d9e6-d1bb-457c-bf7a-e8d99e94e027}">
+          <labels>
+            <label description="General" languagecode="1033" />
+          </labels>
+          <columns>
+            <column width="100%">
+              <sections>
+                <section showlabel="false" showbar="false" IsUserDefined="0" id="{9e64a01c-03ab-49a1-a8aa-6ed84547c278}" labelid="{f285fb87-99db-45b5-8b6f-d79c8f5d6667}" visible="false">
+                  <labels>
+                    <label description="General" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{3779bd5d-d0f7-4361-846f-57934e483f8f}" labelid="{22ddce0c-e6a2-420c-a319-cbed2a1d9429}" visible="false">
+                        <labels>
+                          <label description="Owner" languagecode="1033" />
+                        </labels>
+                        <control id="ownerid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="ownerid" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{5743eb54-4898-456b-bddb-e4dfe73a3148}" locklevel="0" colspan="1" rowspan="1" labelid="{5d4e5715-fa66-4889-a034-428441743a5a}">
+                        <labels>
+                          <label description="Specialty Code" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_pc_specl_cd" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="cmdspp_pc_specl_cd" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{e0bfa663-53a9-4372-be8e-7e9f66a82089}" locklevel="0" colspan="1" rowspan="1" labelid="{16241832-a719-4249-bacb-97055a0af8a7}" visible="true">
+                        <labels>
+                          <label description="Specialty Description" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_pc_specl_desc" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="cmdspp_pc_specl_desc" disabled="false" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+                <section name="Taxonomy" id="dda27797-e727-4011-90f5-af99e31fe8b6" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115" labelid="{2b90d83c-6167-4294-9f7c-57eb0e861d94}">
+                  <labels>
+                    <label description="Taxonomy" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row />
+                    <row>
+                      <cell locklevel="0" id="{c1d38eef-6d9f-46d7-ab59-ad2ae61312dd}" rowspan="4" colspan="1" auto="false" labelid="{071281d7-c217-4d7d-a7ed-248273280e8b}" showlabel="false">
+                        <labels>
+                          <label description="New SG control 1790428788882" languagecode="1033" />
+                        </labels>
+                        <control indicationOfSubgrid="true" id="Subgrid_new_1" classid="{E7A81278-8635-4D9E-8D4D-59480B391C5B}">
+                          <parameters>
+                            <RecordsPerPage>4</RecordsPerPage>
+                            <AutoExpand>Fixed</AutoExpand>
+                            <EnableQuickFind>false</EnableQuickFind>
+                            <EnableViewPicker>false</EnableViewPicker>
+                            <EnableChartPicker>true</EnableChartPicker>
+                            <ChartGridMode>All</ChartGridMode>
+                            <RelationshipName>cmdspp_pc_txnmy_codes_tb_p_speciality_fk_cmdspp_pc_specl_pvdty_map</RelationshipName>
+                            <TargetEntityType>cmdspp_pc_txnmy_codes_tb</TargetEntityType>
+                            <ViewId>{A27791CC-37B2-4C38-AF2C-C3CD652C910C}</ViewId>
+                            <ViewIds>{A27791CC-37B2-4C38-AF2C-C3CD652C910C}</ViewIds>
+                          </parameters>
+                        </control>
+                      </cell>
+                    </row>
+                    <row />
+                    <row />
+                    <row />
+                  </rows>
+                </section>
+              </sections>
+            </column>
+          </columns>
+        </tab>
+      </tabs>
+      <header id="{df29f7e2-0b7a-4bc6-81a1-e93048501933}" celllabelposition="Top" columns="111" labelwidth="115" celllabelalignment="Left">
+        <rows>
+          <row>
+            <cell id="{9433d5a1-4213-4c34-a304-8cd3cb79b705}" showlabel="false" labelid="{f6db439b-e6db-4959-aad8-433059e37ac7}">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{6bcc21e2-f50b-490d-a4d9-b1dd5aa271f3}" showlabel="false" labelid="{e8f496b4-491d-403b-9c78-6119b5e87af2}">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{2b5c74e4-5d17-40fd-8176-daaad0c15121}" showlabel="false" labelid="{53d96ffd-a941-4edc-a7d0-6cf5f4ca359b}">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+          </row>
+        </rows>
+      </header>
+      <footer id="{b3b89571-8c87-46f7-9a44-c0b210210498}" celllabelposition="Top" columns="111" labelwidth="115" celllabelalignment="Left">
+        <rows>
+          <row>
+            <cell id="{3e317836-d6da-4843-9faa-b2a500af2e24}" showlabel="false" labelid="{27d268a5-7edc-40bc-9556-9b1caa50b9ad}">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{18ba0381-35fe-46e3-89b5-e486eaca85ba}" showlabel="false" labelid="{6c356023-c7bb-48ac-b846-53874029f834}">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{5ef882e6-849b-4efb-b274-da747bab5f44}" showlabel="false" labelid="{1fd65655-031b-4727-85ed-095beb7ee99e}">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+          </row>
+        </rows>
+      </footer>
+      <DisplayConditions Order="1" FallbackForm="true">
+        <Role Id="{627090ff-40a3-4053-8790-584edc5be201}" />
+        <Role Id="{119f245c-3cc8-4b62-b31c-d1a046ced15d}" />
+      </DisplayConditions>
+    </form>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <LocalizedNames>
+      <LocalizedName description="Specialty and Taxonomy Maintenance" languagecode="1033" />
+    </LocalizedNames>
+    <Descriptions>
+      <Description description="Configure and maintain specialty and taxonomy catalog" languagecode="1033" />
+    </Descriptions>
+  </systemform>
+</forms>

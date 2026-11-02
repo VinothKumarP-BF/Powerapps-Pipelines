@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>0</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>1</isdefault>
+    <savedqueryid>{8937954a-71ca-4c26-ac89-d5945394c313}</savedqueryid>
+    <layoutxml>
+      <grid name="cmdspp_g_usr_inbox_tbs" jump="cmdspp_g_message_sk" select="1" icon="1" preview="0">
+        <row name="cmdspp_g_usr_inbox_tb" id="cmdspp_g_usr_inbox_tbid">
+          <cell name="cmdspp_g_message_sk" width="300" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>64</querytype>
+    <fetchxml>
+      <fetch version="1.0" mapping="logical">
+        <entity name="cmdspp_g_usr_inbox_tb">
+          <attribute name="cmdspp_g_usr_inbox_tbid" />
+          <attribute name="cmdspp_g_message_sk" />
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.0</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="G_USR_INBOX_TB Lookup View" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>

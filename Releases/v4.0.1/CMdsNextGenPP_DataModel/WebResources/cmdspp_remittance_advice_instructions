@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+
+   
+</head>
+<body>
+
+    <div class="info-section">
+        <p>
+            Providers are able to download and print paper RAs from the secure
+            Provider Message Center on the MMIS Health Enterprise Portal.
+            Enrolling Providers must complete the information in the Register
+            for Web Access section at the end of the application process to
+            obtain a password and user ID for secure access to the Portal.
+        </p>
+
+        <p>
+            You can enroll later by using the ERA Enrollment link off the
+            provider portal home page after you have your login credentials.
+        </p>
+    </div>
+
+</body>
+</html>

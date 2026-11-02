@@ -1,0 +1,12 @@
+2026-11-02T12:24:31Z export started
+2026-11-02T12:24:31Z release folder Releases/v4.0.1
+2026-11-02T12:24:31Z CMdsNextGenPP_Core started
+2026-11-02T12:25:01Z CMdsNextGenPP_Core export succeeded
+2026-11-02T12:25:03Z CMdsNextGenPP_Core unpack succeeded
+2026-11-02T12:25:03Z CMdsNextGenPP_DataModel started
+2026-11-02T12:26:25Z CMdsNextGenPP_DataModel export succeeded
+2026-11-02T12:26:27Z CMdsNextGenPP_DataModel unpack succeeded
+2026-11-02T12:26:27Z export finished
+2026-11-02T12:26:27Z commit started
+2026-11-02T12:26:27Z AB#313123 Release v4.0.1
+2026-11-02T12:26:27Z push starting

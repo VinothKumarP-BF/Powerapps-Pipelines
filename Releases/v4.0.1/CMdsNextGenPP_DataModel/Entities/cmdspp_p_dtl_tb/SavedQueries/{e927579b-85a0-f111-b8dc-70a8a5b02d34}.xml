@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>0</isdefault>
+    <savedqueryid>{e927579b-85a0-f111-b8dc-70a8a5b02d34}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="cmdspp_p_sys_id" select="1" icon="1" preview="1">
+        <row name="result" id="cmdspp_p_dtl_tbid">
+          <cell name="cmdspp_p_sys_id" width="200" />
+          <cell name="a_c57a3c178da446ccb00fdce7458f2885.cmdspp_providerdetails" width="322" />
+          <cell name="a_c57a3c178da446ccb00fdce7458f2885.cmdspp_p_pvd_typ_lkp" width="307" />
+          <cell name="cmdspp_p_enrolment_type" width="142" />
+          <cell name="cmdspp_p_appln_status" width="124" />
+          <cell name="a_c2edff929af945498a0535302417dc30.cmdspp_riskcategory" width="268" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>0</querytype>
+    <fetchxml>
+      <fetch version="1.0" output-format="xml-platform" mapping="logical">
+        <entity name="cmdspp_p_dtl_tb">
+          <attribute name="cmdspp_p_sys_id" />
+          <attribute name="cmdspp_p_dtl_tbid" />
+          <attribute name="cmdspp_p_enrolment_type" />
+          <attribute name="cmdspp_p_appln_status" />
+          <link-entity alias="a_c57a3c178da446ccb00fdce7458f2885" name="cmdspp_p_idt_inf_dtl" to="cmdspp_p_idtinf_lkup" from="cmdspp_p_idt_inf_dtlid" link-type="outer" visible="false">
+            <attribute name="cmdspp_providerdetails" />
+            <attribute name="cmdspp_p_pvd_typ_lkp" />
+          </link-entity>
+          <link-entity alias="a_c2edff929af945498a0535302417dc30" name="cmdspp_p_appl_scenario_tb" to="cmdspp_p_application_scenario_id" from="cmdspp_p_appl_scenario_tbid" link-type="outer" visible="false">
+            <attribute name="cmdspp_riskcategory" />
+          </link-entity>
+          <filter type="and">
+            <condition attribute="cmdspp_p_appln_status" operator="eq" value="3" />
+          </filter>
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.0.0.0</IntroducedVersion>
+    <roledisplayconditionsxml>
+      <DisplayConditions>
+        <Role Id="{66852B38-E6A5-F111-B8DE-70A8A5B02D28}" />
+        <Role Id="{537FE0F4-C7A5-F111-B8DE-70A8A5B02D74}" />
+      </DisplayConditions>
+    </roledisplayconditionsxml>
+    <LocalizedNames>
+      <LocalizedName description="My Work" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>

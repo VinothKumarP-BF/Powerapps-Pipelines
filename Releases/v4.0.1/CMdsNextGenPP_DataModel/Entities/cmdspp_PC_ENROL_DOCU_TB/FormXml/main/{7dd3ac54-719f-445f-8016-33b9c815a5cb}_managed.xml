@@ -1,0 +1,193 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<forms xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <systemform>
+    <formid>{7dd3ac54-719f-445f-8016-33b9c815a5cb}</formid>
+    <IntroducedVersion>1.0</IntroducedVersion>
+    <FormPresentation>1</FormPresentation>
+    <FormActivationState>1</FormActivationState>
+    <form headerdensity="HighWithControls">
+      <tabs>
+        <tab verticallayout="true" id="{ac978f21-4221-4284-99bc-67b8ff2a0934}" IsUserDefined="1">
+          <labels>
+            <label description="General" languagecode="1033" />
+          </labels>
+          <columns>
+            <column width="100%">
+              <sections>
+                <section showlabel="false" showbar="false" IsUserDefined="0" id="{a1ebb64d-8206-4e73-afde-769c1c5a20af}" name="Filed name">
+                  <labels>
+                    <label description="General" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{4960dfbf-ba89-4d17-be1d-0874b932b2c5}" visible="false">
+                        <labels>
+                          <label description="DCUMENT NAME" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_p_docu_id_sk" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="cmdspp_p_docu_id_sk" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{3be268e5-ca46-419e-a2ca-ff2edfd14ef4}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Document Name" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_p_docu_list_fk" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="cmdspp_p_docu_list_fk" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{aec8d0b2-a944-4365-911f-f2551ff45a65}" locklevel="1" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="E-Sign" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_p_e_signature" classid="{67FAC785-CD58-4F9F-ABB3-4B7DDC6ED5ED}" datafieldname="cmdspp_p_e_signature" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{48396fbe-45d8-4358-a697-6edb021f78fe}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Document Status" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_documentstatus" classid="{3EF39988-22BB-4F0B-BBBE-64B5A3748AEE}" datafieldname="cmdspp_documentstatus" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{c4103e90-7347-44ba-8b31-46d167e0c334}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Upload File" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_uploadfile" classid="{0A7FF475-B016-4687-9CE5-042BFDBD6519}" datafieldname="cmdspp_uploadfile" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{defd3731-3220-4baa-a502-b082905bd631}" locklevel="0" colspan="1" rowspan="1" showlabel="false" availableforphone="false" visible="false">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_p_file_nam" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="cmdspp_p_file_nam" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{a87d03f6-1b14-4c4a-bdf2-d6e44f913121}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Condition" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_p_cond" classid="{67FAC785-CD58-4F9F-ABB3-4B7DDC6ED5ED}" datafieldname="cmdspp_p_cond" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{f9253a01-8f35-4e22-a12a-9778b47677b3}" visible="false">
+                        <labels>
+                          <label description="Owner" languagecode="1033" />
+                        </labels>
+                        <control id="ownerid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="ownerid" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{9f750d09-3af0-4324-bdc1-c1656759b086}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_field_fk" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="cmdspp_field_fk" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{858d6c93-11d3-487a-beeb-94496ed569b5}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Operator" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_p_operator" classid="{3EF39988-22BB-4F0B-BBBE-64B5A3748AEE}" datafieldname="cmdspp_p_operator" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{f976b014-2113-4210-8293-4c17658cce65}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Value" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_p_value" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="cmdspp_p_value" disabled="false" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+          </columns>
+        </tab>
+      </tabs>
+      <header id="{2709e534-378b-4e19-bc29-f1cbfb7a2832}" celllabelposition="Top" columns="111" labelwidth="115" celllabelalignment="Left">
+        <rows>
+          <row>
+            <cell id="{59ea7492-b392-4062-9c8a-72320ae5914b}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{98c478cb-9f00-481a-bc8f-05fb4e68e1b0}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{835d6c6b-6b74-4a3a-bcd2-28085894a80e}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+          </row>
+        </rows>
+      </header>
+      <footer id="{7687e897-87f0-4be7-9c96-37c8689a0f5e}" celllabelposition="Top" columns="111" labelwidth="115" celllabelalignment="Left">
+        <rows>
+          <row>
+            <cell id="{e339c287-cb1a-40fe-96de-972a57abfab9}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{6ea81ff0-727c-4417-9cc0-4eafaef5db54}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{a36a07d6-dd53-42d0-acb1-8c0972151141}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+          </row>
+        </rows>
+      </footer>
+      <DisplayConditions Order="0" FallbackForm="true">
+        <Everyone />
+      </DisplayConditions>
+      <formLibraries>
+        <Library name="cmdspp_FormConfigWebResource" libraryUniqueId="{34d6dba2-605c-414b-b401-07a09e6a5cdf}" />
+        <Library name="cr834_toggleUploadFileControl" libraryUniqueId="{793fe005-0d31-45b3-a82a-24fa869ec7af}" />
+      </formLibraries>
+      <events>
+        <event name="onchange" application="false" active="false" attribute="cmdspp_uploadfile">
+          <Handlers>
+            <Handler functionName="extractFileName" libraryName="cmdspp_FormConfigWebResource" handlerUniqueId="{db923e0d-b6f2-4cb2-b0fc-a1b62610a78b}" enabled="true" parameters="" passExecutionContext="true" />
+          </Handlers>
+        </event>
+        <event name="onchange" application="false" active="false" attribute="cmdspp_p_e_signature">
+          <Handlers>
+            <Handler functionName="toggleFileControl" libraryName="cr834_toggleUploadFileControl" handlerUniqueId="{9d3376b6-4a14-4923-af09-1267a3f1e271}" enabled="true" parameters="" passExecutionContext="true" />
+          </Handlers>
+        </event>
+        <event name="onload" application="false" active="false">
+          <Handlers>
+            <Handler functionName="toggleFileControl" libraryName="cr834_toggleUploadFileControl" handlerUniqueId="{66324206-78e5-4d37-94f2-bc7e371858eb}" enabled="true" parameters="" passExecutionContext="true" />
+          </Handlers>
+        </event>
+      </events>
+    </form>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <LocalizedNames>
+      <LocalizedName description="Information" languagecode="1033" />
+    </LocalizedNames>
+    <Descriptions>
+      <Description description="A form for this entity." languagecode="1033" />
+    </Descriptions>
+  </systemform>
+</forms>

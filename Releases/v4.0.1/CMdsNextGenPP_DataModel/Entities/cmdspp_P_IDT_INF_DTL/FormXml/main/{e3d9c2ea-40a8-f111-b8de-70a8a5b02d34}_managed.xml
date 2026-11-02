@@ -1,0 +1,176 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<forms xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <systemform>
+    <formid>{e3d9c2ea-40a8-f111-b8de-70a8a5b02d34}</formid>
+    <IntroducedVersion>2.0.3.0</IntroducedVersion>
+    <FormPresentation>1</FormPresentation>
+    <FormActivationState>1</FormActivationState>
+    <form headerdensity="HighReadOnlyValues" shownavigationbar="false">
+      <tabs>
+        <tab verticallayout="true" id="{037d8186-2376-4e5e-9704-f0f4d26449c7}" IsUserDefined="1" visible="false" labelid="{615bc475-98b8-475a-b4ff-9bfba468f63d}">
+          <labels>
+            <label description="General" languagecode="1033" />
+          </labels>
+          <columns>
+            <column width="100%">
+              <sections>
+                <section showlabel="false" showbar="false" IsUserDefined="0" id="{2ed3c53e-778d-4855-98f3-e71fda97be78}" labelid="{994a0071-78fc-4821-847d-7902f06a7acf}">
+                  <labels>
+                    <label description="General" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{72ba6262-4ca0-4f63-8d3f-f2e113cc0a6a}" labelid="{825235a8-aa2b-444c-b7cb-c670e0a3a246}">
+                        <labels>
+                          <label description="ID" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_p_idt_inf_dtl_sk" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="cmdspp_p_idt_inf_dtl_sk" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{2177a27b-8abd-4ffa-a591-8e53981c40e1}" labelid="{190a2b2e-83e1-4ed7-98cd-be0d4dd9cb03}">
+                        <labels>
+                          <label description="Owner" languagecode="1033" />
+                        </labels>
+                        <control id="ownerid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="ownerid" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{e1cd891d-ad21-4b25-8665-93b48352ab6c}" locklevel="0" colspan="1" rowspan="1" labelid="{ab378965-0102-4397-a4cd-265d5b6ffe4b}">
+                        <labels>
+                          <label description="Provider Type" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_p_pvd_typ_lkp" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="cmdspp_p_pvd_typ_lkp" disabled="false" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+          </columns>
+        </tab>
+        <tab name="EFT_Information" id="a14b7cfe-7f52-4bd4-88af-eb4444b74005" IsUserDefined="0" locklevel="0" showlabel="true" labelid="{43728166-3a2b-4658-a142-4f9f6d389a7a}">
+          <labels>
+            <label description="EFT Information" languagecode="1033" />
+          </labels>
+          <columns>
+            <column width="100%">
+              <sections>
+                <section name="eft_section_o" id="a807b9ac-c7ea-421d-852e-5e34e032ed13" IsUserDefined="0" locklevel="0" showlabel="false" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Top" columns="11" labelwidth="115">
+                  <labels>
+                    <label description="EFT" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell locklevel="0" id="{4035c91c-dbfb-41ae-9ded-b792b344cb2a}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                      <cell locklevel="0" id="{1d2ad566-0e45-4e44-be54-740ebe260325}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{22c3f8c4-3e66-4940-ac31-f26fdbd59ed5}" locklevel="0" colspan="2" rowspan="1">
+                        <labels>
+                          <label description="Do you wish to participate in Electronic Funds Transfer Payments?" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_p_eft_ind" classid="{F9A8A302-114E-466A-B582-6771B2AE0D92}" datafieldname="cmdspp_p_eft_ind" disabled="true" uniqueid="{a0c72950-8b7a-40eb-ab9f-fa0d8a0f33b0}" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+          </columns>
+        </tab>
+      </tabs>
+      <header id="{7579e79c-a96d-423d-a262-e0af4825ae05}" celllabelposition="Top" columns="111" labelwidth="115" celllabelalignment="Left">
+        <rows>
+          <row>
+            <cell id="{9fcd6b2c-a2e6-4050-8f8e-585ffd96306f}" showlabel="false" labelid="{ab79b3e4-cfae-4ffe-a143-0541ad10a6dd}">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{186cdeca-4b7f-4a31-acd9-f3a0898a3762}" showlabel="false" labelid="{37040ba8-48df-424c-83d5-fb7774f87ab4}">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{c0a569f8-c858-4eaa-8b78-26de24052bc3}" showlabel="false" labelid="{17789616-0e03-49ee-9802-b3d02c0c9f61}">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+          </row>
+        </rows>
+      </header>
+      <footer id="{12566d88-4e18-42bb-bab4-8399adf58f79}" celllabelposition="Top" columns="111" labelwidth="115" celllabelalignment="Left">
+        <rows>
+          <row>
+            <cell id="{ec609a81-5487-4057-a082-81fa7bc33885}" showlabel="false" labelid="{9c3a4dc0-94ce-462a-a668-3b2435a130fc}">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{79bb0a31-2f07-4023-b8e7-68442c8f3c0f}" showlabel="false" labelid="{96209744-8c01-4a8b-bd6d-b1ca478c0124}">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{73be6916-1dff-4dcc-871d-fc66b91f07f2}" showlabel="false" labelid="{992a1b0d-96a3-4dae-a970-29e49f822cd5}">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+          </row>
+        </rows>
+      </footer>
+      <DisplayConditions Order="1" FallbackForm="true">
+        <Role Id="{66852B38-E6A5-F111-B8DE-70A8A5B02D28}" />
+        <Role Id="{537FE0F4-C7A5-F111-B8DE-70A8A5B02D74}" />
+        <Role Id="{627090ff-40a3-4053-8790-584edc5be201}" />
+        <Role Id="{119f245c-3cc8-4b62-b31c-d1a046ced15d}" />
+      </DisplayConditions>
+      <formLibraries>
+        <Library name="cmdspp_screening_web_res" libraryUniqueId="{0e42a9c2-b875-4a5e-b6e2-a980ad3bf75b}" />
+      </formLibraries>
+      <controlDescriptions>
+        <controlDescription forControl="{a0c72950-8b7a-40eb-ab9f-fa0d8a0f33b0}">
+          <customControl id="{67FAC785-CD58-4F9F-ABB3-4B7DDC6ED5ED}">
+            <parameters>
+              <datafieldname>cmdspp_p_eft_ind</datafieldname>
+            </parameters>
+          </customControl>
+          <customControl formFactor="0" name="MscrmControls.FieldControls.ToggleControl">
+            <parameters>
+              <value type="TwoOptions">cmdspp_p_eft_ind</value>
+            </parameters>
+          </customControl>
+          <customControl formFactor="2" name="MscrmControls.FieldControls.ToggleControl">
+            <parameters>
+              <value type="TwoOptions">cmdspp_p_eft_ind</value>
+            </parameters>
+          </customControl>
+          <customControl formFactor="1" name="MscrmControls.FieldControls.ToggleControl">
+            <parameters>
+              <value type="TwoOptions">cmdspp_p_eft_ind</value>
+            </parameters>
+          </customControl>
+        </controlDescription>
+      </controlDescriptions>
+    </form>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <LocalizedNames>
+      <LocalizedName description="EFTForm" languagecode="1033" />
+    </LocalizedNames>
+    <Descriptions>
+      <Description description="A form for this entity." languagecode="1033" />
+    </Descriptions>
+  </systemform>
+</forms>

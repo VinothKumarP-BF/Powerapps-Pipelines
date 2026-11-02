@@ -1,0 +1,208 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<forms xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <systemform>
+    <formid>{7758b959-49a4-f111-b8dd-70a8a5b028cc}</formid>
+    <IntroducedVersion>1.8.26.1</IntroducedVersion>
+    <FormPresentation>1</FormPresentation>
+    <FormActivationState>1</FormActivationState>
+    <form headerdensity="HighWithControls">
+      <tabs>
+        <tab verticallayout="true" id="{70bd7260-2453-46a2-a7a4-fb97e3f142b6}" IsUserDefined="1" labelid="{73447a22-49ea-4014-9aa8-345a2bc9187f}">
+          <labels>
+            <label description="General" languagecode="1033" />
+          </labels>
+          <columns>
+            <column width="100%">
+              <sections>
+                <section showlabel="false" showbar="false" IsUserDefined="0" id="{da84783e-8161-41ae-8571-7a036358d9ae}" visible="false" labelid="{d4105b01-6965-4d9f-b2ce-6c87b41521e3}">
+                  <labels>
+                    <label description="General" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{c371137d-8c95-44b4-bb6f-03c5e175b832}" labelid="{efd04576-bf27-4076-b7c8-02ef6b163650}">
+                        <labels>
+                          <label description="Screening ID" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_p_name" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="cmdspp_p_name" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+                <section name="null_section_4" id="5a5ba924-9c58-4941-8e0d-157b271ab02e" IsUserDefined="0" locklevel="0" showlabel="false" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115" labelid="{649162c0-701a-45f6-a9fb-34e788f70b48}">
+                  <labels>
+                    <label description="New Section" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell locklevel="0" id="{88314e9a-1e6a-4388-bf97-e903ea107c30}" labelid="{e517eb82-1e91-4d02-9920-55c764ec80ca}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{af879046-f787-4a32-8b7e-2368180f05d4}" locklevel="0" colspan="1" rowspan="1" labelid="{f84211f6-8286-4a3f-9ec4-fd306b7b9fe7}">
+                        <labels>
+                          <label description="Risk Score" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_p_overallriskscore" classid="{C6D124CA-7EDA-4A60-AEA9-7FB8D318B68F}" datafieldname="cmdspp_p_overallriskscore" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell locklevel="0" id="{49f21f3d-c1c8-4673-afc9-612cbbc4a3b4}" labelid="{3cf0ddf8-5f7f-453b-b65a-8c8234ec5b15}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                    </row>
+                    <row />
+                    <row />
+                    <row />
+                    <row>
+                      <cell id="{e3352ccc-fceb-434a-a64b-7fef7f6de1d6}" locklevel="0" colspan="1" rowspan="1" labelid="{f703c19a-13b3-4590-b1eb-bdc0efb1ccc2}">
+                        <labels>
+                          <label description="Risk Level" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_p_risklevel" classid="{3EF39988-22BB-4F0B-BBBE-64B5A3748AEE}" datafieldname="cmdspp_p_risklevel" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{5debd26a-0c22-4df0-9894-48d1e6340dc0}" locklevel="0" colspan="1" rowspan="1" labelid="{e85536b5-d516-4706-8138-eb39bdc4fa5f}">
+                        <labels>
+                          <label description="p_file" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_p_file" classid="{0A7FF475-B016-4687-9CE5-042BFDBD6519}" datafieldname="cmdspp_p_file" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{89fbdd3a-ce1b-4cf6-bc97-a7e64865bc88}" locklevel="0" colspan="1" rowspan="1" labelid="{828a8a8b-e461-4317-8bb2-ec018f8d72da}">
+                        <labels>
+                          <label description="p_override_oig" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_p_override_oig" classid="{67FAC785-CD58-4F9F-ABB3-4B7DDC6ED5ED}" datafieldname="cmdspp_p_override_oig" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{632841a4-e864-46db-ab51-1005b1d90b58}" locklevel="0" colspan="1" rowspan="4" showlabel="false" labelid="{279d0494-1df5-4649-9dd3-98fc498126f1}">
+                        <labels>
+                          <label description="p_airesultsnarrative" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_p_airesultsnarrative" classid="{E0DECE4B-6FC8-4A8F-A065-082708572369}" datafieldname="cmdspp_p_airesultsnarrative" disabled="false" />
+                      </cell>
+                    </row>
+                    <row />
+                    <row />
+                    <row />
+                  </rows>
+                </section>
+                <section name="null_section_5" id="d0935363-4e73-4b80-8d86-794fee1b631c" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115" labelid="{fa49b811-2257-45ac-9755-640bec0cbda2}">
+                  <labels>
+                    <label description="OIG Screening result" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row />
+                    <row>
+                      <cell id="{18a01d7a-e6a0-4971-a8de-e2a8b3e5cd67}" locklevel="0" colspan="1" rowspan="1" labelid="{0258a3ea-4414-466b-b170-72753470b95d}">
+                        <labels>
+                          <label description="OIG Status" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_p_oigstatus" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="cmdspp_p_oigstatus" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{6db68a3d-4209-47de-b8de-8ea18d0f9522}" locklevel="0" colspan="1" rowspan="1" labelid="{69ea4964-18fb-4df8-b1ab-916309d60aa1}">
+                        <labels>
+                          <label description="OIG Severity" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_p_oigseverity" classid="{3EF39988-22BB-4F0B-BBBE-64B5A3748AEE}" datafieldname="cmdspp_p_oigseverity" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{27217534-7602-454d-b0b3-1574f531c260}" locklevel="0" colspan="1" rowspan="1" labelid="{5a6506cd-7993-4ece-b6f2-5ed71d4a3971}">
+                        <labels>
+                          <label description="OIG Details" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_p_oigdetails" classid="{E0DECE4B-6FC8-4A8F-A065-082708572369}" datafieldname="cmdspp_p_oigdetails" disabled="false" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+                <section name="null_section_10" id="cd6db1bd-2447-4717-b1e3-4735e47b3559" IsUserDefined="0" locklevel="0" showlabel="false" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115" labelid="{2c717c56-041c-45cb-b291-e9bbc13e982d}">
+                  <labels>
+                    <label description="New Section" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row />
+                    <row>
+                      <cell id="{87aae0db-7be5-4fc2-96e0-b9910edc9d5e}" locklevel="0" colspan="1" rowspan="1" labelid="{1a943fa4-c673-444f-861b-27f60a08651b}">
+                        <labels>
+                          <label description="AI Summary Note" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_p_aisummarynote" classid="{E0DECE4B-6FC8-4A8F-A065-082708572369}" datafieldname="cmdspp_p_aisummarynote" disabled="false" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+          </columns>
+        </tab>
+      </tabs>
+      <header id="{d6c734dd-328a-4bd3-925f-3794b02a727b}" celllabelposition="Top" columns="111" labelwidth="115" celllabelalignment="Left">
+        <rows>
+          <row>
+            <cell id="{e5494e14-54fb-45cc-9dab-51b49a7adfd1}" showlabel="false" labelid="{85a1d002-fbbe-4ed9-8a89-1bbf97cf5b66}">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{0d05b723-08f9-4dc9-a802-899708c78b99}" showlabel="false" labelid="{eede8a24-9cbc-4f85-829a-001303728489}">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{062e0f7c-9b8c-45b5-8fb3-744c500ca7e2}" showlabel="false" labelid="{0fa194d6-eafe-44e9-82c5-eab040fe82bd}">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+          </row>
+        </rows>
+      </header>
+      <footer id="{41946852-5523-47f3-ba7e-60b3383a5f63}" celllabelposition="Top" columns="111" labelwidth="115" celllabelalignment="Left">
+        <rows>
+          <row>
+            <cell id="{7c3c6267-3d61-4e5c-a2a4-aa3d5ab6f0b2}" showlabel="false" labelid="{c8217670-4c9a-4886-ad1b-e9e2a9a842d4}">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{d5ef37e3-a162-4354-8abb-6ebb5b9ff22b}" showlabel="false" labelid="{65c0efb3-03ee-4ef7-b1ed-1bc32c7d0b3a}">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{970ff21e-4aa1-44d2-8779-38ccc2496a87}" showlabel="false" labelid="{f2ab604c-cf88-49b1-8bdb-d3fb8a621be0}">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+          </row>
+        </rows>
+      </footer>
+      <DisplayConditions Order="1" FallbackForm="true">
+        <Role Id="{627090ff-40a3-4053-8790-584edc5be201}" />
+        <Role Id="{119f245c-3cc8-4b62-b31c-d1a046ced15d}" />
+      </DisplayConditions>
+    </form>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <LocalizedNames>
+      <LocalizedName description="PC_OIG_Form" languagecode="1033" />
+    </LocalizedNames>
+    <Descriptions>
+      <Description description="A form for this entity." languagecode="1033" />
+    </Descriptions>
+  </systemform>
+</forms>
