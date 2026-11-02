@@ -44,23 +44,41 @@ jobs:
       - name: Export solutions
         shell: bash
         run: |
-          SOLUTIONS=()
-          while IFS= read -r line; do
-            line="${line#"${line%%[![:space:]]*}"}"
-            case "$line" in
-              -*)
-                line="${line#-}"
-                line="${line#"${line%%[![:space:]]*}"}"
-                SOLUTIONS+=("$line")
-                ;;
-            esac
-          done < yaml-config/.github/workflows/solutions.yml
+          set -e
+      
+          SOLUTIONS_FILE="yaml-config/.github/workflows/solutions.yml"
           RELEASE_FOLDER="Releases/v${{ github.event.inputs.release_version }}"
-          for SOLUTION in "${SOLUTIONS[@]}"; do
+      
+          mkdir -p "$RELEASE_FOLDER"
+      
+          while IFS= read -r line; do
+            # Remove CR from Windows line endings
+            line=$(echo "$line" | tr -d '\r')
+      
+            # Skip comments and empty lines
+            [[ -z "$line" || "$line" =~ ^# ]] && continue
+      
+            # Remove leading "- "
+            SOLUTION=$(echo "$line" | sed 's/^[[:space:]]*-[[:space:]]*//')
+      
+            echo "Exporting: $SOLUTION"
+      
+            ZIP_FILE="${RUNNER_TEMP}/${SOLUTION}.zip"
+      
             rm -rf "$RELEASE_FOLDER/$SOLUTION"
-            pac solution export --name "$SOLUTION" --path "/tmp/${SOLUTION}.zip" --managed --overwrite true
-            pac solution unpack --zipfile "/tmp/${SOLUTION}.zip" --folder "$RELEASE_FOLDER/$SOLUTION" --packagetype Managed
-          done
+      
+            pac solution export \
+              --name "$SOLUTION" \
+              --path "$ZIP_FILE" \
+              --managed \
+              --overwrite true
+      
+            pac solution unpack \
+              --zipfile "$ZIP_FILE" \
+              --folder "$RELEASE_FOLDER/$SOLUTION" \
+              --packagetype Managed
+      
+          done < "$SOLUTIONS_FILE"
  
       - name: Commit and push
         shell: bash
