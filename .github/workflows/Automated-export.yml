@@ -11,6 +11,9 @@ on:
         description: AB number
         required: true
  
+permissions:
+  contents: write
+ 
 env:
   TARGET_BRANCH: Managed_Solutions
   PAC_CLI_VERSION: 2.9.3
@@ -25,7 +28,7 @@ jobs:
         with:
           ref: ${{ env.TARGET_BRANCH }}
           fetch-depth: 0
-
+ 
       - name: Checkout YAML
         uses: actions/checkout@v4
         with:
@@ -33,11 +36,13 @@ jobs:
           path: yaml-config
  
       - name: Install PAC CLI
+        shell: bash
         run: |
           dotnet tool update --global Microsoft.PowerApps.CLI.Tool --version ${{ env.PAC_CLI_VERSION }} || dotnet tool install --global Microsoft.PowerApps.CLI.Tool --version ${{ env.PAC_CLI_VERSION }}
           echo "$HOME/.dotnet/tools" >> $GITHUB_PATH
  
       - name: Authenticate
+        shell: bash
         run: |
           pac auth create --url ${{ secrets.DEV_ENV_URL }} --applicationId ${{ secrets.CLIENT_ID }} --clientSecret ${{ secrets.CLIENT_SECRET }} --tenant ${{ secrets.TENANT_ID }}
  
@@ -45,52 +50,46 @@ jobs:
         shell: bash
         run: |
           set -e
-      
           SOLUTIONS_FILE="yaml-config/.github/workflows/solutions.yml"
           RELEASE_FOLDER="Releases/v${{ github.event.inputs.release_version }}"
-      
           mkdir -p "$RELEASE_FOLDER"
-      
-          while IFS= read -r line; do
-            # Remove CR from Windows line endings
-            line=$(echo "$line" | tr -d '\r')
-      
-            # Skip comments and empty lines
-            [[ -z "$line" || "$line" =~ ^# ]] && continue
-      
-            # Remove leading "- "
-            SOLUTION=$(echo "$line" | sed 's/^[[:space:]]*-[[:space:]]*//')
-      
-            echo "Exporting: $SOLUTION"
-      
+          LOG_FILE="$RELEASE_FOLDER/export-log.txt"
+          echo "$(date -u +%Y-%m-%dT%H:%M:%SZ) export started" >> "$LOG_FILE"
+          echo "$(date -u +%Y-%m-%dT%H:%M:%SZ) release folder $RELEASE_FOLDER" >> "$LOG_FILE"
+          while IFS= read -r line || [[ -n "$line" ]]; do
+            line="${line%$'\r'}"
+            trim="${line#"${line%%[![:space:]]*}"}"
+            case "$trim" in
+              ""|\#*) continue ;;
+            esac
+            SOLUTION=$(printf '%s\n' "$trim" | sed 's/^- //')
+            echo "Exporting $SOLUTION"
+            echo "$(date -u +%Y-%m-%dT%H:%M:%SZ) $SOLUTION started" >> "$LOG_FILE"
             ZIP_FILE="${RUNNER_TEMP}/${SOLUTION}.zip"
-      
             rm -rf "$RELEASE_FOLDER/$SOLUTION"
-      
-            pac solution export \
-              --name "$SOLUTION" \
-              --path "$ZIP_FILE" \
-              --managed \
-              --overwrite true
-      
-            pac solution unpack \
-              --zipfile "$ZIP_FILE" \
-              --folder "$RELEASE_FOLDER/$SOLUTION" \
-              --packagetype Managed
-      
+            pac solution export --name "$SOLUTION" --path "$ZIP_FILE" --managed --overwrite true
+            echo "$(date -u +%Y-%m-%dT%H:%M:%SZ) $SOLUTION export succeeded" >> "$LOG_FILE"
+            pac solution unpack --zipfile "$ZIP_FILE" --folder "$RELEASE_FOLDER/$SOLUTION" --packagetype Managed
+            echo "$(date -u +%Y-%m-%dT%H:%M:%SZ) $SOLUTION unpack succeeded" >> "$LOG_FILE"
           done < "$SOLUTIONS_FILE"
+          echo "$(date -u +%Y-%m-%dT%H:%M:%SZ) export finished" >> "$LOG_FILE"
  
       - name: Commit and push
         shell: bash
         run: |
           AB_NUMBER="${{ github.event.inputs.ab_number }}"
           RELEASE_VERSION="${{ github.event.inputs.release_version }}"
+          RELEASE_FOLDER="Releases/v$RELEASE_VERSION"
+          LOG_FILE="$RELEASE_FOLDER/export-log.txt"
           if [[ ! "$AB_NUMBER" =~ ^[0-9]+$ ]]; then
             echo "ab_number must be digits only"
             exit 1
           fi
           git config user.name "github-actions"
           git config user.email "actions@github.com"
+          echo "$(date -u +%Y-%m-%dT%H:%M:%SZ) commit started" >> "$LOG_FILE"
+          echo "$(date -u +%Y-%m-%dT%H:%M:%SZ) AB#$AB_NUMBER Release v$RELEASE_VERSION" >> "$LOG_FILE"
+          echo "$(date -u +%Y-%m-%dT%H:%M:%SZ) push starting" >> "$LOG_FILE"
           git add Releases/
           git commit -m "AB#$AB_NUMBER Release v$RELEASE_VERSION" || echo "No changes detected"
           git push origin $TARGET_BRANCH
