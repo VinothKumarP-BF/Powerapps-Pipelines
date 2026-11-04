@@ -196,6 +196,7 @@ jobs:
           git -C log-repo config user.email "actions@github.com"
        
           git -C log-repo add "$LOG_PATH"
-          git -C log-repo commit -m "Export log $LOG_PATH"
-       
+          git -C log-repo commit -m "Export log $LOG_PATH" || true
+          
+          git -C log-repo pull --rebase origin "$LOG_BRANCH"
           git -C log-repo push origin "HEAD:refs/heads/$LOG_BRANCH"
