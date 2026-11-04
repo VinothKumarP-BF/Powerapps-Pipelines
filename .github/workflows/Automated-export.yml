@@ -195,4 +195,4 @@ jobs:
  
           git -C log-repo add "$LOG_PATH"
           git -C log-repo commit -m "Export log $LOG_PATH"
-          git -C log-repo push origin log
+          git -C log-repo push origin HEAD:refs/heads/log
