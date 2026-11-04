@@ -176,6 +176,7 @@ jobs:
         shell: bash
         env:
           JOB_STATUS: ${{ job.status }}
+          LOG_BRANCH: ${{ env.LOG_BRANCH }}
         run: |
           NOTES="$RUNNER_TEMP/export-notes.txt"
           touch "$NOTES"
@@ -191,12 +192,11 @@ jobs:
           mkdir -p "log-repo/$DAY"
           cp "$NOTES" "log-repo/$LOG_PATH"
        
-          git -C log-repo pull --rebase origin "$LOG_BRANCH"
- 
           git -C log-repo config user.name "github-actions"
           git -C log-repo config user.email "actions@github.com"
-           
+       
           git -C log-repo add "$LOG_PATH"
           git -C log-repo commit -m "Export log $LOG_PATH"
-           
+       
+          git -C log-repo pull --rebase origin "$LOG_BRANCH"
           git -C log-repo push origin "HEAD:refs/heads/$LOG_BRANCH"
