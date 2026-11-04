@@ -4,12 +4,14 @@ on:
   workflow_dispatch:
     inputs:
       release_version:
-        description: Release version
+        description: 'Release version'
         required: true
-        default: "0.0.0.0"
+        type: string
+        default: '0.0.0.0'
       ab_number:
-        description: AB number
+        description: 'Azure DevOps work item ID'
         required: true
+        type: string
  
 permissions:
   contents: write
@@ -17,92 +19,180 @@ permissions:
 env:
   TARGET_BRANCH: Managed_Solutions
   PAC_CLI_VERSION: 2.9.3
-  LOG_SCRIPT: log-script/.github/power-platform/export_log.py
  
 jobs:
   export:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     environment: DEV
+ 
     steps:
-      - name: Checkout
+      # Checkout Managed Solutions branch
+      - name: Checkout Managed Solutions
         uses: actions/checkout@v4
         with:
-          ref: ${{ env.TARGET_BRANCH }}
+          ref: Managed_Solutions
           fetch-depth: 0
  
+      # Checkout YAML configuration
       - name: Checkout YAML
         uses: actions/checkout@v4
         with:
           ref: yaml
           path: yaml-config
  
-      - name: Checkout log script
-        uses: actions/checkout@v4
-        with:
-          ref: ${{ github.sha }}
-          path: log-script
-          sparse-checkout: .github/power-platform
+      # Validate inputs
+      - name: Validate Inputs
+        shell: bash
+        env:
+          AB_NUMBER: ${{ inputs.ab_number }}
+          RELEASE_VERSION: ${{ inputs.release_version }}
+        run: |
+          if [[ ! "$AB_NUMBER" =~ ^[0-9]+$ ]]; then
+            echo "::error::Invalid AB number"
+            exit 1
+          fi
  
+          if [[ ! "$RELEASE_VERSION" =~ ^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+            echo "::error::Invalid release version"
+            exit 1
+          fi
+ 
+      # Install PAC CLI
       - name: Install PAC CLI
         shell: bash
         run: |
-          dotnet tool update --global Microsoft.PowerApps.CLI.Tool --version ${{ env.PAC_CLI_VERSION }} || dotnet tool install --global Microsoft.PowerApps.CLI.Tool --version ${{ env.PAC_CLI_VERSION }}
-          echo "$HOME/.dotnet/tools" >> $GITHUB_PATH
+          dotnet tool update --global Microsoft.PowerApps.CLI.Tool \
+            --version "$PAC_CLI_VERSION" || \
+          dotnet tool install --global Microsoft.PowerApps.CLI.Tool \
+            --version "$PAC_CLI_VERSION"
  
-      - name: Authenticate
+          echo "$HOME/.dotnet/tools" >> "$GITHUB_PATH"
+ 
+      # Authenticate to DEV
+      - name: Authenticate to DEV
         shell: bash
+        env:
+          DEV_ENV_URL: ${{ secrets.DEV_ENV_URL }}
+          CLIENT_ID: ${{ secrets.CLIENT_ID }}
+          CLIENT_SECRET: ${{ secrets.CLIENT_SECRET }}
+          TENANT_ID: ${{ secrets.TENANT_ID }}
         run: |
-          pac auth create --url ${{ secrets.DEV_ENV_URL }} --applicationId ${{ secrets.CLIENT_ID }} --clientSecret ${{ secrets.CLIENT_SECRET }} --tenant ${{ secrets.TENANT_ID }}
+          pac auth create \
+            --url "$DEV_ENV_URL" \
+            --applicationId "$CLIENT_ID" \
+            --clientSecret "$CLIENT_SECRET" \
+            --tenant "$TENANT_ID"
  
-      - name: Export solutions
+      # Export and unpack managed solutions
+      - name: Export Solutions
         shell: bash
+        env:
+          RELEASE_VERSION: ${{ inputs.release_version }}
         run: |
           set -e
-          python "$LOG_SCRIPT" start "export"
+ 
+          NOTES="$RUNNER_TEMP/export-notes.txt"
           SOLUTIONS_FILE="yaml-config/.github/workflows/solutions.yml"
-          RELEASE_FOLDER="Releases/v${{ github.event.inputs.release_version }}"
+          RELEASE_FOLDER="Releases/v$RELEASE_VERSION"
+ 
+          DAY=$(TZ=Asia/Kolkata date +%Y-%m-%d)
+          CLOCK=$(TZ=Asia/Kolkata date +%H%M%S)
+ 
+          echo "$DAY" > "$RUNNER_TEMP/export-day.txt"
+          echo "$CLOCK" > "$RUNNER_TEMP/export-clock.txt"
+ 
+          echo "Export started" >> "$NOTES"
+ 
           mkdir -p "$RELEASE_FOLDER"
-          python "$LOG_SCRIPT" step "release folder $RELEASE_FOLDER"
+ 
           while IFS= read -r line || [[ -n "$line" ]]; do
             line="${line%$'\r'}"
             trim="${line#"${line%%[![:space:]]*}"}"
+ 
             case "$trim" in
               ""|\#*) continue ;;
             esac
-            SOLUTION=$(printf '%s\n' "$trim" | sed 's/^- //')
-            echo "Exporting $SOLUTION"
-            python "$LOG_SCRIPT" solution-start "$SOLUTION"
-            ZIP_FILE="${RUNNER_TEMP}/${SOLUTION}.zip"
-            rm -rf "$RELEASE_FOLDER/$SOLUTION"
-            pac solution export --name "$SOLUTION" --path "$ZIP_FILE" --managed --overwrite true
-            python "$LOG_SCRIPT" solution-export-ok "$SOLUTION"
-            pac solution unpack --zipfile "$ZIP_FILE" --folder "$RELEASE_FOLDER/$SOLUTION" --packagetype Managed
-            python "$LOG_SCRIPT" solution-unpack-ok "$SOLUTION"
-          done < "$SOLUTIONS_FILE"
-          python "$LOG_SCRIPT" finish "export"
  
-      - name: Commit and push
+            SOLUTION=$(printf '%s\n' "$trim" | sed 's/^- //')
+ 
+            echo "Exporting $SOLUTION"
+            echo "$SOLUTION started" >> "$NOTES"
+ 
+            ZIP_FILE="$RUNNER_TEMP/${SOLUTION}.zip"
+ 
+            rm -rf "$RELEASE_FOLDER/$SOLUTION"
+ 
+            pac solution export \
+              --name "$SOLUTION" \
+              --path "$ZIP_FILE" \
+              --managed \
+              --overwrite true
+ 
+            echo "$SOLUTION export successful" >> "$NOTES"
+ 
+            pac solution unpack \
+              --zipfile "$ZIP_FILE" \
+              --folder "$RELEASE_FOLDER/$SOLUTION" \
+              --packagetype Managed
+ 
+            echo "$SOLUTION unpack successful" >> "$NOTES"
+ 
+          done < "$SOLUTIONS_FILE"
+ 
+          echo "Export finished successfully" >> "$NOTES"
+ 
+      # Commit and push exported solutions
+      - name: Commit and Push
         shell: bash
+        env:
+          AB_NUMBER: ${{ inputs.ab_number }}
+          RELEASE_VERSION: ${{ inputs.release_version }}
         run: |
-          AB_NUMBER="${{ github.event.inputs.ab_number }}"
-          RELEASE_VERSION="${{ github.event.inputs.release_version }}"
-          if [[ ! "$AB_NUMBER" =~ ^[0-9]+$ ]]; then
-            echo "ab_number must be digits only"
-            exit 1
-          fi
-          python "$LOG_SCRIPT" step "commit started"
-          python "$LOG_SCRIPT" step "AB#$AB_NUMBER Release v$RELEASE_VERSION"
-          python "$LOG_SCRIPT" step "push starting"
           git config user.name "github-actions"
           git config user.email "actions@github.com"
-          git add Releases/
-          git commit -m "AB#$AB_NUMBER Release v$RELEASE_VERSION" || echo "No changes detected"
-          git push origin $TARGET_BRANCH
-          python "$LOG_SCRIPT" finish "pushed $TARGET_BRANCH"
  
-      - name: Publish export log
+          git add Releases/
+ 
+          git commit -m "AB#$AB_NUMBER Release v$RELEASE_VERSION" \
+            || echo "No changes detected"
+ 
+          git push origin "HEAD:$TARGET_BRANCH"
+ 
+          echo "Commit and push completed" >> "$RUNNER_TEMP/export-notes.txt"
+ 
+      # Checkout log branch
+      - name: Checkout Log Branch
+        if: always()
+        uses: actions/checkout@v4
+        with:
+          ref: LOGS
+          path: log-repo
+          fetch-depth: 0
+ 
+      # Publish execution log
+      - name: Publish Log
         if: always()
         shell: bash
         env:
           JOB_STATUS: ${{ job.status }}
-        run: python "$LOG_SCRIPT" publish
+        run: |
+          NOTES="$RUNNER_TEMP/export-notes.txt"
+          touch "$NOTES"
+ 
+          echo "Workflow Status: $JOB_STATUS" >> "$NOTES"
+          echo "Run ID: ${{ github.run_id }}" >> "$NOTES"
+ 
+          DAY=$(TZ=Asia/Kolkata date +%Y-%m-%d)
+          CLOCK=$(TZ=Asia/Kolkata date +%H%M%S)
+ 
+          LOG_PATH="$DAY/$CLOCK-${{ github.run_id }}.log"
+ 
+          mkdir -p "log-repo/$DAY"
+          cp "$NOTES" "log-repo/$LOG_PATH"
+ 
+          git -C log-repo config user.name "github-actions"
+          git -C log-repo config user.email "actions@github.com"
+ 
+          git -C log-repo add "$LOG_PATH"
+          git -C log-repo commit -m "Export log $LOG_PATH"
+          git -C log-repo push origin log
