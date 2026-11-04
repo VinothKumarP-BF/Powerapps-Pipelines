@@ -18,6 +18,7 @@ permissions:
  
 env:
   TARGET_BRANCH: Managed_Solutions
+  LOG_BRNACH: LOGS
   PAC_CLI_VERSION: 2.9.3
  
 jobs:
@@ -30,7 +31,7 @@ jobs:
       - name: Checkout Managed Solutions
         uses: actions/checkout@v4
         with:
-          ref: Managed_Solutions
+          ref: ${{ env.TARGET_BRANCH }}
           fetch-depth: 0
  
       # Checkout YAML configuration
@@ -165,7 +166,7 @@ jobs:
         if: always()
         uses: actions/checkout@v4
         with:
-          ref: LOGS
+          ref: ${{ env.LOG_BRNACH }}
           path: log-repo
           fetch-depth: 0
  
@@ -178,21 +179,21 @@ jobs:
         run: |
           NOTES="$RUNNER_TEMP/export-notes.txt"
           touch "$NOTES"
- 
+       
           echo "Workflow Status: $JOB_STATUS" >> "$NOTES"
           echo "Run ID: ${{ github.run_id }}" >> "$NOTES"
- 
+       
           DAY=$(TZ=Asia/Kolkata date +%Y-%m-%d)
           CLOCK=$(TZ=Asia/Kolkata date +%H%M%S)
- 
+       
           LOG_PATH="$DAY/$CLOCK-${{ github.run_id }}.log"
- 
+       
           mkdir -p "log-repo/$DAY"
           cp "$NOTES" "log-repo/$LOG_PATH"
- 
+       
           git -C log-repo config user.name "github-actions"
           git -C log-repo config user.email "actions@github.com"
- 
+       
           git -C log-repo add "$LOG_PATH"
           git -C log-repo commit -m "Export log $LOG_PATH"
-          git -C log-repo push origin HEAD:refs/heads/log
+          git -C log-repo push origin "HEAD:refs/heads/$LOG_BRANCH"
