@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>0</isdefault>
+    <savedqueryid>{3f26300e-edb7-f111-aaac-70a8a5b02d34}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="cmdspp_p_sys_id" select="1" icon="1" preview="1">
+        <row name="result" id="cmdspp_p_dtl_tbid">
+          <cell name="cmdspp_p_sys_id" width="200" />
+          <cell name="a_e26d059dbe784f4f984e2736a3342900.cmdspp_providerdetails" width="322" />
+          <cell name="a_e26d059dbe784f4f984e2736a3342900.cmdspp_p_pvd_typ_lkp" width="307" />
+          <cell name="cmdspp_p_enrolment_type" width="131" />
+          <cell name="cmdspp_p_appln_status" width="144" />
+          <cell name="a_3f60efbd00714a9fb7e499563fdfefaa.cmdspp_riskcategory" width="268" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>0</querytype>
+    <fetchxml>
+      <fetch version="1.0" output-format="xml-platform" mapping="logical" distinct="true">
+        <entity name="cmdspp_p_dtl_tb">
+          <attribute name="cmdspp_p_sys_id" />
+          <attribute name="cmdspp_p_dtl_tbid" />
+          <filter type="and">
+            <condition attribute="cmdspp_p_appln_status" operator="eq" value="3" />
+            <condition attribute="cmdspp_p_queue_status" operator="like" value="%Program Integrity%" />
+          </filter>
+          <link-entity alias="a_e26d059dbe784f4f984e2736a3342900" name="cmdspp_p_idt_inf_dtl" to="cmdspp_p_idtinf_lkup" from="cmdspp_p_idt_inf_dtlid" link-type="outer" visible="false">
+            <attribute name="cmdspp_providerdetails" />
+            <attribute name="cmdspp_p_pvd_typ_lkp" />
+          </link-entity>
+          <attribute name="cmdspp_p_enrolment_type" />
+          <attribute name="cmdspp_p_appln_status" />
+          <link-entity alias="a_3f60efbd00714a9fb7e499563fdfefaa" name="cmdspp_p_appl_scenario_tb" to="cmdspp_p_application_scenario_id" from="cmdspp_p_appl_scenario_tbid" link-type="outer" visible="false">
+            <attribute name="cmdspp_riskcategory" />
+          </link-entity>
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>3.1.0</IntroducedVersion>
+    <roledisplayconditionsxml>
+      <DisplayConditions>
+        <Role Id="{66852B38-E6A5-F111-B8DE-70A8A5B02D28}" />
+        <Role Id="{537FE0F4-C7A5-F111-B8DE-70A8A5B02D74}" />
+      </DisplayConditions>
+    </roledisplayconditionsxml>
+    <LocalizedNames>
+      <LocalizedName description="Program Integrity" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>

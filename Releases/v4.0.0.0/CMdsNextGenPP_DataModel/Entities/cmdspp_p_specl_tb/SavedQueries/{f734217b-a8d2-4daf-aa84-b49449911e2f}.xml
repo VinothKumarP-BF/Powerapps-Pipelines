@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>0</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>1</isdefault>
+    <savedqueryid>{f734217b-a8d2-4daf-aa84-b49449911e2f}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="cmdspp_p_specl_sk" select="1" icon="1" preview="1">
+        <row name="result" id="cmdspp_p_specl_tbid">
+          <cell name="cmdspp_p_specl_cdid" width="172" />
+          <cell name="cmdspp_p_specl_cert_num" width="143" />
+          <cell name="cmdspp_p_specl_cert_board_cdid" width="189" />
+          <cell name="cmdspp_p_state_cdid" width="113" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>0</querytype>
+    <fetchxml>
+      <fetch version="1.0" mapping="logical">
+        <entity name="cmdspp_p_specl_tb">
+          <attribute name="cmdspp_p_specl_tbid" />
+          <filter type="and">
+            <condition attribute="statecode" operator="eq" value="0" />
+          </filter>
+          <attribute name="cmdspp_p_specl_cert_num" />
+          <attribute name="cmdspp_p_specl_cert_board_cdid" />
+          <attribute name="cmdspp_p_state_cdid" />
+          <attribute name="cmdspp_p_specl_cdid" />
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.0</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Active p_specl_tbs" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>

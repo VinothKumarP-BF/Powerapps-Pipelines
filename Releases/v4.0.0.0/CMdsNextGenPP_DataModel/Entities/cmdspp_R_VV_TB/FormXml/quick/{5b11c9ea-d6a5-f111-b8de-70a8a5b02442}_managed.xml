@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<forms xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <systemform>
+    <formid>{5b11c9ea-d6a5-f111-b8de-70a8a5b02442}</formid>
+    <IntroducedVersion>1.8.26.1</IntroducedVersion>
+    <FormPresentation>1</FormPresentation>
+    <FormActivationState>1</FormActivationState>
+    <form>
+      <tabs>
+        <tab id="ACBA75B7-97B6-4116-AA55-51312992B721" name="tab_1" showlabel="false" labelid="{a94f3c88-5346-46c8-a1de-581c886de71c}">
+          <labels>
+            <label description="New Tab" languagecode="1033" />
+          </labels>
+          <columns>
+            <column width="100%">
+              <sections>
+                <section id="AD49B5BF-256F-46A8-9C75-947146172EB9" name="tab_1_column_1_section_1" columns="1" showlabel="false" showbar="false" IsUserDefined="0" labelwidth="130" labelid="{57a290e1-b2ca-49e3-a4cd-33489fa3149d}">
+                  <labels>
+                    <label description="New Section" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="C0550AC7-0F44-45A4-8EF5-D2911C0689D9" labelid="{6ebf4847-25a5-4617-8273-914bad1ef8dd}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{af961c7c-ea5a-4d08-be02-43c5cdf03e6d}" locklevel="0" colspan="1" rowspan="1" labelid="{f3ac6141-40e9-49b9-81ee-a233d6a77a53}">
+                        <labels>
+                          <label description="Agency (Description)" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_r_vv_long_desc" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="cmdspp_r_vv_long_desc" disabled="false" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+          </columns>
+        </tab>
+      </tabs>
+      <DisplayConditions Order="3" FallbackForm="true">
+        <Role Id="{627090ff-40a3-4053-8790-584edc5be201}" />
+        <Role Id="{119f245c-3cc8-4b62-b31c-d1a046ced15d}" />
+      </DisplayConditions>
+    </form>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <LocalizedNames>
+      <LocalizedName description="R_VV_Agency_Quick_View" languagecode="1033" />
+    </LocalizedNames>
+  </systemform>
+</forms>

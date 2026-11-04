@@ -1,0 +1,149 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<forms xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <systemform>
+    <formid>{125ae94e-ec84-f111-ab0f-70a8a5b02d34}</formid>
+    <IntroducedVersion>1.0.0.0</IntroducedVersion>
+    <FormPresentation>1</FormPresentation>
+    <FormActivationState>1</FormActivationState>
+    <form headerdensity="HighWithControls">
+      <tabs>
+        <tab verticallayout="true" id="{fca5feec-5400-4e4b-8523-fd5d0c5ced29}" IsUserDefined="1" labelid="{fef3df1c-5f70-40c5-be5d-d5379ac4aaee}">
+          <labels>
+            <label description="General" languagecode="1033" />
+          </labels>
+          <columns>
+            <column width="100%">
+              <sections>
+                <section showlabel="false" showbar="false" IsUserDefined="0" id="{50ba7c69-af28-4694-90a9-7b9130c51363}" labelid="{c47005e6-f879-41bc-a494-b1a499efdb19}">
+                  <labels>
+                    <label description="General" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{c463f81b-7446-458c-bdf7-ced27979de09}" visible="false" labelid="{952fc1da-e342-4c6e-8afa-8afc8848b8df}">
+                        <labels>
+                          <label description="Owner" languagecode="1033" />
+                        </labels>
+                        <control id="ownerid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="ownerid" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{088fe53f-47b8-46d4-a468-4e5c1a711597}" colspan="1" rowspan="1" visible="false" labelid="{3886d4ad-1979-4054-9d4a-4f12a7e46914}">
+                        <labels>
+                          <label description="g_usr_sk" languagecode="1033" />
+                        </labels>
+                        <control id="header_cmdspp_g_usr_sk" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="cmdspp_g_usr_sk" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{bdb686e5-fd90-4967-a80b-27ee90e33426}" locklevel="0" colspan="1" rowspan="1" labelid="{40497db6-ff96-4af0-8ed5-5ddbc2fc6e8d}">
+                        <labels>
+                          <label description="First Name" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_g_fst_nam" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="cmdspp_g_fst_nam" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{42738894-7ee2-467f-95fc-0379f22e6198}" locklevel="0" colspan="1" rowspan="1" labelid="{c44d9fde-f3b6-467d-952d-5640a3939409}">
+                        <labels>
+                          <label description="Last Name" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_g_lst_nam" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="cmdspp_g_lst_nam" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{18159501-94d6-4544-93bb-9c49c5160fc9}" locklevel="0" colspan="1" rowspan="1" labelid="{dedaac5f-a7a5-4c58-9cde-0655d2e67080}">
+                        <labels>
+                          <label description="Email Address" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_g_email" classid="{ADA2203E-B4CD-49BE-9DDF-234642B43B52}" datafieldname="cmdspp_g_email" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{551437e2-281c-4839-89fc-45043e23c743}" locklevel="0" colspan="1" rowspan="1" labelid="{c2cab4da-59df-4eab-b751-71706ee164be}">
+                        <labels>
+                          <label description="Phone Number" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_g_phn_num" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="cmdspp_g_phn_num" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{d1f7c5a0-cb3d-4104-9e12-af539562c01a}" locklevel="0" colspan="1" rowspan="1" labelid="{e94359d7-2985-445e-8065-05437a4b3565}">
+                        <labels>
+                          <label description="Organization Name" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_g_org_nam" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="cmdspp_g_org_nam" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{169cf613-ae05-446b-baca-0af9d0ec6baf}" locklevel="0" colspan="1" rowspan="1" labelid="{baa53e52-7bb9-45f3-9172-878c4b1e5a21}">
+                        <labels>
+                          <label description="Terms and conditions" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_g_tms_n_condtns" classid="{67FAC785-CD58-4F9F-ABB3-4B7DDC6ED5ED}" datafieldname="cmdspp_g_tms_n_condtns" disabled="false" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+          </columns>
+        </tab>
+      </tabs>
+      <header id="{7fd73552-761c-4b33-9668-b999e79612a1}" celllabelposition="Top" columns="111" labelwidth="115" celllabelalignment="Left">
+        <rows>
+          <row>
+            <cell id="{f1bca0bc-751b-4ef6-80c8-c0ad8115b319}" showlabel="false" labelid="{e4a04483-18e2-4dc3-bd86-1fcbcbfb157a}">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{ee5ba9a1-6568-4451-9c68-719a0640e4d6}" showlabel="false" labelid="{7da6d4cf-9dad-4ab0-b445-cca8f01c2fc8}">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{5808ef60-61fd-48db-9874-98891a067731}" showlabel="false" labelid="{988f8937-5224-4d5a-be66-3e2f8eb81131}">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+          </row>
+        </rows>
+      </header>
+      <footer id="{8adc684b-ae88-4ad6-8583-c10a4b44de04}" celllabelposition="Top" columns="111" labelwidth="115" celllabelalignment="Left">
+        <rows>
+          <row>
+            <cell id="{48c5fdd6-05c3-4a74-92e4-555057deb89d}" showlabel="false" labelid="{abd99bcc-7201-42e4-bc36-7b57bd6e0ff4}">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{a3224343-1845-4383-9bd1-93f5a4698d3e}" showlabel="false" labelid="{d2b7365a-9055-46b5-b66a-a7cfefe5f4d0}">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{77865fcf-7cab-41fb-9b72-094591cf6a24}" showlabel="false" labelid="{662e5084-4bce-46a0-9057-cafbb132b2c7}">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+          </row>
+        </rows>
+      </footer>
+      <DisplayConditions Order="1" FallbackForm="true">
+        <Role Id="{627090ff-40a3-4053-8790-584edc5be201}" />
+        <Role Id="{119f245c-3cc8-4b62-b31c-d1a046ced15d}" />
+      </DisplayConditions>
+    </form>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <LocalizedNames>
+      <LocalizedName description="User registration" languagecode="1033" />
+    </LocalizedNames>
+    <Descriptions>
+      <Description description="A form for this entity." languagecode="1033" />
+    </Descriptions>
+  </systemform>
+</forms>

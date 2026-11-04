@@ -1,0 +1,233 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<forms xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <systemform>
+    <formid>{8881ae1d-635d-4cf1-965b-841c38faad10}</formid>
+    <IntroducedVersion>1.0</IntroducedVersion>
+    <FormPresentation>1</FormPresentation>
+    <FormActivationState>1</FormActivationState>
+    <form headerdensity="HighWithControls">
+      <tabs>
+        <tab verticallayout="true" id="{c7ecca23-84d6-48ae-ab56-e29d380a9bca}" IsUserDefined="1">
+          <labels>
+            <label description="General" languagecode="1033" />
+          </labels>
+          <columns>
+            <column width="100%">
+              <sections>
+                <section showlabel="false" showbar="false" IsUserDefined="0" id="{a4c23ee4-9299-479e-9ddd-4a7de64f62d8}" availableforphone="false" visible="false" name="genaral">
+                  <labels>
+                    <label description="General" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{0d3e4b0f-54a9-4c0b-b6e7-ffb13d8657f3}" showlabel="false" availableforphone="false" visible="false" locklevel="1">
+                        <labels>
+                          <label description="ID" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_p_ser_ma_inf_tb_sk" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="cmdspp_p_ser_ma_inf_tb_sk" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{871daaf5-c1ed-459a-b782-3ae5bd20e441}" showlabel="false" availableforphone="false" visible="false" locklevel="1">
+                        <labels>
+                          <label description="Owner" languagecode="1033" />
+                        </labels>
+                        <control id="ownerid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="ownerid" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+                <section name="null_section_3" id="5b5c8609-a0db-4e16-8bc8-07aa9f89da66" IsUserDefined="0" locklevel="0" showlabel="false" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Top" columns="11" labelwidth="115">
+                  <labels>
+                    <label description="New Section" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row />
+                    <row>
+                      <cell id="{c0fc4e96-b707-4952-91a9-7dc47ecb694c}" locklevel="0" colspan="2" rowspan="1">
+                        <labels>
+                          <label description="Is this mailing address the same as service location?" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_p_s_as_s_location" classid="{F9A8A302-114E-466A-B582-6771B2AE0D92}" datafieldname="cmdspp_p_s_as_s_location" disabled="false" uniqueid="{cb104761-e1a2-4f8b-b39a-1112c3c43349}" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{ce9ddf1e-3221-4fbb-b30f-35c2041936ef}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Primary Physical Address(P.O Box not accepted)" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_p_ph_address" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="cmdspp_p_ph_address" disabled="false" />
+                      </cell>
+                      <cell id="{34a2d9df-d7ab-44e7-9bc6-9bbba7d36fb6}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Building, Suite, Address" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_p_bu_s_address" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="cmdspp_p_bu_s_address" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{a3e58476-38cd-42f1-b47b-9ce350fb9584}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="City" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_p_city" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="cmdspp_p_city" disabled="false">
+                          <parameters>
+                            <DefaultViewId>{58733369-BBA6-F111-B8DE-70A8A5B02D34}</DefaultViewId>
+                            <AvailableViewIds>{7735878B-98D0-4EC9-A90A-D903327DC996},{64CA6896-0E0F-4900-898D-71C6B40C7F12},{58733369-BBA6-F111-B8DE-70A8A5B02D34},{3BD4E7E6-BDA6-F111-B8DE-70A8A5B02D34},{20DE6FBF-02A5-F111-B8DE-70A8A5B02328},{97D45F28-11A5-F111-B8DE-70A8A5B02684},{9968C64F-1697-F111-8075-70A8A5B028CC},{018D2F0F-F1A5-F111-B8DE-70A8A5B02D28},{D448848C-DBA6-F111-B8DD-70A8A5B028CC},{67C2D717-02A5-F111-B8DE-70A8A5B02328},{CA553ED7-1697-F111-8075-70A8A5B02D34},{3C37C7FA-D8A2-F111-B8DE-70A8A5B02D28},{4756C924-D9A2-F111-B8DE-70A8A5B02D28}</AvailableViewIds>
+                            <DisableViewPicker>true</DisableViewPicker>
+                          </parameters>
+                        </control>
+                      </cell>
+                      <cell id="{0bfa2c06-1008-4c6c-ba5e-e6523f10fd12}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="State" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_p_state" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="cmdspp_p_state" disabled="false">
+                          <parameters>
+                            <DefaultViewId>{CA553ED7-1697-F111-8075-70A8A5B02D34}</DefaultViewId>
+                            <AvailableViewIds>{7735878B-98D0-4EC9-A90A-D903327DC996},{64CA6896-0E0F-4900-898D-71C6B40C7F12},{58733369-BBA6-F111-B8DE-70A8A5B02D34},{3BD4E7E6-BDA6-F111-B8DE-70A8A5B02D34},{20DE6FBF-02A5-F111-B8DE-70A8A5B02328},{97D45F28-11A5-F111-B8DE-70A8A5B02684},{9968C64F-1697-F111-8075-70A8A5B028CC},{018D2F0F-F1A5-F111-B8DE-70A8A5B02D28},{D448848C-DBA6-F111-B8DD-70A8A5B028CC},{67C2D717-02A5-F111-B8DE-70A8A5B02328},{CA553ED7-1697-F111-8075-70A8A5B02D34},{3C37C7FA-D8A2-F111-B8DE-70A8A5B02D28},{4756C924-D9A2-F111-B8DE-70A8A5B02D28}</AvailableViewIds>
+                            <DisableViewPicker>true</DisableViewPicker>
+                          </parameters>
+                        </control>
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{6c908451-4b77-41fc-9fda-7e123fb57231}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Zip" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_p_zip" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="cmdspp_p_zip" disabled="false" />
+                      </cell>
+                      <cell id="{dda2e8b5-21bf-4e0b-a3b1-e6f75025531d}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Country" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_p_country" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="cmdspp_p_country" disabled="false">
+                          <parameters>
+                            <DefaultViewId>{3BD4E7E6-BDA6-F111-B8DE-70A8A5B02D34}</DefaultViewId>
+                            <AvailableViewIds>{7735878B-98D0-4EC9-A90A-D903327DC996},{64CA6896-0E0F-4900-898D-71C6B40C7F12},{58733369-BBA6-F111-B8DE-70A8A5B02D34},{3BD4E7E6-BDA6-F111-B8DE-70A8A5B02D34},{20DE6FBF-02A5-F111-B8DE-70A8A5B02328},{97D45F28-11A5-F111-B8DE-70A8A5B02684},{9968C64F-1697-F111-8075-70A8A5B028CC},{018D2F0F-F1A5-F111-B8DE-70A8A5B02D28},{D448848C-DBA6-F111-B8DD-70A8A5B028CC},{67C2D717-02A5-F111-B8DE-70A8A5B02328},{CA553ED7-1697-F111-8075-70A8A5B02D34},{3C37C7FA-D8A2-F111-B8DE-70A8A5B02D28},{4756C924-D9A2-F111-B8DE-70A8A5B02D28}</AvailableViewIds>
+                            <DisableViewPicker>true</DisableViewPicker>
+                          </parameters>
+                        </control>
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{03ebb784-2361-47bf-b397-c1681f91acdf}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Ext" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_p_ext" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="cmdspp_p_ext" disabled="false" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+          </columns>
+        </tab>
+      </tabs>
+      <header id="{af6fe155-4f87-4119-b9da-91d8e3e1a3e6}" celllabelposition="Top" columns="111" labelwidth="115" celllabelalignment="Left">
+        <rows>
+          <row>
+            <cell id="{8ac947bf-ca3c-4122-9d03-48ae3066b6b0}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{18f8ad0b-da34-479d-b508-fee88b75ca36}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{8da8b701-15a5-472e-ace8-64c05222404f}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+          </row>
+        </rows>
+      </header>
+      <footer id="{71c8e03c-4c4c-469c-a159-45935c94e353}" celllabelposition="Top" columns="111" labelwidth="115" celllabelalignment="Left">
+        <rows>
+          <row>
+            <cell id="{bc53c31d-0949-4822-87a2-f0686e840718}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{e3dc007a-6107-408b-96e7-efeb19d22718}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{0eba6133-ea8b-4091-ab42-abbb2da7d6b5}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+          </row>
+        </rows>
+      </footer>
+      <DisplayConditions Order="0" FallbackForm="true">
+        <Everyone />
+      </DisplayConditions>
+      <controlDescriptions>
+        <controlDescription forControl="{cb104761-e1a2-4f8b-b39a-1112c3c43349}">
+          <customControl id="{67FAC785-CD58-4F9F-ABB3-4B7DDC6ED5ED}">
+            <parameters>
+              <datafieldname>cmdspp_p_s_as_s_location</datafieldname>
+            </parameters>
+          </customControl>
+          <customControl id="{67FAC785-CD58-4F9F-ABB3-4B7DDC6ED5ED}">
+            <parameters>
+              <datafieldname>cmdspp_p_s_as_s_location</datafieldname>
+            </parameters>
+          </customControl>
+          <customControl formFactor="2" name="MscrmControls.FieldControls.ToggleControl">
+            <parameters>
+              <value type="TwoOptions">cmdspp_p_s_as_s_location</value>
+            </parameters>
+          </customControl>
+          <customControl formFactor="0" name="MscrmControls.FieldControls.ToggleControl">
+            <parameters>
+              <value type="TwoOptions">cmdspp_p_s_as_s_location</value>
+            </parameters>
+          </customControl>
+          <customControl formFactor="1" name="MscrmControls.FieldControls.ToggleControl">
+            <parameters>
+              <value type="TwoOptions">cmdspp_p_s_as_s_location</value>
+            </parameters>
+          </customControl>
+        </controlDescription>
+      </controlDescriptions>
+      <formLibraries>
+        <Library name="cmdspp_screening_web_res" libraryUniqueId="{8f6608b2-50b8-43ce-a6c7-600fb1784b23}" />
+      </formLibraries>
+      <events>
+        <event name="onchange" application="false" active="false" attribute="cmdspp_p_ph_address">
+          <Handlers>
+            <Handler functionName="validateField" libraryName="cmdspp_screening_web_res" handlerUniqueId="{690f4ec8-dc39-4f1f-97bf-d7485167a95a}" enabled="true" parameters="&quot;cmdspp_p_ph_address&quot;, &quot;pattern&quot;, &quot;^(?!P[.]?[ ]*O[.]?[ ]*Box|PO[ ]*Box).*$&quot;, &quot;P.O. Box addresses are not accepted.&quot; " passExecutionContext="true" />
+          </Handlers>
+        </event>
+        <event name="onchange" application="false" active="false" attribute="cmdspp_p_zip">
+          <Handlers>
+            <Handler functionName="validateField" libraryName="cmdspp_screening_web_res" handlerUniqueId="{f23b87f9-cd8c-488f-87e5-9f1f33c7062a}" enabled="true" parameters="&quot;cmdspp_p_zip&quot;, &quot;pattern&quot;, &quot;^[0-9]{5}(-[0-9]{4})?$&quot;, &quot;Enter a valid ZIP code.&quot;" passExecutionContext="true" />
+          </Handlers>
+        </event>
+        <event name="onchange" application="false" active="false" attribute="cmdspp_p_ext">
+          <Handlers>
+            <Handler functionName="validateField" libraryName="cmdspp_screening_web_res" handlerUniqueId="{2cda6cb5-e92b-4d30-bfac-ab4d5f6ac37f}" enabled="true" parameters="&quot;cmdspp_p_ext&quot;, &quot;pattern&quot;, &quot;^[0-9]{6}$&quot;, &quot;Enter a valid 6-digit EXT code.&quot;" passExecutionContext="true" />
+          </Handlers>
+        </event>
+      </events>
+    </form>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <LocalizedNames>
+      <LocalizedName description="Information" languagecode="1033" />
+    </LocalizedNames>
+    <Descriptions>
+      <Description description="A form for this entity." languagecode="1033" />
+    </Descriptions>
+  </systemform>
+</forms>

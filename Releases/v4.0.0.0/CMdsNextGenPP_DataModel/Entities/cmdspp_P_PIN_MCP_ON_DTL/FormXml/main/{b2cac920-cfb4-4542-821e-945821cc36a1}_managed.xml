@@ -1,0 +1,147 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<forms xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <systemform>
+    <formid>{b2cac920-cfb4-4542-821e-945821cc36a1}</formid>
+    <IntroducedVersion>1.0</IntroducedVersion>
+    <FormPresentation>1</FormPresentation>
+    <FormActivationState>1</FormActivationState>
+    <form headerdensity="HighWithControls" shownavigationbar="false">
+      <tabs>
+        <tab verticallayout="true" id="{7ca0fb0e-b963-42b4-b3cc-1385099a4172}" IsUserDefined="1">
+          <labels>
+            <label description="General" languagecode="1033" />
+          </labels>
+          <columns>
+            <column width="100%">
+              <sections>
+                <section showlabel="false" showbar="false" IsUserDefined="0" id="{28f2ea89-cfa1-4a05-8c52-dced13fcf86a}" visible="false">
+                  <labels>
+                    <label description="General" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{d695866b-0b3b-4e0b-8267-ddb9cf5cfd3f}">
+                        <labels>
+                          <label description="ID" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_p_pin_mcp_on_dtl_sk" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="cmdspp_p_pin_mcp_on_dtl_sk" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{e288e9c1-6849-4b67-843e-42137ddce99a}">
+                        <labels>
+                          <label description="Owner" languagecode="1033" />
+                        </labels>
+                        <control id="ownerid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="ownerid" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+                <section name="null_section_3" id="3ac62400-dee6-4f9d-87f6-88c5e2ecd08f" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Top" columns="11" labelwidth="115">
+                  <labels>
+                    <label description="Medicare Crossover Payment - Other Medicare Numbers " languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell locklevel="0" id="{3564c49c-daa4-4da0-a930-22e54eac2b95}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                      <cell locklevel="0" id="{0b7c354a-d852-4cbb-b43e-44b72cd5bb60}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{f6a05b63-bef5-4d38-abb1-c00b85b56ac4}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Medicare" languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_p_othr_mcare" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="cmdspp_p_othr_mcare" disabled="false" />
+                      </cell>
+                      <cell id="{a086d248-b4b3-463a-8cef-263c6f1b44cc}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Carrier/Intermediary Name " languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_p_othr_mcare_cn" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="cmdspp_p_othr_mcare_cn" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{769f3c98-5566-452a-a1ff-3e5d6102bc3a}" locklevel="0" colspan="2" rowspan="1">
+                        <labels>
+                          <label description="Please check all applicable Medicare Parts that pertain to Medicare crossover claims that you may submit (Part B / Part C) " languagecode="1033" />
+                        </labels>
+                        <control id="cmdspp_p_othr_mcare_parts_cd" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="cmdspp_p_othr_mcare_parts_cd" disabled="false">
+                          <parameters>
+                            <DefaultViewId>{97D45F28-11A5-F111-B8DE-70A8A5B02684}</DefaultViewId>
+                            <AvailableViewIds>{7735878B-98D0-4EC9-A90A-D903327DC996},{64CA6896-0E0F-4900-898D-71C6B40C7F12},{20DE6FBF-02A5-F111-B8DE-70A8A5B02328},{97D45F28-11A5-F111-B8DE-70A8A5B02684},{9968C64F-1697-F111-8075-70A8A5B028CC},{67C2D717-02A5-F111-B8DE-70A8A5B02328},{CA553ED7-1697-F111-8075-70A8A5B02D34},{3C37C7FA-D8A2-F111-B8DE-70A8A5B02D28},{4756C924-D9A2-F111-B8DE-70A8A5B02D28}</AvailableViewIds>
+                            <DisableViewPicker>true</DisableViewPicker>
+                          </parameters>
+                        </control>
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+          </columns>
+        </tab>
+      </tabs>
+      <header id="{f91f8b25-b163-4993-ac5b-5a0ad16e04dc}" celllabelposition="Top" columns="111" labelwidth="115" celllabelalignment="Left">
+        <rows>
+          <row>
+            <cell id="{c13c3bcd-4766-42f6-aef7-27ebda0a35cb}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{2c03de00-a952-47b3-941e-3f5fcae34b37}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{b647cd9e-b391-4caa-bee8-e6f70e3c3048}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+          </row>
+        </rows>
+      </header>
+      <footer id="{7a1bc47c-0958-4ebe-a34c-df87af4aca25}" celllabelposition="Top" columns="111" labelwidth="115" celllabelalignment="Left">
+        <rows>
+          <row>
+            <cell id="{5c1faf4a-6e63-43a3-8929-4c178b800403}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{0283e30a-0080-45bc-902c-3525eda2690f}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{c50da57c-6f12-45ea-80c2-dda29d32007a}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+          </row>
+        </rows>
+      </footer>
+      <DisplayConditions Order="0" FallbackForm="true">
+        <Everyone />
+      </DisplayConditions>
+    </form>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <LocalizedNames>
+      <LocalizedName description="Information" languagecode="1033" />
+    </LocalizedNames>
+    <Descriptions>
+      <Description description="A form for this entity." languagecode="1033" />
+    </Descriptions>
+  </systemform>
+</forms>

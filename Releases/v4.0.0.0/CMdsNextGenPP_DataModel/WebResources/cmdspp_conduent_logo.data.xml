@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<WebResource xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <WebResourceId>{11fb51c9-72a5-f111-b8de-70a8a5b02d34}</WebResourceId>
+  <Name>cmdspp_conduent_logo</Name>
+  <DisplayName>conduent_logo</DisplayName>
+  <LanguageCode>0</LanguageCode>
+  <WebResourceType>5</WebResourceType>
+  <IntroducedVersion>1.0.0.0</IntroducedVersion>
+  <IsEnabledForMobileClient>0</IsEnabledForMobileClient>
+  <IsAvailableForMobileOffline>0</IsAvailableForMobileOffline>
+  <IsCustomizable>1</IsCustomizable>
+  <CanBeDeleted>1</CanBeDeleted>
+  <IsHidden>0</IsHidden>
+  <FileName>/WebResources/cmdspp_conduent_logo11FB51C9-72A5-F111-B8DE-70A8A5B02D34</FileName>
+</WebResource>
