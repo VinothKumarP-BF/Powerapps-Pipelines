@@ -18,7 +18,7 @@ permissions:
  
 env:
   TARGET_BRANCH: Managed_Solutions
-  LOG_BRNACH: LOGS
+  LOG_BRANCH: LOGS
   PAC_CLI_VERSION: 2.9.3
  
 jobs:
