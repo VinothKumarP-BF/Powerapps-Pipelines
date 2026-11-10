@@ -41,10 +41,10 @@ jobs:
       - name: Authenticate
         shell: bash
         env:
-          PAC_URL: ${{ secrets.CMDS_NEXTGENPEM_DEV_URL }}
-          PAC_APP_ID: ${{ vars.CMDS_NEXTGENPEM_DEV_PP_APPID }}
-          PAC_CLIENT_SECRET: ${{ secrets.CMDS_NEXTGENPEM_DEV_PP }}
-          PAC_TENANT_ID: ${{ vars.CMDS_NEXTGENPEM_DEV_TENANTID }}
+          PAC_URL: ${{ secrets.DEV_ENV_URL }}
+          PAC_APP_ID: ${{ secrets.CLIENT_ID }}
+          PAC_CLIENT_SECRET: ${{ secrets.CLIENT_SECRET }}
+          PAC_TENANT_ID: ${{ secrets.TENANT_ID }}
         run: |
           set -euo pipefail
           pwsh -NoProfile -File ./scripts/logging/Write-DeploymentLog.ps1 -Action Stage -Stage authentication
