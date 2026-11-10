@@ -3,6 +3,32 @@
   "abNumber": "12345",
   "solutions": [
     "CMdsNextGenPP_Core",
-    "CMdsNextGenPP_DataModel"
-  ]
+    "CMdsNextGenPP_DataModel" 
+  ],
+  "importDefaults": {
+    "async": true,
+    "maxAsyncWaitMinutes": 60
+  },
+  "importOptions": {
+    "CMdsNextGenPP_Core": {
+      "settingsFile": "yaml-config/deployment-settings/dev2.deploymentSettings.json"
+    },
+    "CMdsNextGenPP_DataModel": {
+      "activatePlugins": true,
+      "forceOverwrite": true
+    },
+    "CMdS_NxtGenPE_BRE": {
+      "settingsFile": "yaml-config/deployment-settings/dev2.deploymentSettings.json"
+    },
+    "CMdS_NxtGenPE_Agents": {
+      "settingsFile": "yaml-config/deployment-settings/dev2.deploymentSettings.json"
+    },
+    "CMdSAutomation": {
+      "settingsFile": "yaml-config/deployment-settings/dev2.deploymentSettings.json"
+    },
+    "CMdSReporting": {
+      "settingsFile": "yaml-config/deployment-settings/dev2.deploymentSettings.json"
+    }
+  }
 }
+ 
