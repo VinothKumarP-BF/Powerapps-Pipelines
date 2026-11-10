@@ -1,0 +1,16 @@
+RUN ID: 20261110-42820985759-a1
+RELEASE: 
+WORK ITEM: AB#
+RUN URL: https://github.com/VinothKumarP-BF/Powerapps-Pipelines/actions/runs/42820985759/attempts/1
+RUN: 42820985759 attempt 1
+SOURCE: DEV
+TARGET: Managed_Solutions
+BRANCH: Managed_Solutions
+LOG BRANCH: log
+
+2026-11-10T18:33:22+0530 INFO PAC CLI 2.9.3 installed
+2026-11-10T18:33:24+0530 ERROR secret unavailable CMDS DEV2 credential
+
+FAILED
+STAGE: authentication
+ERROR: secret unavailable CMDS DEV2 credential
