@@ -51,9 +51,9 @@ jobs:
         shell: bash
         env:
           PAC_URL: ${{ secrets.DEV_ENV_URL }}
-          PAC_APP_ID: ${{ vars.CLIENT_ID }}
+          PAC_APP_ID: ${{ secrets.CLIENT_ID }}
           PAC_CLIENT_SECRET: ${{ secrets.CLIENT_SECRET }}
-          PAC_TENANT_ID: ${{ vars.TENANT_ID }}
+          PAC_TENANT_ID: ${{ secrets.TENANT_ID }}
         run: |
           set -euo pipefail
           pwsh -NoProfile -File ./scripts/logging/Write-DeploymentLog.ps1 -Action Stage -Stage authentication
