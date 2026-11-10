@@ -2,21 +2,37 @@ name: Import Automated Managed Solutions
  
 on:
   workflow_dispatch:
+  workflow_call:
+    inputs:
+      source_commit:
+        description: Exact exported CMdS-Sprint4-DEV2 commit to import.
+        required: false
+        type: string
+        default: ""
+      log_suffix:
+        description: Internal suffix used when a pipeline calls this workflow.
+        required: false
+        type: string
+        default: ""
  
 permissions:
   contents: write
  
 env:
   SOURCE_BRANCH: Managed_Solutions
-  SETTINGS_BRANCH: yaml
+  SETTINGS_BRANCH: CMdS-Yaml
   PAC_CLI_VERSION: "2.9.3"
   DEPLOYMENT_KIND: Import
+  DEPLOYMENT_SOURCE: Managed_Solutions
   DEPLOYMENT_TARGET: DEV2
+  DEPLOYMENT_BRANCH: Managed_Solutions
  
 jobs:
   import:
     runs-on: ubuntu-latest
     environment: DEV2
+    env:
+      LOG_ID_SUFFIX: ${{ inputs.log_suffix }}
     steps:
       - name: Checkout workflow source
         uses: actions/checkout@v4
@@ -24,7 +40,7 @@ jobs:
       - name: Checkout solution branch
         uses: actions/checkout@v4
         with:
-          ref: ${{ env.SOURCE_BRANCH }}
+          ref: ${{ inputs.source_commit || env.SOURCE_BRANCH }}
           fetch-depth: 0
           path: release
  
