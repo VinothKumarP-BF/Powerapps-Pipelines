@@ -1,0 +1,25 @@
+RUN ID: 20261110-42857913317-a1
+RELEASE: 
+WORK ITEM: AB#
+RUN URL: https://github.com/VinothKumarP-BF/Powerapps-Pipelines/actions/runs/42857913317/attempts/1
+RUN: 42857913317 attempt 1
+SOURCE: DEV
+TARGET: Managed_Solutions
+BRANCH: Managed_Solutions
+LOG BRANCH: log
+
+2026-11-10T22:16:42+0530 INFO PAC CLI 2.9.3 installed
+2026-11-10T22:16:49+0530 INFO authentication succeeded
+2026-11-10T22:16:51+0530 INFO validation passed release 0.0.0.0 work item AB#12345 order CMdsNextGenPP_Core, CMdsNextGenPP_DataModel
+2026-11-10T22:16:52+0530 INFO export started
+2026-11-10T22:16:53+0530 INFO export started CMdsNextGenPP_Core
+2026-11-10T22:17:04+0530 INFO zip validation passed CMdsNextGenPP_Core
+2026-11-10T22:17:06+0530 INFO unpack succeeded CMdsNextGenPP_Core
+2026-11-10T22:17:07+0530 INFO export started CMdsNextGenPP_DataModel
+2026-11-10T22:18:07+0530 INFO zip validation passed CMdsNextGenPP_DataModel
+2026-11-10T22:18:09+0530 INFO unpack succeeded CMdsNextGenPP_DataModel
+2026-11-10T22:18:10+0530 INFO export finished
+2026-11-10T22:18:11+0530 INFO commit AB#12345 Release v0.0.0.0
+2026-11-10T22:18:11+0530 WARN no changes to commit
+
+SUCCESS
