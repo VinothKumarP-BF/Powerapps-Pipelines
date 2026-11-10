@@ -12,12 +12,15 @@ function Invoke-Git {
     $token = $env:GITHUB_TOKEN
     $prefix = @('-c', "http.extraheader=AUTHORIZATION: bearer $token")
     if ($Repo) {
-& git -C $Repo @prefix @GitArgs
+        $output = & git -C $Repo @prefix @GitArgs
     }
     else {
-& git @prefix @GitArgs
+        $output = & git @prefix @GitArgs
     }
     $code = $LASTEXITCODE
+    if ($output) {
+        $output | ForEach-Object { Write-Host $_ }
+    }
     if (-not $AllowFailure -and $code -ne 0) {
         throw "git failed (${code}): $($GitArgs -join ' ')"
     }
@@ -58,11 +61,11 @@ if (Test-Path -LiteralPath $work) {
  
 $probe = Invoke-Git -AllowFailure -GitArgs @('ls-remote', '--exit-code', '--heads', $remote, 'log')
 if ($probe -eq 0) {
-    Invoke-Git -GitArgs @('clone', '--branch', 'log', '--single-branch', '--depth', '1', $remote, $work)
+    $null = Invoke-Git -GitArgs @('clone', '--branch', 'log', '--single-branch', '--depth', '1', $remote, $work)
 }
 elseif ($probe -eq 2) {
-    Invoke-Git -GitArgs @('init', '-b', 'log', $work)
-    Invoke-Git -Repo $work -GitArgs @('remote', 'add', 'origin', $remote)
+    $null = Invoke-Git -GitArgs @('init', '-b', 'log', $work)
+    $null = Invoke-Git -Repo $work -GitArgs @('remote', 'add', 'origin', $remote)
 }
 else {
     throw "git ls-remote failed ($probe)"
@@ -71,8 +74,8 @@ else {
 $destination = Join-Path $work $relative
 New-Item -ItemType Directory -Force -Path (Split-Path -Parent $destination) | Out-Null
 Copy-Item -LiteralPath $state.LogFile -Destination $destination -Force
-Invoke-Git -Repo $work -GitArgs @('config', 'user.name', 'github-actions')
-Invoke-Git -Repo $work -GitArgs @('config', 'user.email', 'actions@github.com')
-Invoke-Git -Repo $work -GitArgs @('add', '--', $relative)
-Invoke-Git -Repo $work -GitArgs @('commit', '-m', "Export log $relative")
-Invoke-Git -Repo $work -GitArgs @('push', 'origin', 'log')
+$null = Invoke-Git -Repo $work -GitArgs @('config', 'user.name', 'github-actions')
+$null = Invoke-Git -Repo $work -GitArgs @('config', 'user.email', 'actions@github.com')
+$null = Invoke-Git -Repo $work -GitArgs @('add', '--', $relative)
+$null = Invoke-Git -Repo $work -GitArgs @('commit', '-m', "Export log $relative")
+$null = Invoke-Git -Repo $work -GitArgs @('push', 'origin', 'log')
