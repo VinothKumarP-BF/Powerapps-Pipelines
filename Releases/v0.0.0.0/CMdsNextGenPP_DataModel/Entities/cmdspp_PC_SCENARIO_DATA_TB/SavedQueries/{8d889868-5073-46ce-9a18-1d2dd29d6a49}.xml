@@ -1,0 +1,148 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>0</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>1</isdefault>
+    <savedqueryid>{8d889868-5073-46ce-9a18-1d2dd29d6a49}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="cmdspp_scenariotype" select="1" icon="1" preview="1">
+        <row name="result" id="cmdspp_pc_scenario_data_tbid">
+          <cell name="cmdspp_scenariotype" width="300" />
+          <cell name="cmdspp_record_id" width="150" />
+          <cell name="cmdspp_overallscreeningstatus" width="150" />
+          <cell name="cmdspp_vendorname" width="150" />
+          <cell name="cmdspp_vendorscreeningstatus" width="150" />
+          <cell name="cmdspp_vendorsanctionmatchflag" width="150" />
+          <cell name="cmdspp_vendoradversemediaflag" width="150" />
+          <cell name="cmdspp_vendorwatchlistflag" width="150" />
+          <cell name="cmdspp_oigleiescreeningstatus" width="150" />
+          <cell name="cmdspp_oigleiematchflag" width="150" />
+          <cell name="cmdspp_oigleiematchname" width="150" />
+          <cell name="cmdspp_oigleieexclusiontype" width="150" />
+          <cell name="cmdspp_oigleieverificationtimestamputc" width="150" />
+          <cell name="cmdspp_samexclusionsstatus" width="150" />
+          <cell name="cmdspp_samexclusionsmatchflag" width="150" />
+          <cell name="cmdspp_nppesstatus" width="150" />
+          <cell name="cmdspp_nppesnpistatus" width="150" />
+          <cell name="cmdspp_nppestaxonomymatchflag" width="150" />
+          <cell name="cmdspp_irstinmatchstatus" width="150" />
+          <cell name="cmdspp_irstinmatchflag" width="150" />
+          <cell name="cmdspp_irstinmatchnameflag" width="150" />
+          <cell name="cmdspp_pecosstatus" width="150" />
+          <cell name="cmdspp_pecosmedicalenrollmentstatus" width="150" />
+          <cell name="cmdspp_pecosrevalidationstatus" width="150" />
+          <cell name="cmdspp_cliastatus" width="150" />
+          <cell name="cmdspp_cliacertificationstatus" width="150" />
+          <cell name="cmdspp_cliaexpirationdate" width="150" />
+          <cell name="cmdspp_deastatus" width="150" />
+          <cell name="cmdspp_dearegistrationstatus" width="150" />
+          <cell name="cmdspp_deaexpirationdate" width="150" />
+          <cell name="cmdspp_statelicensingstatus" width="150" />
+          <cell name="cmdspp_statelicensinglicensestatus" width="150" />
+          <cell name="cmdspp_statelicensingdisciplinaryaction" width="150" />
+          <cell name="cmdspp_ownershipreviewstatus" width="150" />
+          <cell name="cmdspp_ownershipreviewlayers" width="150" />
+          <cell name="cmdspp_complexownershipflag" width="150" />
+          <cell name="cmdspp_criminaldisclosureflag" width="150" />
+          <cell name="cmdspp_sharedownershipnetworkflag" width="150" />
+          <cell name="cmdspp_oigleiematchflag2" width="150" />
+          <cell name="cmdspp_samexclusionsmatchflag2" width="150" />
+          <cell name="cmdspp_nppestaxonomymatchflag2" width="150" />
+          <cell name="cmdspp_irstinmatchflag2" width="150" />
+          <cell name="cmdspp_pecosapprovedflag" width="150" />
+          <cell name="cmdspp_cliaactiveflag" width="150" />
+          <cell name="cmdspp_deavalidflag" width="150" />
+          <cell name="cmdspp_licenseactiveflag" width="150" />
+          <cell name="cmdspp_ownershipriskflag" width="150" />
+          <cell name="cmdspp_ownershipreviewlayers2" width="150" />
+          <cell name="cmdspp_pecosmedicalenrollmentstatus2" width="150" />
+          <cell name="cmdspp_statelicensinglicensestatus2" width="150" />
+          <cell name="cmdspp_scoringtimestamputc" width="150" />
+          <cell name="cmdspp_confidencescore" width="150" />
+          <cell name="cmdspp_riskcategory" width="150" />
+          <cell name="cmdspp_recommendation" width="150" />
+          <cell name="cmdspp_explainedfeatures" width="150" />
+          <cell name="cmdspp_explanationimportance" width="150" />
+          <cell name="cmdspp_explanationreason" width="150" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>0</querytype>
+    <fetchxml>
+      <fetch version="1.0" mapping="logical">
+        <entity name="cmdspp_pc_scenario_data_tb">
+          <attribute name="cmdspp_pc_scenario_data_tbid" />
+          <attribute name="cmdspp_scenariotype" />
+          <attribute name="createdon" />
+          <order attribute="cmdspp_scenariotype" descending="false" />
+          <filter type="and">
+            <condition attribute="statecode" operator="eq" value="0" />
+          </filter>
+          <attribute name="cmdspp_record_id" />
+          <attribute name="cmdspp_overallscreeningstatus" />
+          <attribute name="cmdspp_vendorname" />
+          <attribute name="cmdspp_vendorscreeningstatus" />
+          <attribute name="cmdspp_vendorsanctionmatchflag" />
+          <attribute name="cmdspp_vendoradversemediaflag" />
+          <attribute name="cmdspp_vendorwatchlistflag" />
+          <attribute name="cmdspp_oigleiescreeningstatus" />
+          <attribute name="cmdspp_oigleiematchflag" />
+          <attribute name="cmdspp_oigleiematchname" />
+          <attribute name="cmdspp_oigleieexclusiontype" />
+          <attribute name="cmdspp_oigleieverificationtimestamputc" />
+          <attribute name="cmdspp_samexclusionsstatus" />
+          <attribute name="cmdspp_samexclusionsmatchflag" />
+          <attribute name="cmdspp_nppesstatus" />
+          <attribute name="cmdspp_nppesnpistatus" />
+          <attribute name="cmdspp_nppestaxonomymatchflag" />
+          <attribute name="cmdspp_irstinmatchstatus" />
+          <attribute name="cmdspp_irstinmatchflag" />
+          <attribute name="cmdspp_irstinmatchnameflag" />
+          <attribute name="cmdspp_pecosstatus" />
+          <attribute name="cmdspp_pecosmedicalenrollmentstatus" />
+          <attribute name="cmdspp_pecosrevalidationstatus" />
+          <attribute name="cmdspp_cliastatus" />
+          <attribute name="cmdspp_cliacertificationstatus" />
+          <attribute name="cmdspp_cliaexpirationdate" />
+          <attribute name="cmdspp_deastatus" />
+          <attribute name="cmdspp_dearegistrationstatus" />
+          <attribute name="cmdspp_deaexpirationdate" />
+          <attribute name="cmdspp_statelicensingstatus" />
+          <attribute name="cmdspp_statelicensinglicensestatus" />
+          <attribute name="cmdspp_statelicensingdisciplinaryaction" />
+          <attribute name="cmdspp_ownershipreviewstatus" />
+          <attribute name="cmdspp_ownershipreviewlayers" />
+          <attribute name="cmdspp_complexownershipflag" />
+          <attribute name="cmdspp_criminaldisclosureflag" />
+          <attribute name="cmdspp_sharedownershipnetworkflag" />
+          <attribute name="cmdspp_oigleiematchflag2" />
+          <attribute name="cmdspp_samexclusionsmatchflag2" />
+          <attribute name="cmdspp_nppestaxonomymatchflag2" />
+          <attribute name="cmdspp_irstinmatchflag2" />
+          <attribute name="cmdspp_pecosapprovedflag" />
+          <attribute name="cmdspp_cliaactiveflag" />
+          <attribute name="cmdspp_deavalidflag" />
+          <attribute name="cmdspp_licenseactiveflag" />
+          <attribute name="cmdspp_ownershipriskflag" />
+          <attribute name="cmdspp_ownershipreviewlayers2" />
+          <attribute name="cmdspp_pecosmedicalenrollmentstatus2" />
+          <attribute name="cmdspp_statelicensinglicensestatus2" />
+          <attribute name="cmdspp_scoringtimestamputc" />
+          <attribute name="cmdspp_confidencescore" />
+          <attribute name="cmdspp_riskcategory" />
+          <attribute name="cmdspp_recommendation" />
+          <attribute name="cmdspp_explainedfeatures" />
+          <attribute name="cmdspp_explanationimportance" />
+          <attribute name="cmdspp_explanationreason" />
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.0</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Active PC_SCENARIO_DATA_TBS" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>

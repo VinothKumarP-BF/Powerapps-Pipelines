@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RibbonDiffXml xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <CustomActions>
+    <HideCustomAction HideActionId="cmdspp.AccessChecker.OpenDialog.cmdspp_p_dtl_tb.Button.Hide" Location="AccessChecker.OpenDialog.cmdspp_p_dtl_tb.Button" />
+    <HideCustomAction HideActionId="cmdspp.Mscrm.Form.cmdspp_p_dtl_tb.RefreshModernButton.Hide" Location="Mscrm.Form.cmdspp_p_dtl_tb.RefreshModernButton" />
+    <HideCustomAction HideActionId="cmdspp.Mscrm.Form.cmdspp_p_dtl_tb.ViewHierarchy.Hide" Location="Mscrm.Form.cmdspp_p_dtl_tb.ViewHierarchy" />
+    <HideCustomAction HideActionId="cmdspp.Mscrm.HomepageGrid.cmdspp_p_dtl_tb.RefreshModernButton.Hide" Location="Mscrm.HomepageGrid.cmdspp_p_dtl_tb.RefreshModernButton" />
+    <HideCustomAction HideActionId="cmdspp.Mscrm.HomepageGrid.cmdspp_p_dtl_tb.ViewHierarchy.Hide" Location="Mscrm.HomepageGrid.cmdspp_p_dtl_tb.ViewHierarchy" />
+  </CustomActions>
+  <Templates>
+    <RibbonTemplates Id="Mscrm.Templates"></RibbonTemplates>
+  </Templates>
+  <CommandDefinitions />
+  <RuleDefinitions>
+    <TabDisplayRules />
+    <DisplayRules />
+    <EnableRules />
+  </RuleDefinitions>
+  <LocLabels />
+</RibbonDiffXml>

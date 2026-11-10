@@ -1,0 +1,15 @@
+cmdspp_p_pvd_typ_desc: =cmdspp_p_pvd_typ_lkp.cmdspp_p_pvd_typ_nam
+cmdspp_providerdetails: |-
+    =Trim(
+        cmdspp_p_fst_nam & " " & cmdspp_p_lst_nam
+    ) &
+    If(
+        !IsBlank(cmdspp_p_npi_id),
+        " | NPI: " & cmdspp_p_npi_id,
+        ""
+    ) &
+    If(
+        !IsBlank(cmdspp_p_ssn),
+        " | SSN: " & cmdspp_p_ssn,
+        ""
+    )

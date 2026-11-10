@@ -1,0 +1,45 @@
+function openAuditInSidePane(primaryControl) {
+    if (!primaryControl) return;
+
+    var formContext = primaryControl;
+    var recordId = formContext.data.entity.getId().replace('{', '').replace('}', '');
+    var entityName = formContext.data.entity.getEntityName();
+
+    if (!recordId) {
+        Xrm.Navigation.openErrorDialog({ message: "Please save the record first." });
+        return;
+    }
+
+var auditNavItem = formContext.ui.navigation.items.get("navAudit");
+if (auditNavItem) {
+        // Focuses and opens the Audit History grid within the form seamlessly
+        auditNavItem.setFocus();
+    } else {
+        Xrm.Navigation.openAlertDialog({
+            text: "Audit History is not added to this form's Navigation panel. Please open the Form Designer in Power Apps, click 'Navigation' on the left sidebar, and drag 'Audit History' into the panel."
+        });
+    }
+
+    // Query Audit records related to this record via Web API
+    /*var query = "?$filter=_objectid_value eq " + recordId + "&$orderby=createdon desc";
+
+    Xrm.WebApi.retrieveMultipleRecords("audit", query).then(
+        function success(result) {
+            console.log("Audit logs retrieved:", result.entities);
+            
+
+            if (result.entities.length === 0) {
+                Xrm.Navigation.openAlertDialog({ text: "No audit records found for this entity." });
+                return;
+            }
+
+
+            Xrm.Navigation.openAlertDialog({ 
+                text: "Found " + result.entities.length + " audit entries. Check browser console logs for raw data." 
+            });
+        },
+        function error(error) {
+            Xrm.Navigation.openErrorDialog({ message: error.message });
+        }
+    );*/
+}

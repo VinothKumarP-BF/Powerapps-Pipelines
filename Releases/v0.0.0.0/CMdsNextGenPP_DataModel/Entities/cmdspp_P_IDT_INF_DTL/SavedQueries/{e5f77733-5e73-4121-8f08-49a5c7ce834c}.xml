@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>0</CanBeDeleted>
+    <isquickfindquery>1</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>1</isdefault>
+    <savedqueryid>{e5f77733-5e73-4121-8f08-49a5c7ce834c}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="cmdspp_p_idt_inf_dtl_sk" select="1" icon="1" preview="1">
+        <row name="result" id="cmdspp_p_idt_inf_dtlid">
+          <cell name="cmdspp_p_app_id_lkp" width="167" />
+          <cell name="cmdspp_p_fst_nam" width="103" />
+          <cell name="cmdspp_p_lst_nam" width="102" />
+          <cell name="cmdspp_p_mid_in" width="100" />
+          <cell name="cmdspp_p_npi_id" width="100" />
+          <cell name="cmdspp_p_ssn" width="100" />
+          <cell name="cmdspp_p_pvd_typ_lkp" width="120" />
+          <cell name="cmdspp_p_mdcaid_pvd" width="177" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>4</querytype>
+    <fetchxml>
+      <fetch version="1.0" mapping="logical" distinct="true">
+        <entity name="cmdspp_p_idt_inf_dtl">
+          <attribute name="cmdspp_p_idt_inf_dtlid" />
+          <filter type="or" isquickfindfields="1">
+            <condition attribute="cmdspp_p_app_id_lkp" operator="like" value="{0}" />
+            <condition attribute="cmdspp_p_fst_nam" operator="like" value="{0}" />
+            <condition attribute="cmdspp_p_lst_nam" operator="like" value="{0}" />
+            <condition attribute="cmdspp_p_npi_id" operator="like" value="{0}" />
+            <condition attribute="cmdspp_p_ssn" operator="like" value="{0}" />
+            <condition attribute="cmdspp_p_pvd_typ_lkp" operator="like" value="{0}" />
+            <condition attribute="cmdspp_p_mid_in" operator="like" value="{0}" />
+            <condition attribute="cmdspp_p_mdcaid_pvd" operator="like" value="{0}" />
+          </filter>
+          <attribute name="cmdspp_p_app_id_lkp" />
+          <order attribute="cmdspp_p_app_id_lkp" descending="false" />
+          <attribute name="cmdspp_p_fst_nam" />
+          <attribute name="cmdspp_p_lst_nam" />
+          <attribute name="cmdspp_p_npi_id" />
+          <attribute name="cmdspp_p_ssn" />
+          <attribute name="cmdspp_p_pvd_typ_lkp" />
+          <filter type="and">
+            <condition attribute="statecode" operator="eq" value="0" />
+          </filter>
+          <attribute name="cmdspp_p_mid_in" />
+          <attribute name="cmdspp_p_mdcaid_pvd" />
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.0</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Quick Find Active P_IDT_INF_DTLS" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>

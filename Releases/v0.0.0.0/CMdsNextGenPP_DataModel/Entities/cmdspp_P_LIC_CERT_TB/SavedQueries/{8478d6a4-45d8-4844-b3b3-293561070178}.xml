@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>0</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>0</isdefault>
+    <savedqueryid>{8478d6a4-45d8-4844-b3b3-293561070178}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="cmdspp_p_lic_cert_sk" select="1" icon="1" preview="1">
+        <row name="result" id="cmdspp_p_lic_cert_tbid">
+          <cell name="cmdspp_p_lic_cert_sk" width="300" />
+          <cell name="createdon" width="125" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>0</querytype>
+    <fetchxml>
+      <fetch version="1.0" mapping="logical">
+        <entity name="cmdspp_p_lic_cert_tb">
+          <attribute name="cmdspp_p_lic_cert_tbid" />
+          <attribute name="cmdspp_p_lic_cert_sk" />
+          <attribute name="createdon" />
+          <order attribute="cmdspp_p_lic_cert_sk" descending="false" />
+          <filter type="and">
+            <condition attribute="statecode" operator="eq" value="1" />
+          </filter>
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.0</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Inactive P_LIC_CERT_TBS" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>

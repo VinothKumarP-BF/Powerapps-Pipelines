@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+  body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 13px; color: #333; margin: 0; padding: 0; }
+  .title { font-weight: bold; font-size: 15px; margin-bottom: 8px; }
+  p { line-height: 1.5; margin: 0 0 10px 0; }
+  ul { margin: 0 0 10px 0; padding-left: 20px; }
+  li { line-height: 1.5; margin-bottom: 4px; }
+  .prompt { font-weight: bold; margin-top: 4px; }
+</style>
+</head>
+<body>
+  <div class="title">Electronic Claims Submission</div>
+  <p>
+    Providers who choose to submit electronic claims-related transactions must be aware
+    that payment of claims will be from Federal and State funds, and that any
+    falsification or concealment of material fact may be prosecuted under Federal and
+    State laws. Furthermore, providers must understand and agree to do the following:
+  </p>
+  <ul>
+    <li>Safeguard the Medicaid Program against abuse in the use of electronic transaction submission.</li>
+    <li>Correctly enter the claims data, monitor the data, and certify that the data entered is correct.</li>
+    <li>Assure that the transmission of transaction data is restricted to authorized personnel to prevent erroneous payments by the Department's fiscal agent, which might result from carelessness or fraud.</li>
+    <li>Have on file the applicable documentation to substantiate any transactions submitted to the Medicaid Program.</li>
+    <li>Allow the Department or any of its designees and representatives of the Attorney General to review and copy all records, including source documents and data related to information entered through electronic transaction submission.</li>
+    <li>Abide by all Federal and State statutes, rules, regulations, and manuals governing the Medicaid Program.</li>
+    <li>Sign and adhere to all conditions of the Medicaid Provider Participation Agreement, and be officially enrolled in the Medicaid Program to participate in electronic transaction submission.</li>
+  </ul>
+  <p class="prompt">Indicate which of the following will be used to submit transactions electronically:</p>
+</body>
+</html>
