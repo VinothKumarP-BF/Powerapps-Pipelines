@@ -7,12 +7,12 @@ permissions:
   contents: write
  
 env:
-  TARGET_BRANCH: CMdS-Sprint4-DEV2
+  TARGET_BRANCH: Managed_Solutions
   PAC_CLI_VERSION: "2.9.3"
  
 jobs:
   export:
-    runs-on: cmds-nextgenprv-lower-runner-ghhosted
+    runs-on: ubuntu-latest
     environment: DEV
     steps:
       - name: Checkout workflow source
