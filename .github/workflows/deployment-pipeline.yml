@@ -50,7 +50,7 @@ jobs:
       - initialize
       - export
       - import
-    runs-on: cmds-nextgenprv-lower-runner-ghhosted
+    runs-on: ubuntu-latest
     steps:
       - name: Write deployment summary
         shell: bash
