@@ -1,7 +1,7 @@
 # Check release version, work item, and ordered solution names. All three live in config/solutions.json.
 [CmdletBinding()]
 param(
-    [string]$ConfigPath = 'config/solutions.json',
+    [string]$ConfigPath = 'config/solution.json',
     [string]$NamesPath,
     [string]$VersionPath,
     [string]$WorkItemPath
