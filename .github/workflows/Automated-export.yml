@@ -136,4 +136,5 @@ jobs:
         shell: pwsh
         env:
           JOB_STATUS: ${{ job.status }}
+          GITHUB_TOKEN: ${{ github.token }}
         run: ./scripts/logging/Publish-DeploymentLog.ps1
