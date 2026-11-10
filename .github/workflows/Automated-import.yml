@@ -1,0 +1,84 @@
+name: Import Automated Managed Solutions
+ 
+on:
+  workflow_dispatch:
+ 
+permissions:
+  contents: write
+ 
+env:
+  SOURCE_BRANCH: Managed_Solutions
+  SETTINGS_BRANCH: CMdS-Yaml
+  PAC_CLI_VERSION: "2.9.3"
+  DEPLOYMENT_KIND: Import
+  DEPLOYMENT_TARGET: DEV2
+ 
+jobs:
+  import:
+    runs-on: ubuntu-latest
+    environment: DEV2
+    steps:
+      - name: Checkout workflow source
+        uses: actions/checkout@v4
+ 
+      - name: Checkout solution branch
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ env.SOURCE_BRANCH }}
+          fetch-depth: 0
+          path: release
+ 
+      - name: Checkout YAML settings
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ env.SETTINGS_BRANCH }}
+          path: yaml-config
+ 
+      - name: Initialize log
+        shell: pwsh
+        run: ./scripts/logging/Write-DeploymentLog.ps1 -Action Init
+ 
+      - name: Install PAC CLI
+        shell: bash
+        run: |
+          set -euo pipefail
+          pwsh -NoProfile -File ./scripts/logging/Write-DeploymentLog.ps1 -Action Stage -Stage install
+          dotnet tool update --global Microsoft.PowerApps.CLI.Tool --version ${{ env.PAC_CLI_VERSION }} || dotnet tool install --global Microsoft.PowerApps.CLI.Tool --version ${{ env.PAC_CLI_VERSION }}
+          echo "$HOME/.dotnet/tools" >> "$GITHUB_PATH"
+          pwsh -NoProfile -File ./scripts/logging/Write-DeploymentLog.ps1 -Action Info -Message "PAC CLI ${PAC_CLI_VERSION} installed"
+ 
+      - name: Authenticate DEV2
+        shell: bash
+        env:
+          PAC_URL: ${{ secrets.DEV_ENV_URL }}
+          PAC_APP_ID: ${{ vars.CLIENT_ID }}
+          PAC_CLIENT_SECRET: ${{ secrets.CLIENT_SECRET }}
+          PAC_TENANT_ID: ${{ vars.TENANT_ID }}
+        run: |
+          set -euo pipefail
+          pwsh -NoProfile -File ./scripts/logging/Write-DeploymentLog.ps1 -Action Stage -Stage authentication
+          if [[ -z "${PAC_URL}" || -z "${PAC_APP_ID}" || -z "${PAC_CLIENT_SECRET}" || -z "${PAC_TENANT_ID}" ]]; then
+            pwsh -NoProfile -File ./scripts/logging/Write-DeploymentLog.ps1 -Action Error -Stage authentication -Message "secret unavailable CMDS DEV2 credential"
+            exit 1
+          fi
+          if ! pac auth create --url "$PAC_URL" --applicationId "$PAC_APP_ID" --clientSecret "$PAC_CLIENT_SECRET" --tenant "$PAC_TENANT_ID" --accept-cleartext-caching; then
+            pwsh -NoProfile -File ./scripts/logging/Write-DeploymentLog.ps1 -Action Error -Stage authentication -Message "DEV2 authentication failed"
+            exit 1
+          fi
+          pwsh -NoProfile -File ./scripts/logging/Write-DeploymentLog.ps1 -Action Info -Message "authentication succeeded"
+ 
+      - name: Validate
+        shell: pwsh
+        run: ./scripts/validation/Validate-ImportInputs.ps1
+ 
+      - name: Import solutions
+        shell: pwsh
+        run: ./scripts/import/Import-Solutions.ps1
+ 
+      - name: Publish log
+        if: always()
+        shell: pwsh
+        env:
+          JOB_STATUS: ${{ job.status }}
+          GITHUB_TOKEN: ${{ github.token }}
+        run: ./scripts/logging/Publish-DeploymentLog.ps1
