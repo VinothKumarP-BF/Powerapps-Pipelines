@@ -22,7 +22,7 @@ jobs:
         id: metadata
         shell: pwsh
         run: |
-          $config = Get-Content -Raw config/solutions.json | ConvertFrom-Json
+          $config = Get-Content -Raw config/solution.json | ConvertFrom-Json
           $started = [DateTimeOffset]::UtcNow
           "release_version=$($config.releaseVersion)" >> $env:GITHUB_OUTPUT
           "ab_number=$($config.abNumber)" >> $env:GITHUB_OUTPUT
