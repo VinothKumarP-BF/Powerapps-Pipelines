@@ -20,7 +20,7 @@ permissions:
  
 env:
   SOURCE_BRANCH: Managed_Solutions
-  SETTINGS_BRANCH: CMdS-Yaml
+  SETTINGS_BRANCH: yaml
   PAC_CLI_VERSION: "2.9.3"
   DEPLOYMENT_KIND: Import
   DEPLOYMENT_SOURCE: Managed_Solutions
