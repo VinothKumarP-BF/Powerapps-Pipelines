@@ -1,0 +1,100 @@
+name: DEV to DEV2 Deployment Pipeline
+ 
+on:
+  workflow_dispatch:
+ 
+permissions:
+  contents: write
+ 
+jobs:
+  initialize:
+    runs-on: ubuntu-latest
+    outputs:
+      release_version: ${{ steps.metadata.outputs.release_version }}
+      ab_number: ${{ steps.metadata.outputs.ab_number }}
+      started_utc: ${{ steps.metadata.outputs.started_utc }}
+      started_ist: ${{ steps.metadata.outputs.started_ist }}
+    steps:
+      - name: Checkout workflow source
+        uses: actions/checkout@v4
+ 
+      - name: Read deployment metadata
+        id: metadata
+        shell: pwsh
+        run: |
+          $config = Get-Content -Raw config/solutions.json | ConvertFrom-Json
+          $started = [DateTimeOffset]::UtcNow
+          "release_version=$($config.releaseVersion)" >> $env:GITHUB_OUTPUT
+          "ab_number=$($config.abNumber)" >> $env:GITHUB_OUTPUT
+          "started_utc=$($started.ToString('yyyy-MM-ddTHH:mm:ssZ'))" >> $env:GITHUB_OUTPUT
+          "started_ist=$($started.ToOffset([TimeSpan]::FromMinutes(330)).ToString('yyyy-MM-ddTHH:mm:sszzz'))" >> $env:GITHUB_OUTPUT
+ 
+  export:
+    needs: initialize
+    uses: ./.github/workflows/export-solutions.yml
+    with:
+      log_suffix: export
+    secrets: inherit
+ 
+  import:
+    needs: export
+    uses: ./.github/workflows/import-solutions.yml
+    with:
+      source_commit: ${{ needs.export.outputs.commit_sha }}
+      log_suffix: import
+    secrets: inherit
+ 
+  finalize:
+    if: always()
+    needs:
+      - initialize
+      - export
+      - import
+    runs-on: cmds-nextgenprv-lower-runner-ghhosted
+    steps:
+      - name: Write deployment summary
+        shell: bash
+        env:
+          RELEASE_VERSION: ${{ needs.initialize.outputs.release_version }}
+          AB_NUMBER: ${{ needs.initialize.outputs.ab_number }}
+          STARTED_UTC: ${{ needs.initialize.outputs.started_utc }}
+          STARTED_IST: ${{ needs.initialize.outputs.started_ist }}
+          INITIALIZE_RESULT: ${{ needs.initialize.result }}
+          EXPORT_RESULT: ${{ needs.export.result }}
+          IMPORT_RESULT: ${{ needs.import.result }}
+        run: |
+          set -euo pipefail
+          finished_utc="$(date -u +%Y-%m-%dT%H:%M:%SZ)"
+          finished_ist="$(TZ=Asia/Kolkata date +%Y-%m-%dT%H:%M:%S%:z)"
+          run_url="${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}"
+          attempt_url="${run_url}/attempts/${GITHUB_RUN_ATTEMPT}"
+ 
+          import_display="${IMPORT_RESULT}"
+          if [[ "${INITIALIZE_RESULT}" != "success" && "${IMPORT_RESULT}" == "skipped" ]]; then
+            import_display="skipped (deployment initialization failed)"
+          elif [[ "${EXPORT_RESULT}" != "success" && "${IMPORT_RESULT}" == "skipped" ]]; then
+            import_display="skipped (export failed)"
+          fi
+ 
+          {
+            echo "# DEV to DEV2 deployment"
+            echo
+            echo "| Field | Value |"
+            echo "|---|---|"
+            echo "| releaseVersion | \`${RELEASE_VERSION:-unavailable}\` |"
+            echo "| abNumber | \`${AB_NUMBER:-unavailable}\` |"
+            echo "| Source | \`DEV / CMdS-Sprint4-DEV2\` |"
+            echo "| Target | \`DEV2\` |"
+            echo "| Export | **${EXPORT_RESULT}** |"
+            echo "| Import | **${import_display}** |"
+            echo "| Started (UTC) | \`${STARTED_UTC:-unavailable}\` |"
+            echo "| Started (IST) | \`${STARTED_IST:-unavailable}\` |"
+            echo "| Finished (UTC) | \`${finished_utc}\` |"
+            echo "| Finished (IST) | \`${finished_ist}\` |"
+            echo "| Run | [Open run](${run_url}) |"
+            echo "| Attempt | [Open attempt ${GITHUB_RUN_ATTEMPT}](${attempt_url}) |"
+          } >> "$GITHUB_STEP_SUMMARY"
+ 
+          if [[ "${INITIALIZE_RESULT}" != "success" || "${EXPORT_RESULT}" != "success" || "${IMPORT_RESULT}" != "success" ]]; then
+            exit 1
+          fi
