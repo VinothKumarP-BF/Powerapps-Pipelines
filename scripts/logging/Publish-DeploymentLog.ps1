@@ -1,6 +1,15 @@
 # Publish this run's log to branch log. This is the only writer of that branch.
 $ErrorActionPreference = 'Stop'
  
+function Redact-GitText {
+    param([string]$Text)
+    if (-not $Text) { return '' }
+    $clean = $Text
+    $token = $env:GITHUB_TOKEN
+    if ($token) { $clean = $clean.Replace($token, '<redacted>') }
+    return ($clean -replace '(?i)(bearer\s+)\S+', '$1<redacted>' -replace '(?i)(basic\s+)\S+', '$1<redacted>')
+}
+ 
 function Invoke-Git {
     param(
         [Parameter(Mandatory = $true)]
@@ -10,19 +19,37 @@ function Invoke-Git {
     )
  
     $token = $env:GITHUB_TOKEN
-    $prefix = @('-c', "http.extraheader=AUTHORIZATION: bearer $token")
-    if ($Repo) {
-        $output = & git -C $Repo @prefix @GitArgs
+    $inherited = @(
+        'GIT_CONFIG_COUNT', 'GIT_CONFIG_KEY_0', 'GIT_CONFIG_VALUE_0',
+        'GIT_CONFIG_KEY_1', 'GIT_CONFIG_VALUE_1', 'GIT_CONFIG_GLOBAL', 'GIT_CONFIG_SYSTEM'
+    )
+    $saved = @{}
+    foreach ($name in $inherited) {
+        $saved[$name] = [Environment]::GetEnvironmentVariable($name)
+        [Environment]::SetEnvironmentVariable($name, $null)
     }
-    else {
-        $output = & git @prefix @GitArgs
+    $previous = $ErrorActionPreference
+    $ErrorActionPreference = 'Continue'
+    try {
+        $command = @('-c', "http.extraheader=AUTHORIZATION: bearer $token") + $GitArgs
+        if ($Repo) {
+            $output = & git -C $Repo @command 2>&1
+        }
+        else {
+            $output = & git @command 2>&1
+        }
+        $code = $LASTEXITCODE
     }
-    $code = $LASTEXITCODE
-    if ($output) {
-        $output | ForEach-Object { Write-Host $_ }
+    finally {
+        $ErrorActionPreference = $previous
+        foreach ($name in $inherited) {
+            [Environment]::SetEnvironmentVariable($name, $saved[$name])
+        }
     }
+    $script:GitText = Redact-GitText (($output | ForEach-Object { "$_" }) -join "`n")
+    if ($script:GitText) { Write-Host $script:GitText }
     if (-not $AllowFailure -and $code -ne 0) {
-        throw "git failed (${code}): $($GitArgs -join ' ')"
+        throw "git failed (${code}): $($GitArgs -join ' ')`n$script:GitText"
     }
     return $code
 }
@@ -59,23 +86,34 @@ if (Test-Path -LiteralPath $work) {
     Remove-Item -LiteralPath $work -Recurse -Force
 }
  
-$probe = Invoke-Git -AllowFailure -GitArgs @('ls-remote', '--exit-code', '--heads', $remote, 'log')
-if ($probe -eq 0) {
-    $null = Invoke-Git -GitArgs @('clone', '--branch', 'log', '--single-branch', '--depth', '1', $remote, $work)
-}
-elseif ($probe -eq 2) {
-    $null = Invoke-Git -GitArgs @('init', '-b', 'log', $work)
+try {
+    New-Item -ItemType Directory -Path $work | Out-Null
+    $null = Invoke-Git -Repo $work -GitArgs @('init', '-b', 'log')
     $null = Invoke-Git -Repo $work -GitArgs @('remote', 'add', 'origin', $remote)
-}
-else {
-    throw "git ls-remote failed ($probe)"
-}
+    $fetch = Invoke-Git -AllowFailure -Repo $work -GitArgs @('fetch', '--depth', '1', 'origin', 'refs/heads/log')
+    if ($fetch -eq 0) {
+        $null = Invoke-Git -Repo $work -GitArgs @('checkout', '-B', 'log', 'FETCH_HEAD')
+    }
+    elseif ($script:GitText -notmatch "couldn't find remote ref") {
+        throw "git fetch failed (${fetch}): $($script:GitText)"
+    }
  
-$destination = Join-Path $work $relative
-New-Item -ItemType Directory -Force -Path (Split-Path -Parent $destination) | Out-Null
-Copy-Item -LiteralPath $state.LogFile -Destination $destination -Force
-$null = Invoke-Git -Repo $work -GitArgs @('config', 'user.name', 'github-actions')
-$null = Invoke-Git -Repo $work -GitArgs @('config', 'user.email', 'actions@github.com')
-$null = Invoke-Git -Repo $work -GitArgs @('add', '--', $relative)
-$null = Invoke-Git -Repo $work -GitArgs @('commit', '-m', "Export log $relative")
-$null = Invoke-Git -Repo $work -GitArgs @('push', 'origin', 'log')
+    $destination = Join-Path $work $relative
+    New-Item -ItemType Directory -Force -Path (Split-Path -Parent $destination) | Out-Null
+    Copy-Item -LiteralPath $state.LogFile -Destination $destination -Force
+    $null = Invoke-Git -Repo $work -GitArgs @('config', 'user.name', 'github-actions')
+    $null = Invoke-Git -Repo $work -GitArgs @('config', 'user.email', 'actions@github.com')
+    $null = Invoke-Git -Repo $work -GitArgs @('add', '--', $relative)
+    $null = Invoke-Git -Repo $work -GitArgs @('commit', '-m', "Export log $relative")
+    $push = Invoke-Git -AllowFailure -Repo $work -GitArgs @('push', 'origin', 'HEAD:refs/heads/log')
+    if ($push -ne 0) {
+        $null = Invoke-Git -Repo $work -GitArgs @('fetch', '--depth', '1', 'origin', 'refs/heads/log')
+        $null = Invoke-Git -Repo $work -GitArgs @('rebase', 'FETCH_HEAD')
+        $null = Invoke-Git -Repo $work -GitArgs @('push', 'origin', 'HEAD:refs/heads/log')
+    }
+}
+finally {
+    if (Test-Path -LiteralPath $work) {
+        Remove-Item -LiteralPath $work -Recurse -Force
+    }
+}
