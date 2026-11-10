@@ -1,0 +1,21 @@
+RUN ID: 20261110-42822172287-a1
+RELEASE: 
+WORK ITEM: AB#
+RUN URL: https://github.com/VinothKumarP-BF/Powerapps-Pipelines/actions/runs/42822172287/attempts/1
+RUN: 42822172287 attempt 1
+SOURCE: DEV
+TARGET: Managed_Solutions
+BRANCH: Managed_Solutions
+LOG BRANCH: log
+
+2026-11-10T18:41:24+0530 INFO PAC CLI 2.9.3 installed
+2026-11-10T18:41:32+0530 INFO authentication succeeded
+2026-11-10T18:41:33+0530 INFO validation passed release 0.0.0.0 order CMdsNextGenPP_Core, CMdsNextGenPP_DataModel
+2026-11-10T18:41:34+0530 INFO pack started CMdsNextGenPP_Core
+2026-11-10T18:41:35+0530 INFO pack succeeded CMdsNextGenPP_Core
+2026-11-10T18:41:35+0530 INFO import started CMdsNextGenPP_Core
+2026-11-10T18:43:10+0530 ERROR PAC import failed for CMdsNextGenPP_Core.
+
+FAILED
+STAGE: import CMdsNextGenPP_Core
+ERROR: PAC import failed for CMdsNextGenPP_Core.
