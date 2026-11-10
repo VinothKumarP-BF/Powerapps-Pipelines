@@ -30,7 +30,7 @@
     },
     {      
       "SchemaName": "cmdspp_ENV_Default_Email_Sender",
-      "Value": "Vinothkumar.Prabakaran@barrelfuel.com" 
+      "Value": "vinothkumar.prabakaran@barrelfuel.com" 
     },
     {      
       "SchemaName": "cmdspp_ENV_App_Base_Url",
