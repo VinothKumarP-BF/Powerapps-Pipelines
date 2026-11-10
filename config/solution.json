@@ -1,4 +1,8 @@
 {
-"CMdsNextGenPP_Core",
-"CMdsNextGenPP_DataModel"
+  "releaseVersion": "0.0.0.0",
+  "abNumber": "12345",
+  "solutions": [
+    "CMdsNextGenPP_Core",
+    "CMdsNextGenPP_DataModel"
+  ]
 }
