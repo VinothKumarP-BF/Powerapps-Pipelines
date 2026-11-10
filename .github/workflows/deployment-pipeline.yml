@@ -31,14 +31,14 @@ jobs:
  
   export:
     needs: initialize
-    uses: ./.github/workflows/export-solutions.yml
+    uses: ./.github/workflows/Automated-export.yml
     with:
       log_suffix: export
     secrets: inherit
  
   import:
     needs: export
-    uses: ./.github/workflows/import-solutions.yml
+    uses: ./.github/workflows/Automated-import.yml
     with:
       source_commit: ${{ needs.export.outputs.commit_sha }}
       log_suffix: import
@@ -83,7 +83,7 @@ jobs:
             echo "|---|---|"
             echo "| releaseVersion | \`${RELEASE_VERSION:-unavailable}\` |"
             echo "| abNumber | \`${AB_NUMBER:-unavailable}\` |"
-            echo "| Source | \`DEV / CMdS-Sprint4-DEV2\` |"
+            echo "| Source | \`DEV / Managed_Solutions\` |"
             echo "| Target | \`DEV2\` |"
             echo "| Export | **${EXPORT_RESULT}** |"
             echo "| Import | **${import_display}** |"
