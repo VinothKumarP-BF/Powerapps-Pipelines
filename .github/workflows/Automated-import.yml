@@ -50,7 +50,7 @@ jobs:
       - name: Authenticate DEV2
         shell: bash
         env:
-          PAC_URL: ${{ secrets.DEV_ENV_URL }}
+          PAC_URL: ${{ secrets.DEV2_ENV_URL }}
           PAC_APP_ID: ${{ secrets.CLIENT_ID }}
           PAC_CLIENT_SECRET: ${{ secrets.CLIENT_SECRET }}
           PAC_TENANT_ID: ${{ secrets.TENANT_ID }}
