@@ -1,0 +1,17 @@
+RUN ID: 20261110-42821580832-a1
+RELEASE: 
+WORK ITEM: AB#
+RUN URL: https://github.com/VinothKumarP-BF/Powerapps-Pipelines/actions/runs/42821580832/attempts/1
+RUN: 42821580832 attempt 1
+SOURCE: DEV
+TARGET: Managed_Solutions
+BRANCH: Managed_Solutions
+LOG BRANCH: log
+
+2026-11-10T18:37:24+0530 INFO PAC CLI 2.9.3 installed
+2026-11-10T18:37:29+0530 INFO authentication succeeded
+2026-11-10T18:37:31+0530 ERROR Import options reference unknown solution: CMdS_NxtGenPE_BRE.
+
+FAILED
+STAGE: validation
+ERROR: Import options reference unknown solution: CMdS_NxtGenPE_BRE.
